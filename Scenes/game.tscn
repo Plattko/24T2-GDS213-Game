@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bumhyygl1gh53"]
+[gd_scene load_steps=12 format=3 uid="uid://bumhyygl1gh53"]
 
 [ext_resource type="PackedScene" uid="uid://brc2h44edbj5a" path="res://Scenes/player.tscn" id="1_yno8v"]
 
@@ -38,6 +38,9 @@ roughness = 0.5
 albedo_color = Color(0.811462, 0.599261, 0.356088, 1)
 metallic = 1.0
 roughness = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mydnx"]
+albedo_color = Color(0.603296, 0.48513, 0.906636, 1)
 
 [node name="Game" type="Node3D"]
 
@@ -96,5 +99,11 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 13, 1,
 use_collision = true
 size = Vector3(8, 2, 8)
 material = SubResource("StandardMaterial3D_u1cil")
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="Environment"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6, 2.25, 7.562)
+use_collision = true
+size = Vector3(8, 1, 8)
+material = SubResource("StandardMaterial3D_mydnx")
 
 [node name="Player" parent="." instance=ExtResource("1_yno8v")]

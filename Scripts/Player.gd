@@ -1,5 +1,9 @@
 extends CharacterBody3D
 
+@export var head : Node3D
+@export var camera : Camera3D
+@export var animation_player : AnimationPlayer
+@export var crouch_shape_cast : ShapeCast3D
 
 var speed
 const WALK_SPEED = 5.0
@@ -28,18 +32,31 @@ var t_bob = 0.0
 const BASE_FOV = 90.0
 const FOV_CHANGE = 1.5
 
+# Crouch variables
+var is_crouching : bool = false
+
+const CROUCH_SPEED : float = 7.0
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
-
-@export var head : Node3D
-@export var camera : Camera3D
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _input(event):
+	# Handle quit
 	if event.is_action_pressed("quit"):
 		get_tree().quit()
+	
+	# Handle crouch
+	if event.is_action_pressed("crouch") and is_on_floor() and !is_crouching:
+		crouch(true)
+	
+	if event.is_action_released("crouch") and is_crouching:
+		if crouch_shape_cast.is_colliding() == false:
+			crouch(false)
+		else:
+			uncrouch_check()
 
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
@@ -63,7 +80,7 @@ func _physics_process(delta):
 		velocity.y = JUMP_VELOCITY
 	
 	#Handle sprint
-	if Input.is_action_pressed("sprint"):
+	if Input.is_action_pressed("sprint") && !is_crouching:
 		speed = SPRINT_SPEED
 	else:
 		speed = WALK_SPEED
@@ -113,3 +130,21 @@ func head_bob(time) -> Vector3:
 	pos.y = sin(time * BOB_FREQ) * BOB_AMP
 	pos.x = cos(time * BOB_FREQ / 2) * BOB_AMP
 	return pos
+
+func crouch(state : bool):
+	match state:
+		true:
+			animation_player.play("Crouch", -1, CROUCH_SPEED)
+		false:
+			animation_player.play("Crouch", -1, -CROUCH_SPEED, true)
+
+func uncrouch_check():
+	if crouch_shape_cast.is_colliding() == false:
+		crouch(false)
+	else:
+		await get_tree().create_timer(0.1).timeout
+		uncrouch_check()
+
+func _on_animation_player_animation_started(anim_name):
+	if anim_name == "Crouch":
+		is_crouching = !is_crouching
