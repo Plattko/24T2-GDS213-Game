@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://brc2h44edbj5a"]
+
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_4jpfc"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ge1xk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fvek4"]
+albedo_color = Color(0, 0.654902, 0.894118, 1)
+roughness = 0.5
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l214m"]
+
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("head", "camera")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("1_4jpfc")
+head = NodePath("Head")
+camera = NodePath("Head/Camera3D")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_ge1xk")
+surface_material_override/0 = SubResource("StandardMaterial3D_fvek4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_l214m")
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Head"]
+fov = 90.0
+
+[node name="ReflectionProbe" type="ReflectionProbe" parent="Head/Camera3D"]
+update_mode = 1
