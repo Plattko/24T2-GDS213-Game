@@ -85,9 +85,11 @@ func _physics_process(delta):
 	else:
 		speed = WALK_SPEED
 	
-	# Get the input direction and handle the movement/deceleration
+	# Get input direction
 	var input_dir = Input.get_vector("move_left", "move_right", "move_forwards", "move_backwards")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	
+	# Handle movement/deceleration
 	if is_on_floor():
 		if direction:
 			velocity.x = direction.x * speed
