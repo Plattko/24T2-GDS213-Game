@@ -13,13 +13,21 @@ func physics_update(delta : float):
 	player.velocity.z = player.direction.z * SPRINT_SPEED
 	player.move_and_slide()
 	
+	# Transition to Air state
 	if !player.is_on_floor():
 		transition.emit("AirPlayerState")
 		return
 	
+	# Transition to Idle state
 	if !player.direction:
 		transition.emit("IdlePlayerState")
 	
+	# Transition to Walk state
 	if Input.is_action_just_released("sprint"):
 		transition.emit("WalkPlayerState")
+		return
+	
+	# Transition to Crouch state
+	if Input.is_action_pressed("crouch"):
+		transition.emit("CrouchPlayerState")
 		return

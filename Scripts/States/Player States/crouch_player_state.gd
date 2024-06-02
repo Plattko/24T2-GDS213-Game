@@ -6,6 +6,7 @@ const WALK_SPEED = 5.0
 const CROUCH_SPEED : float = 7.0
 
 func enter() -> void:
+	print("Entered Crouch player state.")
 	# Play the crouch animation
 	player.animation_player.play("Crouch", -1, CROUCH_SPEED)
 
