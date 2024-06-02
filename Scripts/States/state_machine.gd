@@ -44,20 +44,3 @@ func on_child_transition(new_state_name):
 			current_state = new_state
 	else:
 		push_warning("New state does not exist.")
-	
-	## Check that the state that called the transition is the current state
-	#if state != current_state:
-		#return
-	#
-	## Check if there is a new state
-	#var new_state = states.get(new_state_name.to_lower())
-	#if !new_state:
-		#return
-	#
-	## Check if there is a current state and call the state's exit
-	#if current_state:
-		#current_state.exit()
-	#
-	## Call the new state's enter and set it as the current state
-	#new_state.enter()
-	#current_state = new_state
