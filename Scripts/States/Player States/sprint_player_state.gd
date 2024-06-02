@@ -2,17 +2,22 @@ class_name SprintPlayerState
 
 extends PlayerState
 
+const SPRINT_SPEED = 8.0
+
 func enter():
 	print("Entered Sprint player state.")
 
 func physics_update(delta : float):
+	# Handle movement
+	player.velocity.x = player.direction.x * SPRINT_SPEED
+	player.velocity.z = player.direction.z * SPRINT_SPEED
+	player.move_and_slide()
+	
 	if !player.is_on_floor():
 		transition.emit("AirPlayerState")
 		return
 	
-	var input_dir = Input.get_vector("move_left", "move_right", "move_forwards", "move_backwards")
-	var direction = (player.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	if !direction:
+	if !player.direction:
 		transition.emit("IdlePlayerState")
 	
 	if Input.is_action_just_released("sprint"):

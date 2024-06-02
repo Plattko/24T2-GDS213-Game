@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://brc2h44edbj5a"]
+[gd_scene load_steps=15 format=3 uid="uid://brc2h44edbj5a"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_4jpfc"]
 [ext_resource type="Script" path="res://Scripts/States/state_machine.gd" id="2_tc3yw"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/States/Player States/air_player_state.gd" id="4_qiulw"]
 [ext_resource type="Script" path="res://Scripts/States/Player States/walk_player_state.gd" id="5_ho5hy"]
 [ext_resource type="Script" path="res://Scripts/States/Player States/sprint_player_state.gd" id="6_1qnc2"]
+[ext_resource type="Script" path="res://Scripts/States/Player States/crouch_player_state.gd" id="7_mjfqt"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l214m"]
 
@@ -153,4 +154,5 @@ script = ExtResource("5_ho5hy")
 [node name="SprintPlayerState" type="Node" parent="PlayerStateMachine"]
 script = ExtResource("6_1qnc2")
 
-[connection signal="animation_started" from="AnimationPlayer" to="." method="_on_animation_player_animation_started"]
+[node name="CrouchPlayerState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("7_mjfqt")

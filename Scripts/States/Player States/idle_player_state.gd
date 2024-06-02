@@ -2,15 +2,20 @@ class_name IdlePlayerState
 
 extends PlayerState
 
+const STOP_SPEED = 5.0
+
 func enter():
 	print("Entered Idle player state.")
 
 func physics_update(delta : float):
+	# Handle deceleration
+	player.velocity.x = lerp(player.velocity.x, player.direction.x * STOP_SPEED, delta * 7.0)
+	player.velocity.z = lerp(player.velocity.z, player.direction.z * STOP_SPEED, delta * 7.0)
+	player.move_and_slide()
+	
 	if !player.is_on_floor():
 		transition.emit("AirPlayerState")
 		return
 	
-	var input_dir = Input.get_vector("move_left", "move_right", "move_forwards", "move_backwards")
-	var direction = (player.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	if direction:
+	if player.direction:
 		transition.emit("WalkPlayerState")

@@ -2,17 +2,33 @@ class_name AirPlayerState
 
 extends PlayerState
 
+const WALK_SPEED = 5.0
+const SPRINT_SPEED = 8.0
+var speed
+
 func enter():
 	print("Entered Air player state.")
 
 func physics_update(delta : float):
-	var input_dir = Input.get_vector("move_left", "move_right", "move_forwards", "move_backwards")
-	var direction = (player.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	# Apply gravity
+	player.update_gravity(delta)
+	
+	if Input.is_action_pressed("sprint"):
+		speed = SPRINT_SPEED
+	else:
+		speed = WALK_SPEED
+	
+	# Handle movement
+	player.velocity.x = lerp(player.velocity.x, player.direction.x * speed, delta * 4.0)
+	player.velocity.z = lerp(player.velocity.z, player.direction.z * speed, delta * 4.0)
+	
+	player.move_and_slide()
+	
 	if player.is_on_floor():
-		if !direction:
+		if !player.direction:
 			transition.emit("IdlePlayerState")
-		elif direction and Input.is_action_pressed("sprint"):
+		elif player.direction and Input.is_action_pressed("sprint"):
 			transition.emit("SprintPlayerState")
-		elif direction and !Input.is_action_pressed("sprint"):
+		elif player.direction and !Input.is_action_pressed("sprint"):
 			transition.emit("WalkPlayerState")
 		return
