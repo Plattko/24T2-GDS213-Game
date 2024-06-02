@@ -1,1 +1,6 @@
 res://Scenes/game.tscn
+res://Scripts/state.gd
+res://Scripts/state_machine.gd
+res://Scenes/player.tscn
+res://Scenes/idle_player_state.gd
+res://Scripts/States/Player States/player_state.gd

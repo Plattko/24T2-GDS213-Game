@@ -1,9 +1,14 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1717316879
+::res://::1717319223
 icon.svg::CompressedTexture2D::7218699412296705433::1717052149::1717052156::1::::<><>::
 README.md::TextFile::-1::1717052250::0::1::::<><>::
-::res://Scenes/::1717316722
-game.tscn::PackedScene::3815439237869558116::1717316722::0::1::::<><>::uid://brc2h44edbj5a::::res://Scenes/player.tscn
-player.tscn::PackedScene::3585413208572083608::1717316722::0::1::::<><>::res://Scripts/PlayerX.gd
-::res://Scripts/::1717316722
-PlayerX.gd::GDScript::-1::1717316694::0::1::::<>CharacterBody3D<>::
+::res://Scenes/::1717319223
+game.tscn::PackedScene::3815439237869558116::1717318506::0::1::::<><>::uid://brc2h44edbj5a::::res://Scenes/player.tscn
+player.tscn::PackedScene::3585413208572083608::1717319223::0::1::::<><>::res://Scripts/player.gd<>res://Scripts/States/state_machine.gd
+::res://Scripts/::1717319223
+player.gd::GDScript::-1::1717316694::0::1::::<>CharacterBody3D<>::
+::res://Scripts/States/::1717319235
+player_state.gd::GDScript::-1::1717319200::0::1::::<>State<>::
+state.gd::GDScript::-1::1717317113::0::1::::State<>Node<>::
+state_machine.gd::GDScript::-1::1717318506::0::1::::StateMachine<>Node<>::
+::res://Scripts/States/Player States/::1717319235

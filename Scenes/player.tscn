@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://brc2h44edbj5a"]
+[gd_scene load_steps=10 format=3 uid="uid://brc2h44edbj5a"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_4jpfc"]
+[ext_resource type="Script" path="res://Scripts/States/state_machine.gd" id="2_tc3yw"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l214m"]
 
@@ -131,5 +132,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("SphereShape3D_3r45p")
 target_position = Vector3(0, 0.5, 0)
 debug_shape_custom_color = Color(0, 0.901961, 0, 1)
+
+[node name="PlayerStateMachine" type="Node" parent="."]
+script = ExtResource("2_tc3yw")
+
+[node name="IdlePlayerState" type="Node" parent="PlayerStateMachine"]
 
 [connection signal="animation_started" from="AnimationPlayer" to="." method="_on_animation_player_animation_started"]
