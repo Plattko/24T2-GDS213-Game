@@ -49,9 +49,11 @@ func _unhandled_input(event):
 		rotation_input = -event.relative.x * SENSITIVITY
 		tilt_input = -event.relative.y * SENSITIVITY
 
-func _physics_process(delta):
+func _process(delta):
 	# Handle camera movement
 	update_camera(delta)
+
+func _physics_process(delta):
 	
 	# Handle jump
 	if Input.is_action_just_pressed("jump") and is_on_floor():

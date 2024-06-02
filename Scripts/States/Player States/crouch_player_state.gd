@@ -16,7 +16,7 @@ func physics_update(delta) -> void:
 	player.velocity.z = player.direction.z * WALK_SPEED
 	player.move_and_slide()
 	
-	if Input.is_action_just_released("crouch"):
+	if Input.is_action_just_released("crouch") or Input.is_action_pressed("jump"):
 		uncrouch()
 
 func uncrouch() -> void:
