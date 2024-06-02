@@ -19,6 +19,7 @@ func _ready():
 	
 	# If there is an initial state call the state's enter and set it as the current state
 	if initial_state:
+		await owner.ready
 		initial_state.enter()
 		current_state = initial_state
 

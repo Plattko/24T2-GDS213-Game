@@ -1,3 +1,5 @@
+class_name Player
+
 extends CharacterBody3D
 
 @export var head : Node3D

@@ -4,7 +4,6 @@ extends PlayerState
 
 func enter():
 	print("Entered Idle player state.")
-	#player.velocity = Vector3.ZERO
 
 func physics_update(delta : float):
 	if !player.is_on_floor():

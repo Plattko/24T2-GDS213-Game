@@ -6,3 +6,4 @@ res://Scripts/States/Player States/walk_player_state.gd
 res://Scripts/States/Player States/sprint_player_state.gd
 res://Scenes/game.tscn
 res://Scripts/States/state_machine.gd
+res://Scripts/player.gd
