@@ -22,6 +22,10 @@ func _ready():
 		initial_state.enter()
 		current_state = initial_state
 
+func _unhandled_input(event):
+	if current_state:
+		current_state.handle_input(event)
+
 func _process(delta):
 	if current_state:
 		current_state.update(delta)
@@ -30,7 +34,7 @@ func _physics_process(delta):
 	if current_state:
 		current_state.physics_update(delta)
 
-func on_child_transition(state, new_state_name):
+func on_child_transition(new_state_name):
 	var new_state = states.get(new_state_name.to_lower())
 	if new_state:
 		if new_state != current_state:

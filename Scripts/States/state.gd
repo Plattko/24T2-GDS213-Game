@@ -10,6 +10,9 @@ func enter():
 func exit():
 	pass
 
+func handle_input(event : InputEvent):
+	pass
+
 func update(delta : float):
 	pass
 
