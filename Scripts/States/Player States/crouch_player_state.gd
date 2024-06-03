@@ -3,12 +3,12 @@ class_name CrouchPlayerState
 extends PlayerState
 
 const WALK_SPEED = 5.0
-const CROUCH_SPEED : float = 7.0
+const CROUCH__ANIM_SPEED : float = 7.0
 
 func enter() -> void:
 	print("Entered Crouch player state.")
 	# Play the crouch animation
-	player.animation_player.play("Crouch", -1, CROUCH_SPEED)
+	player.animation_player.play("Crouch", -1, CROUCH__ANIM_SPEED)
 
 func physics_update(delta) -> void:
 	# Handle movement
@@ -22,7 +22,7 @@ func physics_update(delta) -> void:
 func uncrouch() -> void:
 	# If there is nothing blocking the player from standing up, play the uncrouch animation and transition to the Idle state
 	if player.crouch_shape_cast.is_colliding() == false:
-		player.animation_player.play("Crouch", -1, -CROUCH_SPEED, true)
+		player.animation_player.play("Crouch", -1, -CROUCH__ANIM_SPEED, true)
 		if player.animation_player.is_playing():
 			await player.animation_player.animation_finished
 		transition.emit("IdlePlayerState")

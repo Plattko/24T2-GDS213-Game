@@ -21,6 +21,7 @@ func physics_update(delta : float):
 	# Transition to Idle state
 	if !player.direction:
 		transition.emit("IdlePlayerState")
+		return
 	
 	# Transition to Walk state
 	if Input.is_action_just_released("sprint"):
@@ -29,5 +30,5 @@ func physics_update(delta : float):
 	
 	# Transition to Crouch state
 	if Input.is_action_pressed("crouch"):
-		transition.emit("CrouchPlayerState")
+		transition.emit("SlidePlayerState")
 		return
