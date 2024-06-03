@@ -5,3 +5,6 @@ res://Scripts/States/Player States/sprint_player_state.gd
 res://Scenes/game.tscn
 res://Scripts/player.gd
 res://Scripts/States/Player States/crouch_player_state.gd
+res://UI/Themes/debug.tres
+res://UI/Style Boxes/Flat/debug_panel.tres
+res://Scripts/debug.gd
