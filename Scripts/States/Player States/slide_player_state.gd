@@ -13,7 +13,7 @@ var elapsed_time := 0.0
 # Animation variables
 const SLIDE_ANIM_SPEED := 14.0
 
-func enter(previous_state):
+func enter(previous_state, msg : Dictionary = {}):
 	print("Entered Slide player state.")
 	# Set the slide direction to the direction the player is looking
 	slide_direction = -player.transform.basis.z
@@ -63,12 +63,17 @@ func physics_update(delta):
 		unslide()
 		transition.emit("AirPlayerState")
 		return
+	elif Input.is_action_just_pressed("jump") and player.crouch_shape_cast.is_colliding() == false:
+		unslide()
+		transition.emit("AirPlayerState", {"do_jump" = true})
+		return
 	
 	# Debug
 	Global.debug.add_debug_property("Slide Timer", snappedf(elapsed_time, 0.01), 4)
 
 func unslide() -> void:
-	# Play the unslide animation
-	player.animation_player.play("Slide", -1, -SLIDE_ANIM_SPEED, true)
-	if player.animation_player.is_playing():
-		await player.animation_player.animation_finished
+	# If there is nothing blocking the player from standing up, play the uncrouch animation and transition to the Idle state
+	if player.crouch_shape_cast.is_colliding() == false:
+		player.animation_player.play("Slide", -1, -SLIDE_ANIM_SPEED, true)
+		if player.animation_player.is_playing():
+			await player.animation_player.animation_finished

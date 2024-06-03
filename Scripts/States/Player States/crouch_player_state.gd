@@ -7,7 +7,7 @@ const CROUCH_ANIM_SPEED : float = 7.0
 
 var is_crouch_released : bool = false
 
-func enter(previous_state) -> void:
+func enter(previous_state, msg : Dictionary = {}) -> void:
 	print("Entered Crouch player state.")
 	# Play the crouch animation
 	if previous_state.name != "SlidePlayerState":
@@ -25,11 +25,13 @@ func physics_update(delta) -> void:
 	player.velocity.z = player.direction.z * WALK_SPEED
 	player.move_and_slide()
 	
-	if Input.is_action_just_released("crouch") or Input.is_action_pressed("jump"):
+	if Input.is_action_just_released("crouch"):
 		uncrouch()
+		return
 	elif !Input.is_action_pressed("crouch") and !is_crouch_released:
 		is_crouch_released = true
 		uncrouch()
+		return
 
 func uncrouch() -> void:
 	# If there is nothing blocking the player from standing up, play the uncrouch animation and transition to the Idle state

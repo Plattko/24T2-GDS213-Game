@@ -1,15 +1,14 @@
+PlayerState
+Node
 PanelContainer
 Panel
 VBoxContainer
 MarginContainer
 Container
 Control
-PlayerState
-Node
 State
 Label3D
 ShapeCast3D
 AnimationPlayer
 ReflectionProbe
 Node3D
-Camera3D

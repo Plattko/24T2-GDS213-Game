@@ -4,7 +4,7 @@ extends PlayerState
 
 const STOP_SPEED = 5.0
 
-func enter(previous_state):
+func enter(previous_state, msg : Dictionary = {}):
 	print("Entered Idle player state.")
 
 func physics_update(delta : float):
@@ -16,6 +16,9 @@ func physics_update(delta : float):
 	# Transition to Air state
 	if !player.is_on_floor():
 		transition.emit("AirPlayerState")
+		return
+	elif Input.is_action_just_pressed("jump") and player.is_on_floor():
+		transition.emit("AirPlayerState", {"do_jump" = true})
 		return
 	
 	# Transition to Crouch state

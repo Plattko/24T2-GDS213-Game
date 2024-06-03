@@ -38,12 +38,12 @@ func _physics_process(delta):
 	if current_state:
 		current_state.physics_update(delta)
 
-func on_child_transition(new_state_name):
+func on_child_transition(new_state_name, msg : Dictionary = {}):
 	var new_state = states.get(new_state_name.to_lower())
 	if new_state:
 		if new_state != current_state:
 			current_state.exit()
-			new_state.enter(current_state)
+			new_state.enter(current_state, msg)
 			current_state = new_state
 	else:
 		push_warning("New state does not exist.")

@@ -57,9 +57,9 @@ func _process(delta):
 
 func _physics_process(delta):
 	
-	# Handle jump
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+	## Handle jump
+	#if Input.is_action_just_pressed("jump") and is_on_floor():
+		#velocity.y = JUMP_VELOCITY
 	
 	# Get input direction
 	var input_dir = Input.get_vector("move_left", "move_right", "move_forwards", "move_backwards")

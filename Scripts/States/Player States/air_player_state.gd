@@ -2,12 +2,17 @@ class_name AirPlayerState
 
 extends PlayerState
 
+const JUMP_VELOCITY = 8.0
+
 const WALK_SPEED = 5.0
 const SPRINT_SPEED = 8.0
 var speed
 
-func enter(previous_state):
+func enter(previous_state, msg : Dictionary = {}):
 	print("Entered Air player state.")
+	
+	if msg.has("do_jump"):
+		player.velocity.y = JUMP_VELOCITY
 
 func physics_update(delta : float):
 	# Apply gravity
@@ -25,7 +30,9 @@ func physics_update(delta : float):
 	player.move_and_slide()
 	
 	if player.is_on_floor():
-		if !player.direction:
+		if player.crouch_shape_cast.is_colliding() == true:
+			transition.emit("CrouchPlayerState")
+		elif !player.direction:
 			transition.emit("IdlePlayerState")
 		elif player.direction and Input.is_action_pressed("sprint"):
 			transition.emit("SprintPlayerState")
