@@ -1,21 +1,31 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1717386586
+::res://::1717394711
 icon.svg::CompressedTexture2D::7218699412296705433::1717052149::1717052156::1::::<><>::
 README.md::TextFile::-1::1717052250::0::1::::<><>::
-::res://Scenes/::1717336963
-game.tscn::PackedScene::3815439237869558116::1717336385::0::1::::<><>::uid://brc2h44edbj5a::::res://Scenes/player.tscn
-player.tscn::PackedScene::3585413208572083608::1717336963::0::1::::<><>::res://Scripts/player.gd<>res://Scripts/States/state_machine.gd<>res://Scripts/States/Player States/idle_player_state.gd<>res://Scripts/States/Player States/air_player_state.gd<>res://Scripts/States/Player States/walk_player_state.gd<>res://Scripts/States/Player States/sprint_player_state.gd<>res://Scripts/States/Player States/crouch_player_state.gd
-::res://Scripts/::1717336963
-player.gd::GDScript::-1::1717336963::0::1::::Player<>CharacterBody3D<>::
-::res://Scripts/Backups/::1717336963
-player_backup.gd::GDScript::-1::1717336963::0::1::::Player<>CharacterBody3D<>::
+::res://Scenes/::1717394695
+game.tscn::PackedScene::3815439237869558116::1717394645::0::1::::<><>::uid://brc2h44edbj5a::::res://Scenes/player.tscn
+player.tscn::PackedScene::3585413208572083608::1717394695::0::1::::<><>::res://Scripts/player.gd<>res://Scripts/States/state_machine.gd<>res://Scripts/States/Player States/idle_player_state.gd<>res://Scripts/States/Player States/air_player_state.gd<>res://Scripts/States/Player States/walk_player_state.gd<>res://Scripts/States/Player States/sprint_player_state.gd<>res://Scripts/States/Player States/crouch_player_state.gd<>res://Scripts/States/Player States/slide_player_state.gd<>uid://ctri33ojacyl0::::res://UI/Themes/debug.tres<>res://Scripts/debug.gd
+::res://Scripts/::1717394695
+debug.gd::GDScript::-1::1717394695::0::1::::<>Panel<>::
+player.gd::GDScript::-1::1717391747::0::1::::Player<>CharacterBody3D<>::
+::res://Scripts/Backups/::1717386647
+player_backup.gd::GDScript::-1::1717386647::0::1::::Player_Backup<>CharacterBody3D<>::
+::res://Scripts/Global/::1717394638
+global.gd::GDScript::-1::1717394530::0::1::::<>Node<>::
 ::res://Scripts/States/::1717336963
 state.gd::GDScript::-1::1717336963::0::1::::State<>Node<>::
 state_machine.gd::GDScript::-1::1717336963::0::1::::StateMachine<>Node<>::
-::res://Scripts/States/Player States/::1717336963
+::res://Scripts/States/Player States/::1717392003
 air_player_state.gd::GDScript::-1::1717336963::0::1::::AirPlayerState<>PlayerState<>::
-crouch_player_state.gd::GDScript::-1::1717336963::0::1::::CrouchPlayerState<>PlayerState<>::
+crouch_player_state.gd::GDScript::-1::1717392003::0::1::::CrouchPlayerState<>PlayerState<>::
 idle_player_state.gd::GDScript::-1::1717336963::0::1::::IdlePlayerState<>PlayerState<>::
 player_state.gd::GDScript::-1::1717336963::0::1::::PlayerState<>State<>::
-sprint_player_state.gd::GDScript::-1::1717336963::0::1::::SprintPlayerState<>PlayerState<>::
+slide_player_state.gd::GDScript::-1::1717391981::0::1::::SlidePlayerState<>PlayerState<>::
+sprint_player_state.gd::GDScript::-1::1717389364::0::1::::SprintPlayerState<>PlayerState<>::
 walk_player_state.gd::GDScript::-1::1717336963::0::1::::WalkPlayerState<>PlayerState<>::
+::res://UI/::1717392719
+::res://UI/Style Boxes/::1717392732
+::res://UI/Style Boxes/Flat/::1717393025
+debug_panel.tres::StyleBoxFlat::4620602003782121715::1717393025::0::1::::<><>::
+::res://UI/Themes/::1717393133
+debug.tres::Theme::6142061049189393823::1717393133::0::1::::<><>::uid://b63iv00tljpt0::::res://UI/Style Boxes/Flat/debug_panel.tres

@@ -1,14 +1,14 @@
-extends Panel
+extends PanelContainer
 
 @export var property_container : VBoxContainer
 
-var property
 var frames_per_second : String
 
 func _ready():
-	visible = false
+	# Set global reference in the Global Debug script
+	Global.debug = self
 	
-	add_debug_property("FPS", frames_per_second)
+	visible = false
 
 func _input(event):
 	# Toggle debug panel
@@ -18,11 +18,19 @@ func _input(event):
 func _process(delta):
 	if visible:
 		# Get frames per second
-		frames_per_second = "%.2f" % (1.0 / delta)
-		property.text = property.name + ": " + frames_per_second
+		frames_per_second = str(snappedf(1.0 / delta, 1))
+		add_debug_property("FPS", frames_per_second, 0)
 
-func add_debug_property(title : StringName, value):
-	property = Label.new()
-	property_container.add_child(property)
-	property.name = title
-	property.text = property.name + value
+func add_debug_property(title: String, value, order):
+	var target
+	# Check if the target already exists
+	target = property_container.find_child(title, true, false)
+	
+	if !target:
+		target = Label.new()
+		property_container.add_child(target)
+		target.name = title
+		target.text = title + ": " + str(value)
+	elif visible:
+		target.text = title + ": " + str(value)
+		property_container.move_child(target, order)

@@ -71,6 +71,9 @@ func _physics_process(delta):
 	var velocity_clamped = clamp (velocity.length(), 0.5, SPRINT_SPEED * 2.0)
 	var target_fov = BASE_FOV + FOV_CHANGE * velocity_clamped
 	camera.fov = lerp(camera.fov, target_fov, delta * 8.0)
+	
+	# Debug
+	Global.debug.add_debug_property("Move Speed", snappedf(velocity.length(), 0.01), 2)
 
 func update_camera(delta):
 	mouse_rotation.y += rotation_input * delta

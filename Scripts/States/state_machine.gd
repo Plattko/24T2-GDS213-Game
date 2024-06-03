@@ -30,6 +30,9 @@ func _unhandled_input(event):
 func _process(delta):
 	if current_state:
 		current_state.update(delta)
+	
+	# Debug
+	Global.debug.add_debug_property("Current State", current_state.name, 1)
 
 func _physics_process(delta):
 	if current_state:
