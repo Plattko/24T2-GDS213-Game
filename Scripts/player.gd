@@ -29,6 +29,8 @@ const BOB_FREQ = 2.0
 const BOB_AMP = 0.08
 var t_bob = 0.0
 
+var can_head_bob : bool = true
+
 # FOV variables
 const BASE_FOV = 90.0
 const FOV_CHANGE = 1.5
@@ -64,8 +66,9 @@ func _physics_process(delta):
 	direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	
 	# Head bob
-	t_bob += delta * velocity.length() * float(is_on_floor())
-	camera.transform.origin = head_bob(t_bob)
+	if can_head_bob:
+		t_bob += delta * velocity.length() * float(is_on_floor())
+		camera.transform.origin = head_bob(t_bob)
 	
 	# FOV
 	var velocity_clamped = clamp (velocity.length(), 0.5, SPRINT_SPEED * 2.0)
