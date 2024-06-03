@@ -20,7 +20,7 @@ func _ready():
 	# If there is an initial state call the state's enter and set it as the current state
 	if initial_state:
 		await owner.ready
-		initial_state.enter()
+		initial_state.enter(null)
 		current_state = initial_state
 
 func _unhandled_input(event):
@@ -43,7 +43,7 @@ func on_child_transition(new_state_name):
 	if new_state:
 		if new_state != current_state:
 			current_state.exit()
-			new_state.enter()
+			new_state.enter(current_state)
 			current_state = new_state
 	else:
 		push_warning("New state does not exist.")

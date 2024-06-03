@@ -4,7 +4,7 @@ extends PlayerState
 
 const WALK_SPEED = 5.0
 
-func enter():
+func enter(previous_state):
 	print("Entered Walk player state.")
 
 func physics_update(delta : float):

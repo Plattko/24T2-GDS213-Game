@@ -6,7 +6,7 @@ const WALK_SPEED = 5.0
 const SPRINT_SPEED = 8.0
 var speed
 
-func enter():
+func enter(previous_state):
 	print("Entered Air player state.")
 
 func physics_update(delta : float):

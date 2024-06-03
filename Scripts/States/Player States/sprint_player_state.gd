@@ -4,7 +4,7 @@ extends PlayerState
 
 const SPRINT_SPEED = 8.0
 
-func enter():
+func enter(previous_state):
 	print("Entered Sprint player state.")
 
 func physics_update(delta : float):
@@ -28,7 +28,11 @@ func physics_update(delta : float):
 		transition.emit("WalkPlayerState")
 		return
 	
-	# Transition to Crouch state
 	if Input.is_action_pressed("crouch"):
-		transition.emit("SlidePlayerState")
+		# Transition to Slide state
+		if player.velocity.length() > 6.0:
+			transition.emit("SlidePlayerState")
+		# Transition to Crouch state
+		else:
+			transition.emit("CrouchPlayerState")
 		return

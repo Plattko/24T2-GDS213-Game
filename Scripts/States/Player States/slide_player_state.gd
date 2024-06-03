@@ -13,11 +13,16 @@ var elapsed_time := 0.0
 # Animation variables
 const SLIDE_ANIM_SPEED := 14.0
 
-func enter():
+func enter(previous_state):
 	print("Entered Slide player state.")
+	# Set the slide direction to the direction the player is looking
+	slide_direction = -player.transform.basis.z
+	# Play the crouch animation
+	player.animation_player.play("Slide", -1, SLIDE_ANIM_SPEED)
+
+func exit():
 	# Reset slide timer
 	elapsed_time = 0.0
-	slide_direction = -player.transform.basis.z
 
 func physics_update(delta):
 	if elapsed_time < SLIDE_DURATION:
@@ -29,10 +34,37 @@ func physics_update(delta):
 		# Increment the timer
 		elapsed_time += delta
 	else:
-		transition.emit("IdlePlayerState")
-		return
+		# Transition to Crouch state
+		if Input.is_action_pressed("crouch") or player.crouch_shape_cast.is_colliding() == true:
+			transition.emit("CrouchPlayerState")
+			return
+		# Transition to Idle state
+		elif !player.direction:
+			unslide()
+			transition.emit("IdlePlayerState")
+			return
+		# Transition to Walk state
+		elif player.direction && !Input.is_action_pressed("sprint"):
+			unslide()
+			transition.emit("WalkPlayerState")
+			return
+		# Transition to Sprint state
+		elif player.direction && Input.is_action_pressed("sprint"):
+			unslide()
+			transition.emit("SprintPlayerState")
+			return
 	
 	# Transition to Air state
 	if !player.is_on_floor():
+		unslide()
 		transition.emit("AirPlayerState")
 		return
+	
+	# Debug
+	Global.debug.add_debug_property("Slide Timer", snappedf(elapsed_time, 0.01), 4)
+
+func unslide() -> void:
+	# Play the unslide animation
+	player.animation_player.play("Slide", -1, -SLIDE_ANIM_SPEED, true)
+	if player.animation_player.is_playing():
+		await player.animation_player.animation_finished

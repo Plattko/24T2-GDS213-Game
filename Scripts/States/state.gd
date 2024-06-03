@@ -4,7 +4,7 @@ extends Node
 
 signal transition
 
-func enter():
+func enter(previous_state):
 	pass
 
 func exit():
