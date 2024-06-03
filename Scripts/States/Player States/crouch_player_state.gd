@@ -25,12 +25,22 @@ func physics_update(delta) -> void:
 	player.velocity.z = player.direction.z * WALK_SPEED
 	player.move_and_slide()
 	
+	# Transition to Air state
+	if !player.is_on_floor():
+		player.stand_up("CrouchPlayerState", CROUCH_ANIM_SPEED, true)
+		transition.emit("AirPlayerState")
+		return
+	elif Input.is_action_just_pressed("jump") and player.crouch_shape_cast.is_colliding() == false:
+		player.stand_up("CrouchPlayerState", CROUCH_ANIM_SPEED, true)
+		transition.emit("AirPlayerState", {"do_jump" = true})
+		return
+	
 	if Input.is_action_just_released("crouch"):
 		uncrouch()
 		return
 	elif !Input.is_action_pressed("crouch") and !is_crouch_released:
-		is_crouch_released = true
 		uncrouch()
+		player.stand_up("CrouchPlayerState", CROUCH_ANIM_SPEED, true)
 		return
 
 func uncrouch() -> void:

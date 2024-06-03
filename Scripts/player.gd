@@ -35,6 +35,9 @@ var can_head_bob : bool = true
 const BASE_FOV = 90.0
 const FOV_CHANGE = 1.5
 
+# Stand animation variables
+
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
@@ -102,3 +105,19 @@ func head_bob(time) -> Vector3:
 # State machine functions
 func update_gravity(delta) -> void:
 	velocity.y -= gravity * delta
+
+func stand_up(current_state, anim_speed : float, is_repeating_check : bool):
+	# If there is nothing blocking the player from standing up, play the respective animation
+	if crouch_shape_cast.is_colliding() == false:
+		# Check if it is the crouch or slide animation
+		if current_state == "CrouchPlayerState":
+			animation_player.play("Crouch", -1, -anim_speed, true)
+		elif current_state == "SlidePlayerState":
+			animation_player.play("Slide", -1, -anim_speed, true)
+		
+		if animation_player.is_playing():
+			await animation_player.animation_finished
+	# If there is something blocking the way, try to uncrouch again in 0.1 seconds
+	elif crouch_shape_cast.is_colliding() == true:
+		await get_tree().create_timer(0.1).timeout
+		stand_up(current_state, anim_speed, true)

@@ -44,36 +44,29 @@ func physics_update(delta):
 			return
 		# Transition to Idle state
 		elif !player.direction:
-			unslide()
+			player.stand_up("SlidePlayerState", SLIDE_ANIM_SPEED, false)
 			transition.emit("IdlePlayerState")
 			return
 		# Transition to Walk state
 		elif player.direction && !Input.is_action_pressed("sprint"):
-			unslide()
+			player.stand_up("SlidePlayerState", SLIDE_ANIM_SPEED, false)
 			transition.emit("WalkPlayerState")
 			return
 		# Transition to Sprint state
 		elif player.direction && Input.is_action_pressed("sprint"):
-			unslide()
+			player.stand_up("SlidePlayerState", SLIDE_ANIM_SPEED, false)
 			transition.emit("SprintPlayerState")
 			return
 	
 	# Transition to Air state
 	if !player.is_on_floor():
-		unslide()
+		player.stand_up("SlidePlayerState", SLIDE_ANIM_SPEED, true)
 		transition.emit("AirPlayerState")
 		return
 	elif Input.is_action_just_pressed("jump") and player.crouch_shape_cast.is_colliding() == false:
-		unslide()
+		player.stand_up("SlidePlayerState", SLIDE_ANIM_SPEED, true)
 		transition.emit("AirPlayerState", {"do_jump" = true})
 		return
 	
 	# Debug
 	Global.debug.add_debug_property("Slide Timer", snappedf(elapsed_time, 0.01), 4)
-
-func unslide() -> void:
-	# If there is nothing blocking the player from standing up, play the uncrouch animation and transition to the Idle state
-	if player.crouch_shape_cast.is_colliding() == false:
-		player.animation_player.play("Slide", -1, -SLIDE_ANIM_SPEED, true)
-		if player.animation_player.is_playing():
-			await player.animation_player.animation_finished
