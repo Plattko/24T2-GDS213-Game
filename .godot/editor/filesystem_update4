@@ -5,3 +5,4 @@ res://Scripts/debug.gd
 res://Scripts/player.gd
 res://Scenes/game.tscn
 res://Scripts/States/state_machine.gd
+res://Scripts/States/Player States/slide_player_state.gd

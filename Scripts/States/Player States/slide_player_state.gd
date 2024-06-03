@@ -17,12 +17,13 @@ func enter():
 	print("Entered Slide player state.")
 	# Reset slide timer
 	elapsed_time = 0.0
+	slide_direction = -player.transform.basis.z
 
 func physics_update(delta):
 	if elapsed_time < SLIDE_DURATION:
 		# Handle deceleration
-		player.velocity.x = lerp(player.direction.x * SLIDE_START_SPEED, player.direction.x * SLIDE_END_SPEED, elapsed_time / SLIDE_DURATION)
-		player.velocity.z = lerp(player.direction.z * SLIDE_START_SPEED, player.direction.z * SLIDE_END_SPEED, elapsed_time / SLIDE_DURATION)
+		player.velocity.x = lerp(slide_direction.x * SLIDE_START_SPEED, slide_direction.x * SLIDE_END_SPEED, elapsed_time / SLIDE_DURATION)
+		player.velocity.z = lerp(slide_direction.z * SLIDE_START_SPEED, slide_direction.z * SLIDE_END_SPEED, elapsed_time / SLIDE_DURATION)
 		player.move_and_slide()
 		
 		# Increment the timer
