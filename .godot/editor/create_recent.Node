@@ -1,3 +1,5 @@
+CSGSphere3D
+Decal
 MeshInstance3D
 CenterContainer
 Timer
@@ -11,4 +13,3 @@ Panel
 VBoxContainer
 MarginContainer
 Container
-Control
