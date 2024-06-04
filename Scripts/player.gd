@@ -40,6 +40,9 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	
+	# Set global reference to camera in the Global script
+	Global.camera = camera
 
 func _input(event):
 	# Handle quit
