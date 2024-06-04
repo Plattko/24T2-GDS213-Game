@@ -35,7 +35,7 @@ func physics_update(delta):
 		player.velocity.z = lerp(slide_direction.z * SLIDE_START_SPEED, slide_direction.z * SLIDE_END_SPEED, elapsed_time / SLIDE_DURATION)
 		player.move_and_slide()
 		
-		# Increment the timer
+		# Increment the slide timer
 		elapsed_time += delta
 		
 		# Transition to Air state
@@ -55,22 +55,18 @@ func physics_update(delta):
 		# Transition to Crouch state
 		if Input.is_action_pressed("crouch") or player.crouch_shape_cast.is_colliding() == true:
 			transition.emit("CrouchPlayerState")
-			return
 		# Transition to Idle state
 		elif !player.direction:
 			player.stand_up("SlidePlayerState", SLIDE_ANIM_SPEED, false)
 			transition.emit("IdlePlayerState")
-			return
 		# Transition to Walk state
-		elif player.direction && !Input.is_action_pressed("sprint"):
+		elif player.direction and !Input.is_action_pressed("sprint"):
 			player.stand_up("SlidePlayerState", SLIDE_ANIM_SPEED, false)
 			transition.emit("WalkPlayerState")
-			return
 		# Transition to Sprint state
-		elif player.direction && Input.is_action_pressed("sprint"):
+		elif player.direction and Input.is_action_pressed("sprint"):
 			player.stand_up("SlidePlayerState", SLIDE_ANIM_SPEED, false)
 			transition.emit("SprintPlayerState")
-			return
 	
 	# Debug
 	Global.debug.add_debug_property("Slide Timer", snappedf(elapsed_time, 0.01), 4)

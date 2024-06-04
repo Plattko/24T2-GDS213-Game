@@ -4,3 +4,7 @@ res://UI/Themes/debug.tres
 res://Scenes/game.tscn
 res://Scripts/States/Player States/slide_player_state.gd
 res://Scripts/States/Player States/sprint_player_state.gd
+res://Scripts/States/Player States/idle_player_state.gd
+res://Scripts/States/Player States/walk_player_state.gd
+res://Scripts/States/Player States/air_player_state.gd
+res://Scripts/States/Player States/crouch_player_state.gd
