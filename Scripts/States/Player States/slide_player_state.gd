@@ -37,6 +37,20 @@ func physics_update(delta):
 		
 		# Increment the timer
 		elapsed_time += delta
+		
+		# Transition to Air state
+		if !player.is_on_floor():
+			player.stand_up("SlidePlayerState", SLIDE_ANIM_SPEED, true)
+			transition.emit("AirPlayerState")
+		# Handle jump
+		elif Input.is_action_just_pressed("jump"): 
+			# If above the player is unobstructed, transition to Air state with jump
+			if player.crouch_shape_cast.is_colliding() == false:
+				player.stand_up("SlidePlayerState", SLIDE_ANIM_SPEED, true)
+				transition.emit("AirPlayerState", {"do_jump" = true})
+			# Else, transition to crouch state
+			else:
+				transition.emit("CrouchPlayerState")
 	else:
 		# Transition to Crouch state
 		if Input.is_action_pressed("crouch") or player.crouch_shape_cast.is_colliding() == true:
@@ -57,16 +71,6 @@ func physics_update(delta):
 			player.stand_up("SlidePlayerState", SLIDE_ANIM_SPEED, false)
 			transition.emit("SprintPlayerState")
 			return
-	
-	# Transition to Air state
-	if !player.is_on_floor():
-		player.stand_up("SlidePlayerState", SLIDE_ANIM_SPEED, true)
-		transition.emit("AirPlayerState")
-		return
-	elif Input.is_action_just_pressed("jump") and player.crouch_shape_cast.is_colliding() == false:
-		player.stand_up("SlidePlayerState", SLIDE_ANIM_SPEED, true)
-		transition.emit("AirPlayerState", {"do_jump" = true})
-		return
 	
 	# Debug
 	Global.debug.add_debug_property("Slide Timer", snappedf(elapsed_time, 0.01), 4)
