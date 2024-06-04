@@ -3,3 +3,4 @@ res://UI/Style Boxes/Flat/debug_panel.tres
 res://UI/Themes/debug.tres
 res://Scenes/game.tscn
 res://Scripts/States/Player States/slide_player_state.gd
+res://Scripts/States/Player States/sprint_player_state.gd

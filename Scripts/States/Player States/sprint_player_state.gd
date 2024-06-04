@@ -33,7 +33,7 @@ func physics_update(delta : float):
 	
 	if Input.is_action_pressed("crouch"):
 		# Transition to Slide state
-		if player.velocity.length() > 6.0:
+		if Input.is_action_pressed("move_forwards") and player.velocity.length() > 6.0:
 			transition.emit("SlidePlayerState")
 		# Transition to Crouch state
 		else:
