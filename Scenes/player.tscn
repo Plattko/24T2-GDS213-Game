@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://brc2h44edbj5a"]
+[gd_scene load_steps=21 format=3 uid="uid://brc2h44edbj5a"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_4jpfc"]
 [ext_resource type="PackedScene" uid="uid://dlwblryspggnx" path="res://Scenes/test_gun.tscn" id="2_neyk3"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://Scripts/States/Player States/slide_player_state.gd" id="8_uemic"]
 [ext_resource type="Theme" uid="uid://ctri33ojacyl0" path="res://UI/Themes/debug.tres" id="9_e1owm"]
 [ext_resource type="Script" path="res://Scripts/debug.gd" id="10_0shru"]
+[ext_resource type="Script" path="res://Scripts/UI/reticle.gd" id="12_vy6x5"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l214m"]
 
@@ -209,9 +210,23 @@ script = ExtResource("8_uemic")
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="Reticle" type="CenterContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("12_vy6x5")
 
 [node name="PanelContainer" type="PanelContainer" parent="UI" node_paths=PackedStringArray("property_container")]
 custom_minimum_size = Vector2(200, 0)
