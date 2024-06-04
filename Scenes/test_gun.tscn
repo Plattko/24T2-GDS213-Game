@@ -1,13 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://dlwblryspggnx"]
 
 [ext_resource type="Script" path="res://Scripts/Shooting/Guns/test_gun.gd" id="1_6ci3o"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eu3vs"]
-albedo_color = Color(0.458405, 0.458405, 0.458405, 1)
-metallic = 1.0
-roughness = 0.75
+[ext_resource type="Material" uid="uid://blq2tme80b4rk" path="res://Materials/Shader Materials/test_gun.tres" id="2_yr25c"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_8napl"]
+material = ExtResource("2_yr25c")
 size = Vector3(0.15, 0.25, 1)
 
 [sub_resource type="Animation" id="Animation_qwkxn"]
@@ -53,7 +50,6 @@ script = ExtResource("1_6ci3o")
 anim_player = NodePath("AnimationPlayer")
 
 [node name="BodyMesh" type="MeshInstance3D" parent="."]
-material_override = SubResource("StandardMaterial3D_eu3vs")
 cast_shadow = 0
 mesh = SubResource("BoxMesh_8napl")
 

@@ -7,3 +7,4 @@ res://Scripts/player.gd
 res://Scenes/projectile_bullet.tscn
 res://Scripts/Shooting/Bullets/projectile_bullet.gd
 res://Scripts/Shooting/Guns/test_gun.gd
+res://Materials/Shader Materials/test_gun.tres
