@@ -2,6 +2,8 @@ extends Node3D
 
 @export var anim_player : AnimationPlayer
 
+var raycast_test = preload("res://Scenes/raycast_test.tscn")
+
 const RAY_RANGE := 2000.0
 
 func _physics_process(delta):
@@ -26,7 +28,15 @@ func shoot() -> void:
 		
 		var result = space_state.intersect_ray(query)
 		
-		if !result.is_empty():
+		if result:
 			print("Hit: " + result.collider.name)
+			test_raycast(result.get("position"))
 		else:
 			print ("Hit nothing.")
+
+func test_raycast(position: Vector3) -> void:
+	var instance = raycast_test.instantiate()
+	get_tree().root.add_child(instance)
+	instance.global_position = position
+	await get_tree().create_timer(3.0).timeout
+	instance.queue_free()

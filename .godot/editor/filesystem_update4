@@ -11,3 +11,4 @@ res://Materials/Shader Materials/test_gun.tres
 res://Scripts/Global/global.gd
 res://Scripts/debug.gd
 res://Scripts/UI/reticle.gd
+res://Scenes/raycast_test.tscn
