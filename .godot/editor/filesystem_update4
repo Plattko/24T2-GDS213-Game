@@ -1,10 +1,9 @@
-res://Scenes/player.tscn
 res://UI/Style Boxes/Flat/debug_panel.tres
 res://UI/Themes/debug.tres
+res://Scenes/player.tscn
+res://Scenes/test_gun.tscn
 res://Scenes/game.tscn
-res://Scripts/States/Player States/slide_player_state.gd
-res://Scripts/States/Player States/sprint_player_state.gd
-res://Scripts/States/Player States/idle_player_state.gd
-res://Scripts/States/Player States/walk_player_state.gd
-res://Scripts/States/Player States/air_player_state.gd
-res://Scripts/States/Player States/crouch_player_state.gd
+res://Scripts/player.gd
+res://Scenes/projectile_bullet.tscn
+res://Scripts/Shooting/Bullets/projectile_bullet.gd
+res://Scripts/Shooting/Guns/test_gun.gd
