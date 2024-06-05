@@ -9,3 +9,4 @@ res://Scenes/raycast_test.tscn
 res://Scenes/bullet_decal.tscn
 res://Scenes/damageable.tscn
 res://Scenes/destructible_orb.tscn
+res://Scripts/UI/hud.gd

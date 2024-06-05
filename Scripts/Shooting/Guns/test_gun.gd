@@ -9,14 +9,19 @@ const RAY_RANGE := 2000.0
 
 const BULLET_DAMAGE := 10.0
 
+# Ammo variables
 const MAX_AMMO := 24
 var cur_ammo
 
+# Bullet hole variables
 var decal_queue = []
 const MAX_QUEUE_SIZE := 30
 
+signal update_ammo
+
 func _ready():
 	cur_ammo = MAX_AMMO
+	update_ammo.emit(cur_ammo, MAX_AMMO)
 
 func _physics_process(delta):
 	# Handle shooting
@@ -58,11 +63,13 @@ func shoot() -> void:
 		print ("Hit nothing.")
 	
 	cur_ammo -= 1
+	update_ammo.emit([cur_ammo, MAX_AMMO])
 
 func reload() -> void:
 	anim_player.play("Reload")
 	await anim_player.animation_finished
 	cur_ammo = MAX_AMMO
+	update_ammo.emit([cur_ammo, MAX_AMMO])
 
 func test_raycast(position: Vector3) -> void:
 	var instance = raycast_test.instantiate()
