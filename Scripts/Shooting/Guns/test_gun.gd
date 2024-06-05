@@ -21,45 +21,48 @@ func _ready():
 func _physics_process(delta):
 	# Handle shooting
 	if Input.is_action_pressed("shoot"):
-		shoot()
+		if !anim_player.is_playing():
+			if cur_ammo > 0:
+				shoot()
+			else:
+				reload()
 	
 	if Input.is_action_pressed("reload"):
-		reload()
+		if !anim_player.is_playing() and cur_ammo < MAX_AMMO:
+			reload()
 
 func shoot() -> void:
-	if !anim_player.is_playing() and cur_ammo > 0:
-		anim_player.play("Shoot")
+	anim_player.play("Shoot")
+	
+	var camera = Global.camera
+	var space_state = camera.get_world_3d().direct_space_state
+	var screen_centre = get_viewport().get_size() / 2
+	
+	var ray_origin = camera.project_ray_origin(screen_centre)
+	var ray_end = ray_origin + camera.project_ray_normal(screen_centre) * RAY_RANGE
+	
+	var query = PhysicsRayQueryParameters3D.create(ray_origin, ray_end)
+	query.collide_with_bodies = true
+	query.collide_with_areas = true
+	
+	var result = space_state.intersect_ray(query)
+	
+	if result:
+		print("Hit: " + result.collider.name)
+		spawn_decal(result.get("position"), result.get("normal"))
 		
-		var camera = Global.camera
-		var space_state = camera.get_world_3d().direct_space_state
-		var screen_centre = get_viewport().get_size() / 2
-		
-		var ray_origin = camera.project_ray_origin(screen_centre)
-		var ray_end = ray_origin + camera.project_ray_normal(screen_centre) * RAY_RANGE
-		
-		var query = PhysicsRayQueryParameters3D.create(ray_origin, ray_end)
-		query.collide_with_bodies = true
-		query.collide_with_areas = true
-		
-		var result = space_state.intersect_ray(query)
-		
-		if result:
-			print("Hit: " + result.collider.name)
-			spawn_decal(result.get("position"), result.get("normal"))
-			
-			var collider = result.collider
-			if collider is Damageable:
-				collider.take_damage(BULLET_DAMAGE)
-		else:
-			print ("Hit nothing.")
-		
-		cur_ammo -= 1
+		var collider = result.collider
+		if collider is Damageable:
+			collider.take_damage(BULLET_DAMAGE)
+	else:
+		print ("Hit nothing.")
+	
+	cur_ammo -= 1
 
 func reload() -> void:
-	if !anim_player.is_playing():
-		anim_player.play("Reload")
-		await anim_player.animation_finished
-		cur_ammo = MAX_AMMO
+	anim_player.play("Reload")
+	await anim_player.animation_finished
+	cur_ammo = MAX_AMMO
 
 func test_raycast(position: Vector3) -> void:
 	var instance = raycast_test.instantiate()
