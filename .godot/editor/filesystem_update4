@@ -1,13 +1,11 @@
-res://Scenes/player.tscn
+res://Scenes/test_gun.tscn
 res://Materials/Shader Materials/test_gun.tres
 res://UI/Style Boxes/Flat/debug_panel.tres
 res://UI/Themes/debug.tres
-res://Scripts/damageable.gd
-res://Scenes/destructible_orb.tscn
-res://Scripts/Props/destructible_orb.gd
-res://Scenes/damageable.tscn
+res://Scripts/Shooting/Guns/test_gun.gd
 res://Scenes/game.tscn
-res://Scenes/test_gun.tscn
+res://Scenes/player.tscn
 res://Scenes/raycast_test.tscn
 res://Scenes/bullet_decal.tscn
-res://Scripts/Shooting/Guns/test_gun.gd
+res://Scenes/damageable.tscn
+res://Scenes/destructible_orb.tscn

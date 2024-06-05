@@ -9,16 +9,25 @@ const RAY_RANGE := 2000.0
 
 const BULLET_DAMAGE := 10.0
 
+const MAX_AMMO := 24
+var cur_ammo
+
 var decal_queue = []
 const MAX_QUEUE_SIZE := 30
+
+func _ready():
+	cur_ammo = MAX_AMMO
 
 func _physics_process(delta):
 	# Handle shooting
 	if Input.is_action_pressed("shoot"):
 		shoot()
+	
+	if Input.is_action_pressed("reload"):
+		reload()
 
 func shoot() -> void:
-	if !anim_player.is_playing():
+	if !anim_player.is_playing() and cur_ammo > 0:
 		anim_player.play("Shoot")
 		
 		var camera = Global.camera
@@ -43,6 +52,14 @@ func shoot() -> void:
 				collider.take_damage(BULLET_DAMAGE)
 		else:
 			print ("Hit nothing.")
+		
+		cur_ammo -= 1
+
+func reload() -> void:
+	if !anim_player.is_playing():
+		anim_player.play("Reload")
+		await anim_player.animation_finished
+		cur_ammo = MAX_AMMO
 
 func test_raycast(position: Vector3) -> void:
 	var instance = raycast_test.instantiate()
