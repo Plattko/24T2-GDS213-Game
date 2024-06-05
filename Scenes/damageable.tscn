@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://caqpeyq7g56bn"]
+
+[ext_resource type="Script" path="res://Scripts/damageable.gd" id="1_h7ilx"]
+
+[node name="Damageable" type="Area3D"]
+script = ExtResource("1_h7ilx")

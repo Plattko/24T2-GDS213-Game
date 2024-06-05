@@ -1,16 +1,17 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1717493386
+::res://::1717553217
 icon.svg::CompressedTexture2D::7218699412296705433::1717052149::1717052156::1::::<><>::
 README.md::TextFile::-1::1717052250::0::1::::<><>::
 ::res://Materials/::1717488734
 ::res://Materials/Shader Materials/::1717492792
 test_gun.tres::ShaderMaterial::3193201934657571448::1717492792::0::1::::<><>::
-::res://Scenes/::1717492793
-game.tscn::PackedScene::3815439237869558116::1717492793::0::1::::<><>::uid://brc2h44edbj5a::::res://Scenes/player.tscn
-player.tscn::PackedScene::3585413208572083608::1717492793::0::1::::<><>::res://Scripts/player.gd<>uid://dlwblryspggnx::::res://Scenes/test_gun.tscn<>res://Scripts/States/state_machine.gd<>res://Scripts/States/Player States/idle_player_state.gd<>res://Scripts/States/Player States/air_player_state.gd<>res://Scripts/States/Player States/walk_player_state.gd<>res://Scripts/States/Player States/sprint_player_state.gd<>res://Scripts/States/Player States/crouch_player_state.gd<>res://Scripts/States/Player States/slide_player_state.gd<>uid://ctri33ojacyl0::::res://UI/Themes/debug.tres<>res://Scripts/debug.gd<>res://Scripts/UI/reticle.gd
+::res://Scenes/::1717498122
+bullet_decal.tscn::PackedScene::1472607238048536965::1717498122::0::1::::<><>::uid://cvj838ba6ybiy::::res://Textures/bullet_hole.png
+game.tscn::PackedScene::3815439237869558116::1717498122::0::1::::<><>::uid://brc2h44edbj5a::::res://Scenes/player.tscn
+player.tscn::PackedScene::3585413208572083608::1717498122::0::1::::<><>::res://Scripts/player.gd<>uid://dlwblryspggnx::::res://Scenes/test_gun.tscn<>res://Scripts/States/state_machine.gd<>res://Scripts/States/Player States/idle_player_state.gd<>res://Scripts/States/Player States/air_player_state.gd<>res://Scripts/States/Player States/walk_player_state.gd<>res://Scripts/States/Player States/sprint_player_state.gd<>res://Scripts/States/Player States/crouch_player_state.gd<>res://Scripts/States/Player States/slide_player_state.gd<>uid://ctri33ojacyl0::::res://UI/Themes/debug.tres<>res://Scripts/debug.gd<>res://Scripts/UI/reticle.gd
 projectile_bullet.tscn::PackedScene::3513549197094622793::1717485569::0::1::::<><>::res://Scripts/Shooting/Bullets/projectile_bullet.gd
-raycast_test.tscn::PackedScene::1083088635333397895::1717492793::0::1::::<><>::
-test_gun.tscn::PackedScene::7976836933223079113::1717492793::0::1::::<><>::res://Scripts/Shooting/Guns/test_gun.gd<>uid://blq2tme80b4rk::::res://Materials/Shader Materials/test_gun.tres
+raycast_test.tscn::PackedScene::1083088635333397895::1717498122::0::1::::<><>::
+test_gun.tscn::PackedScene::7976836933223079113::1717498122::0::1::::<><>::res://Scripts/Shooting/Guns/test_gun.gd<>uid://blq2tme80b4rk::::res://Materials/Shader Materials/test_gun.tres
 ::res://Scripts/::1717491159
 debug.gd::GDScript::-1::1717489936::0::1::::<>PanelContainer<>::
 player.gd::GDScript::-1::1717489967::0::1::::Player<>CharacterBody3D<>::
@@ -21,8 +22,8 @@ global.gd::GDScript::-1::1717489900::0::1::::<>Node<>::
 ::res://Scripts/Shooting/::1717485337
 ::res://Scripts/Shooting/Bullets/::1717485603
 projectile_bullet.gd::GDScript::-1::1717485603::0::1::::<>Node3D<>::
-::res://Scripts/Shooting/Guns/::1717492507
-test_gun.gd::GDScript::-1::1717492507::0::1::::<>Node3D<>::
+::res://Scripts/Shooting/Guns/::1717496116
+test_gun.gd::GDScript::-1::1717496116::0::1::::<>Node3D<>::
 ::res://Scripts/States/::1717408956
 state.gd::GDScript::-1::1717408583::0::1::::State<>Node<>::
 state_machine.gd::GDScript::-1::1717408956::0::1::::StateMachine<>Node<>::
@@ -36,7 +37,7 @@ sprint_player_state.gd::GDScript::-1::1717476476::0::1::::SprintPlayerState<>Pla
 walk_player_state.gd::GDScript::-1::1717476199::0::1::::WalkPlayerState<>PlayerState<>::
 ::res://Scripts/UI/::1717491607
 reticle.gd::GDScript::-1::1717491607::0::1::::<>CenterContainer<>::
-::res://Textures/::1717493414
+::res://Textures/::1717493435
 bullet_hole.png::CompressedTexture2D::6267441881419780892::1717493413::1717493435::1::::<><>::
 ::res://UI/::1717392719
 ::res://UI/Style Boxes/::1717392732

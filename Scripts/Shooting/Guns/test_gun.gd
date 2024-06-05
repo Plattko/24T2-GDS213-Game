@@ -7,6 +7,8 @@ var bullet_decal = preload("res://Scenes/bullet_decal.tscn")
 
 const RAY_RANGE := 2000.0
 
+const BULLET_DAMAGE := 10.0
+
 var decal_queue = []
 const MAX_QUEUE_SIZE := 30
 
@@ -35,6 +37,10 @@ func shoot() -> void:
 		if result:
 			print("Hit: " + result.collider.name)
 			spawn_decal(result.get("position"), result.get("normal"))
+			
+			var collider = result.collider
+			if collider is Damageable:
+				collider.take_damage(BULLET_DAMAGE)
 		else:
 			print ("Hit nothing.")
 
