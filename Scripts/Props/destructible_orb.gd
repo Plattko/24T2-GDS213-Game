@@ -1,6 +1,6 @@
 extends MeshInstance3D
 
-var max_health := 100
+var max_health := 50
 var cur_health
 
 signal orb_destroyed

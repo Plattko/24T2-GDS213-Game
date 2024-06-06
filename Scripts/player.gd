@@ -22,7 +22,7 @@ var camera_rotation : Vector3
 const MIN_CAMERA_TILT := deg_to_rad(-90)
 const MAX_CAMERA_TILT := deg_to_rad(90)
 
-const SENSITIVITY = 0.5
+const SENSITIVITY = 0.25
 
 # Head bob variables
 const BOB_FREQ = 2.0

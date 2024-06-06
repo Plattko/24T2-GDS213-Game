@@ -8,3 +8,5 @@ res://Scenes/player.tscn
 res://Scripts/UI/orb_icon.gd
 res://Scripts/UI/prototype_ui.gd
 res://Scripts/Props/destructible_orb.gd
+res://Scripts/Shooting/Guns/test_gun.gd
+res://Scripts/player.gd
