@@ -1,12 +1,6 @@
-res://Scenes/test_gun.tscn
+res://Scenes/prototype_level.tscn
 res://Materials/Shader Materials/test_gun.tres
 res://UI/Style Boxes/Flat/debug_panel.tres
 res://UI/Themes/debug.tres
-res://Scripts/Shooting/Guns/test_gun.gd
 res://Scenes/game.tscn
-res://Scenes/player.tscn
-res://Scenes/raycast_test.tscn
-res://Scenes/bullet_decal.tscn
-res://Scenes/damageable.tscn
-res://Scenes/destructible_orb.tscn
-res://Scripts/UI/hud.gd
+res://Materials/Standard Materials/prototype_orange.tres
