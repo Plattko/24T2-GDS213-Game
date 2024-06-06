@@ -52,6 +52,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41, 2, -12)
 [node name="DestructibleOrb7" parent="Level/Destructible Objects" instance=ExtResource("1_tm81i")]
 transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 43.7898, 6.25, -24.7462)
 
+[node name="DestructibleOrb8" parent="Level/Destructible Objects" instance=ExtResource("1_tm81i")]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, -32.5, 1, 36)
+
+[node name="DestructibleOrb9" parent="Level/Destructible Objects" instance=ExtResource("1_tm81i")]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, -37, 1, 21.5)
+
+[node name="DestructibleOrb11" parent="Level/Destructible Objects" instance=ExtResource("1_tm81i")]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, -29, 1, 21.5)
+
+[node name="DestructibleOrb10" parent="Level/Destructible Objects" instance=ExtResource("1_tm81i")]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, -40.5, 1, 31)
+
 [node name="Ground" type="CSGBox3D" parent="Level"]
 use_collision = true
 size = Vector3(100, 0.001, 100)
