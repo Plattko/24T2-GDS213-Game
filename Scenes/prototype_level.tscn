@@ -21705,4 +21705,118 @@ visible = false
 use_collision = true
 size = Vector3(100, 50, 0.2)
 
+[node name="Hill" type="CSGBox3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 3.5, -33)
+use_collision = true
+size = Vector3(35, 7, 25)
+material = ExtResource("1_yhgkw")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Level/Hill"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 14)
+size = Vector3(5, 7, 3)
+material = ExtResource("1_yhgkw")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Level/Hill"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 14)
+size = Vector3(15, 7, 3)
+material = ExtResource("1_yhgkw")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Level/Hill/CSGBox3D2"]
+transform = Transform3D(0.906308, 0.422618, 0, -0.422618, 0.906308, 0, 0, 0, 1, 1.36344, 2.93807, 0)
+operation = 2
+size = Vector3(16.6405, 6.46204, 3)
+material = ExtResource("1_yhgkw")
+
+[node name="Building" type="CSGBox3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 9.5, -40.25)
+use_collision = true
+size = Vector3(25, 5, 0.5)
+material = ExtResource("2_p1d7i")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Level/Building"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.25, 0, 7)
+size = Vector3(0.5, 5, 13.5)
+material = ExtResource("2_p1d7i")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Level/Building"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.25, 0, 7)
+size = Vector3(0.5, 5, 13.5)
+material = ExtResource("2_p1d7i")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Level/Building"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 14)
+use_collision = true
+size = Vector3(25, 5, 0.5)
+material = ExtResource("2_p1d7i")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Level/Building"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.25, 0, 7)
+size = Vector3(0.5, 5, 13.5)
+material = ExtResource("2_p1d7i")
+
+[node name="Door" type="CSGBox3D" parent="Level/Building"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 14)
+operation = 2
+size = Vector3(2, 3, 1)
+material = ExtResource("2_p1d7i")
+
+[node name="Door2" type="CSGBox3D" parent="Level/Building"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, -1, 0)
+operation = 2
+size = Vector3(2, 3, 1)
+material = ExtResource("2_p1d7i")
+
+[node name="Door3" type="CSGBox3D" parent="Level/Building"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6.25, -1, 10.25)
+operation = 2
+size = Vector3(2, 3, 1)
+material = ExtResource("2_p1d7i")
+
+[node name="Window" type="CSGBox3D" parent="Level/Building"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -12.25, -0.625, 3.75)
+operation = 2
+size = Vector3(3, 2.25, 1)
+material = ExtResource("2_p1d7i")
+
+[node name="Window2" type="CSGBox3D" parent="Level/Building"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 12.2531, -0.625, 7.00374)
+operation = 2
+size = Vector3(4.5, 2.25, 1)
+material = ExtResource("2_p1d7i")
+
+[node name="Window3" type="CSGBox3D" parent="Level/Building"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.5, -0.625, 0)
+operation = 2
+size = Vector3(3, 2.25, 1)
+material = ExtResource("2_p1d7i")
+
+[node name="Roof" type="CSGBox3D" parent="Level/Building"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 7)
+size = Vector3(25, 4, 14.5)
+material = ExtResource("2_p1d7i")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Level/Building/Roof"]
+transform = Transform3D(0.882948, -0.469472, 0, 0.469472, 0.882948, 0, 0, 0, 1, -10.79, 1.173, 0)
+operation = 2
+size = Vector3(11, 4, 14.5)
+material = ExtResource("1_yhgkw")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Level/Building/Roof"]
+transform = Transform3D(-0.882948, 0.469472, 1.50996e-07, 0.469472, 0.882948, 0, -1.33321e-07, 7.08882e-08, -1, 10.8004, 1.17269, 0)
+operation = 2
+size = Vector3(11, 4, 14.5)
+material = ExtResource("1_yhgkw")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Level/Building/Roof"]
+transform = Transform3D(6.66607e-08, -3.54441e-08, 1, 0.469472, 0.882948, -3.55271e-15, -0.882948, 0.469472, 7.54979e-08, 0, 1.17265, 5.54358)
+operation = 2
+size = Vector3(11, 4, 25)
+material = ExtResource("1_yhgkw")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Level/Building/Roof"]
+transform = Transform3D(-3.85949e-08, 2.05213e-08, -1, 0.469472, 0.882948, -3.55271e-15, 0.882948, -0.469472, -4.37114e-08, 0, 1.17265, -5.54198)
+operation = 2
+size = Vector3(11, 4, 25)
+material = ExtResource("1_yhgkw")
+
 [node name="Player" parent="." instance=ExtResource("2_vsjtc")]

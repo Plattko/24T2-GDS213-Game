@@ -171,6 +171,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
 fov = 90.0
 
 [node name="ReflectionProbe" type="ReflectionProbe" parent="Head/Camera3D"]
+visible = false
 update_mode = 1
 
 [node name="Test_Gun" parent="Head/Camera3D" instance=ExtResource("2_neyk3")]

@@ -4,3 +4,4 @@ res://UI/Style Boxes/Flat/debug_panel.tres
 res://UI/Themes/debug.tres
 res://Scenes/game.tscn
 res://Materials/Standard Materials/prototype_orange.tres
+res://Scenes/player.tscn

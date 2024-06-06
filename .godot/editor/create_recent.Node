@@ -1,4 +1,5 @@
 CSGBox3D
+CSGPolygon3D
 StaticBody3D
 CollisionShape3D
 Area3D
@@ -11,4 +12,3 @@ CSGSphere3D
 Decal
 CenterContainer
 Timer
-GPUParticles3D
