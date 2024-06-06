@@ -1,6 +1,10 @@
+res://Scripts/UI
+res://Scripts/Props
+res://Scenes
+res://Materials/Shader Materials
+res://Scripts/Shooting/Guns
 res://Scripts/States/Player States
 res://UI/Themes
 res://Scripts/Global
 res://Scripts
 res://UI/Style Boxes/Flat
-res://Scenes

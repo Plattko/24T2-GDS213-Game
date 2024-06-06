@@ -5,7 +5,7 @@ extends PanelContainer
 var frames_per_second : String
 
 func _ready():
-	# Set global reference in the Global Debug script
+	# Set global reference in the Global script
 	Global.debug = self
 	
 	visible = false

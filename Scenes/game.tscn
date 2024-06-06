@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://bumhyygl1gh53"]
+[gd_scene load_steps=14 format=3 uid="uid://bumhyygl1gh53"]
 
+[ext_resource type="PackedScene" uid="uid://v4q0vjnsq15d" path="res://Scenes/destructible_orb.tscn" id="1_8wl3x"]
 [ext_resource type="PackedScene" uid="uid://brc2h44edbj5a" path="res://Scenes/player.tscn" id="1_yno8v"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_b7t75"]
@@ -41,6 +42,8 @@ roughness = 0.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mydnx"]
 albedo_color = Color(0.603296, 0.48513, 0.906636, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_88ak6"]
 
 [node name="Game" type="Node3D"]
 
@@ -117,6 +120,20 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -21, 4
 use_collision = true
 size = Vector3(8, 1, 8)
 material = SubResource("StandardMaterial3D_mydnx")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 2, -18)
+use_collision = true
+radius = 1.0
+radial_segments = 48
+rings = 24
+material = SubResource("StandardMaterial3D_88ak6")
+
+[node name="Destructibles" type="Node" parent="Environment"]
+
+[node name="DestructibleOrb" parent="Environment/Destructibles" instance=ExtResource("1_8wl3x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.3736, 1.0005, -24.7604)
+skeleton = NodePath("../../..")
 
 [node name="Player" parent="." instance=ExtResource("1_yno8v")]
 

@@ -1,0 +1,80 @@
+[gd_scene load_steps=8 format=3 uid="uid://dlwblryspggnx"]
+
+[ext_resource type="Script" path="res://Scripts/Shooting/Guns/test_gun.gd" id="1_6ci3o"]
+[ext_resource type="Material" uid="uid://blq2tme80b4rk" path="res://Materials/Shader Materials/test_gun.tres" id="2_yr25c"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_8napl"]
+material = ExtResource("2_yr25c")
+size = Vector3(0.15, 0.25, 1)
+
+[sub_resource type="Animation" id="Animation_8qnjk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BodyMesh:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_qwkxn"]
+resource_name = "Shoot"
+length = 0.1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BodyMesh:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.01, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.05), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jhu58"]
+resource_name = "Reload"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BodyMesh:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.3, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_23qww"]
+_data = {
+"RESET": SubResource("Animation_8qnjk"),
+"Reload": SubResource("Animation_jhu58"),
+"Shoot": SubResource("Animation_qwkxn")
+}
+
+[node name="Test_Gun" type="Node3D" node_paths=PackedStringArray("anim_player")]
+script = ExtResource("1_6ci3o")
+anim_player = NodePath("AnimationPlayer")
+
+[node name="BodyMesh" type="MeshInstance3D" parent="."]
+cast_shadow = 0
+mesh = SubResource("BoxMesh_8napl")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_23qww")
+}
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+target_position = Vector3(0, 0, -1)

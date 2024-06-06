@@ -35,14 +35,14 @@ var can_head_bob : bool = true
 const BASE_FOV = 90.0
 const FOV_CHANGE = 1.5
 
-# Stand animation variables
-
-
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	
+	# Set global reference to camera in the Global script
+	Global.camera = camera
 
 func _input(event):
 	# Handle quit

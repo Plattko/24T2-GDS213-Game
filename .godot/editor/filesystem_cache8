@@ -1,31 +1,52 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1717475035
+::res://::1717561419
 icon.svg::CompressedTexture2D::7218699412296705433::1717052149::1717052156::1::::<><>::
 README.md::TextFile::-1::1717052250::0::1::::<><>::
-::res://Scenes/::1717413122
-game.tscn::PackedScene::3815439237869558116::1717412851::0::1::::<><>::uid://brc2h44edbj5a::::res://Scenes/player.tscn
-player.tscn::PackedScene::3585413208572083608::1717413122::0::1::::<><>::res://Scripts/player.gd<>res://Scripts/States/state_machine.gd<>res://Scripts/States/Player States/idle_player_state.gd<>res://Scripts/States/Player States/air_player_state.gd<>res://Scripts/States/Player States/walk_player_state.gd<>res://Scripts/States/Player States/sprint_player_state.gd<>res://Scripts/States/Player States/crouch_player_state.gd<>res://Scripts/States/Player States/slide_player_state.gd<>uid://ctri33ojacyl0::::res://UI/Themes/debug.tres<>res://Scripts/debug.gd
-::res://Scripts/::1717411924
-debug.gd::GDScript::-1::1717397253::0::1::::<>PanelContainer<>::
-player.gd::GDScript::-1::1717411924::0::1::::Player<>CharacterBody3D<>::
+::res://Materials/::1717488734
+::res://Materials/Shader Materials/::1717561382
+test_gun.tres::ShaderMaterial::3193201934657571448::1717561382::0::1::::<><>::
+::res://Scenes/::1717561387
+bullet_decal.tscn::PackedScene::1472607238048536965::1717561386::0::1::::<><>::uid://cvj838ba6ybiy::::res://Textures/bullet_hole.png
+damageable.tscn::PackedScene::4806790596258715771::1717561386::0::1::::<><>::res://Scripts/damageable.gd
+destructible_orb.tscn::PackedScene::1534849905507266663::1717561387::0::1::::<><>::uid://caqpeyq7g56bn::::res://Scenes/damageable.tscn<>res://Scripts/Props/destructible_orb.gd
+game.tscn::PackedScene::3815439237869558116::1717561386::0::1::::<><>::uid://v4q0vjnsq15d::::res://Scenes/destructible_orb.tscn<>uid://brc2h44edbj5a::::res://Scenes/player.tscn
+player.tscn::PackedScene::3585413208572083608::1717561386::0::1::::<><>::res://Scripts/player.gd<>uid://dlwblryspggnx::::res://Scenes/test_gun.tscn<>res://Scripts/States/state_machine.gd<>res://Scripts/States/Player States/idle_player_state.gd<>res://Scripts/States/Player States/air_player_state.gd<>res://Scripts/States/Player States/walk_player_state.gd<>res://Scripts/States/Player States/sprint_player_state.gd<>res://Scripts/States/Player States/crouch_player_state.gd<>res://Scripts/States/Player States/slide_player_state.gd<>uid://ctri33ojacyl0::::res://UI/Themes/debug.tres<>res://Scripts/debug.gd<>res://Scripts/UI/reticle.gd
+projectile_bullet.tscn::PackedScene::3513549197094622793::1717560905::0::1::::<><>::res://Scripts/Shooting/Bullets/projectile_bullet.gd
+raycast_test.tscn::PackedScene::1083088635333397895::1717561386::0::1::::<><>::
+test_gun.tscn::PackedScene::7976836933223079113::1717561386::0::1::::<><>::res://Scripts/Shooting/Guns/test_gun.gd<>uid://blq2tme80b4rk::::res://Materials/Shader Materials/test_gun.tres
+::res://Scripts/::1717554849
+damageable.gd::GDScript::-1::1717554849::0::1::::Damageable<>Area3D<>::
+debug.gd::GDScript::-1::1717489936::0::1::::<>PanelContainer<>::
+player.gd::GDScript::-1::1717489967::0::1::::Player<>CharacterBody3D<>::
 ::res://Scripts/Backups/::1717386647
 player_backup.gd::GDScript::-1::1717386647::0::1::::Player_Backup<>CharacterBody3D<>::
-::res://Scripts/Global/::1717394638
-global.gd::GDScript::-1::1717394530::0::1::::<>Node<>::
+::res://Scripts/Global/::1717489900
+global.gd::GDScript::-1::1717489900::0::1::::<>Node<>::
+::res://Scripts/Props/::1717558875
+destructible_orb.gd::GDScript::-1::1717558875::0::1::::<>MeshInstance3D<>::
+::res://Scripts/Shooting/::1717485337
+::res://Scripts/Shooting/Bullets/::1717485603
+projectile_bullet.gd::GDScript::-1::1717485603::0::1::::<>Node3D<>::
+::res://Scripts/Shooting/Guns/::1717555505
+test_gun.gd::GDScript::-1::1717555505::0::1::::<>Node3D<>::
 ::res://Scripts/States/::1717408956
 state.gd::GDScript::-1::1717408583::0::1::::State<>Node<>::
 state_machine.gd::GDScript::-1::1717408956::0::1::::StateMachine<>Node<>::
-::res://Scripts/States/Player States/::1717413122
-air_player_state.gd::GDScript::-1::1717410183::0::1::::AirPlayerState<>PlayerState<>::
-crouch_player_state.gd::GDScript::-1::1717412768::0::1::::CrouchPlayerState<>PlayerState<>::
-idle_player_state.gd::GDScript::-1::1717409269::0::1::::IdlePlayerState<>PlayerState<>::
+::res://Scripts/States/Player States/::1717478113
+air_player_state.gd::GDScript::-1::1717476350::0::1::::AirPlayerState<>PlayerState<>::
+crouch_player_state.gd::GDScript::-1::1717478113::0::1::::CrouchPlayerState<>PlayerState<>::
+idle_player_state.gd::GDScript::-1::1717477148::0::1::::IdlePlayerState<>PlayerState<>::
 player_state.gd::GDScript::-1::1717336963::0::1::::PlayerState<>State<>::
-slide_player_state.gd::GDScript::-1::1717413122::0::1::::SlidePlayerState<>PlayerState<>::
-sprint_player_state.gd::GDScript::-1::1717409299::0::1::::SprintPlayerState<>PlayerState<>::
-walk_player_state.gd::GDScript::-1::1717409275::0::1::::WalkPlayerState<>PlayerState<>::
+slide_player_state.gd::GDScript::-1::1717477199::0::1::::SlidePlayerState<>PlayerState<>::
+sprint_player_state.gd::GDScript::-1::1717476476::0::1::::SprintPlayerState<>PlayerState<>::
+walk_player_state.gd::GDScript::-1::1717476199::0::1::::WalkPlayerState<>PlayerState<>::
+::res://Scripts/UI/::1717491607
+reticle.gd::GDScript::-1::1717491607::0::1::::<>CenterContainer<>::
+::res://Textures/::1717493435
+bullet_hole.png::CompressedTexture2D::6267441881419780892::1717493413::1717493435::1::::<><>::
 ::res://UI/::1717392719
 ::res://UI/Style Boxes/::1717392732
-::res://UI/Style Boxes/Flat/::1717408956
-debug_panel.tres::StyleBoxFlat::4620602003782121715::1717408956::0::1::::<><>::
-::res://UI/Themes/::1717408956
-debug.tres::Theme::6142061049189393823::1717408956::0::1::::<><>::uid://b63iv00tljpt0::::res://UI/Style Boxes/Flat/debug_panel.tres
+::res://UI/Style Boxes/Flat/::1717561382
+debug_panel.tres::StyleBoxFlat::4620602003782121715::1717561382::0::1::::<><>::
+::res://UI/Themes/::1717561382
+debug.tres::Theme::6142061049189393823::1717561382::0::1::::<><>::uid://b63iv00tljpt0::::res://UI/Style Boxes/Flat/debug_panel.tres
