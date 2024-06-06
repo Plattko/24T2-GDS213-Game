@@ -46,61 +46,61 @@ environment = SubResource("Environment_sb4fc")
 
 [node name="Destructible Objects" type="Node" parent="Level"]
 
-[node name="DestructibleOrb" parent="Level/Destructible Objects" instance=ExtResource("1_tm81i")]
+[node name="DestructibleOrb" parent="Level/Destructible Objects" groups=["destructible_orbs"] instance=ExtResource("1_tm81i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 8, -23)
 
-[node name="DestructibleOrb15" parent="Level/Destructible Objects" instance=ExtResource("1_tm81i")]
+[node name="DestructibleOrb15" parent="Level/Destructible Objects" groups=["destructible_orbs"] instance=ExtResource("1_tm81i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 8, -43)
 
-[node name="DestructibleOrb3" parent="Level/Destructible Objects" instance=ExtResource("1_tm81i")]
+[node name="DestructibleOrb3" parent="Level/Destructible Objects" groups=["destructible_orbs"] instance=ExtResource("1_tm81i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 8, -28.5)
 
-[node name="DestructibleOrb4" parent="Level/Destructible Objects" instance=ExtResource("1_tm81i")]
+[node name="DestructibleOrb4" parent="Level/Destructible Objects" groups=["destructible_orbs"] instance=ExtResource("1_tm81i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 16.75, -33.25)
 
-[node name="DestructibleOrb2" parent="Level/Destructible Objects" instance=ExtResource("1_tm81i")]
+[node name="DestructibleOrb2" parent="Level/Destructible Objects" groups=["destructible_orbs"] instance=ExtResource("1_tm81i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 8, -38.5)
 
-[node name="DestructibleOrb5" parent="Level/Destructible Objects" instance=ExtResource("1_tm81i")]
+[node name="DestructibleOrb5" parent="Level/Destructible Objects" groups=["destructible_orbs"] instance=ExtResource("1_tm81i")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 20.2508, 1, 20.3667)
 
-[node name="DestructibleOrb6" parent="Level/Destructible Objects" instance=ExtResource("1_tm81i")]
+[node name="DestructibleOrb6" parent="Level/Destructible Objects" groups=["destructible_orbs"] instance=ExtResource("1_tm81i")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6.74915, 2, 21.3667)
 
-[node name="DestructibleOrb7" parent="Level/Destructible Objects" instance=ExtResource("1_tm81i")]
+[node name="DestructibleOrb7" parent="Level/Destructible Objects" groups=["destructible_orbs"] instance=ExtResource("1_tm81i")]
 transform = Transform3D(-7.35137e-08, 0, -1, 0, 1, 0, 1, 0, -7.35137e-08, 5.997, 6.25, 24.1565)
 
-[node name="DestructibleOrb8" parent="Level/Destructible Objects" instance=ExtResource("1_tm81i")]
+[node name="DestructibleOrb8" parent="Level/Destructible Objects" groups=["destructible_orbs"] instance=ExtResource("1_tm81i")]
 transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, -32.5132, 1.62877, 20.5729)
 
-[node name="DestructibleOrb9" parent="Level/Destructible Objects" instance=ExtResource("1_tm81i")]
+[node name="DestructibleOrb9" parent="Level/Destructible Objects" groups=["destructible_orbs"] instance=ExtResource("1_tm81i")]
 transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, -37, 1, 6.5)
 
-[node name="DestructibleOrb11" parent="Level/Destructible Objects" instance=ExtResource("1_tm81i")]
+[node name="DestructibleOrb11" parent="Level/Destructible Objects" groups=["destructible_orbs"] instance=ExtResource("1_tm81i")]
 transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, -29, 1, 6.5)
 
-[node name="DestructibleOrb10" parent="Level/Destructible Objects" instance=ExtResource("1_tm81i")]
+[node name="DestructibleOrb10" parent="Level/Destructible Objects" groups=["destructible_orbs"] instance=ExtResource("1_tm81i")]
 transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, -40.5, 1, 16)
 
-[node name="DestructibleOrb12" parent="Level/Destructible Objects" instance=ExtResource("1_tm81i")]
+[node name="DestructibleOrb12" parent="Level/Destructible Objects" groups=["destructible_orbs"] instance=ExtResource("1_tm81i")]
 transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, -34.5, 15, -5)
 
-[node name="DestructibleOrb13" parent="Level/Destructible Objects" instance=ExtResource("1_tm81i")]
+[node name="DestructibleOrb13" parent="Level/Destructible Objects" groups=["destructible_orbs"] instance=ExtResource("1_tm81i")]
 transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 25, 1, 26)
 
-[node name="DestructibleOrb14" parent="Level/Destructible Objects" instance=ExtResource("1_tm81i")]
+[node name="DestructibleOrb14" parent="Level/Destructible Objects" groups=["destructible_orbs"] instance=ExtResource("1_tm81i")]
 transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, -41, 1, 21.5)
 
-[node name="DestructibleOrb16" parent="Level/Destructible Objects" instance=ExtResource("1_tm81i")]
+[node name="DestructibleOrb16" parent="Level/Destructible Objects" groups=["destructible_orbs"] instance=ExtResource("1_tm81i")]
 transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, -28, 1, -11.5)
 
-[node name="DestructibleOrb17" parent="Level/Destructible Objects" instance=ExtResource("1_tm81i")]
+[node name="DestructibleOrb17" parent="Level/Destructible Objects" groups=["destructible_orbs"] instance=ExtResource("1_tm81i")]
 transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 25.5, 1, -42.5)
 
-[node name="DestructibleOrb18" parent="Level/Destructible Objects" instance=ExtResource("1_tm81i")]
+[node name="DestructibleOrb18" parent="Level/Destructible Objects" groups=["destructible_orbs"] instance=ExtResource("1_tm81i")]
 transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 25.5, 1, -6)
 
-[node name="DestructibleOrb19" parent="Level/Destructible Objects" instance=ExtResource("1_tm81i")]
+[node name="DestructibleOrb19" parent="Level/Destructible Objects" groups=["destructible_orbs"] instance=ExtResource("1_tm81i")]
 transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 8.5, 1, -47.5)
 
 [node name="Ground" type="CSGBox3D" parent="Level"]

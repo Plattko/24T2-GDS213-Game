@@ -5,3 +5,6 @@ res://UI/Themes/debug.tres
 res://Scenes/game.tscn
 res://Materials/Standard Materials/prototype_orange.tres
 res://Scenes/player.tscn
+res://Scripts/UI/orb_icon.gd
+res://Scripts/UI/prototype_ui.gd
+res://Scripts/Props/destructible_orb.gd

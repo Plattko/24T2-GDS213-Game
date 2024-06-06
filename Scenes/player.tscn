@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://brc2h44edbj5a"]
+[gd_scene load_steps=23 format=3 uid="uid://brc2h44edbj5a"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_4jpfc"]
 [ext_resource type="PackedScene" uid="uid://dlwblryspggnx" path="res://Scenes/test_gun.tscn" id="2_neyk3"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://Scripts/UI/hud.gd" id="10_0lavf"]
 [ext_resource type="Script" path="res://Scripts/debug.gd" id="10_0shru"]
 [ext_resource type="Script" path="res://Scripts/UI/reticle.gd" id="12_vy6x5"]
+[ext_resource type="Script" path="res://Scripts/UI/prototype_ui.gd" id="14_m0gjv"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l214m"]
 
@@ -269,5 +270,82 @@ theme_override_font_sizes/font_size = 48
 text = "Ammo: 24/24"
 horizontal_alignment = 2
 vertical_alignment = 2
+
+[node name="PrototypeUI" type="MarginContainer" parent="UI" node_paths=PackedStringArray("progress_text", "win_text", "time_text", "reticle", "ammo", "instruction_text")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+script = ExtResource("14_m0gjv")
+progress_text = NodePath("VBoxContainer/CenterContainer/ProgressText")
+win_text = NodePath("../CenterContainer/WinTextVBox")
+time_text = NodePath("../CenterContainer/WinTextVBox/TimeText")
+reticle = NodePath("../Reticle")
+ammo = NodePath("../MarginContainer")
+instruction_text = NodePath("VBoxContainer/InstructionText")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/PrototypeUI"]
+layout_mode = 2
+
+[node name="InstructionText" type="Label" parent="UI/PrototypeUI/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Destroy all the orbs to win!"
+
+[node name="CenterContainer" type="CenterContainer" parent="UI/PrototypeUI/VBoxContainer"]
+layout_mode = 2
+
+[node name="ProgressText" type="Label" parent="UI/PrototypeUI/VBoxContainer/CenterContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Progress: 0/n"
+
+[node name="CenterContainer" type="CenterContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WinTextVBox" type="VBoxContainer" parent="UI/CenterContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="WinText" type="Label" parent="UI/CenterContainer/WinTextVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "You win!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TimeText" type="Label" parent="UI/CenterContainer/WinTextVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Time: 00:00:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RestartText" type="Label" parent="UI/CenterContainer/WinTextVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Press [P] to restart"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="update_ammo" from="Head/Camera3D/Test_Gun" to="UI" method="on_update_ammo"]

@@ -3,6 +3,8 @@ extends MeshInstance3D
 var max_health := 100
 var cur_health
 
+signal orb_destroyed
+
 func _ready():
 	cur_health = max_health
 	
@@ -17,4 +19,5 @@ func on_damaged(damage: float):
 	cur_health -= damage
 	
 	if cur_health <= 0:
+		orb_destroyed.emit()
 		queue_free()

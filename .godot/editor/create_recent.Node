@@ -1,3 +1,11 @@
+RichTextLabel
+VBoxContainer
+Timer
+CenterContainer
+Label
+Container
+HBoxContainer
+MarginContainer
 CSGBox3D
 CSGCylinder3D
 Node3D
@@ -5,10 +13,3 @@ Node
 CSGPolygon3D
 StaticBody3D
 CollisionShape3D
-Area3D
-MeshInstance3D
-MarginContainer
-Label
-CSGSphere3D
-Decal
-CenterContainer
