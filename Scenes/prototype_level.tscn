@@ -18274,6 +18274,7 @@ material = ExtResource("2_p1d7i")
 
 [node name="DividngWall" type="CSGBox3D" parent="Level"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 2, -47.5)
+use_collision = true
 size = Vector3(0.3, 4, 4)
 material = ExtResource("2_p1d7i")
 
