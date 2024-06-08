@@ -1,3 +1,6 @@
+Node
+Timer
+Node3D
 NavigationAgent3D
 CollisionShape3D
 MeshInstance3D
@@ -5,11 +8,7 @@ CharacterBody3D
 NavigationRegion3D
 RichTextLabel
 VBoxContainer
-Timer
 CenterContainer
 Label
 Container
 HBoxContainer
-MarginContainer
-CSGBox3D
-CSGCylinder3D

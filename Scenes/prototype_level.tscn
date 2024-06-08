@@ -18353,3 +18353,28 @@ material = SubResource("StandardMaterial3D_k0dy2")
 
 [node name="Enemy" parent="." instance=ExtResource("6_ch7e7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.191, 0.000499725, -2.81109)
+
+[node name="EnemySpawnNodes" type="Node" parent="."]
+
+[node name="EnemySpawns" type="Node" parent="EnemySpawnNodes"]
+
+[node name="Spawn1" type="Node3D" parent="EnemySpawnNodes/EnemySpawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13.5312)
+
+[node name="Spawn2" type="Node3D" parent="EnemySpawnNodes/EnemySpawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.8499, 0, -13.5312)
+
+[node name="Spawn3" type="Node3D" parent="EnemySpawnNodes/EnemySpawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.2961, 0, -13.5312)
+
+[node name="Spawn4" type="Node3D" parent="EnemySpawnNodes/EnemySpawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.4621, 0, -13.5312)
+
+[node name="Spawn5" type="Node3D" parent="EnemySpawnNodes/EnemySpawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.9775, 0, -13.5312)
+
+[node name="EnemySpawnTimer" type="Timer" parent="EnemySpawnNodes"]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="EnemySpawnNodes/EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]
