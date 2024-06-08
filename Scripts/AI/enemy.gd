@@ -11,7 +11,7 @@ func _physics_process(delta):
 	var next_location = nav_agent.get_next_path_position()
 	var new_velocity = (next_location - current_location).normalized() * SPEED
 	
-	nav_agent.set_velocty(new_velocity)
+	nav_agent.set_velocity(new_velocity)
 
 # Move agent towards target
 func update_target_location(target_location):

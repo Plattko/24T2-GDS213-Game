@@ -6,7 +6,5 @@ res://Materials/Standard Materials/prototype_grey.tres
 res://Materials/Standard Materials/prototype_orange.tres
 res://Scenes/prototype_level.tscn
 res://Scenes/player.tscn
-res://Scripts/AI/enemy.tscn
 res://Scenes/enemy.tscn
 res://Scripts/AI/enemy.gd
-res://Scripts/AI/prototype_level_AI.gd
