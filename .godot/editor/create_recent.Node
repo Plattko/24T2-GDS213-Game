@@ -1,3 +1,8 @@
+NavigationAgent3D
+CollisionShape3D
+MeshInstance3D
+CharacterBody3D
+NavigationRegion3D
 RichTextLabel
 VBoxContainer
 Timer
@@ -8,8 +13,3 @@ HBoxContainer
 MarginContainer
 CSGBox3D
 CSGCylinder3D
-Node3D
-Node
-CSGPolygon3D
-StaticBody3D
-CollisionShape3D
