@@ -1,0 +1,187 @@
+[gd_scene load_steps=18 format=3 uid="uid://brc2h44edbj5a"]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_4jpfc"]
+[ext_resource type="Script" path="res://Scripts/States/state_machine.gd" id="2_tc3yw"]
+[ext_resource type="Script" path="res://Scripts/States/Player States/idle_player_state.gd" id="3_pne75"]
+[ext_resource type="Script" path="res://Scripts/States/Player States/air_player_state.gd" id="4_qiulw"]
+[ext_resource type="Script" path="res://Scripts/States/Player States/walk_player_state.gd" id="5_ho5hy"]
+[ext_resource type="Script" path="res://Scripts/States/Player States/sprint_player_state.gd" id="6_1qnc2"]
+[ext_resource type="Script" path="res://Scripts/States/Player States/crouch_player_state.gd" id="7_mjfqt"]
+[ext_resource type="Script" path="res://Scripts/States/Player States/slide_player_state.gd" id="8_uemic"]
+[ext_resource type="Theme" uid="uid://ctri33ojacyl0" path="res://UI/Themes/debug.tres" id="9_e1owm"]
+[ext_resource type="Script" path="res://Scripts/debug.gd" id="10_0shru"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l214m"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ge1xk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fvek4"]
+albedo_color = Color(0, 0.654902, 0.894118, 1)
+roughness = 0.5
+
+[sub_resource type="Animation" id="Animation_twumr"]
+resource_name = "Crouch"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape3D:shape:height")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [2.0, 1.5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape3D:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.25, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Head:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.7, 0), Vector3(0, 0.2, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_qw5pv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape3D:shape:height")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Head:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.7, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_456lr"]
+_data = {
+"Crouch": SubResource("Animation_twumr"),
+"RESET": SubResource("Animation_qw5pv")
+}
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_3r45p"]
+
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("head", "camera", "animation_player", "crouch_shape_cast")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_layer = 2
+script = ExtResource("1_4jpfc")
+head = NodePath("Head")
+camera = NodePath("Head/Camera3D")
+animation_player = NodePath("AnimationPlayer")
+crouch_shape_cast = NodePath("ShapeCast3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_l214m")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_ge1xk")
+surface_material_override/0 = SubResource("StandardMaterial3D_fvek4")
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Head"]
+fov = 90.0
+
+[node name="ReflectionProbe" type="ReflectionProbe" parent="Head/Camera3D"]
+update_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_456lr")
+}
+
+[node name="ShapeCast3D" type="ShapeCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("SphereShape3D_3r45p")
+target_position = Vector3(0, 0.5, 0)
+debug_shape_custom_color = Color(0, 0.901961, 0, 1)
+
+[node name="PlayerStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_tc3yw")
+initial_state = NodePath("IdlePlayerState")
+
+[node name="IdlePlayerState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("3_pne75")
+
+[node name="AirPlayerState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("4_qiulw")
+
+[node name="WalkPlayerState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("5_ho5hy")
+
+[node name="SprintPlayerState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("6_1qnc2")
+
+[node name="CrouchPlayerState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("7_mjfqt")
+
+[node name="SlidePlayerState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("8_uemic")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PanelContainer" type="PanelContainer" parent="UI" node_paths=PackedStringArray("property_container")]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 210.0
+offset_bottom = 50.0
+theme = ExtResource("9_e1owm")
+script = ExtResource("10_0shru")
+property_container = NodePath("MarginContainer/VBoxContainer")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/PanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/PanelContainer/MarginContainer"]
+layout_mode = 2

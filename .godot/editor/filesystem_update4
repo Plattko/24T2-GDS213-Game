@@ -1,0 +1,8 @@
+res://Scenes/game.tscn
+res://Materials/Shader Materials/test_gun.tres
+res://UI/Style Boxes/Flat/debug_panel.tres
+res://UI/Themes/debug.tres
+res://Materials/Standard Materials/prototype_grey.tres
+res://Materials/Standard Materials/prototype_orange.tres
+res://Scenes/prototype_level.tscn
+res://Scenes/player.tscn

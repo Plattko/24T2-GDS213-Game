@@ -1,0 +1,351 @@
+[gd_scene load_steps=23 format=3 uid="uid://brc2h44edbj5a"]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_4jpfc"]
+[ext_resource type="PackedScene" uid="uid://dlwblryspggnx" path="res://Scenes/test_gun.tscn" id="2_neyk3"]
+[ext_resource type="Script" path="res://Scripts/States/state_machine.gd" id="2_tc3yw"]
+[ext_resource type="Script" path="res://Scripts/States/Player States/idle_player_state.gd" id="3_pne75"]
+[ext_resource type="Script" path="res://Scripts/States/Player States/air_player_state.gd" id="4_qiulw"]
+[ext_resource type="Script" path="res://Scripts/States/Player States/walk_player_state.gd" id="5_ho5hy"]
+[ext_resource type="Script" path="res://Scripts/States/Player States/sprint_player_state.gd" id="6_1qnc2"]
+[ext_resource type="Script" path="res://Scripts/States/Player States/crouch_player_state.gd" id="7_mjfqt"]
+[ext_resource type="Script" path="res://Scripts/States/Player States/slide_player_state.gd" id="8_uemic"]
+[ext_resource type="Theme" uid="uid://ctri33ojacyl0" path="res://UI/Themes/debug.tres" id="9_e1owm"]
+[ext_resource type="Script" path="res://Scripts/UI/hud.gd" id="10_0lavf"]
+[ext_resource type="Script" path="res://Scripts/debug.gd" id="10_0shru"]
+[ext_resource type="Script" path="res://Scripts/UI/reticle.gd" id="12_vy6x5"]
+[ext_resource type="Script" path="res://Scripts/UI/prototype_ui.gd" id="14_m0gjv"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l214m"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ge1xk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fvek4"]
+albedo_color = Color(0, 0.654902, 0.894118, 1)
+roughness = 0.5
+
+[sub_resource type="Animation" id="Animation_twumr"]
+resource_name = "Crouch"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape3D:shape:height")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [2.0, 1.5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape3D:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.25, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Head:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.7, 0), Vector3(0, 0.2, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_qw5pv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape3D:shape:height")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Head:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.7, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_eqx5m"]
+resource_name = "Slide"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape3D:shape:height")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [2.0, 1.5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape3D:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.25, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Head:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.7, 0), Vector3(0, 0.2, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_456lr"]
+_data = {
+"Crouch": SubResource("Animation_twumr"),
+"RESET": SubResource("Animation_qw5pv"),
+"Slide": SubResource("Animation_eqx5m")
+}
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_3r45p"]
+
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("head", "camera", "animation_player", "crouch_shape_cast")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_layer = 2
+script = ExtResource("1_4jpfc")
+head = NodePath("Head")
+camera = NodePath("Head/Camera3D")
+animation_player = NodePath("AnimationPlayer")
+crouch_shape_cast = NodePath("ShapeCast3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_l214m")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_ge1xk")
+surface_material_override/0 = SubResource("StandardMaterial3D_fvek4")
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Head"]
+fov = 90.0
+
+[node name="ReflectionProbe" type="ReflectionProbe" parent="Head/Camera3D"]
+visible = false
+update_mode = 1
+
+[node name="Test_Gun" parent="Head/Camera3D" instance=ExtResource("2_neyk3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.518788, -0.344118, -0.282156)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_456lr")
+}
+
+[node name="ShapeCast3D" type="ShapeCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("SphereShape3D_3r45p")
+target_position = Vector3(0, 0.5, 0)
+debug_shape_custom_color = Color(0, 0.901961, 0, 1)
+
+[node name="PlayerStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_tc3yw")
+initial_state = NodePath("IdlePlayerState")
+
+[node name="IdlePlayerState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("3_pne75")
+
+[node name="AirPlayerState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("4_qiulw")
+
+[node name="WalkPlayerState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("5_ho5hy")
+
+[node name="SprintPlayerState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("6_1qnc2")
+
+[node name="CrouchPlayerState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("7_mjfqt")
+
+[node name="SlidePlayerState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("8_uemic")
+
+[node name="UI" type="Control" parent="." node_paths=PackedStringArray("current_ammo_label")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("10_0lavf")
+current_ammo_label = NodePath("MarginContainer/Ammo")
+
+[node name="Reticle" type="CenterContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("12_vy6x5")
+
+[node name="DebugPanel" type="PanelContainer" parent="UI" node_paths=PackedStringArray("property_container")]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 210.0
+offset_bottom = 50.0
+theme = ExtResource("9_e1owm")
+script = ExtResource("10_0shru")
+property_container = NodePath("MarginContainer/VBoxContainer")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/DebugPanel"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/DebugPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -43.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="Ammo" type="Label" parent="UI/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Ammo: 24/24"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="PrototypeUI" type="MarginContainer" parent="UI" node_paths=PackedStringArray("progress_text", "win_text", "time_text", "reticle", "ammo", "instruction_text")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+script = ExtResource("14_m0gjv")
+progress_text = NodePath("VBoxContainer/CenterContainer/ProgressText")
+win_text = NodePath("../CenterContainer/WinTextVBox")
+time_text = NodePath("../CenterContainer/WinTextVBox/TimeText")
+reticle = NodePath("../Reticle")
+ammo = NodePath("../MarginContainer")
+instruction_text = NodePath("VBoxContainer/InstructionText")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/PrototypeUI"]
+layout_mode = 2
+
+[node name="InstructionText" type="Label" parent="UI/PrototypeUI/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Destroy all the orbs to win!"
+
+[node name="CenterContainer" type="CenterContainer" parent="UI/PrototypeUI/VBoxContainer"]
+layout_mode = 2
+
+[node name="ProgressText" type="Label" parent="UI/PrototypeUI/VBoxContainer/CenterContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Progress: 0/n"
+
+[node name="CenterContainer" type="CenterContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WinTextVBox" type="VBoxContainer" parent="UI/CenterContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="WinText" type="Label" parent="UI/CenterContainer/WinTextVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "You win!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TimeText" type="Label" parent="UI/CenterContainer/WinTextVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Time: 00:00:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RestartText" type="Label" parent="UI/CenterContainer/WinTextVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Press [P] to restart"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="update_ammo" from="Head/Camera3D/Test_Gun" to="UI" method="on_update_ammo"]

@@ -1,0 +1,72 @@
+[gd_scene load_steps=2 format=3 uid="uid://c0x0r0pmok2kh"]
+
+[ext_resource type="Material" uid="uid://clau1arwwv1yw" path="res://Materials/Standard Materials/prototype_orange.tres" id="1_xi0h3"]
+
+[node name="ShortFence" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.443, 0, 0)
+
+[node name="FencePost15" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.348862, 1, -0.00149536)
+use_collision = true
+size = Vector3(0.3, 2, 0.1)
+material = ExtResource("1_xi0h3")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="FencePost15"]
+transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, -0.15, 1, 0)
+operation = 2
+size = Vector3(0.3, 0.3, 0.1)
+material = ExtResource("1_xi0h3")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="FencePost15"]
+transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 0.15, 1, 0)
+operation = 2
+size = Vector3(0.3, 0.3, 0.1)
+material = ExtResource("1_xi0h3")
+
+[node name="FencePost16" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000389099, 1, -0.00149536)
+use_collision = true
+size = Vector3(0.3, 2, 0.1)
+material = ExtResource("1_xi0h3")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="FencePost16"]
+transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, -0.15, 1, 0)
+operation = 2
+size = Vector3(0.3, 0.3, 0.1)
+material = ExtResource("1_xi0h3")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="FencePost16"]
+transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 0.15, 1, 0)
+operation = 2
+size = Vector3(0.3, 0.3, 0.1)
+material = ExtResource("1_xi0h3")
+
+[node name="FencePost17" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.341106, 1, -0.00149536)
+use_collision = true
+size = Vector3(0.3, 2, 0.1)
+material = ExtResource("1_xi0h3")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="FencePost17"]
+transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, -0.15, 1, 0)
+operation = 2
+size = Vector3(0.3, 0.3, 0.1)
+material = ExtResource("1_xi0h3")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="FencePost17"]
+transform = Transform3D(0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 0.15, 1, 0)
+operation = 2
+size = Vector3(0.3, 0.3, 0.1)
+material = ExtResource("1_xi0h3")
+
+[node name="FenceBrace3" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000389099, 1.4, 0.0985031)
+use_collision = true
+size = Vector3(1.1, 0.3, 0.1)
+material = ExtResource("1_xi0h3")
+
+[node name="FenceBrace4" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000389099, 0.400001, 0.0985031)
+use_collision = true
+size = Vector3(1.1, 0.3, 0.1)
+material = ExtResource("1_xi0h3")
