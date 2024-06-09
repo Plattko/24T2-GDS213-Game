@@ -1,25 +1,25 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1717833372
+::res://::1717915885
 icon.svg::CompressedTexture2D::7218699412296705433::1717721332::1717721332::1::::<><>::
 README.md::TextFile::-1::1717721332::0::1::::<><>::
 ::res://Materials/::1717818280
-::res://Materials/Shader Materials/::1717828122
-test_gun.tres::ShaderMaterial::3193201934657571448::1717828122::0::1::::<><>::
-::res://Materials/Standard Materials/::1717828122
+::res://Materials/Shader Materials/::1717914609
+test_gun.tres::ShaderMaterial::3193201934657571448::1717914609::0::1::::<><>::
+::res://Materials/Standard Materials/::1717914609
 prototype_dark_green.tres::StandardMaterial3D::153088965621390807::1717818280::0::1::::<><>::uid://byj56j0vqdtrd::::res://Textures/Prototype/green/texture_01.png
-prototype_grey.tres::StandardMaterial3D::2506634607547883644::1717828122::0::1::::<><>::uid://cbugf2vq0xq2e::::res://Textures/Prototype/dark/texture_01.png
-prototype_orange.tres::StandardMaterial3D::5546179445192924982::1717828122::0::1::::<><>::uid://p0e6c02btas1::::res://Textures/Prototype/orange/texture_01.png
-::res://Scenes/::1717828188
+prototype_grey.tres::StandardMaterial3D::2506634607547883644::1717914609::0::1::::<><>::uid://cbugf2vq0xq2e::::res://Textures/Prototype/dark/texture_01.png
+prototype_orange.tres::StandardMaterial3D::5546179445192924982::1717914609::0::1::::<><>::uid://p0e6c02btas1::::res://Textures/Prototype/orange/texture_01.png
+::res://Scenes/::1717915862
 bullet_decal.tscn::PackedScene::1472607238048536965::1717818280::0::1::::<><>::uid://cvj838ba6ybiy::::res://Textures/bullet_hole.png
 damageable.tscn::PackedScene::4806790596258715771::1717818280::0::1::::<><>::res://Scripts/damageable.gd
 destructible_orb.tscn::PackedScene::1534849905507266663::1717818280::0::1::::<><>::uid://caqpeyq7g56bn::::res://Scenes/damageable.tscn<>res://Scripts/Props/destructible_orb.gd
-enemy.tscn::PackedScene::6470469070967875355::1717828188::0::1::::<><>::res://Scripts/AI/enemy.gd
+enemy.tscn::PackedScene::6470469070967875355::1717915303::0::1::::<><>::res://Scripts/AI/enemy.gd
 fence.tscn::PackedScene::8225663875532971506::1717818280::0::1::::<><>::uid://clau1arwwv1yw::::res://Materials/Standard Materials/prototype_orange.tres
 fence_wall.tscn::PackedScene::1050843080861219074::1717818280::0::1::::<><>::uid://dpgtqnqgata2e::::res://Scenes/fence.tscn<>uid://clau1arwwv1yw::::res://Materials/Standard Materials/prototype_orange.tres<>uid://c0x0r0pmok2kh::::res://Scenes/short_fence.tscn
-game.tscn::PackedScene::3815439237869558116::1717828156::0::1::::<><>::uid://v4q0vjnsq15d::::res://Scenes/destructible_orb.tscn<>uid://brc2h44edbj5a::::res://Scenes/player.tscn
-player.tscn::PackedScene::3585413208572083608::1717828157::0::1::::<><>::res://Scripts/player.gd<>uid://dlwblryspggnx::::res://Scenes/test_gun.tscn<>res://Scripts/States/state_machine.gd<>res://Scripts/States/Player States/idle_player_state.gd<>res://Scripts/States/Player States/air_player_state.gd<>res://Scripts/States/Player States/walk_player_state.gd<>res://Scripts/States/Player States/sprint_player_state.gd<>res://Scripts/States/Player States/crouch_player_state.gd<>res://Scripts/States/Player States/slide_player_state.gd<>uid://ctri33ojacyl0::::res://UI/Themes/debug.tres<>res://Scripts/UI/hud.gd<>res://Scripts/debug.gd<>res://Scripts/UI/reticle.gd<>res://Scripts/UI/prototype_ui.gd
+game.tscn::PackedScene::3815439237869558116::1717915303::0::1::::<><>::uid://v4q0vjnsq15d::::res://Scenes/destructible_orb.tscn<>uid://brc2h44edbj5a::::res://Scenes/player.tscn
+player.tscn::PackedScene::3585413208572083608::1717915303::0::1::::<><>::res://Scripts/player.gd<>uid://dlwblryspggnx::::res://Scenes/test_gun.tscn<>res://Scripts/States/state_machine.gd<>res://Scripts/States/Player States/idle_player_state.gd<>res://Scripts/States/Player States/air_player_state.gd<>res://Scripts/States/Player States/walk_player_state.gd<>res://Scripts/States/Player States/sprint_player_state.gd<>res://Scripts/States/Player States/crouch_player_state.gd<>res://Scripts/States/Player States/slide_player_state.gd<>uid://ctri33ojacyl0::::res://UI/Themes/debug.tres<>res://Scripts/UI/hud.gd<>res://Scripts/debug.gd<>res://Scripts/UI/reticle.gd<>res://Scripts/UI/prototype_ui.gd
 projectile_bullet.tscn::PackedScene::3513549197094622793::1717818280::0::1::::<><>::res://Scripts/Shooting/Bullets/projectile_bullet.gd
-prototype_level.tscn::PackedScene::5971916211323541278::1717828177::0::1::::<><>::res://Scripts/AI/level_AI.gd<>uid://v4q0vjnsq15d::::res://Scenes/destructible_orb.tscn<>uid://bbyh52cc6ljvg::::res://Materials/Standard Materials/prototype_grey.tres<>uid://clau1arwwv1yw::::res://Materials/Standard Materials/prototype_orange.tres<>uid://brc2h44edbj5a::::res://Scenes/player.tscn<>uid://cyglxemusmfd8::::res://Scenes/enemy.tscn
+prototype_level.tscn::PackedScene::5971916211323541278::1717915862::0::1::::<><>::res://Scripts/AI/level_AI.gd<>uid://v4q0vjnsq15d::::res://Scenes/destructible_orb.tscn<>uid://bbyh52cc6ljvg::::res://Materials/Standard Materials/prototype_grey.tres<>uid://clau1arwwv1yw::::res://Materials/Standard Materials/prototype_orange.tres<>uid://brc2h44edbj5a::::res://Scenes/player.tscn<>uid://cyglxemusmfd8::::res://Scenes/enemy.tscn
 raycast_test.tscn::PackedScene::1083088635333397895::1717818280::0::1::::<><>::
 short_fence.tscn::PackedScene::6576592766816109623::1717818280::0::1::::<><>::uid://clau1arwwv1yw::::res://Materials/Standard Materials/prototype_orange.tres
 test_gun.tscn::PackedScene::7976836933223079113::1717818280::0::1::::<><>::res://Scripts/Shooting/Guns/test_gun.gd<>uid://blq2tme80b4rk::::res://Materials/Shader Materials/test_gun.tres
@@ -27,9 +27,9 @@ test_gun.tscn::PackedScene::7976836933223079113::1717818280::0::1::::<><>::res:/
 damageable.gd::GDScript::-1::1717818280::0::1::::Damageable<>Area3D<>::
 debug.gd::GDScript::-1::1717818280::0::1::::<>PanelContainer<>::
 player.gd::GDScript::-1::1717818280::0::1::::Player<>CharacterBody3D<>::
-::res://Scripts/AI/::1717828147
+::res://Scripts/AI/::1717834510
 enemy.gd::GDScript::-1::1717828147::0::1::::<>CharacterBody3D<>::
-level_AI.gd::GDScript::-1::1717826689::0::1::::<>Node3D<>::
+level_AI.gd::GDScript::-1::1717834510::0::1::::<>Node3D<>::
 ::res://Scripts/Backups/::1717818280
 player_backup.gd::GDScript::-1::1717818280::0::1::::Player_Backup<>CharacterBody3D<>::
 ::res://Scripts/Global/::1717818280
@@ -146,7 +146,7 @@ texture_12.png::CompressedTexture2D::758401301094979902::1717818280::1717818280:
 texture_13.png::CompressedTexture2D::8043007406006066561::1717818280::1717818280::1::::<><>::
 ::res://UI/::1717818280
 ::res://UI/Style Boxes/::1717818280
-::res://UI/Style Boxes/Flat/::1717828122
-debug_panel.tres::StyleBoxFlat::4620602003782121715::1717828122::0::1::::<><>::
-::res://UI/Themes/::1717828122
-debug.tres::Theme::6142061049189393823::1717828122::0::1::::<><>::uid://b63iv00tljpt0::::res://UI/Style Boxes/Flat/debug_panel.tres
+::res://UI/Style Boxes/Flat/::1717914609
+debug_panel.tres::StyleBoxFlat::4620602003782121715::1717914609::0::1::::<><>::
+::res://UI/Themes/::1717914609
+debug.tres::Theme::6142061049189393823::1717914609::0::1::::<><>::uid://b63iv00tljpt0::::res://UI/Style Boxes/Flat/debug_panel.tres

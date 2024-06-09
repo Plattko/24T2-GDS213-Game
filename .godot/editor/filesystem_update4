@@ -7,4 +7,3 @@ res://Materials/Standard Materials/prototype_orange.tres
 res://Scenes/prototype_level.tscn
 res://Scenes/player.tscn
 res://Scenes/enemy.tscn
-res://Scripts/AI/level_AI.gd
