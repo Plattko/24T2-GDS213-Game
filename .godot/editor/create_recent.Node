@@ -1,9 +1,10 @@
+MeshInstance3D
+VisibleOnScreenNotifier3D
 Node
 Timer
 Node3D
 NavigationAgent3D
 CollisionShape3D
-MeshInstance3D
 CharacterBody3D
 NavigationRegion3D
 RichTextLabel
@@ -11,4 +12,3 @@ VBoxContainer
 CenterContainer
 Label
 Container
-HBoxContainer
