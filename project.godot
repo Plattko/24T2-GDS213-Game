@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="24T2 Prototype Week Game"
-run/main_scene="res://Scenes/prototype_level.tscn"
+run/main_scene="res://Scenes/DUPLICATE_prototype_level.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 

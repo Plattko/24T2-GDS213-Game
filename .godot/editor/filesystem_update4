@@ -1,10 +1,9 @@
-res://Scenes/prototype_level.tscn
+res://Scenes/DUPLICATE_prototype_level.tscn
+res://Materials/Standard Materials/prototype_grey.tres
+res://Materials/Standard Materials/prototype_orange.tres
 res://Materials/Shader Materials/test_gun.tres
 res://UI/Style Boxes/Flat/debug_panel.tres
 res://UI/Themes/debug.tres
-res://Materials/Standard Materials/prototype_grey.tres
-res://Materials/Standard Materials/prototype_orange.tres
 res://Scenes/player.tscn
-res://Scenes/enemy.tscn
 res://Scenes/destructible_orb.tscn
-res://Scripts/AI/enemy.gd
+res://Scenes/enemy.tscn
