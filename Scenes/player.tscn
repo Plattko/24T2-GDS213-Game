@@ -1,10 +1,11 @@
-[gd_scene load_steps=24 format=3 uid="uid://brc2h44edbj5a"]
+[gd_scene load_steps=25 format=3 uid="uid://brc2h44edbj5a"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_4jpfc"]
 [ext_resource type="Script" path="res://Scripts/States/state_machine.gd" id="2_tc3yw"]
 [ext_resource type="PackedScene" uid="uid://dqexibtsgatqp" path="res://Scenes/Weapons/rifle.tscn" id="3_ad34e"]
 [ext_resource type="Script" path="res://Scripts/Weapons/weapon_manager.gd" id="3_dngkr"]
 [ext_resource type="Script" path="res://Scripts/States/Player States/idle_player_state.gd" id="3_pne75"]
+[ext_resource type="PackedScene" uid="uid://d2x6finf6hnf4" path="res://Scenes/Weapons/pistol.tscn" id="4_oi7c2"]
 [ext_resource type="Script" path="res://Scripts/States/Player States/air_player_state.gd" id="4_qiulw"]
 [ext_resource type="Script" path="res://Scripts/States/Player States/walk_player_state.gd" id="5_ho5hy"]
 [ext_resource type="Script" path="res://Scripts/States/Player States/sprint_player_state.gd" id="6_1qnc2"]
@@ -178,9 +179,14 @@ update_mode = 1
 
 [node name="WeaponManager" type="Node3D" parent="Head/Camera3D" node_paths=PackedStringArray("current_weapon")]
 script = ExtResource("3_dngkr")
-current_weapon = NodePath("Rifle")
+current_weapon = NodePath("Pistol")
 
 [node name="Rifle" parent="Head/Camera3D/WeaponManager" instance=ExtResource("3_ad34e")]
+visible = false
+BULLET_DAMAGE = 40.0
+
+[node name="Pistol" parent="Head/Camera3D/WeaponManager" instance=ExtResource("4_oi7c2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.46, -0.185, -0.457)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -353,3 +359,4 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [connection signal="update_ammo" from="Head/Camera3D/WeaponManager/Rifle" to="UI" method="on_update_ammo"]
+[connection signal="update_ammo" from="Head/Camera3D/WeaponManager/Pistol" to="UI" method="on_update_ammo"]

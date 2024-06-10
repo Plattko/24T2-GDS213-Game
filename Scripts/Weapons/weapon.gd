@@ -9,10 +9,13 @@ var bullet_decal = preload("res://Scenes/bullet_decal.tscn")
 
 # Weapon data
 @export_category("Weapon Data")
+@export var BULLET_DAMAGE : float
+
 @export var MAX_AMMO : int
+@export var AMMO_COST := 1
 var cur_ammo
 
-@export var BULLET_DAMAGE : float
+@export var is_auto_fire : bool = true
 
 # Bullet hole variables
 var decal_queue = []
@@ -23,14 +26,12 @@ signal update_ammo
 
 func _ready():
 	cur_ammo = MAX_AMMO
-	update_ammo.emit(cur_ammo, MAX_AMMO)
+	update_ammo.emit([cur_ammo, MAX_AMMO])
 
 func shoot() -> void:
 	anim_player.play("Shoot")
 	
-	print("Shot" + name)
-	
-	cur_ammo -= 1
+	cur_ammo -= AMMO_COST
 	update_ammo.emit([cur_ammo, MAX_AMMO])
 
 func reload() -> void:

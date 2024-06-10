@@ -1,18 +1,13 @@
 res://Scenes/Weapons/rifle.tscn
 res://Materials/Shader Materials/test_gun.tres
-res://Scripts/CustomResources/rifle.tres
 res://UI/Style Boxes/Flat/debug_panel.tres
 res://UI/Themes/debug.tres
 res://Materials/Standard Materials/prototype_orange.tres
 res://Materials/Standard Materials/prototype_grey.tres
-res://Scripts/Weapons/initialise-weapon.gd
-res://Scripts/Weapons/weapon.gd
-res://Scripts/CustomResources/weapon_resource.gd
-res://Scripts/Weapons/rifle.gd
-res://Scripts/Weapons/weapon_manager.gd
 res://Scenes/Levels/Testing/weapon-testing.tscn
 res://Scenes/player.tscn
-res://Scenes/test_gun.tscn
+res://Scripts/Weapons/weapon.gd
+res://Scripts/Weapons/weapon_manager.gd
+res://Scenes/Weapons/pistol.tscn
+res://Scripts/Weapons/pistol.gd
 res://Scripts/UI/hud.gd
-res://Scripts/Shooting/Guns/test_gun.gd
-res://Scenes/player_backup.tscn
