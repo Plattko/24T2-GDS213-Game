@@ -1,5 +1,6 @@
-Node
+AnimationPlayer
 Node3D
+Node
 MeshInstance3D
 Timer
 NavigationAgent3D

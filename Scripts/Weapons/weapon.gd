@@ -1,0 +1,62 @@
+class_name Weapon
+
+extends Node
+
+# Reference variables
+@onready var anim_player = %AnimationPlayer
+
+var bullet_decal = preload("res://Scenes/bullet_decal.tscn")
+
+# Weapon data
+@export_category("Weapon Data")
+@export var MAX_AMMO : int
+var cur_ammo
+
+@export var BULLET_DAMAGE : float
+
+# Bullet hole variables
+var decal_queue = []
+const MAX_QUEUE_SIZE := 30
+
+# Signals
+signal update_ammo
+
+func _ready():
+	cur_ammo = MAX_AMMO
+	update_ammo.emit(cur_ammo, MAX_AMMO)
+
+func shoot() -> void:
+	anim_player.play("Shoot")
+	
+	print("Shot" + name)
+	
+	cur_ammo -= 1
+	update_ammo.emit([cur_ammo, MAX_AMMO])
+
+func reload() -> void:
+	anim_player.play("Reload")
+	await anim_player.animation_finished
+	cur_ammo = MAX_AMMO
+	update_ammo.emit([cur_ammo, MAX_AMMO])
+
+func spawn_decal(position: Vector3, normal: Vector3) -> void:
+	# Instantiate bullet decal
+	var instance = bullet_decal.instantiate()
+	# Make it a child of the scene
+	get_tree().root.add_child(instance)
+	# Set its position
+	instance.global_position = position
+	
+	instance.look_at(instance.global_transform.origin + normal, Vector3.UP)
+	
+	if normal != Vector3.UP and normal != Vector3.DOWN:
+		instance.rotate_object_local(Vector3(1, 0, 0), 90)
+	
+	update_decal_queue(instance)
+
+func update_decal_queue(decal):
+	decal_queue.push_back(decal)
+	
+	if decal_queue.size() > MAX_QUEUE_SIZE:
+		var decal_to_destroy = decal_queue.pop_front()
+		decal_to_destroy.queue_free()

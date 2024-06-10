@@ -1,6 +1,5 @@
-[gd_scene load_steps=9 format=3 uid="uid://ffd6ccj4kejk"]
+[gd_scene load_steps=8 format=3 uid="uid://ffd6ccj4kejk"]
 
-[ext_resource type="Script" path="res://Scripts/AI/level_AI.gd" id="1_iephx"]
 [ext_resource type="PackedScene" uid="uid://brc2h44edbj5a" path="res://Scenes/player.tscn" id="2_touoh"]
 [ext_resource type="Material" uid="uid://clau1arwwv1yw" path="res://Materials/Standard Materials/prototype_orange.tres" id="3_1grwp"]
 [ext_resource type="Material" uid="uid://bbyh52cc6ljvg" path="res://Materials/Standard Materials/prototype_grey.tres" id="4_y8l3c"]
@@ -20,7 +19,6 @@ tonemap_mode = 2
 glow_enabled = true
 
 [node name="PrototypeLevel" type="Node3D"]
-script = ExtResource("1_iephx")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
