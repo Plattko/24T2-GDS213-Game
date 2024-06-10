@@ -1,9 +1,9 @@
 Node
-Timer
 Node3D
+MeshInstance3D
+Timer
 NavigationAgent3D
 CollisionShape3D
-MeshInstance3D
 CharacterBody3D
 NavigationRegion3D
 RichTextLabel

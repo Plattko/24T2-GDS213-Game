@@ -1,8 +1,9 @@
-[gd_scene load_steps=23 format=3 uid="uid://brc2h44edbj5a"]
+[gd_scene load_steps=24 format=3 uid="uid://brc2h44edbj5a"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_4jpfc"]
 [ext_resource type="PackedScene" uid="uid://dlwblryspggnx" path="res://Scenes/test_gun.tscn" id="2_neyk3"]
 [ext_resource type="Script" path="res://Scripts/States/state_machine.gd" id="2_tc3yw"]
+[ext_resource type="PackedScene" uid="uid://dqexibtsgatqp" path="res://Scenes/Weapons/rifle.tscn" id="3_ad34e"]
 [ext_resource type="Script" path="res://Scripts/States/Player States/idle_player_state.gd" id="3_pne75"]
 [ext_resource type="Script" path="res://Scripts/States/Player States/air_player_state.gd" id="4_qiulw"]
 [ext_resource type="Script" path="res://Scripts/States/Player States/walk_player_state.gd" id="5_ho5hy"]
@@ -177,6 +178,12 @@ update_mode = 1
 
 [node name="Test_Gun" parent="Head/Camera3D" instance=ExtResource("2_neyk3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.518788, -0.344118, -0.282156)
+visible = false
+
+[node name="WeaponRig" type="Node3D" parent="Head/Camera3D"]
+
+[node name="Rifle" parent="Head/Camera3D/WeaponRig" instance=ExtResource("3_ad34e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.519, -0.344, -0.282)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
