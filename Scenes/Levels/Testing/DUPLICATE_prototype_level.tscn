@@ -18376,7 +18376,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 1, -17)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.0782, 0.731867, -17.1125)
 
 [node name="EnemySpawnTimer" type="Timer" parent="EnemySpawnNodes"]
-wait_time = 5.0
+wait_time = 2.0
+autostart = true
+
+[node name="WaveSpawnTimer" type="Timer" parent="EnemySpawnNodes"]
+
+[node name="WaveWaitTimer" type="Timer" parent="EnemySpawnNodes"]
+wait_time = 10.0
 autostart = true
 
 [connection signal="timeout" from="EnemySpawnNodes/EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]
+[connection signal="timeout" from="EnemySpawnNodes/WaveWaitTimer" to="." method="_on_wave_wait_timer_timeout"]
