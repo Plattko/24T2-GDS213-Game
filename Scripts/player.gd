@@ -35,6 +35,10 @@ var can_head_bob : bool = true
 const BASE_FOV := 90.0
 const FOV_CHANGE := 1.5
 
+# Health vars
+var max_health := 100
+var cur_health
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
@@ -43,6 +47,13 @@ func _ready():
 	
 	# Set global reference to camera in the Global script
 	Global.camera = camera
+	
+	cur_health = max_health
+	
+	for child in get_children():
+		if child is Damageable:
+			# Connect each damageable to the damaged signal
+			child.damaged.connect(on_damaged)
 
 func _input(event):
 	# Handle quit
@@ -121,3 +132,12 @@ func stand_up(current_state, anim_speed : float, is_repeating_check : bool):
 	elif crouch_shape_cast.is_colliding() == true:
 		await get_tree().create_timer(0.1).timeout
 		stand_up(current_state, anim_speed, true)
+
+func on_damaged(damage: float):
+	cur_health -= damage
+	print("Player health: " + str(cur_health))
+	
+	if cur_health <= 0:
+		print("PLAYER DEAD")
+
+
