@@ -54,9 +54,8 @@ func spawn_decal(position: Vector3, normal: Vector3) -> void:
 	# Set its position
 	instance.global_position = position
 	
-	instance.look_at(instance.global_transform.origin + normal, Vector3.UP)
-	
 	if normal != Vector3.UP and normal != Vector3.DOWN:
+		instance.look_at(instance.global_transform.origin + normal, Vector3.UP)
 		instance.rotate_object_local(Vector3(1, 0, 0), 90)
 	
 	update_decal_queue(instance)

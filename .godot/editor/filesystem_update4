@@ -9,3 +9,4 @@ res://Scripts/Weapons/weapon.gd
 res://Scenes/Levels/Testing/weapon-testing.tscn
 res://Scenes/player.tscn
 res://Scripts/Weapons/weapon_manager.gd
+res://Scripts/player.gd

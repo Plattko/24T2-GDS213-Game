@@ -182,7 +182,6 @@ script = ExtResource("3_dngkr")
 
 [node name="Rifle" parent="Head/Camera3D/WeaponManager" instance=ExtResource("3_ad34e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.519, -0.344, -0.282)
-BULLET_DAMAGE = 40.0
 
 [node name="Pistol" parent="Head/Camera3D/WeaponManager" instance=ExtResource("4_oi7c2")]
 
