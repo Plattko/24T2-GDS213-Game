@@ -1,9 +1,15 @@
+res://Scripts/Weapons
+res://Scripts/CustomResources
+res://Meshes
+res://Materials/Shader Materials
+res://Scenes/Levels/Testing
+res://
+res://Scenes/Weapons
 res://Scripts/AI
 res://Scenes
 res://Scripts/UI
 res://Materials/Standard Materials
 res://Scripts/Props
-res://Materials/Shader Materials
 res://Scripts/Shooting/Guns
 res://Scripts/States/Player States
 res://UI/Themes

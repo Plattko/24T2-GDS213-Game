@@ -8,8 +8,8 @@ extends CharacterBody3D
 @export var crouch_shape_cast : ShapeCast3D
 
 var direction
-const SPRINT_SPEED = 8.0
-const JUMP_VELOCITY = 8.0
+const SPRINT_SPEED := 8.0
+const JUMP_VELOCITY := 8.0
 
 # Camera movement variables
 var rotation_input : float
@@ -22,18 +22,18 @@ var camera_rotation : Vector3
 const MIN_CAMERA_TILT := deg_to_rad(-90)
 const MAX_CAMERA_TILT := deg_to_rad(90)
 
-const SENSITIVITY = 0.25
+const SENSITIVITY := 0.25
 
 # Head bob variables
-const BOB_FREQ = 2.0
-const BOB_AMP = 0.08
-var t_bob = 0.0
+const BOB_FREQ := 2.0
+const BOB_AMP := 0.08
+var t_bob := 0.0
 
 var can_head_bob : bool = true
 
 # FOV variables
-const BASE_FOV = 90.0
-const FOV_CHANGE = 1.5
+const BASE_FOV := 90.0
+const FOV_CHANGE := 1.5
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")

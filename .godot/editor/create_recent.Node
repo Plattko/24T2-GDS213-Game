@@ -1,8 +1,9 @@
+Weapon
 MeshInstance3D
-VisibleOnScreenNotifier3D
+AnimationPlayer
+Node3D
 Node
 Timer
-Node3D
 NavigationAgent3D
 CollisionShape3D
 CharacterBody3D
