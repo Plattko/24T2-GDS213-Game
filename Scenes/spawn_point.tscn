@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://s1ph78h6l0o2"]
+
+[ext_resource type="Script" path="res://Scripts/AI/spawn_point.gd" id="1_3xc8e"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_8k5u7"]
+
+[node name="SpawnPoint" type="Node3D"]
+script = ExtResource("1_3xc8e")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_8k5u7")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
+
+[connection signal="screen_entered" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]
