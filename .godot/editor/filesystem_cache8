@@ -1,17 +1,17 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1718020672
+::res://::1718078577
 icon.svg::CompressedTexture2D::7218699412296705433::1717052149::1717052156::1::::<><>::
 README.md::TextFile::-1::1717052250::0::1::::<><>::
 ::res://Materials/::1717922197
-::res://Materials/Shader Materials/::1718020680
-test_gun.tres::ShaderMaterial::3193201934657571448::1718020680::0::1::::<><>::
-::res://Materials/Standard Materials/::1718020680
+::res://Materials/Shader Materials/::1718023471
+test_gun.tres::ShaderMaterial::3193201934657571448::1718023471::0::1::::<><>::
+::res://Materials/Standard Materials/::1718023471
 prototype_dark_green.tres::StandardMaterial3D::153088965621390807::1717922197::0::1::::<><>::uid://byj56j0vqdtrd::::res://Textures/Prototype/green/texture_01.png
-prototype_grey.tres::StandardMaterial3D::2506634607547883644::1718020680::0::1::::<><>::uid://cbugf2vq0xq2e::::res://Textures/Prototype/dark/texture_01.png
-prototype_orange.tres::StandardMaterial3D::5546179445192924982::1718020680::0::1::::<><>::uid://p0e6c02btas1::::res://Textures/Prototype/orange/texture_01.png
+prototype_grey.tres::StandardMaterial3D::2506634607547883644::1718023471::0::1::::<><>::uid://cbugf2vq0xq2e::::res://Textures/Prototype/dark/texture_01.png
+prototype_orange.tres::StandardMaterial3D::5546179445192924982::1718023471::0::1::::<><>::uid://p0e6c02btas1::::res://Textures/Prototype/orange/texture_01.png
 ::res://Meshes/::1718003301
 test_rifle.tres::BoxMesh::5014855026277586258::1718003301::0::1::::<><>::uid://blq2tme80b4rk::::res://Materials/Shader Materials/test_gun.tres
-::res://Scenes/::1718021347
+::res://Scenes/::1718023471
 bullet_decal.tscn::PackedScene::1472607238048536965::1717922197::0::1::::<><>::uid://cvj838ba6ybiy::::res://Textures/bullet_hole.png
 damageable.tscn::PackedScene::4806790596258715771::1717922197::0::1::::<><>::res://Scripts/damageable.gd
 destructible_orb.tscn::PackedScene::1534849905507266663::1717993168::0::1::::<><>::uid://caqpeyq7g56bn::::res://Scenes/damageable.tscn<>res://Scripts/Props/destructible_orb.gd
@@ -19,7 +19,7 @@ enemy.tscn::PackedScene::6470469070967875355::1717993168::0::1::::<><>::res://Sc
 fence.tscn::PackedScene::8225663875532971506::1717922197::0::1::::<><>::uid://clau1arwwv1yw::::res://Materials/Standard Materials/prototype_orange.tres
 fence_wall.tscn::PackedScene::1050843080861219074::1717922197::0::1::::<><>::uid://dpgtqnqgata2e::::res://Scenes/fence.tscn<>uid://clau1arwwv1yw::::res://Materials/Standard Materials/prototype_orange.tres<>uid://c0x0r0pmok2kh::::res://Scenes/short_fence.tscn
 game.tscn::PackedScene::3815439237869558116::1717922197::0::1::::<><>::uid://v4q0vjnsq15d::::res://Scenes/destructible_orb.tscn<>uid://brc2h44edbj5a::::res://Scenes/player.tscn
-player.tscn::PackedScene::3585413208572083608::1718021347::0::1::::<><>::res://Scripts/player.gd<>res://Scripts/States/state_machine.gd<>uid://dqexibtsgatqp::::res://Scenes/Weapons/rifle.tscn<>res://Scripts/Weapons/weapon_manager.gd<>res://Scripts/States/Player States/idle_player_state.gd<>res://Scripts/States/Player States/air_player_state.gd<>res://Scripts/States/Player States/walk_player_state.gd<>res://Scripts/States/Player States/sprint_player_state.gd<>res://Scripts/States/Player States/crouch_player_state.gd<>res://Scripts/States/Player States/slide_player_state.gd<>uid://ctri33ojacyl0::::res://UI/Themes/debug.tres<>res://Scripts/UI/hud.gd<>res://Scripts/debug.gd<>res://Scripts/UI/reticle.gd<>res://Scripts/UI/prototype_ui.gd
+player.tscn::PackedScene::3585413208572083608::1718023471::0::1::::<><>::res://Scripts/player.gd<>res://Scripts/States/state_machine.gd<>uid://dqexibtsgatqp::::res://Scenes/Weapons/rifle.tscn<>res://Scripts/Weapons/weapon_manager.gd<>res://Scripts/States/Player States/idle_player_state.gd<>uid://d2x6finf6hnf4::::res://Scenes/Weapons/pistol.tscn<>res://Scripts/States/Player States/air_player_state.gd<>res://Scripts/States/Player States/walk_player_state.gd<>res://Scripts/States/Player States/sprint_player_state.gd<>res://Scripts/States/Player States/crouch_player_state.gd<>res://Scripts/States/Player States/slide_player_state.gd<>uid://ctri33ojacyl0::::res://UI/Themes/debug.tres<>res://Scripts/UI/hud.gd<>res://Scripts/debug.gd<>res://Scripts/UI/reticle.gd<>res://Scripts/UI/prototype_ui.gd
 player_backup.tscn::PackedScene::6211994538308193312::1718019826::0::1::::<><>::res://Scripts/player.gd<>uid://dlwblryspggnx::::res://Scenes/test_gun.tscn<>res://Scripts/States/state_machine.gd<>res://Scripts/States/Player States/idle_player_state.gd<>res://Scripts/States/Player States/air_player_state.gd<>res://Scripts/States/Player States/walk_player_state.gd<>res://Scripts/States/Player States/sprint_player_state.gd<>res://Scripts/States/Player States/crouch_player_state.gd<>res://Scripts/States/Player States/slide_player_state.gd<>res://Scripts/UI/hud.gd<>res://Scripts/UI/reticle.gd<>uid://ctri33ojacyl0::::res://UI/Themes/debug.tres<>res://Scripts/debug.gd<>res://Scripts/UI/prototype_ui.gd
 projectile_bullet.tscn::PackedScene::3513549197094622793::1717922197::0::1::::<><>::res://Scripts/Shooting/Bullets/projectile_bullet.gd
 prototype_level.tscn::PackedScene::5971916211323541278::1717992341::0::1::::<><>::res://Scripts/AI/level_AI.gd<>uid://v4q0vjnsq15d::::res://Scenes/destructible_orb.tscn<>uid://bbyh52cc6ljvg::::res://Materials/Standard Materials/prototype_grey.tres<>uid://clau1arwwv1yw::::res://Materials/Standard Materials/prototype_orange.tres<>uid://brc2h44edbj5a::::res://Scenes/player.tscn<>uid://cyglxemusmfd8::::res://Scenes/enemy.tscn
@@ -27,12 +27,12 @@ raycast_test.tscn::PackedScene::1083088635333397895::1717922197::0::1::::<><>::
 short_fence.tscn::PackedScene::6576592766816109623::1717922197::0::1::::<><>::uid://clau1arwwv1yw::::res://Materials/Standard Materials/prototype_orange.tres
 test_gun.tscn::PackedScene::7976836933223079113::1718019826::0::1::::<><>::res://Scripts/Shooting/Guns/test_gun.gd<>uid://blq2tme80b4rk::::res://Materials/Shader Materials/test_gun.tres
 ::res://Scenes/Levels/::1717992403
-::res://Scenes/Levels/Testing/::1718021347
+::res://Scenes/Levels/Testing/::1718023471
 testing-base-level.tscn::PackedScene::8314916270640574085::1717992902::0::1::::<><>::res://Scripts/AI/level_AI.gd<>uid://brc2h44edbj5a::::res://Scenes/player.tscn<>uid://bbyh52cc6ljvg::::res://Materials/Standard Materials/prototype_grey.tres<>uid://clau1arwwv1yw::::res://Materials/Standard Materials/prototype_orange.tres<>uid://v4q0vjnsq15d::::res://Scenes/destructible_orb.tscn
-weapon-testing.tscn::PackedScene::361503726134191628::1718021347::0::1::::<><>::uid://brc2h44edbj5a::::res://Scenes/player.tscn<>uid://clau1arwwv1yw::::res://Materials/Standard Materials/prototype_orange.tres<>uid://bbyh52cc6ljvg::::res://Materials/Standard Materials/prototype_grey.tres<>uid://v4q0vjnsq15d::::res://Scenes/destructible_orb.tscn
-::res://Scenes/Weapons/::1718021355
-pistol.tscn::PackedScene::9103733113932989699::1718021460::0::1::::<><>::res://Scripts/Weapons/rifle.gd<>uid://cdph6uvemhvre::::res://Meshes/test_rifle.tres
-rifle.tscn::PackedScene::8291951920189440475::1718021408::0::1::::<><>::res://Scripts/Weapons/rifle.gd<>uid://cdph6uvemhvre::::res://Meshes/test_rifle.tres
+weapon-testing.tscn::PackedScene::361503726134191628::1718023471::0::1::::<><>::uid://brc2h44edbj5a::::res://Scenes/player.tscn<>uid://clau1arwwv1yw::::res://Materials/Standard Materials/prototype_orange.tres<>uid://bbyh52cc6ljvg::::res://Materials/Standard Materials/prototype_grey.tres<>uid://v4q0vjnsq15d::::res://Scenes/destructible_orb.tscn
+::res://Scenes/Weapons/::1718023472
+pistol.tscn::PackedScene::9103733113932989699::1718023472::0::1::::<><>::uid://blq2tme80b4rk::::res://Materials/Shader Materials/test_gun.tres<>res://Scripts/Weapons/pistol.gd
+rifle.tscn::PackedScene::8291951920189440475::1718023472::0::1::::<><>::res://Scripts/Weapons/rifle.gd<>uid://cdph6uvemhvre::::res://Meshes/test_rifle.tres
 ::res://Scripts/::1717993557
 damageable.gd::GDScript::-1::1717922197::0::1::::Damageable<>Area3D<>::
 debug.gd::GDScript::-1::1717922197::0::1::::<>PanelContainer<>::
@@ -65,12 +65,13 @@ player_state.gd::GDScript::-1::1717922197::0::1::::PlayerState<>State<>::
 slide_player_state.gd::GDScript::-1::1717922197::0::1::::SlidePlayerState<>PlayerState<>::
 sprint_player_state.gd::GDScript::-1::1717922197::0::1::::SprintPlayerState<>PlayerState<>::
 walk_player_state.gd::GDScript::-1::1717922197::0::1::::WalkPlayerState<>PlayerState<>::
-::res://Scripts/UI/::1718020330
-hud.gd::GDScript::-1::1718020330::0::1::::<>Control<>::
+::res://Scripts/UI/::1718021935
+hud.gd::GDScript::-1::1718021935::0::1::::<>Control<>::
 prototype_ui.gd::GDScript::-1::1717922197::0::1::::<>MarginContainer<>::
 reticle.gd::GDScript::-1::1717922197::0::1::::<>CenterContainer<>::
-::res://Scripts/Weapons/::1718021345
+::res://Scripts/Weapons/::1718021859
 initialise_weapon.gd::GDScript::-1::1718014734::0::1::::<>Node3D<>::
+pistol.gd::GDScript::-1::1718021859::0::1::::<>Weapon<>::
 rifle.gd::GDScript::-1::1718020073::0::1::::<>Weapon<>::
 weapon.gd::GDScript::-1::1718021408::0::1::::Weapon<>Node<>::
 weapon_manager.gd::GDScript::-1::1718021241::0::1::::WeaponManager<>Node3D<>::
@@ -164,7 +165,7 @@ texture_12.png::CompressedTexture2D::758401301094979902::1717922197::1717922197:
 texture_13.png::CompressedTexture2D::8043007406006066561::1717922197::1717922197::1::::<><>::
 ::res://UI/::1717922197
 ::res://UI/Style Boxes/::1717922197
-::res://UI/Style Boxes/Flat/::1718020680
-debug_panel.tres::StyleBoxFlat::4620602003782121715::1718020680::0::1::::<><>::
-::res://UI/Themes/::1718020680
-debug.tres::Theme::6142061049189393823::1718020680::0::1::::<><>::uid://b63iv00tljpt0::::res://UI/Style Boxes/Flat/debug_panel.tres
+::res://UI/Style Boxes/Flat/::1718023471
+debug_panel.tres::StyleBoxFlat::4620602003782121715::1718023471::0::1::::<><>::
+::res://UI/Themes/::1718023471
+debug.tres::Theme::6142061049189393823::1718023471::0::1::::<><>::uid://b63iv00tljpt0::::res://UI/Style Boxes/Flat/debug_panel.tres

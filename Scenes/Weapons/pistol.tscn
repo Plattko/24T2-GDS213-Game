@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://d2x6finf6hnf4"]
+[gd_scene load_steps=11 format=3 uid="uid://d2x6finf6hnf4"]
 
 [ext_resource type="Material" uid="uid://blq2tme80b4rk" path="res://Materials/Shader Materials/test_gun.tres" id="1_62wqy"]
 [ext_resource type="Script" path="res://Scripts/Weapons/pistol.gd" id="1_c6rr1"]
@@ -36,6 +36,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Mesh:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_5y7bq"]
@@ -83,20 +95,94 @@ tracks/1/keys = {
 "values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0.698132, 0, 0), Vector3(0, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_3u4f5"]
+resource_name = "Equip"
+length = 0.25
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -0.5, 0.5), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mesh:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-1.5708, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Mesh:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_y1hr3"]
+resource_name = "Unequip"
+length = 0.1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.5, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mesh:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vlmsi"]
 _data = {
+"Equip": SubResource("Animation_3u4f5"),
 "RESET": SubResource("Animation_rf707"),
 "Reload": SubResource("Animation_5y7bq"),
-"Shoot": SubResource("Animation_m1qid")
+"Shoot": SubResource("Animation_m1qid"),
+"Unequip": SubResource("Animation_y1hr3")
 }
 
 [node name="Pistol" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.46, -0.185, -0.457)
 script = ExtResource("1_c6rr1")
 BULLET_DAMAGE = 20.0
 MAX_AMMO = 8
 is_auto_fire = false
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
 mesh = SubResource("BoxMesh_duixa")
 
 [node name="Handle" type="MeshInstance3D" parent="Mesh"]

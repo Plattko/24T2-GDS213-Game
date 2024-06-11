@@ -177,16 +177,14 @@ fov = 90.0
 visible = false
 update_mode = 1
 
-[node name="WeaponManager" type="Node3D" parent="Head/Camera3D" node_paths=PackedStringArray("current_weapon")]
+[node name="WeaponManager" type="Node3D" parent="Head/Camera3D"]
 script = ExtResource("3_dngkr")
-current_weapon = NodePath("Pistol")
 
 [node name="Rifle" parent="Head/Camera3D/WeaponManager" instance=ExtResource("3_ad34e")]
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.519, -0.344, -0.282)
 BULLET_DAMAGE = 40.0
 
 [node name="Pistol" parent="Head/Camera3D/WeaponManager" instance=ExtResource("4_oi7c2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.46, -0.185, -0.457)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

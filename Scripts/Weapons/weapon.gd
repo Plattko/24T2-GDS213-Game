@@ -3,6 +3,7 @@ class_name Weapon
 extends Node
 
 # Reference variables
+@onready var mesh = %Mesh
 @onready var anim_player = %AnimationPlayer
 
 var bullet_decal = preload("res://Scenes/bullet_decal.tscn")
@@ -17,6 +18,12 @@ var cur_ammo
 
 @export var is_auto_fire : bool = true
 
+# Animation variables
+const SHOOT_ANIM : String = "Shoot"
+const RELOAD_ANIM : String = "Reload"
+const EQUIP_ANIM : String = "Equip"
+const UNEQUIP_ANIM : String = "Unequip"
+
 # Bullet hole variables
 var decal_queue = []
 const MAX_QUEUE_SIZE := 30
@@ -26,16 +33,15 @@ signal update_ammo
 
 func _ready():
 	cur_ammo = MAX_AMMO
-	update_ammo.emit([cur_ammo, MAX_AMMO])
 
 func shoot() -> void:
-	anim_player.play("Shoot")
+	anim_player.play(SHOOT_ANIM)
 	
 	cur_ammo -= AMMO_COST
 	update_ammo.emit([cur_ammo, MAX_AMMO])
 
 func reload() -> void:
-	anim_player.play("Reload")
+	anim_player.play(RELOAD_ANIM)
 	await anim_player.animation_finished
 	cur_ammo = MAX_AMMO
 	update_ammo.emit([cur_ammo, MAX_AMMO])
