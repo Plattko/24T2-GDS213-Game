@@ -1,7 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://d2x6finf6hnf4"]
+[gd_scene load_steps=15 format=3 uid="uid://d2x6finf6hnf4"]
 
 [ext_resource type="Material" uid="uid://blq2tme80b4rk" path="res://Materials/Shader Materials/test_gun.tres" id="1_62wqy"]
 [ext_resource type="Script" path="res://Scripts/Weapons/pistol.gd" id="1_c6rr1"]
+[ext_resource type="Script" path="res://Scripts/Weapons/Components/muzzle_flash.gd" id="3_v10tm"]
+[ext_resource type="Material" uid="uid://un70lvxarnb0" path="res://Materials/Shader Materials/muzzle_flash_rifle_shader.tres" id="4_332v5"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_duixa"]
 material = ExtResource("1_62wqy")
@@ -10,6 +12,18 @@ size = Vector3(0.075, 0.1, 0.3)
 [sub_resource type="BoxMesh" id="BoxMesh_fa3hj"]
 material = ExtResource("1_62wqy")
 size = Vector3(0.075, 0.2, 0.075)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yf2va"]
+angle_min = -73.0
+angle_max = 73.0
+direction = Vector3(0, 1, 0)
+initial_velocity_min = 0.5
+initial_velocity_max = 0.75
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="QuadMesh" id="QuadMesh_64s8x"]
+material = ExtResource("4_332v5")
+size = Vector2(0.1, 0.1)
 
 [sub_resource type="Animation" id="Animation_3u4f5"]
 resource_name = "Equip"
@@ -191,6 +205,26 @@ mesh = SubResource("BoxMesh_fa3hj")
 
 [node name="Barrel" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.15)
+
+[node name="MuzzleFlash" type="Node3D" parent="Barrel" node_paths=PackedStringArray("light", "emitter")]
+unique_name_in_owner = true
+script = ExtResource("3_v10tm")
+light = NodePath("OmniLight3D")
+emitter = NodePath("GPUParticles3D")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Barrel/MuzzleFlash"]
+visible = false
+light_color = Color(1, 0.447059, 0, 1)
+light_energy = 0.05
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Barrel/MuzzleFlash"]
+emitting = false
+lifetime = 0.05
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_yf2va")
+draw_pass_1 = SubResource("QuadMesh_64s8x")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true

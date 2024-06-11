@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://dqexibtsgatqp"]
+[gd_scene load_steps=13 format=3 uid="uid://dqexibtsgatqp"]
 
 [ext_resource type="Script" path="res://Scripts/Weapons/rifle.gd" id="1_al0dg"]
 [ext_resource type="BoxMesh" uid="uid://cdph6uvemhvre" path="res://Meshes/test_rifle.tres" id="1_u27gb"]
 [ext_resource type="Script" path="res://Scripts/Weapons/Components/muzzle_flash.gd" id="3_gtc4h"]
+[ext_resource type="Material" uid="uid://un70lvxarnb0" path="res://Materials/Shader Materials/muzzle_flash_rifle_shader.tres" id="4_kmv0e"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qm8cm"]
 angle_min = -73.0
@@ -12,29 +13,8 @@ initial_velocity_min = 1.0
 initial_velocity_max = 1.5
 gravity = Vector3(0, 0, 0)
 
-[sub_resource type="Gradient" id="Gradient_l3d3x"]
-offsets = PackedFloat32Array(0, 0.298246, 0.995614)
-colors = PackedColorArray(1, 0.965088, 0.441406, 1, 1, 0.447059, 0, 1, 0, 0, 0, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_803kr"]
-gradient = SubResource("Gradient_l3d3x")
-fill = 2
-fill_from = Vector2(0.5, 0.5)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5sjwv"]
-transparency = 1
-blend_mode = 1
-albedo_texture = SubResource("GradientTexture2D_803kr")
-roughness = 0.0
-emission_enabled = true
-emission_texture = SubResource("GradientTexture2D_803kr")
-billboard_mode = 3
-particles_anim_h_frames = 1
-particles_anim_v_frames = 1
-particles_anim_loop = false
-
 [sub_resource type="QuadMesh" id="QuadMesh_m7h41"]
-material = SubResource("StandardMaterial3D_5sjwv")
+material = ExtResource("4_kmv0e")
 size = Vector2(0.2, 0.2)
 
 [sub_resource type="Animation" id="Animation_pnqt0"]
@@ -203,6 +183,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
 
 [node name="MuzzleFlash" type="Node3D" parent="Barrel" node_paths=PackedStringArray("light", "emitter")]
 unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.05)
 script = ExtResource("3_gtc4h")
 light = NodePath("OmniLight3D")
 emitter = NodePath("GPUParticles3D")
