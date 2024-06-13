@@ -44,6 +44,10 @@ func _physics_process(delta):
 	if Input.is_action_pressed("weapon_2"):
 		if !current_weapon.anim_player.is_playing():
 			change_weapon(weapons[1])
+	
+	if Input.is_action_pressed("weapon_3"):
+		if !current_weapon.anim_player.is_playing():
+			change_weapon(weapons[2])
 
 func change_weapon(next_weapon: Weapon) -> void:
 	if next_weapon != current_weapon:

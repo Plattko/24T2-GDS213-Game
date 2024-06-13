@@ -15,9 +15,10 @@ func _ready():
 		else:
 			push_warning("Object contains non-damageable child node.")
 
-func on_damaged(damage: float):
-	cur_health -= damage
-	
+func _physics_process(delta):
 	if cur_health <= 0:
 		orb_destroyed.emit()
 		queue_free()
+
+func on_damaged(damage: float):
+	cur_health -= damage
