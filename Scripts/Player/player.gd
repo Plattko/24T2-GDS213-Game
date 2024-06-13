@@ -130,7 +130,8 @@ func head_bob(time) -> Vector3:
 
 # State machine functions
 func update_gravity(delta) -> void:
-	velocity.y -= gravity * delta
+	#velocity.y -= gravity * delta
+	velocity.y -= 18 * delta
 
 func stand_up(current_state, anim_speed : float, is_repeating_check : bool):
 	# If there is nothing blocking the player from standing up, play the respective animation

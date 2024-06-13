@@ -16,7 +16,8 @@ const SLIDE_ANIM_SPEED := 14.0
 func enter(previous_state, msg : Dictionary = {}):
 	print("Entered Slide player state.")
 	# Set the slide direction to the direction the player is looking
-	slide_direction = -player.transform.basis.z
+	#slide_direction = -player.transform.basis.z
+	slide_direction = player.direction
 	# Play the crouch animation
 	player.animation_player.play("Slide", -1, SLIDE_ANIM_SPEED)
 	# Disable head bob
