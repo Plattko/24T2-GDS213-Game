@@ -1,11 +1,11 @@
 [gd_scene load_steps=14 format=3 uid="uid://ds3xfh4lnacmw"]
 
 [ext_resource type="Script" path="res://Scripts/VisualScripts/GameManager.os" id="1_hdw4s"]
-[ext_resource type="PackedScene" uid="uid://brc2h44edbj5a" path="res://Scenes/player.tscn" id="2_8aq8x"]
+[ext_resource type="PackedScene" uid="uid://brc2h44edbj5a" path="res://Scenes/Player/player.tscn" id="2_8aq8x"]
 [ext_resource type="Material" uid="uid://clau1arwwv1yw" path="res://Materials/Standard Materials/prototype_orange.tres" id="3_ay7rv"]
-[ext_resource type="PackedScene" uid="uid://v4q0vjnsq15d" path="res://Scenes/destructible_orb.tscn" id="4_57av1"]
+[ext_resource type="PackedScene" uid="uid://v4q0vjnsq15d" path="res://Scenes/Props/destructible_orb.tscn" id="4_57av1"]
 [ext_resource type="Material" uid="uid://bbyh52cc6ljvg" path="res://Materials/Standard Materials/prototype_grey.tres" id="5_v3th6"]
-[ext_resource type="PackedScene" uid="uid://s1ph78h6l0o2" path="res://Scenes/spawn_point.tscn" id="7_m7pch"]
+[ext_resource type="PackedScene" uid="uid://s1ph78h6l0o2" path="res://Scenes/Enemies/spawn_point.tscn" id="7_m7pch"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_b7t75"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)

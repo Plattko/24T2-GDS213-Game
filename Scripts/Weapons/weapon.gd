@@ -7,7 +7,7 @@ extends Node
 @onready var anim_player = %AnimationPlayer
 @onready var muzzle_flash : MuzzleFlash = %MuzzleFlash
 
-var bullet_decal = preload("res://Scenes/bullet_decal.tscn")
+var bullet_decal = preload("res://Scenes/Weapons/VFX/bullet_decal.tscn")
 
 # Weapon data
 @export_category("Weapon Data")

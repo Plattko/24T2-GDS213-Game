@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=3 uid="uid://dqp2prkvwbh0p"]
 
 [ext_resource type="Script" path="res://Scripts/AI/level_AI.gd" id="1_442fg"]
-[ext_resource type="PackedScene" uid="uid://brc2h44edbj5a" path="res://Scenes/player.tscn" id="2_gwsdt"]
+[ext_resource type="PackedScene" uid="uid://brc2h44edbj5a" path="res://Scenes/Player/player.tscn" id="2_gwsdt"]
 [ext_resource type="Material" uid="uid://bbyh52cc6ljvg" path="res://Materials/Standard Materials/prototype_grey.tres" id="3_lw5jk"]
 [ext_resource type="Material" uid="uid://clau1arwwv1yw" path="res://Materials/Standard Materials/prototype_orange.tres" id="4_0g8j7"]
-[ext_resource type="PackedScene" uid="uid://v4q0vjnsq15d" path="res://Scenes/destructible_orb.tscn" id="5_3bnds"]
+[ext_resource type="PackedScene" uid="uid://v4q0vjnsq15d" path="res://Scenes/Props/destructible_orb.tscn" id="5_3bnds"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_b7t75"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)

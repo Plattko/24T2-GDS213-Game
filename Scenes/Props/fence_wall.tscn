@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://o8bh5g8tpk5w"]
 
-[ext_resource type="PackedScene" uid="uid://dpgtqnqgata2e" path="res://Scenes/fence.tscn" id="1_ucv84"]
+[ext_resource type="PackedScene" uid="uid://dpgtqnqgata2e" path="res://Scenes/Props/fence.tscn" id="1_ucv84"]
 [ext_resource type="Material" uid="uid://clau1arwwv1yw" path="res://Materials/Standard Materials/prototype_orange.tres" id="2_nea8b"]
-[ext_resource type="PackedScene" uid="uid://c0x0r0pmok2kh" path="res://Scenes/short_fence.tscn" id="3_ebcib"]
+[ext_resource type="PackedScene" uid="uid://c0x0r0pmok2kh" path="res://Scenes/Props/short_fence.tscn" id="3_ebcib"]
 
 [node name="Fence Wall" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -50)

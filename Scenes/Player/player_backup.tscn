@@ -1,24 +1,19 @@
-[gd_scene load_steps=28 format=3 uid="uid://brc2h44edbj5a"]
+[gd_scene load_steps=23 format=3 uid="uid://curev3xlll2ee"]
 
-[ext_resource type="Script" path="res://Scripts/player.gd" id="1_4jpfc"]
-[ext_resource type="Script" path="res://Scripts/States/state_machine.gd" id="2_tc3yw"]
-[ext_resource type="PackedScene" uid="uid://caqpeyq7g56bn" path="res://Scenes/damageable.tscn" id="2_tcc00"]
-[ext_resource type="PackedScene" uid="uid://dqexibtsgatqp" path="res://Scenes/Weapons/rifle.tscn" id="3_ad34e"]
-[ext_resource type="Script" path="res://Scripts/Weapons/weapon_manager.gd" id="3_dngkr"]
-[ext_resource type="Script" path="res://Scripts/States/Player States/idle_player_state.gd" id="3_pne75"]
-[ext_resource type="PackedScene" uid="uid://d2x6finf6hnf4" path="res://Scenes/Weapons/pistol.tscn" id="4_oi7c2"]
-[ext_resource type="Script" path="res://Scripts/States/Player States/air_player_state.gd" id="4_qiulw"]
-[ext_resource type="Script" path="res://Scripts/States/Player States/walk_player_state.gd" id="5_ho5hy"]
-[ext_resource type="Script" path="res://Scripts/States/Player States/sprint_player_state.gd" id="6_1qnc2"]
-[ext_resource type="PackedScene" uid="uid://cj7xkscmie81y" path="res://Scenes/Weapons/shotgun.tscn" id="6_tnj4j"]
-[ext_resource type="Script" path="res://Scripts/States/Player States/crouch_player_state.gd" id="7_mjfqt"]
-[ext_resource type="Script" path="res://Scripts/States/Player States/slide_player_state.gd" id="8_uemic"]
-[ext_resource type="Theme" uid="uid://ctri33ojacyl0" path="res://UI/Themes/debug.tres" id="9_e1owm"]
-[ext_resource type="Script" path="res://Scripts/UI/hud.gd" id="10_0lavf"]
-[ext_resource type="Script" path="res://Scripts/debug.gd" id="10_0shru"]
-[ext_resource type="Script" path="res://Scripts/UI/reticle.gd" id="12_vy6x5"]
-[ext_resource type="Script" path="res://Scripts/UI/prototype_ui.gd" id="14_m0gjv"]
-[ext_resource type="PackedScene" uid="uid://bu0mtrnvhonpt" path="res://Scenes/UI/settings_menu.tscn" id="18_wxgc6"]
+[ext_resource type="Script" path="res://Scripts/Player/player.gd" id="1_78tpm"]
+[ext_resource type="PackedScene" uid="uid://dlwblryspggnx" path="res://Scenes/Weapons/Test/test_gun.tscn" id="2_nk5it"]
+[ext_resource type="Script" path="res://Scripts/States/state_machine.gd" id="4_wnvqp"]
+[ext_resource type="Script" path="res://Scripts/States/Player States/idle_player_state.gd" id="5_ikexh"]
+[ext_resource type="Script" path="res://Scripts/States/Player States/air_player_state.gd" id="6_27xor"]
+[ext_resource type="Script" path="res://Scripts/States/Player States/walk_player_state.gd" id="7_53315"]
+[ext_resource type="Script" path="res://Scripts/States/Player States/sprint_player_state.gd" id="8_uluhx"]
+[ext_resource type="Script" path="res://Scripts/States/Player States/crouch_player_state.gd" id="9_h4twq"]
+[ext_resource type="Script" path="res://Scripts/States/Player States/slide_player_state.gd" id="10_dkcq8"]
+[ext_resource type="Script" path="res://Scripts/UI/hud.gd" id="11_ftra8"]
+[ext_resource type="Script" path="res://Scripts/UI/reticle.gd" id="12_6dqlp"]
+[ext_resource type="Theme" uid="uid://ctri33ojacyl0" path="res://UI/Themes/debug.tres" id="13_wmijp"]
+[ext_resource type="Script" path="res://Scripts/UI/debug.gd" id="14_6nj4t"]
+[ext_resource type="Script" path="res://Scripts/UI/prototype_ui.gd" id="15_1rx1s"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l214m"]
 
@@ -154,21 +149,14 @@ _data = {
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3r45p"]
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("head", "camera", "animation_player", "crouch_shape_cast", "settings_menu")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("head", "camera", "animation_player", "crouch_shape_cast")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 collision_layer = 2
-script = ExtResource("1_4jpfc")
+script = ExtResource("1_78tpm")
 head = NodePath("Head")
 camera = NodePath("Head/Camera3D")
 animation_player = NodePath("AnimationPlayer")
 crouch_shape_cast = NodePath("ShapeCast3D")
-settings_menu = NodePath("UI/SettingsMenu")
-
-[node name="Damageable" parent="." instance=ExtResource("2_tcc00")]
-collision_layer = 2
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Damageable"]
-shape = SubResource("CapsuleShape3D_l214m")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_l214m")
@@ -187,14 +175,7 @@ fov = 90.0
 visible = false
 update_mode = 1
 
-[node name="WeaponManager" type="Node3D" parent="Head/Camera3D"]
-script = ExtResource("3_dngkr")
-
-[node name="Rifle" parent="Head/Camera3D/WeaponManager" instance=ExtResource("3_ad34e")]
-
-[node name="Pistol" parent="Head/Camera3D/WeaponManager" instance=ExtResource("4_oi7c2")]
-
-[node name="Shotgun" parent="Head/Camera3D/WeaponManager" instance=ExtResource("6_tnj4j")]
+[node name="Test_Gun" parent="Head/Camera3D" instance=ExtResource("2_nk5it")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -208,26 +189,26 @@ target_position = Vector3(0, 0.5, 0)
 debug_shape_custom_color = Color(0, 0.901961, 0, 1)
 
 [node name="PlayerStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
-script = ExtResource("2_tc3yw")
+script = ExtResource("4_wnvqp")
 initial_state = NodePath("IdlePlayerState")
 
 [node name="IdlePlayerState" type="Node" parent="PlayerStateMachine"]
-script = ExtResource("3_pne75")
+script = ExtResource("5_ikexh")
 
 [node name="AirPlayerState" type="Node" parent="PlayerStateMachine"]
-script = ExtResource("4_qiulw")
+script = ExtResource("6_27xor")
 
 [node name="WalkPlayerState" type="Node" parent="PlayerStateMachine"]
-script = ExtResource("5_ho5hy")
+script = ExtResource("7_53315")
 
 [node name="SprintPlayerState" type="Node" parent="PlayerStateMachine"]
-script = ExtResource("6_1qnc2")
+script = ExtResource("8_uluhx")
 
 [node name="CrouchPlayerState" type="Node" parent="PlayerStateMachine"]
-script = ExtResource("7_mjfqt")
+script = ExtResource("9_h4twq")
 
 [node name="SlidePlayerState" type="Node" parent="PlayerStateMachine"]
-script = ExtResource("8_uemic")
+script = ExtResource("10_dkcq8")
 
 [node name="UI" type="Control" parent="." node_paths=PackedStringArray("current_ammo_label")]
 layout_mode = 3
@@ -237,7 +218,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
-script = ExtResource("10_0lavf")
+script = ExtResource("11_ftra8")
 current_ammo_label = NodePath("MarginContainer/Ammo")
 
 [node name="Reticle" type="CenterContainer" parent="UI"]
@@ -249,7 +230,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("12_vy6x5")
+script = ExtResource("12_6dqlp")
 
 [node name="DebugPanel" type="PanelContainer" parent="UI" node_paths=PackedStringArray("property_container")]
 custom_minimum_size = Vector2(200, 0)
@@ -258,8 +239,8 @@ offset_left = 10.0
 offset_top = 10.0
 offset_right = 210.0
 offset_bottom = 50.0
-theme = ExtResource("9_e1owm")
-script = ExtResource("10_0shru")
+theme = ExtResource("13_wmijp")
+script = ExtResource("14_6nj4t")
 property_container = NodePath("MarginContainer/VBoxContainer")
 
 [node name="MarginContainer" type="MarginContainer" parent="UI/DebugPanel"]
@@ -302,7 +283,7 @@ theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
-script = ExtResource("14_m0gjv")
+script = ExtResource("15_1rx1s")
 progress_text = NodePath("VBoxContainer/CenterContainer/ProgressText")
 win_text = NodePath("../CenterContainer/WinTextVBox")
 time_text = NodePath("../CenterContainer/WinTextVBox/TimeText")
@@ -366,10 +347,4 @@ text = "Press [P] to restart"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SettingsMenu" parent="UI" instance=ExtResource("18_wxgc6")]
-visible = false
-layout_mode = 1
-
-[connection signal="update_ammo" from="Head/Camera3D/WeaponManager/Rifle" to="UI" method="on_update_ammo"]
-[connection signal="update_ammo" from="Head/Camera3D/WeaponManager/Pistol" to="UI" method="on_update_ammo"]
-[connection signal="update_ammo" from="Head/Camera3D/WeaponManager/Shotgun" to="UI" method="on_update_ammo"]
+[connection signal="update_ammo" from="Head/Camera3D/Test_Gun" to="UI" method="on_update_ammo"]

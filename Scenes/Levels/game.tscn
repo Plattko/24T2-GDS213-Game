@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://bumhyygl1gh53"]
 
-[ext_resource type="PackedScene" uid="uid://v4q0vjnsq15d" path="res://Scenes/destructible_orb.tscn" id="1_8wl3x"]
-[ext_resource type="PackedScene" uid="uid://brc2h44edbj5a" path="res://Scenes/player.tscn" id="1_yno8v"]
+[ext_resource type="PackedScene" uid="uid://v4q0vjnsq15d" path="res://Scenes/Props/destructible_orb.tscn" id="1_8wl3x"]
+[ext_resource type="PackedScene" uid="uid://brc2h44edbj5a" path="res://Scenes/Player/player.tscn" id="1_yno8v"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_b7t75"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
