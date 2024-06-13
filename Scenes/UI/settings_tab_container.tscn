@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://blnme4tmx8d71"]
+[gd_scene load_steps=2 format=3 uid="uid://blnme4tmx8d71"]
+
+[ext_resource type="PackedScene" uid="uid://pxpx3vsci2vw" path="res://Scenes/UI/sensitivity_slider_setting.tscn" id="1_6q1y2"]
 
 [node name="SettingsTabContainer" type="Control"]
 layout_mode = 3
@@ -20,10 +22,10 @@ offset_bottom = -50.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Controls" type="TabBar" parent="TabContainer"]
+[node name="Gameplay" type="TabBar" parent="TabContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Controls"]
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Gameplay"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -35,10 +37,15 @@ theme_override_constants/margin_top = 24
 theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 24
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Controls/MarginContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Gameplay/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Gameplay/MarginContainer/ScrollContainer"]
 layout_mode = 2
 theme_override_constants/separation = 64
-alignment = 1
+
+[node name="SensitivitySliderSetting" parent="TabContainer/Gameplay/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_6q1y2")]
+layout_mode = 2
 
 [node name="Video" type="TabBar" parent="TabContainer"]
 visible = false

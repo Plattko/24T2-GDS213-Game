@@ -5,9 +5,6 @@ extends Control
 @export_category("Settings Buttons")
 @export var exit_button : Button
 
-@export_category("Reference Variables")
-@export var player : Player
-
 signal exit_settings_menu
 
 func _ready():

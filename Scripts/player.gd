@@ -22,7 +22,7 @@ var camera_rotation : Vector3
 const MIN_CAMERA_TILT := deg_to_rad(-90)
 const MAX_CAMERA_TILT := deg_to_rad(90)
 
-const SENSITIVITY := 0.25
+var sensitivity := 0.25
 
 # Head bob variables
 const BOB_FREQ := 2.0
@@ -42,12 +42,13 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var settings_menu : SettingsMenu
 
 func _ready():
-	handle_connecting_signals()
-	
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
 	# Set global reference to camera in the Global script
 	Global.camera = camera
+	Global.player = self
+	
+	handle_connecting_signals()
 
 func _input(event):
 	if event.is_action_pressed("settings_menu"):
@@ -62,8 +63,8 @@ func _input(event):
 
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
-		rotation_input = -event.relative.x * SENSITIVITY
-		tilt_input = -event.relative.y * SENSITIVITY
+		rotation_input = -event.relative.x * sensitivity
+		tilt_input = -event.relative.y * sensitivity
 
 func _process(delta):
 	# Handle camera movement
