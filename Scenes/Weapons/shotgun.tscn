@@ -220,7 +220,7 @@ _data = {
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.356, -0.185, -0.504)
 script = ExtResource("1_5vdia")
 bullet_count = 12
-bullet_spread = 50
+bullet_spread = 70
 BULLET_DAMAGE = 6.0
 MAX_AMMO = 6
 

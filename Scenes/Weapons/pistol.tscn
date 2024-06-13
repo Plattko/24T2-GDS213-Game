@@ -191,7 +191,7 @@ _data = {
 [node name="Pistol" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.46, -0.185, -0.457)
 script = ExtResource("1_c6rr1")
-BULLET_DAMAGE = 20.0
+BULLET_DAMAGE = 35.0
 MAX_AMMO = 8
 is_auto_fire = false
 

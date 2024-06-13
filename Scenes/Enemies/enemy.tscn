@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cyglxemusmfd8"]
+[gd_scene load_steps=7 format=3 uid="uid://cyglxemusmfd8"]
 
 [ext_resource type="Script" path="res://Scripts/AI/enemy.gd" id="1_7484k"]
 [ext_resource type="PackedScene" uid="uid://caqpeyq7g56bn" path="res://Scenes/damageable.tscn" id="2_7lh1c"]
@@ -10,7 +10,10 @@ albedo_color = Color(1, 0, 0, 1)
 material = SubResource("StandardMaterial3D_ysq3b")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_iph6g"]
-radius = 0.7
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dgeae"]
+radius = 0.6
+height = 2.2
 
 [node name="Enemy" type="CharacterBody3D" groups=["enemies"]]
 script = ExtResource("1_7484k")
@@ -19,15 +22,15 @@ script = ExtResource("1_7484k")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_8f4bu")
 
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_iph6g")
+
 [node name="Damageable" parent="." instance=ExtResource("2_7lh1c")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Damageable"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("CapsuleShape3D_iph6g")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("CapsuleShape3D_iph6g")
+shape = SubResource("CapsuleShape3D_dgeae")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 target_desired_distance = 1.5

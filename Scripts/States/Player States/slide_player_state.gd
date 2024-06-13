@@ -3,7 +3,8 @@ class_name SlidePlayerState
 extends PlayerState
 
 # Slide movement variables
-const SLIDE_START_SPEED := 10.0
+#const SLIDE_START_SPEED := 10.0
+const SLIDE_START_SPEED := 10.5
 const SLIDE_END_SPEED := 5.0
 var slide_direction : Vector3
 

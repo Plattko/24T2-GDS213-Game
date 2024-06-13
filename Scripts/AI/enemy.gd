@@ -3,19 +3,22 @@ extends CharacterBody3D
 @onready var nav_agent = $NavigationAgent3D
 
 # Movement variables
-var SPEED = 3.0
+var min_speed := 3.0
+var max_speed := 6.0
+var speed
 
 # Health variables
 var max_health := 100
 var cur_health
 
-var damage = 20
+var damage := 20
 
 signal enemy_defeated
 
 func _ready():
 	cur_health = max_health
-	
+	speed = randf_range(min_speed, max_speed)
+	print("Enemy Speed: " + str(speed))
 	
 	for child in get_children():
 		if child is Damageable:
@@ -28,7 +31,7 @@ func _ready():
 func _physics_process(delta):
 	var current_location = global_transform.origin
 	var next_location = nav_agent.get_next_path_position()
-	var new_velocity = (next_location - current_location).normalized() * SPEED
+	var new_velocity = (next_location - current_location).normalized() * speed
 	nav_agent.set_velocity(new_velocity)
 	
 	if cur_health <= 0:
