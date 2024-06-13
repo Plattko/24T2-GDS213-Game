@@ -41,6 +41,7 @@ collision_mask = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_iph6g")
 
+[connection signal="enemy_defeated" from="." to="." method="_on_enemy_defeated"]
 [connection signal="target_reached" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_target_reached"]
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]

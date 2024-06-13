@@ -11,6 +11,8 @@ var cur_health
 
 var damage = 20
 
+signal enemy_defeated
+
 func _ready():
 	cur_health = max_health
 	
@@ -47,8 +49,12 @@ func on_damaged(damage: float):
 	
 	if cur_health <= 0:
 		queue_free()
+		enemy_defeated.emit()
 
 func _on_area_3d_area_entered(area):
 	if area.name == "Damageable":
 		area.take_damage(damage)
 		print ("DEAL DAMAGE")
+
+func _on_enemy_defeated():
+	pass

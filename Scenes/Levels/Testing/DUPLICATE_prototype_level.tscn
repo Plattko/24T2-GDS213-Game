@@ -1,11 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://ds3xfh4lnacmw"]
+[gd_scene load_steps=14 format=3 uid="uid://ds3xfh4lnacmw"]
 
-[ext_resource type="Script" path="res://Scripts/AI/level_AI.gd" id="1_mrows"]
+[ext_resource type="Script" path="res://Scripts/VisualScripts/GameManager.os" id="1_hdw4s"]
 [ext_resource type="PackedScene" uid="uid://brc2h44edbj5a" path="res://Scenes/player.tscn" id="2_8aq8x"]
 [ext_resource type="Material" uid="uid://clau1arwwv1yw" path="res://Materials/Standard Materials/prototype_orange.tres" id="3_ay7rv"]
 [ext_resource type="PackedScene" uid="uid://v4q0vjnsq15d" path="res://Scenes/destructible_orb.tscn" id="4_57av1"]
 [ext_resource type="Material" uid="uid://bbyh52cc6ljvg" path="res://Materials/Standard Materials/prototype_grey.tres" id="5_v3th6"]
-[ext_resource type="PackedScene" uid="uid://cyglxemusmfd8" path="res://Scenes/enemy.tscn" id="6_m6y60"]
 [ext_resource type="PackedScene" uid="uid://s1ph78h6l0o2" path="res://Scenes/spawn_point.tscn" id="7_m7pch"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_b7t75"]
@@ -42,7 +41,7 @@ metallic = 1.0
 roughness = 0.5
 
 [node name="PrototypeLevel" type="Node3D"]
-script = ExtResource("1_mrows")
+script = ExtResource("1_hdw4s")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
@@ -18353,27 +18352,24 @@ use_collision = true
 size = Vector3(8, 2, 8)
 material = SubResource("StandardMaterial3D_k0dy2")
 
-[node name="Enemy" parent="." instance=ExtResource("6_m6y60")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.191, 0.000499725, -2.81109)
-
 [node name="EnemySpawnNodes" type="Node" parent="."]
 
 [node name="EnemySpawns" type="Node" parent="EnemySpawnNodes"]
 
 [node name="SpawnPoint" parent="EnemySpawnNodes/EnemySpawns" instance=ExtResource("7_m7pch")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3808, -16.2804)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.1673, 1.3808, -46.1404)
 
 [node name="SpawnPoint2" parent="EnemySpawnNodes/EnemySpawns" instance=ExtResource("7_m7pch")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.27278, 1.50612, -17.2537)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.2193, 8.56625, -42.8627)
 
 [node name="SpawnPoint3" parent="EnemySpawnNodes/EnemySpawns" instance=ExtResource("7_m7pch")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.80576, 1.22868, -15.1275)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.319, 1.22868, 26.4385)
 
 [node name="SpawnPoint4" parent="EnemySpawnNodes/EnemySpawns" instance=ExtResource("7_m7pch")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 1, -17)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.0765, 1, 23.1056)
 
 [node name="SpawnPoint5" parent="EnemySpawnNodes/EnemySpawns" instance=ExtResource("7_m7pch")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.0782, 0.731867, -17.1125)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.9243, 0.723831, -33.8174)
 
 [node name="EnemySpawnTimer" type="Timer" parent="EnemySpawnNodes"]
 wait_time = 2.0

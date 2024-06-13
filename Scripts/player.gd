@@ -91,6 +91,9 @@ func _physics_process(delta):
 	
 	# Debug
 	Global.debug.add_debug_property("Move Speed", snappedf(velocity.length(), 0.01), 2)
+	
+	if cur_health <= 0:
+		get_tree().reload_current_scene()
 
 func update_camera(delta):
 	mouse_rotation.y += rotation_input * delta
@@ -136,8 +139,5 @@ func stand_up(current_state, anim_speed : float, is_repeating_check : bool):
 func on_damaged(damage: float):
 	cur_health -= damage
 	print("Player health: " + str(cur_health))
-	
-	if cur_health <= 0:
-		print("PLAYER DEAD")
 
 
