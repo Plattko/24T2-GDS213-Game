@@ -38,13 +38,24 @@ const FOV_CHANGE := 1.5
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+#@export_category("Settings Menu")
+var settings_menu : SettingsMenu
+
 func _ready():
+	handle_connecting_signals()
+	
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
 	# Set global reference to camera in the Global script
 	Global.camera = camera
 
 func _input(event):
+	if event.is_action_pressed("settings_menu"):
+		if not settings_menu.visible:
+			open_settings_menu()
+		else:
+			on_exit_settings_menu()
+	
 	# Handle quit
 	if event.is_action_pressed("quit"):
 		get_tree().quit()
@@ -121,3 +132,17 @@ func stand_up(current_state, anim_speed : float, is_repeating_check : bool):
 	elif crouch_shape_cast.is_colliding() == true:
 		await get_tree().create_timer(0.1).timeout
 		stand_up(current_state, anim_speed, true)
+
+func handle_connecting_signals() -> void:
+	settings_menu.exit_settings_menu.connect(on_exit_settings_menu)
+
+func open_settings_menu() -> void:
+	settings_menu.visible = true
+	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
+	settings_menu.set_process(true)
+
+func on_exit_settings_menu() -> void:
+	settings_menu.visible = false
+	Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	settings_menu.set_process(false)
