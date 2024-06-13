@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://brc2h44edbj5a"]
+[gd_scene load_steps=28 format=3 uid="uid://brc2h44edbj5a"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_4jpfc"]
 [ext_resource type="Script" path="res://Scripts/States/state_machine.gd" id="2_tc3yw"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://Scripts/States/Player States/air_player_state.gd" id="4_qiulw"]
 [ext_resource type="Script" path="res://Scripts/States/Player States/walk_player_state.gd" id="5_ho5hy"]
 [ext_resource type="Script" path="res://Scripts/States/Player States/sprint_player_state.gd" id="6_1qnc2"]
+[ext_resource type="PackedScene" uid="uid://cj7xkscmie81y" path="res://Scenes/Weapons/shotgun.tscn" id="6_tnj4j"]
 [ext_resource type="Script" path="res://Scripts/States/Player States/crouch_player_state.gd" id="7_mjfqt"]
 [ext_resource type="Script" path="res://Scripts/States/Player States/slide_player_state.gd" id="8_uemic"]
 [ext_resource type="Theme" uid="uid://ctri33ojacyl0" path="res://UI/Themes/debug.tres" id="9_e1owm"]
@@ -17,6 +18,7 @@
 [ext_resource type="Script" path="res://Scripts/debug.gd" id="10_0shru"]
 [ext_resource type="Script" path="res://Scripts/UI/reticle.gd" id="12_vy6x5"]
 [ext_resource type="Script" path="res://Scripts/UI/prototype_ui.gd" id="14_m0gjv"]
+[ext_resource type="PackedScene" uid="uid://bu0mtrnvhonpt" path="res://Scenes/UI/settings_menu.tscn" id="18_wxgc6"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l214m"]
 
@@ -152,7 +154,7 @@ _data = {
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3r45p"]
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("head", "camera", "animation_player", "crouch_shape_cast")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("head", "camera", "animation_player", "crouch_shape_cast", "settings_menu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 collision_layer = 2
 script = ExtResource("1_4jpfc")
@@ -160,6 +162,7 @@ head = NodePath("Head")
 camera = NodePath("Head/Camera3D")
 animation_player = NodePath("AnimationPlayer")
 crouch_shape_cast = NodePath("ShapeCast3D")
+settings_menu = NodePath("UI/SettingsMenu")
 
 [node name="Damageable" parent="." instance=ExtResource("2_tcc00")]
 collision_layer = 2
@@ -190,6 +193,8 @@ script = ExtResource("3_dngkr")
 [node name="Rifle" parent="Head/Camera3D/WeaponManager" instance=ExtResource("3_ad34e")]
 
 [node name="Pistol" parent="Head/Camera3D/WeaponManager" instance=ExtResource("4_oi7c2")]
+
+[node name="Shotgun" parent="Head/Camera3D/WeaponManager" instance=ExtResource("6_tnj4j")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -361,5 +366,10 @@ text = "Press [P] to restart"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="SettingsMenu" parent="UI" instance=ExtResource("18_wxgc6")]
+visible = false
+layout_mode = 1
+
 [connection signal="update_ammo" from="Head/Camera3D/WeaponManager/Rifle" to="UI" method="on_update_ammo"]
 [connection signal="update_ammo" from="Head/Camera3D/WeaponManager/Pistol" to="UI" method="on_update_ammo"]
+[connection signal="update_ammo" from="Head/Camera3D/WeaponManager/Shotgun" to="UI" method="on_update_ammo"]

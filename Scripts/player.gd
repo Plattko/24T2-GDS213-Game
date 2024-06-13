@@ -42,15 +42,15 @@ var cur_health
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
-#@export_category("Settings Menu")
-var settings_menu : SettingsMenu
+@export_category("Settings Menu")
+@export var settings_menu : SettingsMenu
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
 	# Set global reference to camera in the Global script
 	Global.camera = camera
-  Global.player = self
+	Global.player = self
 	
 	handle_connecting_signals()
 	
