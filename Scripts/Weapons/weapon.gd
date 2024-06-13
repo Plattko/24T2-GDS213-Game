@@ -5,6 +5,7 @@ extends Node
 # Reference variables
 @onready var mesh = %Mesh
 @onready var anim_player = %AnimationPlayer
+@onready var muzzle_flash : MuzzleFlash = %MuzzleFlash
 
 var bullet_decal = preload("res://Scenes/bullet_decal.tscn")
 
@@ -35,6 +36,9 @@ func _ready():
 	cur_ammo = MAX_AMMO
 
 func shoot() -> void:
+	# Display the muzzle flash
+	muzzle_flash.add_muzzle_flash()
+	
 	anim_player.play(SHOOT_ANIM)
 	
 	cur_ammo -= AMMO_COST

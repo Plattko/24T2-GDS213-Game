@@ -1,17 +1,21 @@
-[gd_scene load_steps=15 format=3 uid="uid://d2x6finf6hnf4"]
+[gd_scene load_steps=16 format=3 uid="uid://cj7xkscmie81y"]
 
-[ext_resource type="Material" uid="uid://blq2tme80b4rk" path="res://Materials/Shader Materials/test_gun.tres" id="1_62wqy"]
-[ext_resource type="Script" path="res://Scripts/Weapons/pistol.gd" id="1_c6rr1"]
-[ext_resource type="Script" path="res://Scripts/Weapons/Components/muzzle_flash.gd" id="3_v10tm"]
-[ext_resource type="Material" uid="uid://un70lvxarnb0" path="res://Materials/Shader Materials/muzzle_flash_rifle_shader.tres" id="4_332v5"]
+[ext_resource type="Script" path="res://Scripts/Weapons/shotgun.gd" id="1_5vdia"]
+[ext_resource type="Material" uid="uid://blq2tme80b4rk" path="res://Materials/Shader Materials/test_gun.tres" id="2_8xkne"]
+[ext_resource type="Script" path="res://Scripts/Weapons/Components/muzzle_flash.gd" id="3_iw2pk"]
+[ext_resource type="Material" uid="uid://un70lvxarnb0" path="res://Materials/Shader Materials/muzzle_flash_rifle_shader.tres" id="4_gn0ue"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_duixa"]
-material = ExtResource("1_62wqy")
-size = Vector3(0.075, 0.1, 0.3)
+material = ExtResource("2_8xkne")
+size = Vector3(0.075, 0.1, 0.6)
 
 [sub_resource type="BoxMesh" id="BoxMesh_fa3hj"]
-material = ExtResource("1_62wqy")
-size = Vector3(0.075, 0.2, 0.075)
+material = ExtResource("2_8xkne")
+size = Vector3(0.075, 0.2, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gv1qs"]
+material = ExtResource("2_8xkne")
+size = Vector3(0.1, 0.05, 0.25)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yf2va"]
 angle_min = -73.0
@@ -22,8 +26,8 @@ initial_velocity_max = 0.75
 gravity = Vector3(0, 0, 0)
 
 [sub_resource type="QuadMesh" id="QuadMesh_64s8x"]
-material = ExtResource("4_332v5")
-size = Vector2(0.1, 0.1)
+material = ExtResource("4_gn0ue")
+size = Vector2(0.2, 0.2)
 
 [sub_resource type="Animation" id="Animation_3u4f5"]
 resource_name = "Equip"
@@ -104,6 +108,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Mesh/Pump:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.0547098, -0.0615319)]
+}
 
 [sub_resource type="Animation" id="Animation_5y7bq"]
 resource_name = "Reload"
@@ -123,7 +139,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_m1qid"]
 resource_name = "Shoot"
-length = 0.25
+length = 0.45
 step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -135,7 +151,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.01, 0.25),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.15), Vector3(0, 0, 0)]
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.1), Vector3(0, 0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -147,7 +163,19 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.01, 0.02, 0.25),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0.698132, 0, 0), Vector3(0, 0, 0)]
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0.174533, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Mesh/Pump:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.35, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -0.0547098, -0.0615319), Vector3(0, -0.0547098, -0.0615319), Vector3(0, -0.055, 0), Vector3(0, -0.0547098, -0.0615319)]
 }
 
 [sub_resource type="Animation" id="Animation_y1hr3"]
@@ -188,27 +216,34 @@ _data = {
 "Unequip": SubResource("Animation_y1hr3")
 }
 
-[node name="Pistol" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.46, -0.185, -0.457)
-script = ExtResource("1_c6rr1")
-BULLET_DAMAGE = 20.0
-MAX_AMMO = 8
-is_auto_fire = false
+[node name="Shotgun" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.356, -0.185, -0.504)
+script = ExtResource("1_5vdia")
+bullet_count = 12
+bullet_spread = 50
+BULLET_DAMAGE = 6.0
+MAX_AMMO = 6
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.857327, 0, 0, 0)
 mesh = SubResource("BoxMesh_duixa")
 
 [node name="Handle" type="MeshInstance3D" parent="Mesh"]
-transform = Transform3D(1, 0, 0, 0, 0.990112, 0.140279, 0, -0.140279, 0.990112, 0, -0.0543983, 0.126794)
+transform = Transform3D(1, 0, 0, 0, 0.390828, 0.920464, 0, -0.920464, 0.390828, 0, -0.0422441, 0.327247)
 mesh = SubResource("BoxMesh_fa3hj")
 
+[node name="Pump" type="MeshInstance3D" parent="Mesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0547098, -0.0615319)
+mesh = SubResource("BoxMesh_gv1qs")
+
 [node name="Barrel" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.15)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.257198)
 
 [node name="MuzzleFlash" type="Node3D" parent="Barrel" node_paths=PackedStringArray("light", "emitter")]
 unique_name_in_owner = true
-script = ExtResource("3_v10tm")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.05)
+script = ExtResource("3_iw2pk")
 light = NodePath("OmniLight3D")
 emitter = NodePath("GPUParticles3D")
 

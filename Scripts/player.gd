@@ -22,7 +22,7 @@ var camera_rotation : Vector3
 const MIN_CAMERA_TILT := deg_to_rad(-90)
 const MAX_CAMERA_TILT := deg_to_rad(90)
 
-const SENSITIVITY := 0.25
+var sensitivity := 0.25
 
 # Head bob variables
 const BOB_FREQ := 2.0
@@ -42,11 +42,17 @@ var cur_health
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+#@export_category("Settings Menu")
+var settings_menu : SettingsMenu
+
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
 	# Set global reference to camera in the Global script
 	Global.camera = camera
+  Global.player = self
+	
+	handle_connecting_signals()
 	
 	cur_health = max_health
 	
@@ -56,14 +62,20 @@ func _ready():
 			child.damaged.connect(on_damaged)
 
 func _input(event):
+	if event.is_action_pressed("settings_menu"):
+		if not settings_menu.visible:
+			open_settings_menu()
+		else:
+			on_exit_settings_menu()
+	
 	# Handle quit
 	if event.is_action_pressed("quit"):
 		get_tree().quit()
 
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
-		rotation_input = -event.relative.x * SENSITIVITY
-		tilt_input = -event.relative.y * SENSITIVITY
+		rotation_input = -event.relative.x * sensitivity
+		tilt_input = -event.relative.y * sensitivity
 
 func _process(delta):
 	# Handle camera movement
@@ -140,4 +152,16 @@ func on_damaged(damage: float):
 	cur_health -= damage
 	print("Player health: " + str(cur_health))
 
+func handle_connecting_signals() -> void:
+	settings_menu.exit_settings_menu.connect(on_exit_settings_menu)
 
+func open_settings_menu() -> void:
+	settings_menu.visible = true
+	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
+	settings_menu.set_process(true)
+
+func on_exit_settings_menu() -> void:
+	settings_menu.visible = false
+	Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	settings_menu.set_process(false)
