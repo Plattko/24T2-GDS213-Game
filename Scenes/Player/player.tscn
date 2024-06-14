@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://brc2h44edbj5a"]
+[gd_scene load_steps=27 format=3 uid="uid://brc2h44edbj5a"]
 
 [ext_resource type="Script" path="res://Scripts/Player/player.gd" id="1_4jpfc"]
 [ext_resource type="Script" path="res://Scripts/States/state_machine.gd" id="2_tc3yw"]
@@ -17,7 +17,6 @@
 [ext_resource type="Script" path="res://Scripts/UI/hud.gd" id="10_0lavf"]
 [ext_resource type="Script" path="res://Scripts/UI/debug.gd" id="10_0shru"]
 [ext_resource type="Script" path="res://Scripts/UI/reticle.gd" id="12_vy6x5"]
-[ext_resource type="Script" path="res://Scripts/UI/prototype_ui.gd" id="14_m0gjv"]
 [ext_resource type="PackedScene" uid="uid://bu0mtrnvhonpt" path="res://Scenes/UI/settings_menu.tscn" id="18_wxgc6"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l214m"]
@@ -28,12 +27,14 @@
 albedo_color = Color(0, 0.654902, 0.894118, 1)
 roughness = 0.5
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_3r45p"]
+
 [sub_resource type="Animation" id="Animation_twumr"]
 resource_name = "Crouch"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CollisionShape3D:shape:height")
+tracks/0/path = NodePath("CollisionShape:shape:height")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -45,7 +46,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CollisionShape3D:position")
+tracks/1/path = NodePath("CollisionShape:position")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -72,7 +73,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CollisionShape3D:shape:height")
+tracks/0/path = NodePath("CollisionShape:shape:height")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -84,7 +85,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CollisionShape3D:position")
+tracks/1/path = NodePath("CollisionShape:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -111,7 +112,7 @@ resource_name = "Slide"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CollisionShape3D:shape:height")
+tracks/0/path = NodePath("CollisionShape:shape:height")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -123,7 +124,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CollisionShape3D:position")
+tracks/1/path = NodePath("CollisionShape:position")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -152,8 +153,6 @@ _data = {
 "Slide": SubResource("Animation_eqx5m")
 }
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_3r45p"]
-
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("head", "camera", "animation_player", "crouch_shape_cast", "settings_menu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 collision_layer = 2
@@ -161,21 +160,27 @@ script = ExtResource("1_4jpfc")
 head = NodePath("Head")
 camera = NodePath("Head/Camera3D")
 animation_player = NodePath("AnimationPlayer")
-crouch_shape_cast = NodePath("ShapeCast3D")
+crouch_shape_cast = NodePath("CeilingCheck")
 settings_menu = NodePath("UI/SettingsMenu")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_l214m")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_ge1xk")
+surface_material_override/0 = SubResource("StandardMaterial3D_fvek4")
+
+[node name="CeilingCheck" type="ShapeCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("SphereShape3D_3r45p")
+target_position = Vector3(0, 0.5, 0)
+debug_shape_custom_color = Color(0, 0.901961, 0, 1)
 
 [node name="Damageable" parent="." instance=ExtResource("2_tcc00")]
 collision_layer = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Damageable"]
+[node name="DamageableShape" type="CollisionShape3D" parent="Damageable"]
 shape = SubResource("CapsuleShape3D_l214m")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("CapsuleShape3D_l214m")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("CapsuleMesh_ge1xk")
-surface_material_override/0 = SubResource("StandardMaterial3D_fvek4")
 
 [node name="Head" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
@@ -201,12 +206,6 @@ libraries = {
 "": SubResource("AnimationLibrary_456lr")
 }
 
-[node name="ShapeCast3D" type="ShapeCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-shape = SubResource("SphereShape3D_3r45p")
-target_position = Vector3(0, 0.5, 0)
-debug_shape_custom_color = Color(0, 0.901961, 0, 1)
-
 [node name="PlayerStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_tc3yw")
 initial_state = NodePath("IdlePlayerState")
@@ -229,8 +228,17 @@ script = ExtResource("7_mjfqt")
 [node name="SlidePlayerState" type="Node" parent="PlayerStateMachine"]
 script = ExtResource("8_uemic")
 
-[node name="UI" type="Control" parent="." node_paths=PackedStringArray("current_ammo_label")]
+[node name="UI" type="Control" parent="."]
 layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="HUD" type="Control" parent="UI" node_paths=PackedStringArray("current_ammo_label")]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -240,7 +248,7 @@ mouse_filter = 1
 script = ExtResource("10_0lavf")
 current_ammo_label = NodePath("MarginContainer/Ammo")
 
-[node name="Reticle" type="CenterContainer" parent="UI"]
+[node name="Reticle" type="CenterContainer" parent="UI/HUD"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -250,6 +258,25 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("12_vy6x5")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/HUD"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="Ammo" type="Label" parent="UI/HUD/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 48
+text = "Ammo: 24/24"
+horizontal_alignment = 2
+vertical_alignment = 2
 
 [node name="DebugPanel" type="PanelContainer" parent="UI" node_paths=PackedStringArray("property_container")]
 custom_minimum_size = Vector2(200, 0)
@@ -268,108 +295,10 @@ layout_mode = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/DebugPanel/MarginContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="UI"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -200.0
-offset_top = -43.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_right = 10
-
-[node name="Ammo" type="Label" parent="UI/MarginContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 48
-text = "Ammo: 24/24"
-horizontal_alignment = 2
-vertical_alignment = 2
-
-[node name="PrototypeUI" type="MarginContainer" parent="UI" node_paths=PackedStringArray("progress_text", "win_text", "time_text", "reticle", "ammo", "instruction_text")]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 40.0
-grow_horizontal = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-script = ExtResource("14_m0gjv")
-progress_text = NodePath("VBoxContainer/CenterContainer/ProgressText")
-win_text = NodePath("../CenterContainer/WinTextVBox")
-time_text = NodePath("../CenterContainer/WinTextVBox/TimeText")
-reticle = NodePath("../Reticle")
-ammo = NodePath("../MarginContainer")
-instruction_text = NodePath("VBoxContainer/InstructionText")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/PrototypeUI"]
-layout_mode = 2
-
-[node name="InstructionText" type="Label" parent="UI/PrototypeUI/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Destroy all the orbs to win!"
-
-[node name="CenterContainer" type="CenterContainer" parent="UI/PrototypeUI/VBoxContainer"]
-layout_mode = 2
-
-[node name="ProgressText" type="Label" parent="UI/PrototypeUI/VBoxContainer/CenterContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Progress: 0/n"
-
-[node name="CenterContainer" type="CenterContainer" parent="UI"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="WinTextVBox" type="VBoxContainer" parent="UI/CenterContainer"]
-visible = false
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="WinText" type="Label" parent="UI/CenterContainer/WinTextVBox"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "You win!"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="TimeText" type="Label" parent="UI/CenterContainer/WinTextVBox"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 24
-text = "Time: 00:00:00"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="RestartText" type="Label" parent="UI/CenterContainer/WinTextVBox"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 24
-text = "Press [P] to restart"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="SettingsMenu" parent="UI" instance=ExtResource("18_wxgc6")]
 visible = false
 layout_mode = 1
 
-[connection signal="update_ammo" from="Head/Camera3D/WeaponManager/Rifle" to="UI" method="on_update_ammo"]
-[connection signal="update_ammo" from="Head/Camera3D/WeaponManager/Pistol" to="UI" method="on_update_ammo"]
-[connection signal="update_ammo" from="Head/Camera3D/WeaponManager/Shotgun" to="UI" method="on_update_ammo"]
+[connection signal="update_ammo" from="Head/Camera3D/WeaponManager/Rifle" to="UI/HUD" method="on_update_ammo"]
+[connection signal="update_ammo" from="Head/Camera3D/WeaponManager/Pistol" to="UI/HUD" method="on_update_ammo"]
+[connection signal="update_ammo" from="Head/Camera3D/WeaponManager/Shotgun" to="UI/HUD" method="on_update_ammo"]

@@ -1,19 +1,24 @@
-[gd_scene load_steps=23 format=3 uid="uid://curev3xlll2ee"]
+[gd_scene load_steps=28 format=3 uid="uid://c0ovq54n5abgu"]
 
-[ext_resource type="Script" path="res://Scripts/Player/player.gd" id="1_78tpm"]
-[ext_resource type="PackedScene" uid="uid://dlwblryspggnx" path="res://Scenes/Weapons/Test/test_gun.tscn" id="2_nk5it"]
-[ext_resource type="Script" path="res://Scripts/States/state_machine.gd" id="4_wnvqp"]
-[ext_resource type="Script" path="res://Scripts/States/Player States/idle_player_state.gd" id="5_ikexh"]
-[ext_resource type="Script" path="res://Scripts/States/Player States/air_player_state.gd" id="6_27xor"]
-[ext_resource type="Script" path="res://Scripts/States/Player States/walk_player_state.gd" id="7_53315"]
-[ext_resource type="Script" path="res://Scripts/States/Player States/sprint_player_state.gd" id="8_uluhx"]
-[ext_resource type="Script" path="res://Scripts/States/Player States/crouch_player_state.gd" id="9_h4twq"]
-[ext_resource type="Script" path="res://Scripts/States/Player States/slide_player_state.gd" id="10_dkcq8"]
-[ext_resource type="Script" path="res://Scripts/UI/hud.gd" id="11_ftra8"]
-[ext_resource type="Script" path="res://Scripts/UI/reticle.gd" id="12_6dqlp"]
-[ext_resource type="Theme" uid="uid://ctri33ojacyl0" path="res://UI/Themes/debug.tres" id="13_wmijp"]
-[ext_resource type="Script" path="res://Scripts/UI/debug.gd" id="14_6nj4t"]
-[ext_resource type="Script" path="res://Scripts/UI/prototype_ui.gd" id="15_1rx1s"]
+[ext_resource type="Script" path="res://Scripts/Player/player.gd" id="1_pokhf"]
+[ext_resource type="PackedScene" uid="uid://caqpeyq7g56bn" path="res://Scenes/damageable.tscn" id="2_ukiep"]
+[ext_resource type="Script" path="res://Scripts/Weapons/weapon_manager.gd" id="3_u12kv"]
+[ext_resource type="PackedScene" uid="uid://dqexibtsgatqp" path="res://Scenes/Weapons/rifle.tscn" id="4_yemhs"]
+[ext_resource type="PackedScene" uid="uid://d2x6finf6hnf4" path="res://Scenes/Weapons/pistol.tscn" id="5_cbeu3"]
+[ext_resource type="PackedScene" uid="uid://cj7xkscmie81y" path="res://Scenes/Weapons/shotgun.tscn" id="6_mvdqy"]
+[ext_resource type="Script" path="res://Scripts/States/state_machine.gd" id="7_ivpyu"]
+[ext_resource type="Script" path="res://Scripts/States/Player States/idle_player_state.gd" id="8_5rlxp"]
+[ext_resource type="Script" path="res://Scripts/States/Player States/air_player_state.gd" id="9_x7n31"]
+[ext_resource type="Script" path="res://Scripts/States/Player States/walk_player_state.gd" id="10_ixdpo"]
+[ext_resource type="Script" path="res://Scripts/States/Player States/sprint_player_state.gd" id="11_4k7is"]
+[ext_resource type="Script" path="res://Scripts/States/Player States/crouch_player_state.gd" id="12_kmnlv"]
+[ext_resource type="Script" path="res://Scripts/States/Player States/slide_player_state.gd" id="13_vqu4k"]
+[ext_resource type="Script" path="res://Scripts/UI/hud.gd" id="14_o3wx0"]
+[ext_resource type="Script" path="res://Scripts/UI/reticle.gd" id="15_v6sae"]
+[ext_resource type="Theme" uid="uid://ctri33ojacyl0" path="res://UI/Themes/debug.tres" id="16_i6gur"]
+[ext_resource type="Script" path="res://Scripts/UI/debug.gd" id="17_yyltc"]
+[ext_resource type="PackedScene" uid="uid://bu0mtrnvhonpt" path="res://Scenes/UI/settings_menu.tscn" id="18_jlbtx"]
+[ext_resource type="Script" path="res://Scripts/UI/prototype_ui.gd" id="19_b6q27"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l214m"]
 
@@ -149,14 +154,21 @@ _data = {
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3r45p"]
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("head", "camera", "animation_player", "crouch_shape_cast")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("head", "camera", "animation_player", "crouch_shape_cast", "settings_menu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 collision_layer = 2
-script = ExtResource("1_78tpm")
+script = ExtResource("1_pokhf")
 head = NodePath("Head")
 camera = NodePath("Head/Camera3D")
 animation_player = NodePath("AnimationPlayer")
 crouch_shape_cast = NodePath("ShapeCast3D")
+settings_menu = NodePath("UI/SettingsMenu")
+
+[node name="Damageable" parent="." instance=ExtResource("2_ukiep")]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Damageable"]
+shape = SubResource("CapsuleShape3D_l214m")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_l214m")
@@ -175,7 +187,14 @@ fov = 90.0
 visible = false
 update_mode = 1
 
-[node name="Test_Gun" parent="Head/Camera3D" instance=ExtResource("2_nk5it")]
+[node name="WeaponManager" type="Node3D" parent="Head/Camera3D"]
+script = ExtResource("3_u12kv")
+
+[node name="Rifle" parent="Head/Camera3D/WeaponManager" instance=ExtResource("4_yemhs")]
+
+[node name="Pistol" parent="Head/Camera3D/WeaponManager" instance=ExtResource("5_cbeu3")]
+
+[node name="Shotgun" parent="Head/Camera3D/WeaponManager" instance=ExtResource("6_mvdqy")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -189,28 +208,28 @@ target_position = Vector3(0, 0.5, 0)
 debug_shape_custom_color = Color(0, 0.901961, 0, 1)
 
 [node name="PlayerStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
-script = ExtResource("4_wnvqp")
+script = ExtResource("7_ivpyu")
 initial_state = NodePath("IdlePlayerState")
 
 [node name="IdlePlayerState" type="Node" parent="PlayerStateMachine"]
-script = ExtResource("5_ikexh")
+script = ExtResource("8_5rlxp")
 
 [node name="AirPlayerState" type="Node" parent="PlayerStateMachine"]
-script = ExtResource("6_27xor")
+script = ExtResource("9_x7n31")
 
 [node name="WalkPlayerState" type="Node" parent="PlayerStateMachine"]
-script = ExtResource("7_53315")
+script = ExtResource("10_ixdpo")
 
 [node name="SprintPlayerState" type="Node" parent="PlayerStateMachine"]
-script = ExtResource("8_uluhx")
+script = ExtResource("11_4k7is")
 
 [node name="CrouchPlayerState" type="Node" parent="PlayerStateMachine"]
-script = ExtResource("9_h4twq")
+script = ExtResource("12_kmnlv")
 
 [node name="SlidePlayerState" type="Node" parent="PlayerStateMachine"]
-script = ExtResource("10_dkcq8")
+script = ExtResource("13_vqu4k")
 
-[node name="UI" type="Control" parent="." node_paths=PackedStringArray("current_ammo_label")]
+[node name="UI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -218,10 +237,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
-script = ExtResource("11_ftra8")
+
+[node name="HUD" type="Control" parent="UI" node_paths=PackedStringArray("current_ammo_label")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("14_o3wx0")
 current_ammo_label = NodePath("MarginContainer/Ammo")
 
-[node name="Reticle" type="CenterContainer" parent="UI"]
+[node name="Reticle" type="CenterContainer" parent="UI/HUD"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -230,7 +257,26 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("12_6dqlp")
+script = ExtResource("15_v6sae")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/HUD"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="Ammo" type="Label" parent="UI/HUD/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 48
+text = "Ammo: 24/24"
+horizontal_alignment = 2
+vertical_alignment = 2
 
 [node name="DebugPanel" type="PanelContainer" parent="UI" node_paths=PackedStringArray("property_container")]
 custom_minimum_size = Vector2(200, 0)
@@ -239,8 +285,8 @@ offset_left = 10.0
 offset_top = 10.0
 offset_right = 210.0
 offset_bottom = 50.0
-theme = ExtResource("13_wmijp")
-script = ExtResource("14_6nj4t")
+theme = ExtResource("16_i6gur")
+script = ExtResource("17_yyltc")
 property_container = NodePath("MarginContainer/VBoxContainer")
 
 [node name="MarginContainer" type="MarginContainer" parent="UI/DebugPanel"]
@@ -249,26 +295,9 @@ layout_mode = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/DebugPanel/MarginContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="UI"]
+[node name="SettingsMenu" parent="UI" instance=ExtResource("18_jlbtx")]
+visible = false
 layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -200.0
-offset_top = -43.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_right = 10
-
-[node name="Ammo" type="Label" parent="UI/MarginContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 48
-text = "Ammo: 24/24"
-horizontal_alignment = 2
-vertical_alignment = 2
 
 [node name="PrototypeUI" type="MarginContainer" parent="UI" node_paths=PackedStringArray("progress_text", "win_text", "time_text", "reticle", "ammo", "instruction_text")]
 layout_mode = 1
@@ -283,12 +312,12 @@ theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
-script = ExtResource("15_1rx1s")
+script = ExtResource("19_b6q27")
 progress_text = NodePath("VBoxContainer/CenterContainer/ProgressText")
 win_text = NodePath("../CenterContainer/WinTextVBox")
 time_text = NodePath("../CenterContainer/WinTextVBox/TimeText")
-reticle = NodePath("../Reticle")
-ammo = NodePath("../MarginContainer")
+reticle = NodePath("../HUD/Reticle")
+ammo = NodePath("../HUD/MarginContainer")
 instruction_text = NodePath("VBoxContainer/InstructionText")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/PrototypeUI"]
@@ -346,3 +375,7 @@ theme_override_font_sizes/font_size = 24
 text = "Press [P] to restart"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="update_ammo" from="Head/Camera3D/WeaponManager/Rifle" to="UI/HUD" method="on_update_ammo"]
+[connection signal="update_ammo" from="Head/Camera3D/WeaponManager/Pistol" to="UI/HUD" method="on_update_ammo"]
+[connection signal="update_ammo" from="Head/Camera3D/WeaponManager/Shotgun" to="UI/HUD" method="on_update_ammo"]

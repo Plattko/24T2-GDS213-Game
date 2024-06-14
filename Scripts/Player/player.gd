@@ -145,7 +145,7 @@ func stand_up(current_state, anim_speed : float, is_repeating_check : bool):
 		if animation_player.is_playing():
 			await animation_player.animation_finished
 	# If there is something blocking the way, try to uncrouch again in 0.1 seconds
-	elif crouch_shape_cast.is_colliding() == true:
+	elif crouch_shape_cast.is_colliding() == true and is_repeating_check:
 		await get_tree().create_timer(0.1).timeout
 		stand_up(current_state, anim_speed, true)
 
