@@ -18,7 +18,6 @@ signal enemy_defeated
 func _ready():
 	cur_health = max_health
 	speed = randf_range(min_speed, max_speed)
-	print("Enemy Speed: " + str(speed))
 	
 	for child in get_children():
 		if child is Damageable:
