@@ -194,6 +194,7 @@ visible = false
 update_mode = 1
 
 [node name="WeaponManager" type="Node3D" parent="Head/Camera3D"]
+unique_name_in_owner = true
 script = ExtResource("3_dngkr")
 
 [node name="Rifle" parent="Head/Camera3D/WeaponManager" instance=ExtResource("3_ad34e")]

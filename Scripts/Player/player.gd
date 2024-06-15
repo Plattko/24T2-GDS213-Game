@@ -9,6 +9,7 @@ extends CharacterBody3D
 
 @onready var input = %Input
 @onready var state_machine = %PlayerStateMachine
+@onready var weapon_manager = %WeaponManager
 @onready var settings_menu = %SettingsMenu
 
 var direction
@@ -54,6 +55,7 @@ func _ready():
 	# Provide references to self and components
 	input.player = self
 	state_machine.initialise(self, input)
+	weapon_manager.initialise(input)
 	Global.camera = camera
 	Global.player = self
 	
