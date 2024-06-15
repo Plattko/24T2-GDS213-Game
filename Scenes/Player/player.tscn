@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://brc2h44edbj5a"]
+[gd_scene load_steps=28 format=3 uid="uid://brc2h44edbj5a"]
 
 [ext_resource type="Script" path="res://Scripts/Player/player.gd" id="1_4jpfc"]
 [ext_resource type="Script" path="res://Scripts/States/state_machine.gd" id="2_tc3yw"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" path="res://Scripts/UI/hud.gd" id="10_0lavf"]
 [ext_resource type="Script" path="res://Scripts/UI/debug.gd" id="10_0shru"]
 [ext_resource type="Script" path="res://Scripts/UI/reticle.gd" id="12_vy6x5"]
+[ext_resource type="Script" path="res://Scripts/UI/ui_manager.gd" id="14_7y8rs"]
 [ext_resource type="PackedScene" uid="uid://bu0mtrnvhonpt" path="res://Scenes/UI/settings_menu.tscn" id="18_wxgc6"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l214m"]
@@ -153,7 +154,7 @@ _data = {
 "Slide": SubResource("Animation_eqx5m")
 }
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("head", "camera", "animation_player", "crouch_shape_cast", "settings_menu")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("head", "camera", "animation_player", "crouch_shape_cast")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 collision_layer = 2
 script = ExtResource("1_4jpfc")
@@ -161,7 +162,6 @@ head = NodePath("Head")
 camera = NodePath("Head/Camera3D")
 animation_player = NodePath("AnimationPlayer")
 crouch_shape_cast = NodePath("CeilingCheck")
-settings_menu = NodePath("UI/SettingsMenu")
 
 [node name="CollisionShape" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_l214m")
@@ -236,6 +236,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
+script = ExtResource("14_7y8rs")
 
 [node name="HUD" type="Control" parent="UI" node_paths=PackedStringArray("current_ammo_label")]
 layout_mode = 1
@@ -296,6 +297,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="SettingsMenu" parent="UI" instance=ExtResource("18_wxgc6")]
+unique_name_in_owner = true
 visible = false
 layout_mode = 1
 

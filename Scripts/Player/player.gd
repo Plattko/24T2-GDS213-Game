@@ -7,6 +7,8 @@ extends CharacterBody3D
 @export var animation_player : AnimationPlayer
 @export var crouch_shape_cast : ShapeCast3D
 
+@onready var settings_menu = %SettingsMenu
+
 var direction
 const SPRINT_SPEED := 8.0
 const JUMP_VELOCITY := 8.0
@@ -42,32 +44,18 @@ var cur_health
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
-@export_category("Settings Menu")
-@export var settings_menu : SettingsMenu
-
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	
+	handle_connected_signals()
 	
 	# Set global reference to camera in the Global script
 	Global.camera = camera
 	Global.player = self
 	
-	handle_connecting_signals()
-	
 	cur_health = max_health
-	
-	for child in get_children():
-		if child is Damageable:
-			# Connect each damageable to the damaged signal
-			child.damaged.connect(on_damaged)
 
 func _input(event):
-	if event.is_action_pressed("settings_menu"):
-		if not settings_menu.visible:
-			open_settings_menu()
-		else:
-			on_exit_settings_menu()
-	
 	# Handle quit
 	if event.is_action_pressed("quit"):
 		get_tree().quit()
@@ -153,16 +141,17 @@ func on_damaged(damage: float):
 	cur_health -= damage
 	print("Player health: " + str(cur_health))
 
-func handle_connecting_signals() -> void:
-	settings_menu.exit_settings_menu.connect(on_exit_settings_menu)
+func handle_connected_signals() -> void:
+	for child in get_children():
+		if child is Damageable:
+			# Connect each damageable to the damaged signal
+			child.damaged.connect(on_damaged)
+	
+	settings_menu.opened_settings_menu.connect(disable_input)
+	settings_menu.closed_settings_menu.connect(enable_input)
 
-func open_settings_menu() -> void:
-	settings_menu.visible = true
-	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
-	settings_menu.set_process(true)
+func disable_input() -> void:
+	print("Disabled Player input.")
 
-func on_exit_settings_menu() -> void:
-	settings_menu.visible = false
-	Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	settings_menu.set_process(false)
+func enable_input() -> void:
+	print("Enabled Player input.")

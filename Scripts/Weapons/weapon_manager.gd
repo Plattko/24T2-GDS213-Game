@@ -2,11 +2,15 @@ class_name WeaponManager
 
 extends Node3D
 
+@onready var settings_menu = %SettingsMenu
+
 var current_weapon : Weapon
 
 var weapons : Array[Weapon]
 
 func _ready() -> void:
+	handle_connected_signals()
+	
 	for child in get_children():
 		if child is Weapon:
 			weapons.append(child)
@@ -57,3 +61,12 @@ func change_weapon(next_weapon: Weapon) -> void:
 		next_weapon.anim_player.play(next_weapon.EQUIP_ANIM)
 		current_weapon = next_weapon
 
+func handle_connected_signals() -> void:
+	settings_menu.opened_settings_menu.connect(disable_input)
+	settings_menu.closed_settings_menu.connect(enable_input)
+
+func disable_input() -> void:
+	print("Disabled Weapon Manager input.")
+
+func enable_input() -> void:
+	print("Enabled Weapon Manager input.")
