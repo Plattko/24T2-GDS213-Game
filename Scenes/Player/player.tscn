@@ -164,6 +164,10 @@ camera = NodePath("Head/Camera3D")
 animation_player = NodePath("AnimationPlayer")
 crouch_shape_cast = NodePath("CeilingCheck")
 
+[node name="Input" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("20_hcigh")
+
 [node name="CollisionShape" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_l214m")
 
@@ -241,7 +245,7 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("14_7y8rs")
 
-[node name="HUD" type="Control" parent="UI" node_paths=PackedStringArray("current_ammo_label")]
+[node name="HUD" type="Control" parent="UI" node_paths=PackedStringArray("health_label", "current_ammo_label")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -250,6 +254,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("10_0lavf")
+health_label = NodePath("MarginContainer/Health")
 current_ammo_label = NodePath("MarginContainer/Ammo")
 
 [node name="Reticle" type="CenterContainer" parent="UI/HUD"]
@@ -272,6 +277,15 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_right = 10
+
+[node name="Health" type="Label" parent="UI/HUD/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 48
+text = "Health: 100/100"
+horizontal_alignment = 2
+vertical_alignment = 2
 
 [node name="Ammo" type="Label" parent="UI/HUD/MarginContainer"]
 layout_mode = 2
@@ -304,10 +318,7 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 1
 
-[node name="Input" type="Node" parent="."]
-unique_name_in_owner = true
-script = ExtResource("20_hcigh")
-
+[connection signal="update_health" from="." to="UI/HUD" method="on_update_health"]
 [connection signal="update_ammo" from="Head/Camera3D/WeaponManager/Rifle" to="UI/HUD" method="on_update_ammo"]
 [connection signal="update_ammo" from="Head/Camera3D/WeaponManager/Pistol" to="UI/HUD" method="on_update_ammo"]
 [connection signal="update_ammo" from="Head/Camera3D/WeaponManager/Shotgun" to="UI/HUD" method="on_update_ammo"]

@@ -42,9 +42,12 @@ const FOV_CHANGE := 1.5
 # Health vars
 var max_health := 100
 var cur_health
+var is_dead : bool = false
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+
+signal update_health
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -59,6 +62,7 @@ func _ready():
 	Global.player = self
 	
 	cur_health = max_health
+	update_health.emit([cur_health, max_health])
 
 func _input(event):
 	# Handle quit
@@ -92,7 +96,9 @@ func _physics_process(delta):
 	# Debug
 	Global.debug.add_debug_property("Move Speed", snappedf(velocity.length(), 0.01), 2)
 	
-	if cur_health <= 0:
+	if cur_health <= 0 and not is_dead:
+		is_dead = true
+		await get_tree().create_timer(1.0).timeout
 		get_tree().reload_current_scene()
 
 func update_camera(delta):
@@ -138,8 +144,10 @@ func stand_up(current_state, anim_speed : float, is_repeating_check : bool):
 		stand_up(current_state, anim_speed, true)
 
 func on_damaged(damage: float):
-	cur_health -= damage
-	print("Player health: " + str(cur_health))
+	if cur_health > 0.0:
+		cur_health -= damage
+		update_health.emit([cur_health, max_health])
+		print("Player health: " + str(cur_health))
 
 func handle_connected_signals() -> void:
 	for child in get_children():
