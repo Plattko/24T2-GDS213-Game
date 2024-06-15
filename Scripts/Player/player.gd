@@ -7,7 +7,9 @@ extends CharacterBody3D
 @export var animation_player : AnimationPlayer
 @export var crouch_shape_cast : ShapeCast3D
 
-@onready var settings_menu = %SettingsMenu
+@onready var input = %Input
+@onready var state_machine = %PlayerStateMachine
+@onready var weapon_manager = %WeaponManager
 
 var direction
 const SPRINT_SPEED := 8.0
@@ -49,7 +51,10 @@ func _ready():
 	
 	handle_connected_signals()
 	
-	# Set global reference to camera in the Global script
+	# Provide references to self and components
+	input.player = self
+	state_machine.initialise(self, input)
+	weapon_manager.initialise(input)
 	Global.camera = camera
 	Global.player = self
 	
@@ -61,7 +66,7 @@ func _input(event):
 		get_tree().quit()
 
 func _unhandled_input(event):
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion and input.can_look: # TODO Move check to PlayerInput if possible
 		rotation_input = -event.relative.x * sensitivity
 		tilt_input = -event.relative.y * sensitivity
 
@@ -70,11 +75,6 @@ func _process(delta):
 	update_camera(delta)
 
 func _physics_process(delta):
-	
-	## Handle jump
-	#if Input.is_action_just_pressed("jump") and is_on_floor():
-		#velocity.y = JUMP_VELOCITY
-	
 	# Get input direction
 	var input_dir = Input.get_vector("move_left", "move_right", "move_forwards", "move_backwards")
 	direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
@@ -146,12 +146,3 @@ func handle_connected_signals() -> void:
 		if child is Damageable:
 			# Connect each damageable to the damaged signal
 			child.damaged.connect(on_damaged)
-	
-	settings_menu.opened_settings_menu.connect(disable_input)
-	settings_menu.closed_settings_menu.connect(enable_input)
-
-func disable_input() -> void:
-	print("Disabled Player input.")
-
-func enable_input() -> void:
-	print("Enabled Player input.")

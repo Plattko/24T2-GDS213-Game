@@ -21,8 +21,8 @@ func exit():
 
 func physics_update(delta) -> void:
 	# Handle movement
-	player.velocity.x = player.direction.x * WALK_SPEED
-	player.velocity.z = player.direction.z * WALK_SPEED
+	player.velocity.x = input.get_direction().x * WALK_SPEED
+	player.velocity.z = input.get_direction().z * WALK_SPEED
 	player.move_and_slide()
 	
 	# Transition to Air state
@@ -30,13 +30,13 @@ func physics_update(delta) -> void:
 		player.stand_up("CrouchPlayerState", CROUCH_ANIM_SPEED, true)
 		transition.emit("AirPlayerState")
 	# Transition to Air state with jump
-	elif Input.is_action_just_pressed("jump") and player.crouch_shape_cast.is_colliding() == false:
+	elif input.is_jump_just_pressed() and player.crouch_shape_cast.is_colliding() == false:
 		player.stand_up("CrouchPlayerState", CROUCH_ANIM_SPEED, true)
 		transition.emit("AirPlayerState", {"do_jump" = true})
 	# Handle releasing crouch
-	elif Input.is_action_just_released("crouch"):
+	elif input.is_crouch_just_released():
 		uncrouch()
-	elif !Input.is_action_pressed("crouch") and !is_crouch_released:
+	elif !input.is_crouch_pressed() and !is_crouch_released:
 		uncrouch()
 
 func uncrouch() -> void:
@@ -49,13 +49,13 @@ func uncrouch() -> void:
 			await player.animation_player.animation_finished
 		
 		# Transition to Idle state
-		if !player.direction:
+		if !input.get_direction():
 			transition.emit("IdlePlayerState")
 			# Transition to Walk state
-		elif player.direction and !Input.is_action_pressed("sprint"):
+		elif input.get_direction() and !input.is_sprint_pressed():
 			transition.emit("WalkPlayerState")
 		# Transition to Sprint state
-		elif player.direction and Input.is_action_pressed("sprint"):
+		elif input.get_direction() and input.is_sprint_pressed():
 			transition.emit("SprintPlayerState")
 	
 	# If there is something blocking the way, try to uncrouch again in 0.1 seconds

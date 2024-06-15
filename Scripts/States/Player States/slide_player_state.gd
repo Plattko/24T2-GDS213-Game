@@ -18,7 +18,7 @@ func enter(previous_state, msg : Dictionary = {}):
 	print("Entered Slide player state.")
 	# Set the slide direction to the direction the player is looking
 	#slide_direction = -player.transform.basis.z
-	slide_direction = player.direction
+	slide_direction = input.get_direction()
 	# Play the crouch animation
 	player.animation_player.play("Slide", -1, SLIDE_ANIM_SPEED)
 	# Disable head bob
@@ -45,7 +45,7 @@ func physics_update(delta):
 			player.stand_up("SlidePlayerState", SLIDE_ANIM_SPEED, true)
 			transition.emit("AirPlayerState")
 		# Handle jump
-		elif Input.is_action_just_pressed("jump"): 
+		elif input.is_jump_just_pressed(): 
 			# If above the player is unobstructed, transition to Air state with jump
 			if player.crouch_shape_cast.is_colliding() == false:
 				player.stand_up("SlidePlayerState", SLIDE_ANIM_SPEED, true)
@@ -55,18 +55,18 @@ func physics_update(delta):
 				transition.emit("CrouchPlayerState")
 	else:
 		# Transition to Crouch state
-		if Input.is_action_pressed("crouch") or player.crouch_shape_cast.is_colliding() == true:
+		if input.is_crouch_pressed() or player.crouch_shape_cast.is_colliding() == true:
 			transition.emit("CrouchPlayerState")
 		# Transition to Idle state
-		elif !player.direction:
+		elif !input.get_direction():
 			player.stand_up("SlidePlayerState", SLIDE_ANIM_SPEED, false)
 			transition.emit("IdlePlayerState")
 		# Transition to Walk state
-		elif player.direction and !Input.is_action_pressed("sprint"):
+		elif input.get_direction() and !input.is_sprint_pressed():
 			player.stand_up("SlidePlayerState", SLIDE_ANIM_SPEED, false)
 			transition.emit("WalkPlayerState")
 		# Transition to Sprint state
-		elif player.direction and Input.is_action_pressed("sprint"):
+		elif input.get_direction() and input.is_sprint_pressed():
 			player.stand_up("SlidePlayerState", SLIDE_ANIM_SPEED, false)
 			transition.emit("SprintPlayerState")
 	

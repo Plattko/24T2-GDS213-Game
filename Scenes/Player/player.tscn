@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://brc2h44edbj5a"]
+[gd_scene load_steps=29 format=3 uid="uid://brc2h44edbj5a"]
 
 [ext_resource type="Script" path="res://Scripts/Player/player.gd" id="1_4jpfc"]
 [ext_resource type="Script" path="res://Scripts/States/state_machine.gd" id="2_tc3yw"]
@@ -19,6 +19,7 @@
 [ext_resource type="Script" path="res://Scripts/UI/reticle.gd" id="12_vy6x5"]
 [ext_resource type="Script" path="res://Scripts/UI/ui_manager.gd" id="14_7y8rs"]
 [ext_resource type="PackedScene" uid="uid://bu0mtrnvhonpt" path="res://Scenes/UI/settings_menu.tscn" id="18_wxgc6"]
+[ext_resource type="Script" path="res://Scripts/Player/player_input.gd" id="20_hcigh"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l214m"]
 
@@ -193,6 +194,7 @@ visible = false
 update_mode = 1
 
 [node name="WeaponManager" type="Node3D" parent="Head/Camera3D"]
+unique_name_in_owner = true
 script = ExtResource("3_dngkr")
 
 [node name="Rifle" parent="Head/Camera3D/WeaponManager" instance=ExtResource("3_ad34e")]
@@ -207,6 +209,7 @@ libraries = {
 }
 
 [node name="PlayerStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+unique_name_in_owner = true
 script = ExtResource("2_tc3yw")
 initial_state = NodePath("IdlePlayerState")
 
@@ -301,6 +304,12 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 1
 
+[node name="Input" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("20_hcigh")
+
 [connection signal="update_ammo" from="Head/Camera3D/WeaponManager/Rifle" to="UI/HUD" method="on_update_ammo"]
 [connection signal="update_ammo" from="Head/Camera3D/WeaponManager/Pistol" to="UI/HUD" method="on_update_ammo"]
 [connection signal="update_ammo" from="Head/Camera3D/WeaponManager/Shotgun" to="UI/HUD" method="on_update_ammo"]
+[connection signal="closed_settings_menu" from="UI/SettingsMenu" to="Input" method="on_closed_settings_menu"]
+[connection signal="opened_settings_menu" from="UI/SettingsMenu" to="Input" method="on_opened_settings_menu"]
