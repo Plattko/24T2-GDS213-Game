@@ -2,14 +2,16 @@ class_name StateMachine
 
 extends Node
 
-@export var initial_state : State
-
 var states : Dictionary = {}
-var current_state
 
-func _ready():
+@export var initial_state : State
+var current_state : State
+
+func initialise(player: Player) -> void:
 	for child in get_children():
 		if child is State:
+			# Give child reference to player
+			child.player = player
 			# Add a kvp of each state name and its state to the states dictionary
 			states[child.name.to_lower()] = child
 			# Connect each state to the transition signal
@@ -19,7 +21,6 @@ func _ready():
 	
 	# If there is an initial state call the state's enter and set it as the current state
 	if initial_state:
-		await owner.ready
 		initial_state.enter(null)
 		current_state = initial_state
 

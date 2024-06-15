@@ -7,6 +7,7 @@ extends CharacterBody3D
 @export var animation_player : AnimationPlayer
 @export var crouch_shape_cast : ShapeCast3D
 
+@onready var state_machine = %PlayerStateMachine
 @onready var settings_menu = %SettingsMenu
 
 var direction
@@ -47,6 +48,8 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
+	state_machine.initialise(self)
+	
 	handle_connected_signals()
 	
 	# Set global reference to camera in the Global script
@@ -70,11 +73,6 @@ func _process(delta):
 	update_camera(delta)
 
 func _physics_process(delta):
-	
-	## Handle jump
-	#if Input.is_action_just_pressed("jump") and is_on_floor():
-		#velocity.y = JUMP_VELOCITY
-	
 	# Get input direction
 	var input_dir = Input.get_vector("move_left", "move_right", "move_forwards", "move_backwards")
 	direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
