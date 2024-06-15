@@ -10,7 +10,6 @@ extends CharacterBody3D
 @onready var input = %Input
 @onready var state_machine = %PlayerStateMachine
 @onready var weapon_manager = %WeaponManager
-@onready var settings_menu = %SettingsMenu
 
 var direction
 const SPRINT_SPEED := 8.0
@@ -67,7 +66,7 @@ func _input(event):
 		get_tree().quit()
 
 func _unhandled_input(event):
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion and input.can_look: # TODO Move check to PlayerInput if possible
 		rotation_input = -event.relative.x * sensitivity
 		tilt_input = -event.relative.y * sensitivity
 
@@ -147,12 +146,3 @@ func handle_connected_signals() -> void:
 		if child is Damageable:
 			# Connect each damageable to the damaged signal
 			child.damaged.connect(on_damaged)
-	
-	settings_menu.opened_settings_menu.connect(disable_input)
-	settings_menu.closed_settings_menu.connect(enable_input)
-
-func disable_input() -> void:
-	print("Disabled Player input.")
-
-func enable_input() -> void:
-	print("Enabled Player input.")
