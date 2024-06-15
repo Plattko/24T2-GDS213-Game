@@ -304,6 +304,7 @@ visible = false
 layout_mode = 1
 
 [node name="Input" type="Node" parent="."]
+unique_name_in_owner = true
 script = ExtResource("20_hcigh")
 
 [connection signal="update_ammo" from="Head/Camera3D/WeaponManager/Rifle" to="UI/HUD" method="on_update_ammo"]

@@ -7,11 +7,12 @@ var states : Dictionary = {}
 @export var initial_state : State
 var current_state : State
 
-func initialise(player: Player) -> void:
+func initialise(player: CharacterBody3D, input) -> void:
 	for child in get_children():
 		if child is State:
-			# Give child reference to player
+			# Give child reference to player and input
 			child.player = player
+			child.input = input
 			# Add a kvp of each state name and its state to the states dictionary
 			states[child.name.to_lower()] = child
 			# Connect each state to the transition signal

@@ -7,6 +7,7 @@ extends CharacterBody3D
 @export var animation_player : AnimationPlayer
 @export var crouch_shape_cast : ShapeCast3D
 
+@onready var input = %Input
 @onready var state_machine = %PlayerStateMachine
 @onready var settings_menu = %SettingsMenu
 
@@ -48,11 +49,11 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
-	state_machine.initialise(self)
-	
 	handle_connected_signals()
 	
-	# Set global reference to camera in the Global script
+	# Provide references to self and components
+	input.player = self
+	state_machine.initialise(self, input)
 	Global.camera = camera
 	Global.player = self
 	

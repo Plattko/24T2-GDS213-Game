@@ -9,26 +9,26 @@ func enter(previous_state, msg : Dictionary = {}):
 
 func physics_update(delta : float):
 	# Handle movement
-	player.velocity.x = player.direction.x * SPRINT_SPEED
-	player.velocity.z = player.direction.z * SPRINT_SPEED
+	player.velocity.x = input.get_direction().x * SPRINT_SPEED
+	player.velocity.z = input.get_direction().z * SPRINT_SPEED
 	player.move_and_slide()
 	
 	# Transition to Air state
 	if !player.is_on_floor():
 		transition.emit("AirPlayerState")
 	# Transition to Air state with jump
-	elif Input.is_action_just_pressed("jump") and player.is_on_floor():
+	elif input.is_jump_just_pressed() and player.is_on_floor():
 		transition.emit("AirPlayerState", {"do_jump" = true})
 	# Transition to Idle state
-	elif !player.direction:
+	elif !input.get_direction():
 		transition.emit("IdlePlayerState")
 	# Transition to Walk state
-	elif Input.is_action_just_released("sprint"):
+	elif input.is_sprint_just_released():
 		transition.emit("WalkPlayerState")
 	# Handle crouch
-	if Input.is_action_pressed("crouch"):
+	if input.is_crouch_pressed():
 		# Transition to Slide state
-		if Input.is_action_pressed("move_forwards") and player.velocity.length() > 6.0:
+		if input.is_move_forwards_pressed() and player.velocity.length() > 6.0:
 			transition.emit("SlidePlayerState")
 		# Transition to Crouch state
 		else:
