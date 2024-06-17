@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://cyglxemusmfd8"]
 
-[ext_resource type="Script" path="res://Scripts/AI/enemy.gd" id="1_7484k"]
+[ext_resource type="Script" path="res://Scripts/VisualScripts/enemy.os" id="1_rj5fa"]
 [ext_resource type="PackedScene" uid="uid://caqpeyq7g56bn" path="res://Scenes/damageable.tscn" id="2_7lh1c"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ysq3b"]
@@ -16,7 +16,7 @@ radius = 0.6
 height = 2.2
 
 [node name="Enemy" type="CharacterBody3D" groups=["enemies"]]
-script = ExtResource("1_7484k")
+script = ExtResource("1_rj5fa")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -44,7 +44,6 @@ collision_mask = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_iph6g")
 
-[connection signal="enemy_defeated" from="." to="." method="_on_enemy_defeated"]
 [connection signal="target_reached" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_target_reached"]
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
