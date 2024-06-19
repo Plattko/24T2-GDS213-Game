@@ -257,7 +257,8 @@ script = ExtResource("10_0lavf")
 health_label = NodePath("MarginContainer/Health")
 current_ammo_label = NodePath("MarginContainer/Ammo")
 
-[node name="Reticle" type="CenterContainer" parent="UI/HUD"]
+[node name="Reticle" type="CenterContainer" parent="UI/HUD" node_paths=PackedStringArray("lines")]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -267,6 +268,23 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("12_vy6x5")
+lines = [NodePath("Top"), NodePath("Right"), NodePath("Bottom"), NodePath("Left")]
+
+[node name="Top" type="Line2D" parent="UI/HUD/Reticle"]
+points = PackedVector2Array(0, -5, 0, -15)
+width = 2.0
+
+[node name="Right" type="Line2D" parent="UI/HUD/Reticle"]
+points = PackedVector2Array(5, 0, 15, 0)
+width = 2.0
+
+[node name="Bottom" type="Line2D" parent="UI/HUD/Reticle"]
+points = PackedVector2Array(0, 5, 0, 15)
+width = 2.0
+
+[node name="Left" type="Line2D" parent="UI/HUD/Reticle"]
+points = PackedVector2Array(-5, 0, -15, 0)
+width = 2.0
 
 [node name="MarginContainer" type="MarginContainer" parent="UI/HUD"]
 layout_mode = 1
