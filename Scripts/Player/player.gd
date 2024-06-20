@@ -10,6 +10,7 @@ extends CharacterBody3D
 @onready var input = %Input
 @onready var state_machine = %PlayerStateMachine
 @onready var weapon_manager = %WeaponManager
+@onready var reticle = %Reticle
 
 var direction
 const SPRINT_SPEED := 8.0
@@ -57,7 +58,7 @@ func _ready():
 	# Provide references to self and components
 	input.player = self
 	state_machine.initialise(self, input)
-	weapon_manager.initialise(input)
+	weapon_manager.initialise(input, reticle)
 	Global.camera = camera
 	Global.player = self
 	

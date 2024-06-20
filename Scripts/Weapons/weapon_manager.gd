@@ -3,13 +3,15 @@ class_name WeaponManager
 extends Node3D
 
 var input : PlayerInput
+var reticle : Reticle
 
 var current_weapon : Weapon
 
 var weapons : Array[Weapon]
 
-func initialise(player_input: PlayerInput) -> void:
+func initialise(player_input: PlayerInput, player_reticle: Reticle) -> void:
 	input = player_input
+	reticle = player_reticle
 	
 	for child in get_children():
 		if child is Weapon:
@@ -57,6 +59,15 @@ func change_weapon(next_weapon: Weapon) -> void:
 	if next_weapon != current_weapon:
 		current_weapon.anim_player.play(current_weapon.UNEQUIP_ANIM)
 		await current_weapon.anim_player.animation_finished
+		
+		if reticle:
+			call_update_reticle(next_weapon)
+		else:
+			print("No reticle found.")
+		
 		next_weapon.update_ammo.emit([next_weapon.cur_ammo, next_weapon.MAX_AMMO])
 		next_weapon.anim_player.play(next_weapon.EQUIP_ANIM)
 		current_weapon = next_weapon
+
+func call_update_reticle(weapon: Weapon) -> void:
+	reticle.update_reticle(weapon)

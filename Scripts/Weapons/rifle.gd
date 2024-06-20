@@ -1,3 +1,5 @@
+class_name Rifle
+
 extends Weapon
 
 const RAY_RANGE := 2000.0
