@@ -20,7 +20,7 @@ var alive_enemies := 0
 var enemy_spawn_delay := 1.0
 
 signal enemy_count_updated(enemy_count: int)
-signal wave_updated(wave: int)
+signal cur_wave_updated(wave: int)
 signal intermission_entered
 
 func _ready() -> void:

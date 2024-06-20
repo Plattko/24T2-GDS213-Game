@@ -206,6 +206,7 @@ script = ExtResource("3_dngkr")
 [node name="Pistol" parent="Head/Camera3D/WeaponManager" instance=ExtResource("4_oi7c2")]
 
 [node name="Shotgun" parent="Head/Camera3D/WeaponManager" instance=ExtResource("6_tnj4j")]
+bullet_count = 18
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
