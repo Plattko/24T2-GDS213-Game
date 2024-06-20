@@ -1,3 +1,5 @@
+class_name WaveManager
+
 extends Node
 
 @export var nav_region : NavigationRegion3D
@@ -17,6 +19,10 @@ var max_enemies := 5
 var alive_enemies := 0
 var enemy_spawn_delay := 1.0
 
+signal enemy_count_updated(enemy_count: int)
+signal wave_updated(wave: int)
+signal intermission_entered
+
 func _ready() -> void:
 	await get_tree().create_timer(first_wave_delay).timeout
 	spawn_wave()
@@ -28,6 +34,9 @@ func _physics_process(delta):
 func spawn_wave() -> void:
 	print("WAVE STARTED")
 	alive_enemies = max_enemies
+	
+	emit_signal("cur_wave_updated", cur_wave)
+	emit_signal("enemy_count_updated", alive_enemies)
 	
 	for n in max_enemies:
 		# Wait for enemy delay
@@ -47,7 +56,8 @@ func spawn_wave() -> void:
 
 func on_enemy_defeated() -> void:
 	# Reduce enemies by 1
-	alive_enemies -= alive_enemies
+	alive_enemies -= 1
+	emit_signal("enemy_count_updated", alive_enemies)
 	print("Enemies alive: " + str(alive_enemies) + "/" + str(max_enemies))
 	
 	if alive_enemies <= 0:
@@ -55,6 +65,7 @@ func on_enemy_defeated() -> void:
 		print("INTERMISSION STARTED")
 
 func start_intermission() -> void:
+	emit_signal("intermission_entered")
 	await get_tree().create_timer(intermission_delay).timeout
 	start_new_wave()
 

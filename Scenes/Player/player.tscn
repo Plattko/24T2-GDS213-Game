@@ -245,7 +245,7 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("14_7y8rs")
 
-[node name="HUD" type="Control" parent="UI" node_paths=PackedStringArray("health_label", "current_ammo_label")]
+[node name="HUD" type="Control" parent="UI" node_paths=PackedStringArray("health_label", "cur_ammo_label", "cur_wave_label", "enemies_left_label")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -255,7 +255,9 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("10_0lavf")
 health_label = NodePath("MarginContainer/Health")
-current_ammo_label = NodePath("MarginContainer/Ammo")
+cur_ammo_label = NodePath("MarginContainer/Ammo")
+cur_wave_label = NodePath("MarginContainer/WaveVBox/CurrentWave")
+enemies_left_label = NodePath("MarginContainer/WaveVBox/EnemiesRemaining")
 
 [node name="Reticle" type="CenterContainer" parent="UI/HUD" node_paths=PackedStringArray("lines")]
 unique_name_in_owner = true
@@ -313,6 +315,26 @@ theme_override_font_sizes/font_size = 48
 text = "Ammo: 24/24"
 horizontal_alignment = 2
 vertical_alignment = 2
+
+[node name="WaveVBox" type="VBoxContainer" parent="UI/HUD/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="CurrentWave" type="Label" parent="UI/HUD/MarginContainer/WaveVBox"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 48
+text = "Wave 123"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EnemiesRemaining" type="Label" parent="UI/HUD/MarginContainer/WaveVBox"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 32
+text = "Enemies Remaining: 123"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="DebugPanel" type="PanelContainer" parent="UI" node_paths=PackedStringArray("property_container")]
 custom_minimum_size = Vector2(200, 0)
