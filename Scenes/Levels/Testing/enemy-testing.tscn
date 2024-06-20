@@ -19341,8 +19341,6 @@ use_collision = true
 size = Vector3(2, 2.88342, 5.75032)
 material = ExtResource("4_8ioy8")
 
-[node name="Lights" type="Node" parent="NavigationRegion3D/Level"]
-
 [node name="EnemySpawnNodes" type="Node" parent="."]
 
 [node name="EnemySpawns" type="Node" parent="EnemySpawnNodes"]
@@ -19374,7 +19372,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.6756, 1.3808, -44.3884)
 [node name="SpawnPoint9" parent="EnemySpawnNodes/EnemySpawns" instance=ExtResource("6_3afi8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.8854, 0.757654, 2.07722)
 
-[node name="SpawnPoint10" parent="EnemySpawnNodes" instance=ExtResource("6_3afi8")]
+[node name="SpawnPoint10" parent="EnemySpawnNodes/EnemySpawns" instance=ExtResource("6_3afi8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.2288, 8.22424, -42.3947)
 
 [node name="EnemySpawnTimer" type="Timer" parent="EnemySpawnNodes"]
