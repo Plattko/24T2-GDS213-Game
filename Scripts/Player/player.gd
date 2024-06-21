@@ -38,7 +38,7 @@ var can_head_bob : bool = true
 
 # FOV variables
 const BASE_FOV := 90.0
-const FOV_CHANGE := 1.5
+const FOV_CHANGE := 3.5
 
 # Health vars
 var max_health := 100
