@@ -9,6 +9,14 @@ var current_weapon : Weapon
 
 var weapons : Array[Weapon]
 
+enum Reload_Types {
+	AUTO,
+	ON_SHOOT,
+	MANUAL,
+}
+
+@export var reload_type : Reload_Types
+
 func initialise(player_input: PlayerInput, player_reticle: Reticle) -> void:
 	input = player_input
 	reticle = player_reticle
@@ -29,25 +37,34 @@ func _physics_process(delta):
 			if !current_weapon.anim_player.is_playing():
 				if current_weapon.cur_ammo > 0:
 					current_weapon.shoot()
-				else:
+				# Reload on shoot
+				elif reload_type == Reload_Types.ON_SHOOT:
 					current_weapon.reload()
 	else:
 		if input.is_shoot_just_pressed():
 			if !current_weapon.anim_player.is_playing():
 				if current_weapon.cur_ammo > 0:
 					current_weapon.shoot()
-				else:
+				# Reload on shoot
+				elif reload_type == Reload_Types.ON_SHOOT:
 					current_weapon.reload()
+	
+	# Auto reload
+	if current_weapon.cur_ammo <= 0 and reload_type == Reload_Types.AUTO:
+		if !current_weapon.anim_player.is_playing():
+			current_weapon.reload()
 	
 	if input.is_reload_pressed():
 		if !current_weapon.anim_player.is_playing() and current_weapon.cur_ammo < current_weapon.MAX_AMMO:
 			current_weapon.reload()
 	
 	if input.is_weapon_1_pressed():
+		print("Pressed Weapon 1.")
 		if !current_weapon.anim_player.is_playing():
 			change_weapon(weapons[0])
 	
 	if input.is_weapon_2_pressed():
+		print("Pressed Weapon 2.")
 		if !current_weapon.anim_player.is_playing():
 			change_weapon(weapons[1])
 	
