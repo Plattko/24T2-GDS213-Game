@@ -49,6 +49,9 @@ func _physics_process(delta):
 			nav_agent.set_velocity(Vector3.ZERO)
 			look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z), Vector3.UP)
 	
+	if !is_on_floor():
+		velocity.y -= 18 * delta
+	
 	
 	animation_tree.set("parameters/conditions/attack", _target_in_range())
 	animation_tree.set("parameters/conditions/run", !_target_in_range())
