@@ -38,7 +38,7 @@ var can_head_bob : bool = true
 
 # FOV variables
 const BASE_FOV := 90.0
-const FOV_CHANGE := 3.5
+const FOV_CHANGE := 1.5
 
 # Health vars
 var max_health := 100
@@ -95,7 +95,8 @@ func _physics_process(delta):
 	camera.fov = lerp(camera.fov, target_fov, delta * 8.0)
 	
 	# Debug
-	Global.debug.add_debug_property("Move Speed", snappedf(velocity.length(), 0.01), 2)
+	#Global.debug.add_debug_property("Move Speed", snappedf(velocity.length(), 0.01), 2)
+	Global.debug.add_debug_property("Move Speed", snappedf(Vector2(velocity.x, velocity.z).length(), 0.01), 2)
 	
 	if cur_health <= 0 and not is_dead:
 		is_dead = true
