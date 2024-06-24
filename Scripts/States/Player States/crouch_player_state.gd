@@ -30,7 +30,7 @@ func physics_update(delta) -> void:
 		player.stand_up("CrouchPlayerState", CROUCH_ANIM_SPEED, true)
 		transition.emit("AirPlayerState")
 	# Transition to Air state with jump
-	elif input.is_jump_just_pressed() and player.crouch_shape_cast.is_colliding() == false:
+	elif input.is_jump_just_pressed() and player.ceiling_check.is_colliding() == false:
 		player.stand_up("CrouchPlayerState", CROUCH_ANIM_SPEED, true)
 		transition.emit("AirPlayerState", {"do_jump" = true})
 	# Handle releasing crouch
@@ -41,7 +41,7 @@ func physics_update(delta) -> void:
 
 func uncrouch() -> void:
 	# If there is nothing blocking the player from standing up, play the uncrouch animation
-	if player.crouch_shape_cast.is_colliding() == false:
+	if player.ceiling_check.is_colliding() == false:
 		player.animation_player.play("Crouch", -1, -CROUCH_ANIM_SPEED, true)
 		
 		# Wait for uncrouch animation to end
@@ -59,6 +59,6 @@ func uncrouch() -> void:
 			transition.emit("SprintPlayerState")
 	
 	# If there is something blocking the way, try to uncrouch again in 0.1 seconds
-	elif player.crouch_shape_cast.is_colliding() == true:
+	elif player.ceiling_check.is_colliding() == true:
 		await get_tree().create_timer(0.1).timeout
 		uncrouch()

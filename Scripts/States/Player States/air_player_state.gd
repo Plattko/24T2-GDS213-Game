@@ -32,7 +32,7 @@ func physics_update(delta : float):
 	# Handle landing
 	if player.is_on_floor():
 		# Transition to Crouch state
-		if player.crouch_shape_cast.is_colliding() == true:
+		if player.ceiling_check.is_colliding() == true:
 			transition.emit("CrouchPlayerState")
 		# Transition to Idle state
 		elif !input.get_direction():

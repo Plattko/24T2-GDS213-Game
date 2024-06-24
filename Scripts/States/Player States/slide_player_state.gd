@@ -47,7 +47,7 @@ func physics_update(delta):
 		# Handle jump
 		elif input.is_jump_just_pressed(): 
 			# If above the player is unobstructed, transition to Air state with jump
-			if player.crouch_shape_cast.is_colliding() == false:
+			if player.ceiling_check.is_colliding() == false:
 				player.stand_up("SlidePlayerState", SLIDE_ANIM_SPEED, true)
 				transition.emit("AirPlayerState", {"do_jump" = true})
 			# Else, transition to crouch state
@@ -55,7 +55,7 @@ func physics_update(delta):
 				transition.emit("CrouchPlayerState")
 	else:
 		# Transition to Crouch state
-		if input.is_crouch_pressed() or player.crouch_shape_cast.is_colliding() == true:
+		if input.is_crouch_pressed() or player.ceiling_check.is_colliding() == true:
 			transition.emit("CrouchPlayerState")
 		# Transition to Idle state
 		elif !input.get_direction():

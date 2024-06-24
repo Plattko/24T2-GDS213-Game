@@ -5,7 +5,7 @@ extends CharacterBody3D
 @export var head : Node3D
 @export var camera : Camera3D
 @export var animation_player : AnimationPlayer
-@export var crouch_shape_cast : ShapeCast3D
+@export var ceiling_check : ShapeCast3D
 
 @onready var input = %Input
 @onready var state_machine = %PlayerStateMachine
@@ -131,7 +131,7 @@ func update_gravity(delta) -> void:
 
 func stand_up(current_state, anim_speed : float, is_repeating_check : bool):
 	# If there is nothing blocking the player from standing up, play the respective animation
-	if crouch_shape_cast.is_colliding() == false:
+	if ceiling_check.is_colliding() == false:
 		# Check if it is the crouch or slide animation
 		if current_state == "CrouchPlayerState":
 			animation_player.play("Crouch", -1, -anim_speed, true)
@@ -141,7 +141,7 @@ func stand_up(current_state, anim_speed : float, is_repeating_check : bool):
 		if animation_player.is_playing():
 			await animation_player.animation_finished
 	# If there is something blocking the way, try to uncrouch again in 0.1 seconds
-	elif crouch_shape_cast.is_colliding() == true and is_repeating_check:
+	elif ceiling_check.is_colliding() == true and is_repeating_check:
 		await get_tree().create_timer(0.1).timeout
 		stand_up(current_state, anim_speed, true)
 
