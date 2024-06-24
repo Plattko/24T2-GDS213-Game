@@ -155,10 +155,11 @@ _data = {
 "Slide": SubResource("Animation_eqx5m")
 }
 
-[node name="MulitplayerPlayer" type="CharacterBody3D"]
+[node name="MulitplayerPlayer" type="CharacterBody3D" node_paths=PackedStringArray("camera")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 collision_layer = 2
 script = ExtResource("1_g1uxc")
+camera = NodePath("Head/Camera3D")
 
 [node name="Input" type="Node" parent="."]
 unique_name_in_owner = true

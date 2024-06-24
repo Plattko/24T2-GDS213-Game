@@ -8,7 +8,6 @@ func shoot() -> void:
 	# Call base method
 	super()
 	
-	var camera = Global.camera
 	var space_state = camera.get_world_3d().direct_space_state
 	var screen_centre = get_viewport().get_size() / 2
 	

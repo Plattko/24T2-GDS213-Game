@@ -58,8 +58,8 @@ func _ready():
 	# Provide references to self and components
 	input.player = self
 	state_machine.initialise(self, input)
-	weapon_manager.initialise(input, reticle)
-	Global.camera = camera
+	weapon_manager.initialise(camera, input, reticle)
+	#Global.camera = camera TODO: Remove from Global script
 	Global.player = self
 	
 	cur_health = max_health

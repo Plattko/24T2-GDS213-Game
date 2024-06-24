@@ -2,6 +2,7 @@ class_name WeaponManager
 
 extends Node3D
 
+var camera : Camera3D
 var input : PlayerInput
 var reticle : Reticle
 
@@ -17,7 +18,8 @@ enum Reload_Types {
 
 @export var reload_type : Reload_Types
 
-func initialise(player_input: PlayerInput, player_reticle: Reticle) -> void:
+func initialise(player_camera: Camera3D, player_input: PlayerInput, player_reticle: Reticle) -> void:
+	camera = player_camera
 	input = player_input
 	reticle = player_reticle
 	
@@ -25,6 +27,7 @@ func initialise(player_input: PlayerInput, player_reticle: Reticle) -> void:
 		if child is Weapon:
 			weapons.append(child)
 			child.mesh.visible = false
+			child.init(camera)
 	
 	current_weapon = weapons[0]
 	current_weapon.mesh.visible = true

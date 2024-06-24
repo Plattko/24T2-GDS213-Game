@@ -2,6 +2,8 @@ class_name Weapon
 
 extends Node
 
+var camera : Camera3D
+
 # Reference variables
 @onready var mesh = %Mesh
 @onready var anim_player = %AnimationPlayer
@@ -34,6 +36,9 @@ signal update_ammo
 
 func _ready():
 	cur_ammo = MAX_AMMO
+
+func init(player_camera: Camera3D) -> void:
+	camera = player_camera
 
 func shoot() -> void:
 	# Display the muzzle flash
