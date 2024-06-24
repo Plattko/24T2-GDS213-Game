@@ -13,9 +13,10 @@ func _ready():
 	enemies_left_label.visible = false
 	
 	wave_manager = get_tree().get_first_node_in_group("WaveManager")
-	wave_manager.cur_wave_updated.connect(on_cur_wave_updated)
-	wave_manager.enemy_count_updated.connect(on_enemy_count_updated)
-	wave_manager.intermission_entered.connect(on_intermission_entered)
+	if (wave_manager):
+		wave_manager.cur_wave_updated.connect(on_cur_wave_updated)
+		wave_manager.enemy_count_updated.connect(on_enemy_count_updated)
+		wave_manager.intermission_entered.connect(on_intermission_entered)
 
 func on_update_health(health) -> void:
 	health_label.text = "Health: " + str(health[0]) + "/" + str(health[1])

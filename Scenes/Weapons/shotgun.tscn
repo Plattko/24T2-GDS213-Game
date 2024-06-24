@@ -227,14 +227,17 @@ MAX_AMMO = 6
 [node name="Mesh" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.857327, 0, 0, 0)
+cast_shadow = 0
 mesh = SubResource("BoxMesh_duixa")
 
 [node name="Handle" type="MeshInstance3D" parent="Mesh"]
 transform = Transform3D(1, 0, 0, 0, 0.390828, 0.920464, 0, -0.920464, 0.390828, 0, -0.0422441, 0.327247)
+cast_shadow = 0
 mesh = SubResource("BoxMesh_fa3hj")
 
 [node name="Pump" type="MeshInstance3D" parent="Mesh"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0547098, -0.0615319)
+cast_shadow = 0
 mesh = SubResource("BoxMesh_gv1qs")
 
 [node name="Barrel" type="Node3D" parent="."]

@@ -197,10 +197,12 @@ is_auto_fire = false
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
+cast_shadow = 0
 mesh = SubResource("BoxMesh_duixa")
 
 [node name="Handle" type="MeshInstance3D" parent="Mesh"]
 transform = Transform3D(1, 0, 0, 0, 0.990112, 0.140279, 0, -0.140279, 0.990112, 0, -0.0543983, 0.126794)
+cast_shadow = 0
 mesh = SubResource("BoxMesh_fa3hj")
 
 [node name="Barrel" type="Node3D" parent="."]
