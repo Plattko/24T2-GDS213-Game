@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://d4a42cc8aa4hh"]
+[gd_scene load_steps=9 format=3 uid="uid://d4a42cc8aa4hh"]
 
+[ext_resource type="Script" path="res://Scripts/Gamemode/game_manager.gd" id="1_lkuof"]
 [ext_resource type="PackedScene" uid="uid://brc2h44edbj5a" path="res://Scenes/Player/player.tscn" id="1_tjkxj"]
 [ext_resource type="Material" uid="uid://bbyh52cc6ljvg" path="res://Materials/Standard Materials/prototype_grey.tres" id="2_1m1ge"]
 [ext_resource type="Material" uid="uid://clau1arwwv1yw" path="res://Materials/Standard Materials/prototype_orange.tres" id="3_cnxos"]
@@ -18,7 +19,11 @@ sky = SubResource("Sky_uxvi4")
 tonemap_mode = 2
 glow_enabled = true
 
-[node name="PrototypeLevel" type="Node3D"]
+[node name="NetworkTesting" type="Node3D"]
+
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("multiplayer_hud")]
+script = ExtResource("1_lkuof")
+multiplayer_hud = NodePath("../MultiplayerHUD (Temp)")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
@@ -18320,3 +18325,53 @@ transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 25.5, 1,
 
 [node name="DestructibleOrb19" parent="Level/Destructible Objects" groups=["destructible_orbs"] instance=ExtResource("4_nq6h2")]
 transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 8.5, 1, -47.5)
+
+[node name="MultiplayerHUD (Temp)" type="Control" parent="."]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -200.0
+offset_right = 100.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Panel" type="Panel" parent="MultiplayerHUD (Temp)"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MultiplayerHUD (Temp)/Panel"]
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 148.0
+theme_override_constants/separation = 64
+
+[node name="HostNewGame" type="Button" parent="MultiplayerHUD (Temp)/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Host New Game"
+
+[node name="JoinAsP2" type="Button" parent="MultiplayerHUD (Temp)/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Join as Player 2"
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://Scenes/Multiplayer/multiplayer_player.tscn")
+spawn_path = NodePath("../Players")
+spawn_limit = 4
+
+[node name="Players" type="Node3D" parent="."]
+
+[connection signal="pressed" from="MultiplayerHUD (Temp)/Panel/VBoxContainer/HostNewGame" to="GameManager" method="become_host"]
+[connection signal="pressed" from="MultiplayerHUD (Temp)/Panel/VBoxContainer/JoinAsP2" to="GameManager" method="join_as_player_2"]
