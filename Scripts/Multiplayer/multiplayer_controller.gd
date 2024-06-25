@@ -1,18 +1,15 @@
 extends CharacterBody3D
 
+@export var input : PlayerInput
 @export var head : Node3D
 @export var camera : Camera3D
 @export var animation_player : AnimationPlayer
 @export var ceiling_check : ShapeCast3D
 
-@onready var input = %Input
+#@onready var input = %Input
 @onready var state_machine = %PlayerStateMachine
 @onready var weapon_manager = %WeaponManager
 @onready var reticle = %Reticle
-
-var direction
-const SPRINT_SPEED := 8.0
-const JUMP_VELOCITY := 8.0
 
 # Camera movement variables
 var rotation_input : float
@@ -37,11 +34,19 @@ var can_head_bob : bool = true
 # FOV variables
 const BASE_FOV := 90.0
 const FOV_CHANGE := 1.5
+const FOV_VELOCITY_CLAMP := 8.0
 
-# Health vars
+# Health variables
 var max_health := 100
 var cur_health
 var is_dead : bool = false
+
+# Multiplayer variables
+@export var player_id := 1: # An ID of 1 for any peer represents the server
+	set(id):
+		player_id = id
+		# Give the client authority over its inputs
+		input.set_multiplayer_authority(id)
 
 signal update_health
 
@@ -55,10 +60,6 @@ func _ready() -> void:
 	cur_health = max_health
 	update_health.emit([cur_health, max_health])
 
-@export var player_id := 1: # An ID of 1 for any peer represents the server
-	set(id):
-		player_id = id
-
 func _unhandled_input(event):
 	if event is InputEventMouseMotion and input.can_look: # TODO Move check to PlayerInput if possible
 		rotation_input = -event.relative.x * sensitivity
@@ -69,17 +70,13 @@ func _process(delta):
 	update_camera(delta)
 
 func _physics_process(delta):
-	# Get input direction
-	var input_dir = Input.get_vector("move_left", "move_right", "move_forwards", "move_backwards")
-	direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	
 	# Head bob
 	if can_head_bob:
 		t_bob += delta * velocity.length() * float(is_on_floor())
 		camera.transform.origin = head_bob(t_bob)
 	
 	# FOV
-	var velocity_clamped = clamp (velocity.length(), 0.5, SPRINT_SPEED * 2.0)
+	var velocity_clamped = clamp (velocity.length(), 0.5, FOV_VELOCITY_CLAMP * 2.0)
 	var target_fov = BASE_FOV + FOV_CHANGE * velocity_clamped
 	camera.fov = lerp(camera.fov, target_fov, delta * 8.0)
 	

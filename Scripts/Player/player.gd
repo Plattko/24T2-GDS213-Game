@@ -12,10 +12,6 @@ extends CharacterBody3D
 @onready var weapon_manager = %WeaponManager
 @onready var reticle = %Reticle
 
-var direction
-const SPRINT_SPEED := 8.0
-const JUMP_VELOCITY := 8.0
-
 # Camera movement variables
 var rotation_input : float
 var tilt_input : float
@@ -39,6 +35,7 @@ var can_head_bob : bool = true
 # FOV variables
 const BASE_FOV := 90.0
 const FOV_CHANGE := 1.5
+const FOV_VELOCITY_CLAMP := 8.0
 
 # Health vars
 var max_health := 100
@@ -80,17 +77,13 @@ func _process(delta):
 	update_camera(delta)
 
 func _physics_process(delta):
-	# Get input direction
-	var input_dir = Input.get_vector("move_left", "move_right", "move_forwards", "move_backwards")
-	direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	
 	# Head bob
 	if can_head_bob:
 		t_bob += delta * velocity.length() * float(is_on_floor())
 		camera.transform.origin = head_bob(t_bob)
 	
 	# FOV
-	var velocity_clamped = clamp (velocity.length(), 0.5, SPRINT_SPEED * 2.0)
+	var velocity_clamped = clamp (velocity.length(), 0.5, FOV_VELOCITY_CLAMP * 2.0)
 	var target_fov = BASE_FOV + FOV_CHANGE * velocity_clamped
 	camera.fov = lerp(camera.fov, target_fov, delta * 8.0)
 	
