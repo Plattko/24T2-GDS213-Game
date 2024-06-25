@@ -2,8 +2,20 @@ extends CharacterBody3D
 
 @onready var nav_agent = $NavigationAgent3D
 @onready var animation_tree = $AnimationTree
+@onready var animation_player = $AnimationPlayer
+
 var anim_state_machine
 var player : Player
+
+enum {
+	RUNNING,
+	ATTACKING,
+	STUNNED,
+	CLIMBING,
+	DEAD
+}
+
+var state = RUNNING
 
 # Movement variables
 var min_speed := 4.0
@@ -31,6 +43,19 @@ func _ready():
 			child.damaged.connect(on_damaged)
 		#else:
 			#push_warning("Object contains non-damageable child node.")
+
+func _process(delta):
+	match state:
+		RUNNING:
+			animation_player.play("Run")
+		ATTACKING:
+			animation_player.play("Attack")
+		STUNNED:
+			pass
+		CLIMBING:
+			pass
+		DEAD:
+			pass
 
 # Set new velocity 
 func _physics_process(delta):
