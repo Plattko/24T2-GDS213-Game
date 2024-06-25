@@ -19,14 +19,14 @@ func physics_update(delta : float):
 	player.update_gravity(delta)
 	
 	# Set horizontal speed
-	if input.is_sprint_pressed():
+	if input.is_sprint_pressed:
 		speed = SPRINT_SPEED
 	else:
 		speed = WALK_SPEED
 	
 	# Handle movement
-	player.velocity.x = lerp(player.velocity.x, input.get_direction().x * speed, delta * 4.0)
-	player.velocity.z = lerp(player.velocity.z, input.get_direction().z * speed, delta * 4.0)
+	player.velocity.x = lerp(player.velocity.x, input.direction.x * speed, delta * 4.0)
+	player.velocity.z = lerp(player.velocity.z, input.direction.z * speed, delta * 4.0)
 	player.move_and_slide()
 	
 	# Handle landing
@@ -35,11 +35,11 @@ func physics_update(delta : float):
 		if player.ceiling_check.is_colliding() == true:
 			transition.emit("CrouchPlayerState")
 		# Transition to Idle state
-		elif !input.get_direction():
+		elif !input.direction:
 			transition.emit("IdlePlayerState")
 		# Transition to Sprint state
-		elif input.get_direction() and input.is_sprint_pressed():
+		elif input.direction and input.is_sprint_pressed:
 			transition.emit("SprintPlayerState")
 		# Transition to Walk state
-		elif input.get_direction() and !input.is_sprint_pressed():
+		elif input.direction and !input.is_sprint_pressed:
 			transition.emit("WalkPlayerState")

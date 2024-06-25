@@ -1,7 +1,7 @@
-[gd_scene load_steps=30 format=3 uid="uid://il6q27w1jqvw"]
+[gd_scene load_steps=31 format=3 uid="uid://il6q27w1jqvw"]
 
 [ext_resource type="Script" path="res://Scripts/Multiplayer/multiplayer_controller.gd" id="1_g1uxc"]
-[ext_resource type="Script" path="res://Scripts/Multiplayer/multiplayer_input.gd" id="2_cqy50"]
+[ext_resource type="Script" path="res://Scripts/Player/player_input.gd" id="2_7s41b"]
 [ext_resource type="PackedScene" uid="uid://caqpeyq7g56bn" path="res://Scenes/damageable.tscn" id="3_sfxmm"]
 [ext_resource type="Script" path="res://Scripts/Weapons/weapon_manager.gd" id="4_v17h1"]
 [ext_resource type="PackedScene" uid="uid://dqexibtsgatqp" path="res://Scenes/Weapons/rifle.tscn" id="5_lxaa3"]
@@ -21,52 +21,54 @@
 [ext_resource type="Script" path="res://Scripts/UI/debug.gd" id="19_atg5u"]
 [ext_resource type="PackedScene" uid="uid://bu0mtrnvhonpt" path="res://Scenes/UI/settings_menu.tscn" id="20_c20fv"]
 
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_7x3rw"]
-properties/0/path = NodePath("InputSynchroniser:get_direction()")
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_l18m6"]
+properties/0/path = NodePath(".:player_id")
 properties/0/spawn = true
 properties/0/replication_mode = 1
-properties/1/path = NodePath("InputSynchroniser:is_move_forwards_pressed()")
+properties/1/path = NodePath(".:position")
 properties/1/spawn = true
 properties/1/replication_mode = 1
-properties/2/path = NodePath("InputSynchroniser:is_jump_just_pressed()")
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_7x3rw"]
+properties/0/path = NodePath("InputSynchroniser:direction")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("InputSynchroniser:is_move_forwards_pressed")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("InputSynchroniser:is_jump_just_pressed")
 properties/2/spawn = true
 properties/2/replication_mode = 1
-properties/3/path = NodePath("InputSynchroniser:is_sprint_pressed()")
+properties/3/path = NodePath("InputSynchroniser:is_sprint_pressed")
 properties/3/spawn = true
 properties/3/replication_mode = 1
-properties/4/path = NodePath("InputSynchroniser:is_sprint_just_released()")
+properties/4/path = NodePath("InputSynchroniser:is_sprint_just_released")
 properties/4/spawn = true
 properties/4/replication_mode = 1
-properties/5/path = NodePath("InputSynchroniser:is_crouch_pressed()")
+properties/5/path = NodePath("InputSynchroniser:is_crouch_pressed")
 properties/5/spawn = true
 properties/5/replication_mode = 1
-properties/6/path = NodePath("InputSynchroniser:is_crouch_just_released()")
+properties/6/path = NodePath("InputSynchroniser:is_crouch_just_released")
 properties/6/spawn = true
 properties/6/replication_mode = 1
-properties/7/path = NodePath("InputSynchroniser:is_shoot_pressed()")
+properties/7/path = NodePath("InputSynchroniser:is_shoot_pressed")
 properties/7/spawn = true
 properties/7/replication_mode = 1
-properties/8/path = NodePath("InputSynchroniser:is_shoot_just_pressed()")
+properties/8/path = NodePath("InputSynchroniser:is_shoot_just_pressed")
 properties/8/spawn = true
 properties/8/replication_mode = 1
-properties/9/path = NodePath("InputSynchroniser:is_reload_pressed()")
+properties/9/path = NodePath("InputSynchroniser:is_reload_pressed")
 properties/9/spawn = true
 properties/9/replication_mode = 1
-properties/10/path = NodePath("InputSynchroniser:is_weapon_1_pressed()")
+properties/10/path = NodePath("InputSynchroniser:is_weapon_1_pressed")
 properties/10/spawn = true
 properties/10/replication_mode = 1
-properties/11/path = NodePath("InputSynchroniser:is_weapon_2_pressed()")
+properties/11/path = NodePath("InputSynchroniser:is_weapon_2_pressed")
 properties/11/spawn = true
 properties/11/replication_mode = 1
-properties/12/path = NodePath("InputSynchroniser:is_weapon_3_pressed()")
+properties/12/path = NodePath("InputSynchroniser:is_weapon_3_pressed")
 properties/12/spawn = true
 properties/12/replication_mode = 1
-properties/13/path = NodePath("InputSynchroniser:on_opened_settings_menu()")
-properties/13/spawn = true
-properties/13/replication_mode = 1
-properties/14/path = NodePath("InputSynchroniser:on_closed_settings_menu()")
-properties/14/spawn = true
-properties/14/replication_mode = 1
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l214m"]
 
@@ -212,9 +214,12 @@ camera = NodePath("Head/Camera3D")
 animation_player = NodePath("AnimationPlayer")
 ceiling_check = NodePath("CeilingCheck")
 
+[node name="PlayerSynchroniser" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_l18m6")
+
 [node name="InputSynchroniser" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_7x3rw")
-script = ExtResource("2_cqy50")
+script = ExtResource("2_7s41b")
 
 [node name="CollisionShape" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_l214m")

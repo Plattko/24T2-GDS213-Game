@@ -4,6 +4,8 @@ extends Node
 const SERVER_PORT := 8080
 const SERVER_IP = "127.0.0.1"
 
+var is_multiplayer : bool = false
+
 # Player reference
 var multiplayer_player = preload("res://Scenes/Multiplayer/multiplayer_player.tscn")
 
@@ -23,6 +25,8 @@ func become_host() -> void:
 	# Lifecycle callbacks
 	multiplayer.peer_connected.connect(add_player_to_game) # Calls this function when a peer connects to the server
 	multiplayer.peer_disconnected.connect(remove_player_from_game)
+	
+	is_multiplayer = true
 	
 	remove_singleplayer_player()
 	
