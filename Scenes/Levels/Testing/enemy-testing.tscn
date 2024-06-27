@@ -18731,6 +18731,30 @@ light_specular = 1.0
 shadow_enabled = true
 shadow_bias = 5.0
 
+[node name="Crate11" type="CSGBox3D" parent="NavigationRegion3D/Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.76211, 7.29053, -14.1359)
+use_collision = true
+size = Vector3(2.603, 0.252, 11)
+material = ExtResource("4_8ioy8")
+
+[node name="Crate14" type="CSGBox3D" parent="NavigationRegion3D/Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.3462, 6.88264, -6.87052)
+use_collision = true
+size = Vector3(32.8196, 0.252, 1.78125)
+material = ExtResource("4_8ioy8")
+
+[node name="Crate12" type="CSGBox3D" parent="NavigationRegion3D/Level"]
+transform = Transform3D(1, 0, 0, 0, 0.906455, 0.422302, 0, -0.422302, 0.906455, 1.76211, 7.15851, -20.0711)
+use_collision = true
+size = Vector3(2.603, 0.1, 1)
+material = ExtResource("4_8ioy8")
+
+[node name="Crate13" type="CSGBox3D" parent="NavigationRegion3D/Level"]
+transform = Transform3D(-1, 3.69465e-08, -7.92319e-08, 0, 0.906308, 0.422618, 8.74228e-08, 0.422618, -0.906307, 1.76211, 7.15851, -8.20515)
+use_collision = true
+size = Vector3(2.603, 0.1, 1)
+material = ExtResource("4_8ioy8")
+
 [node name="ShelterCorner" type="Node" parent="NavigationRegion3D/Level"]
 
 [node name="DividingWall" type="CSGBox3D" parent="NavigationRegion3D/Level/ShelterCorner"]
