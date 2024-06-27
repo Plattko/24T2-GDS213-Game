@@ -29,8 +29,7 @@ func shoot() -> void:
 			
 			ray_end = ray_origin + camera.project_ray_normal(screen_centre + random_spread) * RAY_RANGE
 	
-		var query = PhysicsRayQueryParameters3D.create(ray_origin, ray_end)
-		query.collide_with_bodies = true
+		var query = PhysicsRayQueryParameters3D.create(ray_origin, ray_end, HITSCAN_COLLISION_MASK)
 		query.collide_with_areas = true
 		
 		var result = space_state.intersect_ray(query)

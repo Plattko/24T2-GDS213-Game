@@ -19,6 +19,8 @@ var cur_ammo
 
 @export var is_auto_fire : bool = true
 
+const HITSCAN_COLLISION_MASK := pow(2, 1-1)
+
 # Animation variables
 const SHOOT_ANIM : String = "Shoot"
 const RELOAD_ANIM : String = "Reload"

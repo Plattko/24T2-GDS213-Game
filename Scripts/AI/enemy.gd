@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+@export var hurtboxes : Array[Damageable] = []
+
 @onready var nav_agent = $NavigationAgent3D
 @onready var animation_tree = $AnimationTree
 @onready var animation_player = $AnimationPlayer
@@ -37,13 +39,19 @@ func _ready():
 	anim_state_machine = animation_tree.get("parameters/playback")
 	cur_health = max_health
 	speed = randf_range(min_speed, max_speed)
+	print("Speed: " + str(speed))
 	
-	for child in get_children():
-		if child is Damageable:
+	#for child in get_children():
+		#if child is Damageable:
+			## Connect each damageable to the damaged signal
+			#child.damaged.connect(on_damaged)
+		##else:
+			##push_warning("Object contains non-damageable child node.")
+	
+	for hurtbox in hurtboxes:
+		if hurtbox is Damageable:
 			# Connect each damageable to the damaged signal
-			child.damaged.connect(on_damaged)
-		#else:
-			#push_warning("Object contains non-damageable child node.")
+			hurtbox.damaged.connect(on_damaged)
 
 func _process(delta):
 	match state:
