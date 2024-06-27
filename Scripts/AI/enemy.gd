@@ -18,7 +18,7 @@ enum {
 	DEAD
 }
 
-var state = RUNNING
+var cur_state = RUNNING
 
 # Movement variables
 var min_speed := 4.0
@@ -41,33 +41,27 @@ func _ready():
 	speed = randf_range(min_speed, max_speed)
 	print("Speed: " + str(speed))
 	
-	#for child in get_children():
-		#if child is Damageable:
-			## Connect each damageable to the damaged signal
-			#child.damaged.connect(on_damaged)
-		##else:
-			##push_warning("Object contains non-damageable child node.")
-	
 	for hurtbox in hurtboxes:
 		if hurtbox is Damageable:
 			# Connect each damageable to the damaged signal
 			hurtbox.damaged.connect(on_damaged)
 
-func _process(delta):
-	match state:
+func _physics_process(delta):
+	match cur_state:
 		RUNNING:
-			animation_tree.set("parameters/playback", "Run")
+			#animation_tree.set("parameters/playback", "Run")
 			var current_location = global_transform.origin
 			var next_location = nav_agent.get_next_path_position()
 			var new_velocity = (next_location - current_location).normalized() * speed
 			nav_agent.set_velocity(new_velocity)
 			
+			# Make enemy look at player
 			var cur_velocity = Vector2(velocity.x, velocity.z).length()
 			if cur_velocity > 0.01:
 				look_at(Vector3(global_position.x + velocity.x, global_position.y, global_position.z + velocity.z), Vector3.UP)
 		
 		ATTACKING:
-			animation_tree.set("parameters/playback", "Attack")
+			#animation_tree.set("parameters/playback", "Attack")
 			nav_agent.set_velocity(Vector3.ZERO)
 			look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z), Vector3.UP)
 		
@@ -79,12 +73,13 @@ func _process(delta):
 		
 		DEAD:
 			pass # Do ragdoll stuff
-
-	if !is_on_floor():
-		velocity.y -= 18 * delta
 	
 	animation_tree.set("parameters/conditions/attack", _target_in_range())
 	animation_tree.set("parameters/conditions/run", !_target_in_range())
+	animation_tree.get("parameters/playback")
+	
+	if !is_on_floor():
+		velocity.y -= 18 * delta
 	
 	if cur_health <= 0:
 		enemy_defeated.emit()
@@ -101,18 +96,14 @@ func update_target_location(target_location):
 	if anim_state_machine.get_current_node() == "Run":
 		nav_agent.set_target_position(target_location)
 
-# Signal for handling when enemy is close to player
-func _on_navigation_agent_3d_target_reached():
-	pass
-
 # Signal for handling avoidance behavior with other agents
 func _on_navigation_agent_3d_velocity_computed(safe_velocity):
-	velocity = velocity.move_toward(safe_velocity, 0.10)
+	velocity = velocity.move_toward(safe_velocity, 0.25) # NOTE: DO NOT CHANGE!!!
 	move_and_slide()
 
 func on_damaged(damage: float):
 	cur_health -= damage
-	state = STUNNED
+	#cur_state = STUNNED
 
 func _hit_finished():
 	var children = player.get_children()
