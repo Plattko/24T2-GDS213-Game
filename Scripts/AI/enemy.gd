@@ -2,8 +2,21 @@ extends CharacterBody3D
 
 @onready var nav_agent = $NavigationAgent3D
 @onready var animation_tree = $AnimationTree
+@onready var animation_player = $AnimationPlayer
+
 var anim_state_machine
 var player : Player
+
+# Enemy state machine states
+enum {
+	RUNNING,
+	ATTACKING,
+	STUNNED,
+	CLIMBING,
+	DEAD
+}
+
+var state = RUNNING
 
 # Movement variables
 var min_speed := 4.0
@@ -32,11 +45,10 @@ func _ready():
 		#else:
 			#push_warning("Object contains non-damageable child node.")
 
-# Set new velocity 
-func _physics_process(delta):
-	
-	match anim_state_machine.get_current_node():
-		"Run":
+func _process(delta):
+	match state:
+		RUNNING:
+			animation_tree.set("parameters/playback", "Run")
 			var current_location = global_transform.origin
 			var next_location = nav_agent.get_next_path_position()
 			var new_velocity = (next_location - current_location).normalized() * speed
@@ -45,18 +57,26 @@ func _physics_process(delta):
 			var cur_velocity = Vector2(velocity.x, velocity.z).length()
 			if cur_velocity > 0.01:
 				look_at(Vector3(global_position.x + velocity.x, global_position.y, global_position.z + velocity.z), Vector3.UP)
-		"Attack":
+		
+		ATTACKING:
+			animation_tree.set("parameters/playback", "Attack")
 			nav_agent.set_velocity(Vector3.ZERO)
 			look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z), Vector3.UP)
-	
+		
+		STUNNED:
+			pass # Do stunned stuff
+		
+		CLIMBING:
+			pass # Do climbing stuff
+		
+		DEAD:
+			pass # Do ragdoll stuff
+
 	if !is_on_floor():
 		velocity.y -= 18 * delta
 	
-	
 	animation_tree.set("parameters/conditions/attack", _target_in_range())
 	animation_tree.set("parameters/conditions/run", !_target_in_range())
-	
-	animation_tree.get("parameters/playback")
 	
 	if cur_health <= 0:
 		enemy_defeated.emit()
@@ -84,6 +104,7 @@ func _on_navigation_agent_3d_velocity_computed(safe_velocity):
 
 func on_damaged(damage: float):
 	cur_health -= damage
+	state = STUNNED
 
 func _hit_finished():
 	var children = player.get_children()
