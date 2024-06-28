@@ -30,8 +30,10 @@ var max_health := 100
 var cur_health
 
 # Attack variables
-const ATTACK_RANGE = 1.5
+const ATTACK_RANGE := 1.75
 var atk_damage := 20
+
+var has_attack_hit : bool = false
 
 signal enemy_defeated
 
@@ -88,9 +90,6 @@ func _physics_process(delta):
 func initialise(player_ref : Player):
 	player = player_ref
 
-func _target_in_range():
-	return global_position.distance_to(player.global_position) < ATTACK_RANGE
-
 # Move agent towards target
 func update_target_location(target_location):
 	if anim_state_machine.get_current_node() == "Run":
@@ -105,8 +104,20 @@ func on_damaged(damage: float):
 	cur_health -= damage
 	#cur_state = STUNNED
 
-func _hit_finished():
-	var children = player.get_children()
-	for child in children:
-		if child.name == "Damageable":
-			child.take_damage(atk_damage)
+#--------------------------------ATTACKING--------------------------------------
+func _target_in_range():
+	return global_position.distance_to(player.global_position) < ATTACK_RANGE
+
+func reset_has_attack_hit() -> void:
+	has_attack_hit = false
+	print("Reset has_attack_hit.")
+
+func _on_attack_hitbox_area_entered(area) -> void:
+	if area is Damageable and !has_attack_hit:
+		print("%s hit." % area)
+		area.take_damage(atk_damage)
+
+func _on_attack_hitbox_area_exited(area) -> void:
+	if area is Damageable:
+		has_attack_hit = true
+		print("Attack has hit.")
