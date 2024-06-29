@@ -61,6 +61,12 @@ func on_peer_connected(id: int) -> void:
 # Is called on the server and clients when someone disconnects
 func on_peer_disconnected(id: int) -> void:
 	print("Player %s disconnected!" % id)
+	# Delete the player
+	var player = get_node_or_null(str(id))
+	if player:
+		player.queue_free()
+	# Remove the player from the players dictionary
+	GameManager.players.erase(id)
 
 # Is only called from clients
 # If you want to send information from the client to the server, do it from here

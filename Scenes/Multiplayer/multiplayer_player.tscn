@@ -172,7 +172,6 @@ _data = {
 [node name="MulitplayerPlayer" type="CharacterBody3D" node_paths=PackedStringArray("input", "head", "camera", "animation_player", "ceiling_check")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 collision_layer = 2
-collision_mask = 3
 script = ExtResource("1_g1uxc")
 input = NodePath("Input")
 head = NodePath("Head")
