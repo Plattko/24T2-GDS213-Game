@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://il6q27w1jqvw"]
+[gd_scene load_steps=30 format=3 uid="uid://il6q27w1jqvw"]
 
 [ext_resource type="Script" path="res://Scripts/Multiplayer/multiplayer_controller.gd" id="1_g1uxc"]
 [ext_resource type="Script" path="res://Scripts/Player/player_input.gd" id="2_7s41b"]
@@ -20,6 +20,20 @@
 [ext_resource type="Theme" uid="uid://ctri33ojacyl0" path="res://UI/Themes/debug.tres" id="18_v6r72"]
 [ext_resource type="Script" path="res://Scripts/UI/debug.gd" id="19_atg5u"]
 [ext_resource type="PackedScene" uid="uid://bu0mtrnvhonpt" path="res://Scenes/UI/settings_menu.tscn" id="20_c20fv"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_vurwv"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("Head:position")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath("Head:rotation")
+properties/3/spawn = true
+properties/3/replication_mode = 1
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l214m"]
 
@@ -158,12 +172,16 @@ _data = {
 [node name="MulitplayerPlayer" type="CharacterBody3D" node_paths=PackedStringArray("input", "head", "camera", "animation_player", "ceiling_check")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 collision_layer = 2
+collision_mask = 3
 script = ExtResource("1_g1uxc")
 input = NodePath("Input")
 head = NodePath("Head")
 camera = NodePath("Head/Camera3D")
 animation_player = NodePath("AnimationPlayer")
 ceiling_check = NodePath("CeilingCheck")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_vurwv")
 
 [node name="Input" type="Node" parent="."]
 script = ExtResource("2_7s41b")

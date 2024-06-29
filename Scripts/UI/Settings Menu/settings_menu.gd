@@ -10,7 +10,7 @@ func _ready():
 
 func open() -> void:
 	visible = true
-	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	opened_settings_menu.emit()
 
 func close() -> void:
