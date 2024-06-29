@@ -26,10 +26,14 @@ func initialise(player: CharacterBody3D, input) -> void:
 		current_state = initial_state
 
 func _unhandled_input(event):
+	if not is_multiplayer_authority(): return
+	
 	if current_state:
 		current_state.handle_input(event)
 
 func _process(delta):
+	if not is_multiplayer_authority(): return
+	
 	if current_state:
 		current_state.update(delta)
 	
@@ -37,6 +41,8 @@ func _process(delta):
 	Global.debug.add_debug_property("Current State", current_state.name, 1)
 
 func _physics_process(delta):
+	if not is_multiplayer_authority(): return
+	
 	if current_state:
 		current_state.physics_update(delta)
 

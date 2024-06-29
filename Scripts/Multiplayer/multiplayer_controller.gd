@@ -50,8 +50,14 @@ var is_dead : bool = false
 
 signal update_health
 
+func _enter_tree() -> void:
+	set_multiplayer_authority(str(name).to_int())
+
 func _ready() -> void:
+	if not is_multiplayer_authority(): return
+	
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	camera.current = true
 	
 	input.player = self
 	state_machine.initialise(self, input)
@@ -61,15 +67,21 @@ func _ready() -> void:
 	update_health.emit([cur_health, max_health])
 
 func _unhandled_input(event):
+	if not is_multiplayer_authority(): return
+	
 	if event is InputEventMouseMotion and input.can_look: # TODO Move check to PlayerInput if possible
 		rotation_input = -event.relative.x * sensitivity
 		tilt_input = -event.relative.y * sensitivity
 
 func _process(delta):
+	if not is_multiplayer_authority(): return
+	
 	# Handle camera movement
 	update_camera(delta)
 
 func _physics_process(delta):
+	if not is_multiplayer_authority(): return
+	
 	# Head bob
 	if can_head_bob:
 		t_bob += delta * velocity.length() * float(is_on_floor())
