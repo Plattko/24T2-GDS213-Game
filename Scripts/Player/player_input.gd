@@ -12,9 +12,11 @@ var can_shoot : bool = true
 var can_look : bool = true
 
 func _ready() -> void:
-	# Disable triggering input if it is the server in multiplayer
-	if MultiplayerManager.is_multiplayer and get_multiplayer_authority() != multiplayer.get_unique_id():
-		is_server = true
+	## TODO: Make this work again
+	## Disable triggering input if it is the server in multiplayer
+	#if MultiplayerManager.is_multiplayer and get_multiplayer_authority() != multiplayer.get_unique_id():
+		#is_server = true
+	pass
 
 # --------------------------------MOVEMENT------------------------------------ #
 var direction : Vector3:
