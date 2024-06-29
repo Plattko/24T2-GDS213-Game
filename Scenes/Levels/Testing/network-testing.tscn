@@ -1,6 +1,5 @@
-[gd_scene load_steps=9 format=3 uid="uid://d4a42cc8aa4hh"]
+[gd_scene load_steps=8 format=3 uid="uid://d4a42cc8aa4hh"]
 
-[ext_resource type="Script" path="res://Scripts/Gamemode/game_manager.gd" id="1_lkuof"]
 [ext_resource type="PackedScene" uid="uid://brc2h44edbj5a" path="res://Scenes/Player/player.tscn" id="1_tjkxj"]
 [ext_resource type="Material" uid="uid://bbyh52cc6ljvg" path="res://Materials/Standard Materials/prototype_grey.tres" id="2_1m1ge"]
 [ext_resource type="Material" uid="uid://clau1arwwv1yw" path="res://Materials/Standard Materials/prototype_orange.tres" id="3_cnxos"]
@@ -22,7 +21,6 @@ glow_enabled = true
 [node name="NetworkTesting" type="Node3D"]
 
 [node name="GameManager" type="Node" parent="."]
-script = ExtResource("1_lkuof")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
