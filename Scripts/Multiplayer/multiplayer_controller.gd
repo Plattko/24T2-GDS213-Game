@@ -41,12 +41,12 @@ var max_health := 100
 var cur_health
 var is_dead : bool = false
 
-# Multiplayer variables
-@export var player_id := 1: # An ID of 1 for any peer represents the server
-	set(id):
-		player_id = id
-		# Give the client authority over its inputs
-		input.set_multiplayer_authority(id)
+## Multiplayer variables
+#@export var player_id := 1: # An ID of 1 for any peer represents the server
+	#set(id):
+		#player_id = id
+		## Give the client authority over its inputs
+		#input.set_multiplayer_authority(id)
 
 signal update_health
 

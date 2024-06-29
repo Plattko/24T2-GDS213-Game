@@ -1,6 +1,7 @@
 extends Node
 
 @export var name_line : LineEdit
+var network_testing_scene = preload("res://Scenes/Levels/Testing/network-testing.tscn")
 
 # Server variables
 const SERVER_PORT := 8080
@@ -76,7 +77,7 @@ func on_connection_failed() -> void:
 @rpc("any_peer", "call_local")
 func start_game() -> void:
 	# Load the scene
-	var scene = load("res://Scenes/Levels/Testing/network-testing.tscn").instantiate()
+	var scene = network_testing_scene.instantiate()
 	# Add it to our tree
 	get_tree().root.add_child(scene)
 	# Hide the connection menu

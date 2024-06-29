@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://d4a42cc8aa4hh"]
+[gd_scene load_steps=8 format=3 uid="uid://d4a42cc8aa4hh"]
 
 [ext_resource type="Script" path="res://Scripts/Gamemode/scene_manager.gd" id="1_cyln3"]
-[ext_resource type="PackedScene" uid="uid://brc2h44edbj5a" path="res://Scenes/Player/player.tscn" id="1_tjkxj"]
 [ext_resource type="Material" uid="uid://bbyh52cc6ljvg" path="res://Materials/Standard Materials/prototype_grey.tres" id="2_1m1ge"]
 [ext_resource type="Material" uid="uid://clau1arwwv1yw" path="res://Materials/Standard Materials/prototype_orange.tres" id="3_cnxos"]
 [ext_resource type="PackedScene" uid="uid://v4q0vjnsq15d" path="res://Scenes/Props/destructible_orb.tscn" id="4_nq6h2"]
@@ -21,8 +20,12 @@ glow_enabled = true
 
 [node name="NetworkTesting" type="Node3D" node_paths=PackedStringArray("spawn_points")]
 script = ExtResource("1_cyln3")
-multiplayer_player = ExtResource("1_tjkxj")
 spawn_points = [NodePath("PlayerSpawnPoints/Spawn1"), NodePath("PlayerSpawnPoints/Spawn2"), NodePath("PlayerSpawnPoints/Spawn3"), NodePath("PlayerSpawnPoints/Spawn4")]
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://Scenes/Multiplayer/multiplayer_player.tscn")
+spawn_path = NodePath("..")
+spawn_limit = 4
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
@@ -18323,23 +18326,18 @@ transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 25.5, 1,
 [node name="DestructibleOrb19" parent="Level/Destructible Objects" groups=["destructible_orbs"] instance=ExtResource("4_nq6h2")]
 transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 8.5, 1, -47.5)
 
-[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://Scenes/Multiplayer/multiplayer_player.tscn")
-spawn_path = NodePath("../Players")
-spawn_limit = 4
-
-[node name="Players" type="Node3D" parent="."]
-
 [node name="PlayerSpawnPoints" type="Node" parent="."]
 
 [node name="Spawn1" type="Node3D" parent="PlayerSpawnPoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, 0)
 
 [node name="Spawn2" type="Node3D" parent="PlayerSpawnPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1, 0)
 
 [node name="Spawn3" type="Node3D" parent="PlayerSpawnPoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, 5)
 
 [node name="Spawn4" type="Node3D" parent="PlayerSpawnPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, 5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1, 5)
+
+[connection signal="spawned" from="MultiplayerSpawner" to="." method="_on_multiplayer_spawner_spawned"]
