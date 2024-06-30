@@ -42,13 +42,6 @@ var max_health := 100
 var cur_health
 var is_dead : bool = false
 
-## Multiplayer variables
-#@export var player_id := 1: # An ID of 1 for any peer represents the server
-	#set(id):
-		#player_id = id
-		## Give the client authority over its inputs
-		#input.set_multiplayer_authority(id)
-
 signal update_health
 
 func _enter_tree() -> void:
@@ -63,6 +56,8 @@ func _ready() -> void:
 	input.player = self
 	state_machine.initialise(self, input, debug)
 	weapon_manager.initialise(camera, input, reticle)
+	
+	handle_connected_signals()
 	
 	cur_health = max_health
 	update_health.emit([cur_health, max_health])
@@ -152,7 +147,16 @@ func on_damaged(damage: float):
 		print("Player health: " + str(cur_health))
 
 func handle_connected_signals() -> void:
-	for child in get_children():
-		if child is Damageable:
-			# Connect each damageable to the damaged signal
-			child.damaged.connect(on_damaged)
+	#for child in get_children():
+		#if child is Damageable:
+			## Connect each damageable to the damaged signal
+			#child.damaged.connect(on_damaged)
+	
+	var sensitivity_setting = find_child("SensitivitySliderSetting")
+	sensitivity_setting.sensitivity_updated.connect(set_sensitivity)
+	var reload_type_setting = find_child("ReloadTypeSetting")
+	reload_type_setting.reload_type_updated.connect(weapon_manager.set_reload_type)
+
+func set_sensitivity(value: float) -> void:
+	sensitivity = value
+	print("Player sensitivity: %s" % sensitivity)

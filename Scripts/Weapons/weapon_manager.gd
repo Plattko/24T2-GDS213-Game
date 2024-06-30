@@ -93,3 +93,6 @@ func change_weapon(next_weapon: Weapon) -> void:
 
 func call_update_reticle(weapon: Weapon) -> void:
 	reticle.update_reticle(weapon)
+
+func set_reload_type(type: Reload_Types):
+	reload_type = type
