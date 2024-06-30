@@ -42,8 +42,7 @@ func init(player_camera: Camera3D) -> void:
 
 func shoot() -> void:
 	# Display the muzzle flash
-	muzzle_flash.add_muzzle_flash()
-	
+	muzzle_flash.add_muzzle_flash.rpc()
 	anim_player.play(SHOOT_ANIM)
 	
 	cur_ammo -= AMMO_COST
@@ -58,8 +57,9 @@ func reload() -> void:
 func spawn_decal(position: Vector3, normal: Vector3) -> void:
 	# Instantiate bullet decal
 	var instance = bullet_decal.instantiate()
-	# Make it a child of the scene
-	get_tree().root.add_child(instance)
+	# Make it a child of the level scene
+	var level = get_tree().get_first_node_in_group("levels")
+	level.add_child(instance)
 	# Set its position
 	instance.global_position = position
 	
