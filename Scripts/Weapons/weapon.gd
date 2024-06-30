@@ -29,7 +29,7 @@ const UNEQUIP_ANIM : String = "Unequip"
 
 # Bullet hole variables
 var decal_queue = []
-const MAX_QUEUE_SIZE := 30
+const MAX_QUEUE_SIZE := 100
 
 # Signals
 signal update_ammo
@@ -62,10 +62,14 @@ func spawn_decal(position: Vector3, normal: Vector3) -> void:
 	level.add_child(instance)
 	# Set its position
 	instance.global_position = position
-	
-	if normal != Vector3.UP and normal != Vector3.DOWN:
+	# Give the decal a reference to the decal queue
+	instance.decal_queue = decal_queue
+	# Rotate the decal in the direction of the surface's normal
+	if abs(normal.y) < 0.99:
 		instance.look_at(instance.global_transform.origin + normal, Vector3.UP)
 		instance.rotate_object_local(Vector3(1, 0, 0), 90)
+	# Add random rotation around the decal's local Y axis
+	instance.rotate_object_local(Vector3(0,1,0), randf_range(0.0,360.0))
 	
 	update_decal_queue(instance)
 
