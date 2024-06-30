@@ -71,4 +71,5 @@ func physics_update(delta):
 			transition.emit("SprintPlayerState")
 	
 	# Debug
-	Global.debug.add_debug_property("Slide Timer", snappedf(elapsed_time, 0.01), 4)
+	if debug:
+		debug.add_debug_property("Slide Timer", snappedf(elapsed_time, 0.01), 4)

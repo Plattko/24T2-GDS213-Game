@@ -355,7 +355,8 @@ text = "Enemies Remaining: 123"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="DebugPanel" type="PanelContainer" parent="UI" node_paths=PackedStringArray("property_container")]
+[node name="DebugPanel" type="PanelContainer" parent="UI/HUD" node_paths=PackedStringArray("property_container")]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 0
 offset_left = 10.0
@@ -366,13 +367,13 @@ theme = ExtResource("18_v6r72")
 script = ExtResource("19_atg5u")
 property_container = NodePath("MarginContainer/VBoxContainer")
 
-[node name="MarginContainer" type="MarginContainer" parent="UI/DebugPanel"]
+[node name="MarginContainer" type="MarginContainer" parent="UI/HUD/DebugPanel"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/DebugPanel/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/HUD/DebugPanel/MarginContainer"]
 layout_mode = 2
 
-[node name="SettingsMenu" parent="UI" instance=ExtResource("20_c20fv")]
+[node name="SettingsMenu" parent="UI/HUD" instance=ExtResource("20_c20fv")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
@@ -380,3 +381,5 @@ layout_mode = 1
 [connection signal="update_ammo" from="Head/Camera3D/WeaponManager/Rifle" to="UI/HUD" method="on_update_ammo"]
 [connection signal="update_ammo" from="Head/Camera3D/WeaponManager/Pistol" to="UI/HUD" method="on_update_ammo"]
 [connection signal="update_ammo" from="Head/Camera3D/WeaponManager/Shotgun" to="UI/HUD" method="on_update_ammo"]
+[connection signal="closed_settings_menu" from="UI/HUD/SettingsMenu" to="Input" method="on_closed_settings_menu"]
+[connection signal="opened_settings_menu" from="UI/HUD/SettingsMenu" to="Input" method="on_opened_settings_menu"]

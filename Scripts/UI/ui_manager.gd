@@ -2,6 +2,11 @@ extends Control
 
 @onready var settings_menu = %SettingsMenu
 
+func _ready() -> void:
+	if not is_multiplayer_authority(): 
+		self.queue_free()
+		return
+
 func _input(event):
 	if event.is_action_pressed("settings_menu"):
 		if not settings_menu.visible:

@@ -10,6 +10,7 @@ extends CharacterBody3D
 @onready var state_machine = %PlayerStateMachine
 @onready var weapon_manager = %WeaponManager
 @onready var reticle = %Reticle
+@onready var debug = %DebugPanel
 
 # Camera movement variables
 var rotation_input : float
@@ -60,7 +61,7 @@ func _ready() -> void:
 	camera.current = true
 	
 	input.player = self
-	state_machine.initialise(self, input)
+	state_machine.initialise(self, input, debug)
 	weapon_manager.initialise(camera, input, reticle)
 	
 	cur_health = max_health
@@ -94,7 +95,8 @@ func _physics_process(delta):
 	
 	# Debug
 	#Global.debug.add_debug_property("Move Speed", snappedf(velocity.length(), 0.01), 2)
-	Global.debug.add_debug_property("Move Speed", snappedf(Vector2(velocity.x, velocity.z).length(), 0.01), 2)
+	if debug:
+		debug.add_debug_property("Move Speed", snappedf(Vector2(velocity.x, velocity.z).length(), 0.01), 2)
 	
 	if cur_health <= 0 and not is_dead:
 		is_dead = true
