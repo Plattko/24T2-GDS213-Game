@@ -2,6 +2,7 @@ class_name WeaponManager
 
 extends Node3D
 
+var camera : Camera3D
 var input : PlayerInput
 var reticle : Reticle
 
@@ -17,7 +18,8 @@ enum Reload_Types {
 
 @export var reload_type : Reload_Types
 
-func initialise(player_input: PlayerInput, player_reticle: Reticle) -> void:
+func initialise(player_camera: Camera3D, player_input: PlayerInput, player_reticle: Reticle) -> void:
+	camera = player_camera
 	input = player_input
 	reticle = player_reticle
 	
@@ -25,15 +27,18 @@ func initialise(player_input: PlayerInput, player_reticle: Reticle) -> void:
 		if child is Weapon:
 			weapons.append(child)
 			child.mesh.visible = false
+			child.init(camera)
 	
 	current_weapon = weapons[0]
 	current_weapon.mesh.visible = true
 	current_weapon.update_ammo.emit([current_weapon.cur_ammo, current_weapon.MAX_AMMO])
 
 func _physics_process(delta):
+	if not is_multiplayer_authority(): return
+	
 	# Handle shooting
 	if current_weapon.is_auto_fire:
-		if input.is_shoot_pressed():
+		if input.is_shoot_pressed:
 			if !current_weapon.anim_player.is_playing():
 				if current_weapon.cur_ammo > 0:
 					current_weapon.shoot()
@@ -41,7 +46,7 @@ func _physics_process(delta):
 				elif reload_type == Reload_Types.ON_SHOOT:
 					current_weapon.reload()
 	else:
-		if input.is_shoot_just_pressed():
+		if input.is_shoot_just_pressed:
 			if !current_weapon.anim_player.is_playing():
 				if current_weapon.cur_ammo > 0:
 					current_weapon.shoot()
@@ -54,21 +59,21 @@ func _physics_process(delta):
 		if !current_weapon.anim_player.is_playing():
 			current_weapon.reload()
 	
-	if input.is_reload_pressed():
+	if input.is_reload_pressed:
 		if !current_weapon.anim_player.is_playing() and current_weapon.cur_ammo < current_weapon.MAX_AMMO:
 			current_weapon.reload()
 	
-	if input.is_weapon_1_pressed():
+	if input.is_weapon_1_pressed:
 		print("Pressed Weapon 1.")
 		if !current_weapon.anim_player.is_playing():
 			change_weapon(weapons[0])
 	
-	if input.is_weapon_2_pressed():
+	if input.is_weapon_2_pressed:
 		print("Pressed Weapon 2.")
 		if !current_weapon.anim_player.is_playing():
 			change_weapon(weapons[1])
 	
-	if input.is_weapon_3_pressed():
+	if input.is_weapon_3_pressed:
 		if !current_weapon.anim_player.is_playing():
 			change_weapon(weapons[2])
 
@@ -88,3 +93,6 @@ func change_weapon(next_weapon: Weapon) -> void:
 
 func call_update_reticle(weapon: Weapon) -> void:
 	reticle.update_reticle(weapon)
+
+func set_reload_type(type: Reload_Types):
+	reload_type = type

@@ -1,16 +1,16 @@
-class_name Player
-
 extends CharacterBody3D
 
+@export var input : PlayerInput
 @export var head : Node3D
 @export var camera : Camera3D
 @export var animation_player : AnimationPlayer
 @export var ceiling_check : ShapeCast3D
 
-@onready var input = %Input
+#@onready var input = %Input
 @onready var state_machine = %PlayerStateMachine
 @onready var weapon_manager = %WeaponManager
 @onready var reticle = %Reticle
+@onready var debug = %DebugPanel
 
 # Camera movement variables
 var rotation_input : float
@@ -37,46 +37,52 @@ const BASE_FOV := 90.0
 const FOV_CHANGE := 1.5
 const FOV_VELOCITY_CLAMP := 8.0
 
-# Health vars
+# Health variables
 var max_health := 100
 var cur_health
 var is_dead : bool = false
 
-# Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
-
 signal update_health
 
-func _ready():
+func _enter_tree() -> void:
+	set_multiplayer_authority(str(name).to_int())
+
+func _ready() -> void:
+	if not is_multiplayer_authority(): return
+	
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	camera.current = true
+	
+	input.player = self
+	state_machine.initialise(self, input, debug)
+	weapon_manager.initialise(camera, input, reticle)
 	
 	handle_connected_signals()
-	
-	# Provide references to self and components
-	input.player = self
-	state_machine.initialise(self, input)
-	weapon_manager.initialise(camera, input, reticle)
-	#Global.camera = camera TODO: Remove from Global script
-	Global.player = self
 	
 	cur_health = max_health
 	update_health.emit([cur_health, max_health])
 
-func _input(event):
-	# Handle quit
-	if event.is_action_pressed("quit"):
-		get_tree().quit()
-
 func _unhandled_input(event):
+	if not is_multiplayer_authority(): return
+	
 	if event is InputEventMouseMotion and input.can_look: # TODO Move check to PlayerInput if possible
 		rotation_input = -event.relative.x * sensitivity
 		tilt_input = -event.relative.y * sensitivity
+	
+	# Health debug
+	if event is InputEventKey:
+		if event.pressed and event.keycode == KEY_P:
+			on_damaged(20)
 
 func _process(delta):
+	if not is_multiplayer_authority(): return
+	
 	# Handle camera movement
 	update_camera(delta)
 
 func _physics_process(delta):
+	if not is_multiplayer_authority(): return
+	
 	# Head bob
 	if can_head_bob:
 		t_bob += delta * velocity.length() * float(is_on_floor())
@@ -89,12 +95,11 @@ func _physics_process(delta):
 	
 	# Debug
 	#Global.debug.add_debug_property("Move Speed", snappedf(velocity.length(), 0.01), 2)
-	Global.debug.add_debug_property("Move Speed", snappedf(Vector2(velocity.x, velocity.z).length(), 0.01), 2)
+	if debug:
+		debug.add_debug_property("Move Speed", snappedf(Vector2(velocity.x, velocity.z).length(), 0.01), 2)
 	
 	if cur_health <= 0 and not is_dead:
-		is_dead = true
-		await get_tree().create_timer(1.0).timeout
-		get_tree().reload_current_scene()
+		respawn_player()
 
 func update_camera(delta):
 	mouse_rotation.y += rotation_input * delta
@@ -145,7 +150,25 @@ func on_damaged(damage: float):
 		print("Player health: " + str(cur_health))
 
 func handle_connected_signals() -> void:
-	for child in get_children():
-		if child is Damageable:
-			# Connect each damageable to the damaged signal
-			child.damaged.connect(on_damaged)
+	#for child in get_children():
+		#if child is Damageable:
+			## Connect each damageable to the damaged signal
+			#child.damaged.connect(on_damaged)
+	
+	var sensitivity_setting = find_child("SensitivitySliderSetting")
+	sensitivity_setting.sensitivity_updated.connect(set_sensitivity)
+	var reload_type_setting = find_child("ReloadTypeSetting")
+	reload_type_setting.reload_type_updated.connect(weapon_manager.set_reload_type)
+
+func set_sensitivity(value: float) -> void:
+	sensitivity = value
+	print("Player sensitivity: %s" % sensitivity)
+
+func respawn_player() -> void:
+	is_dead = true
+	global_position = GameManager.cur_respawn_point
+	print("Current respawn position: " + str(GameManager.cur_respawn_point))
+	print("Player position after respawning: " + str(global_position))
+	cur_health = max_health
+	update_health.emit([cur_health, max_health])
+	is_dead = false

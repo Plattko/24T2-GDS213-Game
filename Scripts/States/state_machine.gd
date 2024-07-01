@@ -2,17 +2,20 @@ class_name StateMachine
 
 extends Node
 
-var states : Dictionary = {}
+var debug
 
+var states : Dictionary = {}
 @export var initial_state : State
 var current_state : State
 
-func initialise(player: CharacterBody3D, input) -> void:
+func initialise(player: CharacterBody3D, input: PlayerInput, debug_ref: Debug) -> void:
 	for child in get_children():
 		if child is State:
+			debug = debug_ref
 			# Give child reference to player and input
 			child.player = player
 			child.input = input
+			child.debug = debug_ref
 			# Add a kvp of each state name and its state to the states dictionary
 			states[child.name.to_lower()] = child
 			# Connect each state to the transition signal
@@ -26,17 +29,24 @@ func initialise(player: CharacterBody3D, input) -> void:
 		current_state = initial_state
 
 func _unhandled_input(event):
+	if not is_multiplayer_authority(): return
+	
 	if current_state:
 		current_state.handle_input(event)
 
 func _process(delta):
+	if not is_multiplayer_authority(): return
+	
 	if current_state:
 		current_state.update(delta)
 	
 	# Debug
-	Global.debug.add_debug_property("Current State", current_state.name, 1)
+	if debug:
+		debug.add_debug_property("Current State", current_state.name, 1)
 
 func _physics_process(delta):
+	if not is_multiplayer_authority(): return
+	
 	if current_state:
 		current_state.physics_update(delta)
 

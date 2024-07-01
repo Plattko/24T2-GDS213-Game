@@ -21,8 +21,8 @@ func exit():
 
 func physics_update(delta) -> void:
 	# Handle movement
-	player.velocity.x = input.get_direction().x * WALK_SPEED
-	player.velocity.z = input.get_direction().z * WALK_SPEED
+	player.velocity.x = input.direction.x * WALK_SPEED
+	player.velocity.z = input.direction.z * WALK_SPEED
 	player.move_and_slide()
 	
 	# Transition to Air state
@@ -30,18 +30,18 @@ func physics_update(delta) -> void:
 		player.stand_up("CrouchPlayerState", CROUCH_ANIM_SPEED, true)
 		transition.emit("AirPlayerState")
 	# Transition to Air state with jump
-	elif input.is_jump_just_pressed() and player.crouch_shape_cast.is_colliding() == false:
+	elif input.is_jump_just_pressed and player.ceiling_check.is_colliding() == false:
 		player.stand_up("CrouchPlayerState", CROUCH_ANIM_SPEED, true)
 		transition.emit("AirPlayerState", {"do_jump" = true})
 	# Handle releasing crouch
-	elif input.is_crouch_just_released():
+	elif input.is_crouch_just_released:
 		uncrouch()
-	elif !input.is_crouch_pressed() and !is_crouch_released:
+	elif !input.is_crouch_pressed and !is_crouch_released:
 		uncrouch()
 
 func uncrouch() -> void:
 	# If there is nothing blocking the player from standing up, play the uncrouch animation
-	if player.crouch_shape_cast.is_colliding() == false:
+	if player.ceiling_check.is_colliding() == false:
 		player.animation_player.play("Crouch", -1, -CROUCH_ANIM_SPEED, true)
 		
 		# Wait for uncrouch animation to end
@@ -49,16 +49,16 @@ func uncrouch() -> void:
 			await player.animation_player.animation_finished
 		
 		# Transition to Idle state
-		if !input.get_direction():
+		if !input.direction:
 			transition.emit("IdlePlayerState")
 			# Transition to Walk state
-		elif input.get_direction() and !input.is_sprint_pressed():
+		elif input.direction and !input.is_sprint_pressed:
 			transition.emit("WalkPlayerState")
 		# Transition to Sprint state
-		elif input.get_direction() and input.is_sprint_pressed():
+		elif input.direction and input.is_sprint_pressed:
 			transition.emit("SprintPlayerState")
 	
 	# If there is something blocking the way, try to uncrouch again in 0.1 seconds
-	elif player.crouch_shape_cast.is_colliding() == true:
+	elif player.ceiling_check.is_colliding() == true:
 		await get_tree().create_timer(0.1).timeout
 		uncrouch()

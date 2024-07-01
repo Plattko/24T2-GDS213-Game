@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="24T2 Prototype Week Game"
-run/main_scene="res://Scenes/Levels/Testing/enemy-testing.tscn"
+run/main_scene="res://Scenes/UI/Menus/multiplayer_connection_menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Global="*res://Scripts/Global/global.gd"
+GameManager="*res://Scripts/Gamemode/game_manager.gd"
 
 [display]
 

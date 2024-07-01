@@ -18,7 +18,7 @@ func enter(previous_state, msg : Dictionary = {}):
 	print("Entered Slide player state.")
 	# Set the slide direction to the direction the player is looking
 	#slide_direction = -player.transform.basis.z
-	slide_direction = input.get_direction()
+	slide_direction = input.direction
 	# Play the crouch animation
 	player.animation_player.play("Slide", -1, SLIDE_ANIM_SPEED)
 	# Disable head bob
@@ -45,9 +45,9 @@ func physics_update(delta):
 			player.stand_up("SlidePlayerState", SLIDE_ANIM_SPEED, true)
 			transition.emit("AirPlayerState")
 		# Handle jump
-		elif input.is_jump_just_pressed(): 
+		elif input.is_jump_just_pressed: 
 			# If above the player is unobstructed, transition to Air state with jump
-			if player.crouch_shape_cast.is_colliding() == false:
+			if player.ceiling_check.is_colliding() == false:
 				player.stand_up("SlidePlayerState", SLIDE_ANIM_SPEED, true)
 				transition.emit("AirPlayerState", {"do_jump" = true})
 			# Else, transition to crouch state
@@ -55,20 +55,21 @@ func physics_update(delta):
 				transition.emit("CrouchPlayerState")
 	else:
 		# Transition to Crouch state
-		if input.is_crouch_pressed() or player.crouch_shape_cast.is_colliding() == true:
+		if input.is_crouch_pressed or player.ceiling_check.is_colliding() == true:
 			transition.emit("CrouchPlayerState")
 		# Transition to Idle state
-		elif !input.get_direction():
+		elif !input.direction:
 			player.stand_up("SlidePlayerState", SLIDE_ANIM_SPEED, false)
 			transition.emit("IdlePlayerState")
 		# Transition to Walk state
-		elif input.get_direction() and !input.is_sprint_pressed():
+		elif input.direction and !input.is_sprint_pressed:
 			player.stand_up("SlidePlayerState", SLIDE_ANIM_SPEED, false)
 			transition.emit("WalkPlayerState")
 		# Transition to Sprint state
-		elif input.get_direction() and input.is_sprint_pressed():
+		elif input.direction and input.is_sprint_pressed:
 			player.stand_up("SlidePlayerState", SLIDE_ANIM_SPEED, false)
 			transition.emit("SprintPlayerState")
 	
 	# Debug
-	Global.debug.add_debug_property("Slide Timer", snappedf(elapsed_time, 0.01), 4)
+	if debug:
+		debug.add_debug_property("Slide Timer", snappedf(elapsed_time, 0.01), 4)

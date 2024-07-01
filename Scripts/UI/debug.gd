@@ -1,3 +1,5 @@
+class_name Debug
+
 extends PanelContainer
 
 @export var property_container : VBoxContainer
@@ -5,9 +7,6 @@ extends PanelContainer
 var frames_per_second : String
 
 func _ready():
-	# Set global reference in the Global script
-	Global.debug = self
-	
 	visible = false
 
 func _input(event):

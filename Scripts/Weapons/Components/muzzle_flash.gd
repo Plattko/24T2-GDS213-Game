@@ -10,6 +10,7 @@ extends Node3D
 func _ready():
 	pass
 
+@rpc("call_local")
 func add_muzzle_flash() -> void:
 	light.visible = true
 	emitter.emitting = true
