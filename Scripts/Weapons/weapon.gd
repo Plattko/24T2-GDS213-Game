@@ -14,12 +14,15 @@ var bullet_decal = preload("res://Scenes/Weapons/VFX/bullet_decal.tscn")
 # Weapon data
 @export_category("Weapon Data")
 @export var BULLET_DAMAGE : float
+@export var CRIT_MULTIPLIER : float = 2.0
 
 @export var MAX_AMMO : int
 @export var AMMO_COST := 1
 var cur_ammo
 
 @export var is_auto_fire : bool = true
+
+const HITSCAN_COLLISION_MASK := pow(2, 1-1)
 
 # Animation variables
 const SHOOT_ANIM : String = "Shoot"
@@ -79,3 +82,7 @@ func update_decal_queue(decal):
 	if decal_queue.size() > MAX_QUEUE_SIZE:
 		var decal_to_destroy = decal_queue.pop_front()
 		decal_to_destroy.queue_free()
+
+func crit_damage() -> float:
+	var crit_damage = BULLET_DAMAGE * CRIT_MULTIPLIER
+	return crit_damage
