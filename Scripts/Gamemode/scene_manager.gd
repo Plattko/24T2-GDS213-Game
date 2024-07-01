@@ -24,14 +24,9 @@ func _ready() -> void:
 		player.name = str(GameManager.players[i].id)
 		# Add the player as a child of the scene
 		add_child(player)
-		
-		## Set the player's location to their spawn point
-		#print("Spawn point: %s" % spawn_points[index])
-		#player.global_position = spawn_points[index].global_position
-		
 		# If it's player 1, manually set their initial spawn point
 		if GameManager.players[i].player_num == 1:
-			set_initial_spawn_position(player)
+			set_initial_spawn_point(player)
 		
 		#TODO: Connect the UI to the player
 		
@@ -43,15 +38,15 @@ func _ready() -> void:
 ## Temporary fix TODO: Make work differently
 func _on_multiplayer_spawner_spawned(node):
 	print("Spawned player " + str(node.name) + " on client " + str(multiplayer.get_unique_id()))
-	set_initial_spawn_position(node)
-	
-	#var spawn_point = spawn_points.pop_front()
-	#node.global_position = spawn_point.global_position
-	#print("Player " + str(node.name) + " spawned at: " + str(node.global_position))
+	set_initial_spawn_point(node)
 
-func set_initial_spawn_position(player) -> void:
-	var player_num = GameManager.players[player.name.to_int()].player_num
-	player.global_position = spawn_points[player_num - 1].global_position
+func set_initial_spawn_point(player) -> void:
+	# Only set the spawn point if its the client's player
+	if player.name.to_int() == multiplayer.get_unique_id():
+		# Set the player's position to their respective spawn point
+		var player_num = GameManager.players[player.name.to_int()].player_num
+		player.global_position = spawn_points[player_num - 1].global_position
+		print("Player " + str(player_num) + " position: " + str(player.global_position))
 
 @rpc("any_peer", "call_local")
 func set_respawn_point() -> void:
