@@ -1,8 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://2l0xgkulyboa"]
+[gd_scene load_steps=3 format=3 uid="uid://2l0xgkulyboa"]
 
 [ext_resource type="Script" path="res://Scripts/Multiplayer/multiplayer_manager.gd" id="1_l41eb"]
+[ext_resource type="Script" path="res://Scripts/UI/ip_line_edit.gd" id="2_v72lq"]
 
-[node name="MultiplayerConnectionMenu" type="Control" node_paths=PackedStringArray("name_line")]
+[node name="MultiplayerConnectionMenu" type="Control" node_paths=PackedStringArray("name_line", "ip_line")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -10,7 +11,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_l41eb")
-name_line = NodePath("Panel/MarginContainer/VBoxContainer/NameHBox/LineEdit")
+name_line = NodePath("Panel/MarginContainer/VBoxContainer/NameHBox/NameLineEdit")
+ip_line = NodePath("Panel/MarginContainer/VBoxContainer/IPHBox/IPLineEdit")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -48,18 +50,38 @@ theme_override_constants/separation = 20
 [node name="NameHBox" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 10
+alignment = 2
 
 [node name="NameLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/NameHBox"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 36
 text = "Username:"
 
-[node name="LineEdit" type="LineEdit" parent="Panel/MarginContainer/VBoxContainer/NameHBox"]
+[node name="NameLineEdit" type="LineEdit" parent="Panel/MarginContainer/VBoxContainer/NameHBox"]
 custom_minimum_size = Vector2(419, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 36
 max_length = 12
+
+[node name="IPHBox" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 2
+
+[node name="NameLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/IPHBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "IP:"
+
+[node name="IPLineEdit" type="LineEdit" parent="Panel/MarginContainer/VBoxContainer/IPHBox"]
+custom_minimum_size = Vector2(419, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 36
+placeholder_text = " Joining player only"
+max_length = 19
+script = ExtResource("2_v72lq")
 
 [node name="ButtonsHBox" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -85,6 +107,7 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Start Game"
 
+[connection signal="text_changed" from="Panel/MarginContainer/VBoxContainer/IPHBox/IPLineEdit" to="Panel/MarginContainer/VBoxContainer/IPHBox/IPLineEdit" method="_on_text_changed"]
 [connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/ButtonsHBox/HostNewGame" to="." method="_on_host_new_game_pressed"]
 [connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/ButtonsHBox/JoinAsP2" to="." method="_on_join_as_player_2_pressed"]
 [connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/ButtonsHBox/StartGame" to="." method="_on_start_game_pressed"]

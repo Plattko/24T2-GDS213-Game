@@ -1,6 +1,7 @@
 extends Node
 
 @export var name_line : LineEdit
+@export var ip_line : LineEdit
 var network_testing_scene = preload("res://Scenes/Levels/Testing/network-testing.tscn")
 
 # Server variables
@@ -43,7 +44,11 @@ func _on_join_as_player_2_pressed() -> void:
 	# Create a new peer
 	var client_peer = ENetMultiplayerPeer.new()
 	# Make it a client of the chosen server
-	client_peer.create_client(SERVER_IP, SERVER_PORT)
+	var error = client_peer.create_client(get_server_ip(), SERVER_PORT)
+	# Check for an error creating the client
+	if error != OK:
+		print("Cannot create client: %s" % error)
+		return
 	# Apply compression to reduce bandwidth use NOTE: Can be disabled if it causes issues
 	client_peer.get_host().compress(ENetConnection.COMPRESS_RANGE_CODER)
 	# Set yourself as the multiplayer peer
@@ -52,6 +57,14 @@ func _on_join_as_player_2_pressed() -> void:
 func _on_start_game_pressed() -> void:
 	# Call start_game on all peers
 	start_game.rpc()
+
+func get_server_ip() -> String:
+	if ip_line.text != "":
+		print("Server IP: " + ip_line.text)
+		return ip_line.text
+	else:
+		print("Server IP: " + SERVER_IP)
+		return SERVER_IP
 
 #--------------------------------CONNECTIONS------------------------------------
 ## Formerly called add_player_to_game
