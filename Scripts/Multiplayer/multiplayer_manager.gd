@@ -8,6 +8,8 @@ const SERVER_PORT := 8080
 const SERVER_IP = "127.0.0.1"
 const MAX_PLAYERS := 4
 
+var cur_player_num := 2
+
 func _ready():
 	# Connect lifecycle callbacks
 	multiplayer.peer_connected.connect(on_peer_connected) # Calls this function when a peer connects to the server
@@ -34,7 +36,7 @@ func _on_host_new_game_pressed() -> void:
 	print("Waiting for players!")
 	
 	# Pass in the host's player information
-	send_player_information(multiplayer.get_unique_id(), name_line.text)
+	send_player_information(multiplayer.get_unique_id(), name_line.text, 1)
 
 func _on_join_as_player_2_pressed() -> void:
 	print("Player 2 joining.")
@@ -73,7 +75,8 @@ func on_peer_disconnected(id: int) -> void:
 func on_connected_to_server() -> void: 
 	print("Connected to server.")
 	# Send connected player's information to the server
-	send_player_information.rpc_id(1, multiplayer.get_unique_id(), name_line.text)
+	send_player_information.rpc_id(1, multiplayer.get_unique_id(), name_line.text, cur_player_num)
+	cur_player_num += 1
 
 # Is only called from clients
 func on_connection_failed() -> void: 
@@ -91,15 +94,16 @@ func start_game() -> void:
 
 ## NOTE: Use this if players select weapon loadout before entering game
 @rpc("any_peer")
-func send_player_information(id, name) -> void:
+func send_player_information(id, name, player_num) -> void:
 	# If the player doesn't already exist, send the player information to the server
 	if !GameManager.players.has(id):
 		GameManager.players[id] = {
 			"id" : id,
 			"name" : name,
+			"player_num" : player_num,
 		}
 	
 	# Pass the player information from the server to every peer
 	if multiplayer.is_server():
 		for n in GameManager.players:
-			send_player_information.rpc(n, GameManager.players[n].name)
+			send_player_information.rpc(n, GameManager.players[n].name, GameManager.players[n].player_num)

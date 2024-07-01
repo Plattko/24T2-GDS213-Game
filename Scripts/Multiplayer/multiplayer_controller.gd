@@ -68,6 +68,11 @@ func _unhandled_input(event):
 	if event is InputEventMouseMotion and input.can_look: # TODO Move check to PlayerInput if possible
 		rotation_input = -event.relative.x * sensitivity
 		tilt_input = -event.relative.y * sensitivity
+	
+	# Health debug
+	if event is InputEventKey:
+		if event.pressed and event.keycode == KEY_P:
+			on_damaged(20)
 
 func _process(delta):
 	if not is_multiplayer_authority(): return
@@ -94,9 +99,7 @@ func _physics_process(delta):
 		debug.add_debug_property("Move Speed", snappedf(Vector2(velocity.x, velocity.z).length(), 0.01), 2)
 	
 	if cur_health <= 0 and not is_dead:
-		is_dead = true
-		await get_tree().create_timer(1.0).timeout
-		get_tree().reload_current_scene()
+		respawn_player()
 
 func update_camera(delta):
 	mouse_rotation.y += rotation_input * delta
@@ -160,3 +163,12 @@ func handle_connected_signals() -> void:
 func set_sensitivity(value: float) -> void:
 	sensitivity = value
 	print("Player sensitivity: %s" % sensitivity)
+
+func respawn_player() -> void:
+	is_dead = true
+	global_position = GameManager.cur_respawn_point
+	print("Current respawn position: " + str(GameManager.cur_respawn_point))
+	print("Player position after respawning: " + str(global_position))
+	cur_health = max_health
+	update_health.emit([cur_health, max_health])
+	is_dead = false

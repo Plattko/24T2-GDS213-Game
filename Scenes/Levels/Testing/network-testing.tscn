@@ -18,9 +18,10 @@ sky = SubResource("Sky_uxvi4")
 tonemap_mode = 2
 glow_enabled = true
 
-[node name="NetworkTesting" type="Node3D" node_paths=PackedStringArray("spawn_points") groups=["levels"]]
+[node name="NetworkTesting" type="Node3D" node_paths=PackedStringArray("spawn_points", "zone_respawn_points") groups=["levels"]]
 script = ExtResource("1_cyln3")
 spawn_points = [NodePath("PlayerSpawnPoints/Spawn1"), NodePath("PlayerSpawnPoints/Spawn2"), NodePath("PlayerSpawnPoints/Spawn3"), NodePath("PlayerSpawnPoints/Spawn4")]
+zone_respawn_points = [NodePath("Level/ZoneRespawnPoints/Zone1Respawn")]
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("res://Scenes/Multiplayer/multiplayer_player.tscn")
@@ -18325,6 +18326,11 @@ transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 25.5, 1,
 
 [node name="DestructibleOrb19" parent="Level/Destructible Objects" groups=["destructible_orbs"] instance=ExtResource("4_nq6h2")]
 transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 8.5, 1, -47.5)
+
+[node name="ZoneRespawnPoints" type="Node" parent="Level"]
+
+[node name="Zone1Respawn" type="Node3D" parent="Level/ZoneRespawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 1)
 
 [node name="PlayerSpawnPoints" type="Node" parent="."]
 
