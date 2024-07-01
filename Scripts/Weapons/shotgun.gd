@@ -40,6 +40,6 @@ func shoot() -> void:
 			
 			var collider = result.collider
 			if collider is Damageable:
-				collider.take_damage(BULLET_DAMAGE)
+				collider.take_damage.rpc(BULLET_DAMAGE)
 		else:
 			print ("Hit nothing.")

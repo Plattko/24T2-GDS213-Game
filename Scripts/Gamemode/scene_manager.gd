@@ -7,6 +7,8 @@ func _ready() -> void:
 	if !multiplayer.is_server():
 		return
 	
+	# Instantiate the UI
+	
 	var index := 0
 	for n in GameManager.players:
 		var player = multiplayer_player.instantiate()
@@ -17,6 +19,9 @@ func _ready() -> void:
 		# Set the player's location to their spawn point
 		print("Spawn point: %s" % spawn_points[index])
 		player.global_position = spawn_points[index].global_position
+		
+		# Connect the UI to the player
+		
 		index += 1
 
 func _on_multiplayer_spawner_spawned(node):

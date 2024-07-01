@@ -12,8 +12,6 @@ func _ready():
 		if child is Damageable:
 			# Connect each damageable to the damaged signal
 			child.damaged.connect(on_damaged)
-		else:
-			push_warning("Object contains non-damageable child node.")
 
 func _physics_process(delta):
 	if cur_health <= 0:
