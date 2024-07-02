@@ -1,3 +1,4 @@
+class_name MultiplayerPlayer
 extends CharacterBody3D
 
 @export var input : PlayerInput
@@ -150,10 +151,10 @@ func on_damaged(damage: float):
 		print("Player health: " + str(cur_health))
 
 func handle_connected_signals() -> void:
-	#for child in get_children():
-		#if child is Damageable:
-			## Connect each damageable to the damaged signal
-			#child.damaged.connect(on_damaged)
+	for child in get_children():
+		if child is Damageable:
+			# Connect each damageable to the damaged signal
+			child.damaged.connect(on_damaged)
 	
 	var sensitivity_setting = find_child("SensitivitySliderSetting")
 	sensitivity_setting.sensitivity_updated.connect(set_sensitivity)

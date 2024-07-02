@@ -61,7 +61,7 @@ func spawn_decal(position: Vector3, normal: Vector3) -> void:
 	# Instantiate bullet decal
 	var instance = bullet_decal.instantiate()
 	# Make it a child of the level scene
-	var level = get_tree().get_first_node_in_group("levels")
+	var level = get_tree().get_first_node_in_group("level")
 	level.add_child(instance)
 	# Set its position
 	instance.global_position = position

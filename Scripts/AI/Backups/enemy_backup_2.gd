@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+## Became backup 2/07/2024
+
 @export var hurtboxes : Array[Damageable] = []
 
 @onready var nav_agent = $NavigationAgent3D
