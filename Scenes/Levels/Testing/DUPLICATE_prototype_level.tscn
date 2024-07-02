@@ -1,6 +1,5 @@
-[gd_scene load_steps=14 format=3 uid="uid://ds3xfh4lnacmw"]
+[gd_scene load_steps=13 format=3 uid="uid://ds3xfh4lnacmw"]
 
-[ext_resource type="Script" path="res://Scripts/VisualScripts/GameManager.os" id="1_hdw4s"]
 [ext_resource type="PackedScene" uid="uid://brc2h44edbj5a" path="res://Scenes/Player/player.tscn" id="2_8aq8x"]
 [ext_resource type="Material" uid="uid://clau1arwwv1yw" path="res://Materials/Standard Materials/prototype_orange.tres" id="3_ay7rv"]
 [ext_resource type="PackedScene" uid="uid://v4q0vjnsq15d" path="res://Scenes/Props/destructible_orb.tscn" id="4_57av1"]
@@ -41,7 +40,6 @@ metallic = 1.0
 roughness = 0.5
 
 [node name="PrototypeLevel" type="Node3D"]
-script = ExtResource("1_hdw4s")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
