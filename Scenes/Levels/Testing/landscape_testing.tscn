@@ -191,6 +191,13 @@ text = "Small houses
 "
 font_size = 500
 
+[node name="Label3D13" type="Label3D" parent="Level/Zones/Zone1"]
+transform = Transform3D(0.198685, 0, -0.980073, 0, 1, 0, 0.980073, 0, 0.198685, 513.336, 68.0996, 697.438)
+billboard = 1
+modulate = Color(1, 0, 1, 1)
+text = "Zone 1 trader"
+font_size = 500
+
 [node name="Label3D10" type="Label3D" parent="Level/Zones/Zone1"]
 transform = Transform3D(0.198685, 0, -0.980073, 0, 1, 0, 0.980073, 0, 0.198685, 462.874, 84.2863, 689.809)
 billboard = 1
@@ -692,7 +699,7 @@ text = "Apartments"
 font_size = 500
 
 [node name="Label3D3" type="Label3D" parent="Level/Zones/Zone4/CityBuilding7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.4043, 37.5771, 19.0837)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.4043, 39.0695, 19.0837)
 billboard = 1
 text = "Tower"
 font_size = 500
@@ -701,6 +708,13 @@ font_size = 500
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.3241, 0.669415, -10.5273)
 billboard = 1
 text = "Playground"
+font_size = 500
+
+[node name="Label3D5" type="Label3D" parent="Level/Zones/Zone4/CityBuilding7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.512, 36.2981, 18.7477)
+billboard = 1
+modulate = Color(1, 0, 1, 1)
+text = "Zone 4 trader"
 font_size = 500
 
 [node name="Zone5" type="Node" parent="Level/Zones"]
@@ -878,8 +892,8 @@ transform = Transform3D(-0.995703, 0, 0.0926138, 0, 1, 0, -0.0926138, 0, -0.9957
 size = Vector3(1.5, 31.577, 1.5)
 
 [node name="ConstructionPiece41" type="CSGBox3D" parent="Level/Zones/Zone5"]
-transform = Transform3D(-0.995703, 0, 0.0926138, 0, 1, 0, -0.0926138, 0, -0.995703, 585.327, 76.803, 630.46)
-size = Vector3(1.5, 20, 1.5)
+transform = Transform3D(-0.995703, 0, 0.0926138, 0, 1, 0, -0.0926138, 0, -0.995703, 585.327, 79.5393, 630.46)
+size = Vector3(1.5, 25.4727, 1.5)
 
 [node name="ConstructionPiece42" type="CSGBox3D" parent="Level/Zones/Zone5"]
 transform = Transform3D(-0.995703, 0, 0.0926138, 0, 1, 0, -0.0926138, 0, -0.995703, 569.327, 76.803, 650.912)
@@ -924,6 +938,13 @@ size = Vector3(1.5, 31.7588, 1.5)
 [node name="ConstructionPiece52" type="CSGBox3D" parent="Level/Zones/Zone5"]
 transform = Transform3D(-0.995703, 0, 0.0926138, 0, 1, 0, -0.0926138, 0, -0.995703, 569.327, 76.803, 592.171)
 size = Vector3(1.5, 20, 1.5)
+
+[node name="Label3D" type="Label3D" parent="Level/Zones/Zone5"]
+transform = Transform3D(-0.995703, 0, 0.0926138, 0, 1, 0, -0.0926138, 0, -0.995703, 580.472, 89.8475, 629.76)
+billboard = 1
+modulate = Color(1, 0, 1, 1)
+text = "Zone 5 trader"
+font_size = 500
 
 [node name="Inner Walls" type="Node" parent="Level"]
 
@@ -1100,6 +1121,21 @@ font_size = 800
 [node name="Label3D14" type="Label3D" parent="Level/Inner Walls/Walls"]
 transform = Transform3D(0.0217096, 0, -0.999776, 0, 1, 0, 0.999776, 0, 0.0217096, -4.75415, 27.4091, 149.927)
 text = "Zone 5"
+font_size = 800
+
+[node name="Label3D15" type="Label3D" parent="Level/Inner Walls/Walls"]
+transform = Transform3D(-0.0298053, 0, 0.999568, 0, 1, 0, -0.999568, 0, -0.0298053, 6.026, 27.4091, 149.313)
+text = "Zone 4"
+font_size = 800
+
+[node name="Label3D16" type="Label3D" parent="Level/Inner Walls/Walls"]
+transform = Transform3D(0.974249, 0, 0.225531, 0, 1, 0, -0.225531, 0, 0.974249, 43.8321, 27.4091, 121.669)
+text = "Zone 1"
+font_size = 800
+
+[node name="Label3D17" type="Label3D" parent="Level/Inner Walls/Walls"]
+transform = Transform3D(0.933217, 0, -0.359351, 0, 1, 0, 0.359351, 0, 0.933217, 113.397, 27.4091, 120.607)
+text = "Zone 6"
 font_size = 800
 
 [node name="Label3D8" type="Label3D" parent="Level/Inner Walls/Walls"]
