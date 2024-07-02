@@ -19506,6 +19506,6 @@ script = null
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.2288, 8.22424, -42.3947)
 script = null
 
-[node name="Enemies" type="Node" parent="."]
+[node name="Enemies" type="Node3D" parent="."]
 
 [connection signal="spawned" from="MultiplayerSpawner" to="." method="_on_multiplayer_spawner_spawned"]

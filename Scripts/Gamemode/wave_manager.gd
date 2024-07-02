@@ -45,8 +45,8 @@ func spawn_wave() -> void:
 	print("WAVE STARTED")
 	alive_enemies = max_enemies
 	
-	cur_wave_updated.emit(cur_wave)
-	enemy_count_updated.emit(alive_enemies)
+	emit_cur_wave_updated.rpc(cur_wave)
+	emit_enemy_count_updated.rpc(alive_enemies)
 	
 	for n in max_enemies:
 		# Wait for enemy delay
@@ -70,7 +70,7 @@ func spawn_enemy() -> void:
 func on_enemy_defeated() -> void:
 	# Reduce enemies by 1
 	alive_enemies -= 1
-	enemy_count_updated.emit(alive_enemies)
+	emit_enemy_count_updated.rpc(alive_enemies)
 	print("Enemies alive: " + str(alive_enemies) + "/" + str(max_enemies))
 	
 	if alive_enemies <= 0:
@@ -78,7 +78,7 @@ func on_enemy_defeated() -> void:
 		print("INTERMISSION STARTED")
 
 func start_intermission() -> void:
-	intermission_entered.emit()
+	emit_intermission_entered.rpc()
 	await get_tree().create_timer(intermission_delay).timeout
 	start_new_wave()
 
@@ -87,3 +87,16 @@ func start_new_wave() -> void:
 	max_enemies = cur_wave * 5
 	print("Max enemies: " + str(max_enemies))
 	spawn_wave()
+
+#------------------------------------RPCS---------------------------------------
+@rpc("call_local")
+func emit_cur_wave_updated(wave_num: int) -> void:
+	cur_wave_updated.emit(wave_num)
+
+@rpc("call_local")
+func emit_enemy_count_updated(enemy_count: int) -> void:
+	enemy_count_updated.emit(enemy_count)
+
+@rpc("call_local")
+func emit_intermission_entered() -> void:
+	intermission_entered.emit()

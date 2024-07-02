@@ -52,15 +52,11 @@ func _physics_process(delta):
 	var next_location = nav_agent.get_next_path_position()
 	var new_velocity = (next_location - cur_location).normalized() * speed
 	nav_agent.set_velocity(new_velocity)
-			
+	
 	# Make enemy look at player
 	var cur_velocity = Vector2(velocity.x, velocity.z).length()
 	if cur_velocity > 0.01:
 		look_at(Vector3(global_position.x + velocity.x, global_position.y, global_position.z + velocity.z), Vector3.UP)
-	
-	animation_tree.set("parameters/conditions/attack", _target_in_range())
-	animation_tree.set("parameters/conditions/run", !_target_in_range())
-	animation_tree.get("parameters/playback")
 	
 	# Apply gravity when in the air
 	if !is_on_floor():
@@ -70,6 +66,10 @@ func _physics_process(delta):
 	if cur_health <= 0:
 		enemy_defeated.emit()
 		queue_free()
+	
+	animation_tree.set("parameters/conditions/attack", _target_in_range())
+	animation_tree.set("parameters/conditions/run", !_target_in_range())
+	#animation_tree.get("parameters/playback")
 
 # Move agent towards target
 func update_target_location(target_location):
