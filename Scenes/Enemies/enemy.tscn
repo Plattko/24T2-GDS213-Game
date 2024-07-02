@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://cyglxemusmfd8"]
 
-[ext_resource type="Script" path="res://Scripts/AI/enemy.gd" id="1_7484k"]
+[ext_resource type="Script" path="res://Scripts/AI/enemy_backup.gd" id="1_7484k"]
 [ext_resource type="PackedScene" uid="uid://caqpeyq7g56bn" path="res://Scenes/damageable.tscn" id="2_7lh1c"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ysq3b"]
