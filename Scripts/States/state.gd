@@ -4,17 +4,17 @@ extends Node
 
 signal transition
 
-func enter(previous_state, msg : Dictionary = {}):
+func enter(_previous_state, _msg : Dictionary = {}):
 	pass
 
 func exit():
 	pass
 
-func handle_input(event : InputEvent):
+func handle_input(_event : InputEvent):
 	pass
 
-func update(delta : float):
+func update(_delta : float):
 	pass
 
-func physics_update(delta : float):
+func physics_update(_delta : float):
 	pass

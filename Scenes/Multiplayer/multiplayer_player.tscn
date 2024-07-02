@@ -1,6 +1,6 @@
 [gd_scene load_steps=30 format=3 uid="uid://il6q27w1jqvw"]
 
-[ext_resource type="Script" path="res://Scripts/Multiplayer/multiplayer_controller.gd" id="1_g1uxc"]
+[ext_resource type="Script" path="res://Scripts/Multiplayer/multiplayer_player.gd" id="1_0n7q4"]
 [ext_resource type="Script" path="res://Scripts/Player/player_input.gd" id="2_7s41b"]
 [ext_resource type="PackedScene" uid="uid://caqpeyq7g56bn" path="res://Scenes/damageable.tscn" id="3_sfxmm"]
 [ext_resource type="Script" path="res://Scripts/Weapons/weapon_manager.gd" id="4_v17h1"]
@@ -173,7 +173,7 @@ _data = {
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 collision_layer = 2
 collision_mask = 5
-script = ExtResource("1_g1uxc")
+script = ExtResource("1_0n7q4")
 input = NodePath("Input")
 head = NodePath("Head")
 camera = NodePath("Head/Camera3D")

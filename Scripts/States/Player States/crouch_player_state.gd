@@ -7,8 +7,8 @@ const CROUCH_ANIM_SPEED : float = 7.0
 
 var is_crouch_released : bool = false
 
-func enter(previous_state, msg : Dictionary = {}) -> void:
-	print("Entered Crouch player state.")
+func enter(previous_state, _msg : Dictionary = {}) -> void:
+	#print("Entered Crouch player state.")
 	# Play the crouch animation
 	if previous_state.name != "SlidePlayerState":
 		player.animation_player.play("Crouch", -1, CROUCH_ANIM_SPEED)
@@ -19,7 +19,7 @@ func enter(previous_state, msg : Dictionary = {}) -> void:
 func exit():
 	is_crouch_released = false
 
-func physics_update(delta) -> void:
+func physics_update(_delta) -> void:
 	# Handle movement
 	player.velocity.x = input.direction.x * WALK_SPEED
 	player.velocity.z = input.direction.z * WALK_SPEED

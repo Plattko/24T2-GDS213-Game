@@ -36,7 +36,7 @@ func initialise(player_ref) -> void: # Called by Scene Manager
 	# Enable physics process
 	set_physics_process(true)
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if !multiplayer.is_server(): return
 	# Direct agents in group "enemies" to the player
 	get_tree().call_group("enemies", "update_target_location", player.global_transform.origin) #TODO: Make not a single player

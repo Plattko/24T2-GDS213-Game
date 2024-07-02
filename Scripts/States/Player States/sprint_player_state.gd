@@ -4,10 +4,11 @@ extends PlayerState
 
 const SPRINT_SPEED = 8.0
 
-func enter(previous_state, msg : Dictionary = {}):
-	print("Entered Sprint player state.")
+func enter(_previous_state, _msg : Dictionary = {}):
+	#print("Entered Sprint player state.")
+	pass
 
-func physics_update(delta : float):
+func physics_update(_delta : float):
 	# Handle movement
 	player.velocity.x = input.direction.x * SPRINT_SPEED
 	player.velocity.z = input.direction.z * SPRINT_SPEED

@@ -19,7 +19,6 @@ func _ready() -> void:
 	
 	#TODO: Instantiate the UI
 	
-	var index := 0
 	# Spawn the players
 	for i in GameManager.players:
 		var player = multiplayer_player.instantiate()
@@ -35,8 +34,6 @@ func _ready() -> void:
 			wave_manager.initialise(player)
 		
 		#TODO: Connect the UI to the player
-		
-		index += 1
 	
 	# Set the current respawn point
 	set_respawn_point.rpc()

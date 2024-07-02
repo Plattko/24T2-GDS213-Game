@@ -4,10 +4,11 @@ extends PlayerState
 
 const WALK_SPEED = 5.0
 
-func enter(previous_state, msg : Dictionary = {}):
-	print("Entered Walk player state.")
+func enter(_previous_state, _msg : Dictionary = {}):
+	#print("Entered Walk player state.")
+	pass
 
-func physics_update(delta : float):
+func physics_update(_delta : float):
 	# Handle movement
 	player.velocity.x = input.direction.x * WALK_SPEED
 	player.velocity.z = input.direction.z * WALK_SPEED
