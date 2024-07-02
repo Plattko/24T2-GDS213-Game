@@ -58,7 +58,7 @@ mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_gifqq")])
 [node name="Node3D" type="Node3D"]
 
 [node name="MulitplayerPlayer" parent="." instance=ExtResource("2_ffjcp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 490.566, 53.4783, 763.81)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 394.847, 53.4783, 724.66)
 
 [node name="Terrain3D" type="Terrain3D" parent="."]
 storage = ExtResource("1_ae812")
@@ -72,173 +72,408 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 479.893, 198.203, 700.33)
 visible = false
 size = Vector3(80, 1, 80)
 
-[node name="Walls" type="Node" parent="Level"]
-
-[node name="Walls" type="CSGBox3D" parent="Level/Walls"]
-transform = Transform3D(0.0672664, 0, 0.997735, 0, 1, 0, -0.997735, 0, 0.0672664, 419.313, 74.5364, 689.021)
-size = Vector3(153.38, 60, 10)
-
-[node name="CSGBox3D25" type="CSGBox3D" parent="Level/Walls/Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8346, 0, 117.793)
-size = Vector3(105.828, 60, 10)
-
-[node name="Door_zone_1_to_4" type="CSGBox3D" parent="Level/Walls/Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.6061, -8.37387, 118.996)
-operation = 2
-size = Vector3(25, 89.162, 41.233)
-
-[node name="Door_zone_1_to_2" type="CSGBox3D" parent="Level/Walls/Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.5493, -8.37387, 2.05994)
-operation = 2
-size = Vector3(25, 89.162, 41.233)
-
-[node name="CSGBox3D26" type="CSGBox3D" parent="Level/Walls/Walls"]
-transform = Transform3D(-0.194851, 0, 0.980833, 0, 1, 0, -0.980833, 0, -0.194851, 81.1923, 0, 50.6249)
-size = Vector3(105.828, 60, 10)
-
-[node name="Door_zone_1_to_6" type="CSGBox3D" parent="Level/Walls/Walls/CSGBox3D26"]
-transform = Transform3D(0.999509, 0, -0.0313412, 0, 1, 0, 0.0313412, 0, 0.999509, 0.887085, -8.81032, 2.9577)
-operation = 2
-size = Vector3(25, 89.162, 41.233)
-
-[node name="CSGBox3D27" type="CSGBox3D" parent="Level/Walls/Walls"]
-transform = Transform3D(0.391213, 0, 0.9203, 0, 1, 0, -0.9203, 0, 0.391213, -92.5608, 0, 46.9283)
-size = Vector3(105.828, 60, 10)
-
-[node name="Door_zone_1_to_3" type="CSGBox3D" parent="Level/Walls/Walls/CSGBox3D27"]
-transform = Transform3D(0.999031, 0, 0.0440028, 0, 1, 0, -0.0440028, 0, 0.999031, -16.5935, -8.37386, -2.9617)
-operation = 2
-size = Vector3(25, 89.162, 41.233)
-
-[node name="CSGBox3D28" type="CSGBox3D" parent="Level/Walls/Walls"]
-transform = Transform3D(-0.896657, 0, 0.442727, 0, 1, 0, -0.442727, 0, -0.896657, -92.0391, 0.306396, 105.715)
-size = Vector3(56.8779, 59.3872, 9.99512)
-
-[node name="CSGBox3D36" type="CSGBox3D" parent="Level/Walls/Walls"]
-transform = Transform3D(-0.707184, 0, -0.707035, 0, 1, 0, 0.707035, 0, -0.707184, -110.815, 0.306396, 158.238)
-size = Vector3(114.318, 59.3872, 9.99512)
-
-[node name="Door_zone_3_to_4" type="CSGBox3D" parent="Level/Walls/Walls/CSGBox3D36"]
-transform = Transform3D(-0.99992, 0, 0.0122864, 0, 1, 0, -0.0122864, 0, -0.99992, 0.453247, -8.68026, -0.641479)
-operation = 2
-size = Vector3(25, 89.162, 41.233)
-
-[node name="CSGBox3D37" type="CSGBox3D" parent="Level/Walls/Walls"]
-transform = Transform3D(0.0264213, 0, -0.999659, 0, 1, 0, 0.999659, 0, 0.0264213, 0.491821, 0.306396, 157.682)
-size = Vector3(72.9895, 59.3872, 9.99512)
-
-[node name="Door_zone_3_to_5" type="CSGBox3D" parent="Level/Walls/Walls/CSGBox3D37"]
-transform = Transform3D(-0.999971, 0, -0.00624839, 0, 1, 0, 0.00624839, 0, -0.999971, 11.5528, -8.68026, -4.18414)
-operation = 2
-size = Vector3(25, 89.162, 41.233)
-
-[node name="CSGBox3D38" type="CSGBox3D" parent="Level/Walls/Walls"]
-transform = Transform3D(0.104096, 0, -0.994581, 0, 1, 0, 0.994581, 0, 0.104096, 4.10645, 0.306396, 219.136)
-size = Vector3(51.322, 59.3872, 9.99512)
-
-[node name="CSGBox3D29" type="CSGBox3D" parent="Level/Walls/Walls"]
-transform = Transform3D(-0.976777, 0, -0.214258, 0, 1, 0, 0.214258, 0, -0.976777, 66.5338, 0.306396, 111.212)
-size = Vector3(62.5058, 59.3872, 9.99512)
-
-[node name="Door_zone_1_to_5" type="CSGBox3D" parent="Level/Walls/Walls/CSGBox3D29"]
-transform = Transform3D(-0.99953, 0, 0.0306433, 0, 1, 0, -0.0306433, 0, -0.99953, 4.81805, -8.68026, -2.0853)
-operation = 2
-size = Vector3(25, 89.162, 41.233)
-
-[node name="CSGBox3D31" type="CSGBox3D" parent="Level/Walls/Walls"]
-transform = Transform3D(0.248791, 0, 0.968557, 0, 1, 0, -0.968557, 0, 0.248791, 77.5722, -0.0366211, -21.9315)
-size = Vector3(46.218, 60, 10)
-
-[node name="CSGBox3D32" type="CSGBox3D" parent="Level/Walls/Walls"]
-transform = Transform3D(0.965876, 0, 0.259004, 0, 1, 0, -0.259004, 0, 0.965876, 114.049, -0.0366211, -49.9177)
-size = Vector3(70.9841, 60, 10)
-
-[node name="Door_zone_2_to_6" type="CSGBox3D" parent="Level/Walls/Walls/CSGBox3D32"]
-transform = Transform3D(0.996769, 0, 0.0803384, 0, 1, 0, -0.0803384, 0, 0.996769, 0.220154, -8.33723, 7.64139)
-operation = 2
-size = Vector3(25, 89.162, 41.233)
-
-[node name="CSGBox3D33" type="CSGBox3D" parent="Level/Walls/Walls"]
-transform = Transform3D(0.970708, 0, -0.240262, 0, 1, 0, 0.240262, 0, 0.970708, -113.639, 0.0100555, 20.398)
-size = Vector3(56.3514, 60.0034, 10)
-
-[node name="CSGBox3D34" type="CSGBox3D" parent="Level/Walls/Walls"]
-transform = Transform3D(0.521948, 0, -0.852977, 0, 1, 0, 0.852977, 0, 0.521948, -152.627, 0.0100555, -8.14587)
-size = Vector3(56.3514, 60.0034, 10)
-
-[node name="CSGBox3D24" type="CSGBox3D" parent="Level/Walls/Walls"]
-transform = Transform3D(0.938245, 0, -0.34597, 0, 1, 0, 0.34597, 0, 0.938245, 131.125, -0.0365982, 121.572)
-size = Vector3(100, 60, 10)
-
-[node name="Door_zone_5_to_6" type="CSGBox3D" parent="Level/Walls/Walls/CSGBox3D24"]
-transform = Transform3D(-0.999191, 0, 0.0402712, 0, 1, 0, -0.0402712, 0, -0.999191, 2.76724, -8.33725, -3.34045)
-operation = 2
-size = Vector3(25, 89.162, 41.233)
-
-[node name="CSGBox3D35" type="CSGBox3D" parent="Level/Walls/Walls"]
-transform = Transform3D(0.0976176, 0, -0.995224, 0, 1, 0, 0.995224, 0, 0.0976176, -171.381, 0.0100555, -79.0152)
-size = Vector3(98.3178, 60.0034, 10.0409)
-
-[node name="Door_zone_2_to_3" type="CSGBox3D" parent="Level/Walls/Walls/CSGBox3D35"]
-transform = Transform3D(-0.999987, 0, 0.00542822, 0, 1, 0, -0.00542822, 0, -0.999987, 3.06964, -8.3839, 0.0588989)
-operation = 2
-size = Vector3(25, 89.162, 41.233)
-
 [node name="Zones" type="Node" parent="Level"]
 
 [node name="Zone1" type="Node" parent="Level/Zones"]
 
-[node name="OGMapExample2" type="CSGBox3D" parent="Level/Zones/Zone1"]
+[node name="ResidentialBuilding1" type="CSGBox3D" parent="Level/Zones/Zone1"]
 transform = Transform3D(-0.097114, 0, 0.995273, 0, 1, 0, -0.995273, 0, -0.097114, 456.322, 59.7563, 648.315)
 size = Vector3(30, 10, 15)
 
-[node name="OGMapExample5" type="CSGBox3D" parent="Level/Zones/Zone1"]
-transform = Transform3D(-0.097114, 0, 0.995273, 0, 1, 0, -0.995273, 0, -0.097114, 515.66, 55.2537, 691.819)
+[node name="ResidentialBuilding2" type="CSGBox3D" parent="Level/Zones/Zone1"]
+transform = Transform3D(0.0366261, 0, 0.999329, 0, 1, 0, -0.999329, 0, 0.0366261, 516.577, 55.2537, 691.819)
 size = Vector3(30, 20, 23)
 
-[node name="OGMapExample8" type="CSGBox3D" parent="Level/Zones/Zone1"]
+[node name="ResidentialBuilding3" type="CSGBox3D" parent="Level/Zones/Zone1"]
 transform = Transform3D(-0.0794161, 0, 0.996842, 0, 1, 0, -0.996842, 0, -0.0794161, 489.636, 56.097, 726.373)
 size = Vector3(20, 20, 20)
 
-[node name="OGMapExample9" type="CSGBox3D" parent="Level/Zones/Zone1"]
-transform = Transform3D(-0.0794161, 0, 0.996842, 0, 1, 0, -0.996842, 0, -0.0794161, 489.636, 52.819, 663.024)
+[node name="ResidentialBuilding4" type="CSGBox3D" parent="Level/Zones/Zone1"]
+transform = Transform3D(-0.0794161, 0, 0.996842, 0, 1, 0, -0.996842, 0, -0.0794161, 509.376, 56.097, 622.537)
+size = Vector3(12, 20, 20)
+
+[node name="ResidentialBuilding5" type="CSGBox3D" parent="Level/Zones/Zone1"]
+transform = Transform3D(-0.0794161, 0, 0.996842, 0, 1, 0, -0.996842, 0, -0.0794161, 489.636, 54.473, 659.283)
 size = Vector3(10, 8, 10)
 
-[node name="OGMapExample10" type="CSGBox3D" parent="Level/Zones/Zone1"]
+[node name="ResidentialBuilding6" type="CSGBox3D" parent="Level/Zones/Zone1"]
 transform = Transform3D(-0.0794161, 0, 0.996842, 0, 1, 0, -0.996842, 0, -0.0794161, 474.2, 50.8206, 694.084)
 size = Vector3(10, 8, 10)
 
-[node name="OGMapExample11" type="CSGBox3D" parent="Level/Zones/Zone1"]
+[node name="ResidentialBuilding7" type="CSGBox3D" parent="Level/Zones/Zone1"]
+transform = Transform3D(-0.0794161, 0, 0.996842, 0, 1, 0, -0.996842, 0, -0.0794161, 482.861, 52.1798, 677.334)
+size = Vector3(10, 8, 10)
+
+[node name="ResidentialBuilding8" type="CSGBox3D" parent="Level/Zones/Zone1"]
 transform = Transform3D(-0.0794161, 0, 0.996842, 0, 1, 0, -0.996842, 0, -0.0794161, 483.191, 54.6891, 757.048)
 size = Vector3(10, 8, 10)
 
-[node name="OGMapExample12" type="CSGBox3D" parent="Level/Zones/Zone1"]
+[node name="ResidentialBuilding9" type="CSGBox3D" parent="Level/Zones/Zone1"]
 transform = Transform3D(-0.0794161, 0, 0.996842, 0, 1, 0, -0.996842, 0, -0.0794161, 451.139, 51.6547, 711.238)
 size = Vector3(10, 8, 10)
 
-[node name="OGMapExample13" type="CSGBox3D" parent="Level/Zones/Zone1"]
+[node name="ResidentialBuilding10" type="CSGBox3D" parent="Level/Zones/Zone1"]
 transform = Transform3D(-0.0794161, 0, 0.996842, 0, 1, 0, -0.996842, 0, -0.0794161, 437.838, 54.3494, 670.828)
 size = Vector3(10, 8, 10)
 
-[node name="OGMapExample14" type="CSGBox3D" parent="Level/Zones/Zone1"]
+[node name="ResidentialBuilding11" type="CSGBox3D" parent="Level/Zones/Zone1"]
 transform = Transform3D(-0.0794161, 0, 0.996842, 0, 1, 0, -0.996842, 0, -0.0794161, 446.111, 53.3367, 683.08)
 size = Vector3(10, 8, 10)
 
-[node name="OGMapExample6" type="CSGBox3D" parent="Level/Zones/Zone1"]
+[node name="ResidentialBuilding12" type="CSGBox3D" parent="Level/Zones/Zone1"]
 transform = Transform3D(0.264731, 0, 0.964322, 0, 1, 0, -0.964322, 0, 0.264731, 512.254, 57.4556, 756.096)
 size = Vector3(20, 10, 15)
 
-[node name="OGMapExample7" type="CSGBox3D" parent="Level/Zones/Zone1"]
+[node name="ResidentialBuilding13" type="CSGBox3D" parent="Level/Zones/Zone1"]
 transform = Transform3D(0.515382, 0, 0.85696, 0, 1, 0, -0.85696, 0, 0.515382, 500.856, 57.4556, 780.039)
 size = Vector3(20, 10, 15)
 
-[node name="OGMapExample3" type="CSGBox3D" parent="Level/Zones/Zone1"]
-transform = Transform3D(-0.097114, 0, 0.995273, 0, 1, 0, -0.995273, 0, -0.097114, 456.322, 58.4137, 748.218)
+[node name="ResidentialBuilding14" type="CSGBox3D" parent="Level/Zones/Zone1"]
+transform = Transform3D(-0.097114, 0, 0.995273, 0, 1, 0, -0.995273, 0, -0.097114, 446.112, 58.4137, 748.218)
 size = Vector3(20, 20, 15)
 
-[node name="OGMapExample4" type="CSGBox3D" parent="Level/Zones/Zone1"]
+[node name="ResidentialBuilding15" type="CSGBox3D" parent="Level/Zones/Zone1"]
 transform = Transform3D(-0.097114, 0, 0.995273, 0, 1, 0, -0.995273, 0, -0.097114, 457.312, 64.8489, 697.449)
 size = Vector3(8, 35, 8)
+
+[node name="Label3D" type="Label3D" parent="Level/Zones/Zone1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 481.011, 83.8128, 690.218)
+billboard = 1
+modulate = Color(0, 1, 0, 1)
+text = "Zone 1: Residential
+"
+font_size = 2000
+
+[node name="Label3D2" type="Label3D" parent="Level/Zones/Zone1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 319.525, 96.9603, 690.218)
+billboard = 1
+modulate = Color(0, 1, 0, 1)
+text = "Zone 2: Industrial
+"
+font_size = 2000
+
+[node name="Label3D9" type="Label3D" parent="Level/Zones/Zone1"]
+transform = Transform3D(0.198685, 0, -0.980073, 0, 1, 0, 0.980073, 0, 0.198685, 472.095, 63.7566, 672.049)
+billboard = 1
+text = "Small houses
+"
+font_size = 500
+
+[node name="Label3D10" type="Label3D" parent="Level/Zones/Zone1"]
+transform = Transform3D(0.198685, 0, -0.980073, 0, 1, 0, 0.980073, 0, 0.198685, 462.874, 84.2863, 689.809)
+billboard = 1
+text = "Clock Tower: bride across zone
+"
+font_size = 500
+
+[node name="Label3D11" type="Label3D" parent="Level/Zones/Zone1"]
+transform = Transform3D(0.198685, 0, -0.980073, 0, 1, 0, 0.980073, 0, 0.198685, 494.978, 62.3575, 756.482)
+billboard = 1
+text = "Large houses"
+font_size = 500
+
+[node name="Label3D12" type="Label3D" parent="Level/Zones/Zone1"]
+transform = Transform3D(0.198685, 0, -0.980073, 0, 1, 0, 0.980073, 0, 0.198685, 523.377, 68.4427, 690.948)
+billboard = 1
+text = "Mansion"
+font_size = 500
+
+[node name="Zone2" type="Node" parent="Level/Zones"]
+
+[node name="Label3D" type="Label3D" parent="Level/Zones/Zone2"]
+transform = Transform3D(0.156503, 4.95176e-09, 0.987678, -0.0367089, 0.999309, 0.00581675, -0.986995, -0.037167, 0.156395, 385.029, 77.3406, 792.984)
+billboard = 1
+text = "Storage Container yard: Sliding shortcut"
+font_size = 500
+
+[node name="Label3D2" type="Label3D" parent="Level/Zones/Zone2"]
+transform = Transform3D(0.156503, 4.95176e-09, 0.987678, -0.0367089, 0.999309, 0.00581675, -0.986995, -0.037167, 0.156395, 325.186, 77.3406, 719.008)
+billboard = 1
+text = "Factory: Dense Interanals"
+font_size = 500
+
+[node name="Label3D4" type="Label3D" parent="Level/Zones/Zone2"]
+transform = Transform3D(0.156503, 4.95176e-09, 0.987678, -0.0367089, 0.999309, 0.00581675, -0.986995, -0.037167, 0.156395, 303.947, 67.5299, 818.36)
+billboard = 1
+text = "Factory Office"
+font_size = 500
+
+[node name="Label3D5" type="Label3D" parent="Level/Zones/Zone2"]
+transform = Transform3D(0.156503, 4.95176e-09, 0.987678, -0.0367089, 0.999309, 0.00581675, -0.986995, -0.037167, 0.156395, 286.437, 66.5848, 785.509)
+billboard = 1
+modulate = Color(1, 0, 1, 1)
+text = "Zone 2 trader"
+font_size = 500
+
+[node name="Label3D3" type="Label3D" parent="Level/Zones/Zone2"]
+transform = Transform3D(0.156503, 4.95176e-09, 0.987678, -0.0367089, 0.999309, 0.00581675, -0.986995, -0.037167, 0.156395, 376.913, 85.0954, 686.083)
+billboard = 1
+text = "Warehouses: Vertical shortcut"
+font_size = 500
+
+[node name="IndustrialBuilding1" type="CSGBox3D" parent="Level/Zones/Zone2"]
+transform = Transform3D(0.139363, 0, 0.990241, 0, 1, 0, -0.990241, 0, 0.139363, 380.107, 55.4177, 726.3)
+size = Vector3(30, 15, 20)
+
+[node name="IndustrialBuilding27" type="CSGBox3D" parent="Level/Zones/Zone2"]
+transform = Transform3D(-0.0788594, 0, 0.996886, 0, 1, 0, -0.996886, 0, -0.0788594, 301.921, 56.4442, 820.847)
+size = Vector3(30, 15, 20)
+
+[node name="IndustrialBuilding28" type="CSGBox3D" parent="Level/Zones/Zone2"]
+transform = Transform3D(-0.0788594, 0, 0.996886, 0, 1, 0, -0.996886, 0, -0.0788594, 286.053, 53.6028, 786.796)
+size = Vector3(2, 5, 2)
+
+[node name="IndustrialBuilding8" type="CSGBox3D" parent="Level/Zones/Zone2"]
+transform = Transform3D(0.156503, 0, 0.987677, 0, 1, 0, -0.987677, 0, 0.156503, 381.456, 66.8472, 757.92)
+size = Vector3(20, 30, 20)
+
+[node name="IndustrialBuilding9" type="CSGBox3D" parent="Level/Zones/Zone2"]
+transform = Transform3D(0.156503, 0, 0.987677, 0, 1, 0, -0.987677, 0, 0.156503, 416.256, 55.7368, 796.433)
+size = Vector3(20, 15, 30)
+
+[node name="IndustrialBuilding10" type="CSGBox3D" parent="Level/Zones/Zone2"]
+transform = Transform3D(0.156503, 0, 0.987677, 0, 1, 0, -0.987677, 0, 0.156503, 377.567, 55.7368, 781.956)
+size = Vector3(15, 10, 12)
+
+[node name="IndustrialBuilding11" type="CSGBox3D" parent="Level/Zones/Zone2"]
+transform = Transform3D(0.156503, 0, 0.987677, 0, 1, 0, -0.987677, 0, 0.156503, 394.052, 53.8339, 781.956)
+size = Vector3(15, 10, 12)
+
+[node name="IndustrialBuilding22" type="CSGBox3D" parent="Level/Zones/Zone2"]
+transform = Transform3D(0.156503, 0, 0.987677, 0, 1, 0, -0.987677, 0, 0.156503, 400.444, 56.4158, 762.906)
+size = Vector3(1.4292, 10, 21.3008)
+
+[node name="IndustrialBuilding23" type="CSGBox3D" parent="Level/Zones/Zone2"]
+transform = Transform3D(0.156503, 0, 0.987677, 0, 1, 0, -0.987677, 0, 0.156503, 360.762, 56.4158, 762.748)
+size = Vector3(1.4292, 10, 23.4897)
+
+[node name="IndustrialBuilding24" type="CSGBox3D" parent="Level/Zones/Zone2"]
+transform = Transform3D(-0.989766, 0, 0.142698, 0, 1, 0, -0.142698, 0, -0.989766, 344.517, 56.4158, 796.937)
+size = Vector3(1.4292, 10, 73.6241)
+
+[node name="IndustrialBuilding25" type="CSGBox3D" parent="Level/Zones/Zone2"]
+transform = Transform3D(-0.853705, 0, -0.520756, 0, 1, 0, 0.520756, 0, -0.853705, 344.361, 56.4158, 841.075)
+size = Vector3(1.4292, 10, 19.5437)
+
+[node name="IndustrialBuilding12" type="CSGBox3D" parent="Level/Zones/Zone2"]
+transform = Transform3D(0.156503, 0, 0.987677, 0, 1, 0, -0.987677, 0, 0.156503, 386.714, 56.653, 802.461)
+size = Vector3(15, 10, 12)
+
+[node name="IndustrialBuilding13" type="CSGBox3D" parent="Level/Zones/Zone2"]
+transform = Transform3D(0.156503, 1.83116e-09, 0.987677, -0.146193, 0.988985, 0.0231651, -0.976798, -0.148017, 0.154779, 402.3, 57.494, 816.578)
+size = Vector3(15, 10, 12)
+
+[node name="IndustrialBuilding14" type="CSGBox3D" parent="Level/Zones/Zone2"]
+transform = Transform3D(0.156503, 4.03678e-09, 0.987677, -0.00137904, 0.999999, 0.000218516, -0.987676, -0.00139631, 0.156503, 369.088, 57.494, 802.317)
+size = Vector3(15, 10, 12)
+
+[node name="IndustrialBuilding17" type="CSGBox3D" parent="Level/Zones/Zone2"]
+transform = Transform3D(0.156503, 4.03678e-09, 0.987677, -0.00137904, 0.999999, 0.000218516, -0.987676, -0.00139631, 0.156503, 385.271, 57.494, 823.102)
+size = Vector3(15, 10, 12)
+
+[node name="IndustrialBuilding18" type="CSGBox3D" parent="Level/Zones/Zone2"]
+transform = Transform3D(0.156503, 4.03678e-09, 0.987677, -0.00137904, 0.999999, 0.000218516, -0.987676, -0.00139631, 0.156503, 365.471, 57.494, 823.102)
+size = Vector3(15, 10, 12)
+
+[node name="IndustrialBuilding19" type="CSGBox3D" parent="Level/Zones/Zone2"]
+transform = Transform3D(0.156503, 4.03678e-09, 0.987677, -0.00137904, 0.999999, 0.000218516, -0.987676, -0.00139631, 0.156503, 353.651, 57.494, 807.06)
+size = Vector3(15, 10, 12)
+
+[node name="IndustrialBuilding20" type="CSGBox3D" parent="Level/Zones/Zone2"]
+transform = Transform3D(0.156503, 4.03678e-09, 0.987677, -0.00137904, 0.999999, 0.000218516, -0.987676, -0.00139631, 0.156503, 359.556, 67.409, 807.06)
+size = Vector3(15, 10, 12)
+
+[node name="IndustrialBuilding21" type="CSGBox3D" parent="Level/Zones/Zone2"]
+transform = Transform3D(0.156503, 4.03678e-09, 0.987677, -0.00137904, 0.999999, 0.000218516, -0.987676, -0.00139631, 0.156503, 377.177, 67.409, 807.06)
+size = Vector3(15, 10, 12)
+
+[node name="IndustrialBuilding15" type="CSGBox3D" parent="Level/Zones/Zone2"]
+transform = Transform3D(0.156503, 4.95176e-09, 0.987678, -0.0367089, 0.999309, 0.00581675, -0.986995, -0.037167, 0.156395, 388.192, 65.0812, 791.025)
+size = Vector3(15, 10, 12)
+
+[node name="IndustrialBuilding16" type="CSGBox3D" parent="Level/Zones/Zone2"]
+transform = Transform3D(0.156503, 4.95176e-09, 0.987678, -0.0367089, 0.999309, 0.00581675, -0.986995, -0.037167, 0.156395, 392.927, 68.4609, 812.566)
+size = Vector3(15, 10, 12)
+
+[node name="IndustrialBuilding2" type="CSGBox3D" parent="Level/Zones/Zone2"]
+transform = Transform3D(0.157968, 0, 0.987444, 0, 1, 0, -0.987444, 0, 0.157968, 379.157, 58.218, 684.538)
+size = Vector3(40, 25, 20)
+
+[node name="IndustrialBuilding3" type="CSGBox3D" parent="Level/Zones/Zone2"]
+transform = Transform3D(0.157968, 0, 0.987444, 0, 1, 0, -0.987444, 0, 0.157968, 353.904, 64.9024, 645.995)
+size = Vector3(40, 30, 20)
+
+[node name="IndustrialBuilding26" type="CSGBox3D" parent="Level/Zones/Zone2"]
+transform = Transform3D(0.157968, 0, 0.987444, 0, 1, 0, -0.987444, 0, 0.157968, 397.152, 56.8381, 642.671)
+size = Vector3(40, 20, 20)
+
+[node name="IndustrialBuilding5" type="CSGBox3D" parent="Level/Zones/Zone2"]
+transform = Transform3D(0.157968, 0, 0.987444, 0, 1, 0, -0.987444, 0, 0.157968, 323.351, 58.6549, 688.766)
+size = Vector3(40, 12, 60)
+
+[node name="IndustrialBuilding6" type="CSGBox3D" parent="Level/Zones/Zone2"]
+transform = Transform3D(0.157968, 0, 0.987444, 0, 1, 0, -0.987444, 0, 0.157968, 313.794, 59.3257, 755.48)
+size = Vector3(60, 10, 59.6871)
+
+[node name="IndustrialBuilding7" type="CSGBox3D" parent="Level/Zones/Zone2"]
+transform = Transform3D(0.157968, 0, 0.987444, 0, 1, 0, -0.987444, 0, 0.157968, 319.905, 69.1617, 717.052)
+size = Vector3(60, 10, 60)
+
+[node name="IndustrialBuilding4" type="CSGBox3D" parent="Level/Zones/Zone2"]
+transform = Transform3D(0.157968, 0, 0.987444, 0, 1, 0, -0.987444, 0, 0.157968, 373.353, 55.2339, 649.748)
+size = Vector3(15, 15, 10)
+
+[node name="Inner Walls" type="Node" parent="Level"]
+
+[node name="Walls" type="CSGBox3D" parent="Level/Inner Walls"]
+transform = Transform3D(0.0672664, 0, 0.997735, 0, 1, 0, -0.997735, 0, 0.0672664, 419.313, 74.5364, 689.021)
+size = Vector3(153.38, 60, 10)
+
+[node name="CSGBox3D25" type="CSGBox3D" parent="Level/Inner Walls/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8346, 0, 117.793)
+size = Vector3(105.828, 60, 10)
+
+[node name="Door_zone_1_to_4" type="CSGBox3D" parent="Level/Inner Walls/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.6061, -8.37387, 118.996)
+operation = 2
+size = Vector3(25, 89.162, 41.233)
+
+[node name="Door_zone_1_to_2" type="CSGBox3D" parent="Level/Inner Walls/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.5493, -8.37387, 2.05994)
+operation = 2
+size = Vector3(25, 89.162, 41.233)
+
+[node name="CSGBox3D26" type="CSGBox3D" parent="Level/Inner Walls/Walls"]
+transform = Transform3D(-0.194851, 0, 0.980833, 0, 1, 0, -0.980833, 0, -0.194851, 81.1923, 0, 50.6249)
+size = Vector3(105.828, 60, 10)
+
+[node name="Door_zone_1_to_6" type="CSGBox3D" parent="Level/Inner Walls/Walls/CSGBox3D26"]
+transform = Transform3D(0.999509, 0, -0.0313412, 0, 1, 0, 0.0313412, 0, 0.999509, 0.887085, -8.81032, 2.9577)
+operation = 2
+size = Vector3(25, 89.162, 41.233)
+
+[node name="CSGBox3D27" type="CSGBox3D" parent="Level/Inner Walls/Walls"]
+transform = Transform3D(0.391213, 0, 0.9203, 0, 1, 0, -0.9203, 0, 0.391213, -92.5608, 0, 46.9283)
+size = Vector3(105.828, 60, 10)
+
+[node name="Door_zone_1_to_3" type="CSGBox3D" parent="Level/Inner Walls/Walls/CSGBox3D27"]
+transform = Transform3D(0.999031, 0, 0.0440028, 0, 1, 0, -0.0440028, 0, 0.999031, -16.5935, -8.37386, -2.9617)
+operation = 2
+size = Vector3(25, 89.162, 41.233)
+
+[node name="CSGBox3D28" type="CSGBox3D" parent="Level/Inner Walls/Walls"]
+transform = Transform3D(-0.896657, 0, 0.442727, 0, 1, 0, -0.442727, 0, -0.896657, -92.0391, 0.306396, 105.715)
+size = Vector3(56.8779, 59.3872, 9.99512)
+
+[node name="CSGBox3D36" type="CSGBox3D" parent="Level/Inner Walls/Walls"]
+transform = Transform3D(-0.707184, 0, -0.707035, 0, 1, 0, 0.707035, 0, -0.707184, -110.815, 0.306396, 158.238)
+size = Vector3(114.318, 59.3872, 9.99512)
+
+[node name="Door_zone_3_to_4" type="CSGBox3D" parent="Level/Inner Walls/Walls/CSGBox3D36"]
+transform = Transform3D(-0.99992, 0, 0.0122864, 0, 1, 0, -0.0122864, 0, -0.99992, 0.453247, -8.68026, -0.641479)
+operation = 2
+size = Vector3(25, 89.162, 41.233)
+
+[node name="CSGBox3D37" type="CSGBox3D" parent="Level/Inner Walls/Walls"]
+transform = Transform3D(0.0264213, 0, -0.999659, 0, 1, 0, 0.999659, 0, 0.0264213, 0.491821, 0.306396, 157.682)
+size = Vector3(72.9895, 59.3872, 9.99512)
+
+[node name="Door_zone_3_to_5" type="CSGBox3D" parent="Level/Inner Walls/Walls/CSGBox3D37"]
+transform = Transform3D(-0.999971, 0, -0.00624839, 0, 1, 0, 0.00624839, 0, -0.999971, 11.5528, -8.68026, -4.18414)
+operation = 2
+size = Vector3(25, 89.162, 41.233)
+
+[node name="CSGBox3D38" type="CSGBox3D" parent="Level/Inner Walls/Walls"]
+transform = Transform3D(0.104096, 0, -0.994581, 0, 1, 0, 0.994581, 0, 0.104096, 4.10645, 0.306396, 219.136)
+size = Vector3(51.322, 59.3872, 9.99512)
+
+[node name="CSGBox3D29" type="CSGBox3D" parent="Level/Inner Walls/Walls"]
+transform = Transform3D(-0.976777, 0, -0.214258, 0, 1, 0, 0.214258, 0, -0.976777, 66.5338, 0.306396, 111.212)
+size = Vector3(62.5058, 59.3872, 9.99512)
+
+[node name="Door_zone_1_to_5" type="CSGBox3D" parent="Level/Inner Walls/Walls/CSGBox3D29"]
+transform = Transform3D(-0.99953, 0, 0.0306433, 0, 1, 0, -0.0306433, 0, -0.99953, 4.81805, -8.68026, -2.0853)
+operation = 2
+size = Vector3(25, 89.162, 41.233)
+
+[node name="CSGBox3D31" type="CSGBox3D" parent="Level/Inner Walls/Walls"]
+transform = Transform3D(0.248791, 0, 0.968557, 0, 1, 0, -0.968557, 0, 0.248791, 77.5722, -0.0366211, -21.9315)
+size = Vector3(46.218, 60, 10)
+
+[node name="CSGBox3D32" type="CSGBox3D" parent="Level/Inner Walls/Walls"]
+transform = Transform3D(0.965876, 0, 0.259004, 0, 1, 0, -0.259004, 0, 0.965876, 114.049, -0.0366211, -49.9177)
+size = Vector3(70.9841, 60, 10)
+
+[node name="Door_zone_2_to_6" type="CSGBox3D" parent="Level/Inner Walls/Walls/CSGBox3D32"]
+transform = Transform3D(0.996769, 0, 0.0803384, 0, 1, 0, -0.0803384, 0, 0.996769, 0.220154, -8.33723, 7.64139)
+operation = 2
+size = Vector3(25, 89.162, 41.233)
+
+[node name="CSGBox3D33" type="CSGBox3D" parent="Level/Inner Walls/Walls"]
+transform = Transform3D(0.970708, 0, -0.240262, 0, 1, 0, 0.240262, 0, 0.970708, -113.639, 0.0100555, 20.398)
+size = Vector3(56.3514, 60.0034, 10)
+
+[node name="CSGBox3D34" type="CSGBox3D" parent="Level/Inner Walls/Walls"]
+transform = Transform3D(0.521948, 0, -0.852977, 0, 1, 0, 0.852977, 0, 0.521948, -152.627, 0.0100555, -8.14587)
+size = Vector3(56.3514, 60.0034, 10)
+
+[node name="CSGBox3D24" type="CSGBox3D" parent="Level/Inner Walls/Walls"]
+transform = Transform3D(0.938245, 0, -0.34597, 0, 1, 0, 0.34597, 0, 0.938245, 131.125, -0.0365982, 121.572)
+size = Vector3(100, 60, 10)
+
+[node name="Door_zone_5_to_6" type="CSGBox3D" parent="Level/Inner Walls/Walls/CSGBox3D24"]
+transform = Transform3D(-0.999191, 0, 0.0402712, 0, 1, 0, -0.0402712, 0, -0.999191, 2.76724, -8.33725, -3.34045)
+operation = 2
+size = Vector3(25, 89.162, 41.233)
+
+[node name="CSGBox3D35" type="CSGBox3D" parent="Level/Inner Walls/Walls"]
+transform = Transform3D(0.0976176, 0, -0.995224, 0, 1, 0, 0.995224, 0, 0.0976176, -171.381, 0.0100555, -79.0152)
+size = Vector3(98.3178, 60.0034, 10.0409)
+
+[node name="Door_zone_2_to_3" type="CSGBox3D" parent="Level/Inner Walls/Walls/CSGBox3D35"]
+transform = Transform3D(-0.999987, 0, 0.00542822, 0, 1, 0, -0.00542822, 0, -0.999987, 3.06964, -8.3839, 0.0588989)
+operation = 2
+size = Vector3(25, 89.162, 41.233)
+
+[node name="Label3D" type="Label3D" parent="Level/Inner Walls/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.4774, 27.6253, 5.35248)
+text = "Zone 2"
+font_size = 800
+
+[node name="Label3D2" type="Label3D" parent="Level/Inner Walls/Walls"]
+transform = Transform3D(0.406707, 0, 0.913563, 0, 1, 0, -0.913563, 0, 0.406707, -85.4464, 28.3904, 43.7698)
+text = "Zone 3"
+font_size = 800
+
+[node name="Label3D3" type="Label3D" parent="Level/Inner Walls/Walls"]
+transform = Transform3D(-0.999219, 0, 0.0396439, 0, 1, 0, -0.0396439, 0, -0.999219, -59.3044, 28.0258, 112.393)
+text = "Zone 4"
+font_size = 800
+
+[node name="Label3D4" type="Label3D" parent="Level/Inner Walls/Walls"]
+transform = Transform3D(-0.979721, 0, -0.200395, 0, 1, 0, 0.200395, 0, -0.979721, 40.8685, 28.1361, 110.974)
+text = "Zone 5"
+font_size = 800
+
+[node name="Label3D5" type="Label3D" parent="Level/Inner Walls/Walls"]
+transform = Transform3D(0.164807, 0, -0.986333, 0, 1, 0, 0.986333, 0, 0.164807, 79.5666, 27.7282, 69.7729)
+text = "Zone 6"
+font_size = 800
+
+[node name="Label3D6" type="Label3D" parent="Level/Inner Walls/Walls"]
+transform = Transform3D(-0.999962, 0, 0.00965223, 0, 1, 0, -0.00965223, 0, -0.999962, -14.3864, 27.7282, -5.68213)
+text = "Zone 1"
+font_size = 800
+
+[node name="Label3D7" type="Label3D" parent="Level/Inner Walls/Walls"]
+transform = Transform3D(-0.103487, 0, 0.99464, 0, 1, 0, -0.99464, 0, -0.103487, -163.835, 27.7282, -56.9385)
+text = "Zone 3"
+font_size = 800
+
+[node name="Label3D8" type="Label3D" parent="Level/Inner Walls/Walls"]
+transform = Transform3D(-0.964488, 0, -0.264161, 0, 1, 0, 0.264161, 0, -0.964488, 88.9943, 27.7282, -51.3489)
+text = "Zone 6"
+font_size = 800
 
 [node name="Perimiter Walls" type="Node" parent="Level"]
 
