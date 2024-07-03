@@ -12,7 +12,7 @@ func _ready():
 	cur_wave_label.visible = false
 	enemies_left_label.visible = false
 	
-	wave_manager = get_tree().get_first_node_in_group("WaveManager")
+	wave_manager = get_tree().get_first_node_in_group("wave_manager")
 	if (wave_manager):
 		wave_manager.cur_wave_updated.connect(on_cur_wave_updated)
 		wave_manager.enemy_count_updated.connect(on_enemy_count_updated)

@@ -14,8 +14,8 @@ var elapsed_time := 0.0
 # Animation variables
 const SLIDE_ANIM_SPEED := 14.0
 
-func enter(previous_state, msg : Dictionary = {}):
-	print("Entered Slide player state.")
+func enter(_previous_state, _msg : Dictionary = {}):
+	#print("Entered Slide player state.")
 	# Set the slide direction to the direction the player is looking
 	#slide_direction = -player.transform.basis.z
 	slide_direction = input.direction

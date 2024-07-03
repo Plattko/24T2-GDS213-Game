@@ -3,22 +3,11 @@ extends CharacterBody3D
 @export var hurtboxes : Array[Damageable] = []
 
 @onready var nav_agent = $NavigationAgent3D
-@onready var animation_tree = $AnimationTree
+@onready var anim_tree = $AnimationTree
 @onready var animation_player = $AnimationPlayer
 
 var anim_state_machine
-var player : Player
-
-# Enemy state machine states
-enum {
-	RUNNING,
-	ATTACKING,
-	STUNNED,
-	CLIMBING,
-	DEAD
-}
-
-var cur_state = RUNNING
+var player : MultiplayerPlayer
 
 # Movement variables
 var min_speed := 4.0
@@ -32,63 +21,74 @@ var cur_health
 # Attack variables
 const ATTACK_RANGE := 1.75
 var atk_damage := 20
+var has_attack_hit := false
 
-var has_attack_hit : bool = false
+# Enemy state machine states
+enum Animations { RUN, ATTACK, STUNNED, CLIMB, DEAD }
+@export var cur_anim := Animations.RUN
 
 signal enemy_defeated
 
 func _ready():
-	anim_state_machine = animation_tree.get("parameters/playback")
+	anim_state_machine = anim_tree.get("parameters/playback")
+	# Set the enemy to max health
 	cur_health = max_health
+	# Give the enemy a random speed
 	speed = randf_range(min_speed, max_speed)
-	print("Speed: " + str(speed))
 	
+	# Connect each Damageable to the on_damaged signal
 	for hurtbox in hurtboxes:
 		if hurtbox is Damageable:
-			# Connect each damageable to the damaged signal
 			hurtbox.damaged.connect(on_damaged)
+	
+	#if !multiplayer.is_server():
+		#set_physics_process(false)
+
+func initialise(player_ref : MultiplayerPlayer):
+	player = player_ref
 
 func _physics_process(delta):
-	match cur_state:
-		RUNNING:
-			#animation_tree.set("parameters/playback", "Run")
-			var current_location = global_transform.origin
-			var next_location = nav_agent.get_next_path_position()
-			var new_velocity = (next_location - current_location).normalized() * speed
-			nav_agent.set_velocity(new_velocity)
-			
-			# Make enemy look at player
-			var cur_velocity = Vector2(velocity.x, velocity.z).length()
-			if cur_velocity > 0.01:
-				look_at(Vector3(global_position.x + velocity.x, global_position.y, global_position.z + velocity.z), Vector3.UP)
+	if multiplayer.is_server():
+		var cur_location = global_transform.origin
+		var next_location = nav_agent.get_next_path_position()
+		var new_velocity = (next_location - cur_location).normalized() * speed
+		nav_agent.set_velocity(new_velocity)
 		
-		ATTACKING:
-			#animation_tree.set("parameters/playback", "Attack")
-			nav_agent.set_velocity(Vector3.ZERO)
-			look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z), Vector3.UP)
+		# Make enemy look at player
+		var cur_velocity = Vector2(velocity.x, velocity.z).length()
+		if cur_velocity > 0.01:
+			look_at(Vector3(global_position.x + velocity.x, global_position.y, global_position.z + velocity.z), Vector3.UP)
 		
-		STUNNED:
-			pass # Do stunned stuff
+		# Apply gravity when in the air
+		if !is_on_floor():
+			velocity.y -= 18 * delta
 		
-		CLIMBING:
-			pass # Do climbing stuff
+		# Kill the enemy when they reach 0 health
+		if cur_health <= 0:
+			enemy_defeated.emit()
+			queue_free()
 		
-		DEAD:
-			pass # Do ragdoll stuff
+		if _target_in_range():
+			animate(Animations.ATTACK)
+		else:
+			animate(Animations.RUN)
+	else:
+		animate(cur_anim)
 	
-	animation_tree.set("parameters/conditions/attack", _target_in_range())
-	animation_tree.set("parameters/conditions/run", !_target_in_range())
-	animation_tree.get("parameters/playback")
-	
-	if !is_on_floor():
-		velocity.y -= 18 * delta
-	
-	if cur_health <= 0:
-		enemy_defeated.emit()
-		queue_free()
+	#anim_tree.set("parameters/conditions/attack", _target_in_range())
+	#anim_tree.set("parameters/conditions/run", !_target_in_range())
+	##anim_tree.get("parameters/playback")
 
-func initialise(player_ref : Player):
-	player = player_ref
+func animate(anim: Animations) -> void:
+	cur_anim = anim
+	
+	match cur_anim:
+		Animations.RUN:
+			anim_tree.set("parameters/conditions/run", true)
+			anim_tree.set("parameters/conditions/attack", false)
+		Animations.ATTACK:
+			anim_tree.set("parameters/conditions/run", false)
+			anim_tree.set("parameters/conditions/attack", true)
 
 # Move agent towards target
 func update_target_location(target_location):

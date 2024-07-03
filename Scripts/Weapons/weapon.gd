@@ -15,6 +15,8 @@ var bullet_decal = preload("res://Scenes/Weapons/VFX/bullet_decal.tscn")
 @export_category("Weapon Data")
 @export var BULLET_DAMAGE : float
 @export var CRIT_MULTIPLIER : float = 2.0
+var crit_damage : float:
+	get: return BULLET_DAMAGE * CRIT_MULTIPLIER
 
 @export var MAX_AMMO : int
 @export var AMMO_COST := 1
@@ -22,7 +24,7 @@ var cur_ammo
 
 @export var is_auto_fire : bool = true
 
-const HITSCAN_COLLISION_MASK := pow(2, 1-1)
+const HITSCAN_COLLISION_MASK := roundi(pow(2, 1-1))
 
 # Animation variables
 const SHOOT_ANIM : String = "Shoot"
@@ -61,7 +63,7 @@ func spawn_decal(position: Vector3, normal: Vector3) -> void:
 	# Instantiate bullet decal
 	var instance = bullet_decal.instantiate()
 	# Make it a child of the level scene
-	var level = get_tree().get_first_node_in_group("levels")
+	var level = get_tree().get_first_node_in_group("level")
 	level.add_child(instance)
 	# Set its position
 	instance.global_position = position
@@ -82,7 +84,3 @@ func update_decal_queue(decal):
 	if decal_queue.size() > MAX_QUEUE_SIZE:
 		var decal_to_destroy = decal_queue.pop_front()
 		decal_to_destroy.queue_free()
-
-func crit_damage() -> float:
-	var crit_damage = BULLET_DAMAGE * CRIT_MULTIPLIER
-	return crit_damage

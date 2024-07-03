@@ -33,7 +33,7 @@ func initialise(player_camera: Camera3D, player_input: PlayerInput, player_retic
 	current_weapon.mesh.visible = true
 	current_weapon.update_ammo.emit([current_weapon.cur_ammo, current_weapon.MAX_AMMO])
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if not is_multiplayer_authority(): return
 	
 	# Handle shooting

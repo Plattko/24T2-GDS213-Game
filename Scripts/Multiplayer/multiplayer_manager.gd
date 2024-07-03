@@ -2,7 +2,7 @@ extends Node
 
 @export var name_line : LineEdit
 @export var ip_line : LineEdit
-var network_testing_scene = preload("res://Scenes/Levels/Testing/network-testing.tscn")
+var network_testing_scene = preload("res://Scenes/Levels/Testing/network-enemy-testing.tscn")
 
 # Server variables
 const SERVER_PORT := 8080
@@ -107,16 +107,16 @@ func start_game() -> void:
 
 ## NOTE: Use this if players select weapon loadout before entering game
 @rpc("any_peer")
-func send_player_information(id, name, player_num) -> void:
+func send_player_information(id, username, player_num) -> void:
 	# If the player doesn't already exist, send the player information to the server
 	if !GameManager.players.has(id):
 		GameManager.players[id] = {
 			"id" : id,
-			"name" : name,
+			"username" : username,
 			"player_num" : player_num,
 		}
 	
 	# Pass the player information from the server to every peer
 	if multiplayer.is_server():
 		for n in GameManager.players:
-			send_player_information.rpc(n, GameManager.players[n].name, GameManager.players[n].player_num)
+			send_player_information.rpc(n, GameManager.players[n].username, GameManager.players[n].player_num)

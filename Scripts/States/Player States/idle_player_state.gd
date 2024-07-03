@@ -4,8 +4,9 @@ extends PlayerState
 
 const STOP_SPEED = 5.0
 
-func enter(previous_state, msg : Dictionary = {}):
-	print("Entered Idle player state.")
+func enter(_previous_state, _msg : Dictionary = {}):
+	#print("Entered Idle player state.")
+	pass
 
 func physics_update(delta : float):
 	# Handle deceleration

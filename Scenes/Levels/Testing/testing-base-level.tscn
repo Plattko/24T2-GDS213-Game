@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://dqp2prkvwbh0p"]
 
-[ext_resource type="Script" path="res://Scripts/AI/level_AI.gd" id="1_442fg"]
+[ext_resource type="Script" path="res://Scripts/AI/Backups/level_AI.gd" id="1_442fg"]
 [ext_resource type="PackedScene" uid="uid://brc2h44edbj5a" path="res://Scenes/Player/player.tscn" id="2_gwsdt"]
 [ext_resource type="Material" uid="uid://bbyh52cc6ljvg" path="res://Materials/Standard Materials/prototype_grey.tres" id="3_lw5jk"]
 [ext_resource type="Material" uid="uid://clau1arwwv1yw" path="res://Materials/Standard Materials/prototype_orange.tres" id="4_0g8j7"]
