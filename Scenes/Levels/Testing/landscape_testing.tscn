@@ -1,7 +1,20 @@
-[gd_scene load_steps=10 format=3 uid="uid://d2tk05f52a6m2"]
+[gd_scene load_steps=13 format=3 uid="uid://d2tk05f52a6m2"]
 
+[ext_resource type="Script" path="res://Scripts/Gamemode/scene_manager.gd" id="1_5hbn3"]
 [ext_resource type="Terrain3DStorage" uid="uid://dam8hf63vfrix" path="res://Resources/new_terrain_3d_storage.res" id="1_ae812"]
-[ext_resource type="PackedScene" uid="uid://il6q27w1jqvw" path="res://Scenes/Multiplayer/multiplayer_player.tscn" id="2_ffjcp"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_x47bu"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_325tf"]
+sky_material = SubResource("ProceduralSkyMaterial_x47bu")
+
+[sub_resource type="Environment" id="Environment_bd2ak"]
+background_mode = 2
+sky = SubResource("Sky_325tf")
+tonemap_mode = 2
+glow_enabled = true
 
 [sub_resource type="Gradient" id="Gradient_e175o"]
 offsets = PackedFloat32Array(0.2, 1)
@@ -55,10 +68,16 @@ generated_type = 1
 [sub_resource type="Terrain3DAssets" id="Terrain3DAssets_6pah1"]
 mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_gifqq")])
 
-[node name="Node3D" type="Node3D"]
+[node name="Node3D" type="Node3D" node_paths=PackedStringArray("spawn_points", "zone_respawn_points") groups=["levels"]]
+script = ExtResource("1_5hbn3")
+spawn_points = [NodePath("PlayerSpawnPoints/Spawn1")]
+zone_respawn_points = [NodePath("ZoneRespawnPoints/Zone1Respawn")]
 
-[node name="MulitplayerPlayer" parent="." instance=ExtResource("2_ffjcp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 425.299, 53.4783, 849.456)
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_bd2ak")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.446182, 0.894942, 0, -0.894942, -0.446182, 0, 0, 0)
 
 [node name="Terrain3D" type="Terrain3D" parent="."]
 storage = ExtResource("1_ae812")
@@ -1232,3 +1251,14 @@ size = Vector3(20, 107.013, 20)
 [node name="CSGBox3D22" type="CSGBox3D" parent="Level/Perimiter Walls"]
 transform = Transform3D(0.65569, 0, 0.75503, 0, 1, 0, -0.75503, 0, 0.65569, 318.885, 100.022, 574.11)
 size = Vector3(73.1847, 107.013, 20)
+
+[node name="PlayerSpawnPoints" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 475.437, 47.3684, 703.866)
+
+[node name="Spawn1" type="Node3D" parent="PlayerSpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, 0)
+
+[node name="ZoneRespawnPoints" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 480.617, 48.3684, 703.866)
+
+[node name="Zone1Respawn" type="Node3D" parent="ZoneRespawnPoints"]
