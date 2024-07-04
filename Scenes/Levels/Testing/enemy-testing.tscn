@@ -27,11 +27,9 @@ agent_max_slope = 25.0
 region_min_size = 1.0
 edge_max_error = 0.25
 
-[node name="EnemyTesting" type="Node3D" node_paths=PackedStringArray("nav_region", "enemy_spawn_points", "player") groups=["WaveManager"]]
+[node name="EnemyTesting" type="Node3D" node_paths=PackedStringArray("enemy_spawn_points") groups=["WaveManager"]]
 script = ExtResource("1_i63h0")
-nav_region = NodePath("NavigationRegion3D")
 enemy_spawn_points = [NodePath("EnemySpawnNodes/EnemySpawns/SpawnPoint"), NodePath("EnemySpawnNodes/EnemySpawns/SpawnPoint2"), NodePath("EnemySpawnNodes/EnemySpawns/SpawnPoint3"), NodePath("EnemySpawnNodes/EnemySpawns/SpawnPoint4"), NodePath("EnemySpawnNodes/EnemySpawns/SpawnPoint5"), NodePath("EnemySpawnNodes/EnemySpawns/SpawnPoint6"), NodePath("EnemySpawnNodes/EnemySpawns/SpawnPoint7"), NodePath("EnemySpawnNodes/EnemySpawns/SpawnPoint8"), NodePath("EnemySpawnNodes/EnemySpawns/SpawnPoint9"), NodePath("EnemySpawnNodes/EnemySpawns/SpawnPoint10")]
-player = NodePath("Player")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
