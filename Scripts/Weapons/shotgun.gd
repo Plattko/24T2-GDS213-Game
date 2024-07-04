@@ -39,13 +39,15 @@ func shoot() -> void:
 			
 			var collider = result.collider
 			if collider is Damageable:
+				var distance = Vector3(collider.global_position - camera.global_position).length()
+				
 				if collider.is_weak_point:
-					var dmg = crit_damage
+					var dmg = damage_with_falloff(crit_damage, distance)
 					collider.take_damage.rpc(dmg)
 					crit_hit.emit(dmg)
 					print("Damage done: %s" % dmg)
 				else:
-					var dmg = BULLET_DAMAGE
+					var dmg = damage_with_falloff(BULLET_DAMAGE, distance)
 					collider.take_damage.rpc(dmg)
 					regular_hit.emit(dmg)
 					print("Damage done: %s" % dmg)

@@ -12,12 +12,19 @@ var camera : Camera3D
 var bullet_decal = preload("res://Scenes/Weapons/Components/bullet_decal.tscn")
 
 # Weapon data
-@export_category("Weapon Data")
+@export_group("Weapon Data")
+@export_subgroup("Damage")
 @export var BULLET_DAMAGE : float
 @export var CRIT_MULTIPLIER : float = 2.0
 var crit_damage : float:
 	get: return BULLET_DAMAGE * CRIT_MULTIPLIER
 
+@export_subgroup("Damage Falloff")
+@export var FALLOFF_NEAR_DIST : float
+@export var FALLOFF_FAR_DIST : float
+@export var MAX_FALLOFF_MOD : float
+
+@export_subgroup("Ammo")
 @export var MAX_AMMO : int
 @export var AMMO_COST := 1
 var cur_ammo
@@ -86,3 +93,12 @@ func update_decal_queue(decal):
 	if decal_queue.size() > MAX_QUEUE_SIZE:
 		var decal_to_destroy = decal_queue.pop_front()
 		decal_to_destroy.queue_free()
+
+func damage_with_falloff(damage: float, distance: float) -> float:
+	# Calculate the minimum damage
+	var min_dmg = damage * MAX_FALLOFF_MOD
+	# Calculate the normalised distance in relation to the falloff range
+	var dist_normalised = clampf((distance - FALLOFF_NEAR_DIST)/(FALLOFF_FAR_DIST - FALLOFF_NEAR_DIST), 0, 1)
+	# Calculate how much of the minimum and maximum damage should be dealt
+	return dist_normalised * min_dmg + (1.0 - dist_normalised) * damage
+

@@ -248,6 +248,9 @@ _data = {
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.519, -0.344, -0.748)
 script = ExtResource("1_al0dg")
 BULLET_DAMAGE = 20.0
+FALLOFF_NEAR_DIST = 30.0
+FALLOFF_FAR_DIST = 50.0
+MAX_FALLOFF_MOD = 0.3
 MAX_AMMO = 24
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]

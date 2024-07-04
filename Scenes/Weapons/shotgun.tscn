@@ -297,10 +297,13 @@ _data = {
 [node name="Shotgun" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.356, -0.185, -0.504)
 script = ExtResource("1_5vdia")
-bullet_count = 12
+bullet_count = 18
 bullet_spread = 70
 BULLET_DAMAGE = 6.0
-MAX_AMMO = 6
+FALLOFF_NEAR_DIST = 10.0
+FALLOFF_FAR_DIST = 20.0
+MAX_FALLOFF_MOD = 0.5
+MAX_AMMO = 5
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_8cnap")
