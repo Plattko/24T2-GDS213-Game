@@ -1,7 +1,8 @@
-[gd_scene load_steps=25 format=3 uid="uid://d2tk05f52a6m2"]
+[gd_scene load_steps=26 format=3 uid="uid://d2tk05f52a6m2"]
 
 [ext_resource type="Script" path="res://Scripts/Gamemode/scene_manager.gd" id="1_5hbn3"]
 [ext_resource type="Terrain3DStorage" uid="uid://dam8hf63vfrix" path="res://Resources/new_terrain_3d_storage.res" id="1_ae812"]
+[ext_resource type="Script" path="res://Scripts/Gamemode/wave_manager.gd" id="2_a1ux4"]
 [ext_resource type="PackedScene" uid="uid://5x5613lddv38" path="res://Scenes/Player/player_ref.tscn" id="3_pw71q"]
 [ext_resource type="Material" uid="uid://clau1arwwv1yw" path="res://Materials/Standard Materials/prototype_orange.tres" id="3_v6pfn"]
 [ext_resource type="Material" uid="uid://bbyh52cc6ljvg" path="res://Materials/Standard Materials/prototype_grey.tres" id="4_u5apd"]
@@ -84,10 +85,16 @@ generated_type = 1
 [sub_resource type="Terrain3DAssets" id="Terrain3DAssets_6pah1"]
 mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_gifqq")])
 
-[node name="Node3D" type="Node3D" node_paths=PackedStringArray("spawn_points", "zone_respawn_points") groups=["levels"]]
+[node name="Node3D" type="Node3D" node_paths=PackedStringArray("spawn_points", "zone_respawn_points", "wave_manager") groups=["level"]]
 script = ExtResource("1_5hbn3")
 spawn_points = [NodePath("PlayerSpawnPoints/Spawn1")]
 zone_respawn_points = [NodePath("ZoneRespawnPoints/Zone1Respawn")]
+wave_manager = NodePath("GamemodeManager")
+
+[node name="GamemodeManager" type="Node" parent="." node_paths=PackedStringArray("enemies_node", "enemy_spawn_points") groups=["wave_manager"]]
+script = ExtResource("2_a1ux4")
+enemies_node = NodePath("../Enemies")
+enemy_spawn_points = [NodePath("../EnemySpawnPoints/SpawnPoint"), NodePath("../EnemySpawnPoints/SpawnPoint2"), NodePath("../EnemySpawnPoints/SpawnPoint3"), NodePath("../EnemySpawnPoints/SpawnPoint4"), NodePath("../EnemySpawnPoints/SpawnPoint5"), NodePath("../EnemySpawnPoints/SpawnPoint6"), NodePath("../EnemySpawnPoints/SpawnPoint7"), NodePath("../EnemySpawnPoints/SpawnPoint8"), NodePath("../EnemySpawnPoints/SpawnPoint9"), NodePath("../EnemySpawnPoints/SpawnPoint10")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_bd2ak")
@@ -2661,12 +2668,6 @@ size = Vector3(20, 107.013, 20)
 transform = Transform3D(0.65569, 0, 0.75503, 0, 1, 0, -0.75503, 0, 0.65569, 318.885, 100.022, 574.11)
 size = Vector3(73.1847, 107.013, 20)
 
-[node name="PlayerSpawnPoints" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 451.605, 51.7584, 720.373)
-
-[node name="Spawn1" type="Node3D" parent="PlayerSpawnPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, 0)
-
 [node name="ZoneRespawnPoints" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 451.729, 51.0623, 720.886)
 
@@ -2674,3 +2675,48 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 451.729, 51.0623, 720.886)
 
 [node name="PlayerRef" parent="." instance=ExtResource("3_pw71q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 451.007, 50.9658, 682.358)
+
+[node name="PlayerSpawnPoints" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 451.605, 51.7584, 720.373)
+
+[node name="Spawn1" type="Node3D" parent="PlayerSpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -0.476624, -3.28369)
+
+[node name="EnemySpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://Scenes/Enemies/robot.tscn")
+spawn_path = NodePath("../Enemies")
+
+[node name="EnemySpawnPoints" type="Node" parent="."]
+
+[node name="SpawnPoint" type="Node3D" parent="EnemySpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 457.682, 51.0625, 663.083)
+
+[node name="SpawnPoint2" type="Node3D" parent="EnemySpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 457.682, 51.0625, 663.083)
+
+[node name="SpawnPoint3" type="Node3D" parent="EnemySpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 457.682, 51.0625, 663.083)
+
+[node name="SpawnPoint4" type="Node3D" parent="EnemySpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 457.682, 51.0625, 663.083)
+
+[node name="SpawnPoint5" type="Node3D" parent="EnemySpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 457.682, 51.0625, 663.083)
+
+[node name="SpawnPoint6" type="Node3D" parent="EnemySpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 457.682, 51.0625, 663.083)
+
+[node name="SpawnPoint7" type="Node3D" parent="EnemySpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 457.682, 51.0625, 663.083)
+
+[node name="SpawnPoint8" type="Node3D" parent="EnemySpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 457.682, 51.0625, 663.083)
+
+[node name="SpawnPoint9" type="Node3D" parent="EnemySpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 457.682, 51.0625, 663.083)
+
+[node name="SpawnPoint10" type="Node3D" parent="EnemySpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 457.682, 51.0625, 663.083)
+
+[node name="Enemies" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 429.164, -2, 680.119)
