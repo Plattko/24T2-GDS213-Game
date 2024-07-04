@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://dncjx2l3x75yd"]
+
+[ext_resource type="Material" uid="uid://clau1arwwv1yw" path="res://Materials/Standard Materials/prototype_orange.tres" id="1_7c82m"]
+[ext_resource type="Material" uid="uid://bbyh52cc6ljvg" path="res://Materials/Standard Materials/prototype_grey.tres" id="2_hyusx"]
+
+[node name="Lamp" type="CSGMesh3D"]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.177185, 0)
+size = Vector3(1, 0.6, 1)
+material = ExtResource("2_hyusx")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.88613, 0)
+size = Vector3(0.4, 12, 0.4)
+material = ExtResource("1_7c82m")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, -0.263031, -0.964787, 0, 0.964787, -0.263031, 0, 11.9669, -0.819703)
+size = Vector3(0.4, 1.99567, 0.4)
+material = ExtResource("1_7c82m")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.00443584, 11.9841, -2.09789)
+size = Vector3(0.7, 1.655, 0.4)
+material = ExtResource("2_hyusx")

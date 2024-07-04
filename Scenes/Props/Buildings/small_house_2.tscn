@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://drvytcl7v1la6"]
+
+[ext_resource type="Material" uid="uid://bbyh52cc6ljvg" path="res://Materials/Standard Materials/prototype_grey.tres" id="1_srg3v"]
+
+[node name="CSGMesh3D" type="CSGMesh3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0496693, -0.062211, -0.00800896)
+use_collision = true
+
+[node name="Floor" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.435547, 0)
+size = Vector3(15, 0.3, 30)
+material = ExtResource("1_srg3v")
+
+[node name="Floor2" type="CSGBox3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 7.36948, 2.03876, 0)
+size = Vector3(5, 0.3, 30)
+material = ExtResource("1_srg3v")
+
+[node name="Floor3" type="CSGBox3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -7.35009, 2.03876, 0)
+size = Vector3(5, 0.3, 30)
+material = ExtResource("1_srg3v")
+
+[node name="Floor4" type="CSGBox3D" parent="."]
+transform = Transform3D(-3.05161e-10, 4.37103e-08, 1, 0.999976, 0.00698127, 0, -0.00698127, 0.999976, -4.37114e-08, 0.0121508, 2.03876, -14.8678)
+size = Vector3(5, 0.3, 15.0115)
+material = ExtResource("1_srg3v")
+
+[node name="Floor5" type="CSGBox3D" parent="."]
+transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 0.0121508, 1.97693, 14.8586)
+size = Vector3(5.12366, 0.3, 15.0115)
+material = ExtResource("1_srg3v")
