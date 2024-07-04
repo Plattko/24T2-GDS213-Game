@@ -10,13 +10,15 @@ var multiplayer_player = preload("res://Scenes/Multiplayer/multiplayer_player.ts
 @export var zone_respawn_points : Array[Node3D] = []
 var cur_zone : int = 1
 
+# Gamemode variables
+@export_group("Gamemode Variables")
+@export var wave_manager : WaveManager
+
 func _ready() -> void:
-	if !multiplayer.is_server():
-		return
+	if !multiplayer.is_server(): return
 	
 	#TODO: Instantiate the UI
 	
-	var index := 0
 	# Spawn the players
 	for i in GameManager.players:
 		var player = multiplayer_player.instantiate()
@@ -24,13 +26,14 @@ func _ready() -> void:
 		player.name = str(GameManager.players[i].id)
 		# Add the player as a child of the scene
 		add_child(player)
-		# If it's player 1, manually set their initial spawn point
+		# Check if it's player 1
 		if GameManager.players[i].player_num == 1:
+			# Manually set their initial spawn point
 			set_initial_spawn_point(player)
+			# [NOTE - TEMPORARY] Give the Wave Manager a reference to the player
+			wave_manager.initialise(player)
 		
 		#TODO: Connect the UI to the player
-		
-		index += 1
 	
 	# Set the current respawn point
 	set_respawn_point.rpc()

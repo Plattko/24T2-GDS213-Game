@@ -7,7 +7,7 @@ extends Control
 
 signal sensitivity_updated(value: float)
 
-func _on_slider_value_changed(value) -> void:
+func _on_slider_value_changed(_value) -> void:
 	set_sensitivity()
 	set_num_label_text()
 

@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3vbld3ead38o"]
+
+[ext_resource type="PackedScene" uid="uid://ccymk3xssnjp3" path="res://Meshes/Models/Guns/deagle.glb" id="1_inkia"]
+
+[node name="deagle" instance=ExtResource("1_inkia")]

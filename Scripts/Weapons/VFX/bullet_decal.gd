@@ -8,7 +8,7 @@ func _ready():
 func _on_timer_timeout():
 	set_process(true)
 
-func _process(delta):
+func _process(_delta):
 	# Checks if decal was already queued for deletion by the decal queue
 	if is_queued_for_deletion():
 		return

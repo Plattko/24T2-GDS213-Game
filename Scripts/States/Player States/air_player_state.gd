@@ -8,8 +8,8 @@ const WALK_SPEED = 5.0
 const SPRINT_SPEED = 8.0
 var speed
 
-func enter(previous_state, msg : Dictionary = {}):
-	print("Entered Air player state.")
+func enter(_previous_state, msg : Dictionary = {}):
+	#print("Entered Air player state.")
 	
 	if msg.has("do_jump"):
 		player.velocity.y = JUMP_VELOCITY

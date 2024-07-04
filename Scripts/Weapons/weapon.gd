@@ -9,20 +9,29 @@ var camera : Camera3D
 @onready var anim_player = %AnimationPlayer
 @onready var muzzle_flash : MuzzleFlash = %MuzzleFlash
 
-var bullet_decal = preload("res://Scenes/Weapons/VFX/bullet_decal.tscn")
+var bullet_decal = preload("res://Scenes/Weapons/Components/bullet_decal.tscn")
 
 # Weapon data
-@export_category("Weapon Data")
+@export_group("Weapon Data")
+@export_subgroup("Damage")
 @export var BULLET_DAMAGE : float
 @export var CRIT_MULTIPLIER : float = 2.0
+var crit_damage : float:
+	get: return BULLET_DAMAGE * CRIT_MULTIPLIER
 
+@export_subgroup("Damage Falloff")
+@export var FALLOFF_NEAR_DIST : float
+@export var FALLOFF_FAR_DIST : float
+@export var MAX_FALLOFF_MOD : float
+
+@export_subgroup("Ammo")
 @export var MAX_AMMO : int
 @export var AMMO_COST := 1
 var cur_ammo
 
 @export var is_auto_fire : bool = true
 
-const HITSCAN_COLLISION_MASK := pow(2, 1-1)
+const HITSCAN_COLLISION_MASK := roundi(pow(2, 1-1))
 
 # Animation variables
 const SHOOT_ANIM : String = "Shoot"
@@ -36,6 +45,8 @@ const MAX_QUEUE_SIZE := 100
 
 # Signals
 signal update_ammo
+signal regular_hit(damage: float)
+signal crit_hit(damage: float)
 
 func _ready():
 	cur_ammo = MAX_AMMO
@@ -61,7 +72,7 @@ func spawn_decal(position: Vector3, normal: Vector3) -> void:
 	# Instantiate bullet decal
 	var instance = bullet_decal.instantiate()
 	# Make it a child of the level scene
-	var level = get_tree().get_first_node_in_group("levels")
+	var level = get_tree().get_first_node_in_group("level")
 	level.add_child(instance)
 	# Set its position
 	instance.global_position = position
@@ -83,6 +94,11 @@ func update_decal_queue(decal):
 		var decal_to_destroy = decal_queue.pop_front()
 		decal_to_destroy.queue_free()
 
-func crit_damage() -> float:
-	var crit_damage = BULLET_DAMAGE * CRIT_MULTIPLIER
-	return crit_damage
+func damage_with_falloff(damage: float, distance: float) -> float:
+	# Calculate the minimum damage
+	var min_dmg = damage * MAX_FALLOFF_MOD
+	# Calculate the normalised distance in relation to the falloff range
+	var dist_normalised = clampf((distance - FALLOFF_NEAR_DIST)/(FALLOFF_FAR_DIST - FALLOFF_NEAR_DIST), 0, 1)
+	# Calculate how much of the minimum and maximum damage should be dealt
+	return dist_normalised * min_dmg + (1.0 - dist_normalised) * damage
+
