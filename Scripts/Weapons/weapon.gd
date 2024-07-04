@@ -38,6 +38,8 @@ const MAX_QUEUE_SIZE := 100
 
 # Signals
 signal update_ammo
+signal regular_hit(damage: float)
+signal crit_hit(damage: float)
 
 func _ready():
 	cur_ammo = MAX_AMMO
