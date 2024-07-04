@@ -11,6 +11,7 @@ extends CharacterBody3D
 @onready var state_machine = %PlayerStateMachine
 @onready var weapon_manager = %WeaponManager
 @onready var reticle = %Reticle
+@onready var hitmarker = %Hitmarker
 @onready var debug = %DebugPanel
 
 # Camera movement variables
@@ -155,6 +156,12 @@ func handle_connected_signals() -> void:
 		if child is Damageable:
 			# Connect each damageable to the damaged signal
 			child.damaged.connect(on_damaged)
+	
+	for weapon in weapon_manager.get_children():
+		if weapon is Weapon:
+			# Connect the hitmarker to each weapon's regular and crit hit signals
+			weapon.regular_hit.connect(hitmarker.on_regular_hit)
+			weapon.crit_hit.connect(hitmarker.on_crit_hit)
 	
 	var sensitivity_setting = find_child("SensitivitySliderSetting")
 	sensitivity_setting.sensitivity_updated.connect(set_sensitivity)

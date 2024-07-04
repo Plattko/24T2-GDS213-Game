@@ -40,10 +40,14 @@ func shoot() -> void:
 			var collider = result.collider
 			if collider is Damageable:
 				if collider.is_weak_point:
-					collider.take_damage.rpc(crit_damage)
-					print("Damage done: %s" % crit_damage)
+					var dmg = crit_damage
+					collider.take_damage.rpc(dmg)
+					crit_hit.emit(dmg)
+					print("Damage done: %s" % dmg)
 				else:
-					collider.take_damage.rpc(BULLET_DAMAGE)
-					print("Damage done: %s" % BULLET_DAMAGE)
+					var dmg = BULLET_DAMAGE
+					collider.take_damage.rpc(dmg)
+					regular_hit.emit(dmg)
+					print("Damage done: %s" % dmg)
 		else:
 			print ("Hit nothing.")
