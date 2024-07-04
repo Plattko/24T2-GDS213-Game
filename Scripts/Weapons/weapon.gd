@@ -9,7 +9,7 @@ var camera : Camera3D
 @onready var anim_player = %AnimationPlayer
 @onready var muzzle_flash : MuzzleFlash = %MuzzleFlash
 
-var bullet_decal = preload("res://Scenes/Weapons/VFX/bullet_decal.tscn")
+var bullet_decal = preload("res://Scenes/Weapons/Components/bullet_decal.tscn")
 
 # Weapon data
 @export_category("Weapon Data")

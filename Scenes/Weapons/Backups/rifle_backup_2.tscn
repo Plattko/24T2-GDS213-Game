@@ -1,0 +1,265 @@
+[gd_scene load_steps=19 format=3 uid="uid://ca4ctvgco4lvq"]
+
+[ext_resource type="Script" path="res://Scripts/Weapons/rifle.gd" id="1_6luyr"]
+[ext_resource type="Material" uid="uid://blq2tme80b4rk" path="res://Materials/Shader Materials/test_gun.tres" id="2_gwm16"]
+[ext_resource type="Script" path="res://Scripts/Weapons/Components/muzzle_flash.gd" id="3_l67b0"]
+[ext_resource type="Material" uid="uid://un70lvxarnb0" path="res://Materials/Shader Materials/muzzle_flash_rifle_shader.tres" id="4_shk2j"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_ng5jb"]
+properties/0/path = NodePath("Mesh:visible")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("Mesh:position")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("Mesh:rotation")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+
+[sub_resource type="BoxMesh" id="BoxMesh_ofyee"]
+material = ExtResource("2_gwm16")
+size = Vector3(0.15, 0.2, 0.4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_fx5ig"]
+material = ExtResource("2_gwm16")
+size = Vector3(0.125, 0.125, 0.7)
+
+[sub_resource type="BoxMesh" id="BoxMesh_msjh5"]
+material = ExtResource("2_gwm16")
+size = Vector3(0.1, 0.15, 0.3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_h2ar5"]
+material = ExtResource("2_gwm16")
+size = Vector3(0.1, 0.2, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_pfo2m"]
+material = ExtResource("2_gwm16")
+size = Vector3(0.1, 0.3, 0.1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qm8cm"]
+angle_min = -73.0
+angle_max = 73.0
+direction = Vector3(0, 1, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 1.5
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="QuadMesh" id="QuadMesh_m7h41"]
+material = ExtResource("4_shk2j")
+size = Vector2(0.2, 0.2)
+
+[sub_resource type="Animation" id="Animation_pnqt0"]
+resource_name = "Equip"
+length = 0.25
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -0.5, 0.5), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mesh:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.785398, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Mesh:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_rf707"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mesh:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Mesh:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_5y7bq"]
+resource_name = "Reload"
+length = 0.7
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.3, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_m1qid"]
+resource_name = "Shoot"
+length = 0.1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.01, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.05), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ohrl6"]
+resource_name = "Unequip"
+length = 0.1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.5, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mesh:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vlmsi"]
+_data = {
+"Equip": SubResource("Animation_pnqt0"),
+"RESET": SubResource("Animation_rf707"),
+"Reload": SubResource("Animation_5y7bq"),
+"Shoot": SubResource("Animation_m1qid"),
+"Unequip": SubResource("Animation_ohrl6")
+}
+
+[node name="Rifle" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.519, -0.344, -0.748)
+script = ExtResource("1_6luyr")
+BULLET_DAMAGE = 20.0
+MAX_AMMO = 24
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_ng5jb")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+cast_shadow = 0
+mesh = SubResource("BoxMesh_ofyee")
+
+[node name="Barrel" type="MeshInstance3D" parent="Mesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025, -0.55)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_fx5ig")
+
+[node name="Stock" type="MeshInstance3D" parent="Mesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.35)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_msjh5")
+
+[node name="Handle" type="MeshInstance3D" parent="Mesh"]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, -0.175, 0.164589)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_h2ar5")
+
+[node name="Mag" type="MeshInstance3D" parent="Mesh"]
+transform = Transform3D(1, 0, 0, 0, 0.984808, -0.173648, 0, 0.173648, 0.984808, 0, -0.226128, -0.119667)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_pfo2m")
+
+[node name="Barrel" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.9)
+
+[node name="MuzzleFlash" type="Node3D" parent="Barrel" node_paths=PackedStringArray("light", "emitter")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.05)
+script = ExtResource("3_l67b0")
+light = NodePath("OmniLight3D")
+emitter = NodePath("GPUParticles3D")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Barrel/MuzzleFlash"]
+visible = false
+light_color = Color(1, 0.447059, 0, 1)
+light_energy = 0.05
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Barrel/MuzzleFlash"]
+emitting = false
+lifetime = 0.05
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_qm8cm")
+draw_pass_1 = SubResource("QuadMesh_m7h41")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_vlmsi")
+}
