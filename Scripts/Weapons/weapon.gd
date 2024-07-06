@@ -63,7 +63,7 @@ func shoot() -> void:
 	update_ammo.emit([cur_ammo, MAX_AMMO])
 
 func reload() -> void:
-	anim_player.play(RELOAD_ANIM)
+	anim_player.play(RELOAD_ANIM, -1, 0.5)
 
 func reset_ammo() -> void:
 	cur_ammo = MAX_AMMO
