@@ -2,11 +2,14 @@ class_name WeaponManager
 
 extends Node3D
 
+@export var weapon_switch_cooldown : Timer
 var camera : Camera3D
 var input : PlayerInput
 var reticle : Reticle
 
 var current_weapon : Weapon
+var max_weapon_index : int
+var weapon_index := 0
 
 var weapons : Array[Weapon]
 
@@ -29,6 +32,7 @@ func initialise(player_camera: Camera3D, player_input: PlayerInput, player_retic
 			child.mesh.visible = false
 			child.init(camera)
 	
+	max_weapon_index = weapons.size() - 1
 	current_weapon = weapons[0]
 	current_weapon.mesh.visible = true
 	current_weapon.update_ammo.emit([current_weapon.cur_ammo, current_weapon.MAX_AMMO])
@@ -65,22 +69,41 @@ func _physics_process(_delta):
 	
 	if input.is_weapon_1_pressed:
 		print("Pressed Weapon 1.")
-		if !current_weapon.anim_player.is_playing():
+		#if !current_weapon.anim_player.is_playing():
+		if weapon_switch_cooldown.is_stopped():
 			change_weapon(weapons[0])
 	
 	if input.is_weapon_2_pressed:
 		print("Pressed Weapon 2.")
-		if !current_weapon.anim_player.is_playing():
+		#if !current_weapon.anim_player.is_playing():
+		if weapon_switch_cooldown.is_stopped():
 			change_weapon(weapons[1])
 	
 	if input.is_weapon_3_pressed:
-		if !current_weapon.anim_player.is_playing():
+		#if !current_weapon.anim_player.is_playing():
+		if weapon_switch_cooldown.is_stopped():
 			change_weapon(weapons[2])
+	
+	if input.weapon_scroll_direction:
+		#if !current_weapon.anim_player.get_current_animation() == current_weapon.EQUIP_ANIM:
+		if weapon_switch_cooldown.is_stopped():
+			var dir = input.weapon_scroll_direction
+			scroll_weapon(dir)
+
+func scroll_weapon(dir: int) -> void:
+	weapon_index += dir
+	if weapon_index > max_weapon_index: weapon_index = 0
+	if weapon_index < 0: weapon_index = max_weapon_index
+	change_weapon(weapons[weapon_index])
 
 func change_weapon(next_weapon: Weapon) -> void:
 	if next_weapon != current_weapon:
-		current_weapon.anim_player.play(current_weapon.UNEQUIP_ANIM)
-		await current_weapon.anim_player.animation_finished
+		#current_weapon.anim_player.play(current_weapon.UNEQUIP_ANIM)
+		#await current_weapon.anim_player.animation_finished
+		
+		weapon_switch_cooldown.start()
+		current_weapon.anim_player.stop()
+		current_weapon.mesh.visible = false
 		
 		if reticle:
 			call_update_reticle(next_weapon)

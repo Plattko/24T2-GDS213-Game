@@ -99,6 +99,15 @@ var is_weapon_3_pressed : bool:
 			return Input.is_action_pressed("weapon_3")
 		return false
 
+var weapon_scroll_direction : int:
+	get:
+		if not is_server and can_shoot:
+			var up = -1 if Input.is_action_just_released("weapon_scroll_up") else 0
+			var down = 1 if Input.is_action_just_released("weapon_scroll_down") else 0
+			var scroll_dir = up + down
+			return scroll_dir
+		return 0
+
 # --------------------------------TOGGLES------------------------------------ #
 func on_opened_settings_menu() -> void:
 	print("Disabled input.")
