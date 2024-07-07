@@ -58,22 +58,11 @@ func initialise(player_ref : MultiplayerPlayer):
 func _physics_process(delta):
 	if multiplayer.is_server():
 		if is_on_floor():
-			# If enemy is running
-			if anim_state_machine.get_current_node() == "Run":
-				# Update movement
-				var cur_location = global_position
-				var next_location = nav_agent.get_next_path_position()
-				var new_velocity = (next_location - cur_location).normalized() * speed
-				nav_agent.set_velocity(new_velocity)
-				
-				# Make enemy look where they're running
-				var cur_velocity = Vector2(velocity.x, velocity.z).length()
-				if cur_velocity > 0.01:
-					look_at(Vector3(global_position.x + velocity.x, global_position.y, global_position.z + velocity.z), Vector3.UP)
-			# If enemy is attacking
-			elif anim_state_machine.get_current_node() == "Attack":
-				# Make enemy look at player
-				look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z), Vector3.UP)
+			# Update movement
+			var cur_location = global_position
+			var next_location = nav_agent.get_next_path_position()
+			var new_velocity = (next_location - cur_location).normalized() * speed
+			nav_agent.set_velocity(new_velocity)
 		# Apply gravity when in the air
 		else:
 			velocity.y -= 18 * delta
@@ -82,6 +71,17 @@ func _physics_process(delta):
 		if cur_health <= 0:
 			enemy_defeated.emit()
 			queue_free()
+		
+		# If enemy is running
+		if anim_state_machine.get_current_node() == "Run":
+			# Make enemy look where they're running
+			var cur_velocity = Vector2(velocity.x, velocity.z).length()
+			if cur_velocity > 0.01:
+				look_at(Vector3(global_position.x + velocity.x, global_position.y, global_position.z + velocity.z), Vector3.UP)
+		# If enemy is attacking
+		elif anim_state_machine.get_current_node() == "Attack":
+			# Make enemy look at player
+			look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z), Vector3.UP)
 		
 		if _target_in_range():
 			animate(Animations.ATTACK)
@@ -96,6 +96,7 @@ func set_target_position() -> void:
 	if player:
 		if Vector3(player.global_position - target_position).length() > dist_threshold or is_initial_call:
 			if is_initial_call: is_initial_call = false
+			if anim_state_machine.get_current_node() == "Attack": return
 			target_position = player.global_position
 			nav_agent.set_target_position(target_position)
 
