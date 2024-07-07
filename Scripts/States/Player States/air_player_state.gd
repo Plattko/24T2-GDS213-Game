@@ -2,11 +2,17 @@ class_name AirPlayerState
 
 extends PlayerState
 
-const JUMP_VELOCITY = 8.0
+const JUMP_VELOCITY := 8.0
 
-const WALK_SPEED = 5.0
-const SPRINT_SPEED = 8.0
+const WALK_SPEED := 5.0
+const SPRINT_SPEED := 8.0
 var speed
+
+var horizontal_velocity : float:
+	get:
+		return Vector2(player.velocity.x, player.velocity.z).length()
+
+const WALL_RUN_MIN_SPEED := 5.1
 
 func enter(_previous_state, msg : Dictionary = {}):
 	#print("Entered Air player state.")
@@ -43,3 +49,7 @@ func physics_update(delta : float):
 		# Transition to Walk state
 		elif input.direction and !input.is_sprint_pressed:
 			transition.emit("WalkPlayerState")
+	else:
+		# Transition to Wallrun state
+		if input.is_jump_just_pressed and player.is_on_wall() and horizontal_velocity > WALL_RUN_MIN_SPEED:
+			transition.emit("WallrunPlayerState")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://il6q27w1jqvw"]
+[gd_scene load_steps=39 format=3 uid="uid://il6q27w1jqvw"]
 
 [ext_resource type="Script" path="res://Scripts/Multiplayer/multiplayer_player.gd" id="1_0n7q4"]
 [ext_resource type="Script" path="res://Scripts/Player/player_input.gd" id="2_7s41b"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://Scripts/States/Player States/sprint_player_state.gd" id="12_lap8s"]
 [ext_resource type="Script" path="res://Scripts/States/Player States/crouch_player_state.gd" id="13_e54bo"]
 [ext_resource type="Script" path="res://Scripts/States/Player States/slide_player_state.gd" id="14_4j3tc"]
+[ext_resource type="Script" path="res://Scripts/States/Player States/wallrun_player_state.gd" id="15_enn73"]
 [ext_resource type="Script" path="res://Scripts/UI/ui_manager.gd" id="15_jmxyw"]
 [ext_resource type="Script" path="res://Scripts/UI/hud.gd" id="16_e684x"]
 [ext_resource type="Script" path="res://Scripts/UI/reticle.gd" id="17_18grs"]
@@ -582,6 +583,9 @@ script = ExtResource("13_e54bo")
 
 [node name="SlidePlayerState" type="Node" parent="PlayerStateMachine"]
 script = ExtResource("14_4j3tc")
+
+[node name="WallrunPlayerState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("15_enn73")
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
