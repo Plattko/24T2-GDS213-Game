@@ -23,9 +23,6 @@ signal enemy_count_updated(enemy_count: int)
 signal cur_wave_updated(wave: int)
 signal intermission_entered
 
-func _ready() -> void:
-	set_physics_process(false)
-
 func initialise(player_ref) -> void: # Called by Scene Manager
 	# Set player reference
 	player = player_ref
@@ -33,13 +30,6 @@ func initialise(player_ref) -> void: # Called by Scene Manager
 	await get_tree().create_timer(first_wave_delay).timeout
 	# Spawn the first wave
 	spawn_wave()
-	# Enable physics process
-	set_physics_process(true)
-
-func _physics_process(_delta):
-	if !multiplayer.is_server(): return
-	# Direct agents in group "enemies" to the player
-	get_tree().call_group("enemies", "update_target_location", player.global_transform.origin) #TODO: Make not a single player
 
 func spawn_wave() -> void:
 	print("WAVE STARTED")

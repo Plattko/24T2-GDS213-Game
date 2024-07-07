@@ -285,11 +285,13 @@ replication_config = SubResource("SceneReplicationConfig_xat8i")
 [node name="Mesh" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, 0, -0.09, -0.0173521)
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_15cvw")
 skeleton = NodePath("")
 
 [node name="Mag" type="MeshInstance3D" parent="Mesh"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.265515, 0.259321)
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_88mpt")
 skeleton = NodePath("")
 
