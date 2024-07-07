@@ -18,11 +18,17 @@ const WALL_RUN_MIN_SPEED := 5.1
 
 func enter(_previous_state, msg : Dictionary = {}):
 	#print("Entered Air player state.")
+	# Disable head bob
+	player.can_head_bob = false
 	
 	if msg.has("do_jump"):
 		player.velocity.y = JUMP_VELOCITY
 	if msg.has("left_wallrun"):
 		wallrun_cooldown.start()
+		
+func exit():
+	# Re-enable head bob
+	player.can_head_bob = true
 
 func physics_update(delta : float):
 	# Apply gravity

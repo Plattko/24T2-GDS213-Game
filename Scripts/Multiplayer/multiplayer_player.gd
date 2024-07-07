@@ -87,7 +87,7 @@ func _physics_process(delta):
 	
 	# Head bob
 	if can_head_bob:
-		t_bob += delta * velocity.length() * float(is_on_floor())
+		t_bob += delta * velocity.length()
 		camera.transform.origin = head_bob(t_bob)
 	
 	# FOV
