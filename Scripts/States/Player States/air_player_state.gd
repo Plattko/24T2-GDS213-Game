@@ -8,6 +8,8 @@ const WALK_SPEED := 5.0
 const SPRINT_SPEED := 8.0
 var speed
 
+@export var wallrun_cooldown : Timer
+
 var horizontal_velocity : float:
 	get:
 		return Vector2(player.velocity.x, player.velocity.z).length()
@@ -19,6 +21,8 @@ func enter(_previous_state, msg : Dictionary = {}):
 	
 	if msg.has("do_jump"):
 		player.velocity.y = JUMP_VELOCITY
+	if msg.has("left_wallrun"):
+		wallrun_cooldown.start()
 
 func physics_update(delta : float):
 	# Apply gravity
@@ -51,5 +55,5 @@ func physics_update(delta : float):
 			transition.emit("WalkPlayerState")
 	else:
 		# Transition to Wallrun state
-		if input.is_jump_just_pressed and player.is_on_wall() and horizontal_velocity > WALL_RUN_MIN_SPEED:
+		if input.is_jump_just_pressed and player.is_on_wall() and horizontal_velocity > WALL_RUN_MIN_SPEED and wallrun_cooldown.is_stopped():
 			transition.emit("WallrunPlayerState")

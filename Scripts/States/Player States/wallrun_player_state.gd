@@ -8,6 +8,9 @@ var last_dir := Vector2.ZERO
 var velocity_dir : Vector2
 var direction : Vector2
 
+var min_wall_jump := 5.0
+var max_wall_jump := 8.0
+
 func enter(_previous_state, _msg : Dictionary = {}):
 	player.velocity.y = 0.0
 
@@ -52,4 +55,14 @@ func physics_update(_delta: float) -> void:
 		if !player.is_on_wall():
 			transition.emit("AirPlayerState")
 		if input.is_jump_just_released:
-			transition.emit("AirPlayerState")
+			wall_jump()
+			transition.emit("AirPlayerState", {"left_wallrun" = true})
+
+func wall_jump() -> void:
+	var cam_angle = rad_to_deg(player.head.rotation.x)
+	var cam_angle_normalised = clampf(cam_angle, 0, 45) / 45
+	print("Cam angle: " + str(cam_angle))
+	print("Cam angle normalised: " + str(cam_angle_normalised))
+	
+	player.velocity.y = lerpf(min_wall_jump, max_wall_jump, cam_angle_normalised)
+	print("Wall jump velocity: " + str(player.velocity.y))
