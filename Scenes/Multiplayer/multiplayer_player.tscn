@@ -574,7 +574,7 @@ script = ExtResource("10_3uw0v")
 wallrun_cooldown = NodePath("WallrunCooldown")
 
 [node name="WallrunCooldown" type="Timer" parent="PlayerStateMachine/AirPlayerState"]
-wait_time = 0.3
+wait_time = 0.4
 one_shot = true
 
 [node name="WalkPlayerState" type="Node" parent="PlayerStateMachine"]

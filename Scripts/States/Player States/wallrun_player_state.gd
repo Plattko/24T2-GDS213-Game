@@ -28,7 +28,7 @@ func physics_update(_delta: float) -> void:
 			var direction_1 = wall_normal.rotated(deg_to_rad(-90))
 			var direction_2 = wall_normal.rotated(deg_to_rad(90))
 			# Choose the direction with an angle from the player's velocity direction that is less than or equal to 90 degrees (favouring direction 1)
-			print(velocity_dir.dot(direction_1))
+			#print(velocity_dir.dot(direction_1))
 			if velocity_dir.dot(direction_1) >= 0:
 				direction = direction_1
 			else:
@@ -52,11 +52,11 @@ func physics_update(_delta: float) -> void:
 			transition.emit("WalkPlayerState")
 	else:
 		# Transition to Air state
-		if !player.is_on_wall():
-			transition.emit("AirPlayerState")
+		if !player.is_on_wall() or input.is_crouch_pressed:
+			transition.emit("AirPlayerState", {"left_wallrun" = true})
 		if input.is_jump_just_released:
 			wall_jump()
-			transition.emit("AirPlayerState", {"left_wallrun" = true})
+			transition.emit("AirPlayerState", {"left_wallrun" = true, "do_wall_leap" = true})
 
 func wall_jump() -> void:
 	var cam_angle = rad_to_deg(player.head.rotation.x)
