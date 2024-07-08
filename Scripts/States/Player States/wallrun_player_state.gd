@@ -8,16 +8,30 @@ var last_dir := Vector2.ZERO
 var velocity_dir : Vector2
 var direction : Vector2
 
+var look_dir : Vector2
+
 var min_wall_jump := 5.0
 var max_wall_jump := 8.0
+
+const MAX_CAM_ANGLE : float = deg_to_rad(12)
 
 func enter(_previous_state, _msg : Dictionary = {}):
 	player.velocity.y = 0.0
 
-func physics_update(_delta: float) -> void:
+func exit() -> void:
+	var tween = get_tree().create_tween()
+	tween.tween_property(player.camera, "rotation", Vector3.ZERO, 0.1)
+	#player.camera.rotation.z = 0
+
+func physics_update(delta: float) -> void:
 	if player.is_on_wall():
 		# Get player velocity direction
 		velocity_dir = Vector2(player.velocity.x, player.velocity.z).normalized()
+		# Get player look direction
+		look_dir = Vector2(-player.transform.basis.z.x, -player.transform.basis.z.z).normalized()
+		# Default no velocity direction to equal the player's look direction
+		if velocity_dir == Vector2.ZERO:
+			velocity_dir = look_dir
 		if velocity_dir != last_dir:
 			# Update last direction
 			last_dir = velocity_dir
@@ -33,6 +47,22 @@ func physics_update(_delta: float) -> void:
 				direction = direction_1
 			else:
 				direction = direction_2
+		
+		#var look_angle = rad_to_deg(velocity_dir.angle_to(look_dir))
+		#print("Look angle: " + str(look_angle))
+		#var look_angle_normalised = clampf(look_angle, 0, 180) / 180
+		#player.camera.rotation.z = lerp_angle(-MAX_CAM_ANGLE, MAX_CAM_ANGLE, look_angle_normalised)
+		
+		var look_angle = wall_normal.angle_to(look_dir)
+		var look_sin = sin(look_angle) * MAX_CAM_ANGLE
+		player.camera.rotation.z = lerp_angle(player.camera.rotation.z, look_sin, delta * 12.0)
+		print("Camera rotation: " + str(rad_to_deg(player.camera.rotation.z)))
+		
+		#print("Look angle: " + str(rad_to_deg(look_angle)))
+		#print("Sin: " + str(rad_to_deg(look_sin)))
+		
+		#var tween = get_tree().create_tween()
+		#tween.tween_property(player.camera, "rotation", Vector3(0, 0, 0.5), 0.1)
 		
 		# Handle movement
 		player.velocity.x = direction.x * WALLRUN_SPEED
@@ -61,8 +91,8 @@ func physics_update(_delta: float) -> void:
 func wall_jump() -> void:
 	var cam_angle = rad_to_deg(player.head.rotation.x)
 	var cam_angle_normalised = clampf(cam_angle, 0, 45) / 45
-	print("Cam angle: " + str(cam_angle))
-	print("Cam angle normalised: " + str(cam_angle_normalised))
+	#print("Cam angle: " + str(cam_angle))
+	#print("Cam angle normalised: " + str(cam_angle_normalised))
 	
 	player.velocity.y = lerpf(min_wall_jump, max_wall_jump, cam_angle_normalised)
 	print("Wall jump velocity: " + str(player.velocity.y))
