@@ -12,10 +12,11 @@ var speed
 @export var wallrun_cooldown : Timer
 var can_wallrun : bool = true:
 	get:
-		if !input.is_crouch_pressed and player.is_on_wall() and wallrun_cooldown.is_stopped():
-			return true
+		if player.is_on_wall():
+			if !player.get_slide_collision(0).get_collider().is_in_group("boundaries") and wallrun_cooldown.is_stopped() and !input.is_crouch_pressed:
+				return true
+			return false
 		return false
-
 var is_in_wall_leap : bool = false
 
 var horizontal_velocity : float:
