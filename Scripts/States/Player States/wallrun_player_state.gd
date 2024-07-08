@@ -48,21 +48,11 @@ func physics_update(delta: float) -> void:
 			else:
 				direction = direction_2
 		
-		#var look_angle = rad_to_deg(velocity_dir.angle_to(look_dir))
-		#print("Look angle: " + str(look_angle))
-		#var look_angle_normalised = clampf(look_angle, 0, 180) / 180
-		#player.camera.rotation.z = lerp_angle(-MAX_CAM_ANGLE, MAX_CAM_ANGLE, look_angle_normalised)
-		
+		# Tilt the player's camera based on the angle between their look direction and wall's normal
 		var look_angle = wall_normal.angle_to(look_dir)
 		var look_sin = sin(look_angle) * MAX_CAM_ANGLE
 		player.camera.rotation.z = lerp_angle(player.camera.rotation.z, look_sin, delta * 12.0)
-		print("Camera rotation: " + str(rad_to_deg(player.camera.rotation.z)))
-		
-		#print("Look angle: " + str(rad_to_deg(look_angle)))
-		#print("Sin: " + str(rad_to_deg(look_sin)))
-		
-		#var tween = get_tree().create_tween()
-		#tween.tween_property(player.camera, "rotation", Vector3(0, 0, 0.5), 0.1)
+		#print("Camera rotation: " + str(rad_to_deg(player.camera.rotation.z)))
 		
 		# Handle movement
 		player.velocity.x = direction.x * WALLRUN_SPEED
@@ -95,4 +85,4 @@ func wall_jump() -> void:
 	#print("Cam angle normalised: " + str(cam_angle_normalised))
 	
 	player.velocity.y = lerpf(min_wall_jump, max_wall_jump, cam_angle_normalised)
-	print("Wall jump velocity: " + str(player.velocity.y))
+	#print("Wall jump velocity: " + str(player.velocity.y))
