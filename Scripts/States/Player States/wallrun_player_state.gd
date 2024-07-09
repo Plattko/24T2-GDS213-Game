@@ -30,7 +30,7 @@ func physics_update(delta: float) -> void:
 		# Get player look direction
 		look_dir = Vector2(-player.transform.basis.z.x, -player.transform.basis.z.z).normalized()
 		# Default no velocity direction to equal the player's look direction
-		if velocity_dir == Vector2.ZERO:
+		if abs(velocity_dir) == Vector2.ZERO:
 			velocity_dir = look_dir
 		if velocity_dir != last_dir:
 			# Update last direction
