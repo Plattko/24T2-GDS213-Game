@@ -2,7 +2,7 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxd7swf7ykioy"
+uid="uid://cyjwsnjwelbew"
 path.s3tc="res://.godot/imported/SM_building_roof_19_MI_roof_A_Inst_Normal.png-e6f71b4b31108c1a5d0cd5aa27c73ac6.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
@@ -28,7 +28,7 @@ compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=1
-roughness/src_normal="res://Assets/Imports/StylizedHouses/Textures/SM_building_roof_19_MI_roof_A_Inst_Normal.png"
+roughness/src_normal="res://Assets/Imports/StylizedHouses/BuildingMeshes/SM_building_roof_19_MI_roof_A_Inst_Normal.png"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

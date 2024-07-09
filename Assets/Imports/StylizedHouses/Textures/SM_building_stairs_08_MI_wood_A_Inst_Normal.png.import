@@ -2,7 +2,7 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8e2eq708oiql"
+uid="uid://66eg7tdpy0y0"
 path.s3tc="res://.godot/imported/SM_building_stairs_08_MI_wood_A_Inst_Normal.png-a4156712367d3bbedbcbfb59a80a4a88.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
@@ -28,7 +28,7 @@ compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=1
-roughness/src_normal="res://Assets/Imports/StylizedHouses/Textures/SM_building_stairs_08_MI_wood_A_Inst_Normal.png"
+roughness/src_normal="res://Assets/Imports/StylizedHouses/BuildingMeshes/SM_building_stairs_08_MI_wood_A_Inst_Normal.png"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

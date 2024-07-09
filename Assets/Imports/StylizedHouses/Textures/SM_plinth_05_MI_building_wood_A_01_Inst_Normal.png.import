@@ -2,7 +2,7 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://csp1jv3nc5u6k"
+uid="uid://dk3bfonusor2"
 path.s3tc="res://.godot/imported/SM_plinth_05_MI_building_wood_A_01_Inst_Normal.png-b05d9b39a1a5c64dba2228f9d8035583.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
@@ -28,7 +28,7 @@ compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=1
-roughness/src_normal="res://Assets/Imports/StylizedHouses/Textures/SM_plinth_05_MI_building_wood_A_01_Inst_Normal.png"
+roughness/src_normal="res://Assets/Imports/StylizedHouses/BuildingMeshes/SM_plinth_05_MI_building_wood_A_01_Inst_Normal.png"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

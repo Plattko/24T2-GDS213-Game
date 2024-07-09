@@ -2,7 +2,7 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dwqpgjp2d61it"
+uid="uid://bg6tr7l6dp16u"
 path.s3tc="res://.godot/imported/SM_metal_fence_02_MI_metal_base_B_Inst_SM_metal_fence_02_Normal.png-194c4a5a71e5601b29bb137ea248cedc.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
@@ -28,7 +28,7 @@ compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=1
-roughness/src_normal="res://Assets/Imports/StylizedHouses/Textures/SM_metal_fence_02_MI_metal_base_B_Inst_SM_metal_fence_02_Normal.png"
+roughness/src_normal="res://Assets/Imports/StylizedHouses/BuildingMeshes/SM_metal_fence_02_MI_metal_base_B_Inst_SM_metal_fence_02_Normal.png"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

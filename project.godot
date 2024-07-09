@@ -25,6 +25,10 @@ GameManager="*res://Scripts/Gamemode/game_manager.gd"
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 
+[filesystem]
+
+import/fbx/enabled=false
+
 [input]
 
 move_forwards={
