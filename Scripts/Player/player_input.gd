@@ -38,6 +38,18 @@ var is_jump_just_pressed : bool:
 			return Input.is_action_just_pressed("jump")
 		return false
 
+var is_jump_pressed : bool:
+	get:
+		if not is_server and can_move:
+			return Input.is_action_pressed("jump")
+		return false
+
+var is_jump_just_released : bool:
+	get:
+		if not is_server and can_move:
+			return Input.is_action_just_released("jump")
+		return false
+
 var is_sprint_pressed : bool:
 	get:
 		if not is_server and can_move:
