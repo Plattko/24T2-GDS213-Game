@@ -522,6 +522,18 @@ shape = SubResource("SphereShape3D_3r45p")
 target_position = Vector3(0, 0.5, 0)
 debug_shape_custom_color = Color(0, 0.901961, 0, 1)
 
+[node name="FloorCheck" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+target_position = Vector3(0, -0.5, 0)
+
+[node name="LedgeCheck" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+target_position = Vector3(0, 0, -1)
+
+[node name="WallCheck" type="RayCast3D" parent="LedgeCheck"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.75)
+target_position = Vector3(0, -0.2, 0)
+
 [node name="Damageable" parent="." instance=ExtResource("3_sfxmm")]
 collision_layer = 2
 
@@ -569,12 +581,20 @@ initial_state = NodePath("IdlePlayerState")
 [node name="IdlePlayerState" type="Node" parent="PlayerStateMachine"]
 script = ExtResource("9_u7svg")
 
-[node name="AirPlayerState" type="Node" parent="PlayerStateMachine" node_paths=PackedStringArray("wallrun_cooldown")]
+[node name="AirPlayerState" type="Node" parent="PlayerStateMachine" node_paths=PackedStringArray("floor_check", "wallrun_cooldown", "ledge_check", "wall_check", "mantle_duration")]
 script = ExtResource("10_3uw0v")
+floor_check = NodePath("../../FloorCheck")
 wallrun_cooldown = NodePath("WallrunCooldown")
+ledge_check = NodePath("../../LedgeCheck")
+wall_check = NodePath("../../LedgeCheck/WallCheck")
+mantle_duration = NodePath("MantleDuration")
 
 [node name="WallrunCooldown" type="Timer" parent="PlayerStateMachine/AirPlayerState"]
 wait_time = 0.4
+one_shot = true
+
+[node name="MantleDuration" type="Timer" parent="PlayerStateMachine/AirPlayerState"]
+wait_time = 0.2
 one_shot = true
 
 [node name="WalkPlayerState" type="Node" parent="PlayerStateMachine"]
