@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dpgtqnqgata2e"]
 
-[ext_resource type="Material" uid="uid://clau1arwwv1yw" path="res://Materials/Standard Materials/prototype_orange.tres" id="1_bcpf6"]
+[ext_resource type="Material" uid="uid://clau1arwwv1yw" path="res://Assets/Materials/Standard Materials/prototype_orange.tres" id="1_bcpf6"]
 
 [node name="Fence" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.4788, 0, 0)

@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Scripts/AI/Backups/level_AI.gd" id="1_ebxwr"]
 [ext_resource type="PackedScene" uid="uid://v4q0vjnsq15d" path="res://Scenes/Props/destructible_orb.tscn" id="1_tm81i"]
-[ext_resource type="Material" uid="uid://bbyh52cc6ljvg" path="res://Materials/Standard Materials/prototype_grey.tres" id="1_yhgkw"]
-[ext_resource type="Material" uid="uid://clau1arwwv1yw" path="res://Materials/Standard Materials/prototype_orange.tres" id="2_p1d7i"]
+[ext_resource type="Material" uid="uid://bbyh52cc6ljvg" path="res://Assets/Materials/Standard Materials/prototype_grey.tres" id="1_yhgkw"]
+[ext_resource type="Material" uid="uid://clau1arwwv1yw" path="res://Assets/Materials/Standard Materials/prototype_orange.tres" id="2_p1d7i"]
 [ext_resource type="PackedScene" uid="uid://brc2h44edbj5a" path="res://Scenes/Player/player.tscn" id="2_vsjtc"]
 [ext_resource type="PackedScene" uid="uid://cyglxemusmfd8" path="res://Scenes/Enemies/enemy.tscn" id="6_ch7e7"]
 

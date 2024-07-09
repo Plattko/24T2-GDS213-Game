@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b6evxern6ufl0"]
 
-[ext_resource type="Material" uid="uid://clau1arwwv1yw" path="res://Materials/Standard Materials/prototype_orange.tres" id="1_ot1ef"]
-[ext_resource type="Material" uid="uid://bbyh52cc6ljvg" path="res://Materials/Standard Materials/prototype_grey.tres" id="2_5kvw3"]
+[ext_resource type="Material" uid="uid://clau1arwwv1yw" path="res://Assets/Materials/Standard Materials/prototype_orange.tres" id="1_ot1ef"]
+[ext_resource type="Material" uid="uid://bbyh52cc6ljvg" path="res://Assets/Materials/Standard Materials/prototype_grey.tres" id="2_5kvw3"]
 
 [node name="bin" type="CSGMesh3D"]
 use_collision = true

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cskbtk0y2fmsx"]
 
-[ext_resource type="Material" uid="uid://clau1arwwv1yw" path="res://Materials/Standard Materials/prototype_orange.tres" id="1_dn8ja"]
-[ext_resource type="Material" uid="uid://bbyh52cc6ljvg" path="res://Materials/Standard Materials/prototype_grey.tres" id="2_ba6xl"]
+[ext_resource type="Material" uid="uid://clau1arwwv1yw" path="res://Assets/Materials/Standard Materials/prototype_orange.tres" id="1_dn8ja"]
+[ext_resource type="Material" uid="uid://bbyh52cc6ljvg" path="res://Assets/Materials/Standard Materials/prototype_grey.tres" id="2_ba6xl"]
 
 [node name="roadblock" type="CSGMesh3D"]
 use_collision = true

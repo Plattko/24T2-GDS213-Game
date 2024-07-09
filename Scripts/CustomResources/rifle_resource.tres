@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Weapon" load_steps=3 format=3 uid="uid://bhewhym8orcro"]
 
-[ext_resource type="BoxMesh" uid="uid://cdph6uvemhvre" path="res://Meshes/test_rifle.tres" id="1_vf0k7"]
+[ext_resource type="BoxMesh" uid="uid://cdph6uvemhvre" path="res://Assets/Meshes/test_rifle.tres" id="1_vf0k7"]
 [ext_resource type="Script" path="res://Scripts/CustomResources/weapon_resource.gd" id="1_xwtnd"]
 
 [resource]

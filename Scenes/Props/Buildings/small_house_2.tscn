@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://drvytcl7v1la6"]
 
-[ext_resource type="Material" uid="uid://bbyh52cc6ljvg" path="res://Materials/Standard Materials/prototype_grey.tres" id="1_srg3v"]
+[ext_resource type="Material" uid="uid://bbyh52cc6ljvg" path="res://Assets/Materials/Standard Materials/prototype_grey.tres" id="1_srg3v"]
 
 [node name="CSGMesh3D" type="CSGMesh3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0496693, -0.062211, -0.00800896)

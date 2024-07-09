@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Scripts/Gamemode/wave_manager.gd" id="1_i63h0"]
 [ext_resource type="PackedScene" uid="uid://brc2h44edbj5a" path="res://Scenes/Player/player.tscn" id="2_inm70"]
-[ext_resource type="Material" uid="uid://bbyh52cc6ljvg" path="res://Materials/Standard Materials/prototype_grey.tres" id="3_f22di"]
-[ext_resource type="Material" uid="uid://clau1arwwv1yw" path="res://Materials/Standard Materials/prototype_orange.tres" id="4_8ioy8"]
+[ext_resource type="Material" uid="uid://bbyh52cc6ljvg" path="res://Assets/Materials/Standard Materials/prototype_grey.tres" id="3_f22di"]
+[ext_resource type="Material" uid="uid://clau1arwwv1yw" path="res://Assets/Materials/Standard Materials/prototype_orange.tres" id="4_8ioy8"]
 [ext_resource type="PackedScene" uid="uid://s1ph78h6l0o2" path="res://Scenes/Enemies/spawn_point.tscn" id="6_3afi8"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_b7t75"]

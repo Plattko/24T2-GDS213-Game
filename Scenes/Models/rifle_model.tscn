@@ -1,5 +1,5 @@
 [gd_scene load_steps=2 format=3 uid="uid://def46l2pxx5yt"]
 
-[ext_resource type="PackedScene" uid="uid://dtdfl6ln0r6nk" path="res://Meshes/Models/Guns/rifle.glb" id="1_ouejs"]
+[ext_resource type="PackedScene" uid="uid://dtdfl6ln0r6nk" path="res://Assets/Meshes/Models/Guns/rifle.glb" id="1_ouejs"]
 
 [node name="rifle" instance=ExtResource("1_ouejs")]
