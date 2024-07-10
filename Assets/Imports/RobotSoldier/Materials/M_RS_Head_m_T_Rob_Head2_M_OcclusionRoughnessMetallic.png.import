@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://lg7o6wdk4w0x"
+path.s3tc="res://.godot/imported/M_RS_Head_m_T_Rob_Head2_M_OcclusionRoughnessMetallic.png-00509dfb34e06da9c0d744d4d32fdc26.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "46fb59214258ece81dc14045d37e5c82"
+}
+
+[deps]
+
+source_file="res://Assets/Imports/RobotSoldier/Materials/M_RS_Head_m_T_Rob_Head2_M_OcclusionRoughnessMetallic.png"
+dest_files=["res://.godot/imported/M_RS_Head_m_T_Rob_Head2_M_OcclusionRoughnessMetallic.png-00509dfb34e06da9c0d744d4d32fdc26.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=8
+roughness/src_normal="res://Assets/Imports/RobotSoldier/Materials/M_RS_Head_m_T_Rob_Head2_M_Normal.png"
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0
