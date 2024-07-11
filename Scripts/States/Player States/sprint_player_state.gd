@@ -9,6 +9,11 @@ func enter(_previous_state, _msg : Dictionary = {}):
 	pass
 
 func physics_update(_delta : float):
+	# Transition to Air state with jump
+	if (input.is_jump_just_pressed or input.is_jump_buffered) and player.is_on_floor():
+		transition.emit("AirPlayerState", {"do_jump" = true})
+		return
+	
 	# Handle movement
 	player.velocity.x = input.direction.x * SPRINT_SPEED
 	player.velocity.z = input.direction.z * SPRINT_SPEED
@@ -17,9 +22,6 @@ func physics_update(_delta : float):
 	# Transition to Air state
 	if !player.is_on_floor():
 		transition.emit("AirPlayerState")
-	# Transition to Air state with jump
-	elif input.is_jump_just_pressed and player.is_on_floor():
-		transition.emit("AirPlayerState", {"do_jump" = true})
 	# Transition to Idle state
 	elif !input.direction:
 		transition.emit("IdlePlayerState")

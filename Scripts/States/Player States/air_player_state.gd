@@ -8,9 +8,9 @@ const WALK_SPEED := 5.0
 const SPRINT_SPEED := 8.0
 var speed
 
-#var horizontal_velocity : float:
-	#get:
-		#return Vector2(player.velocity.x, player.velocity.z).length()
+var horizontal_velocity : Vector2:
+	get:
+		return Vector2(player.velocity.x, player.velocity.z)
 
 # Wallrun variables
 @export_group("Wallrun Variables")
@@ -58,6 +58,12 @@ var can_climb : bool = false:
 			return true
 		return false
 
+# Air Strafing variables
+@export_group("Air Strafing Variables")
+@export var is_air_strafing_enabled : bool = true
+@export var max_air_speed : float = 0.8
+const MAX_ACCEL : float = 8.5 * 10.0
+
 func enter(_previous_state, msg : Dictionary = {}):
 	#print("Entered Air player state.")
 	# Disable head bob
@@ -70,7 +76,7 @@ func enter(_previous_state, msg : Dictionary = {}):
 	if msg.has("do_wall_leap"):
 		is_in_wall_leap = true
 		speed = WALL_LEAP_SPEED
-		
+
 func exit():
 	# Re-enable head bob
 	player.can_head_bob = true
@@ -95,8 +101,11 @@ func physics_update(delta : float):
 		mantle()
 	
 	# Handle movement
-	player.velocity.x = lerp(player.velocity.x, input.direction.x * speed, delta * 4.0)
-	player.velocity.z = lerp(player.velocity.z, input.direction.z * speed, delta * 4.0)
+	if is_air_strafing_enabled:
+		player.velocity = update_air_vel(delta)
+	else:
+		player.velocity.x = lerp(player.velocity.x, input.direction.x * speed, delta * 4.0)
+		player.velocity.z = lerp(player.velocity.z, input.direction.z * speed, delta * 4.0)
 	player.move_and_slide()
 	
 	# Handle landing
@@ -121,3 +130,9 @@ func physics_update(delta : float):
 func mantle() -> void:
 		mantle_duration.start()
 		player.velocity.y = 8.0
+
+func update_air_vel(delta: float) -> Vector3:
+	var cur_speed = horizontal_velocity.dot(Vector2(input.direction.x, input.direction.z))
+	var speed_to_add = clamp(max_air_speed - cur_speed, 0.0, MAX_ACCEL * delta)
+	
+	return player.velocity + speed_to_add * input.direction

@@ -506,8 +506,18 @@ ceiling_check = NodePath("CeilingCheck")
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_vurwv")
 
-[node name="Input" type="Node" parent="."]
+[node name="Input" type="Node" parent="." node_paths=PackedStringArray("jump_buffer", "jump_buffer_cooldown")]
 script = ExtResource("2_7s41b")
+jump_buffer = NodePath("JumpBuffer")
+jump_buffer_cooldown = NodePath("JumpBufferCooldown")
+
+[node name="JumpBuffer" type="Timer" parent="Input"]
+wait_time = 0.1
+one_shot = true
+
+[node name="JumpBufferCooldown" type="Timer" parent="Input"]
+wait_time = 0.2
+one_shot = true
 
 [node name="CollisionShape" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_l214m")
@@ -588,6 +598,8 @@ wallrun_cooldown = NodePath("WallrunCooldown")
 ledge_check = NodePath("../../LedgeCheck")
 wall_check = NodePath("../../LedgeCheck/WallCheck")
 mantle_duration = NodePath("MantleDuration")
+is_air_strafing_enabled = false
+max_air_speed = 0.7
 
 [node name="WallrunCooldown" type="Timer" parent="PlayerStateMachine/AirPlayerState"]
 wait_time = 0.4
