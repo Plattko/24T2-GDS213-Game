@@ -72,4 +72,4 @@ func physics_update(delta):
 	
 	# Debug
 	if debug:
-		debug.add_debug_property("Slide Timer", snappedf(elapsed_time, 0.01), 5)
+		debug.add_debug_property("Slide Timer", snappedf(elapsed_time, 0.01), 3)

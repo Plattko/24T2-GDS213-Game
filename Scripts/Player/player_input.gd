@@ -23,10 +23,10 @@ func _ready() -> void:
 		#is_server = true
 	pass
 
-func _input(event):
-	if event.is_action_pressed("jump") and jump_buffer_cooldown.is_stopped():
-		jump_buffer.start()
-		jump_buffer_cooldown.start()
+#func _input(event):
+	#if event.is_action_pressed("jump") and jump_buffer_cooldown.is_stopped():
+		#jump_buffer.start()
+		#jump_buffer_cooldown.start()
 
 # --------------------------------MOVEMENT------------------------------------ #
 var direction : Vector3:
@@ -144,6 +144,6 @@ func on_closed_settings_menu() -> void:
 	can_look = true
 
 # --------------------------------BUFFERS------------------------------------- #
-var is_jump_buffered : bool = false:
-	get:
-		return !jump_buffer.is_stopped()
+#var is_jump_buffered : bool = false:
+	#get:
+		#return !jump_buffer.is_stopped()

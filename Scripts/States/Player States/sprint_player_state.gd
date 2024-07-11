@@ -10,7 +10,7 @@ func enter(_previous_state, _msg : Dictionary = {}):
 
 func physics_update(_delta : float):
 	# Transition to Air state with jump
-	if (input.is_jump_just_pressed or input.is_jump_buffered) and player.is_on_floor():
+	if input.is_jump_just_pressed and player.is_on_floor():
 		transition.emit("AirPlayerState", {"do_jump" = true})
 		return
 	
