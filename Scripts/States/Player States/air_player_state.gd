@@ -70,12 +70,15 @@ func enter(_previous_state, msg : Dictionary = {}):
 	player.can_head_bob = false
 	
 	if msg.has("do_jump"):
-		player.velocity.y = JUMP_VELOCITY
+		#player.velocity.y = JUMP_VELOCITY
+		player.velocity.y += JUMP_VELOCITY
 	if msg.has("left_wallrun"):
 		wallrun_cooldown.start()
 	if msg.has("do_wall_leap"):
 		is_in_wall_leap = true
 		speed = WALL_LEAP_SPEED
+	if msg.has("do_rocket_jump"):
+		is_air_strafing_enabled = true
 
 func exit():
 	# Re-enable head bob
@@ -84,6 +87,8 @@ func exit():
 	is_in_wall_leap = false
 	# Reset mantle duration timer
 	mantle_duration.stop()
+	# Reset air strafing
+	#is_air_strafing_enabled = false
 
 func physics_update(delta : float):
 	# Apply gravity
@@ -104,8 +109,13 @@ func physics_update(delta : float):
 	if is_air_strafing_enabled:
 		player.velocity = update_air_vel(delta)
 	else:
-		player.velocity.x = lerp(player.velocity.x, input.direction.x * speed, delta * 4.0)
-		player.velocity.z = lerp(player.velocity.z, input.direction.z * speed, delta * 4.0)
+		#player.velocity.x = lerp(player.velocity.x, input.direction.x * speed, delta * 4.0)
+		#player.velocity.z = lerp(player.velocity.z, input.direction.z * speed, delta * 4.0)
+		
+		if input.direction.x != 0:
+			player.velocity.x = lerp(player.velocity.x, input.direction.x * speed, delta * 4.0)
+		if input.direction.z != 0:
+			player.velocity.z = lerp(player.velocity.z, input.direction.z * speed, delta * 4.0)
 	player.move_and_slide()
 	
 	# Handle landing

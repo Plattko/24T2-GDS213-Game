@@ -99,6 +99,7 @@ func _physics_process(delta):
 	#Global.debug.add_debug_property("Move Speed", snappedf(velocity.length(), 0.01), 2)
 	if debug:
 		debug.add_debug_property("Move Speed", snappedf(Vector2(velocity.x, velocity.z).length(), 0.01), 2)
+		debug.add_debug_property("Vertical Speed", snappedf(velocity.y, 0.01), 3)
 		#debug.add_debug_property("Jump Buffer", snappedf(input.jump_buffer.time_left, 0.01), 3)
 		#debug.add_debug_property("Jump Buffer Cooldown", snappedf(input.jump_buffer_cooldown.time_left, 0.01), 4)
 	
