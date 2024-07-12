@@ -6,10 +6,6 @@ const JUMP_VELOCITY := 8.0
 
 var speed
 
-var horizontal_velocity : Vector2:
-	get:
-		return Vector2(player.velocity.x, player.velocity.z)
-
 # Wallrun variables
 @export_group("Wallrun Variables")
 @export var floor_check : RayCast3D
@@ -114,6 +110,9 @@ func physics_update(delta : float):
 			player.velocity.x = lerp(player.velocity.x, input.direction.x * speed, delta * 4.0)
 		if input.direction.z != 0:
 			player.velocity.z = lerp(player.velocity.z, input.direction.z * speed, delta * 4.0)
+		
+		## TODO: Split into x and z axes
+		#player.update_velocity(lerp_velocity(player.velocity, input.direction * speed, 4.0 * delta))
 	player.move_and_slide()
 	
 	# Handle landing

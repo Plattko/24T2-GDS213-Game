@@ -37,6 +37,8 @@ func physics_update(delta):
 		player.velocity.z = lerp(slide_direction.z * SLIDE_START_SPEED, slide_direction.z * SLIDE_END_SPEED, elapsed_time / SLIDE_DURATION)
 		player.move_and_slide()
 		
+		#player.update_velocity(lerp_velocity(slide_direction * SLIDE_START_SPEED, slide_direction * SLIDE_END_SPEED, elapsed_time / SLIDE_DURATION))
+		
 		# Increment the slide timer
 		elapsed_time += delta
 		

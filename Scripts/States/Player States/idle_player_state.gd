@@ -21,6 +21,12 @@ func physics_update(delta : float):
 	elif abs(player.velocity.z) > 0.0: player.velocity.z = 0.0
 	player.move_and_slide()
 	
+	## TODO: Split into x and z axes
+	#if abs(horizontal_velocity.length()) > 0.01:
+		#player.update_velocity(lerp_velocity(player.velocity, Vector3.ZERO, STOP_SPEED * delta))
+	#elif abs(horizontal_velocity.length()) > 0.0:
+		#player.update_velocity(set_velocity(0.0))
+	
 	# Transition to Air state
 	if !player.is_on_floor():
 		transition.emit("AirPlayerState")
