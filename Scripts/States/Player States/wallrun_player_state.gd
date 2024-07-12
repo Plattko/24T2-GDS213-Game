@@ -15,7 +15,7 @@ var max_wall_jump := 8.0
 
 const MAX_CAM_ANGLE : float = deg_to_rad(12)
 
-func enter(_previous_state, _msg : Dictionary = {}):
+func enter(_msg : Dictionary = {}):
 	player.velocity.y = 0.0
 
 func exit() -> void:

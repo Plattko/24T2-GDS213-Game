@@ -2,9 +2,9 @@ class_name IdlePlayerState
 
 extends PlayerState
 
-const STOP_SPEED = 5.0
+const STOP_SPEED = 7.0
 
-func enter(_previous_state, _msg : Dictionary = {}):
+func enter(_msg : Dictionary = {}):
 	#print("Entered Idle player state.")
 	pass
 
@@ -15,9 +15,10 @@ func physics_update(delta : float):
 		return
 	
 	# Handle deceleration
-	#if not MultiplayerManager.is_multiplayer or multiplayer.is_server():
-	player.velocity.x = lerp(player.velocity.x, input.direction.x * STOP_SPEED, delta * 7.0)
-	player.velocity.z = lerp(player.velocity.z, input.direction.z * STOP_SPEED, delta * 7.0)
+	if abs(player.velocity.x) > 0.01: player.velocity.x = lerp(player.velocity.x, 0.0, delta * STOP_SPEED)
+	elif abs(player.velocity.x) > 0.0: player.velocity.x = 0.0
+	if abs(player.velocity.z) > 0.01: player.velocity.z = lerp(player.velocity.z, 0.0, delta * STOP_SPEED)
+	elif abs(player.velocity.z) > 0.0: player.velocity.z = 0.0
 	player.move_and_slide()
 	
 	# Transition to Air state

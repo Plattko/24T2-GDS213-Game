@@ -2,9 +2,7 @@ class_name WalkPlayerState
 
 extends PlayerState
 
-const WALK_SPEED = 5.0
-
-func enter(_previous_state, _msg : Dictionary = {}):
+func enter(_msg : Dictionary = {}):
 	#print("Entered Walk player state.")
 	pass
 

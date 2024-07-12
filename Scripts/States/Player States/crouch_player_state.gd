@@ -2,19 +2,20 @@ class_name CrouchPlayerState
 
 extends PlayerState
 
-const WALK_SPEED = 5.0
 const CROUCH_ANIM_SPEED : float = 7.0
 
 var is_crouch_released : bool = false
 
-func enter(previous_state, _msg : Dictionary = {}) -> void:
+func enter(msg : Dictionary = {}) -> void:
 	#print("Entered Crouch player state.")
-	# Play the crouch animation
-	if previous_state.name != "SlidePlayerState":
-		player.animation_player.play("Crouch", -1, CROUCH_ANIM_SPEED)
-	else:
+	
+	if msg.has("left_slide"):
+		# Transition to crouch animation from slide animation
 		player.animation_player.current_animation = "Crouch"
 		player.animation_player.seek(1.0, true)
+	else:
+		# Play the crouch animation
+		player.animation_player.play("Crouch", -1, CROUCH_ANIM_SPEED)
 
 func exit():
 	is_crouch_released = false
@@ -37,11 +38,12 @@ func physics_update(_delta) -> void:
 	elif input.is_crouch_just_released:
 		uncrouch()
 	elif !input.is_crouch_pressed and !is_crouch_released:
+		is_crouch_released = true
 		uncrouch()
 
 func uncrouch() -> void:
 	# If there is nothing blocking the player from standing up, play the uncrouch animation
-	if player.ceiling_check.is_colliding() == false:
+	if !player.ceiling_check.is_colliding() and !input.is_crouch_pressed:
 		player.animation_player.play("Crouch", -1, -CROUCH_ANIM_SPEED, true)
 		
 		# Wait for uncrouch animation to end
@@ -59,6 +61,6 @@ func uncrouch() -> void:
 			transition.emit("SprintPlayerState")
 	
 	# If there is something blocking the way, try to uncrouch again in 0.1 seconds
-	elif player.ceiling_check.is_colliding() == true:
+	elif player.ceiling_check.is_colliding():
 		await get_tree().create_timer(0.1).timeout
 		uncrouch()

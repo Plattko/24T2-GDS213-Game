@@ -4,8 +4,6 @@ extends PlayerState
 
 const JUMP_VELOCITY := 8.0
 
-const WALK_SPEED := 5.0
-const SPRINT_SPEED := 8.0
 var speed
 
 var horizontal_velocity : Vector2:
@@ -64,7 +62,7 @@ var can_climb : bool = false:
 @export var max_air_speed : float = 0.8
 const MAX_ACCEL : float = 8.5 * 10.0
 
-func enter(_previous_state, msg : Dictionary = {}):
+func enter(msg : Dictionary = {}):
 	#print("Entered Air player state.")
 	# Disable head bob
 	player.can_head_bob = false

@@ -2,9 +2,7 @@ class_name SprintPlayerState
 
 extends PlayerState
 
-const SPRINT_SPEED = 8.0
-
-func enter(_previous_state, _msg : Dictionary = {}):
+func enter(_msg : Dictionary = {}):
 	#print("Entered Sprint player state.")
 	pass
 

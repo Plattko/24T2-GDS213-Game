@@ -127,11 +127,6 @@ func head_bob(time) -> Vector3:
 	pos.x = cos(time * BOB_FREQ / 2) * BOB_AMP
 	return pos
 
-# State machine functions
-func update_gravity(delta) -> void:
-	#velocity.y -= gravity * delta
-	velocity.y -= 18 * delta
-
 func stand_up(current_state, anim_speed : float, is_repeating_check : bool):
 	# If there is nothing blocking the player from standing up, play the respective animation
 	if ceiling_check.is_colliding() == false:
@@ -183,3 +178,13 @@ func respawn_player() -> void:
 	cur_health = max_health
 	update_health.emit([cur_health, max_health])
 	is_dead = false
+
+#-------------------------------------------------------------------------------
+# Movement
+#-------------------------------------------------------------------------------
+func update_gravity(delta) -> void:
+	#velocity.y -= gravity * delta
+	velocity.y -= 18 * delta
+
+func update_velocity() -> void:
+	pass

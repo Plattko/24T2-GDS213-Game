@@ -8,7 +8,7 @@ func _ready():
 	await get_tree().create_timer(0.5).timeout
 	queue_free()
 
-func _physics_process(delta) -> void:
+func _physics_process(_delta) -> void:
 	if !explosion_col.disabled:
 		explosion_col.disabled = true
 		set_physics_process(false)

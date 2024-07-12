@@ -14,7 +14,7 @@ var elapsed_time := 0.0
 # Animation variables
 const SLIDE_ANIM_SPEED := 14.0
 
-func enter(_previous_state, _msg : Dictionary = {}):
+func enter(_msg : Dictionary = {}):
 	#print("Entered Slide player state.")
 	# Set the slide direction to the direction the player is looking
 	#slide_direction = -player.transform.basis.z
@@ -52,11 +52,11 @@ func physics_update(delta):
 				transition.emit("AirPlayerState", {"do_jump" = true})
 			# Else, transition to crouch state
 			else:
-				transition.emit("CrouchPlayerState")
+				transition.emit("CrouchPlayerState", {"left_slide" = true})
 	else:
 		# Transition to Crouch state
 		if input.is_crouch_pressed or player.ceiling_check.is_colliding() == true:
-			transition.emit("CrouchPlayerState")
+			transition.emit("CrouchPlayerState", {"left_slide" = true})
 		# Transition to Idle state
 		elif !input.direction:
 			player.stand_up("SlidePlayerState", SLIDE_ANIM_SPEED, false)
