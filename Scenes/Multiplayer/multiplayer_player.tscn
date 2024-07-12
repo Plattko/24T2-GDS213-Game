@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://il6q27w1jqvw"]
+[gd_scene load_steps=40 format=3 uid="uid://il6q27w1jqvw"]
 
 [ext_resource type="Script" path="res://Scripts/Multiplayer/multiplayer_player.gd" id="1_0n7q4"]
 [ext_resource type="Script" path="res://Scripts/Player/player_input.gd" id="2_7s41b"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/Weapons/weapon_manager.gd" id="4_v17h1"]
 [ext_resource type="PackedScene" uid="uid://dqexibtsgatqp" path="res://Scenes/Weapons/rifle.tscn" id="5_lxaa3"]
 [ext_resource type="PackedScene" uid="uid://d2x6finf6hnf4" path="res://Scenes/Weapons/pistol.tscn" id="6_6hiye"]
+[ext_resource type="PackedScene" uid="uid://co38vlsgcng80" path="res://Scenes/Weapons/rocket_launcher.tscn" id="6_vqpyd"]
 [ext_resource type="PackedScene" uid="uid://cj7xkscmie81y" path="res://Scenes/Weapons/shotgun.tscn" id="7_d8wuf"]
 [ext_resource type="Script" path="res://Scripts/States/state_machine.gd" id="8_l07di"]
 [ext_resource type="Script" path="res://Scripts/States/Player States/idle_player_state.gd" id="9_u7svg"]
@@ -568,11 +569,13 @@ weapon_switch_cooldown = NodePath("WeaponSwitchCooldown")
 [node name="Rifle" parent="Head/Camera3D/WeaponManager" instance=ExtResource("5_lxaa3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.519, -0.344, -0.747766)
 
-[node name="Pistol" parent="Head/Camera3D/WeaponManager" instance=ExtResource("6_6hiye")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.610238, -0.344, -0.748)
+[node name="RocketLauncher" parent="Head/Camera3D/WeaponManager" instance=ExtResource("6_vqpyd")]
 
 [node name="Shotgun" parent="Head/Camera3D/WeaponManager" instance=ExtResource("7_d8wuf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.519, -0.344, -0.703794)
+
+[node name="Pistol" parent="Head/Camera3D/WeaponManager" instance=ExtResource("6_6hiye")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.610238, -0.344, -0.748)
 
 [node name="WeaponSwitchCooldown" type="Timer" parent="Head/Camera3D/WeaponManager"]
 wait_time = 0.15
@@ -858,7 +861,8 @@ layout_mode = 1
 
 [connection signal="update_health" from="." to="UI/HUD" method="on_update_health"]
 [connection signal="update_ammo" from="Head/Camera3D/WeaponManager/Rifle" to="UI/HUD" method="on_update_ammo"]
-[connection signal="update_ammo" from="Head/Camera3D/WeaponManager/Pistol" to="UI/HUD" method="on_update_ammo"]
+[connection signal="update_ammo" from="Head/Camera3D/WeaponManager/RocketLauncher" to="UI/HUD" method="on_update_ammo"]
 [connection signal="update_ammo" from="Head/Camera3D/WeaponManager/Shotgun" to="UI/HUD" method="on_update_ammo"]
+[connection signal="update_ammo" from="Head/Camera3D/WeaponManager/Pistol" to="UI/HUD" method="on_update_ammo"]
 [connection signal="closed_settings_menu" from="UI/HUD/SettingsMenu" to="Input" method="on_closed_settings_menu"]
 [connection signal="opened_settings_menu" from="UI/HUD/SettingsMenu" to="Input" method="on_opened_settings_menu"]
