@@ -102,18 +102,25 @@ func physics_update(delta : float):
 	# Handle movement
 	if is_air_strafing_enabled:
 		player.velocity = update_air_vel(delta)
+		player.move_and_slide()
 	else:
+		## V1
 		#player.velocity.x = lerp(player.velocity.x, input.direction.x * speed, delta * 4.0)
 		#player.velocity.z = lerp(player.velocity.z, input.direction.z * speed, delta * 4.0)
 		
-		if input.direction.x != 0:
-			player.velocity.x = lerp(player.velocity.x, input.direction.x * speed, delta * 4.0)
-		if input.direction.z != 0:
-			player.velocity.z = lerp(player.velocity.z, input.direction.z * speed, delta * 4.0)
+		## Last version
+		#if input.direction.x != 0:
+			#player.velocity.x = lerp(player.velocity.x, input.direction.x * speed, delta * 4.0)
+		#if input.direction.z != 0:
+			#player.velocity.z = lerp(player.velocity.z, input.direction.z * speed, delta * 4.0)
+		#player.move_and_slide()
 		
-		## TODO: Split into x and z axes
-		#player.update_velocity(lerp_velocity(player.velocity, input.direction * speed, 4.0 * delta))
-	player.move_and_slide()
+		var velocity : Vector3 = player.velocity
+		if input.direction.x != 0:
+			velocity.x = lerp(velocity.x, input.direction.x * speed, delta * 4.0)
+		if input.direction.z != 0:
+			velocity.z = lerp(velocity.z, input.direction.z * speed, delta * 4.0)
+		player.update_velocity(velocity)
 	
 	# Handle landing
 	if player.is_on_floor():

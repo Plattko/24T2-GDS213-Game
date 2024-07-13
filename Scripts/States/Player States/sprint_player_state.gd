@@ -12,10 +12,15 @@ func physics_update(_delta : float):
 		transition.emit("AirPlayerState", {"do_jump" = true})
 		return
 	
+	## Last version
 	# Handle movement
-	player.velocity.x = input.direction.x * SPRINT_SPEED
-	player.velocity.z = input.direction.z * SPRINT_SPEED
-	player.move_and_slide()
+	#player.velocity.x = input.direction.x * SPRINT_SPEED
+	#player.velocity.z = input.direction.z * SPRINT_SPEED
+	#player.move_and_slide()
+	
+	# Handle movement
+	var velocity : Vector3 = set_velocity(input.direction, SPRINT_SPEED)
+	player.update_velocity(velocity)
 	
 	# Transition to Air state
 	if !player.is_on_floor():

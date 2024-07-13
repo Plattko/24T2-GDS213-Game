@@ -21,10 +21,15 @@ func exit():
 	is_crouch_released = false
 
 func physics_update(_delta) -> void:
+	## Last version
 	# Handle movement
-	player.velocity.x = input.direction.x * WALK_SPEED
-	player.velocity.z = input.direction.z * WALK_SPEED
-	player.move_and_slide()
+	#player.velocity.x = input.direction.x * WALK_SPEED
+	#player.velocity.z = input.direction.z * WALK_SPEED
+	#player.move_and_slide()
+	
+	# Handle movement
+	var velocity : Vector3 = set_velocity(input.direction, WALK_SPEED)
+	player.update_velocity(velocity)
 	
 	# Transition to Air state
 	if !player.is_on_floor():

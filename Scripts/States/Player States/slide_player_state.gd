@@ -32,12 +32,17 @@ func exit():
 
 func physics_update(delta):
 	if elapsed_time < SLIDE_DURATION:
+		## Last version
 		# Handle deceleration
-		player.velocity.x = lerp(slide_direction.x * SLIDE_START_SPEED, slide_direction.x * SLIDE_END_SPEED, elapsed_time / SLIDE_DURATION)
-		player.velocity.z = lerp(slide_direction.z * SLIDE_START_SPEED, slide_direction.z * SLIDE_END_SPEED, elapsed_time / SLIDE_DURATION)
-		player.move_and_slide()
+		#player.velocity.x = lerp(slide_direction.x * SLIDE_START_SPEED, slide_direction.x * SLIDE_END_SPEED, elapsed_time / SLIDE_DURATION)
+		#player.velocity.z = lerp(slide_direction.z * SLIDE_START_SPEED, slide_direction.z * SLIDE_END_SPEED, elapsed_time / SLIDE_DURATION)
+		#player.move_and_slide()
 		
-		#player.update_velocity(lerp_velocity(slide_direction * SLIDE_START_SPEED, slide_direction * SLIDE_END_SPEED, elapsed_time / SLIDE_DURATION))
+		# Handle deceleration
+		var velocity : Vector3 = player.velocity
+		velocity.x = lerp(slide_direction.x * SLIDE_START_SPEED, slide_direction.x * SLIDE_END_SPEED, elapsed_time / SLIDE_DURATION)
+		velocity.z = lerp(slide_direction.z * SLIDE_START_SPEED, slide_direction.z * SLIDE_END_SPEED, elapsed_time / SLIDE_DURATION)
+		player.update_velocity(velocity)
 		
 		# Increment the slide timer
 		elapsed_time += delta
