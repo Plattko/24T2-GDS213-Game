@@ -121,6 +121,7 @@ func physics_update(delta : float):
 		if input.direction.z != 0:
 			velocity.z = lerp(velocity.z, input.direction.z * speed, delta * 4.0)
 		player.update_velocity(velocity)
+		#player.update_velocity(Vector3.ZERO)
 	
 	# Handle landing
 	if player.is_on_floor():

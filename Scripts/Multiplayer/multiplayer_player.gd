@@ -44,6 +44,10 @@ var max_health := 100
 var cur_health
 var is_dead : bool = false
 
+# Knockback variables
+var horizontal_knockback : Vector3 = Vector3.ZERO
+var kb_reduction_rate : float = 20.0
+
 signal update_health
 
 func _enter_tree() -> void:
@@ -94,6 +98,10 @@ func _physics_process(delta) -> void:
 	var velocity_clamped = clamp (velocity.length(), 0.5, FOV_VELOCITY_CLAMP * 2.0)
 	var target_fov = BASE_FOV + FOV_CHANGE * velocity_clamped
 	camera.fov = lerp(camera.fov, target_fov, delta * 8.0)
+	
+	# Update knockback
+	if abs(horizontal_knockback.length()) > 0.0:
+		update_knockback(delta)
 	
 	# Debug
 	if debug:
@@ -178,11 +186,19 @@ func update_gravity(delta) -> void:
 	#velocity.y -= gravity * delta
 	velocity.y -= 18 * delta
 
-func update_velocity(vel: Vector3, knockback: Vector3 = Vector3.ZERO) -> void: # TODO: Make function work with multiple occuring knockbacks
-	var new_velocity : Vector3 = vel + knockback
+func update_velocity(vel: Vector3) -> void: # TODO: Make function work with multiple occuring knockbacks
+	var new_velocity : Vector3 = vel + horizontal_knockback
+	#print("New velocity: " + str(new_velocity.length()))
 	velocity.x = new_velocity.x
 	velocity.z = new_velocity.z
 	move_and_slide()
+
+func update_knockback(delta: float) -> void:
+	if abs(horizontal_knockback.length()) > 0.01:
+		horizontal_knockback = horizontal_knockback.move_toward(Vector3.ZERO, kb_reduction_rate * delta)
+	else:
+		horizontal_knockback = Vector3.ZERO
+	print("Knockback: " + str(horizontal_knockback.length()))
 
 func stand_up(current_state, anim_speed : float, is_repeating_check : bool) -> void:
 	# If there is nothing blocking the player from standing up, play the respective animation

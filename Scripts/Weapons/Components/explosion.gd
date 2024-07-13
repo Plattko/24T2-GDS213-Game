@@ -15,7 +15,7 @@ func _physics_process(_delta) -> void:
 
 func _on_explosion_radius_body_entered(body):
 	if body is MultiplayerPlayer:
-		print("Player detected in explosion.")
+		#print("Player detected in explosion.")
 		# Raycast from the explosion's centre to the player's eyes
 		var query = PhysicsRayQueryParameters3D.create(global_position, body.head.global_position)
 		
@@ -33,8 +33,9 @@ func _on_explosion_radius_body_entered(body):
 		var magnitude : float = lerpf(1.0, 0.5, distance / explosion_col.shape.radius)
 		# Calculate the knockback
 		var knockback : Vector3 = direction * knockback_strength * magnitude
-		print("Knockback: " + str(knockback))
-		print("Knockback strength: " + str(knockback.length()))
+		#print("Knockback: " + str(knockback))
+		#print("Knockback strength: " + str(knockback.length()))
 		
 		# Apply the explosion knockback to the player
-		body.velocity += knockback
+		#body.velocity.y += knockback.y
+		body.horizontal_knockback = knockback

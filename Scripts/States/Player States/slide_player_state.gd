@@ -39,7 +39,7 @@ func physics_update(delta):
 		#player.move_and_slide()
 		
 		# Handle deceleration
-		var velocity : Vector3 = player.velocity
+		var velocity : Vector3 = Vector3.ZERO
 		velocity.x = lerp(slide_direction.x * SLIDE_START_SPEED, slide_direction.x * SLIDE_END_SPEED, elapsed_time / SLIDE_DURATION)
 		velocity.z = lerp(slide_direction.z * SLIDE_START_SPEED, slide_direction.z * SLIDE_END_SPEED, elapsed_time / SLIDE_DURATION)
 		player.update_velocity(velocity)

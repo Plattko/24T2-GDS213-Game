@@ -33,6 +33,7 @@ func physics_update(delta : float):
 	elif abs(velocity.z) > 0.0: 
 		velocity.z = 0.0
 	player.update_velocity(velocity)
+	#player.update_velocity(Vector3.ZERO)
 	
 	# Transition to Air state
 	if !player.is_on_floor():
