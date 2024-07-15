@@ -60,6 +60,10 @@ const MAX_ACCEL : float = 8.5 * 10.0
 
 func enter(msg : Dictionary = {}):
 	#print("Entered Air player state.")
+	
+	if abs(player.horizontal_knockback.length()) > 0.0:
+		is_air_strafing_enabled = true
+	
 	# Disable head bob
 	player.can_head_bob = false
 	
@@ -71,8 +75,8 @@ func enter(msg : Dictionary = {}):
 	if msg.has("do_wall_leap"):
 		is_in_wall_leap = true
 		speed = WALL_LEAP_SPEED
-	if msg.has("do_rocket_jump"):
-		is_air_strafing_enabled = true
+	#if msg.has("do_rocket_jump"):
+		#is_air_strafing_enabled = true
 
 func exit():
 	# Re-enable head bob
@@ -82,7 +86,7 @@ func exit():
 	# Reset mantle duration timer
 	mantle_duration.stop()
 	# Reset air strafing
-	#is_air_strafing_enabled = false
+	is_air_strafing_enabled = false
 
 func physics_update(delta : float):
 	# Apply gravity
@@ -108,20 +112,41 @@ func physics_update(delta : float):
 		#player.velocity.x = lerp(player.velocity.x, input.direction.x * speed, delta * 4.0)
 		#player.velocity.z = lerp(player.velocity.z, input.direction.z * speed, delta * 4.0)
 		
-		## Last version
+		## V2
 		#if input.direction.x != 0:
 			#player.velocity.x = lerp(player.velocity.x, input.direction.x * speed, delta * 4.0)
 		#if input.direction.z != 0:
 			#player.velocity.z = lerp(player.velocity.z, input.direction.z * speed, delta * 4.0)
 		#player.move_and_slide()
 		
-		var velocity : Vector3 = player.velocity
+		## Last version
+		#var velocity : Vector3 = player.velocity
+		#if input.direction.x != 0:
+			#velocity.x = lerp(velocity.x, input.direction.x * speed, delta * 4.0)
+		#if input.direction.z != 0:
+			#velocity.z = lerp(velocity.z, input.direction.z * speed, delta * 4.0)
+		#player.update_velocity(velocity)
+		##player.update_velocity(Vector3.ZERO)
+		
+		## Handle player movement
+		var player_vel : Vector3 = player.velocity
+		#print("Player vel: " + str(player_vel))
+		var lerped_vel : Vector3 = player_vel
+		
 		if input.direction.x != 0:
-			velocity.x = lerp(velocity.x, input.direction.x * speed, delta * 4.0)
+			lerped_vel.x = lerp(player_vel.x, input.direction.x * speed, delta * 4.0)
 		if input.direction.z != 0:
-			velocity.z = lerp(velocity.z, input.direction.z * speed, delta * 4.0)
-		player.update_velocity(velocity)
-		#player.update_velocity(Vector3.ZERO)
+			lerped_vel.z = lerp(player_vel.z, input.direction.z * speed, delta * 4.0)
+		#print("Lerped vel: " + str(lerped_vel))
+		
+		var target_vel : Vector3 = (lerped_vel - player_vel)
+		#print("Target vel: " + str(target_vel))
+		
+		if player.horizontal_knockback == Vector3.ZERO:
+			player.update_velocity(lerped_vel)
+		else:
+			# TODO: Fix so it doesn't lerp the player's velocity to 0
+			player.update_velocity(target_vel)
 	
 	# Handle landing
 	if player.is_on_floor():

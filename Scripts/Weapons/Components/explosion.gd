@@ -36,6 +36,15 @@ func _on_explosion_radius_body_entered(body):
 		#print("Knockback: " + str(knockback))
 		#print("Knockback strength: " + str(knockback.length()))
 		
-		# Apply the explosion knockback to the player
-		#body.velocity.y += knockback.y
-		body.horizontal_knockback = knockback
+		# Apply the vertical explosion knockback to the player
+		body.velocity.y += knockback.y
+		# Apply the horizontal explosion knockback to the player
+		var player_state : PlayerState = body.state_machine.current_state
+		if player_state.name == "AirPlayerState":
+			# If in the Air state, add it to the velocity directly
+			player_state.is_air_strafing_enabled = true
+			body.velocity.x += knockback.x * 1.3
+			body.velocity.z += knockback.z * 1.3
+		else:
+			# Otherwise, update the horizontal knockback
+			body.horizontal_knockback = knockback * 1.3

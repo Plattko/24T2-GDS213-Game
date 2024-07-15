@@ -198,7 +198,7 @@ func update_knockback(delta: float) -> void:
 		horizontal_knockback = horizontal_knockback.move_toward(Vector3.ZERO, kb_reduction_rate * delta)
 	else:
 		horizontal_knockback = Vector3.ZERO
-	print("Knockback: " + str(horizontal_knockback.length()))
+	#print("Knockback: " + str(horizontal_knockback.length()))
 
 func stand_up(current_state, anim_speed : float, is_repeating_check : bool) -> void:
 	# If there is nothing blocking the player from standing up, play the respective animation
