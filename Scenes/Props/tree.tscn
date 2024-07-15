@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3 uid="uid://wcecuqttvma3"]
+
+[ext_resource type="Material" uid="uid://bbyh52cc6ljvg" path="res://Assets/Materials/Standard Materials/prototype_grey.tres" id="1_4vdir"]
+[ext_resource type="Material" uid="uid://cgfl87jihapb" path="res://Assets/Materials/Standard Materials/prototype_dark_green.tres" id="2_6gksc"]
+
+[node name="CSGMesh3D" type="CSGMesh3D"]
+use_collision = true
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.87791, 0)
+height = 10.0
+material = ExtResource("1_4vdir")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.0889, 0)
+material = ExtResource("2_6gksc")
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.28088, 0)
+radius = 0.924489
+material = ExtResource("2_6gksc")
+
+[node name="CSGSphere3D3" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.39528, 0)
+radius = 1.32876
+material = ExtResource("2_6gksc")
+
+[node name="CSGSphere3D4" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.3439, 0)
+radius = 1.70665
+material = ExtResource("2_6gksc")
+
+[node name="CSGSphere3D5" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.27394, 0)
+radius = 2.20944
+material = ExtResource("2_6gksc")
+
+[node name="CSGSphere3D6" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.12364, 0)
+radius = 2.62968
+material = ExtResource("2_6gksc")
+
+[node name="CSGSphere3D7" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.12911, 0)
+radius = 2.94941
+material = ExtResource("2_6gksc")
