@@ -61,6 +61,7 @@ const MAX_ACCEL : float = 8.5 * 10.0
 func enter(msg : Dictionary = {}):
 	#print("Entered Air player state.")
 	
+	## TODO: When working on other knockback change this to a check for if the player is rocket jumping
 	if abs(player.horizontal_knockback.length()) > 0.0:
 		is_air_strafing_enabled = true
 	
@@ -68,15 +69,12 @@ func enter(msg : Dictionary = {}):
 	player.can_head_bob = false
 	
 	if msg.has("do_jump"):
-		#player.velocity.y = JUMP_VELOCITY
 		player.velocity.y += JUMP_VELOCITY
 	if msg.has("left_wallrun"):
 		wallrun_cooldown.start()
 	if msg.has("do_wall_leap"):
 		is_in_wall_leap = true
 		speed = WALL_LEAP_SPEED
-	#if msg.has("do_rocket_jump"):
-		#is_air_strafing_enabled = true
 
 func exit():
 	# Re-enable head bob
@@ -86,7 +84,7 @@ func exit():
 	# Reset mantle duration timer
 	mantle_duration.stop()
 	# Reset air strafing
-	is_air_strafing_enabled = false
+	if is_air_strafing_enabled: is_air_strafing_enabled = false
 
 func physics_update(delta : float):
 	# Apply gravity
@@ -130,23 +128,20 @@ func physics_update(delta : float):
 		
 		## Handle player movement
 		var player_vel : Vector3 = player.velocity
-		#print("Player vel: " + str(player_vel))
+		#print("Player vel: " + str(Vector2(player_vel.x, player_vel.z)))
 		var lerped_vel : Vector3 = player_vel
 		
 		if input.direction.x != 0:
 			lerped_vel.x = lerp(player_vel.x, input.direction.x * speed, delta * 4.0)
 		if input.direction.z != 0:
 			lerped_vel.z = lerp(player_vel.z, input.direction.z * speed, delta * 4.0)
-		#print("Lerped vel: " + str(lerped_vel))
+		#print("Lerped vel: " + str(Vector2(lerped_vel.x, lerped_vel.z)))
 		
-		var target_vel : Vector3 = (lerped_vel - player_vel)
-		#print("Target vel: " + str(target_vel))
+		#var target_vel : Vector3 = (lerped_vel - player_vel)
+		#print("Target vel: " + str(Vector2(target_vel.x, target_vel.z)))
 		
 		if player.horizontal_knockback == Vector3.ZERO:
 			player.update_velocity(lerped_vel)
-		else:
-			# TODO: Fix so it doesn't lerp the player's velocity to 0
-			player.update_velocity(target_vel)
 	
 	# Handle landing
 	if player.is_on_floor():
@@ -169,6 +164,7 @@ func physics_update(delta : float):
 
 func mantle() -> void:
 		mantle_duration.start()
+		is_air_strafing_enabled = false
 		player.velocity.y = 8.0
 
 func update_air_vel(delta: float) -> Vector3:

@@ -19,7 +19,7 @@ func _ready():
 		wave_manager.intermission_entered.connect(on_intermission_entered)
 
 func on_update_health(health) -> void:
-	health_label.text = "Health: " + str(health[0]) + "/" + str(health[1])
+	health_label.text = "Health: " + str(roundi(health[0])) + "/" + str(health[1])
 
 func on_update_ammo(ammo) -> void:
 	cur_ammo_label.set_text("Ammo: " + str(ammo[0]) + "/" + str(ammo[1]))

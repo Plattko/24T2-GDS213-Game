@@ -2,6 +2,8 @@ extends Node3D
 
 @export var explosion_col : CollisionShape3D
 
+@export var explosion_damage : float = 56.0
+var self_damage : float = explosion_damage * 0.6
 var knockback_strength : float = 12.0
 
 func _ready():
@@ -13,9 +15,11 @@ func _physics_process(_delta) -> void:
 		explosion_col.disabled = true
 		set_physics_process(false)
 
+## TODO: Make it so only the player who shot the rocket is effected
+## TODO: Add damaging enemies
+## TODO: Add self-damage
 func _on_explosion_radius_body_entered(body):
 	if body is MultiplayerPlayer:
-		#print("Player detected in explosion.")
 		# Raycast from the explosion's centre to the player's eyes
 		var query = PhysicsRayQueryParameters3D.create(global_position, body.head.global_position)
 		
@@ -31,11 +35,15 @@ func _on_explosion_radius_body_entered(body):
 		
 		# Calculate the knockback's magnitude
 		var magnitude : float = lerpf(1.0, 0.5, distance / explosion_col.shape.radius)
+		# Calculate the self-damage
+		var damage : float = self_damage * magnitude
 		# Calculate the knockback
 		var knockback : Vector3 = direction * knockback_strength * magnitude
 		#print("Knockback: " + str(knockback))
 		#print("Knockback strength: " + str(knockback.length()))
 		
+		# Apply the self-damage
+		body.on_damaged(damage)
 		# Apply the vertical explosion knockback to the player
 		body.velocity.y += knockback.y
 		# Apply the horizontal explosion knockback to the player

@@ -79,6 +79,8 @@ func _unhandled_input(event) -> void:
 	if event is InputEventKey:
 		if event.pressed and event.keycode == KEY_P:
 			on_damaged(20)
+		if event.pressed and event.keycode == KEY_O:
+			on_damaged(-20)
 
 func _process(delta) -> void:
 	if not is_multiplayer_authority(): return
@@ -109,6 +111,7 @@ func _physics_process(delta) -> void:
 		debug.add_debug_property("Vertical Speed", snappedf(velocity.y, 0.01), 3)
 		#debug.add_debug_property("Jump Buffer", snappedf(input.jump_buffer.time_left, 0.01), 3)
 		#debug.add_debug_property("Jump Buffer Cooldown", snappedf(input.jump_buffer_cooldown.time_left, 0.01), 4)
+		debug.add_debug_property("Air Strafing", state_machine.states.get("AirPlayerState".to_lower()).is_air_strafing_enabled, 4)
 	
 	if cur_health <= 0 and not is_dead:
 		respawn_player()
@@ -167,11 +170,14 @@ func set_sensitivity(value: float) -> void:
 func on_damaged(damage: float) -> void:
 	if cur_health > 0.0:
 		cur_health -= damage
+		cur_health = clampf(cur_health, 0.0, max_health)
 		update_health.emit([cur_health, max_health])
 		print("Player health: " + str(cur_health))
 
 func respawn_player() -> void:
 	is_dead = true
+	horizontal_knockback = Vector3.ZERO
+	velocity = Vector3.ZERO
 	global_position = GameManager.cur_respawn_point
 	print("Current respawn position: " + str(GameManager.cur_respawn_point))
 	print("Player position after respawning: " + str(global_position))
