@@ -2,8 +2,10 @@ extends Node3D
 
 @export var anim_player : AnimationPlayer
 
-var raycast_test = preload("res://Scenes/raycast_test.tscn")
-var bullet_decal = preload("res://Scenes/bullet_decal.tscn")
+#var raycast_test = preload("res://Scenes/raycast_test.tscn")
+#var bullet_decal = preload("res://Scenes/bullet_decal.tscn")
+var raycast_test
+var bullet_decal
 
 const RAY_RANGE := 2000.0
 
