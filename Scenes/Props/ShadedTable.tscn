@@ -1,0 +1,110 @@
+[gd_scene load_steps=2 format=3 uid="uid://b37bttipab74m"]
+
+[ext_resource type="Material" uid="uid://clau1arwwv1yw" path="res://Assets/Materials/Standard Materials/prototype_orange.tres" id="1_d8a55"]
+
+[node name="CSGMesh3D" type="CSGMesh3D"]
+use_collision = true
+
+[node name="ShadedTable" type="CSGCylinder3D" parent="."]
+transform = Transform3D(-0.626862, 0, -0.77913, 0, 1, 0, 0.77913, 0, -0.626862, 0, 0, 0)
+use_collision = true
+radius = 0.1
+height = 4.5
+sides = 24
+material = ExtResource("1_d8a55")
+
+[node name="Umbrella" type="CSGCylinder3D" parent="ShadedTable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.75, 0)
+radius = 3.0
+height = 1.0
+sides = 24
+cone = true
+material = ExtResource("1_d8a55")
+
+[node name="Table" type="CSGCylinder3D" parent="ShadedTable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+radius = 2.0
+height = 0.15
+sides = 24
+material = ExtResource("1_d8a55")
+
+[node name="Seats" type="CSGCylinder3D" parent="ShadedTable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
+radius = 2.75
+height = 0.15
+sides = 24
+material = ExtResource("1_d8a55")
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="ShadedTable/Seats"]
+operation = 2
+radius = 2.15
+height = 0.15
+sides = 24
+material = ExtResource("1_d8a55")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="ShadedTable/Seats"]
+operation = 2
+size = Vector3(0.75, 0.15, 6)
+material = ExtResource("1_d8a55")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="ShadedTable/Seats"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+operation = 2
+size = Vector3(0.75, 0.15, 6)
+material = ExtResource("1_d8a55")
+
+[node name="Leg" type="CSGCylinder3D" parent="ShadedTable/Seats"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.25, -0.4, 1)
+radius = 0.1
+height = 0.75
+sides = 16
+material = ExtResource("1_d8a55")
+
+[node name="Leg2" type="CSGCylinder3D" parent="ShadedTable/Seats"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.25, -0.4, -0.999998)
+radius = 0.1
+height = 0.75
+sides = 16
+material = ExtResource("1_d8a55")
+
+[node name="Leg3" type="CSGCylinder3D" parent="ShadedTable/Seats"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.25, -0.4, -1)
+radius = 0.1
+height = 0.75
+sides = 16
+material = ExtResource("1_d8a55")
+
+[node name="Leg4" type="CSGCylinder3D" parent="ShadedTable/Seats"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.25, -0.4, 1)
+radius = 0.1
+height = 0.75
+sides = 16
+material = ExtResource("1_d8a55")
+
+[node name="Leg5" type="CSGCylinder3D" parent="ShadedTable/Seats"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.999992, -0.4, -2.25)
+radius = 0.1
+height = 0.75
+sides = 16
+material = ExtResource("1_d8a55")
+
+[node name="Leg6" type="CSGCylinder3D" parent="ShadedTable/Seats"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.4, -2.25)
+radius = 0.1
+height = 0.75
+sides = 16
+material = ExtResource("1_d8a55")
+
+[node name="Leg7" type="CSGCylinder3D" parent="ShadedTable/Seats"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.4, 2.25)
+radius = 0.1
+height = 0.75
+sides = 16
+material = ExtResource("1_d8a55")
+
+[node name="Leg8" type="CSGCylinder3D" parent="ShadedTable/Seats"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.4, 2.25)
+radius = 0.1
+height = 0.75
+sides = 16
+material = ExtResource("1_d8a55")
