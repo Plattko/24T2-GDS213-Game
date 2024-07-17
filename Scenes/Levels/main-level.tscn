@@ -2891,43 +2891,31 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 57.463
 transform = Transform3D(0.565125, 0, 0.825005, 0, 1, 0, -0.825005, 0, 0.565125, 56.7137, 6.93664, 65.3372)
 
 [node name="MeshFence88" parent="LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50.6182, 6.93664, 80.1925)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -49.3999, 7.78161, 78.9571)
 
-[node name="MeshFence89" parent="LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53.02, 6.93664, 80.1925)
+[node name="MeshFence94" parent="LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -49.3999, 7.78161, 76.5439)
 
-[node name="MeshFence90" parent="LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55.4369, 6.93664, 80.1925)
+[node name="MeshFence95" parent="LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -49.3999, 7.78161, 74.1095)
 
-[node name="MeshFence91" parent="LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(0.627827, 0, -0.778353, 0, 1, 0, 0.778353, 0, 0.627827, -57.366, 6.93664, 79.2237)
+[node name="MeshFence96" parent="LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -49.3999, 7.78161, 71.7249)
 
-[node name="MeshFence92" parent="LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -58.1376, 6.93664, 77.104)
+[node name="MeshFence112" parent="LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -49.3999, 7.78161, 69.3104)
 
-[node name="MeshFence93" parent="LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -58.1376, 6.93664, 74.68)
+[node name="MeshFence113" parent="LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -49.3999, 7.78161, 66.9004)
 
-[node name="MeshFence97" parent="LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -58.1376, 6.93664, 65.0348)
+[node name="MeshFence146" parent="LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -49.3999, 7.78161, 64.5229)
 
-[node name="MeshFence98" parent="LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -58.1376, 6.93664, 62.5965)
+[node name="MeshFence178" parent="LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -49.3999, 7.78161, 62.1224)
 
-[node name="MeshFence99" parent="LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -58.1376, 6.93664, 60.1446)
-
-[node name="MeshFence100" parent="LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(0.960074, 0, 0.279745, 0, 1, 0, -0.279745, 0, 0.960074, -56.98, 6.93664, 58.5959)
-
-[node name="MeshFence101" parent="LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54.6185, 6.93664, 58.2608)
-
-[node name="MeshFence102" parent="LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.2187, 6.93664, 58.2608)
-
-[node name="MeshFence103" parent="LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.8125, 6.93664, 58.2608)
+[node name="MeshFence179" parent="LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -49.3999, 7.78161, 59.692)
 
 [node name="MeshFence104" parent="LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.3917, 6.93664, 58.2608)
@@ -3199,12 +3187,12 @@ size = Vector3(0.2, 31.1304, 76.3438)
 material = ExtResource("3_bup4s")
 
 [node name="CSGBox3D25" type="CSGBox3D" parent="LevelGeometry/Perimiter/Walls"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -52.5207, 4.09374, 58.085)
-size = Vector3(0.2, 28.8044, 11.9672)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -48.1496, 4.09374, 58.085)
+size = Vector3(0.2, 28.8044, 3.22493)
 material = ExtResource("3_bup4s")
 
 [node name="CSGBox3D26" type="CSGBox3D" parent="LevelGeometry/Perimiter/Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.501, 3.80609, 69.1897)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.8354, 3.80609, 69.1897)
 size = Vector3(0.2, 29.2184, 22.2854)
 material = ExtResource("3_bup4s")
 
@@ -3217,11 +3205,6 @@ material = ExtResource("3_bup4s")
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.87108, 5.06579, 101.738)
 use_collision = true
 size = Vector3(0.2, 27.3218, 107.582)
-material = ExtResource("3_bup4s")
-
-[node name="CSGBox3D27" type="CSGBox3D" parent="LevelGeometry/Perimiter/Walls"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -53.9696, 5.40832, 80.3006)
-size = Vector3(0.2, 26.0303, 9.04356)
 material = ExtResource("3_bup4s")
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="LevelGeometry/Perimiter/Walls"]
@@ -4465,14 +4448,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.5661, 7.01078, 50.9298)
 
 [node name="CSGMesh3D7" parent="LevelGeometry/Trees" instance=ExtResource("17_qo07s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.8477, 7.65893, 57.9318)
-
-[node name="CSGMesh3D8" parent="LevelGeometry/Trees" instance=ExtResource("17_qo07s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53.8067, 6.99997, 61.4033)
-
-[node name="CSGMesh3D9" parent="LevelGeometry/Trees" instance=ExtResource("17_qo07s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55.9328, 6.99997, 77.0928)
-
-[node name="CSGMesh3D10" parent="LevelGeometry/Trees" instance=ExtResource("17_qo07s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.0455, 6.99997, 75.4522)
 
 [connection signal="spawned" from="MultiplayerSpawner" to="." method="_on_multiplayer_spawner_spawned"]
