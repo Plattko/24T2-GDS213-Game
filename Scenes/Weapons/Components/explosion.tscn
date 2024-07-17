@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://caikardaaqlll"]
+
+[ext_resource type="Script" path="res://Scripts/Weapons/Components/explosion.gd" id="1_6p53y"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uovch"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.294118)
+
+[sub_resource type="SphereMesh" id="SphereMesh_4otjf"]
+material = SubResource("StandardMaterial3D_uovch")
+radius = 3.0
+height = 6.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_kl43k"]
+radius = 3.0
+
+[node name="Explosion" type="Node3D" node_paths=PackedStringArray("explosion_col")]
+script = ExtResource("1_6p53y")
+explosion_col = NodePath("ExplosionRadius/CollisionSphere")
+
+[node name="VisualMesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_4otjf")
+
+[node name="ExplosionRadius" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 3
+
+[node name="CollisionSphere" type="CollisionShape3D" parent="ExplosionRadius"]
+shape = SubResource("SphereShape3D_kl43k")
+
+[connection signal="body_entered" from="ExplosionRadius" to="." method="_on_explosion_radius_body_entered"]

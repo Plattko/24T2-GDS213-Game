@@ -11,12 +11,22 @@ var can_move : bool = true
 var can_shoot : bool = true
 var can_look : bool = true
 
+# Input buffer variables
+@export_group("Input Buffer Variables")
+@export var jump_buffer : Timer
+@export var jump_buffer_cooldown : Timer
+
 func _ready() -> void:
 	## TODO: Make this work again
 	## Disable triggering input if it is the server in multiplayer
 	#if MultiplayerManager.is_multiplayer and get_multiplayer_authority() != multiplayer.get_unique_id():
 		#is_server = true
 	pass
+
+#func _input(event):
+	#if event.is_action_pressed("jump") and jump_buffer_cooldown.is_stopped():
+		#jump_buffer.start()
+		#jump_buffer_cooldown.start()
 
 # --------------------------------MOVEMENT------------------------------------ #
 var direction : Vector3:
@@ -132,3 +142,8 @@ func on_closed_settings_menu() -> void:
 	can_move = true
 	can_shoot = true
 	can_look = true
+
+# --------------------------------BUFFERS------------------------------------- #
+#var is_jump_buffered : bool = false:
+	#get:
+		#return !jump_buffer.is_stopped()

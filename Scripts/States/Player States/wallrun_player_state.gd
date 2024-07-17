@@ -15,7 +15,7 @@ var max_wall_jump := 8.0
 
 const MAX_CAM_ANGLE : float = deg_to_rad(12)
 
-func enter(_previous_state, _msg : Dictionary = {}):
+func enter(_msg : Dictionary = {}):
 	player.velocity.y = 0.0
 
 func exit() -> void:
@@ -54,10 +54,15 @@ func physics_update(delta: float) -> void:
 		player.camera.rotation.z = lerp_angle(player.camera.rotation.z, look_sin, delta * 12.0)
 		#print("Camera rotation: " + str(rad_to_deg(player.camera.rotation.z)))
 		
+		## Last version
 		# Handle movement
-		player.velocity.x = direction.x * WALLRUN_SPEED
-		player.velocity.z = direction.y * WALLRUN_SPEED
-		player.move_and_slide()
+		#player.velocity.x = direction.x * WALLRUN_SPEED
+		#player.velocity.z = direction.y * WALLRUN_SPEED
+		#player.move_and_slide()
+		
+		# Handle movement
+		var velocity : Vector3 = set_velocity(Vector3(direction.x, 0.0, direction.y), WALLRUN_SPEED)
+		player.update_velocity(velocity)
 	
 	# Handle landing
 	if player.is_on_floor():

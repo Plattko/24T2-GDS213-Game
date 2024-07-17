@@ -38,7 +38,7 @@ func switch_to_circle_crosshair() -> void:
 
 func update_reticle(weapon: Weapon) -> void:
 	print("Called update reticle.")
-	if weapon is Rifle or weapon is Pistol:
+	if weapon is Rifle or weapon is Pistol or weapon is RocketLauncher:
 		switch_to_line_crosshair()
 	elif weapon is Shotgun:
 		switch_to_circle_crosshair()

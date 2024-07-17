@@ -15,6 +15,7 @@ extends CharacterBody3D
 @onready var debug = %DebugPanel
 
 # Camera movement variables
+@export_group("Camera Movement Variables")
 var rotation_input : float
 var tilt_input : float
 var mouse_rotation : Vector3
@@ -25,7 +26,7 @@ var camera_rotation : Vector3
 const MIN_CAMERA_TILT := deg_to_rad(-90)
 const MAX_CAMERA_TILT := deg_to_rad(90)
 
-var sensitivity := 0.25
+@export_range(0.1, 0.25, 0.01) var sensitivity := 0.25
 
 # Head bob variables
 const BOB_FREQ := 2.0
@@ -43,6 +44,10 @@ const FOV_VELOCITY_CLAMP := 8.0
 var max_health := 100
 var cur_health
 var is_dead : bool = false
+
+# Knockback variables
+var horizontal_knockback : Vector3 = Vector3.ZERO
+var kb_reduction_rate : float = 20.0
 
 signal update_health
 
@@ -64,7 +69,7 @@ func _ready() -> void:
 	cur_health = max_health
 	update_health.emit([cur_health, max_health])
 
-func _unhandled_input(event):
+func _unhandled_input(event) -> void:
 	if not is_multiplayer_authority(): return
 	
 	if event is InputEventMouseMotion and input.can_look: # TODO Move check to PlayerInput if possible
@@ -75,14 +80,16 @@ func _unhandled_input(event):
 	if event is InputEventKey:
 		if event.pressed and event.keycode == KEY_P:
 			on_damaged(20)
+		if event.pressed and event.keycode == KEY_O:
+			on_damaged(-20)
 
-func _process(delta):
+func _process(delta) -> void:
 	if not is_multiplayer_authority(): return
 	
 	# Handle camera movement
 	update_camera(delta)
 
-func _physics_process(delta):
+func _physics_process(delta) -> void:
 	if not is_multiplayer_authority(): return
 	
 	# Head bob
@@ -95,15 +102,45 @@ func _physics_process(delta):
 	var target_fov = BASE_FOV + FOV_CHANGE * velocity_clamped
 	camera.fov = lerp(camera.fov, target_fov, delta * 8.0)
 	
+	# Update knockback
+	if abs(horizontal_knockback.length()) > 0.0:
+		update_knockback(delta)
+	
 	# Debug
-	#Global.debug.add_debug_property("Move Speed", snappedf(velocity.length(), 0.01), 2)
 	if debug:
 		debug.add_debug_property("Move Speed", snappedf(Vector2(velocity.x, velocity.z).length(), 0.01), 2)
+		debug.add_debug_property("Vertical Speed", snappedf(velocity.y, 0.01), 3)
+		#debug.add_debug_property("Jump Buffer", snappedf(input.jump_buffer.time_left, 0.01), 3)
+		#debug.add_debug_property("Jump Buffer Cooldown", snappedf(input.jump_buffer_cooldown.time_left, 0.01), 4)
+		debug.add_debug_property("Air Strafing", state_machine.states.get("AirPlayerState".to_lower()).is_air_strafing_enabled, 4)
 	
 	if cur_health <= 0 and not is_dead:
 		respawn_player()
 
-func update_camera(delta):
+#-------------------------------------------------------------------------------
+# Initialisation
+#-------------------------------------------------------------------------------
+func handle_connected_signals() -> void:
+	for child in get_children():
+		if child is Damageable:
+			# Connect each damageable to the damaged signal
+			child.damaged.connect(on_damaged)
+	
+	for weapon in weapon_manager.get_children():
+		if weapon is Weapon:
+			# Connect the hitmarker to each weapon's regular and crit hit signals
+			weapon.regular_hit.connect(hitmarker.on_regular_hit)
+			weapon.crit_hit.connect(hitmarker.on_crit_hit)
+	
+	var sensitivity_setting = find_child("SensitivitySliderSetting")
+	sensitivity_setting.sensitivity_updated.connect(set_sensitivity)
+	var reload_type_setting = find_child("ReloadTypeSetting")
+	reload_type_setting.reload_type_updated.connect(weapon_manager.set_reload_type)
+
+#-------------------------------------------------------------------------------
+# Camera
+#-------------------------------------------------------------------------------
+func update_camera(delta) -> void:
 	mouse_rotation.y += rotation_input * delta
 	mouse_rotation.x += tilt_input * delta
 	mouse_rotation.x = clamp(mouse_rotation.x, MIN_CAMERA_TILT, MAX_CAMERA_TILT)
@@ -124,12 +161,53 @@ func head_bob(time) -> Vector3:
 	pos.x = cos(time * BOB_FREQ / 2) * BOB_AMP
 	return pos
 
-# State machine functions
+func set_sensitivity(value: float) -> void:
+	sensitivity = value
+	print("Player sensitivity: %s" % sensitivity)
+
+#-------------------------------------------------------------------------------
+# Health
+#-------------------------------------------------------------------------------
+func on_damaged(damage: float) -> void:
+	if cur_health > 0.0:
+		cur_health -= damage
+		cur_health = clampf(cur_health, 0.0, max_health)
+		update_health.emit([cur_health, max_health])
+		print("Player health: " + str(cur_health))
+
+func respawn_player() -> void:
+	is_dead = true
+	horizontal_knockback = Vector3.ZERO
+	velocity = Vector3.ZERO
+	global_position = GameManager.cur_respawn_point
+	print("Current respawn position: " + str(GameManager.cur_respawn_point))
+	print("Player position after respawning: " + str(global_position))
+	cur_health = max_health
+	update_health.emit([cur_health, max_health])
+	is_dead = false
+
+#-------------------------------------------------------------------------------
+# Movement
+#-------------------------------------------------------------------------------
 func update_gravity(delta) -> void:
 	#velocity.y -= gravity * delta
 	velocity.y -= 18 * delta
 
-func stand_up(current_state, anim_speed : float, is_repeating_check : bool):
+func update_velocity(vel: Vector3) -> void: # TODO: Make function work with multiple occuring knockbacks
+	var new_velocity : Vector3 = vel + horizontal_knockback
+	#print("New velocity: " + str(new_velocity.length()))
+	velocity.x = new_velocity.x
+	velocity.z = new_velocity.z
+	move_and_slide()
+
+func update_knockback(delta: float) -> void:
+	if abs(horizontal_knockback.length()) > 0.01:
+		horizontal_knockback = horizontal_knockback.move_toward(Vector3.ZERO, kb_reduction_rate * delta)
+	else:
+		horizontal_knockback = Vector3.ZERO
+	#print("Knockback: " + str(horizontal_knockback.length()))
+
+func stand_up(current_state, anim_speed : float, is_repeating_check : bool) -> void:
 	# If there is nothing blocking the player from standing up, play the respective animation
 	if ceiling_check.is_colliding() == false:
 		# Check if it is the crouch or slide animation
@@ -144,39 +222,3 @@ func stand_up(current_state, anim_speed : float, is_repeating_check : bool):
 	elif ceiling_check.is_colliding() == true and is_repeating_check:
 		await get_tree().create_timer(0.1).timeout
 		stand_up(current_state, anim_speed, true)
-
-func on_damaged(damage: float):
-	if cur_health > 0.0:
-		cur_health -= damage
-		update_health.emit([cur_health, max_health])
-		print("Player health: " + str(cur_health))
-
-func handle_connected_signals() -> void:
-	for child in get_children():
-		if child is Damageable:
-			# Connect each damageable to the damaged signal
-			child.damaged.connect(on_damaged)
-	
-	for weapon in weapon_manager.get_children():
-		if weapon is Weapon:
-			# Connect the hitmarker to each weapon's regular and crit hit signals
-			weapon.regular_hit.connect(hitmarker.on_regular_hit)
-			weapon.crit_hit.connect(hitmarker.on_crit_hit)
-	
-	var sensitivity_setting = find_child("SensitivitySliderSetting")
-	sensitivity_setting.sensitivity_updated.connect(set_sensitivity)
-	var reload_type_setting = find_child("ReloadTypeSetting")
-	reload_type_setting.reload_type_updated.connect(weapon_manager.set_reload_type)
-
-func set_sensitivity(value: float) -> void:
-	sensitivity = value
-	print("Player sensitivity: %s" % sensitivity)
-
-func respawn_player() -> void:
-	is_dead = true
-	global_position = GameManager.cur_respawn_point
-	print("Current respawn position: " + str(GameManager.cur_respawn_point))
-	print("Player position after respawning: " + str(global_position))
-	cur_health = max_health
-	update_health.emit([cur_health, max_health])
-	is_dead = false
