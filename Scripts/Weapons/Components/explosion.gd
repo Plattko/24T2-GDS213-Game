@@ -6,6 +6,8 @@ extends Node3D
 var self_damage : float = explosion_damage * 0.6
 var knockback_strength : float = 12.0
 
+var do_self_damage : bool = false
+
 func _ready():
 	await get_tree().create_timer(0.5).timeout
 	queue_free()
@@ -43,7 +45,7 @@ func _on_explosion_radius_body_entered(body):
 		#print("Knockback strength: " + str(knockback.length()))
 		
 		# Apply the self-damage
-		body.on_damaged(damage)
+		if do_self_damage: body.on_damaged(damage)
 		# Apply the vertical explosion knockback to the player
 		body.velocity.y += knockback.y
 		# Apply the horizontal explosion knockback to the player

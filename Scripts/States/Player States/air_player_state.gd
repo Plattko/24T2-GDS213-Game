@@ -145,9 +145,17 @@ func physics_update(delta : float):
 	
 	# Handle landing
 	if player.is_on_floor():
-		# Transition to Crouch state
+		# Transition to Crouch state if roof is too low
 		if player.ceiling_check.is_colliding() == true:
 			transition.emit("CrouchPlayerState")
+		# Handle crouch
+		if input.is_crouch_pressed:
+			# Transition to Slide state
+			if input.is_move_forwards_pressed and input.is_sprint_pressed and horizontal_velocity.length() > 6.0:
+				transition.emit("SlidePlayerState")
+			# Transition to Crouch state
+			else:
+				transition.emit("CrouchPlayerState")
 		# Transition to Idle state
 		elif !input.direction:
 			transition.emit("IdlePlayerState")
