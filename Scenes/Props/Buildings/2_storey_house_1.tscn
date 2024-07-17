@@ -1,0 +1,184 @@
+[gd_scene load_steps=19 format=3 uid="uid://3q42p7ymuwhl"]
+
+[ext_resource type="PackedScene" uid="uid://bpoocccwmm3x3" path="res://Assets/Imports/StylizedHouses/ModularBuildings/BuildingMeshes/SM_building_part_04.glb" id="1_fn2jj"]
+[ext_resource type="PackedScene" uid="uid://dlq58v46rj4mm" path="res://Assets/Imports/StylizedHouses/ModularBuildings/BuildingMeshes/SM_building_roof_04.glb" id="2_0uaab"]
+[ext_resource type="PackedScene" uid="uid://b5erdn67etlw2" path="res://Assets/Imports/StylizedHouses/ModularBuildings/BuildingMeshes/SM_building_roof_08.glb" id="3_lcpyy"]
+[ext_resource type="PackedScene" uid="uid://b4bqdr6i42tx6" path="res://Assets/Imports/StylizedHouses/ModularBuildings/BuildingMeshes/SM_building_roof_15.glb" id="4_hujrs"]
+[ext_resource type="PackedScene" uid="uid://d0d0yvlhbxjmd" path="res://Assets/Imports/StylizedHouses/ModularBuildings/BuildingMeshes/SM_building_stairs_03.glb" id="5_fa1qk"]
+[ext_resource type="PackedScene" uid="uid://565yn2nkkq6x" path="res://Assets/Imports/StylizedHouses/ModularBuildings/BuildingMeshes/SM_building_wall_01.glb" id="6_6rucs"]
+[ext_resource type="PackedScene" uid="uid://bu84egf2ykygg" path="res://Assets/Imports/StylizedHouses/ModularBuildings/BuildingMeshes/SM_building_wall_02.glb" id="7_qlxp1"]
+[ext_resource type="PackedScene" uid="uid://bxaouaefc3l8k" path="res://Assets/Imports/StylizedHouses/ModularBuildings/BuildingMeshes/SM_building_wall_04.glb" id="8_glwel"]
+[ext_resource type="PackedScene" uid="uid://miqetpqbrw31" path="res://Assets/Imports/StylizedHouses/ModularBuildings/BuildingMeshes/SM_building_wall_06.glb" id="9_2c8kh"]
+[ext_resource type="PackedScene" uid="uid://b55l4u6v4aahi" path="res://Assets/Imports/StylizedHouses/ModularBuildings/BuildingMeshes/SM_building_wall_07.glb" id="10_kxyh4"]
+[ext_resource type="PackedScene" uid="uid://dgg428bintvgp" path="res://Assets/Imports/StylizedHouses/ModularBuildings/BuildingMeshes/SM_building_wall_08.glb" id="11_ec3cw"]
+[ext_resource type="PackedScene" uid="uid://juoc07aq6t4r" path="res://Assets/Imports/StylizedHouses/ModularBuildings/BuildingMeshes/SM_building_wall_10.glb" id="12_2aoo8"]
+[ext_resource type="PackedScene" uid="uid://cl5h7xsbgtlbi" path="res://Assets/Imports/StylizedHouses/ModularBuildings/BuildingMeshes/SM_building_wall_11.glb" id="13_wv47y"]
+[ext_resource type="PackedScene" uid="uid://bary4s06ty4vo" path="res://Assets/Imports/StylizedHouses/ModularBuildings/BuildingMeshes/SM_building_wall_13.glb" id="14_rmas0"]
+[ext_resource type="PackedScene" uid="uid://dsig7cht60kw1" path="res://Assets/Imports/StylizedHouses/ModularBuildings/BuildingMeshes/SM_building_wall_17.glb" id="15_7x0e7"]
+[ext_resource type="PackedScene" uid="uid://cfk5kbsjgv7jy" path="res://Assets/Imports/StylizedHouses/ModularBuildings/BuildingMeshes/SM_building_floor_01.glb" id="16_h6wyc"]
+[ext_resource type="PackedScene" uid="uid://0ynx5m0ei7qt" path="res://Assets/Imports/StylizedHouses/ModularBuildings/BuildingMeshes/SM_building_floor_02.glb" id="17_6opc3"]
+[ext_resource type="PackedScene" uid="uid://th85eyijphyi" path="res://Assets/Imports/StylizedHouses/ModularBuildings/BuildingMeshes/SM_building_floor_03.glb" id="18_m6cks"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="SM_building_part_08" parent="." instance=ExtResource("1_fn2jj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.84388, 4.64601, 21.7003)
+
+[node name="SM_building_roof_24" parent="." instance=ExtResource("2_0uaab")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.51, 8.087, 7.336)
+
+[node name="SM_building_roof_25" parent="." instance=ExtResource("3_lcpyy")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7.51178, 8.08687, 13.0547)
+
+[node name="SM_building_roof_26" parent="." instance=ExtResource("3_lcpyy")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.51168, 8.087, 13.033)
+
+[node name="SM_building_roof_27" parent="." instance=ExtResource("3_lcpyy")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.51282, 8.087, 1.33972)
+
+[node name="SM_building_roof_28" parent="." instance=ExtResource("3_lcpyy")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.513, 8.087, -4.448)
+
+[node name="SM_building_roof_29" parent="." instance=ExtResource("3_lcpyy")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7.506, 8.087, -4.448)
+
+[node name="SM_building_roof_30" parent="." instance=ExtResource("3_lcpyy")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7.506, 8.087, 1.341)
+
+[node name="SM_building_roof_31" parent="." instance=ExtResource("3_lcpyy")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7.50585, 8.087, 7.336)
+
+[node name="SM_building_roof_23" parent="." instance=ExtResource("4_hujrs")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.85376, 4.16515, 18.7919)
+
+[node name="SM_building_stairs_06" parent="." instance=ExtResource("5_fa1qk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.61913, 0, 5.0809)
+
+[node name="SM_building_wall_35" parent="." instance=ExtResource("6_6rucs")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.398, 0, 12.8514)
+
+[node name="SM_building_wall_36" parent="." instance=ExtResource("6_6rucs")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.398, 0, 7.515)
+
+[node name="SM_building_wall_37" parent="." instance=ExtResource("6_6rucs")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.40636, 0, 1.753)
+
+[node name="SM_building_wall_40" parent="." instance=ExtResource("6_6rucs")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.398, 0, -4.243)
+
+[node name="SM_building_wall_41" parent="." instance=ExtResource("6_6rucs")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.3341, 0, -4.243)
+
+[node name="SM_building_wall_42" parent="." instance=ExtResource("6_6rucs")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.334, 0, 1.753)
+
+[node name="SM_building_wall_43" parent="." instance=ExtResource("6_6rucs")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.334, 0, 6.895)
+
+[node name="SM_building_wall_44" parent="." instance=ExtResource("6_6rucs")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.334, 0, 12.851)
+
+[node name="SM_building_wall_05" parent="." instance=ExtResource("7_qlxp1")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -7.432, 0, 15.752)
+
+[node name="SM_building_wall_38" parent="." instance=ExtResource("8_glwel")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.504, 0, -7.155)
+
+[node name="SM_building_wall_34" parent="." instance=ExtResource("9_2c8kh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.432, 0, -7.155)
+
+[node name="SM_building_wall_32" parent="." instance=ExtResource("10_kxyh4")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.504, 0, 15.752)
+
+[node name="SM_building_wall_47" parent="." instance=ExtResource("11_ec3cw")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.504, 4.006, 15.752)
+
+[node name="SM_building_wall_48" parent="." instance=ExtResource("11_ec3cw")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.334, 4.006, -4.15159)
+
+[node name="SM_building_wall_55" parent="." instance=ExtResource("11_ec3cw")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.334, 4.006, 7.80276)
+
+[node name="SM_building_wall_56" parent="." instance=ExtResource("11_ec3cw")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.334, 4.006, 12.8071)
+
+[node name="SM_building_wall_57" parent="." instance=ExtResource("11_ec3cw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.504, 4.006, -7.155)
+
+[node name="SM_building_wall_49" parent="." instance=ExtResource("11_ec3cw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.398, 4.006, -4.242)
+
+[node name="SM_building_wall_50" parent="." instance=ExtResource("11_ec3cw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.40725, 4.006, 1.36112)
+
+[node name="SM_building_wall_51" parent="." instance=ExtResource("11_ec3cw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.398, 4.006, 7.03452)
+
+[node name="SM_building_wall_52" parent="." instance=ExtResource("11_ec3cw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.398, 4.006, 12.8158)
+
+[node name="SM_building_wall_53" parent="." instance=ExtResource("12_2aoo8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.432, 4.006, -7.155)
+
+[node name="SM_building_wall_54" parent="." instance=ExtResource("13_wv47y")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.334, 4.006, 1.8148)
+
+[node name="SM_building_wall_46" parent="." instance=ExtResource("14_rmas0")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -7.432, 4.006, 15.752)
+
+[node name="SM_building_wall_61" parent="." instance=ExtResource("15_7x0e7")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4.46669, 8.00398, 15.7521)
+
+[node name="SM_building_wall_62" parent="." instance=ExtResource("15_7x0e7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.46669, 8.00398, -7.15488)
+
+[node name="SM_building_floor_01" parent="." instance=ExtResource("16_h6wyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.1586, 4.00678, 12.6217)
+
+[node name="SM_building_floor_10" parent="." instance=ExtResource("16_h6wyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.159, 0, 12.622)
+
+[node name="SM_building_floor_08" parent="." instance=ExtResource("16_h6wyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.68389, 4.00678, 12.6217)
+
+[node name="SM_building_floor_04" parent="." instance=ExtResource("16_h6wyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.1586, 4.00678, 6.62738)
+
+[node name="SM_building_floor_05" parent="." instance=ExtResource("16_h6wyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.1586, 4.00678, 0.635911)
+
+[node name="SM_building_floor_06" parent="." instance=ExtResource("16_h6wyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.1586, 3.99872, -3.94033)
+
+[node name="SM_building_floor_07" parent="." instance=ExtResource("16_h6wyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.691, 4, -3.94)
+
+[node name="SM_building_floor_09" parent="." instance=ExtResource("16_h6wyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.691, 4.001, 0.282)
+
+[node name="SM_building_floor_11" parent="." instance=ExtResource("16_h6wyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.68389, 0, 12.6217)
+
+[node name="SM_building_floor_12" parent="." instance=ExtResource("16_h6wyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.1586, 0, 6.62738)
+
+[node name="SM_building_floor_17" parent="." instance=ExtResource("16_h6wyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7454, 0, 6.50605)
+
+[node name="SM_building_floor_13" parent="." instance=ExtResource("16_h6wyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.1586, 0, 0.635911)
+
+[node name="SM_building_floor_14" parent="." instance=ExtResource("16_h6wyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.1586, 0, -3.94033)
+
+[node name="SM_building_floor_15" parent="." instance=ExtResource("16_h6wyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.691, 0.0104593, -3.94)
+
+[node name="SM_building_floor_16" parent="." instance=ExtResource("16_h6wyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.691, 0, 0.596673)
+
+[node name="SM_building_floor_02" parent="." instance=ExtResource("17_6opc3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8114, 0, 18.9913)
+
+[node name="SM_building_floor_03" parent="." instance=ExtResource("18_m6cks")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.2444, 0, 25.6007)

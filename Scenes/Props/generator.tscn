@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://ckmsx5oqo4ck2"]
+
+[ext_resource type="Material" uid="uid://clau1arwwv1yw" path="res://Assets/Materials/Standard Materials/prototype_orange.tres" id="1_k6hrk"]
+[ext_resource type="Material" uid="uid://bbyh52cc6ljvg" path="res://Assets/Materials/Standard Materials/prototype_grey.tres" id="2_01oik"]
+
+[node name="Generator" type="CSGMesh3D"]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.52136, 0)
+size = Vector3(3, 1, 2.5)
+material = ExtResource("1_k6hrk")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.29042, 0)
+size = Vector3(3, 0.3, 2.5)
+material = ExtResource("1_k6hrk")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.08149, 0)
+size = Vector3(3, 0.117188, 2.5)
+material = ExtResource("2_01oik")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.337769, 1.47449, 0.497483)
+size = Vector3(1.5, 0.1, 1)
+material = ExtResource("2_01oik")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.604309, 1.58354, -0.550714)
+size = Vector3(0.5, 0.3, 0.7)
+material = ExtResource("2_01oik")
