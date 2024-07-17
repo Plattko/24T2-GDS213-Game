@@ -15,6 +15,7 @@ extends CharacterBody3D
 @onready var debug = %DebugPanel
 
 # Camera movement variables
+@export_group("Camera Movement Variables")
 var rotation_input : float
 var tilt_input : float
 var mouse_rotation : Vector3
@@ -25,7 +26,7 @@ var camera_rotation : Vector3
 const MIN_CAMERA_TILT := deg_to_rad(-90)
 const MAX_CAMERA_TILT := deg_to_rad(90)
 
-var sensitivity := 0.25
+@export_range(0.1, 0.25, 0.01) var sensitivity := 0.25
 
 # Head bob variables
 const BOB_FREQ := 2.0
