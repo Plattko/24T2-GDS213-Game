@@ -59,9 +59,9 @@ func _physics_process(delta):
 	if multiplayer.is_server():
 		if is_on_floor():
 			# Update movement
-			var cur_location = global_position
-			var next_location = nav_agent.get_next_path_position()
-			var new_velocity = (next_location - cur_location).normalized() * speed
+			var cur_location : Vector3 = global_position
+			var next_location : Vector3 = nav_agent.get_next_path_position()
+			var new_velocity : Vector3 = (next_location - cur_location).normalized() * speed
 			nav_agent.set_velocity(new_velocity)
 		# Apply gravity when in the air
 		else:
@@ -90,6 +90,9 @@ func _physics_process(delta):
 	else:
 		animate(cur_anim)
 
+#-------------------------------------------------------------------------------
+# Movement
+#-------------------------------------------------------------------------------
 # Set the navigation agent's target position to the player position
 func set_target_position() -> void:
 	await get_tree().physics_frame
@@ -101,11 +104,13 @@ func set_target_position() -> void:
 			nav_agent.set_target_position(target_position)
 
 # Signal for handling avoidance behavior with other agents
-func _on_navigation_agent_3d_velocity_computed(safe_velocity):
+func _on_nav_agent_velocity_computed(safe_velocity: Vector3) -> void:
 	velocity = velocity.move_toward(safe_velocity, 0.25) # NOTE: DO NOT CHANGE!!!
 	move_and_slide()
 
-#--------------------------------ANIMATION--------------------------------------
+#-------------------------------------------------------------------------------
+# Animation
+#-------------------------------------------------------------------------------
 func animate(anim: Animations) -> void:
 	cur_anim = anim
 	
@@ -117,12 +122,16 @@ func animate(anim: Animations) -> void:
 			anim_tree.set("parameters/conditions/run", false)
 			anim_tree.set("parameters/conditions/attack", true)
 
-#----------------------------------HEALTH---------------------------------------
+#-------------------------------------------------------------------------------
+# Health
+#-------------------------------------------------------------------------------
 func on_damaged(damage: float):
 	cur_health -= damage
 	#cur_state = STUNNED
 
-#---------------------------------ATTACKING-------------------------------------
+#-------------------------------------------------------------------------------
+# Attacking
+#-------------------------------------------------------------------------------
 func _target_in_range():
 	return global_position.distance_to(player.global_position) < ATTACK_RANGE
 
@@ -140,6 +149,8 @@ func _on_attack_hitbox_area_exited(area) -> void:
 		has_attack_hit = true
 		print("Attack has hit.")
 
-#---------------------------------DEBUGGING-------------------------------------
+#-------------------------------------------------------------------------------
+# Debugging
+#-------------------------------------------------------------------------------
 func _on_nav_agent_path_changed():
 	print("Path changed.")

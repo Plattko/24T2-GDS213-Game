@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://cnmpic65cb070"
+path.s3tc="res://.godot/imported/SM_Common_Tree_11_MI_Common_Tree_Leaves_BaseColor.png-8f426f784e59a849423145858199e084.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "1ef4b62f3ccd38470a70c6482a4a6119"
+}
+
+[deps]
+
+source_file="res://Assets/Imports/Trees/StylizedFoliage/Meshes/SM_Common_Tree_11_MI_Common_Tree_Leaves_BaseColor.png"
+dest_files=["res://.godot/imported/SM_Common_Tree_11_MI_Common_Tree_Leaves_BaseColor.png-8f426f784e59a849423145858199e084.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

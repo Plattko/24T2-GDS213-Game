@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://bcnpdax6syulj"
+path.s3tc="res://.godot/imported/SM_umbrella_MI_metal_base_A_Inst_SM_umbrella_Normal_4.png-99606fbe85a7092e81f48d56df5f860a.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "987721014db408038c9c05ff7b772756"
+}
+
+[deps]
+
+source_file="res://Assets/Imports/StylizedHouses/Props/Meshes/SM_umbrella_MI_metal_base_A_Inst_SM_umbrella_Normal_4.png"
+dest_files=["res://.godot/imported/SM_umbrella_MI_metal_base_A_Inst_SM_umbrella_Normal_4.png-99606fbe85a7092e81f48d56df5f860a.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=1
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=1
+roughness/src_normal="res://Assets/Imports/StylizedHouses/Props/Meshes/SM_umbrella_MI_metal_base_A_Inst_SM_umbrella_Normal_4.png"
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0
