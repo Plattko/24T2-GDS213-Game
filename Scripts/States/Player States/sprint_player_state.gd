@@ -2,24 +2,29 @@ class_name SprintPlayerState
 
 extends PlayerState
 
-const SPRINT_SPEED = 8.0
-
-func enter(_previous_state, _msg : Dictionary = {}):
+func enter(_msg : Dictionary = {}):
 	#print("Entered Sprint player state.")
 	pass
 
 func physics_update(_delta : float):
+	# Transition to Air state with jump
+	if input.is_jump_just_pressed and player.is_on_floor():
+		transition.emit("AirPlayerState", {"do_jump" = true})
+		return
+	
+	## Last version
 	# Handle movement
-	player.velocity.x = input.direction.x * SPRINT_SPEED
-	player.velocity.z = input.direction.z * SPRINT_SPEED
-	player.move_and_slide()
+	#player.velocity.x = input.direction.x * SPRINT_SPEED
+	#player.velocity.z = input.direction.z * SPRINT_SPEED
+	#player.move_and_slide()
+	
+	# Handle movement
+	var velocity : Vector3 = set_velocity(input.direction, SPRINT_SPEED)
+	player.update_velocity(velocity)
 	
 	# Transition to Air state
 	if !player.is_on_floor():
 		transition.emit("AirPlayerState")
-	# Transition to Air state with jump
-	elif input.is_jump_just_pressed and player.is_on_floor():
-		transition.emit("AirPlayerState", {"do_jump" = true})
 	# Transition to Idle state
 	elif !input.direction:
 		transition.emit("IdlePlayerState")
