@@ -5,6 +5,7 @@ extends CharacterBody3D
 @export var hurtboxes : Array[Damageable] = []
 @export var nav_agent : NavigationAgent3D
 @export var anim_tree : AnimationTree
+@export var health_orb_scene = preload("res://Scenes/Pickups/health_orb.tscn")
 
 var anim_state_machine
 var player : MultiplayerPlayer
@@ -23,6 +24,8 @@ var is_initial_call := true
 # Health variables
 var max_health := 100
 var cur_health
+
+var health_drop_chance : float = 0.2
 
 # Attack variables
 const ATTACK_RANGE := 1.75
@@ -70,8 +73,7 @@ func _physics_process(delta):
 		
 		# Kill the enemy when they reach 0 health
 		if cur_health <= 0:
-			enemy_defeated.emit()
-			queue_free()
+			die()
 		
 		# If enemy is running
 		if anim_state_machine.get_current_node() == "Run":
@@ -129,6 +131,19 @@ func animate(anim: Animations) -> void:
 func on_damaged(damage: float):
 	cur_health -= damage
 	#cur_state = STUNNED
+
+func die() -> void:
+	enemy_defeated.emit()
+	var roll : float = randf_range(0.0, 1.0)
+	if roll <= health_drop_chance:
+		# Instantiate the health orb
+		var health_orb = health_orb_scene.instantiate()
+		# Make it a child of the level scene
+		var level = get_tree().get_first_node_in_group("level")
+		level.add_child(health_orb)
+		# Set its position
+		health_orb.global_position = Vector3(global_position.x, global_position.y + 1.25, global_position.z)
+	queue_free()
 
 #-------------------------------------------------------------------------------
 # Attacking

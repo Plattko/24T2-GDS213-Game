@@ -175,6 +175,11 @@ func on_damaged(damage: float) -> void:
 		update_health.emit([cur_health, max_health])
 		print("Player health: " + str(cur_health))
 
+func on_healed(health: float) -> void:
+		cur_health += health
+		cur_health = clampf(cur_health, 0.0, max_health)
+		update_health.emit([cur_health, max_health])
+
 func respawn_player() -> void:
 	is_dead = true
 	horizontal_knockback = Vector3.ZERO
