@@ -201,9 +201,11 @@ fast_flash_timer = NodePath("FastFlashTimer")
 deletion_timer = NodePath("DeletionTimer")
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
+cast_shadow = 0
 mesh = SubResource("SphereMesh_gil3g")
 
 [node name="InnerOrb" type="MeshInstance3D" parent="Mesh"]
+cast_shadow = 0
 mesh = SubResource("SphereMesh_3bt3g")
 skeleton = NodePath("../..")
 
