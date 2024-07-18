@@ -8,7 +8,7 @@ var self_damage : float = explosion_damage * 0.6
 var knockback_strength : float = 12.0
 var is_direct_hit : bool = false
 
-var do_self_damage : bool = true
+#var do_self_damage : bool = true
 
 func _ready():
 	await get_tree().create_timer(0.5).timeout
@@ -84,7 +84,7 @@ func _on_explosion_radius_body_entered(body):
 		#print("Knockback strength: " + str(knockback.length()))
 		
 		# Apply the self-damage
-		if do_self_damage: body.on_damaged(damage)
+		if body.do_self_damage: body.on_damaged(damage)
 		# Apply the vertical explosion knockback to the player
 		body.velocity.y += knockback.y
 		# Apply the horizontal explosion knockback to the player

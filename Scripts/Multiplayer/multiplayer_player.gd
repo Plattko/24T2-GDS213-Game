@@ -49,6 +49,10 @@ var is_dead : bool = false
 var horizontal_knockback : Vector3 = Vector3.ZERO
 var kb_reduction_rate : float = 20.0
 
+# Temp(?) rocket jump variable
+@export_group("Rocket Jump Variables")
+@export var do_self_damage : bool = true
+
 signal update_health
 
 func _enter_tree() -> void:
@@ -81,7 +85,9 @@ func _unhandled_input(event) -> void:
 		if event.pressed and event.keycode == KEY_P:
 			on_damaged(20)
 		if event.pressed and event.keycode == KEY_O:
-			on_damaged(-20)
+			on_healed(20)
+		if event.pressed and event.keycode == KEY_I:
+			do_self_damage = !do_self_damage
 
 func _process(delta) -> void:
 	if not is_multiplayer_authority(): return
