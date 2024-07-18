@@ -7,7 +7,7 @@ var camera : Camera3D
 # Reference variables
 @onready var mesh = %Mesh
 @onready var anim_player = %AnimationPlayer
-@onready var muzzle_flash : MuzzleFlash = %MuzzleFlash
+@export var muzzle_flash : MuzzleFlash
 
 var bullet_decal = preload("res://Scenes/Weapons/Components/bullet_decal.tscn")
 
@@ -56,7 +56,7 @@ func init(player_camera: Camera3D) -> void:
 
 func shoot() -> void:
 	# Display the muzzle flash
-	muzzle_flash.add_muzzle_flash.rpc()
+	if muzzle_flash: muzzle_flash.add_muzzle_flash.rpc()
 	anim_player.play(SHOOT_ANIM)
 	
 	cur_ammo -= AMMO_COST

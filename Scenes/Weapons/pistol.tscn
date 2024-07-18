@@ -269,9 +269,10 @@ _data = {
 "Unequip": SubResource("Animation_y1hr3")
 }
 
-[node name="Pistol" type="Node3D"]
+[node name="Pistol" type="Node3D" node_paths=PackedStringArray("muzzle_flash")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.61, -0.344, -0.748)
 script = ExtResource("1_c6rr1")
+muzzle_flash = NodePath("Barrel/MuzzleFlash")
 BULLET_DAMAGE = 45.0
 FALLOFF_NEAR_DIST = 40.0
 FALLOFF_FAR_DIST = 60.0
@@ -299,7 +300,6 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.03, -0.4)
 
 [node name="MuzzleFlash" type="Node3D" parent="Barrel" node_paths=PackedStringArray("light", "emitter")]
-unique_name_in_owner = true
 script = ExtResource("3_v10tm")
 light = NodePath("OmniLight3D")
 emitter = NodePath("GPUParticles3D")

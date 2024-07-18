@@ -1,12 +1,16 @@
 extends CharacterBody3D
 
 @export var explosion_scene = preload("res://Scenes/Weapons/Components/explosion.tscn")
+@export var mesh : MeshInstance3D
 @export var collision_shape : CollisionShape3D
 var rocket_launcher : RocketLauncher
 
 var direction : Vector3
 var speed : float
 var has_exploded : bool = false
+
+func _enter_tree() -> void:
+	mesh.visible = false
 
 func _physics_process(delta) -> void:
 	var collision : KinematicCollision3D = move_and_collide(direction * speed * delta)
@@ -28,3 +32,6 @@ func explode(collision: KinematicCollision3D) -> void:
 	explosion.global_position = collision.get_position()
 	# Delete the rocket
 	queue_free()
+
+func _on_visibility_delay_timeout() -> void:
+	mesh.visible = true

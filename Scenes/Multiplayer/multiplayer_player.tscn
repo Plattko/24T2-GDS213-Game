@@ -642,6 +642,7 @@ weapon_switch_cooldown = NodePath("WeaponSwitchCooldown")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.519, -0.344, -0.747766)
 
 [node name="RocketLauncher" parent="Head/Camera3D/WeaponManager" instance=ExtResource("6_vqpyd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.519, -0.475, -0.76939)
 
 [node name="Shotgun" parent="Head/Camera3D/WeaponManager" instance=ExtResource("7_d8wuf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.519, -0.344, -0.703794)
