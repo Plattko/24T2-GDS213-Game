@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-@export var explosion_scene = preload("res://Scenes/Weapons/Components/explosion.tscn")
+@export var explosion_scene = load("res://Scenes/Weapons/Components/explosion.tscn")
 @export var mesh : MeshInstance3D
 @export var collision_shape : CollisionShape3D
 var rocket_launcher : RocketLauncher
