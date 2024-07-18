@@ -15,6 +15,10 @@ var max_wall_jump := 8.0
 
 const MAX_CAM_ANGLE : float = deg_to_rad(12)
 
+# Getting stuck in corner prevention
+var min_move_delta : float = 0.1
+var last_pos : Vector3
+
 func enter(_msg : Dictionary = {}):
 	player.velocity.y = 0.0
 
@@ -26,7 +30,7 @@ func exit() -> void:
 func physics_update(delta: float) -> void:
 	if player.is_on_wall():
 		# Get player velocity direction
-		velocity_dir = Vector2(player.velocity.x, player.velocity.z).normalized()
+		velocity_dir = horizontal_velocity.normalized()
 		# Get player look direction
 		look_dir = Vector2(-player.transform.basis.z.x, -player.transform.basis.z.z).normalized()
 		# Default no velocity direction to equal the player's look direction
@@ -35,6 +39,11 @@ func physics_update(delta: float) -> void:
 		if velocity_dir != last_dir:
 			# Update last direction
 			last_dir = velocity_dir
+			# Prevent getting stuck in a corner
+			if abs(Vector3(last_pos - player.global_position).length()) < min_move_delta:
+				transition.emit("AirPlayerState", {"left_wallrun" = true})
+			else:
+				last_pos = player.global_position
 			# Get the normal of the wall
 			var normal_vector = player.get_slide_collision(0).get_normal()
 			wall_normal = Vector2(normal_vector.x, normal_vector.z)
