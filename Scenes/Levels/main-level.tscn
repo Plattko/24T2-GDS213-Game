@@ -53,7 +53,7 @@ spawn_limit = 4
 [node name="GamemodeManager" type="Node" parent="." node_paths=PackedStringArray("enemies_node", "enemy_spawn_points") groups=["wave_manager"]]
 script = ExtResource("2_8ryog")
 enemies_node = NodePath("../Enemies")
-enemy_spawn_points = [NodePath("../EnemySpawns/SpawnPoint"), NodePath("../EnemySpawns/SpawnPoint2"), NodePath("../EnemySpawns/SpawnPoint3"), NodePath("../EnemySpawns/SpawnPoint4"), NodePath("../EnemySpawns/SpawnPoint5"), NodePath("../EnemySpawns/SpawnPoint6"), NodePath("../EnemySpawns/SpawnPoint7"), NodePath("../EnemySpawns/SpawnPoint8"), NodePath("../EnemySpawns/SpawnPoint9"), NodePath("../EnemySpawns/SpawnPoint10")]
+enemy_spawn_points = [NodePath("../EnemySpawns/OLD/SpawnPoint"), NodePath("../EnemySpawns/OLD/SpawnPoint2"), NodePath("../EnemySpawns/OLD/SpawnPoint3"), NodePath("../EnemySpawns/OLD/SpawnPoint4"), NodePath("../EnemySpawns/OLD/SpawnPoint5"), NodePath("../EnemySpawns/OLD/SpawnPoint6"), NodePath("../EnemySpawns/OLD/SpawnPoint7"), NodePath("../EnemySpawns/OLD/SpawnPoint8"), NodePath("../EnemySpawns/OLD/SpawnPoint9"), NodePath("../EnemySpawns/OLD/SpawnPoint10")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
@@ -604,106 +604,127 @@ spot_angle = 77.3438
 
 [node name="CSGBox3D33" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Hardware Store/Interior"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 1.44813e-16, -1.44813e-16, 6.32996e-24, 1, 9.30774, 6.03355, -14.6312)
+use_collision = true
 size = Vector3(0.5, 0.1, 5)
 material = ExtResource("5_vqyvj")
 
 [node name="CSGBox3D34" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Hardware Store/Interior"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 1.44813e-16, -1.44813e-16, 6.32996e-24, 1, 9.30774, 5.02885, -14.6312)
+use_collision = true
 size = Vector3(0.5, 0.1, 5)
 material = ExtResource("5_vqyvj")
 
 [node name="CSGBox3D35" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Hardware Store/Interior"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 1.44813e-16, -1.44813e-16, 6.32996e-24, 1, 9.30774, 4.05296, -14.6312)
+use_collision = true
 size = Vector3(0.5, 0.1, 5)
 material = ExtResource("5_vqyvj")
 
 [node name="CSGBox3D38" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Hardware Store/Interior"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 1.44813e-16, -1.44813e-16, 6.32996e-24, 1, 9.30774, 3.02269, -14.6312)
+use_collision = true
 size = Vector3(0.5, 0.1, 5)
 material = ExtResource("5_vqyvj")
 
 [node name="CSGBox3D39" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Hardware Store/Interior"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 1.44813e-16, -1.44813e-16, 6.32996e-24, 1, 9.30774, 2.04679, -14.6312)
+use_collision = true
 size = Vector3(0.5, 0.1, 5)
 material = ExtResource("5_vqyvj")
 
 [node name="CSGBox3D37" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Hardware Store/Interior"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 1.44813e-16, -1.44813e-16, 6.32996e-24, 1, 9.30774, 6.03355, -8.85326)
+use_collision = true
 size = Vector3(0.5, 0.1, 5)
 material = ExtResource("5_vqyvj")
 
 [node name="CSGBox3D40" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Hardware Store/Interior"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 1.44813e-16, -1.44813e-16, 6.32996e-24, 1, 9.30774, 5.02885, -8.85326)
+use_collision = true
 size = Vector3(0.5, 0.1, 5)
 material = ExtResource("5_vqyvj")
 
 [node name="CSGBox3D41" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Hardware Store/Interior"]
 transform = Transform3D(-4.37114e-08, -1, -5.09303e-15, 0.998612, -4.36507e-08, 0.0526671, -0.0526674, 2.30213e-09, 0.998613, 9.30774, 3.44842, -8.99156)
+use_collision = true
 size = Vector3(0.5, 0.1, 5.20093)
 material = ExtResource("5_vqyvj")
 
 [node name="CSGBox3D44" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Hardware Store/Interior"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 1.44813e-16, -1.44813e-16, 6.32996e-24, 1, 9.30774, 6.03355, -3.2057)
+use_collision = true
 size = Vector3(0.5, 0.1, 5)
 material = ExtResource("5_vqyvj")
 
 [node name="CSGBox3D45" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Hardware Store/Interior"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 1.44813e-16, -1.44813e-16, 6.32996e-24, 1, 9.30774, 5.02885, -3.2057)
+use_collision = true
 size = Vector3(0.5, 0.1, 5)
 material = ExtResource("5_vqyvj")
 
 [node name="CSGBox3D46" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Hardware Store/Interior"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 1.44813e-16, -1.44813e-16, 6.32996e-24, 1, 9.30774, 4.05296, -3.2057)
+use_collision = true
 size = Vector3(0.5, 0.1, 5)
 material = ExtResource("5_vqyvj")
 
 [node name="CSGBox3D47" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Hardware Store/Interior"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 1.44813e-16, -1.44813e-16, 6.32996e-24, 1, 9.30774, 3.02269, -3.2057)
+use_collision = true
 size = Vector3(0.5, 0.1, 5)
 material = ExtResource("5_vqyvj")
 
 [node name="CSGBox3D48" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Hardware Store/Interior"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 1.44813e-16, -1.44813e-16, 6.32996e-24, 1, 9.30774, 2.04679, -3.2057)
+use_collision = true
 size = Vector3(0.5, 0.1, 5)
 material = ExtResource("5_vqyvj")
 
 [node name="CSGBox3D49" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Hardware Store/Interior"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 1.44813e-16, -1.44813e-16, 6.32996e-24, 1, 9.30774, 6.03355, 2.27072)
+use_collision = true
 size = Vector3(0.5, 0.1, 5)
 material = ExtResource("5_vqyvj")
 
 [node name="CSGBox3D50" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Hardware Store/Interior"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 1.44813e-16, -1.44813e-16, 6.32996e-24, 1, 9.30774, 5.02885, 2.27072)
+use_collision = true
 size = Vector3(0.5, 0.1, 5)
 material = ExtResource("5_vqyvj")
 
 [node name="CSGBox3D51" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Hardware Store/Interior"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 1.44813e-16, -1.44813e-16, 6.32996e-24, 1, 9.30774, 4.05296, 2.27072)
+use_collision = true
 size = Vector3(0.5, 0.1, 5)
 material = ExtResource("5_vqyvj")
 
 [node name="CSGBox3D52" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Hardware Store/Interior"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 1.44813e-16, -1.44813e-16, 6.32996e-24, 1, 9.30774, 3.02269, 2.27072)
+use_collision = true
 size = Vector3(0.5, 0.1, 5)
 material = ExtResource("5_vqyvj")
 
 [node name="CSGBox3D53" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Hardware Store/Interior"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 1.44813e-16, -1.44813e-16, 6.32996e-24, 1, 9.30774, 2.04679, 2.27072)
+use_collision = true
 size = Vector3(0.5, 0.1, 5)
 material = ExtResource("5_vqyvj")
 
 [node name="CSGBox3D54" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Hardware Store/Interior"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 1.44813e-16, -1.44813e-16, 6.32996e-24, 1, 9.30774, 6.03355, 7.48396)
+use_collision = true
 size = Vector3(0.5, 0.1, 5)
 material = ExtResource("5_vqyvj")
 
 [node name="CSGBox3D55" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Hardware Store/Interior"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 1.44813e-16, -1.44813e-16, 6.32996e-24, 1, 9.30774, 5.02885, 7.48396)
+use_collision = true
 size = Vector3(0.5, 0.1, 5)
 material = ExtResource("5_vqyvj")
 
 [node name="CSGBox3D56" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Hardware Store/Interior"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 1.44813e-16, -1.44813e-16, 6.32996e-24, 1, 9.30774, 4.05296, 7.48396)
+use_collision = true
 size = Vector3(0.5, 0.1, 5)
 material = ExtResource("5_vqyvj")
 
@@ -714,16 +735,19 @@ material = ExtResource("5_vqyvj")
 
 [node name="CSGBox3D58" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Hardware Store/Interior"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 1.44813e-16, -1.44813e-16, 6.32996e-24, 1, 9.30774, 2.04679, 7.48396)
+use_collision = true
 size = Vector3(0.5, 0.1, 5)
 material = ExtResource("5_vqyvj")
 
 [node name="CSGBox3D22" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Hardware Store/Interior"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 2.55835e-16, -2.55835e-16, 1.11829e-23, 1, 9.1879, 3.85512, -0.493586)
+use_collision = true
 size = Vector3(4.82861, 1, 1)
 material = ExtResource("5_vqyvj")
 
 [node name="CSGBox3D23" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Hardware Store/Interior"]
 transform = Transform3D(-4.34146e-08, -0.993209, -0.116341, 1, -4.37114e-08, 2.55835e-16, -5.08544e-09, -0.116341, 0.993209, 4.5739, 1.49503, -3.19682)
+use_collision = true
 size = Vector3(0.2, 3, 3)
 material = ExtResource("5_vqyvj")
 
@@ -820,16 +844,19 @@ material = ExtResource("3_oifnu")
 
 [node name="CSGCylinder3D20" type="CSGCylinder3D" parent="NavigationRegion3D/LevelGeometry/Hardware Store/Interior"]
 transform = Transform3D(-4.37114e-08, 4.37114e-08, 1, -1.62921e-07, -1, 4.37114e-08, 1, -1.62921e-07, 4.37114e-08, 1.62289, 2.17213, 11.9786)
+use_collision = true
 height = 1.5
 material = ExtResource("3_oifnu")
 
 [node name="CSGCylinder3D19" type="CSGCylinder3D" parent="NavigationRegion3D/LevelGeometry/Hardware Store/Interior"]
 transform = Transform3D(-4.37114e-08, 4.37114e-08, 1, -1.62921e-07, -1, 4.37114e-08, 1, -1.62921e-07, 4.37114e-08, 5.10571, 2.17213, 9.82233)
+use_collision = true
 height = 1.5
 material = ExtResource("3_oifnu")
 
 [node name="CSGBox3D24" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Hardware Store/Interior"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 2.55835e-16, -2.55835e-16, 1.11829e-23, 1, 3.84925, 1.49503, 0.0696301)
+use_collision = true
 size = Vector3(0.2, 3, 3)
 material = ExtResource("5_vqyvj")
 
@@ -926,6 +953,7 @@ material = ExtResource("3_oifnu")
 
 [node name="CSGBox3D70" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Hardware Store/Interior"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 2.55835e-16, -2.55835e-16, 1.11829e-23, 1, -6.47625, 10.3722, 0.319051)
+use_collision = true
 size = Vector3(0.2, 3, 3)
 material = ExtResource("5_vqyvj")
 
@@ -1022,6 +1050,7 @@ material = ExtResource("3_oifnu")
 
 [node name="CSGBox3D71" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Hardware Store/Interior"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 2.55835e-16, -2.55835e-16, 1.11829e-23, 1, -6.47625, 10.3722, 3.58394)
+use_collision = true
 size = Vector3(0.2, 3, 3)
 material = ExtResource("5_vqyvj")
 
@@ -1118,6 +1147,7 @@ material = ExtResource("3_oifnu")
 
 [node name="CSGBox3D72" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Hardware Store/Interior"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 2.55835e-16, -2.55835e-16, 1.11829e-23, 1, -6.47625, 13.5715, 3.58394)
+use_collision = true
 size = Vector3(0.2, 3, 3)
 material = ExtResource("5_vqyvj")
 
@@ -1214,21 +1244,25 @@ material = ExtResource("3_oifnu")
 
 [node name="CSGBox3D67" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Hardware Store/Interior"]
 transform = Transform3D(-4.26564e-08, -0.975864, 0.218382, 1, -4.37114e-08, 1.10838e-16, 9.54577e-09, 0.218382, 0.975864, 3.40463, 1.49503, 11.2368)
+use_collision = true
 size = Vector3(0.2, 3, 3)
 material = ExtResource("5_vqyvj")
 
 [node name="CSGBox3D68" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Hardware Store/Interior"]
 transform = Transform3D(-4.36253e-08, -0.99803, 0.0627383, 1, -4.37114e-08, -6.45064e-16, 2.74238e-09, 0.0627383, 0.99803, 5.56629, 1.49503, 7.84304)
+use_collision = true
 size = Vector3(0.2, 3, 3)
 material = ExtResource("5_vqyvj")
 
 [node name="CSGBox3D69" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Hardware Store/Interior"]
 transform = Transform3D(-4.30643e-08, -0.985196, -0.17143, 1, -4.37114e-08, -6.25307e-16, -7.49347e-09, -0.17143, 0.985196, 15.943, 2.92337, 15.4142)
+use_collision = true
 size = Vector3(0.2, 3, 3)
 material = ExtResource("5_vqyvj")
 
 [node name="CSGBox3D25" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Hardware Store/Interior"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 2.55835e-16, -2.55835e-16, 1.11829e-23, 1, 0.733617, 1.49503, -1.18378)
+use_collision = true
 size = Vector3(0.2, 3, 3)
 material = ExtResource("5_vqyvj")
 
@@ -1325,41 +1359,49 @@ material = ExtResource("3_oifnu")
 
 [node name="CSGBox3D32" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Hardware Store/Interior"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 2.55835e-16, -2.55835e-16, 1.11829e-23, 1, 9.24984, 3.78853, 5.15718)
+use_collision = true
 size = Vector3(4.69543, 1, 1)
 material = ExtResource("5_vqyvj")
 
 [node name="CSGBox3D26" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Hardware Store/Interior"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 2.55835e-16, -2.55835e-16, 1.11829e-23, 1, 9.1258, 3.96969, -6.1592)
+use_collision = true
 size = Vector3(5.05774, 1, 1)
 material = ExtResource("5_vqyvj")
 
 [node name="CSGBox3D28" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Hardware Store/Interior"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 2.55835e-16, -2.55835e-16, 1.11829e-23, 1, 19.2148, 12.8328, 12.0472)
+use_collision = true
 size = Vector3(5, 0.2, 10)
 material = ExtResource("5_vqyvj")
 
 [node name="CSGBox3D29" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Hardware Store/Interior"]
 transform = Transform3D(-4.3532e-08, -0.995895, 0.0905109, 1, -4.37114e-08, 2.55835e-16, 3.95636e-09, 0.0905109, 0.995895, 17.7745, 10.8198, -5.63292)
+use_collision = true
 size = Vector3(1, 0.8, 10)
 material = ExtResource("5_vqyvj")
 
 [node name="CSGBox3D42" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Hardware Store/Interior"]
 transform = Transform3D(-4.42035e-09, -0.101126, 0.994874, 1, -4.37114e-08, 1.38843e-16, 4.34873e-08, 0.994874, 0.101126, 6.69166, 10.8198, 18.4889)
+use_collision = true
 size = Vector3(1, 0.8, 10)
 material = ExtResource("5_vqyvj")
 
 [node name="CSGBox3D43" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Hardware Store/Interior"]
 transform = Transform3D(2.17796e-09, 0.0498259, 0.998758, 1, -4.37114e-08, 5.55372e-16, 4.36571e-08, 0.998758, -0.0498259, -5.02584, 10.8198, 18.4889)
+use_collision = true
 size = Vector3(1, 0.8, 10)
 material = ExtResource("5_vqyvj")
 
 [node name="CSGBox3D59" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Hardware Store/Interior"]
 transform = Transform3D(-4.31252e-08, -0.986589, -0.163223, 1, -4.37114e-08, 6.67207e-16, -7.13469e-09, -0.163223, 0.986589, -9.90196, 10.8198, 11.1031)
+use_collision = true
 size = Vector3(1, 0.8, 5)
 material = ExtResource("5_vqyvj")
 
 [node name="CSGBox3D60" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Hardware Store/Interior"]
 transform = Transform3D(-4.37079e-08, -0.999921, 0.0126009, 1, -4.37114e-08, 9.06297e-16, 5.508e-10, 0.0126009, 0.999921, -10.2055, 10.8198, 5.59858)
+use_collision = true
 size = Vector3(1, 0.8, 5)
 material = ExtResource("5_vqyvj")
 
@@ -1375,26 +1417,31 @@ material = ExtResource("5_vqyvj")
 
 [node name="CSGBox3D61" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Hardware Store/Interior"]
 transform = Transform3D(-4.35746e-08, -0.996871, 0.0790506, 1, -4.37114e-08, 9.35225e-16, 3.45541e-09, 0.0790506, 0.996871, -10.2055, 10.8198, -0.30687)
+use_collision = true
 size = Vector3(1, 0.8, 5)
 material = ExtResource("5_vqyvj")
 
 [node name="CSGBox3D73" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Hardware Store/Interior"]
 transform = Transform3D(-4.35746e-08, -0.996871, 0.0790506, 1, -4.37114e-08, 9.35225e-16, 3.45541e-09, 0.0790506, 0.996871, -4.56371, 12.2716, -6.70275)
+use_collision = true
 size = Vector3(4, 4, 4)
 material = ExtResource("5_vqyvj")
 
 [node name="CSGBox3D74" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Hardware Store/Interior"]
 transform = Transform3D(-4.35746e-08, -0.996871, 0.0790506, 1, -4.37114e-08, 9.35225e-16, 3.45541e-09, 0.0790506, 0.996871, -4.56371, 12.2716, 13.1334)
+use_collision = true
 size = Vector3(4, 4, 4)
 material = ExtResource("5_vqyvj")
 
 [node name="CSGBox3D27" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Hardware Store/Interior"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 2.55835e-16, -2.55835e-16, 1.11829e-23, 1, 9.1258, 3.96969, 9.98814)
+use_collision = true
 size = Vector3(5.05774, 1, 1)
 material = ExtResource("5_vqyvj")
 
 [node name="CSGBox3D30" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Hardware Store/Interior"]
 transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 9.30846, 3.9396, -11.668)
+use_collision = true
 size = Vector3(4.99756, 1, 1)
 material = ExtResource("5_vqyvj")
 
@@ -1465,6 +1512,7 @@ transform = Transform3D(0.589898, 0, -0.10964, 0, 0.6, 0, 0.10964, 0, 0.589898, 
 
 [node name="CSGBox3D36" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Hardware Store/Interior"]
 transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 9.30846, 3.96865, -16.9423)
+use_collision = true
 size = Vector3(5.05566, 1, 1)
 material = ExtResource("5_vqyvj")
 
@@ -2692,546 +2740,84 @@ material = ExtResource("5_vqyvj")
 
 [node name="MeshFences" type="Node" parent="NavigationRegion3D/LevelGeometry/Perimiter"]
 
-[node name="MeshFence13" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 19.3362, 5.93414, -18.2454)
-
-[node name="MeshFence14" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 19.3362, 5.93414, -20.6521)
-
-[node name="MeshFence15" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 19.3362, 5.93414, -23.0786)
-
-[node name="MeshFence16" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 19.3362, 5.93414, -25.5092)
-
-[node name="MeshFence17" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 19.3362, 5.93414, -27.9427)
-
-[node name="MeshFence18" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 19.3362, 5.93414, -30.3606)
-
-[node name="MeshFence19" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 19.3362, 5.93414, -32.8063)
-
-[node name="MeshFence20" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 19.3362, 5.93414, -35.2957)
-
-[node name="MeshFence21" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.58, 5.93414, -36.5659)
-
-[node name="MeshFence22" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 5.93414, -36.5659)
-
-[node name="MeshFence23" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.453, 5.93414, -36.5659)
-
-[node name="MeshFence24" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.9014, 5.93414, -36.5659)
-
-[node name="MeshFence25" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.3232, 5.93414, -36.5659)
-
-[node name="MeshFence26" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.7692, 5.93414, -36.5659)
-
-[node name="MeshFence27" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.1799, 5.93414, -36.5659)
-
-[node name="MeshFence28" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.607, 5.93414, -36.5659)
-
-[node name="MeshFence29" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.0346, 5.93414, -36.5659)
-
-[node name="MeshFence30" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.4598, 5.93414, -36.5659)
-
-[node name="MeshFence31" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.8751, 5.93414, -36.5659)
-
-[node name="MeshFence32" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.3056, 5.93414, -36.5659)
-
-[node name="MeshFence33" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.729, 5.93414, -36.5659)
-
-[node name="MeshFence34" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 50.9699, 5.93414, -35.3475)
-
-[node name="MeshFence35" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 50.9699, 5.93414, -32.9271)
-
-[node name="MeshFence36" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 50.9699, 5.93414, -30.4978)
-
-[node name="MeshFence37" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 50.9699, 5.93414, -28.0857)
-
-[node name="MeshFence38" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 50.9699, 5.93414, -25.7255)
-
-[node name="MeshFence39" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 50.9699, 5.93414, -23.303)
-
-[node name="MeshFence40" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 50.9699, 5.93414, -20.8773)
-
-[node name="MeshFence41" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 50.9699, 5.93414, -18.4717)
-
-[node name="MeshFence42" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 50.9699, 0.00704813, -15.7355)
-
-[node name="MeshFence43" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 50.9699, 0.00704813, -13.2997)
-
-[node name="MeshFence44" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 50.9699, 0.00704813, -10.9046)
-
-[node name="MeshFence45" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.2479, 0.925115, -9.41113)
-
-[node name="MeshFence46" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.6474, 0.925115, -9.41113)
-
-[node name="MeshFence47" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.0767, 0.925115, -9.41113)
-
-[node name="MeshFence48" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.4904, 0.925115, -9.41113)
-
-[node name="MeshFence49" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61.8918, 0.925115, -9.41113)
-
-[node name="MeshFence50" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.298, 0.925115, -9.41113)
-
-[node name="MeshFence51" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.7442, 0.925115, -9.41113)
-
-[node name="MeshFence52" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 67.9665, 0.925115, -8.16863)
-
-[node name="MeshFence53" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 67.9665, 0.925115, -5.75367)
-
-[node name="MeshFence54" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 67.9665, 0.925115, -3.33907)
-
-[node name="MeshFence55" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 67.9665, 0.925115, -0.953093)
-
-[node name="MeshFence56" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 67.9665, 0.925115, 1.47369)
-
-[node name="MeshFence57" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 67.9665, 0.925115, 3.89796)
-
-[node name="MeshFence58" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 67.9665, 0.925115, 6.31166)
-
-[node name="MeshFence59" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 67.9665, 0.925115, 8.71991)
-
-[node name="MeshFence60" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 67.9665, 0.925115, 11.1354)
-
-[node name="MeshFence61" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 67.9665, 0.925115, 13.5371)
-
-[node name="MeshFence62" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 67.9665, 0.925115, 15.9236)
-
-[node name="MeshFence63" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 67.9665, 0.925115, 18.308)
-
-[node name="MeshFence64" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 67.9665, 0.925115, 20.7031)
-
-[node name="MeshFence65" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 67.9665, 0.925115, 23.0796)
-
-[node name="MeshFence66" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 67.9665, 0.925115, 25.4831)
-
-[node name="MeshFence67" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 67.9665, 0.925115, 27.8913)
-
-[node name="MeshFence68" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 67.9665, 0.925115, 30.3051)
-
-[node name="MeshFence69" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 67.9665, 0.925115, 32.7136)
-
-[node name="MeshFence70" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 67.9665, 0.925115, 35.0857)
-
-[node name="MeshFence71" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 67.9665, 0.925115, 37.482)
-
-[node name="MeshFence72" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 67.9665, 0.925115, 39.8979)
-
-[node name="MeshFence73" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 67.9665, 0.925115, 42.3038)
-
-[node name="MeshFence74" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 67.9665, 0.925115, 44.7599)
-
-[node name="MeshFence75" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 67.9665, 0.925115, 47.2271)
-
-[node name="MeshFence76" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(0.954584, 0, 0.297941, 0, 1, 0, -0.297941, 0, 0.954584, 66.7753, 0.925115, 48.8193)
-
-[node name="MeshFence77" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64.4208, 0.925115, 49.1857)
-
-[node name="MeshFence78" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.0409, 0.925115, 49.1857)
-
-[node name="MeshFence79" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.6412, 0.925115, 49.1857)
-
-[node name="MeshFence80" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(0.98465, 0, 0.174542, 0, 1, 0, -0.174542, 0, 0.98465, 57.2328, 0.925115, 49.3529)
-
-[node name="MeshFence81" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 57.4632, 6.93664, 51.0112)
-
-[node name="MeshFence82" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 57.4632, 6.93664, 53.4329)
-
-[node name="MeshFence83" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 57.4632, 6.93664, 55.8328)
-
-[node name="MeshFence84" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 57.4632, 6.93664, 58.2383)
-
-[node name="MeshFence85" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 57.4632, 6.93664, 60.6376)
-
-[node name="MeshFence86" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 57.4632, 6.93664, 63.1154)
-
-[node name="MeshFence87" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(0.565125, 0, 0.825005, 0, 1, 0, -0.825005, 0, 0.565125, 56.7137, 6.93664, 65.3372)
-
-[node name="MeshFence88" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -49.3999, 7.78161, 78.9571)
-
-[node name="MeshFence94" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -49.3999, 7.78161, 76.5439)
-
-[node name="MeshFence95" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -49.3999, 7.78161, 74.1095)
-
-[node name="MeshFence96" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -49.3999, 7.78161, 71.7249)
-
-[node name="MeshFence112" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -49.3999, 7.78161, 69.3104)
-
-[node name="MeshFence113" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -49.3999, 7.78161, 66.9004)
-
-[node name="MeshFence146" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -49.3999, 7.78161, 64.5229)
-
-[node name="MeshFence178" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -49.3999, 7.78161, 62.1224)
-
-[node name="MeshFence179" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -49.3999, 7.78161, 59.692)
-
-[node name="MeshFence104" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.3917, 7.80536, 58.2608)
-
-[node name="MeshFence105" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -46.1715, 7.80536, 57.0803)
-
-[node name="MeshFence106" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -46.1715, 7.80536, 54.6946)
-
-[node name="MeshFence107" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -46.1715, 7.80536, 52.2788)
-
-[node name="MeshFence108" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -46.3754, 0.00704765, 48.5456)
-
-[node name="MeshFence109" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -46.3754, 0.00704765, 46.1482)
-
-[node name="MeshFence110" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -46.3754, 0.00704765, 43.746)
-
-[node name="MeshFence111" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -46.3754, 0.00704765, 41.3235)
-
-[node name="MeshFence114" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -46.3754, 0.00704765, 34.1333)
-
-[node name="MeshFence115" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -46.3754, 0.00704765, 31.7602)
-
-[node name="MeshFence116" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -46.3754, 0.00704765, 29.3672)
-
-[node name="MeshFence117" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -46.3754, 0.00704765, 26.959)
-
-[node name="MeshFence118" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -46.3754, 0.00704765, 24.5152)
-
-[node name="MeshFence119" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -46.3754, 0.00704765, 22.1149)
-
-[node name="MeshFence120" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -46.3754, 0.00704765, 19.7184)
-
-[node name="MeshFence121" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -46.3754, 1.1924, 17.31)
-
-[node name="MeshFence122" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -46.3754, 1.1924, 14.9047)
-
-[node name="MeshFence123" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -46.3754, 8.30456, 12.9657)
-
-[node name="MeshFence124" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -46.3754, 8.32102, 10.5569)
-
-[node name="MeshFence125" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -46.3754, 8.33437, 8.14876)
-
-[node name="MeshFence126" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -46.3754, 8.33301, 5.73227)
-
-[node name="MeshFence127" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -46.3754, 8.33542, 3.29276)
-
-[node name="MeshFence128" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -46.3754, 8.33542, 0.873839)
-
-[node name="MeshFence129" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -46.3754, 8.33542, -1.55675)
-
-[node name="MeshFence130" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -46.3754, 8.32996, -3.94579)
-
-[node name="MeshFence131" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -46.3754, 8.32996, -6.35587)
-
-[node name="MeshFence132" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -46.3754, 8.32996, -8.7974)
-
-[node name="MeshFence133" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(0.955767, 0, 0.294124, 0, 1, 0, -0.294124, 0, 0.955767, -45.2315, 8.31503, -10.4228)
-
-[node name="MeshFence134" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.8803, 8.31639, -10.7834)
-
-[node name="MeshFence135" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.4714, 8.31639, -10.7834)
-
-[node name="MeshFence136" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.0814, 8.31639, -10.7834)
-
-[node name="MeshFence137" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.6923, 8.31639, -10.7834)
-
-[node name="MeshFence138" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.2903, 8.31639, -10.7834)
-
-[node name="MeshFence139" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.8612, 8.31639, -10.7834)
-
-[node name="MeshFence140" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.3933, 8.31639, -10.7834)
-
-[node name="MeshFence141" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.9758, 8.31639, -10.7834)
-
-[node name="MeshFence142" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.533, 8.31639, -10.7834)
-
-[node name="MeshFence143" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.13, 8.31639, -10.7834)
-
-[node name="MeshFence144" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.7374, 8.31639, -10.7834)
-
-[node name="MeshFence145" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.3032, 8.31639, -10.7834)
-
-[node name="MeshFence147" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.489, 1.38408, -17.7987)
-
-[node name="MeshFence164" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.6764, 10.2763, -17.7987)
-
-[node name="MeshFence165" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.2395, 10.2763, -17.7987)
-
-[node name="MeshFence166" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.85334, 10.2763, -17.7987)
-
-[node name="MeshFence167" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.46493, 10.2763, -17.7987)
-
-[node name="MeshFence168" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.04904, 10.2763, -17.7987)
-
-[node name="MeshFence169" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.633237, 10.2763, -17.7987)
-
-[node name="MeshFence170" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7697, 10.2763, -17.7987)
-
-[node name="MeshFence171" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.19872, 10.2763, -17.7987)
-
-[node name="MeshFence172" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.62411, 10.2763, -17.7987)
-
-[node name="MeshFence173" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.0679, 10.2763, -17.7987)
-
-[node name="MeshFence174" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5469, 10.2763, -17.7987)
-
-[node name="MeshFence175" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.9839, 10.2763, -17.7987)
-
-[node name="MeshFence176" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.4736, 10.2763, -17.7987)
-
-[node name="MeshFence177" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.0372, 10.2763, -17.7987)
-
-[node name="MeshFence148" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.9079, 1.38408, -17.7987)
-
-[node name="MeshFence149" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.3172, 1.38408, -17.7987)
-
-[node name="MeshFence150" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.7263, 1.38408, -17.7987)
-
-[node name="MeshFence151" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.1601, 1.38408, -17.7987)
-
-[node name="MeshFence152" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.6062, 1.38408, -17.7987)
-
-[node name="MeshFence153" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.0078, 1.38408, -17.7987)
-
-[node name="MeshFence154" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.4324, 1.38408, -17.7987)
-
-[node name="MeshFence155" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.8675, 1.38408, -17.7987)
-
-[node name="MeshFence156" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.2694, 1.38408, -17.7987)
-
-[node name="MeshFence157" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.6698, 1.38408, -17.7987)
-
-[node name="MeshFence158" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.0714, 1.38408, -17.7987)
-
-[node name="MeshFence159" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.4767, 1.38408, -17.7987)
-
-[node name="MeshFence160" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.8795, 1.38408, -17.7987)
-
-[node name="MeshFence161" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(0.407852, 0, 0.913048, 0, 1, 0, -0.913048, 0, 0.407852, -45.5459, 1.38408, -16.6829)
-
-[node name="MeshFence162" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -46.0476, 1.38408, -14.3844)
-
-[node name="MeshFence163" parent="NavigationRegion3D/LevelGeometry/Perimiter/MeshFences" instance=ExtResource("13_6b220")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -46.0476, 1.38408, -11.9664)
-
 [node name="Walls" type="Node" parent="NavigationRegion3D/LevelGeometry/Perimiter"]
 
 [node name="CSGBox3D16" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Perimiter/Walls"]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 57.591, 8.01269, 75.5003)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 57.591, 9.97173, 75.5003)
 use_collision = true
-size = Vector3(0.2, 21.6072, 52.5776)
+size = Vector3(0.2, 25.5253, 52.5776)
 material = ExtResource("3_bup4s")
 
 [node name="CSGBox3D17" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Perimiter/Walls"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 62.897, 7.75596, 49.3088)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 62.897, 9.73838, 49.3088)
 use_collision = true
-size = Vector3(0.2, 22.0498, 10.7112)
+size = Vector3(0.2, 26.0146, 10.7112)
 material = ExtResource("3_bup4s")
 
 [node name="CSGBox3D18" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Perimiter/Walls"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 68.2778, 7.52898, 19.8604)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 68.2778, 9.57539, 19.8604)
 use_collision = true
-size = Vector3(0.2, 22.3439, 58.9496)
+size = Vector3(0.2, 26.4367, 58.9496)
 material = ExtResource("3_bup4s")
 
 [node name="CSGBox3D19" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Perimiter/Walls"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 59.8304, 7.37358, -9.56523)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 59.8304, 9.40144, -9.56523)
 use_collision = true
-size = Vector3(0.2, 22.6249, 17.0616)
+size = Vector3(0.2, 26.6806, 17.0616)
 material = ExtResource("3_bup4s")
 
 [node name="CSGBox3D20" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Perimiter/Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.3952, 7.10267, -23.4187)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.3952, 9.13765, -23.4187)
 use_collision = true
-size = Vector3(0.2, 23.1357, 27.6111)
+size = Vector3(0.2, 27.2057, 27.6111)
 material = ExtResource("3_bup4s")
 
 [node name="CSGBox3D21" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Perimiter/Walls"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 35.481, 7.05462, -37.2155)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 35.481, 9.09402, -37.2155)
 use_collision = true
-size = Vector3(0.2, 23.2711, 32.1036)
+size = Vector3(0.2, 27.3499, 32.1036)
 material = ExtResource("3_bup4s")
 
 [node name="CSGBox3D22" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Perimiter/Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.2371, 6.63769, -27.6953)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.2371, 8.73534, -27.6953)
 use_collision = true
-size = Vector3(0.2, 23.7361, 19.5773)
+size = Vector3(0.2, 27.9314, 19.5773)
 material = ExtResource("3_bup4s")
 
 [node name="CSGBox3D23" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Perimiter/Walls"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -13.6539, 2.75927, -18.0594)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -13.6539, 4.88226, -18.0594)
 use_collision = true
-size = Vector3(0.2, 31.3889, 65.922)
+size = Vector3(0.2, 35.6349, 65.922)
 material = ExtResource("3_bup4s")
 
 [node name="CSGBox3D24" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Perimiter/Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.5458, 3.16638, 20.0445)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.5458, 5.10686, 20.0445)
 use_collision = true
-size = Vector3(0.2, 31.1304, 76.3438)
+size = Vector3(0.2, 35.0114, 76.3438)
 material = ExtResource("3_bup4s")
 
 [node name="CSGBox3D25" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Perimiter/Walls"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -48.1496, 4.20862, 58.085)
-size = Vector3(0.2, 29.0342, 3.22493)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -48.1496, 6.17297, 58.085)
+use_collision = true
+size = Vector3(0.2, 32.9629, 3.22493)
 material = ExtResource("3_bup4s")
 
 [node name="CSGBox3D26" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Perimiter/Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.8354, 3.94924, 69.1897)
-size = Vector3(0.2, 29.5047, 22.2854)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.8354, 5.93073, 69.1897)
+use_collision = true
+size = Vector3(0.2, 33.4677, 22.2854)
 material = ExtResource("3_bup4s")
 
 [node name="CSGBox3D28" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Perimiter/Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.862, 8.02703, 91.0366)
-size = Vector3(0.2, 21.3449, 21.5939)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.862, 10.0172, 91.0366)
+use_collision = true
+size = Vector3(0.2, 25.3253, 21.5939)
 material = ExtResource("3_bup4s")
 
 [node name="CSGBox3D29" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Perimiter/Walls"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.87108, 5.06579, 101.738)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.87108, 7.05266, 101.738)
 use_collision = true
-size = Vector3(0.2, 27.3218, 107.582)
+size = Vector3(0.2, 31.2955, 107.582)
 material = ExtResource("3_bup4s")
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Perimiter/Walls"]
@@ -3802,7 +3388,7 @@ transform = Transform3D(-0.9821, 0, 0.188358, 0, 1, 0, -0.188358, 0, -0.9821, -3
 [node name="Playground" type="Node" parent="NavigationRegion3D/LevelGeometry"]
 
 [node name="CSGBox3D15" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Playground"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.2198, 6.71145, 58.6246)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.2198, 6.51249, 58.6246)
 size = Vector3(18, 1, 11)
 material = ExtResource("5_vqyvj")
 
@@ -4120,21 +3706,25 @@ material = ExtResource("5_vqyvj")
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="NavigationRegion3D/LevelGeometry/Mine"]
 transform = Transform3D(1.46659e-15, 4.37113e-08, -1, 1, -4.37113e-08, -4.44086e-16, -4.37113e-08, -1, -4.37113e-08, -3.32736, 0.1006, 65.6714)
+use_collision = true
 radius = 1.6937
 material = ExtResource("5_vqyvj")
 
 [node name="CSGSphere3D2" type="CSGSphere3D" parent="NavigationRegion3D/LevelGeometry/Mine"]
 transform = Transform3D(1.46659e-15, 4.37113e-08, -1, 1, -4.37113e-08, -4.44086e-16, -4.37113e-08, -1, -4.37113e-08, -3.32736, 0.1006, 66.7225)
+use_collision = true
 radius = 2.10227
 material = ExtResource("5_vqyvj")
 
 [node name="CSGSphere3D3" type="CSGSphere3D" parent="NavigationRegion3D/LevelGeometry/Mine"]
 transform = Transform3D(1.46659e-15, 4.37113e-08, -1, 1, -4.37113e-08, -4.44086e-16, -4.37113e-08, -1, -4.37113e-08, -3.32736, 1.4571, 66.7225)
+use_collision = true
 radius = 1.54832
 material = ExtResource("5_vqyvj")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Mine"]
 transform = Transform3D(1.46659e-15, 4.37113e-08, -1, 1, -4.37113e-08, -4.44085e-16, -4.37113e-08, -1, -4.37113e-08, 10.3698, 0.57035, 62.5761)
+use_collision = true
 size = Vector3(1, 12.8627, 20.4526)
 material = ExtResource("3_oifnu")
 
@@ -4152,31 +3742,37 @@ material = ExtResource("3_oifnu")
 
 [node name="CSGSphere3D4" type="CSGSphere3D" parent="NavigationRegion3D/LevelGeometry/Mine"]
 transform = Transform3D(1.46659e-15, 4.37113e-08, -1, 1, -4.37113e-08, -4.44086e-16, -4.37113e-08, -1, -4.37113e-08, -2.40351, 1.4571, 65.4542)
+use_collision = true
 radius = 1.54832
 material = ExtResource("5_vqyvj")
 
 [node name="CSGSphere3D10" type="CSGSphere3D" parent="NavigationRegion3D/LevelGeometry/Mine"]
 transform = Transform3D(1.46659e-15, 4.37113e-08, -1, 1, -4.37113e-08, -4.44086e-16, -4.37113e-08, -1, -4.37113e-08, -2.40351, 1.4571, 68.5345)
+use_collision = true
 radius = 1.54832
 material = ExtResource("5_vqyvj")
 
 [node name="CSGSphere3D5" type="CSGSphere3D" parent="NavigationRegion3D/LevelGeometry/Mine"]
 transform = Transform3D(1.46659e-15, 4.37113e-08, -1, 1, -4.37113e-08, -4.44086e-16, -4.37113e-08, -1, -4.37113e-08, -1.41249, 0.3656, 65.4542)
+use_collision = true
 radius = 1.71842
 material = ExtResource("5_vqyvj")
 
 [node name="CSGSphere3D6" type="CSGSphere3D" parent="NavigationRegion3D/LevelGeometry/Mine"]
 transform = Transform3D(1.46659e-15, 4.37113e-08, -1, 1, -4.37113e-08, -4.44086e-16, -4.37113e-08, -1, -4.37113e-08, -1.3314, 0.09726, 67.7401)
+use_collision = true
 radius = 2.09041
 material = ExtResource("5_vqyvj")
 
 [node name="CSGSphere3D7" type="CSGSphere3D" parent="NavigationRegion3D/LevelGeometry/Mine"]
 transform = Transform3D(1.46659e-15, 4.37113e-08, -1, 1, -4.37113e-08, -4.44086e-16, -4.37113e-08, -1, -4.37113e-08, 7.54796, 0.09726, 79.6365)
+use_collision = true
 radius = 2.09041
 material = ExtResource("5_vqyvj")
 
 [node name="CSGSphere3D11" type="CSGSphere3D" parent="NavigationRegion3D/LevelGeometry/Mine"]
 transform = Transform3D(1.46659e-15, 4.37113e-08, -1, 1, -4.37113e-08, -4.44086e-16, -4.37113e-08, -1, -4.37113e-08, 29.7602, 0.09726, 79.6365)
+use_collision = true
 radius = 2.21015
 material = ExtResource("5_vqyvj")
 
@@ -4187,68 +3783,80 @@ material = ExtResource("5_vqyvj")
 
 [node name="CSGSphere3D8" type="CSGSphere3D" parent="NavigationRegion3D/LevelGeometry/Mine"]
 transform = Transform3D(1.46659e-15, 4.37113e-08, -1, 1, -4.37113e-08, -4.44086e-16, -4.37113e-08, -1, -4.37113e-08, 4.65005, 0.09726, 79.6365)
+use_collision = true
 radius = 2.56144
 material = ExtResource("5_vqyvj")
 
 [node name="CSGSphere3D9" type="CSGSphere3D" parent="NavigationRegion3D/LevelGeometry/Mine"]
 transform = Transform3D(1.46659e-15, 4.37113e-08, -1, 1, -4.37113e-08, -4.44086e-16, -4.37113e-08, -1, -4.37113e-08, 3.77667, 0.09726, 77.2428)
+use_collision = true
 radius = 2.95649
 material = ExtResource("5_vqyvj")
 
 [node name="CSGSphere3D13" type="CSGSphere3D" parent="NavigationRegion3D/LevelGeometry/Mine"]
 transform = Transform3D(1.46659e-15, 4.37113e-08, -1, 1, -4.37113e-08, -4.44086e-16, -4.37113e-08, -1, -4.37113e-08, 35.7943, 0.09726, 69.2094)
+use_collision = true
 radius = 2.95649
 material = ExtResource("5_vqyvj")
 
 [node name="CSGSphere3D14" type="CSGSphere3D" parent="NavigationRegion3D/LevelGeometry/Mine"]
 transform = Transform3D(1.46659e-15, 4.37113e-08, -1, 1, -4.37113e-08, -4.44086e-16, -4.37113e-08, -1, -4.37113e-08, 35.7943, 0.36212, 98.9626)
+use_collision = true
 radius = 1.72292
 material = ExtResource("5_vqyvj")
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="NavigationRegion3D/LevelGeometry/Mine"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.14757, 0.89447, 59.6994)
+use_collision = true
 radius = 0.7
 height = 1.6
 material = ExtResource("5_vqyvj")
 
 [node name="CSGCylinder3D4" type="CSGCylinder3D" parent="NavigationRegion3D/LevelGeometry/Mine"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8.31852, 1.87035, 62.8976)
+use_collision = true
 radius = 0.7
 height = 1.6
 material = ExtResource("5_vqyvj")
 
 [node name="CSGCylinder3D5" type="CSGCylinder3D" parent="NavigationRegion3D/LevelGeometry/Mine"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8.31852, 1.87035, 64.4657)
+use_collision = true
 radius = 0.7
 height = 1.6
 material = ExtResource("5_vqyvj")
 
 [node name="CSGCylinder3D8" type="CSGCylinder3D" parent="NavigationRegion3D/LevelGeometry/Mine"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8.31852, 3.47035, 64.4657)
+use_collision = true
 radius = 0.7
 height = 1.6
 material = ExtResource("5_vqyvj")
 
 [node name="CSGCylinder3D6" type="CSGCylinder3D" parent="NavigationRegion3D/LevelGeometry/Mine"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.69049, 1.87035, 64.4657)
+use_collision = true
 radius = 0.7
 height = 1.6
 material = ExtResource("5_vqyvj")
 
 [node name="CSGCylinder3D7" type="CSGCylinder3D" parent="NavigationRegion3D/LevelGeometry/Mine"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.69049, 3.47035, 64.4657)
+use_collision = true
 radius = 0.7
 height = 1.6
 material = ExtResource("5_vqyvj")
 
 [node name="CSGCylinder3D2" type="CSGCylinder3D" parent="NavigationRegion3D/LevelGeometry/Mine"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.61951, 0.89447, 59.6994)
+use_collision = true
 radius = 0.7
 height = 1.6
 material = ExtResource("5_vqyvj")
 
 [node name="CSGCylinder3D3" type="CSGCylinder3D" parent="NavigationRegion3D/LevelGeometry/Mine"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.61951, 0.89447, 61.1785)
+use_collision = true
 radius = 0.7
 height = 1.6
 material = ExtResource("5_vqyvj")
@@ -4467,7 +4075,7 @@ material = ExtResource("5_vqyvj")
 transform = Transform3D(-0.0993271, 0.923304, 0.371004, 0.0176911, 0.374427, -0.927088, -0.994898, -0.0855215, -0.053525, -0.53687, 1.28098, 78.4464)
 use_collision = true
 size = Vector3(1.2, 7.00308, 0.1)
-material = ExtResource("3_oifnu")
+material = ExtResource("5_vqyvj")
 
 [node name="CSGMesh3D" parent="NavigationRegion3D/LevelGeometry/Mine" instance=ExtResource("16_ja85j")]
 transform = Transform3D(0.763627, 0, 0.645658, 0, 1, 0, -0.645658, 0, 0.763627, 14.9812, 0.381569, 73.411)
@@ -4484,34 +4092,126 @@ spawn_path = NodePath("../Enemies")
 
 [node name="EnemySpawns" type="Node" parent="."]
 
-[node name="SpawnPoint" type="Node3D" parent="EnemySpawns"]
+[node name="EnemySpawnZone1" type="Node3D" parent="EnemySpawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.1727, 0, 8.15691)
+
+[node name="Spawn1" type="Node3D" parent="EnemySpawns/EnemySpawnZone1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.24911, 0, 0)
+
+[node name="Spawn2" type="Node3D" parent="EnemySpawns/EnemySpawnZone1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.17645)
+
+[node name="Spawn3" type="Node3D" parent="EnemySpawns/EnemySpawnZone1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.34932, 0, -1.86734)
+
+[node name="Spawn4" type="Node3D" parent="EnemySpawns/EnemySpawnZone1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.56281, 0, 2.37183)
+
+[node name="Spawn5" type="Node3D" parent="EnemySpawns/EnemySpawnZone1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.80964, 0, 1.45582)
+
+[node name="EnemySpawnZone2" type="Node3D" parent="EnemySpawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.66022, 0, 36.5394)
+
+[node name="Spawn1" type="Node3D" parent="EnemySpawns/EnemySpawnZone2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.55441)
+
+[node name="Spawn2" type="Node3D" parent="EnemySpawns/EnemySpawnZone2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.63414, 0, 0)
+
+[node name="Spawn3" type="Node3D" parent="EnemySpawns/EnemySpawnZone2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3389, 0, -2.41312)
+
+[node name="Spawn4" type="Node3D" parent="EnemySpawns/EnemySpawnZone2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.826829, 0, -2.19376)
+
+[node name="Spawn5" type="Node3D" parent="EnemySpawns/EnemySpawnZone2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.702527, 0, -1.01279)
+
+[node name="EnemySpawnZone3" type="Node3D" parent="EnemySpawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.9203, 0.795118, 40.5101)
+
+[node name="Spawn1" type="Node3D" parent="EnemySpawns/EnemySpawnZone3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.58277, -4.76837e-07, -0.178272)
+
+[node name="Spawn2" type="Node3D" parent="EnemySpawns/EnemySpawnZone3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.737888, -4.76837e-07, -1.8572)
+
+[node name="Spawn3" type="Node3D" parent="EnemySpawns/EnemySpawnZone3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.456001, 4.76837e-07, 1.22744)
+
+[node name="Spawn4" type="Node3D" parent="EnemySpawns/EnemySpawnZone3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.70062, 0, 0.273525)
+
+[node name="Spawn5" type="Node3D" parent="EnemySpawns/EnemySpawnZone3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.134392, -4.76837e-07, -0.564571)
+
+[node name="EnemySpawnZone4" type="Node3D" parent="EnemySpawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.71025, 7.59902, 74.1218)
+
+[node name="Spawn1" type="Node3D" parent="EnemySpawns/EnemySpawnZone4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.95686, -4.76837e-07, 1.12559)
+
+[node name="Spawn2" type="Node3D" parent="EnemySpawns/EnemySpawnZone4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.40763, 0, 2.06081)
+
+[node name="Spawn3" type="Node3D" parent="EnemySpawns/EnemySpawnZone4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.46795, 0, -0.983421)
+
+[node name="Spawn4" type="Node3D" parent="EnemySpawns/EnemySpawnZone4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.38807, -1.27684, 0)
+
+[node name="Spawn5" type="Node3D" parent="EnemySpawns/EnemySpawnZone4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0806179, 4.76837e-07, 1.14328)
+
+[node name="EnemySpawnZone5" type="Node3D" parent="EnemySpawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.8687, 9.01268, 55.8927)
+
+[node name="Spawn1" type="Node3D" parent="EnemySpawns/EnemySpawnZone5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.463711, 0, 2.42132)
+
+[node name="Spawn2" type="Node3D" parent="EnemySpawns/EnemySpawnZone5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.273109, 0, 0.883865)
+
+[node name="Spawn3" type="Node3D" parent="EnemySpawns/EnemySpawnZone5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.871517, 0, 0.659878)
+
+[node name="Spawn4" type="Node3D" parent="EnemySpawns/EnemySpawnZone5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.138111, 0, -1.7209)
+
+[node name="Spawn5" type="Node3D" parent="EnemySpawns/EnemySpawnZone5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.04911, 0, -1.25621)
+
+[node name="OLD" type="Node" parent="EnemySpawns"]
+
+[node name="SpawnPoint" type="Node3D" parent="EnemySpawns/OLD"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.96101, 0.981206, 36.2586)
 
-[node name="SpawnPoint2" type="Node3D" parent="EnemySpawns"]
+[node name="SpawnPoint2" type="Node3D" parent="EnemySpawns/OLD"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.7062, 3.3787, 24.9905)
 
-[node name="SpawnPoint3" type="Node3D" parent="EnemySpawns"]
+[node name="SpawnPoint3" type="Node3D" parent="EnemySpawns/OLD"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.1866, 1.22868, 41.0089)
 
-[node name="SpawnPoint4" type="Node3D" parent="EnemySpawns"]
+[node name="SpawnPoint4" type="Node3D" parent="EnemySpawns/OLD"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.0426, 1.60321, 40.5745)
 
-[node name="SpawnPoint5" type="Node3D" parent="EnemySpawns"]
+[node name="SpawnPoint5" type="Node3D" parent="EnemySpawns/OLD"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.3867, 7.91896, 57.2531)
 
-[node name="SpawnPoint6" type="Node3D" parent="EnemySpawns"]
+[node name="SpawnPoint6" type="Node3D" parent="EnemySpawns/OLD"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.349, 8.34286, 75.23)
 
-[node name="SpawnPoint7" type="Node3D" parent="EnemySpawns"]
+[node name="SpawnPoint7" type="Node3D" parent="EnemySpawns/OLD"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.0209, 8.81623, 67.9147)
 
-[node name="SpawnPoint8" type="Node3D" parent="EnemySpawns"]
+[node name="SpawnPoint8" type="Node3D" parent="EnemySpawns/OLD"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.3716, 1.81292, 29.0063)
 
-[node name="SpawnPoint9" type="Node3D" parent="EnemySpawns"]
+[node name="SpawnPoint9" type="Node3D" parent="EnemySpawns/OLD"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.7352, 2.33746, -12.2459)
 
-[node name="SpawnPoint10" type="Node3D" parent="EnemySpawns"]
+[node name="SpawnPoint10" type="Node3D" parent="EnemySpawns/OLD"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.6505, 8.22424, 59.8577)
 
 [node name="Enemies" type="Node3D" parent="."]
