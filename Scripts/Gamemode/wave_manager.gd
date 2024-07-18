@@ -9,6 +9,9 @@ var player : MultiplayerPlayer
 
 const ROBOT = preload("res://Scenes/Enemies/robot.tscn")
 
+@export var do_enemy_count_hard_cap : bool = true
+@export var enemy_count_hard_cap : int = 15
+
 # Wave variables
 var first_wave_delay := 5.0
 var intermission_delay := 5.0
@@ -75,6 +78,7 @@ func start_intermission() -> void:
 func start_new_wave() -> void:
 	cur_wave += 1
 	max_enemies = cur_wave * 5
+	if do_enemy_count_hard_cap: max_enemies = clampi(max_enemies, 0, enemy_count_hard_cap)
 	print("Max enemies: " + str(max_enemies))
 	spawn_wave()
 
