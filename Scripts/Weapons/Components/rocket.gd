@@ -2,6 +2,7 @@ extends CharacterBody3D
 
 @export var explosion_scene = preload("res://Scenes/Weapons/Components/explosion.tscn")
 @export var collision_shape : CollisionShape3D
+var rocket_launcher : RocketLauncher
 
 var direction : Vector3
 var speed : float
@@ -18,6 +19,8 @@ func explode(collision: KinematicCollision3D) -> void:
 	collision_shape.disabled = true
 	# Instantiate the explosion
 	var explosion = explosion_scene.instantiate()
+	# Give it a reference to the rocket launcher
+	explosion.rocket_launcher = rocket_launcher
 	# Make it a child of the level scene
 	var level = get_tree().get_first_node_in_group("level")
 	level.add_child(explosion)

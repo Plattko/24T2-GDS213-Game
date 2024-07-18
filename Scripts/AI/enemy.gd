@@ -1,6 +1,7 @@
 class_name Enemy
 extends CharacterBody3D
 
+@export var collider : CollisionShape3D
 @export var hurtboxes : Array[Damageable] = []
 @export var nav_agent : NavigationAgent3D
 @export var anim_tree : AnimationTree
@@ -153,4 +154,5 @@ func _on_attack_hitbox_area_exited(area) -> void:
 # Debugging
 #-------------------------------------------------------------------------------
 func _on_nav_agent_path_changed():
-	print("Path changed.")
+	#print("Path changed.")
+	pass

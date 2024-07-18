@@ -23,7 +23,7 @@ mesh = SubResource("SphereMesh_4otjf")
 
 [node name="ExplosionRadius" type="Area3D" parent="."]
 collision_layer = 0
-collision_mask = 3
+collision_mask = 7
 
 [node name="CollisionSphere" type="CollisionShape3D" parent="ExplosionRadius"]
 shape = SubResource("SphereShape3D_kl43k")

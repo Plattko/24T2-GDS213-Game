@@ -1,12 +1,14 @@
 extends Node3D
 
 @export var explosion_col : CollisionShape3D
+var rocket_launcher : RocketLauncher
 
 @export var explosion_damage : float = 56.0
 var self_damage : float = explosion_damage * 0.6
 var knockback_strength : float = 12.0
+var is_direct_hit : bool = false
 
-var do_self_damage : bool = false
+var do_self_damage : bool = true
 
 func _ready():
 	await get_tree().create_timer(0.5).timeout
@@ -17,11 +19,48 @@ func _physics_process(_delta) -> void:
 		explosion_col.disabled = true
 		set_physics_process(false)
 
-## TODO: Make it so only the player who shot the rocket is effected
-## TODO: Add damaging enemies
-## TODO: Add self-damage
+## TODO: Make it so only the player who shot the rocket is effected by player hits
 func _on_explosion_radius_body_entered(body):
-	if body is MultiplayerPlayer:
+	if body is Enemy:
+		print("Enemy detected")
+		# Raycast from the explosion's centre to the enemy's collider
+		var query = PhysicsRayQueryParameters3D.create(global_position, body.collider.global_position)
+		query.hit_from_inside = true
+		
+		# Find where the raycast intersected with the enemy's hitbox
+		var space_state = get_world_3d().direct_space_state
+		var result = space_state.intersect_ray(query)
+		is_direct_hit = true if result.normal == Vector3.ZERO else false
+		
+		# Calculate direction and distance from the explosion's centre to the hitbox/collider position
+		var target_vector : Vector3
+		if is_direct_hit:
+			target_vector = Vector3(body.collider.global_position - global_position)
+		else:
+			var hitbox_position : Vector3 = result.position
+			target_vector = Vector3(hitbox_position - global_position)
+		var direction : Vector3 = target_vector.normalized()
+		var distance : float = target_vector.length()
+		
+		# Calculate the magnitude
+		var magnitude : float
+		if is_direct_hit:
+			magnitude = 1.0
+		else:
+			magnitude = lerpf(1.0, 0.5, distance / explosion_col.shape.radius)
+		# Calculate the damage
+		var damage : float = explosion_damage * magnitude
+		# Calculate the knockback
+		var knockback : Vector3 = direction * knockback_strength * magnitude
+		
+		# Apply the damage
+		body.on_damaged(damage)
+		# Notify the rocket launcher an enemy was hit
+		rocket_launcher.on_enemy_hit(damage)
+		# Apply the explosion knockback
+		body.velocity += knockback
+	
+	elif body is MultiplayerPlayer:
 		# Raycast from the explosion's centre to the player's eyes
 		var query = PhysicsRayQueryParameters3D.create(global_position, body.head.global_position)
 		
@@ -35,7 +74,7 @@ func _on_explosion_radius_body_entered(body):
 		var direction : Vector3 = target_vector.normalized()
 		var distance : float = target_vector.length()
 		
-		# Calculate the knockback's magnitude
+		# Calculate the magnitude
 		var magnitude : float = lerpf(1.0, 0.5, distance / explosion_col.shape.radius)
 		# Calculate the self-damage
 		var damage : float = self_damage * magnitude
