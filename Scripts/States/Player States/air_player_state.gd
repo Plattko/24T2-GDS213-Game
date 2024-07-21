@@ -44,7 +44,7 @@ var is_in_wall_leap : bool = false
 # Mantle variables
 @export_group("Mantle Variables")
 @export var ledge_check : RayCast3D
-@export var wall_check : RayCast3D
+@export var wall_check : ShapeCast3D
 @export var mantle_duration : Timer
 var can_climb : bool = false:
 	get:

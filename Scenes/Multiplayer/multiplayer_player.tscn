@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://il6q27w1jqvw"]
+[gd_scene load_steps=41 format=3 uid="uid://il6q27w1jqvw"]
 
 [ext_resource type="Script" path="res://Scripts/Multiplayer/multiplayer_player.gd" id="1_0n7q4"]
 [ext_resource type="Script" path="res://Scripts/Player/player_input.gd" id="2_7s41b"]
@@ -47,6 +47,9 @@ albedo_color = Color(0, 0.654902, 0.894118, 1)
 roughness = 0.5
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3r45p"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jyr28"]
+size = Vector3(0.1, 0.2, 0.5)
 
 [sub_resource type="Animation" id="Animation_twumr"]
 resource_name = "Crouch"
@@ -613,9 +616,10 @@ target_position = Vector3(0, -0.5, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65, 0)
 target_position = Vector3(0, 0, -1)
 
-[node name="WallCheck" type="RayCast3D" parent="LedgeCheck"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.75)
-target_position = Vector3(0, -0.2, 0)
+[node name="WallCheck" type="ShapeCast3D" parent="LedgeCheck"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, -0.5)
+shape = SubResource("BoxShape3D_jyr28")
+target_position = Vector3(0, 0, 0)
 
 [node name="Damageable" parent="." instance=ExtResource("3_sfxmm")]
 collision_layer = 2
