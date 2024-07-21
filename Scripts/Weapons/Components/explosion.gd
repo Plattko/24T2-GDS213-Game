@@ -10,6 +10,8 @@ var is_direct_hit : bool = false
 
 #var do_self_damage : bool = true
 
+const ENEMY_COLLISION_MASK : int = pow(2, 1-1) + pow(2, 3-1)
+
 func _ready():
 	await get_tree().create_timer(0.5).timeout
 	queue_free()
@@ -24,7 +26,7 @@ func _on_explosion_radius_body_entered(body):
 	if body is Enemy:
 		print("Enemy detected")
 		# Raycast from the explosion's centre to the enemy's collider
-		var query = PhysicsRayQueryParameters3D.create(global_position, body.collider.global_position)
+		var query = PhysicsRayQueryParameters3D.create(global_position, body.collider.global_position, ENEMY_COLLISION_MASK)
 		query.hit_from_inside = true
 		
 		# Find where the raycast intersected with the enemy's hitbox
