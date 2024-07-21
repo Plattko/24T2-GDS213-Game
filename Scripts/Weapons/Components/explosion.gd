@@ -3,14 +3,14 @@ extends Node3D
 @export var explosion_col : CollisionShape3D
 var rocket_launcher : RocketLauncher
 
-@export var explosion_damage : float = 56.0
-var self_damage : float = explosion_damage * 0.6
+@export var explosion_damage : float = 75.0
+var self_damage : float = explosion_damage * 0.45
 var knockback_strength : float = 12.0
 var is_direct_hit : bool = false
 
 #var do_self_damage : bool = true
 
-const ENEMY_COLLISION_MASK : int = pow(2, 1-1) + pow(2, 3-1)
+const ENEMY_COLLISION_MASK : int = roundi(pow(2, 1-1)) + roundi(pow(2, 3-1))
 
 func _ready():
 	await get_tree().create_timer(0.5).timeout
