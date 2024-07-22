@@ -29,12 +29,12 @@ func shoot() -> void:
 			
 			if collider.is_weak_point:
 				var dmg = damage_with_falloff(crit_damage, distance)
-				collider.take_damage.rpc(dmg)
+				collider.take_damage.rpc(dmg, true)
 				crit_hit.emit(dmg)
 				print("Damage done: %s" % dmg)
 			else:
 				var dmg = damage_with_falloff(BULLET_DAMAGE, distance)
-				collider.take_damage.rpc(dmg)
+				collider.take_damage.rpc(dmg, false)
 				regular_hit.emit(dmg)
 				print("Damage done: %s" % dmg)
 	else:

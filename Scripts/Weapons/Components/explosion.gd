@@ -56,7 +56,7 @@ func _on_explosion_radius_body_entered(body):
 		var knockback : Vector3 = direction * knockback_strength * magnitude
 		
 		# Apply the damage
-		body.on_damaged(damage)
+		body.on_damaged(damage, false)
 		# Notify the rocket launcher an enemy was hit
 		rocket_launcher.on_enemy_hit(damage)
 		# Apply the explosion knockback
