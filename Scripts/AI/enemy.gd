@@ -163,7 +163,7 @@ func reset_has_attack_hit() -> void:
 func _on_attack_hitbox_area_entered(area) -> void:
 	if area is Damageable and !has_attack_hit:
 		print("%s hit." % area)
-		area.take_damage(atk_damage)
+		area.take_damage(atk_damage, false)
 
 func _on_attack_hitbox_area_exited(area) -> void:
 	if area is Damageable:
