@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dptoawamhw40s"]
+[gd_scene load_steps=8 format=3 uid="uid://dptoawamhw40s"]
 
 [ext_resource type="Script" path="res://Scripts/Weapons/Components/rocket.gd" id="1_8wfgc"]
 [ext_resource type="Texture2D" uid="uid://cqt54i16o65qj" path="res://Assets/Imports/FPS Bundle/Weapons/RPG/Meshes/SM_HeavyWeapon2_01_3_T_Texture_01.png" id="2_c4w8q"]
+[ext_resource type="PackedScene" uid="uid://caikardaaqlll" path="res://Scenes/Weapons/Components/explosion.tscn" id="2_xusv5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cdcml"]
 resource_name = "M_LowPolyWeapons_MAIN"
@@ -44,10 +45,13 @@ shadow_mesh = SubResource("ArrayMesh_nkxo1")
 radius = 0.1
 height = 0.5
 
-[node name="Rocket" type="CharacterBody3D"]
+[node name="Rocket" type="CharacterBody3D" node_paths=PackedStringArray("mesh", "collision_shape")]
 collision_layer = 0
 collision_mask = 5
 script = ExtResource("1_8wfgc")
+explosion_scene = ExtResource("2_xusv5")
+mesh = NodePath("Mesh")
+collision_shape = NodePath("CollisionShape")
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(-6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, 0, 0, 0.364)

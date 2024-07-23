@@ -5,6 +5,8 @@ extends CharacterBody3D
 @export var hurtboxes : Array[Damageable] = []
 @export var nav_agent : NavigationAgent3D
 @export var anim_tree : AnimationTree
+@export var health_bar : EnemyHealthBar
+
 @export var health_orb_scene = preload("res://Scenes/Pickups/health_orb.tscn")
 
 var anim_state_machine
@@ -51,6 +53,8 @@ func _ready():
 	anim_state_machine = anim_tree.get("parameters/playback")
 	# Set the enemy to max health
 	cur_health = max_health
+	# Initialise the health bar
+	health_bar.init_health(cur_health)
 	# Connect each Damageable to the on_damaged signal
 	for hurtbox in hurtboxes:
 		if hurtbox is Damageable:
@@ -128,8 +132,9 @@ func animate(anim: Animations) -> void:
 #-------------------------------------------------------------------------------
 # Health
 #-------------------------------------------------------------------------------
-func on_damaged(damage: float):
+func on_damaged(damage: float, is_crit: bool):
 	cur_health -= damage
+	health_bar.update_health(cur_health, is_crit)
 	#cur_state = STUNNED
 
 func die() -> void:
@@ -158,7 +163,7 @@ func reset_has_attack_hit() -> void:
 func _on_attack_hitbox_area_entered(area) -> void:
 	if area is Damageable and !has_attack_hit:
 		print("%s hit." % area)
-		area.take_damage(atk_damage)
+		area.take_damage(atk_damage, false)
 
 func _on_attack_hitbox_area_exited(area) -> void:
 	if area is Damageable:
