@@ -83,7 +83,7 @@ func _unhandled_input(event) -> void:
 	# Health debug
 	if event is InputEventKey:
 		if event.pressed and event.keycode == KEY_P:
-			on_damaged(20)
+			on_damaged(20, false)
 		if event.pressed and event.keycode == KEY_O:
 			on_healed(20)
 		if event.pressed and event.keycode == KEY_I:
@@ -174,7 +174,7 @@ func set_sensitivity(value: float) -> void:
 #-------------------------------------------------------------------------------
 # Health
 #-------------------------------------------------------------------------------
-func on_damaged(damage: float) -> void:
+func on_damaged(damage: float, _is_crit: bool) -> void:
 	if cur_health > 0.0:
 		cur_health -= damage
 		cur_health = clampf(cur_health, 0.0, max_health)
