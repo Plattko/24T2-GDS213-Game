@@ -24,14 +24,15 @@ var enemy_spawn_delay := 1.0
 # Zone change variables
 @export_group("Zone Change Variables")
 @export var zone_change_timer : Timer
-@export var zone_gate : Node3D
+@export var endless_wave_timer : Timer
+@export var zone_gate : ZoneGate
 
 var wave_index : int = 0
 var change_possible_index : int = 4
 var cur_change_chance : float = 0.0
 var change_chance_increase : float = 0.2
 var zone_change_duration : float = 30.0
-var do_zone_change : bool = false
+@export var do_zone_change : bool = false
 
 signal enemy_count_updated(enemy_count: int)
 signal cur_wave_updated(wave: int)
@@ -40,6 +41,8 @@ signal zone_change_entered
 
 func _ready() -> void:
 	randomize()
+	
+	zone_gate.anim_player.animation_finished.connect(_on_zone_gate_anim_finished)
 
 func initialise(player_ref) -> void: # Called by Scene Manager
 	# Set player reference
@@ -116,22 +119,44 @@ func start_zone_change() -> void:
 	# Reset zone change variables
 	wave_index = 0
 	cur_change_chance = 0.0
+	do_zone_change = false
+	
+	# Start the endless wave
+	endless_wave_timer.start()
 	
 	# Display zone change warning UI
 	emit_zone_change_entered.rpc()
-	
 	# Play zone gate open animation
-	# Start gate close animation
-	
-	# When gate closes:
-	# Play screen shake
-	# Hide zone change warning UI
-	# Play vaporisation ray and kill all enemies/players in zone
-	
-	# Start new wave without respawning players
-	await zone_change_timer.timeout
-	await get_tree().create_timer(2.0).timeout
-	start_new_wave()
+	zone_gate.anim_player.play("Open")
+
+func _on_zone_gate_anim_finished(anim_name: StringName) -> void:
+	if anim_name == "Open":
+		# Start gate close animation
+		zone_gate.anim_player.play("Close")
+	elif anim_name == "Close":
+		# Stop the endless wave
+		endless_wave_timer.stop()
+		
+		# TODO: Play screen shake
+		
+		# TODO: Play vaporisation ray and kill all enemies/players in zone
+		
+		# TODO: Start new wave without respawning players
+		await get_tree().create_timer(2.0).timeout
+		start_new_wave()
+
+func _on_endless_wave_timer_timeout():
+	# Restart the timer
+	endless_wave_timer.start()
+	# Instantiate enemy
+	var enemy = ROBOT.instantiate()
+	# Give enemy reference to player
+	enemy.initialise(player)
+	# Add enemy as child of nav region
+	enemies_node.add_child(enemy, true)
+	# Set enemy's spawn point to a random spawn point
+	var spawn_point = enemy_spawn_points.pick_random().global_position
+	enemy.global_position = spawn_point
 
 #-------------------------------------------------------------------------------
 # RPCS
@@ -152,3 +177,5 @@ func emit_intermission_entered() -> void:
 func emit_zone_change_entered() -> void:
 	zone_change_timer.start()
 	zone_change_entered.emit()
+
+
