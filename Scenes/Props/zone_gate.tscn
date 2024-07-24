@@ -1,0 +1,171 @@
+[gd_scene load_steps=10 format=3 uid="uid://6saq0gdbyimu"]
+
+[ext_resource type="Material" uid="uid://bbyh52cc6ljvg" path="res://Assets/Materials/Standard Materials/prototype_grey.tres" id="1_uh2bh"]
+[ext_resource type="Script" path="res://Scripts/Gamemode/zone_gate.gd" id="1_ypjqs"]
+[ext_resource type="Material" uid="uid://clau1arwwv1yw" path="res://Assets/Materials/Standard Materials/prototype_orange.tres" id="2_bqibo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a7n76"]
+transparency = 1
+albedo_color = Color(0.0588235, 0.870588, 1, 0.0980392)
+emission_enabled = true
+emission = Color(0.0588235, 0.870588, 1, 1)
+emission_energy_multiplier = 0.75
+
+[sub_resource type="Animation" id="Animation_faehm"]
+resource_name = "Open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RightDoorPos/RightDoor:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(2.5, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LeftDoorPos/LeftDoor:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-2.5, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_dvj8s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RightDoorPos/RightDoor:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LeftDoorPos/LeftDoor:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4btik"]
+resource_name = "Close"
+length = 29.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RightDoorPos/RightDoor:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 28.5, 29, 29.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(2.51, 0, 0), Vector3(0.55, 0, 0), Vector3(0.55, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LeftDoorPos/LeftDoor:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 28.5, 29, 29.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-2.51, 0, 0), Vector3(-0.55, 0, 0), Vector3(-0.55, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ihs6m"]
+_data = {
+"Close": SubResource("Animation_4btik"),
+"Open": SubResource("Animation_faehm"),
+"RESET": SubResource("Animation_dvj8s")
+}
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_8rlgc"]
+properties/0/path = NodePath("LeftDoorPos/LeftDoor:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("RightDoorPos/RightDoor:position")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
+[node name="ZoneGate" type="Node3D" node_paths=PackedStringArray("anim_player")]
+script = ExtResource("1_ypjqs")
+anim_player = NodePath("AnimationPlayer")
+
+[node name="DoorFrame" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 3.5, 0)
+use_collision = true
+size = Vector3(1, 7, 1)
+material = ExtResource("1_uh2bh")
+
+[node name="DoorFrame2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 3.5, 0)
+use_collision = true
+size = Vector3(1, 7, 1)
+material = ExtResource("1_uh2bh")
+
+[node name="DoorFrame3" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.5, 0)
+use_collision = true
+size = Vector3(7, 1, 1)
+material = ExtResource("1_uh2bh")
+
+[node name="LeftDoorPos" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 3.5, 0)
+use_collision = true
+size = Vector3(3, 7, 0.5)
+material = ExtResource("2_bqibo")
+
+[node name="LeftDoor" type="CSGBox3D" parent="LeftDoorPos"]
+operation = 1
+use_collision = true
+size = Vector3(3, 7, 0.5)
+material = ExtResource("2_bqibo")
+
+[node name="RightDoorPos" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 3.5, 0)
+use_collision = true
+size = Vector3(3, 7, 0.5)
+material = ExtResource("2_bqibo")
+
+[node name="RightDoor" type="CSGBox3D" parent="RightDoorPos"]
+operation = 1
+use_collision = true
+size = Vector3(3, 7, 0.5)
+material = ExtResource("2_bqibo")
+
+[node name="EnemyBarrier" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0)
+use_collision = true
+collision_layer = 8
+collision_mask = 0
+size = Vector3(5.2, 7.2, 0.1)
+material = SubResource("StandardMaterial3D_a7n76")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ihs6m")
+}
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_8rlgc")
