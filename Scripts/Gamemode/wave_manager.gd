@@ -93,8 +93,10 @@ func start_intermission() -> void:
 	
 	# Update zone change variables
 	wave_index += 1
+	print("Wave index: " + str(wave_index))
 	if wave_index >= change_possible_index:
 		cur_change_chance += change_chance_increase
+		print("Current zone change chance: " + str(cur_change_chance))
 		var roll := randf_range(0.0, 1.0)
 		if roll <= cur_change_chance:
 			do_zone_change = true
@@ -140,23 +142,29 @@ func _on_zone_gate_anim_finished(anim_name: StringName) -> void:
 		# TODO: Play screen shake
 		
 		# TODO: Play vaporisation ray and kill all enemies/players in zone
+		var scene_manager = get_tree().get_first_node_in_group("level")
+		scene_manager.vaporise_zone()
 		
 		# TODO: Start new wave without respawning players
-		await get_tree().create_timer(2.0).timeout
+		await get_tree().create_timer(3.0).timeout
 		start_new_wave()
 
 func _on_endless_wave_timer_timeout():
 	# Restart the timer
 	endless_wave_timer.start()
-	# Instantiate enemy
-	var enemy = ROBOT.instantiate()
-	# Give enemy reference to player
-	enemy.initialise(player)
-	# Add enemy as child of nav region
-	enemies_node.add_child(enemy, true)
-	# Set enemy's spawn point to a random spawn point
-	var spawn_point = enemy_spawn_points.pick_random().global_position
-	enemy.global_position = spawn_point
+	# Spawn a new enemy if there are less than 15 currently alive
+	var enemy_count = get_tree().get_nodes_in_group("enemies").size()
+	if enemy_count < 15:
+		# Instantiate enemy
+		var enemy = ROBOT.instantiate()
+		# Give enemy reference to player
+		enemy.initialise(player)
+		# Add enemy as child of nav region
+		enemies_node.add_child(enemy, true)
+		# Set enemy's spawn point to a random spawn point
+		var spawn_point = enemy_spawn_points.pick_random().global_position
+		enemy.global_position = spawn_point
+		print("Enemy count: " + str(enemy_count))
 
 #-------------------------------------------------------------------------------
 # RPCS
