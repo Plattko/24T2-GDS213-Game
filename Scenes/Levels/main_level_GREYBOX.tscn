@@ -112,15 +112,21 @@ size = Vector3(0.2, 23.0046, 52.5776)
 material = ExtResource("18_ixd6h")
 
 [node name="CSGBox3D44" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Perimiter/Walls" groups=["boundaries"]]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -49.798, 8.71133, 71.4601)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -49.798, 8.71133, 75.4508)
 use_collision = true
-size = Vector3(0.2, 23.0046, 60.658)
+size = Vector3(0.2, 23.0046, 52.6767)
+material = ExtResource("18_ixd6h")
+
+[node name="CSGBox3D63" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Perimiter/Walls" groups=["boundaries"]]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -49.798, 5.90381, 45.078)
+use_collision = true
+size = Vector3(0.2, 12, 8.342)
 material = ExtResource("18_ixd6h")
 
 [node name="CSGBox3D47" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Perimiter/Walls" groups=["boundaries"]]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -49.798, 8.71133, 23.6106)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -49.798, 5.90889, 23.6106)
 use_collision = true
-size = Vector3(0.2, 23.0046, 18.7875)
+size = Vector3(0.2, 12, 18.788)
 material = ExtResource("18_ixd6h")
 
 [node name="CSGBox3D46" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Perimiter/Walls" groups=["boundaries"]]
