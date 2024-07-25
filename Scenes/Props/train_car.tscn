@@ -7,102 +7,102 @@
 use_collision = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.98456, 0)
-size = Vector3(13, 3, 3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.32923, 0)
+size = Vector3(13, 4, 3)
 material = ExtResource("1_mwnvc")
 
 [node name="CSGTorus3D2" type="CSGTorus3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -5.9741, -1.90743, -0.794645)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -5.9741, -2.50428, -0.794645)
 inner_radius = 0.0311015
 outer_radius = 0.642136
 material = ExtResource("2_mhgt1")
 
 [node name="CSGTorus3D3" type="CSGTorus3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -4.72299, -1.90743, -0.794645)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -4.72299, -2.50428, -0.794645)
 inner_radius = 0.0311015
 outer_radius = 0.642136
 material = ExtResource("2_mhgt1")
 
 [node name="CSGTorus3D4" type="CSGTorus3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -3.50945, -1.90743, -0.794645)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -3.50945, -2.50428, -0.794645)
 inner_radius = 0.0311015
 outer_radius = 0.642136
 material = ExtResource("2_mhgt1")
 
 [node name="CSGTorus3D5" type="CSGTorus3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 3.35497, -1.90743, -0.794645)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 3.35497, -2.50428, -0.794645)
 inner_radius = 0.0311015
 outer_radius = 0.642136
 material = ExtResource("2_mhgt1")
 
 [node name="CSGTorus3D8" type="CSGTorus3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.745157, -1.90743, -0.794645)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.745157, -2.50428, -0.794645)
 inner_radius = 0.0311015
 outer_radius = 0.642136
 material = ExtResource("2_mhgt1")
 
 [node name="CSGTorus3D9" type="CSGTorus3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.510633, -1.90743, -0.794645)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.510633, -2.50428, -0.794645)
 inner_radius = 0.0311015
 outer_radius = 0.642136
 material = ExtResource("2_mhgt1")
 
 [node name="CSGTorus3D6" type="CSGTorus3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 4.60608, -1.90743, -0.794645)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 4.60608, -2.50428, -0.794645)
 inner_radius = 0.0311015
 outer_radius = 0.642136
 material = ExtResource("2_mhgt1")
 
 [node name="CSGTorus3D7" type="CSGTorus3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 5.81962, -1.90743, -0.794645)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 5.81962, -2.50428, -0.794645)
 inner_radius = 0.0311015
 outer_radius = 0.642136
 material = ExtResource("2_mhgt1")
 
 [node name="CSGTorus3D10" type="CSGTorus3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -5.9741, -1.90743, 1.04321)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -5.9741, -2.50428, 1.04321)
 inner_radius = 0.0311015
 outer_radius = 0.642136
 material = ExtResource("2_mhgt1")
 
 [node name="CSGTorus3D11" type="CSGTorus3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -4.72299, -1.90743, 1.04321)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -4.72299, -2.50428, 1.04321)
 inner_radius = 0.0311015
 outer_radius = 0.642136
 material = ExtResource("2_mhgt1")
 
 [node name="CSGTorus3D12" type="CSGTorus3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -3.50945, -1.90743, 1.04321)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -3.50945, -2.50428, 1.04321)
 inner_radius = 0.0311015
 outer_radius = 0.642136
 material = ExtResource("2_mhgt1")
 
 [node name="CSGTorus3D13" type="CSGTorus3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 3.35497, -1.90743, 1.04321)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 3.35497, -2.50428, 1.04321)
 inner_radius = 0.0311015
 outer_radius = 0.642136
 material = ExtResource("2_mhgt1")
 
 [node name="CSGTorus3D14" type="CSGTorus3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.745157, -1.90743, 1.04321)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.745157, -2.50428, 1.04321)
 inner_radius = 0.0311015
 outer_radius = 0.642136
 material = ExtResource("2_mhgt1")
 
 [node name="CSGTorus3D15" type="CSGTorus3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.510633, -1.90743, 1.04321)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.510633, -2.50428, 1.04321)
 inner_radius = 0.0311015
 outer_radius = 0.642136
 material = ExtResource("2_mhgt1")
 
 [node name="CSGTorus3D16" type="CSGTorus3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 4.60608, -1.90743, 1.04321)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 4.60608, -2.50428, 1.04321)
 inner_radius = 0.0311015
 outer_radius = 0.642136
 material = ExtResource("2_mhgt1")
 
 [node name="CSGTorus3D17" type="CSGTorus3D" parent="CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 5.81962, -1.90743, 1.04321)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 5.81962, -2.50428, 1.04321)
 inner_radius = 0.0311015
 outer_radius = 0.642136
 material = ExtResource("2_mhgt1")
