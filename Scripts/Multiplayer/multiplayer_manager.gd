@@ -2,7 +2,7 @@ extends Node
 
 @export var name_line : LineEdit
 @export var ip_line : LineEdit
-var network_testing_scene = preload("res://Scenes/Levels/main-level.tscn")
+var network_testing_scene = preload("res://Scenes/Levels/main_level_GREYBOX.tscn")
 
 # Server variables
 const SERVER_PORT := 8080
