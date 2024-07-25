@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://il6q27w1jqvw"]
+[gd_scene load_steps=45 format=3 uid="uid://il6q27w1jqvw"]
 
 [ext_resource type="Script" path="res://Scripts/Multiplayer/multiplayer_player.gd" id="1_0n7q4"]
 [ext_resource type="Script" path="res://Scripts/Player/player_input.gd" id="2_7s41b"]
@@ -568,6 +568,24 @@ _data = {
 "RESET": SubResource("Animation_k5wue")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hqtb7"]
+bg_color = Color(0.723958, 0.115004, 0.115004, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.329931, 0.0279585, 0.0283865, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_61hn2"]
+bg_color = Color(0.329412, 0.027451, 0.027451, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_frr6w"]
+bg_color = Color(0.329412, 0.027451, 0.027451, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0a0dl"]
+bg_color = Color(0.180666, 0.00854189, 0.00851971, 1)
+
 [node name="MulitplayerPlayer" type="CharacterBody3D" node_paths=PackedStringArray("input", "head", "camera", "animation_player", "ceiling_check")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 collision_layer = 2
@@ -714,7 +732,7 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("15_jmxyw")
 
-[node name="HUD" type="Control" parent="UI" node_paths=PackedStringArray("health_label", "cur_ammo_label", "cur_wave_label", "enemies_left_label")]
+[node name="HUD" type="Control" parent="UI" node_paths=PackedStringArray("health_label", "cur_ammo_label", "cur_wave_label", "enemies_left_label", "zone_change_warning", "time_text")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -727,6 +745,8 @@ health_label = NodePath("MarginContainer/Health")
 cur_ammo_label = NodePath("MarginContainer/Ammo")
 cur_wave_label = NodePath("MarginContainer/WaveVBox/CurrentWave")
 enemies_left_label = NodePath("MarginContainer/WaveVBox/EnemiesRemaining")
+zone_change_warning = NodePath("ZoneChangeWarning")
+time_text = NodePath("ZoneChangeWarning/MarginContainer/HBoxContainer/Info/TimeRemainingPanel/MarginContainer/HBoxContainer/TimePanel/CenterContainer/TimeText")
 
 [node name="Reticle" type="CenterContainer" parent="UI/HUD" node_paths=PackedStringArray("lines")]
 unique_name_in_owner = true
@@ -935,6 +955,111 @@ layout_mode = 2
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
+
+[node name="ZoneChangeWarning" type="PanelContainer" parent="UI/HUD"]
+custom_minimum_size = Vector2(500, 200)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -250.0
+offset_top = 10.0
+offset_right = 250.0
+offset_bottom = 210.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_hqtb7")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/HUD/ZoneChangeWarning"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/HUD/ZoneChangeWarning/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="AlertSymbol" type="Panel" parent="UI/HUD/ZoneChangeWarning/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(156, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_61hn2")
+
+[node name="CenterContainer" type="CenterContainer" parent="UI/HUD/ZoneChangeWarning/MarginContainer/HBoxContainer/AlertSymbol"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = -11.5
+offset_right = 0.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="UI/HUD/ZoneChangeWarning/MarginContainer/HBoxContainer/AlertSymbol/CenterContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 128
+text = "!"
+vertical_alignment = 1
+
+[node name="Info" type="VBoxContainer" parent="UI/HUD/ZoneChangeWarning/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TitleText" type="Label" parent="UI/HUD/ZoneChangeWarning/MarginContainer/HBoxContainer/Info"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "ZONE CHANGE"
+
+[node name="AlertText" type="Label" parent="UI/HUD/ZoneChangeWarning/MarginContainer/HBoxContainer/Info"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "DEPLOYING VAPORISATION RAY TO ERADICATE ALL ROBOTS IN VICINITY"
+autowrap_mode = 3
+
+[node name="TimeRemainingPanel" type="PanelContainer" parent="UI/HUD/ZoneChangeWarning/MarginContainer/HBoxContainer/Info"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_frr6w")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/HUD/ZoneChangeWarning/MarginContainer/HBoxContainer/Info/TimeRemainingPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/HUD/ZoneChangeWarning/MarginContainer/HBoxContainer/Info/TimeRemainingPanel/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TimeToEvacText" type="Label" parent="UI/HUD/ZoneChangeWarning/MarginContainer/HBoxContainer/Info/TimeRemainingPanel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Time to evacuate:"
+
+[node name="TimePanel" type="Panel" parent="UI/HUD/ZoneChangeWarning/MarginContainer/HBoxContainer/Info/TimeRemainingPanel/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(54, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0a0dl")
+
+[node name="CenterContainer" type="CenterContainer" parent="UI/HUD/ZoneChangeWarning/MarginContainer/HBoxContainer/Info/TimeRemainingPanel/MarginContainer/HBoxContainer/TimePanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TimeText" type="Label" parent="UI/HUD/ZoneChangeWarning/MarginContainer/HBoxContainer/Info/TimeRemainingPanel/MarginContainer/HBoxContainer/TimePanel/CenterContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "30"
 
 [connection signal="update_health" from="." to="UI/HUD" method="on_update_health"]
 [connection signal="update_ammo" from="Head/Camera3D/WeaponManager/Rifle" to="UI/HUD" method="on_update_ammo"]

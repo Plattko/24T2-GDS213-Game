@@ -86,7 +86,7 @@ func _on_explosion_radius_body_entered(body):
 		#print("Knockback strength: " + str(knockback.length()))
 		
 		# Apply the self-damage
-		if body.do_self_damage: body.on_damaged(damage)
+		if body.do_self_damage: body.on_damaged(damage, false)
 		# Apply the vertical explosion knockback to the player
 		body.velocity.y += knockback.y
 		# Apply the horizontal explosion knockback to the player

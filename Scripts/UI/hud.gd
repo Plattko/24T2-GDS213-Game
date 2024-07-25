@@ -6,17 +6,27 @@ extends Control
 @export var cur_wave_label : Label
 @export var enemies_left_label : Label
 
+@export var zone_change_warning : PanelContainer
+@export var time_text : Label
+
 var wave_manager : WaveManager
 
 func _ready():
 	cur_wave_label.visible = false
 	enemies_left_label.visible = false
+	zone_change_warning.visible = false
 	
 	wave_manager = get_tree().get_first_node_in_group("wave_manager")
 	if (wave_manager):
 		wave_manager.cur_wave_updated.connect(on_cur_wave_updated)
 		wave_manager.enemy_count_updated.connect(on_enemy_count_updated)
 		wave_manager.intermission_entered.connect(on_intermission_entered)
+		wave_manager.zone_change_entered.connect(on_zone_change_entered)
+		wave_manager.zone_change_timer.timeout.connect(_on_zone_change_timer_timeout)
+
+func _process(_delta) -> void:
+	if zone_change_warning.visible:
+		time_text.text = str(snapped(wave_manager.zone_change_timer.time_left, 1))
 
 func on_update_health(health) -> void:
 	health_label.text = "Health: " + str(roundi(health[0])) + "/" + str(health[1])
@@ -38,3 +48,13 @@ func on_intermission_entered() -> void:
 	cur_wave_label.text = "Intermission"
 	if enemies_left_label.visible:
 		enemies_left_label.visible = false
+
+#-------------------------------------------------------------------------------
+# Zone Change Sequence
+#-------------------------------------------------------------------------------
+func on_zone_change_entered() -> void:
+	cur_wave_label.visible = false
+	zone_change_warning.visible = true
+
+func _on_zone_change_timer_timeout():
+	zone_change_warning.visible = false
