@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://ek12ctxj8yx4"]
+
+[ext_resource type="PackedScene" uid="uid://bbgn42a8qrl6x" path="res://Assets/Imports/IndustrialArea/BrickBuilding/Meshes/SM_brick_building_13.glb" id="1_3e1qv"]
+
+[node name="SM_brick_building_13" instance=ExtResource("1_3e1qv")]
+
+[node name="Mesh" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0513186, 0, 0)
