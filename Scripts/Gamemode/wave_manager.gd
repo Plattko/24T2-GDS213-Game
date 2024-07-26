@@ -30,7 +30,7 @@ var enemy_spawn_delay := 1.0
 @export var zone_gate : ZoneGate
 
 var wave_index : int = 0
-var change_possible_index : int = 4
+@export var change_possible_index : int = 4
 var cur_change_chance : float = 0.0
 var change_chance_increase : float = 0.2
 var zone_change_duration : float = 30.0
@@ -103,15 +103,15 @@ func on_enemy_defeated() -> void:
 func start_intermission() -> void:
 	emit_intermission_entered.rpc()
 	
-	## Update zone change variables
-	#wave_index += 1
-	#print("Wave index: " + str(wave_index))
-	#if wave_index >= change_possible_index:
-		#cur_change_chance += change_chance_increase
-		#print("Current zone change chance: " + str(cur_change_chance))
-		#var roll := randf_range(0.0, 1.0)
-		#if roll <= cur_change_chance:
-			#do_zone_change = true
+	# Update zone change variables
+	wave_index += 1
+	print("Wave index: " + str(wave_index))
+	if wave_index >= change_possible_index:
+		cur_change_chance += change_chance_increase
+		print("Current zone change chance: " + str(cur_change_chance))
+		var roll := randf_range(0.0, 1.0)
+		if roll <= cur_change_chance:
+			do_zone_change = true
 	
 	await get_tree().create_timer(intermission_delay).timeout
 	if do_zone_change:

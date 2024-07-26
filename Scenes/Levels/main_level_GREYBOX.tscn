@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://dra3y4e8jl3ma"]
+[gd_scene load_steps=50 format=3 uid="uid://dra3y4e8jl3ma"]
 
 [ext_resource type="Script" path="res://Scripts/Gamemode/scene_manager.gd" id="1_xo1kt"]
 [ext_resource type="Script" path="res://Scripts/Gamemode/wave_manager.gd" id="2_1apvi"]
@@ -316,11 +316,236 @@ tracks/9/keys = {
 "update": 1,
 "values": [false, true]
 }
+tracks/10/type = "method"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../../..")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(1.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"vaporise_enemies"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fdm4a"]
 _data = {
 "RESET": SubResource("Animation_skkng"),
 "Strike": SubResource("Animation_g8anv")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_enetb"]
+size = Vector3(114.939, 0.1, 96.326)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p7q0o"]
+transparency = 1
+albedo_color = Color(0.0588235, 0.870588, 1, 0)
+emission_enabled = true
+emission = Color(0.0588235, 0.870588, 1, 1)
+emission_energy_multiplier = 3.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_l0vo3"]
+material = SubResource("StandardMaterial3D_p7q0o")
+top_radius = 65.0
+bottom_radius = 65.0
+height = 0.1
+
+[sub_resource type="Animation" id="Animation_vt268"]
+resource_name = "Strike"
+length = 2.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:mesh:height")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1.5, 1.6, 2.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.1, 200.0, 200.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.5, 1.6, 2.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-114.81, 198, 39), Vector3(-114.81, 98, 39), Vector3(-114.81, 98, 39)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:mesh:material:albedo_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.5, 2, 2.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.0588235, 0.870588, 1, 0), Color(0.0588235, 0.870588, 1, 0.745098), Color(0.0588235, 0.870588, 1, 0.745098), Color(0.0588235, 0.870588, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../VaporisationAreas/VaporisationArea/CollisionBox:shape:size")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.5, 1.6, 2.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(114.939, 0.1, 96.326), Vector3(114.939, 200, 96.326), Vector3(114.939, 200, 96.326)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../VaporisationAreas/VaporisationArea/CollisionBox:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1.5, 1.6, 2.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-1.354, 198, 40.027), Vector3(-1.354, 98, 40.027), Vector3(-1.354, 98, 40.027)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../VaporisationAreas/VaporisationArea/CollisionBox:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(1.5, 2.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../../..")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(1.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"vaporise_enemies"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_r4xyl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:mesh:height")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-107, 198, 39)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:mesh:material:albedo_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.0588235, 0.870588, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../VaporisationAreas/VaporisationArea/CollisionBox:shape:size")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(114.939, 0.1, 96.326)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../VaporisationAreas/VaporisationArea/CollisionBox:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.354, 198, 40.027)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../VaporisationAreas/VaporisationArea/CollisionBox:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8wxbm"]
+_data = {
+"RESET": SubResource("Animation_r4xyl"),
+"Strike": SubResource("Animation_vt268")
 }
 
 [node name="Level" type="Node3D" node_paths=PackedStringArray("initial_spawn_points", "zones", "wave_manager") groups=["level"]]
@@ -335,7 +560,7 @@ enemies_node = NodePath("../Enemies")
 zone_change_timer = NodePath("ZoneChangeTimer")
 endless_wave_timer = NodePath("EndlessWaveTimer")
 zone_gate = NodePath("../NavigationRegion3D/LevelGeometry/ZoneGate")
-do_zone_change = true
+change_possible_index = 2
 
 [node name="ZoneChangeTimer" type="Timer" parent="GamemodeManager"]
 wait_time = 30.0
@@ -8882,11 +9107,12 @@ libraries = {
 "": SubResource("AnimationLibrary_fdm4a")
 }
 
-[node name="Zone2" type="Node" parent="ZoneData" node_paths=PackedStringArray("respawn_point", "enemy_spawn_points", "vaporisation_areas")]
+[node name="Zone2" type="Node" parent="ZoneData" node_paths=PackedStringArray("respawn_point", "enemy_spawn_points", "vaporisation_areas", "vaporisation_beam")]
 script = ExtResource("32_x1vn3")
 respawn_point = NodePath("RespawnPoint")
 enemy_spawn_points = NodePath("EnemySpawnPoints")
 vaporisation_areas = NodePath("VaporisationAreas")
+vaporisation_beam = NodePath("Zone2Beam")
 
 [node name="RespawnPoint" type="Node3D" parent="ZoneData/Zone2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54.2317, 1, 37.5712)
@@ -8924,6 +9150,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -79.2124, 0.986655, 13.9295)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -131.797, 5.90213, 28.9518)
 
 [node name="VaporisationAreas" type="Node" parent="ZoneData/Zone2"]
+
+[node name="VaporisationArea" type="Area3D" parent="ZoneData/Zone2/VaporisationAreas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -112.848, 0, 0)
+collision_layer = 0
+collision_mask = 6
+
+[node name="CollisionBox" type="CollisionShape3D" parent="ZoneData/Zone2/VaporisationAreas/VaporisationArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.354, 198, 40.027)
+shape = SubResource("BoxShape3D_enetb")
+
+[node name="Zone2Beam" type="MeshInstance3D" parent="ZoneData/Zone2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -107, 198, 39)
+mesh = SubResource("CylinderMesh_l0vo3")
+skeleton = NodePath("../../Zone1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ZoneData/Zone2/Zone2Beam"]
+libraries = {
+"": SubResource("AnimationLibrary_8wxbm")
+}
 
 [connection signal="timeout" from="GamemodeManager/EndlessWaveTimer" to="GamemodeManager" method="_on_endless_wave_timer_timeout"]
 [connection signal="spawned" from="MultiplayerSpawner" to="." method="_on_multiplayer_spawner_spawned"]

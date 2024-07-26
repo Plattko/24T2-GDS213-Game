@@ -79,6 +79,11 @@ func vaporise_zone() -> void:
 	#vaporisation_beams[cur_zone - 1].get_child(0).play("Strike")
 	update_zone()
 
+func vaporise_enemies() -> void:
+	for enemy in get_tree().get_nodes_in_group("enemies"):
+		enemy.queue_free()
+		print("Enemy vaporised.")
+
 func update_zone() -> void:
 	if cur_zone == 1:
 		cur_zone = 2
@@ -87,10 +92,10 @@ func update_zone() -> void:
 	set_respawn_point.rpc()
 
 func body_in_vaporisation_area(body: Node3D) -> void:
-	if body is Enemy:
-		body.queue_free()
-		print("Enemy vaporised.")
-	elif body is MultiplayerPlayer:
+	#if body is Enemy:
+		#body.queue_free()
+		#print("Enemy vaporised.")
+	if body is MultiplayerPlayer:
 		# TODO: Update to not respawn player for respawn time
 		body.respawn_player()
 		print("Player vaporised.")
