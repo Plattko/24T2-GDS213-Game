@@ -30,6 +30,16 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
 _subresources={
+"materials": {
+"MI_brick_C_Inst": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Materials/Standard Materials/MI_brick_C_Inst.tres"
+},
+"MI_concrete_A_Inst": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Materials/Standard Materials/MI_concrete_A_Inst.tres"
+}
+},
 "nodes": {
 "PATH:Mesh": {
 "generate/physics": true

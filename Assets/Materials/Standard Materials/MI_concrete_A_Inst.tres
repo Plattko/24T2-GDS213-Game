@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://cjca13u7ussve"]
+
+[ext_resource type="Texture2D" uid="uid://dceou535u51rw" path="res://Assets/Imports/StylizedHouses/ModularBuildings/BuildingMeshes/SM_building_wall_22_MI_concrete_A_Inst_BaseColor.png" id="1_4xnch"]
+[ext_resource type="Texture2D" uid="uid://iblcc62u1v1q" path="res://Assets/Imports/StylizedHouses/ModularBuildings/BuildingMeshes/SM_building_wall_22_MI_concrete_A_Inst_Normal.png" id="2_ye2yo"]
+
+[resource]
+resource_name = "MI_concrete_A_Inst"
+albedo_texture = ExtResource("1_4xnch")
+roughness = 0.819608
+normal_enabled = true
+normal_texture = ExtResource("2_ye2yo")

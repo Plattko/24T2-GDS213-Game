@@ -30,6 +30,12 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
 _subresources={
+"materials": {
+"MI_wooden_floor_WPO_Inst_SM_brick_building_13": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Materials/Standard Materials/MI_wooden_floor_WPO_Inst_SM_brick_building_13.tres"
+}
+},
 "nodes": {
 "PATH:Mesh": {
 "generate/physics": true

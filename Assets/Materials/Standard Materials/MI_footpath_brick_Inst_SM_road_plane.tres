@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://bjfdvepmllx3p"]
+
+[ext_resource type="Texture2D" uid="uid://c4echfg2bdirw" path="res://Assets/Imports/StylizedHouses/Roads/Meshes/SM_road_plane_MI_footpath_brick_Inst_SM_road_plane_BaseColor.png" id="1_tumwq"]
+[ext_resource type="Texture2D" uid="uid://brmwiryc0r8k0" path="res://Assets/Imports/StylizedHouses/Roads/Meshes/SM_road_plane_MI_footpath_brick_Inst_SM_road_plane_Normal.png" id="2_4ycm0"]
+
+[resource]
+resource_name = "MI_footpath_brick_Inst_SM_road_plane"
+albedo_texture = ExtResource("1_tumwq")
+normal_enabled = true
+normal_texture = ExtResource("2_4ycm0")
+uv1_scale = Vector3(1.01587, 1.01587, 1)
+uv1_offset = Vector3(-0.00793651, -0.00793651, 0)

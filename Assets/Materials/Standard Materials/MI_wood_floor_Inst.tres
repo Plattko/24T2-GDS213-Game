@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://curviwvdgylph"]
+
+[ext_resource type="Texture2D" uid="uid://d364mqib4e7ml" path="res://Assets/Imports/StylizedHouses/ModularBuildings/BuildingMeshes/SM_building_floor_01_MI_wood_floor_Inst_BaseColor.png" id="1_vuhtn"]
+[ext_resource type="Texture2D" uid="uid://dpkwftcv66qpk" path="res://Assets/Imports/StylizedHouses/ModularBuildings/BuildingMeshes/SM_building_floor_01_MI_wood_floor_Inst_Normal.png" id="2_v5wij"]
+
+[resource]
+resource_name = "MI_wood_floor_Inst"
+albedo_texture = ExtResource("1_vuhtn")
+roughness = 0.819608
+normal_enabled = true
+normal_texture = ExtResource("2_v5wij")

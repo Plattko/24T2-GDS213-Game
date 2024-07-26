@@ -30,6 +30,16 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
 _subresources={
+"materials": {
+"MI_hangar_frame_A_Inst": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Materials/Standard Materials/MI_hangar_frame_A_Inst.tres"
+},
+"MI_sheet_metal_A_Inst": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Materials/Standard Materials/MI_sheet_metal_A_Inst.tres"
+}
+},
 "nodes": {
 "PATH:Mesh": {
 "generate/physics": true
