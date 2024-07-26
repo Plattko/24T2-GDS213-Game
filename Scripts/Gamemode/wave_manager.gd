@@ -3,6 +3,7 @@ extends Node
 
 @export var enemies_node : Node
 @export var enemy_spawn_points : Array[Node3D] = []
+@export var enemy_spawn_points_2 : Array[Node3D] = []
 
 var player : MultiplayerPlayer
 
@@ -75,7 +76,12 @@ func spawn_enemy() -> void:
 	# Add enemy as child of nav region
 	enemies_node.add_child(enemy, true)
 	# Set enemy's spawn point to a random spawn point
-	var spawn_point = enemy_spawn_points.pick_random().global_position
+	var scene_manager = get_tree().get_first_node_in_group("level")
+	var spawn_point
+	if scene_manager.cur_zone == 1:
+		spawn_point = enemy_spawn_points.pick_random().global_position
+	elif scene_manager.cur_zone == 2:
+		spawn_point = enemy_spawn_points_2.pick_random().global_position
 	enemy.global_position = spawn_point
 
 func on_enemy_defeated() -> void:
@@ -91,15 +97,15 @@ func on_enemy_defeated() -> void:
 func start_intermission() -> void:
 	emit_intermission_entered.rpc()
 	
-	# Update zone change variables
-	wave_index += 1
-	print("Wave index: " + str(wave_index))
-	if wave_index >= change_possible_index:
-		cur_change_chance += change_chance_increase
-		print("Current zone change chance: " + str(cur_change_chance))
-		var roll := randf_range(0.0, 1.0)
-		if roll <= cur_change_chance:
-			do_zone_change = true
+	## Update zone change variables
+	#wave_index += 1
+	#print("Wave index: " + str(wave_index))
+	#if wave_index >= change_possible_index:
+		#cur_change_chance += change_chance_increase
+		#print("Current zone change chance: " + str(cur_change_chance))
+		#var roll := randf_range(0.0, 1.0)
+		#if roll <= cur_change_chance:
+			#do_zone_change = true
 	
 	await get_tree().create_timer(intermission_delay).timeout
 	if do_zone_change:

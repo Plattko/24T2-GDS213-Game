@@ -11,6 +11,7 @@ var is_direct_hit : bool = false
 #var do_self_damage : bool = true
 
 const ENEMY_COLLISION_MASK : int = roundi(pow(2, 1-1)) + roundi(pow(2, 3-1))
+const PLAYER_COLLISION_MASK : int = roundi(pow(2, 1-1)) + roundi(pow(2, 2-1))
 
 func _ready():
 	await get_tree().create_timer(0.5).timeout
@@ -64,7 +65,7 @@ func _on_explosion_radius_body_entered(body):
 	
 	elif body is MultiplayerPlayer:
 		# Raycast from the explosion's centre to the player's eyes
-		var query = PhysicsRayQueryParameters3D.create(global_position, body.head.global_position)
+		var query = PhysicsRayQueryParameters3D.create(global_position, body.head.global_position, PLAYER_COLLISION_MASK)
 		
 		# Find where the raycast intersected with the player's hitbox
 		var space_state = body.camera.get_world_3d().direct_space_state
