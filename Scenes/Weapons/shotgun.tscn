@@ -318,7 +318,7 @@ BULLET_DAMAGE = 6.0
 FALLOFF_NEAR_DIST = 10.0
 FALLOFF_FAR_DIST = 20.0
 MAX_FALLOFF_MOD = 0.5
-MAX_AMMO = 5
+MAX_AMMO = 6
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_8cnap")
