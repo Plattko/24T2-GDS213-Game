@@ -4,7 +4,7 @@ extends Node3D
 var multiplayer_player = preload("res://Scenes/Multiplayer/multiplayer_player.tscn")
 
 @export_group("Initial Spawn Points")
-@export var spawn_points : Array[Node3D] = []
+@export var initial_spawn_points : Array[Node3D] = []
 
 # Zone variables
 @export_group("Zone Variables")
@@ -31,7 +31,7 @@ func _ready() -> void:
 				area.body_entered.connect(body_in_vaporisation_area)
 				print("Vaporisation area connected.")
 			else:
-				print("Non-area node detected in Vaporisation Zone.")	
+				print("Non-area node detected in Vaporisation Zone.")
 	
 	#for zone in vaporisation_zones:
 		#for area in zone.get_children():
@@ -70,7 +70,7 @@ func set_initial_spawn_point(player) -> void:
 	if player.name.to_int() == multiplayer.get_unique_id():
 		# Set the player's position to their respective spawn point
 		var player_num = GameManager.players[player.name.to_int()].player_num
-		player.global_position = spawn_points[player_num - 1].global_position
+		player.global_position = initial_spawn_points[player_num - 1].global_position
 		print("Player " + str(player_num) + " position: " + str(player.global_position))
 
 func vaporise_zone() -> void:
@@ -95,8 +95,8 @@ func body_in_vaporisation_area(body: Node3D) -> void:
 		body.respawn_player()
 		print("Player vaporised.")
 
-func get_spawn_points() -> Array[Node3D]:
-	var spawn_points : Array[Node3D]
+func get_enemy_spawn_points() -> Array[Node3D]:
+	var spawn_points : Array[Node3D] = []
 	for spawn_point in zones[cur_zone - 1].enemy_spawn_points.get_children():
 		spawn_points.append(spawn_point)
 	return spawn_points

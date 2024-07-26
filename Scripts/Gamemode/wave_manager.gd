@@ -78,7 +78,7 @@ func spawn_enemy() -> void:
 	enemies_node.add_child(enemy, true)
 	# Set enemy's spawn point to a random spawn point
 	var scene_manager = get_tree().get_first_node_in_group("level")
-	var spawn_points = scene_manager.get_spawn_points()
+	var spawn_points = scene_manager.get_enemy_spawn_points()
 	var spawn_point = spawn_points.pick_random().global_position
 	
 	#var scene_manager = get_tree().get_first_node_in_group("level")
@@ -175,7 +175,7 @@ func _on_endless_wave_timer_timeout():
 		enemies_node.add_child(enemy, true)
 		# Set enemy's spawn point to a random spawn point
 		var scene_manager = get_tree().get_first_node_in_group("level")
-		var spawn_points = scene_manager.get_spawn_points()
+		var spawn_points = scene_manager.get_enemy_spawn_points()
 		var spawn_point = spawn_points.pick_random().global_position
 		
 		#var spawn_point = enemy_spawn_points.pick_random().global_position

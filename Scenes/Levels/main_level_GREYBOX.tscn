@@ -123,7 +123,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../../VaporisationAreas/Zone1/VaporisationArea1/CollisionBox:shape:size")
+tracks/4/path = NodePath("../VaporisationAreas/VaporisationArea1/CollisionBox:shape:size")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -135,7 +135,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../../VaporisationAreas/Zone1/VaporisationArea1/CollisionBox:position")
+tracks/5/path = NodePath("../VaporisationAreas/VaporisationArea1/CollisionBox:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -147,43 +147,43 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("../../VaporisationAreas/Zone1/VaporisationArea2/CollisionBox:shape:size")
+tracks/6/path = NodePath("../VaporisationAreas/VaporisationArea1/CollisionBox:disabled")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(118.377, 0.1, 43.836)]
+"update": 1,
+"values": [true]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("../../VaporisationAreas/Zone1/VaporisationArea2/CollisionBox:position")
+tracks/7/path = NodePath("../VaporisationAreas/VaporisationArea2/CollisionBox:shape:size")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(9.338, 198, 36.525)]
+"values": [Vector3(118.377, 0.1, 43.836)]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("../../VaporisationAreas/Zone1/VaporisationArea1/CollisionBox:disabled")
+tracks/8/path = NodePath("../VaporisationAreas/VaporisationArea2/CollisionBox:position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"update": 0,
+"values": [Vector3(9.338, 198, 36.525)]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("../../VaporisationAreas/Zone1/VaporisationArea2/CollisionBox:disabled")
+tracks/9/path = NodePath("../VaporisationAreas/VaporisationArea2/CollisionBox:disabled")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -247,7 +247,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../../VaporisationAreas/Zone1/VaporisationArea1/CollisionBox:shape:size")
+tracks/4/path = NodePath("../VaporisationAreas/VaporisationArea1/CollisionBox:shape:size")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -259,7 +259,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../../VaporisationAreas/Zone1/VaporisationArea1/CollisionBox:position")
+tracks/5/path = NodePath("../VaporisationAreas/VaporisationArea1/CollisionBox:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -271,43 +271,43 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("../../VaporisationAreas/Zone1/VaporisationArea2/CollisionBox:shape:size")
+tracks/6/path = NodePath("../VaporisationAreas/VaporisationArea1/CollisionBox:disabled")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(1.5, 1.6, 2.6),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(118.377, 0.1, 43.836), Vector3(118.377, 200, 43.836), Vector3(118.377, 200, 43.836)]
+"times": PackedFloat32Array(1.5, 2.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("../../VaporisationAreas/Zone1/VaporisationArea2/CollisionBox:position")
+tracks/7/path = NodePath("../VaporisationAreas/VaporisationArea2/CollisionBox:shape:size")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "times": PackedFloat32Array(1.5, 1.6, 2.6),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(9.338, 198, 36.525), Vector3(9.338, 98, 36.525), Vector3(9.338, 98, 36.525)]
+"values": [Vector3(118.377, 0.1, 43.836), Vector3(118.377, 200, 43.836), Vector3(118.377, 200, 43.836)]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("../../VaporisationAreas/Zone1/VaporisationArea1/CollisionBox:disabled")
+tracks/8/path = NodePath("../VaporisationAreas/VaporisationArea2/CollisionBox:position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(1.5, 2.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
+"times": PackedFloat32Array(1.5, 1.6, 2.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(9.338, 198, 36.525), Vector3(9.338, 98, 36.525), Vector3(9.338, 98, 36.525)]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("../../VaporisationAreas/Zone1/VaporisationArea2/CollisionBox:disabled")
+tracks/9/path = NodePath("../VaporisationAreas/VaporisationArea2/CollisionBox:disabled")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -323,16 +323,11 @@ _data = {
 "Strike": SubResource("Animation_g8anv")
 }
 
-[node name="Level" type="Node3D" node_paths=PackedStringArray("spawn_points", "zones", "wave_manager") groups=["level"]]
+[node name="Level" type="Node3D" node_paths=PackedStringArray("initial_spawn_points", "zones", "wave_manager") groups=["level"]]
 script = ExtResource("1_xo1kt")
-spawn_points = [NodePath("PlayerSpawnPoints/Spawn1"), NodePath("PlayerSpawnPoints/Spawn2"), NodePath("PlayerSpawnPoints/Spawn3"), NodePath("PlayerSpawnPoints/Spawn4")]
+initial_spawn_points = [NodePath("PlayerSpawnPoints/Spawn1"), NodePath("PlayerSpawnPoints/Spawn2"), NodePath("PlayerSpawnPoints/Spawn3"), NodePath("PlayerSpawnPoints/Spawn4")]
 zones = [NodePath("ZoneData/Zone1"), NodePath("ZoneData/Zone2")]
 wave_manager = NodePath("GamemodeManager")
-
-[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://Scenes/Multiplayer/multiplayer_player.tscn")
-spawn_path = NodePath("..")
-spawn_limit = 4
 
 [node name="GamemodeManager" type="Node" parent="." node_paths=PackedStringArray("enemies_node", "zone_change_timer", "endless_wave_timer", "zone_gate") groups=["wave_manager"]]
 script = ExtResource("2_1apvi")
@@ -354,20 +349,6 @@ shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_sb4fc")
-
-[node name="PlayerSpawnPoints" type="Node" parent="."]
-
-[node name="Spawn1" type="Node3D" parent="PlayerSpawnPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.5051, 2.39978, -13.3362)
-
-[node name="Spawn2" type="Node3D" parent="PlayerSpawnPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.4495, 2.4403, -11.6121)
-
-[node name="Spawn3" type="Node3D" parent="PlayerSpawnPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.7677, 2.28012, -13.0833)
-
-[node name="Spawn4" type="Node3D" parent="PlayerSpawnPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.2393, 2.21044, -14.4899)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_5ml5q")
@@ -8642,6 +8623,25 @@ material = ExtResource("3_ugs5k")
 [node name="ZoneGate" parent="NavigationRegion3D/LevelGeometry" instance=ExtResource("31_xur4h")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -49.7605, 0, 37.307)
 
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://Scenes/Multiplayer/multiplayer_player.tscn")
+spawn_path = NodePath("..")
+spawn_limit = 4
+
+[node name="PlayerSpawnPoints" type="Node" parent="."]
+
+[node name="Spawn1" type="Node3D" parent="PlayerSpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.5051, 2.39978, -13.3362)
+
+[node name="Spawn2" type="Node3D" parent="PlayerSpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.4495, 2.4403, -11.6121)
+
+[node name="Spawn3" type="Node3D" parent="PlayerSpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.7677, 2.28012, -13.0833)
+
+[node name="Spawn4" type="Node3D" parent="PlayerSpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.2393, 2.21044, -14.4899)
+
 [node name="EnemySpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("res://Scenes/Enemies/robot.tscn")
 spawn_path = NodePath("../Enemies")
@@ -8925,5 +8925,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -131.797, 5.90213, 28.9518)
 
 [node name="VaporisationAreas" type="Node" parent="ZoneData/Zone2"]
 
-[connection signal="spawned" from="MultiplayerSpawner" to="." method="_on_multiplayer_spawner_spawned"]
 [connection signal="timeout" from="GamemodeManager/EndlessWaveTimer" to="GamemodeManager" method="_on_endless_wave_timer_timeout"]
+[connection signal="spawned" from="MultiplayerSpawner" to="." method="_on_multiplayer_spawner_spawned"]
