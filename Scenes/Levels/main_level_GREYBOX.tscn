@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://dra3y4e8jl3ma"]
+[gd_scene load_steps=44 format=3 uid="uid://dra3y4e8jl3ma"]
 
 [ext_resource type="Script" path="res://Scripts/Gamemode/scene_manager.gd" id="1_xo1kt"]
 [ext_resource type="Script" path="res://Scripts/Gamemode/wave_manager.gd" id="2_1apvi"]
@@ -31,6 +31,7 @@
 [ext_resource type="PackedScene" uid="uid://b7s6rrptdx7ga" path="res://Assets/Imports/IndustrialArea/InteriorProps/Meshes/SM_wooden_barrel.glb" id="29_jnc3x"]
 [ext_resource type="PackedScene" uid="uid://3gwmy22w3q6p" path="res://Scenes/Props/shaded_table.tscn" id="30_gnhk1"]
 [ext_resource type="PackedScene" uid="uid://6saq0gdbyimu" path="res://Scenes/Props/zone_gate.tscn" id="31_xur4h"]
+[ext_resource type="Script" path="res://Scripts/Gamemode/zone.gd" id="32_x1vn3"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_b7t75"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -322,12 +323,10 @@ _data = {
 "Strike": SubResource("Animation_g8anv")
 }
 
-[node name="Level" type="Node3D" node_paths=PackedStringArray("spawn_points", "zone_respawn_points", "vaporisation_zones", "vaporisation_beams", "wave_manager") groups=["level"]]
+[node name="Level" type="Node3D" node_paths=PackedStringArray("spawn_points", "zones", "wave_manager") groups=["level"]]
 script = ExtResource("1_xo1kt")
 spawn_points = [NodePath("PlayerSpawnPoints/Spawn1"), NodePath("PlayerSpawnPoints/Spawn2"), NodePath("PlayerSpawnPoints/Spawn3"), NodePath("PlayerSpawnPoints/Spawn4")]
-zone_respawn_points = [NodePath("ZoneRespawnPoints/Zone1Respawn"), NodePath("ZoneRespawnPoints/Zone2Respawn")]
-vaporisation_zones = [NodePath("VaporisationAreas/Zone1")]
-vaporisation_beams = [NodePath("VaporisationBeams/Zone1Beam")]
+zones = [NodePath("ZoneData/Zone1"), NodePath("ZoneData/Zone2")]
 wave_manager = NodePath("GamemodeManager")
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
@@ -335,11 +334,9 @@ _spawnable_scenes = PackedStringArray("res://Scenes/Multiplayer/multiplayer_play
 spawn_path = NodePath("..")
 spawn_limit = 4
 
-[node name="GamemodeManager" type="Node" parent="." node_paths=PackedStringArray("enemies_node", "enemy_spawn_points", "enemy_spawn_points_2", "zone_change_timer", "endless_wave_timer", "zone_gate") groups=["wave_manager"]]
+[node name="GamemodeManager" type="Node" parent="." node_paths=PackedStringArray("enemies_node", "zone_change_timer", "endless_wave_timer", "zone_gate") groups=["wave_manager"]]
 script = ExtResource("2_1apvi")
 enemies_node = NodePath("../Enemies")
-enemy_spawn_points = [NodePath("../EnemySpawns/OLD/Zone1/SpawnPoint"), NodePath("../EnemySpawns/OLD/Zone1/SpawnPoint2"), NodePath("../EnemySpawns/OLD/Zone1/SpawnPoint3"), NodePath("../EnemySpawns/OLD/Zone1/SpawnPoint4"), NodePath("../EnemySpawns/OLD/Zone1/SpawnPoint5"), NodePath("../EnemySpawns/OLD/Zone1/SpawnPoint6"), NodePath("../EnemySpawns/OLD/Zone1/SpawnPoint7"), NodePath("../EnemySpawns/OLD/Zone1/SpawnPoint8"), NodePath("../EnemySpawns/OLD/Zone1/SpawnPoint9"), NodePath("../EnemySpawns/OLD/Zone1/SpawnPoint10")]
-enemy_spawn_points_2 = [NodePath("../EnemySpawns/OLD/Zone2/SpawnPoint11"), NodePath("../EnemySpawns/OLD/Zone2/SpawnPoint12"), NodePath("../EnemySpawns/OLD/Zone2/SpawnPoint13"), NodePath("../EnemySpawns/OLD/Zone2/SpawnPoint14"), NodePath("../EnemySpawns/OLD/Zone2/SpawnPoint15"), NodePath("../EnemySpawns/OLD/Zone2/SpawnPoint16"), NodePath("../EnemySpawns/OLD/Zone2/SpawnPoint17"), NodePath("../EnemySpawns/OLD/Zone2/SpawnPoint18"), NodePath("../EnemySpawns/OLD/Zone2/SpawnPoint19"), NodePath("../EnemySpawns/OLD/Zone2/SpawnPoint20")]
 zone_change_timer = NodePath("ZoneChangeTimer")
 endless_wave_timer = NodePath("EndlessWaveTimer")
 zone_gate = NodePath("../NavigationRegion3D/LevelGeometry/ZoneGate")
@@ -357,14 +354,6 @@ shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_sb4fc")
-
-[node name="ZoneRespawnPoints" type="Node" parent="."]
-
-[node name="Zone1Respawn" type="Node3D" parent="ZoneRespawnPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37, 1, -13.5)
-
-[node name="Zone2Respawn" type="Node3D" parent="ZoneRespawnPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54.2317, 1, 37.5712)
 
 [node name="PlayerSpawnPoints" type="Node" parent="."]
 
@@ -8818,40 +8807,123 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -131.797, 5.90213, 28.9518)
 [node name="Enemies" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
 
-[node name="VaporisationAreas" type="Node" parent="."]
+[node name="ZoneData" type="Node" parent="."]
 
-[node name="Zone1" type="Node" parent="VaporisationAreas"]
+[node name="Zone1" type="Node" parent="ZoneData" node_paths=PackedStringArray("respawn_point", "enemy_spawn_points", "vaporisation_areas", "vaporisation_beam")]
+script = ExtResource("32_x1vn3")
+respawn_point = NodePath("RespawnPoint")
+enemy_spawn_points = NodePath("EnemySpawnPoints")
+vaporisation_areas = NodePath("VaporisationAreas")
+vaporisation_beam = NodePath("Zone1Beam")
 
-[node name="VaporisationArea1" type="Area3D" parent="VaporisationAreas/Zone1"]
+[node name="RespawnPoint" type="Node3D" parent="ZoneData/Zone1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37, 1, -13.5)
+
+[node name="EnemySpawnPoints" type="Node" parent="ZoneData/Zone1"]
+
+[node name="SpawnPoint" type="Node3D" parent="ZoneData/Zone1/EnemySpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.96101, 0.981206, 36.2586)
+
+[node name="SpawnPoint2" type="Node3D" parent="ZoneData/Zone1/EnemySpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.7062, 3.3787, 24.9905)
+
+[node name="SpawnPoint3" type="Node3D" parent="ZoneData/Zone1/EnemySpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.1866, 1.22868, 41.0089)
+
+[node name="SpawnPoint4" type="Node3D" parent="ZoneData/Zone1/EnemySpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.0426, 1.60321, 40.5745)
+
+[node name="SpawnPoint5" type="Node3D" parent="ZoneData/Zone1/EnemySpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.3867, 7.91896, 57.2531)
+
+[node name="SpawnPoint6" type="Node3D" parent="ZoneData/Zone1/EnemySpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.349, 8.34286, 75.23)
+
+[node name="SpawnPoint7" type="Node3D" parent="ZoneData/Zone1/EnemySpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.0209, 8.81623, 67.9147)
+
+[node name="SpawnPoint8" type="Node3D" parent="ZoneData/Zone1/EnemySpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.3716, 1.81292, 29.0063)
+
+[node name="SpawnPoint9" type="Node3D" parent="ZoneData/Zone1/EnemySpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.7352, 2.33746, -12.2459)
+
+[node name="SpawnPoint10" type="Node3D" parent="ZoneData/Zone1/EnemySpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.6505, 8.22424, 59.8577)
+
+[node name="VaporisationAreas" type="Node" parent="ZoneData/Zone1"]
+
+[node name="VaporisationArea1" type="Area3D" parent="ZoneData/Zone1/VaporisationAreas"]
 collision_layer = 0
 collision_mask = 6
 
-[node name="CollisionBox" type="CollisionShape3D" parent="VaporisationAreas/Zone1/VaporisationArea1"]
+[node name="CollisionBox" type="CollisionShape3D" parent="ZoneData/Zone1/VaporisationAreas/VaporisationArea1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.057, 198, 10.28)
 shape = SubResource("BoxShape3D_6mxwp")
 disabled = true
 
-[node name="VaporisationArea2" type="Area3D" parent="VaporisationAreas/Zone1"]
+[node name="VaporisationArea2" type="Area3D" parent="ZoneData/Zone1/VaporisationAreas"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 43.5283)
 collision_layer = 0
 collision_mask = 6
 
-[node name="CollisionBox" type="CollisionShape3D" parent="VaporisationAreas/Zone1/VaporisationArea2"]
+[node name="CollisionBox" type="CollisionShape3D" parent="ZoneData/Zone1/VaporisationAreas/VaporisationArea2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.338, 198, 36.525)
 shape = SubResource("BoxShape3D_rtdbh")
 disabled = true
 
-[node name="VaporisationBeams" type="Node" parent="."]
-
-[node name="Zone1Beam" type="MeshInstance3D" parent="VaporisationBeams"]
+[node name="Zone1Beam" type="MeshInstance3D" parent="ZoneData/Zone1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 198, 39)
 visible = false
 mesh = SubResource("CylinderMesh_ervbn")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="VaporisationBeams/Zone1Beam"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ZoneData/Zone1/Zone1Beam"]
 libraries = {
 "": SubResource("AnimationLibrary_fdm4a")
 }
+
+[node name="Zone2" type="Node" parent="ZoneData" node_paths=PackedStringArray("respawn_point", "enemy_spawn_points", "vaporisation_areas")]
+script = ExtResource("32_x1vn3")
+respawn_point = NodePath("RespawnPoint")
+enemy_spawn_points = NodePath("EnemySpawnPoints")
+vaporisation_areas = NodePath("VaporisationAreas")
+
+[node name="RespawnPoint" type="Node3D" parent="ZoneData/Zone2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54.2317, 1, 37.5712)
+
+[node name="EnemySpawnPoints" type="Node" parent="ZoneData/Zone2"]
+
+[node name="SpawnPoint11" type="Node3D" parent="ZoneData/Zone2/EnemySpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.3871, 8.529, 51.0514)
+
+[node name="SpawnPoint12" type="Node3D" parent="ZoneData/Zone2/EnemySpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -126.723, 6.7919, 70.8511)
+
+[node name="SpawnPoint13" type="Node3D" parent="ZoneData/Zone2/EnemySpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84.9213, 1.7926, 44.5135)
+
+[node name="SpawnPoint14" type="Node3D" parent="ZoneData/Zone2/EnemySpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84.9213, 1.7926, 6.13585)
+
+[node name="SpawnPoint15" type="Node3D" parent="ZoneData/Zone2/EnemySpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -139.825, 22.4273, 37.7981)
+
+[node name="SpawnPoint16" type="Node3D" parent="ZoneData/Zone2/EnemySpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -173.564, 24.9708, 33.1301)
+
+[node name="SpawnPoint17" type="Node3D" parent="ZoneData/Zone2/EnemySpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -83.9323, 8.56637, 59.2118)
+
+[node name="SpawnPoint18" type="Node3D" parent="ZoneData/Zone2/EnemySpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.9829, 2.57933, 17.7959)
+
+[node name="SpawnPoint19" type="Node3D" parent="ZoneData/Zone2/EnemySpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -79.2124, 0.986655, 13.9295)
+
+[node name="SpawnPoint20" type="Node3D" parent="ZoneData/Zone2/EnemySpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -131.797, 5.90213, 28.9518)
+
+[node name="VaporisationAreas" type="Node" parent="ZoneData/Zone2"]
 
 [connection signal="spawned" from="MultiplayerSpawner" to="." method="_on_multiplayer_spawner_spawned"]
 [connection signal="timeout" from="GamemodeManager/EndlessWaveTimer" to="GamemodeManager" method="_on_endless_wave_timer_timeout"]

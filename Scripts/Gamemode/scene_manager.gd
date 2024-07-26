@@ -8,11 +8,12 @@ var multiplayer_player = preload("res://Scenes/Multiplayer/multiplayer_player.ts
 
 # Zone variables
 @export_group("Zone Variables")
-@export var zone_respawn_points : Array[Node3D] = []
+#@export var zone_respawn_points : Array[Node3D] = []
+@export var zones : Array[Zone] = []
 var cur_zone : int = 1
 
-@export var vaporisation_zones : Array[Node] = []
-@export var vaporisation_beams : Array[MeshInstance3D] = []
+#@export var vaporisation_zones : Array[Node] = []
+#@export var vaporisation_beams : Array[MeshInstance3D] = []
 
 # Gamemode variables
 @export_group("Gamemode Variables")
@@ -24,13 +25,21 @@ func _ready() -> void:
 	#TODO: Instantiate the UI
 	
 	# Connect vaporisation areas
-	for zone in vaporisation_zones:
-		for area in zone.get_children():
+	for zone in zones:
+		for area in zone.vaporisation_areas.get_children():
 			if area is Area3D:
 				area.body_entered.connect(body_in_vaporisation_area)
 				print("Vaporisation area connected.")
 			else:
-				print("Non-area node detected in Vaporisation Zone.")
+				print("Non-area node detected in Vaporisation Zone.")	
+	
+	#for zone in vaporisation_zones:
+		#for area in zone.get_children():
+			#if area is Area3D:
+				#area.body_entered.connect(body_in_vaporisation_area)
+				#print("Vaporisation area connected.")
+			#else:
+				#print("Non-area node detected in Vaporisation Zone.")
 	
 	# Spawn the players
 	for i in GameManager.players:
@@ -65,7 +74,9 @@ func set_initial_spawn_point(player) -> void:
 		print("Player " + str(player_num) + " position: " + str(player.global_position))
 
 func vaporise_zone() -> void:
-	vaporisation_beams[cur_zone - 1].get_child(0).play("Strike")
+	zones[cur_zone - 1].vaporisation_beam.get_child(0).play("Strike")
+	
+	#vaporisation_beams[cur_zone - 1].get_child(0).play("Strike")
 	update_zone()
 
 func update_zone() -> void:
@@ -84,6 +95,14 @@ func body_in_vaporisation_area(body: Node3D) -> void:
 		body.respawn_player()
 		print("Player vaporised.")
 
+func get_spawn_points() -> Array[Node3D]:
+	var spawn_points : Array[Node3D]
+	for spawn_point in zones[cur_zone - 1].enemy_spawn_points.get_children():
+		spawn_points.append(spawn_point)
+	return spawn_points
+
 @rpc("any_peer", "call_local")
 func set_respawn_point() -> void:
-	GameManager.cur_respawn_point = zone_respawn_points[cur_zone - 1].global_position
+	GameManager.cur_respawn_point = zones[cur_zone - 1].respawn_point.global_position
+	
+	#GameManager.cur_respawn_point = zone_respawn_points[cur_zone - 1].global_position

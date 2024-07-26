@@ -1,9 +1,10 @@
 class_name WaveManager
 extends Node
 
+# Enemy spawning variables
 @export var enemies_node : Node
-@export var enemy_spawn_points : Array[Node3D] = []
-@export var enemy_spawn_points_2 : Array[Node3D] = []
+#@export var enemy_spawn_points : Array[Node3D] = []
+#@export var enemy_spawn_points_2 : Array[Node3D] = []
 
 var player : MultiplayerPlayer
 
@@ -77,11 +78,16 @@ func spawn_enemy() -> void:
 	enemies_node.add_child(enemy, true)
 	# Set enemy's spawn point to a random spawn point
 	var scene_manager = get_tree().get_first_node_in_group("level")
-	var spawn_point
-	if scene_manager.cur_zone == 1:
-		spawn_point = enemy_spawn_points.pick_random().global_position
-	elif scene_manager.cur_zone == 2:
-		spawn_point = enemy_spawn_points_2.pick_random().global_position
+	var spawn_points = scene_manager.get_spawn_points()
+	var spawn_point = spawn_points.pick_random().global_position
+	
+	#var scene_manager = get_tree().get_first_node_in_group("level")
+	#var spawn_point
+	#if scene_manager.cur_zone == 1:
+		#spawn_point = enemy_spawn_points.pick_random().global_position
+	#elif scene_manager.cur_zone == 2:
+		#spawn_point = enemy_spawn_points_2.pick_random().global_position
+	
 	enemy.global_position = spawn_point
 
 func on_enemy_defeated() -> void:
@@ -168,7 +174,12 @@ func _on_endless_wave_timer_timeout():
 		# Add enemy as child of nav region
 		enemies_node.add_child(enemy, true)
 		# Set enemy's spawn point to a random spawn point
-		var spawn_point = enemy_spawn_points.pick_random().global_position
+		var scene_manager = get_tree().get_first_node_in_group("level")
+		var spawn_points = scene_manager.get_spawn_points()
+		var spawn_point = spawn_points.pick_random().global_position
+		
+		#var spawn_point = enemy_spawn_points.pick_random().global_position
+		
 		enemy.global_position = spawn_point
 		print("Enemy count: " + str(enemy_count))
 

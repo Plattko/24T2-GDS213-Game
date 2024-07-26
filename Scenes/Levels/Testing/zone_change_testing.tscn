@@ -312,12 +312,9 @@ _data = {
 "Strike": SubResource("Animation_g8anv")
 }
 
-[node name="Level" type="Node3D" node_paths=PackedStringArray("spawn_points", "zone_respawn_points", "vaporisation_zones", "vaporisation_beams", "wave_manager") groups=["level"]]
+[node name="Level" type="Node3D" node_paths=PackedStringArray("spawn_points", "wave_manager") groups=["level"]]
 script = ExtResource("1_sfew4")
 spawn_points = [NodePath("PlayerSpawnPoints/Spawn1"), NodePath("PlayerSpawnPoints/Spawn2"), NodePath("PlayerSpawnPoints/Spawn3"), NodePath("PlayerSpawnPoints/Spawn4")]
-zone_respawn_points = [NodePath("ZoneRespawnPoints/Zone1Respawn"), NodePath("ZoneRespawnPoints/Zone2Respawn")]
-vaporisation_zones = [NodePath("VaporisationAreas/Zone1")]
-vaporisation_beams = [NodePath("VaporisationBeams/Zone1Beam")]
 wave_manager = NodePath("GamemodeManager")
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
@@ -325,10 +322,9 @@ _spawnable_scenes = PackedStringArray("res://Scenes/Multiplayer/multiplayer_play
 spawn_path = NodePath("..")
 spawn_limit = 4
 
-[node name="GamemodeManager" type="Node" parent="." node_paths=PackedStringArray("enemies_node", "enemy_spawn_points", "zone_change_timer", "endless_wave_timer", "zone_gate") groups=["wave_manager"]]
+[node name="GamemodeManager" type="Node" parent="." node_paths=PackedStringArray("enemies_node", "zone_change_timer", "endless_wave_timer", "zone_gate") groups=["wave_manager"]]
 script = ExtResource("2_pbiiv")
 enemies_node = NodePath("../Enemies")
-enemy_spawn_points = [NodePath("../EnemySpawns/OLD/SpawnPoint"), NodePath("../EnemySpawns/OLD/SpawnPoint2"), NodePath("../EnemySpawns/OLD/SpawnPoint3"), NodePath("../EnemySpawns/OLD/SpawnPoint4"), NodePath("../EnemySpawns/OLD/SpawnPoint5"), NodePath("../EnemySpawns/OLD/SpawnPoint6"), NodePath("../EnemySpawns/OLD/SpawnPoint7"), NodePath("../EnemySpawns/OLD/SpawnPoint8"), NodePath("../EnemySpawns/OLD/SpawnPoint9"), NodePath("../EnemySpawns/OLD/SpawnPoint10")]
 zone_change_timer = NodePath("ZoneChangeTimer")
 endless_wave_timer = NodePath("EndlessWaveTimer")
 zone_gate = NodePath("../NavigationRegion3D/LevelGeometry/ZoneGate")
