@@ -8,12 +8,8 @@ var multiplayer_player = preload("res://Scenes/Multiplayer/multiplayer_player.ts
 
 # Zone variables
 @export_group("Zone Variables")
-#@export var zone_respawn_points : Array[Node3D] = []
 @export var zones : Array[Zone] = []
 var cur_zone : int = 1
-
-#@export var vaporisation_zones : Array[Node] = []
-#@export var vaporisation_beams : Array[MeshInstance3D] = []
 
 # Gamemode variables
 @export_group("Gamemode Variables")
@@ -32,14 +28,6 @@ func _ready() -> void:
 				print("Vaporisation area connected.")
 			else:
 				print("Non-area node detected in Vaporisation Zone.")
-	
-	#for zone in vaporisation_zones:
-		#for area in zone.get_children():
-			#if area is Area3D:
-				#area.body_entered.connect(body_in_vaporisation_area)
-				#print("Vaporisation area connected.")
-			#else:
-				#print("Non-area node detected in Vaporisation Zone.")
 	
 	# Spawn the players
 	for i in GameManager.players:
@@ -92,9 +80,6 @@ func update_zone() -> void:
 	set_respawn_point.rpc()
 
 func body_in_vaporisation_area(body: Node3D) -> void:
-	#if body is Enemy:
-		#body.queue_free()
-		#print("Enemy vaporised.")
 	if body is MultiplayerPlayer:
 		# TODO: Update to not respawn player for respawn time
 		body.respawn_player()
@@ -109,5 +94,3 @@ func get_enemy_spawn_points() -> Array[Node3D]:
 @rpc("any_peer", "call_local")
 func set_respawn_point() -> void:
 	GameManager.cur_respawn_point = zones[cur_zone - 1].respawn_point.global_position
-	
-	#GameManager.cur_respawn_point = zone_respawn_points[cur_zone - 1].global_position
