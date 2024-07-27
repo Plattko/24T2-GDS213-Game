@@ -27,3 +27,13 @@ func physics_update(_delta : float) -> void:
 	var cur_velocity = Vector2(enemy.velocity.x, enemy.velocity.z).length()
 	if cur_velocity > 0.01:
 		enemy.look_at(Vector3(enemy.global_position.x + enemy.velocity.x, enemy.global_position.y, enemy.global_position.z + enemy.velocity.z), Vector3.UP)
+
+func on_link_reached(details : Dictionary) -> void:
+	var height = abs(details.link_exit_position.y - details.link_entry_position.y)
+	if details.link_exit_position.y >= details.link_entry_position.y:
+		if height < max_jump_height:
+			transition.emit("JumpEnemyState", details)
+	elif details.link_exit_position.y < details.link_entry_position.y:
+		if height < max_drop_height:
+			details["height"] = height
+			transition.emit("DropEnemyState", details)

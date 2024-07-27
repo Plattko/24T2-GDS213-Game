@@ -55,7 +55,7 @@ func _ready():
 		
 		# Give the enemy a random speed
 		speed = randf_range(min_speed, max_speed)
-		print("Enemy speed: " +str(speed))
+		#print("Enemy speed: " +str(speed))
 		# Connect the target timer's timeout signal to the set_target_position function
 		target_timer.timeout.connect(set_target_position)
 		# Set the initial target location
@@ -94,6 +94,7 @@ func set_target_position() -> void:
 
 # Signal for handling avoidance behavior with other agents
 func _on_nav_agent_velocity_computed(safe_velocity: Vector3) -> void:
+	#print("Safe velocity: %s" % safe_velocity.length())
 	velocity = velocity.move_toward(safe_velocity, 0.25) # NOTE: DO NOT CHANGE!!!
 	move_and_slide()
 
@@ -108,6 +109,10 @@ func animate(anim: Animations) -> void:
 			anim_state_machine.travel("Run")
 		Animations.ATTACK:
 			anim_state_machine.travel("Attack", true)
+		Animations.STUNNED:
+			anim_state_machine.travel("Stunned", true)
+		_:
+			print("Invalid animation.")
 
 #-------------------------------------------------------------------------------
 # Health
@@ -137,17 +142,17 @@ func target_in_range():
 
 func reset_has_attack_hit() -> void:
 	has_attack_hit = false
-	print("Reset has_attack_hit.")
+	#print("Reset has_attack_hit.")
 
 func _on_attack_hitbox_area_entered(area) -> void:
 	if area is Damageable and !has_attack_hit:
-		print("%s hit." % area)
+		#print("%s hit." % area)
 		area.take_damage(atk_damage, false)
 
 func _on_attack_hitbox_area_exited(area) -> void:
 	if area is Damageable:
 		has_attack_hit = true
-		print("Attack has hit.")
+		#print("Attack has hit.")
 
 #-------------------------------------------------------------------------------
 # Debugging

@@ -36,3 +36,7 @@ func on_child_transition(new_state_name, msg : Dictionary = {}):
 	else:
 		push_warning("New state does not exist.")
 
+func _on_nav_agent_link_reached(details):
+	if !multiplayer.is_server(): return
+	# Call on_link_reached on the current state
+	current_state.on_link_reached(details)

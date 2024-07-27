@@ -68,18 +68,19 @@ func _physics_process(_delta):
 			current_weapon.reload()
 	
 	if input.is_weapon_1_pressed:
-		print("Pressed Weapon 1.")
+		#print("Pressed Weapon 1.")
 		#if !current_weapon.anim_player.is_playing():
 		if weapon_switch_cooldown.is_stopped():
 			change_weapon(weapons[0])
 	
 	if input.is_weapon_2_pressed:
-		print("Pressed Weapon 2.")
+		#print("Pressed Weapon 2.")
 		#if !current_weapon.anim_player.is_playing():
 		if weapon_switch_cooldown.is_stopped():
 			change_weapon(weapons[1])
 	
 	if input.is_weapon_3_pressed:
+		#print("Pressed Weapon 3.")
 		#if !current_weapon.anim_player.is_playing():
 		if weapon_switch_cooldown.is_stopped():
 			change_weapon(weapons[2])
