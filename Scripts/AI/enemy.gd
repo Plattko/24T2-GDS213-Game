@@ -35,7 +35,7 @@ var atk_damage := 20
 var has_attack_hit := false
 
 # Animation variables
-enum Animations { RUN, ATTACK, STUNNED, CLIMB, DEAD }
+enum Animations { RUN, ATTACK, JUMP, STUNNED, }
 var cur_anim
 
 # State Machine variables
@@ -109,6 +109,8 @@ func animate(anim: Animations) -> void:
 			anim_state_machine.travel("Run")
 		Animations.ATTACK:
 			anim_state_machine.travel("Attack", true)
+		Animations.JUMP:
+			anim_state_machine.travel("Jump", true)
 		Animations.STUNNED:
 			anim_state_machine.travel("Stunned", true)
 		_:

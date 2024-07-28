@@ -10,6 +10,7 @@ func enter(msg : Dictionary = {}) -> void:
 		enemy.global_position = msg.link_exit_position
 	
 	if msg.height and msg.height > stunnable_drop_height:
+		print("Stunned landing.")
 		enemy.animate(enemy.Animations.STUNNED)
 		enemy.nav_agent.avoidance_enabled = false
 		enemy.velocity = Vector3.ZERO
@@ -20,4 +21,7 @@ func enter(msg : Dictionary = {}) -> void:
 		enemy.nav_agent.avoidance_enabled = true
 		transition.emit("RunEnemyState")
 	else:
+		print("Regular landing.")
+		await get_tree().physics_frame
+		enemy.velocity = Vector3.ZERO
 		transition.emit("RunEnemyState")

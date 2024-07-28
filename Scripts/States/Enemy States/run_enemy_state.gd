@@ -33,7 +33,11 @@ func on_link_reached(details : Dictionary) -> void:
 	if details.link_exit_position.y >= details.link_entry_position.y:
 		if height < max_jump_height:
 			transition.emit("JumpEnemyState", details)
+		else:
+			printerr("Enemy cannot jump that far.")
 	elif details.link_exit_position.y < details.link_entry_position.y:
 		if height < max_drop_height:
 			details["height"] = height
 			transition.emit("DropEnemyState", details)
+		else:
+			printerr("Enemy cannot drop that far.")
