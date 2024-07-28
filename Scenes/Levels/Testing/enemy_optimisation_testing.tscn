@@ -8865,7 +8865,7 @@ end_position = Vector3(-2.997, -3.655, 5.815)
 [node name="Drop" type="Node" parent="NavigationRegion3D/NavigationLinks"]
 
 [node name="NavigationLink3D" type="NavigationLink3D" parent="NavigationRegion3D/NavigationLinks/Drop"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.507, 7.01078, 51.0113)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.8614, 7.01078, 50.7065)
 bidirectional = false
 end_position = Vector3(3.5, -7, -3.5)
 
