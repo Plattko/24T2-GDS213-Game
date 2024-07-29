@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://bhbwheleb1oxv"
+path.s3tc="res://.godot/imported/SM_Box_02_MI_lantern_Occlusion.png-83a1a2740c5236e6c056fe543688cb79.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "e8d05b1b266c099f9e8827fb94c7c043"
+}
+
+[deps]
+
+source_file="res://Assets/Imports/Crystal Cave/Environment/SM_Box_02_MI_lantern_Occlusion.png"
+dest_files=["res://.godot/imported/SM_Box_02_MI_lantern_Occlusion.png-83a1a2740c5236e6c056fe543688cb79.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=8
+roughness/src_normal="res://Assets/Imports/Crystal Cave/Environment/SM_Box_02_MI_lantern_Normal.png"
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

@@ -3,9 +3,10 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cnp400rxipt35"
-path="res://.godot/imported/SM_bush_02_MI_base_foliage_A_Inst_SM_bush_02_BaseColor.png-377acf4d563489906d296ebf51f35a94.ctex"
+path.s3tc="res://.godot/imported/SM_bush_02_MI_base_foliage_A_Inst_SM_bush_02_BaseColor.png-377acf4d563489906d296ebf51f35a94.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 generator_parameters={
 "md5": "ce4fde6586924d2805e5af0cf3785b96"
@@ -14,11 +15,11 @@ generator_parameters={
 [deps]
 
 source_file="res://Assets/Imports/StylizedHouses/Plants/Meshes/SM_bush_02_MI_base_foliage_A_Inst_SM_bush_02_BaseColor.png"
-dest_files=["res://.godot/imported/SM_bush_02_MI_base_foliage_A_Inst_SM_bush_02_BaseColor.png-377acf4d563489906d296ebf51f35a94.ctex"]
+dest_files=["res://.godot/imported/SM_bush_02_MI_base_foliage_A_Inst_SM_bush_02_BaseColor.png-377acf4d563489906d296ebf51f35a94.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
@@ -34,4 +35,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

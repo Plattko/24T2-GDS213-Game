@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://tohyd77npu2x"
+path.s3tc="res://.godot/imported/SM_Cart_01_MI_Cart_Normal.png-2b7ff5196f694cb718ab5728f8003df2.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "1b2da5263e419cd63322127ca680d6b2"
+}
+
+[deps]
+
+source_file="res://Assets/Imports/Crystal Cave/Environment/SM_Cart_01_MI_Cart_Normal.png"
+dest_files=["res://.godot/imported/SM_Cart_01_MI_Cart_Normal.png-2b7ff5196f694cb718ab5728f8003df2.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=1
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=1
+roughness/src_normal="res://Assets/Imports/Crystal Cave/Environment/SM_Cart_01_MI_Cart_Normal.png"
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

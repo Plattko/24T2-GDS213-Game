@@ -1,19 +1,10 @@
-[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://d1251j4kqby6q"]
-
-[ext_resource type="Texture2D" uid="uid://c5k46tgiyw5ow" path="res://Assets/Imports/IndustrialArea/HangarFrame/Meshes/SM_hangar_frame_03_MI_corrugated_metal_D_Inst_BaseColor.png" id="1_xgitl"]
-[ext_resource type="Texture2D" uid="uid://bxh8w33iy01v8" path="res://Assets/Imports/IndustrialArea/HangarFrame/Meshes/SM_hangar_frame_03_MI_corrugated_metal_D_Inst_MetallicRoughness.png" id="2_tt4fj"]
-[ext_resource type="Texture2D" uid="uid://ctslg4wuyvgwm" path="res://Assets/Imports/IndustrialArea/HangarFrame/Meshes/SM_hangar_frame_03_MI_corrugated_metal_D_Inst_Normal.png" id="3_dod00"]
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://d1251j4kqby6q"]
 
 [resource]
 resource_name = "MI_corrugated_metal_D_Inst"
-albedo_texture = ExtResource("1_xgitl")
 metallic = 1.0
-metallic_texture = ExtResource("2_tt4fj")
 metallic_texture_channel = 2
-roughness_texture = ExtResource("2_tt4fj")
 roughness_texture_channel = 1
 normal_enabled = true
-normal_texture = ExtResource("3_dod00")
-uv1_scale = Vector3(0.3, 0.3, 0.3)
 uv1_triplanar = true
 uv1_world_triplanar = true

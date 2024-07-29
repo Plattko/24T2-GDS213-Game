@@ -3,9 +3,10 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b5od5xfh8w7ys"
-path="res://.godot/imported/SM_flower_02_MI_flower_A_Inst_SM_flower_02_BaseColor.png-e1fe11c8e34044d42f07ef997f238048.ctex"
+path.s3tc="res://.godot/imported/SM_flower_02_MI_flower_A_Inst_SM_flower_02_BaseColor.png-e1fe11c8e34044d42f07ef997f238048.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 generator_parameters={
 "md5": "62824c74e51fea2f9de40ec33ffb2e96"
@@ -14,11 +15,11 @@ generator_parameters={
 [deps]
 
 source_file="res://Assets/Imports/StylizedHouses/Plants/Meshes/SM_flower_02_MI_flower_A_Inst_SM_flower_02_BaseColor.png"
-dest_files=["res://.godot/imported/SM_flower_02_MI_flower_A_Inst_SM_flower_02_BaseColor.png-e1fe11c8e34044d42f07ef997f238048.ctex"]
+dest_files=["res://.godot/imported/SM_flower_02_MI_flower_A_Inst_SM_flower_02_BaseColor.png-e1fe11c8e34044d42f07ef997f238048.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
@@ -34,4 +35,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

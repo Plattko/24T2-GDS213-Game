@@ -3,9 +3,10 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bernnow6jxyc8"
-path="res://.godot/imported/SM_flower_03_MI_flower_C_Inst_SM_flower_03_Normal.png-73d969383291cf9d29033a6cd9e777a9.ctex"
+path.s3tc="res://.godot/imported/SM_flower_03_MI_flower_C_Inst_SM_flower_03_Normal.png-73d969383291cf9d29033a6cd9e777a9.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 generator_parameters={
 "md5": "d367e61f9d4eb9fa6484fdfa6752ae49"
@@ -14,24 +15,24 @@ generator_parameters={
 [deps]
 
 source_file="res://Assets/Imports/StylizedHouses/Plants/Meshes/SM_flower_03_MI_flower_C_Inst_SM_flower_03_Normal.png"
-dest_files=["res://.godot/imported/SM_flower_03_MI_flower_C_Inst_SM_flower_03_Normal.png-73d969383291cf9d29033a6cd9e777a9.ctex"]
+dest_files=["res://.godot/imported/SM_flower_03_MI_flower_C_Inst_SM_flower_03_Normal.png-73d969383291cf9d29033a6cd9e777a9.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/normal_map=0
+compress/normal_map=1
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=0
-roughness/src_normal=""
+roughness/mode=1
+roughness/src_normal="res://Assets/Imports/StylizedHouses/Plants/Meshes/SM_flower_03_MI_flower_C_Inst_SM_flower_03_Normal.png"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0
