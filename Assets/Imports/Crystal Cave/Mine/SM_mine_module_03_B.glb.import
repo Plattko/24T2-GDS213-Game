@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://6rtcw1s6e6nl"
+uid="uid://yvhsxdj6t6ak"
 path="res://.godot/imported/SM_mine_module_03_B.glb-08e9330558166654c23283ae3f24d968.scn"
 
 [deps]
@@ -29,17 +29,6 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={
-"materials": {
-"MI_rock_wall1_SM_mine_module_03_B": {
-"use_external/enabled": true,
-"use_external/path": "res://Assets/Materials/Standard Materials/mine/MI_rock_wall1_SM_mine_module_03_B.tres"
-},
-"MI_wood_SM_mine_module_03_B": {
-"use_external/enabled": true,
-"use_external/path": "res://Assets/Materials/Standard Materials/mine/MI_wood_SM_mine_module_03_B.tres"
-}
-}
-}
+_subresources={}
 gltf/naming_version=1
 gltf/embedded_image_handling=1

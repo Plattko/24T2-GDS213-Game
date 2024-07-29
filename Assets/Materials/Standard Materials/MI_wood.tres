@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://divuh8fwa5tmo"]
+
+[ext_resource type="Texture2D" uid="uid://dc5k1ygku7j2c" path="res://Assets/Imports/Crystal Cave/Mine/SM_mine_module_MI_wood_BaseColor.png" id="1_l6hx7"]
+[ext_resource type="Texture2D" uid="uid://b7vsawuneturn" path="res://Assets/Imports/Crystal Cave/Mine/SM_mine_module_MI_wood_Normal.png" id="2_gdg7h"]
+
+[resource]
+resource_name = "MI_wood"
+transparency = 2
+alpha_scissor_threshold = 0.3333
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("1_l6hx7")
+normal_enabled = true
+normal_texture = ExtResource("2_gdg7h")
