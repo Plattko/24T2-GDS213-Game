@@ -25,13 +25,11 @@ func land() -> void:
 	if drop_height > stunnable_drop_height:
 		print("Stunned landing.")
 		enemy.animate(enemy.Animations.STUNNED)
-		enemy.nav_agent.avoidance_enabled = false
 		enemy.velocity = Vector3.ZERO
 		
 		var stun_time = drop_height * 0.1
 		print("Stun time: " + str(stun_time))
 		await get_tree().create_timer(stun_time).timeout
-		enemy.nav_agent.avoidance_enabled = true
 		transition.emit("RunEnemyState")
 	# Handle regular landing
 	else:

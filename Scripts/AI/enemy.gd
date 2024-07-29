@@ -61,6 +61,8 @@ func _ready():
 		# Set the initial target location
 		target_position = player.global_position
 		set_target_position()
+		# Start the target timer
+		target_timer.start()
 	
 	# Set the enemy to max health
 	cur_health = max_health
@@ -75,9 +77,9 @@ func initialise(_player : MultiplayerPlayer):
 	player = _player
 
 func _physics_process(_delta):
-	if multiplayer.is_server():
-		if cur_health <= 0:
-			die()
+	if !multiplayer.is_server(): return
+	if cur_health <= 0:
+		die()
 
 #-------------------------------------------------------------------------------
 # Movement
@@ -85,18 +87,15 @@ func _physics_process(_delta):
 # Set the navigation agent's target position to the player position
 func set_target_position() -> void:
 	await get_tree().physics_frame
-	if player:
-		if Vector3(player.global_position - target_position).length() > dist_threshold or is_initial_call:
-			if is_initial_call: is_initial_call = false
-			#if anim_state_machine.get_current_node() == "Attack": return
-			target_position = player.global_position
-			nav_agent.set_target_position(target_position)
-
-# Signal for handling avoidance behavior with other agents
-func _on_nav_agent_velocity_computed(safe_velocity: Vector3) -> void:
-	#print("Safe velocity: %s" % safe_velocity.length())
-	velocity = velocity.move_toward(safe_velocity, 0.25) # NOTE: DO NOT CHANGE!!!
-	move_and_slide()
+	# Check there is a reference to the player
+	if !player: return
+	# Check if player has moved from current target position
+	if (player.global_position - target_position).length() < dist_threshold and !is_initial_call: return
+	# Disable is_initial_call after the first call
+	if is_initial_call: is_initial_call = false
+	# Update the target position
+	target_position = player.global_position
+	nav_agent.set_target_position(target_position)
 
 #-------------------------------------------------------------------------------
 # Animation
