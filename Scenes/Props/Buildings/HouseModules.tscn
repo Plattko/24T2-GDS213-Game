@@ -1,4 +1,4 @@
-[gd_scene load_steps=411 format=3 uid="uid://m55x1o0t2rwt"]
+[gd_scene load_steps=416 format=3 uid="uid://m55x1o0t2rwt"]
 
 [ext_resource type="PackedScene" uid="uid://b21keqfjjr3sx" path="res://Assets/Imports/StylizedHouses/ModularBuildings/Meshes/SM_building_block_01.glb" id="1_1nfml"]
 [ext_resource type="PackedScene" uid="uid://dw8rr03p6ccht" path="res://Assets/Imports/StylizedHouses/ModularBuildings/Meshes/SM_building_block_02.glb" id="2_u2tc6"]
@@ -407,9 +407,14 @@
 [ext_resource type="Material" uid="uid://bghuwqih7lfrg" path="res://Assets/Materials/Standard Materials/MI_concrete_slab_A_Inst.tres" id="403_xxwy6"]
 [ext_resource type="Material" uid="uid://bjxarslk0yhes" path="res://Assets/Materials/Standard Materials/MI_grass_Inst.tres" id="406_uo5tt"]
 [ext_resource type="PackedScene" uid="uid://d181i1bkg820c" path="res://Scenes/Props/mesh_fence.tscn" id="408_0m1nq"]
-[ext_resource type="PackedScene" uid="uid://6rtcw1s6e6nl" path="res://Assets/Imports/Crystal Cave/Mine/SM_mine_module_03_B.glb" id="408_hog5l"]
-[ext_resource type="PackedScene" uid="uid://dc5feni4qsgja" path="res://Assets/Imports/Crystal Cave/Mine/SM_mine_module_06.glb" id="409_ovrik"]
-[ext_resource type="PackedScene" uid="uid://dvlymbpx65vse" path="res://Assets/Imports/Crystal Cave/Mine/SM_wood_entrance.glb" id="410_u6ntn"]
+[ext_resource type="PackedScene" uid="uid://c0eoh4t0i8dpy" path="res://Assets/Imports/Crystal Cave/MineNew/SM_beam_02.glb" id="408_idhcf"]
+[ext_resource type="PackedScene" uid="uid://j8c4c1lxto7o" path="res://Assets/Imports/Crystal Cave/MineNew/SM_mine_module.glb" id="409_nnuuq"]
+[ext_resource type="PackedScene" uid="uid://c2d5e0kxlkrso" path="res://Assets/Imports/Crystal Cave/MineNew/SM_mine_module_02.glb" id="410_scx50"]
+[ext_resource type="PackedScene" uid="uid://yvhsxdj6t6ak" path="res://Assets/Imports/Crystal Cave/MineNew/SM_mine_module_03_B.glb" id="411_2jatp"]
+[ext_resource type="PackedScene" uid="uid://dfln0psc0ft6g" path="res://Assets/Imports/Crystal Cave/MineNew/SM_mine_module_04.glb" id="412_5su3s"]
+[ext_resource type="PackedScene" uid="uid://c1beir8b0kmcw" path="res://Assets/Imports/Crystal Cave/MineNew/SM_mine_module_05.glb" id="413_n5h3k"]
+[ext_resource type="PackedScene" uid="uid://dygdghjb5hc5r" path="res://Assets/Imports/Crystal Cave/MineNew/SM_mine_module_06.glb" id="414_wt7bj"]
+[ext_resource type="PackedScene" uid="uid://wxwk1nrccae" path="res://Assets/Imports/Crystal Cave/MineNew/SM_wood_entrance.glb" id="415_0wpo7"]
 
 [node name="Node3D" type="Node3D"]
 
@@ -3559,8 +3564,8 @@ size = Vector3(14.2675, 7.5, 0.1)
 material = ExtResource("402_q8h8t")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.7529, 0.0450289, -29.9343)
-size = Vector3(4, 0.1, 19.8374)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.2819, 0.027325, -29.9343)
+size = Vector3(6.33636, 0.1, 19.8374)
 material = ExtResource("395_cdrva")
 
 [node name="CSGBox3D17" type="CSGBox3D" parent="."]
@@ -3669,7 +3674,7 @@ size = Vector3(20.443, 0.1, 4.88485)
 material = ExtResource("395_cdrva")
 
 [node name="CSGBox3D11" type="CSGBox3D" parent="."]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 28.7373, 2.12358, -29.937)
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 30.3108, 2.12358, -29.937)
 size = Vector3(4.1507, 0.1, 19.832)
 material = ExtResource("395_cdrva")
 
@@ -3753,20 +3758,14 @@ size = Vector3(2.55092, 0.1, 6.00954)
 material = ExtResource("395_cdrva")
 
 [node name="CSGBox3D12" type="CSGBox3D" parent="."]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 24.7411, 2.12358, -29.0471)
-size = Vector3(4.1507, 0.1, 18.0658)
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 24.2449, 2.12358, -32.5692)
+size = Vector3(4.1507, 0.1, 11.0217)
 material = ExtResource("395_cdrva")
 
 [node name="CSGBox3D13" type="CSGBox3D" parent="CSGBox3D12"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0182798, 0, -6.90512)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0182798, 0, -0.34433)
 operation = 2
-size = Vector3(4.11444, 0.2, 4.6459)
-material = ExtResource("395_cdrva")
-
-[node name="CSGBox3D14" type="CSGBox3D" parent="CSGBox3D12"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0105934, 0, -0.241913)
-operation = 2
-size = Vector3(4.02847, 0.2, 3.82045)
+size = Vector3(4.11444, 0.2, 12.0108)
 material = ExtResource("395_cdrva")
 
 [node name="CSGBox3D48" type="CSGBox3D" parent="."]
@@ -3942,11 +3941,35 @@ transform = Transform3D(0.940431, -0.339986, 0, 0.339986, 0.940431, 0, 0, 0, 1, 
 size = Vector3(2.16968, 0.1, 2.12744)
 material = ExtResource("400_myg85")
 
-[node name="SM_mine_module_03_B" parent="." instance=ExtResource("408_hog5l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100.642, 0, 32.0095)
+[node name="SM_beam_02" parent="." instance=ExtResource("408_idhcf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78.8046, 0, 54.8826)
 
-[node name="SM_mine_module_06" parent="." instance=ExtResource("409_ovrik")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 112.758, 0, 20.4683)
+[node name="SM_mine_module" parent="." instance=ExtResource("409_nnuuq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78.4372, 0, 40.4528)
 
-[node name="SM_wood_entrance" parent="." instance=ExtResource("410_u6ntn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 106.894, 9.53674e-07, 19.9184)
+[node name="SM_mine_module_02" parent="." instance=ExtResource("410_scx50")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92.1923, 0, 44.1365)
+
+[node name="SM_mine_module_03" parent="." instance=ExtResource("410_scx50")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.8293, 0, -29.2728)
+
+[node name="SM_mine_module_08" parent="." instance=ExtResource("410_scx50")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.8293, 0, -36.4357)
+
+[node name="SM_mine_module_03_B" parent="." instance=ExtResource("411_2jatp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.6018, 0, 51.4168)
+
+[node name="SM_mine_module_04" parent="." instance=ExtResource("412_5su3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 99.8372, 0, 33.8477)
+
+[node name="SM_mine_module_05" parent="." instance=ExtResource("413_n5h3k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 99.1181, 0, 49.5097)
+
+[node name="SM_mine_module_07" parent="." instance=ExtResource("413_n5h3k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.6291, 0, -27.347)
+
+[node name="SM_mine_module_06" parent="." instance=ExtResource("414_wt7bj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 84.469, 0, 69.7833)
+
+[node name="SM_wood_entrance" parent="." instance=ExtResource("415_0wpo7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 99.4478, 0, 69.9447)

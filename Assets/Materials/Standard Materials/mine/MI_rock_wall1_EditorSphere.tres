@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://bvnggwn6ark8k"]
+
+[ext_resource type="Texture2D" uid="uid://7resru2nxmfr" path="res://Assets/Materials/Standard Materials/mine/MI_rock_wall1_MI_rock_wall1_EditorSphere_BaseColor.png" id="1_io0jq"]
+[ext_resource type="Texture2D" uid="uid://bhpovpwbefxru" path="res://Assets/Materials/Standard Materials/mine/MI_rock_wall1_MI_rock_wall1_EditorSphere_Occlusion.png" id="2_eqyqk"]
+[ext_resource type="Texture2D" uid="uid://10jgovm5qll5" path="res://Assets/Materials/Standard Materials/mine/MI_rock_wall1_MI_rock_wall1_EditorSphere_Normal.png" id="3_uko0w"]
+
+[resource]
+resource_name = "MI_rock_wall1_EditorSphere"
+albedo_texture = ExtResource("1_io0jq")
+normal_enabled = true
+normal_texture = ExtResource("3_uko0w")
+ao_enabled = true
+ao_texture = ExtResource("2_eqyqk")
+uv1_triplanar = true
+uv1_world_triplanar = true
