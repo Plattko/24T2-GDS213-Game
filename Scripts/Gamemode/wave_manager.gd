@@ -68,8 +68,10 @@ func spawn_wave() -> void:
 func spawn_enemy() -> void:
 	# Instantiate enemy
 	var enemy = ROBOT.instantiate()
-	# Give enemy reference to player
-	enemy.initialise(player)
+	# Initialise enemy
+	var scene_manager = get_tree().get_first_node_in_group("level")
+	var nav_layer = scene_manager.cur_zone
+	enemy.initialise(player, nav_layer)
 	# Connect to the enemy's enemy_defeated signal
 	enemy.enemy_defeated.connect(on_enemy_defeated)
 	# Add enemy as child of nav region
@@ -157,8 +159,10 @@ func _on_endless_wave_timer_timeout():
 	if enemy_count < 15:
 		# Instantiate enemy
 		var enemy = ROBOT.instantiate()
-		# Give enemy reference to player
-		enemy.initialise(player)
+		# Initialise enemy
+		var scene_manager = get_tree().get_first_node_in_group("level")
+		var nav_layer = scene_manager.cur_zone
+		enemy.initialise(player, nav_layer)
 		# Add enemy as child of nav region
 		enemies_node.add_child(enemy, true)
 		# Set enemy's spawn point to a random spawn point
@@ -190,5 +194,3 @@ func emit_intermission_entered() -> void:
 func emit_zone_change_entered() -> void:
 	zone_change_timer.start()
 	zone_change_entered.emit()
-
-

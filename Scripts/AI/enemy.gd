@@ -73,8 +73,9 @@ func _ready():
 		if hurtbox is Damageable:
 			hurtbox.damaged.connect(on_damaged)
 
-func initialise(_player : MultiplayerPlayer):
+func initialise(_player: MultiplayerPlayer, nav_layer: int):
 	player = _player
+	nav_agent.set_navigation_layer_value(nav_layer, true)
 
 func _physics_process(_delta):
 	if !multiplayer.is_server(): return
