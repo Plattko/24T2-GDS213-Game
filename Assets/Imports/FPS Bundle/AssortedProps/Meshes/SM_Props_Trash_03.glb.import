@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c42bkbjcpjajh"
+uid="uid://b1ueexdvp2eqb"
 path="res://.godot/imported/SM_Props_Trash_03.glb-bbe932e14a3b654ba28d5a46d84ab73f.scn"
 
 [deps]
@@ -29,12 +29,6 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={
-"nodes": {
-"PATH:Mesh": {
-"generate/physics": true
-}
-}
-}
+_subresources={}
 gltf/naming_version=1
 gltf/embedded_image_handling=1

@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dh4eudnkkw3j0"
+uid="uid://ptuu57g14da7"
 path="res://.godot/imported/SM_bucket_01.glb-1c2a14c8634c8900d959c0b9d243a48f.scn"
 
 [deps]
@@ -29,12 +29,6 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={
-"nodes": {
-"PATH:Mesh": {
-"generate/physics": true
-}
-}
-}
+_subresources={}
 gltf/naming_version=1
 gltf/embedded_image_handling=1

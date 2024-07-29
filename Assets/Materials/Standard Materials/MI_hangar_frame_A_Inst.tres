@@ -1,18 +1,16 @@
 [gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://8isucbfp57pj"]
 
-[ext_resource type="Texture2D" uid="uid://bofrmh0op1kts" path="res://Assets/Imports/IndustrialArea/HangarFrame/Meshes/SM_hangar_frame_20_MI_hangar_frame_A_Inst_BaseColor.png" id="1_2or0a"]
-[ext_resource type="Texture2D" uid="uid://ciyjx0d3humsj" path="res://Assets/Imports/IndustrialArea/HangarFrame/Meshes/SM_hangar_frame_20_MI_hangar_frame_A_Inst_MetallicRoughness.png" id="2_3qgch"]
-[ext_resource type="Texture2D" uid="uid://p0cql7uuw1or" path="res://Assets/Imports/IndustrialArea/HangarFrame/Meshes/SM_hangar_frame_20_T_hangar_frame_Normal.png" id="3_j111t"]
+[ext_resource type="Texture2D" uid="uid://ffw4h4fpx3t3" path="res://Assets/Imports/IndustrialArea/HangarFrame/SM_hangar_frame_20_MI_hangar_frame_A_Inst_BaseColor.png" id="1_8egwn"]
+[ext_resource type="Texture2D" uid="uid://ldfuv2rwxg4q" path="res://Assets/Imports/IndustrialArea/HangarFrame/SM_hangar_frame_20_MI_hangar_frame_A_Inst_MetallicRoughness.png" id="2_5ubw4"]
+[ext_resource type="Texture2D" uid="uid://cul4jd3g8boc7" path="res://Assets/Imports/IndustrialArea/HangarFrame/SM_hangar_frame_20_T_hangar_frame_Normal.png" id="3_kerku"]
 
 [resource]
 resource_name = "MI_hangar_frame_A_Inst"
-albedo_texture = ExtResource("1_2or0a")
+albedo_texture = ExtResource("1_8egwn")
 metallic = 1.0
-metallic_texture = ExtResource("2_3qgch")
+metallic_texture = ExtResource("2_5ubw4")
 metallic_texture_channel = 2
-roughness_texture = ExtResource("2_3qgch")
+roughness_texture = ExtResource("2_5ubw4")
 roughness_texture_channel = 1
 normal_enabled = true
-normal_texture = ExtResource("3_j111t")
-uv1_triplanar = true
-uv1_world_triplanar = true
+normal_texture = ExtResource("3_kerku")

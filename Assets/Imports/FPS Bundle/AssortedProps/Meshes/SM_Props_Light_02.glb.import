@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bo8q4ophuix4b"
+uid="uid://bsi5mp8vfvqes"
 path="res://.godot/imported/SM_Props_Light_02.glb-170775939dd8b395f684c7da3d7c2637.scn"
 
 [deps]
@@ -29,12 +29,6 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={
-"nodes": {
-"PATH:Mesh": {
-"generate/physics": true
-}
-}
-}
+_subresources={}
 gltf/naming_version=1
 gltf/embedded_image_handling=1

@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://k4avvm7xb8uu"
+uid="uid://deptd5t3452nl"
 path="res://.godot/imported/SM_stop_rails.glb-e723659420adc1f124bdb6df29acbc1f.scn"
 
 [deps]
@@ -29,12 +29,6 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={
-"nodes": {
-"PATH:Mesh": {
-"generate/physics": true
-}
-}
-}
+_subresources={}
 gltf/naming_version=1
 gltf/embedded_image_handling=1

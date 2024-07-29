@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bvxhbb12o7rlu"
+uid="uid://43l0u3jnhv5n"
 path="res://.godot/imported/SM_Props_ConstructionStairs_01.glb-84fbd3f383d50588a832bac1bb0fd278.scn"
 
 [deps]
@@ -29,12 +29,6 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={
-"nodes": {
-"PATH:Mesh": {
-"generate/physics": true
-}
-}
-}
+_subresources={}
 gltf/naming_version=1
 gltf/embedded_image_handling=1

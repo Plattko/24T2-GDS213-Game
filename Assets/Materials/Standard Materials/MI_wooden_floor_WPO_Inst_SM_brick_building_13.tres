@@ -1,8 +1,8 @@
 [gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://b634ek855ftyf"]
 
-[ext_resource type="Texture2D" uid="uid://dpgwgsoskkdkv" path="res://Assets/Imports/IndustrialArea/BrickBuilding/Meshes/SM_brick_building_13_MI_wooden_floor_WPO_Inst_SM_brick_building_13_BaseColor.png" id="1_i8pcg"]
-[ext_resource type="Texture2D" uid="uid://bx5fh0af8a8c5" path="res://Assets/Imports/IndustrialArea/BrickBuilding/Meshes/SM_brick_building_13_MI_wooden_floor_WPO_Inst_SM_brick_building_13_MetallicRoughness.png" id="2_vgsly"]
-[ext_resource type="Texture2D" uid="uid://d4mhu60kfbaqy" path="res://Assets/Imports/IndustrialArea/BrickBuilding/Meshes/SM_brick_building_13_MI_wooden_floor_WPO_Inst_SM_brick_building_13_Normal.png" id="3_a28l5"]
+[ext_resource type="Texture2D" uid="uid://c2ws3ldi0s3h4" path="res://Assets/Imports/IndustrialArea/BrickBuilding/Meshes/SM_brick_building_13_MI_wooden_floor_WPO_Inst_SM_brick_building_13_BaseColor.png" id="1_i8pcg"]
+[ext_resource type="Texture2D" uid="uid://kb1fww00bhsx" path="res://Assets/Imports/IndustrialArea/BrickBuilding/Meshes/SM_brick_building_13_MI_wooden_floor_WPO_Inst_SM_brick_building_13_MetallicRoughness.png" id="2_vgsly"]
+[ext_resource type="Texture2D" uid="uid://0tppsjmf1qa7" path="res://Assets/Imports/IndustrialArea/BrickBuilding/Meshes/SM_brick_building_13_MI_wooden_floor_WPO_Inst_SM_brick_building_13_Normal.png" id="3_a28l5"]
 
 [resource]
 resource_name = "MI_wooden_floor_WPO_Inst_SM_brick_building_13"
@@ -14,7 +14,7 @@ roughness_texture = ExtResource("2_vgsly")
 roughness_texture_channel = 1
 normal_enabled = true
 normal_texture = ExtResource("3_a28l5")
-uv1_scale = Vector3(2.06452, 2.06452, 1)
+uv1_scale = Vector3(0.3, 0.3, 0.3)
 uv1_offset = Vector3(-0.016129, -0.016129, 0)
 uv1_triplanar = true
 uv1_world_triplanar = true

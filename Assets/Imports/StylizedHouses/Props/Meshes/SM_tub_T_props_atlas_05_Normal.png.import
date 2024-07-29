@@ -2,11 +2,10 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ce8o2jm5ruqeu"
-path.s3tc="res://.godot/imported/SM_tub_T_props_atlas_05_Normal.png-7adc0a85f84d3a7648b2521962c968db.s3tc.ctex"
+uid="uid://cgxa1owu5uslo"
+path="res://.godot/imported/SM_tub_T_props_atlas_05_Normal.png-7adc0a85f84d3a7648b2521962c968db.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 generator_parameters={
 "md5": "bb1d6240a3d21328ab68a9b7edceee45"
@@ -15,24 +14,24 @@ generator_parameters={
 [deps]
 
 source_file="res://Assets/Imports/StylizedHouses/Props/Meshes/SM_tub_T_props_atlas_05_Normal.png"
-dest_files=["res://.godot/imported/SM_tub_T_props_atlas_05_Normal.png-7adc0a85f84d3a7648b2521962c968db.s3tc.ctex"]
+dest_files=["res://.godot/imported/SM_tub_T_props_atlas_05_Normal.png-7adc0a85f84d3a7648b2521962c968db.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/normal_map=1
+compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=1
-roughness/src_normal="res://Assets/Imports/StylizedHouses/Props/Meshes/SM_tub_T_props_atlas_05_Normal.png"
+roughness/mode=0
+roughness/src_normal=""
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

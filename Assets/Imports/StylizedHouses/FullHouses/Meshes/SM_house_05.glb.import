@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dym4wmg8qymn0"
+uid="uid://cjutgfcmrcisf"
 path="res://.godot/imported/SM_house_05.glb-2766428176ec23ec9db33ab5b79304e4.scn"
 
 [deps]
@@ -29,13 +29,6 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={
-"nodes": {
-"PATH:Mesh": {
-"generate/physics": true,
-"physics/shape_type": 2
-}
-}
-}
+_subresources={}
 gltf/naming_version=1
 gltf/embedded_image_handling=1

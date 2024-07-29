@@ -2,11 +2,10 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dg2opatxl8gcb"
-path.s3tc="res://.godot/imported/SM_range_hood_MI_props_05_A_Inst_Emissive.png-0d4d3d1248034c6de8e3ddca39ad062b.s3tc.ctex"
+uid="uid://dkj7es1nh7rtj"
+path="res://.godot/imported/SM_range_hood_MI_props_05_A_Inst_Emissive.png-0d4d3d1248034c6de8e3ddca39ad062b.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 generator_parameters={
 "md5": "934a53345527fa0801a14c58d8c8e97b"
@@ -15,11 +14,11 @@ generator_parameters={
 [deps]
 
 source_file="res://Assets/Imports/StylizedHouses/Props/Meshes/SM_range_hood_MI_props_05_A_Inst_Emissive.png"
-dest_files=["res://.godot/imported/SM_range_hood_MI_props_05_A_Inst_Emissive.png-0d4d3d1248034c6de8e3ddca39ad062b.s3tc.ctex"]
+dest_files=["res://.godot/imported/SM_range_hood_MI_props_05_A_Inst_Emissive.png-0d4d3d1248034c6de8e3ddca39ad062b.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
@@ -35,4 +34,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

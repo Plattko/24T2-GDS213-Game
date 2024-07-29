@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://3veey3tj3ojd"
+uid="uid://x0640xca0p6h"
 path="res://.godot/imported/SM_frame_box_part_01.glb-7a9027bb90e8883591a2b18e9a17b6a9.scn"
 
 [deps]
@@ -29,13 +29,6 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={
-"nodes": {
-"PATH:Mesh": {
-"generate/physics": true,
-"physics/shape_type": 2
-}
-}
-}
+_subresources={}
 gltf/naming_version=1
 gltf/embedded_image_handling=1

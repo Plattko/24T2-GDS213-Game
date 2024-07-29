@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b7dh31d4ne1ni"
+uid="uid://cejb0mp1bdjfj"
 path="res://.godot/imported/SM_Props_Barrel_04.glb-70a33a167c9c9d0f8d3cbd1e71dc5a9e.scn"
 
 [deps]
@@ -29,12 +29,6 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={
-"nodes": {
-"PATH:Mesh": {
-"generate/physics": true
-}
-}
-}
+_subresources={}
 gltf/naming_version=1
 gltf/embedded_image_handling=1

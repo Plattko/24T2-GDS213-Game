@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dlvn2dcy4d0ja"
+uid="uid://dcm1f4h2bsfku"
 path="res://.godot/imported/SM_brick_building_21.glb-f65c5289ba31e972bda5cbc2824d8d3d.scn"
 
 [deps]
@@ -29,13 +29,6 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={
-"nodes": {
-"PATH:Mesh": {
-"generate/physics": true,
-"physics/shape_type": 2
-}
-}
-}
+_subresources={}
 gltf/naming_version=1
 gltf/embedded_image_handling=1

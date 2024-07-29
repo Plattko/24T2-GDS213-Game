@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cln4sum8x4xxu"
+uid="uid://dx6x8jy8tjhmx"
 path="res://.godot/imported/SM_Props_ShippingContainer_Door3_L.glb-e9ade0be037e762aa4412aba88d57f0e.scn"
 
 [deps]
@@ -29,12 +29,6 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={
-"nodes": {
-"PATH:Mesh": {
-"generate/physics": true
-}
-}
-}
+_subresources={}
 gltf/naming_version=1
 gltf/embedded_image_handling=1

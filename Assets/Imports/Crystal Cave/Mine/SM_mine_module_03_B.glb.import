@@ -1,0 +1,45 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://6rtcw1s6e6nl"
+path="res://.godot/imported/SM_mine_module_03_B.glb-08e9330558166654c23283ae3f24d968.scn"
+
+[deps]
+
+source_file="res://Assets/Imports/Crystal Cave/Mine/SM_mine_module_03_B.glb"
+dest_files=["res://.godot/imported/SM_mine_module_03_B.glb-08e9330558166654c23283ae3f24d968.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+import_script/path=""
+_subresources={
+"materials": {
+"MI_rock_wall1_SM_mine_module_03_B": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Materials/Standard Materials/mine/MI_rock_wall1_SM_mine_module_03_B.tres"
+},
+"MI_wood_SM_mine_module_03_B": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Materials/Standard Materials/mine/MI_wood_SM_mine_module_03_B.tres"
+}
+}
+}
+gltf/naming_version=1
+gltf/embedded_image_handling=1
