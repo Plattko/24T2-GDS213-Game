@@ -6,7 +6,7 @@ extends Node
 
 var player : MultiplayerPlayer
 
-const ROBOT = preload("res://Scenes/Enemies/robot.tscn")
+const ROBOT = preload("res://Scenes/Enemies/robot_regular.tscn")
 
 @export var do_enemy_count_hard_cap : bool = true
 @export var enemy_count_hard_cap : int = 15
