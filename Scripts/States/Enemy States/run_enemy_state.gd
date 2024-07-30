@@ -3,7 +3,7 @@ extends EnemyState
 
 @export_group("Soft Collision Variables")
 @export var soft_collision : Area3D
-@export var push_force : float = 20.0
+@export var push_force : float = 6.0
 
 #@export var desired_separation : float = 1.25
 #@export var max_separation_speed : float = 5.0
@@ -80,13 +80,11 @@ func on_link_reached(details: Dictionary) -> void:
 	#return Vector3.ZERO
 
 func soft_collide() -> Vector3:
-	var areas = soft_collision.get_overlapping_areas()
-	#print("Overlapping bodies: " + str(areas))
+	var overlapping_areas = soft_collision.get_overlapping_areas()
 	
-	if areas.size() <= 0:
-		return Vector3.ZERO
-	
-	var area = areas[0]
-	var push_dir = area.global_position.direction_to(enemy.global_position).normalized()
-	push_dir.y = 0.0
-	return push_dir
+	if overlapping_areas:
+		var area = overlapping_areas[0]
+		var push_dir = area.global_position.direction_to(enemy.global_position)
+		push_dir.y = 0.0
+		return push_dir
+	return Vector3.ZERO
