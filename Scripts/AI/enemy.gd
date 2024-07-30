@@ -1,32 +1,35 @@
 class_name Enemy
 extends CharacterBody3D
 
+@export_group("Collision Variables")
 @export var collider : CollisionShape3D
 @export var hurtboxes : Array[Damageable] = []
-@export var nav_agent : NavigationAgent3D
+
+@export_group("Animation Variables")
 @export var anim_tree : AnimationTree
-@export var health_bar : EnemyHealthBar
-
-@export var health_orb_scene = preload("res://Scenes/Pickups/health_orb.tscn")
-
 var anim_state_machine : AnimationNodeStateMachinePlayback
-var player : MultiplayerPlayer
+enum Animations { RUN, ATTACK, JUMP, STUNNED, }
+var cur_anim
 
 # Movement variables
 var min_speed := 4.0
 var max_speed := 7.0
 var speed : float
 
-# Target tracking variables
+@export_group("Navigation Variables")
+@export var nav_agent : NavigationAgent3D
 @export var target_timer : Timer
 var target_position : Vector3
 var dist_threshold := 0.5
 var is_initial_call := true
 
-# Health variables
+@export_group("Health Variables")
+@export var health_bar : EnemyHealthBar
 var max_health := 100
 var cur_health
 
+@export_group("Health Drop Variables")
+@export var health_orb_scene = preload("res://Scenes/Pickups/health_orb.tscn")
 var health_drop_chance : float = 0.2
 
 # Attack variables
@@ -34,13 +37,10 @@ const ATTACK_RANGE := 1.75
 var atk_damage := 20
 var has_attack_hit := false
 
-# Animation variables
-enum Animations { RUN, ATTACK, JUMP, STUNNED, }
-var cur_anim
-
-# State Machine variables
 @export_group("State Machine Variables")
 @export var state_machine : EnemyStateMachine
+
+var player : MultiplayerPlayer
 
 signal enemy_defeated
 
