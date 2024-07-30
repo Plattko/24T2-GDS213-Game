@@ -3,7 +3,7 @@ extends EnemyState
 
 @export_group("Soft Collision Variables")
 @export var soft_collision : Area3D
-@export var push_force : float = 6.0
+@export var push_force : float = 20.0
 
 #@export var desired_separation : float = 1.25
 #@export var max_separation_speed : float = 5.0
@@ -57,6 +57,16 @@ func on_link_reached(details: Dictionary) -> void:
 		else:
 			printerr("Enemy cannot drop that far.")
 
+func soft_collide() -> Vector3:
+	var overlapping_areas = soft_collision.get_overlapping_areas()
+	
+	if overlapping_areas:
+		var area = overlapping_areas[0]
+		var push_dir = area.global_position.direction_to(enemy.global_position)
+		push_dir.y = 0.0
+		return push_dir
+	return Vector3.ZERO
+
 #func separate() -> Vector3:
 	#var vec_count = 0
 	#var vec_sum = Vector3.ZERO
@@ -78,12 +88,37 @@ func on_link_reached(details: Dictionary) -> void:
 		#return Vector3(steer.x, 0.0, steer.z)
 	#return Vector3.ZERO
 
-func soft_collide() -> Vector3:
-	var overlapping_areas = soft_collision.get_overlapping_areas()
-	
-	if overlapping_areas:
-		var area = overlapping_areas[0]
-		var push_dir = area.global_position.direction_to(enemy.global_position)
-		push_dir.y = 0.0
-		return push_dir
-	return Vector3.ZERO
+#func soft_collide() -> Vector3:
+	#var area_count = 0
+	#var push_sum = Vector3.ZERO
+	#var overlapping_areas = soft_collision.get_overlapping_areas()
+	#
+	#if overlapping_areas:
+		## Add each push vector to the push sum
+		#for area in overlapping_areas:
+			## Get the push direction
+			#var push_dir = area.global_position.direction_to(enemy.global_position)
+			## Get the other area's distance from the enemy
+			#var dist = Vector3(enemy.global_position - area.global_position).length()
+			## Set the push vector to the direction divided by the distance
+			#var push_vec = push_dir / dist
+			## Add it to the push sum
+			#push_sum += push_vec
+			## Increase the area count
+			#area_count += 1
+		#
+		## Get the mean push direction by dividing it by the area count
+		#push_sum = (push_sum / area_count).normalized()
+		## Multiply it by the push force
+		#push_sum = push_sum * push_force
+		## Zero the y velocity
+		#push_sum.y = 0.0
+		## Return the average push of all nearby enemies
+		#return push_sum
+		#
+		##var area = overlapping_areas[0]
+		##var push_dir = area.global_position.direction_to(enemy.global_position)
+		##push_dir.y = 0.0
+		##return push_dir
+	#return Vector3.ZERO
+
