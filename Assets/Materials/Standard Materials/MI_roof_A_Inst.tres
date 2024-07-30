@@ -1,7 +1,7 @@
 [gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://biyyiasf38iei"]
 
-[ext_resource type="Texture2D" uid="uid://buglmw73cevol" path="res://Assets/Imports/StylizedHouses/ModularBuildings/BuildingMeshes/SM_building_roof_01_MI_roof_A_Inst_BaseColor.png" id="1_r0svv"]
-[ext_resource type="Texture2D" uid="uid://cuf1dxixw8gsg" path="res://Assets/Imports/StylizedHouses/ModularBuildings/BuildingMeshes/SM_building_roof_01_MI_roof_A_Inst_Normal.png" id="2_7551j"]
+[ext_resource type="Texture2D" uid="uid://cdm0u645gkmo0" path="res://Assets/Imports/StylizedHouses/ModularBuildings/BuildingMeshes/SM_building_roof_01_MI_roof_A_Inst_BaseColor.png" id="1_r0svv"]
+[ext_resource type="Texture2D" uid="uid://dj8o40i31gjwi" path="res://Assets/Imports/StylizedHouses/ModularBuildings/BuildingMeshes/SM_building_roof_01_MI_roof_A_Inst_Normal.png" id="2_7551j"]
 
 [resource]
 resource_name = "MI_roof_A_Inst"
@@ -9,3 +9,6 @@ albedo_texture = ExtResource("1_r0svv")
 roughness = 0.819608
 normal_enabled = true
 normal_texture = ExtResource("2_7551j")
+uv1_scale = Vector3(0.2, 0.2, 0.2)
+uv1_triplanar = true
+uv1_world_triplanar = true
