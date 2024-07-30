@@ -1,6 +1,12 @@
 class_name RunEnemyState
 extends EnemyState
 
+@export_group("Separation Variables")
+@export var separation_area : Area3D
+@export var desired_separation : float = 1.25
+@export var max_separation_speed : float = 5.0
+@export var max_separation_force : float = 2.5
+
 func enter(_msg : Dictionary = {}):
 	if multiplayer.is_server():
 		enemy.animate(enemy.Animations.RUN)
@@ -21,6 +27,8 @@ func physics_update(_delta : float) -> void:
 		if enemy.is_on_floor():
 			var next_location = enemy.nav_agent.get_next_path_position()
 			var new_velocity = (next_location - cur_location).normalized() * enemy.speed
+			#var separation_velocity = separate()
+			#enemy.velocity += separation_velocity
 			enemy.velocity = enemy.velocity.move_toward(new_velocity, 0.25) # NOTE: DO NOT CHANGE!!!
 		else:
 			enemy.velocity.y -= 18 * _delta
@@ -31,7 +39,7 @@ func physics_update(_delta : float) -> void:
 	if cur_velocity > 0.01:
 		enemy.look_at(Vector3(cur_location.x + enemy.velocity.x, cur_location.y, cur_location.z + enemy.velocity.z), Vector3.UP)
 
-func on_link_reached(details : Dictionary) -> void:
+func on_link_reached(details: Dictionary) -> void:
 	var height = abs(details.link_exit_position.y - details.link_entry_position.y)
 	if details.link_exit_position.y >= details.link_entry_position.y:
 		if height < max_jump_height:
@@ -44,3 +52,24 @@ func on_link_reached(details : Dictionary) -> void:
 			transition.emit("DropEnemyState", details)
 		else:
 			printerr("Enemy cannot drop that far.")
+
+func separate() -> Vector3:
+	var vec_count = 0
+	var vec_sum = Vector3.ZERO
+	
+	for body in separation_area.get_overlapping_bodies():
+		var dist = (body.global_position - enemy.global_position).length()
+		if dist > 0.0 and dist < desired_separation:
+			var push = (enemy.global_position - body.global_position).normalized()
+			push = push / dist
+			vec_sum += push
+			vec_count += 1
+	
+	if vec_count > 0:
+		vec_sum = vec_sum / vec_count
+		vec_sum = vec_sum.normalized() * max_separation_speed
+		#var steer = vec_sum - vel
+		var steer = vec_sum
+		steer.limit_length(max_separation_force)
+		return Vector3(steer.x, 0.0, steer.z)
+	return Vector3.ZERO
