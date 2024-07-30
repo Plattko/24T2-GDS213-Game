@@ -35,7 +35,6 @@ func physics_update(delta : float) -> void:
 		# Apply soft collision push
 		## TODO: Make it so soft collision prevents enemies bunching up after reaching destination
 		var push = soft_collide() * delta * push_force
-		print("Push strength: " + str(push.length()))
 		enemy.velocity += push
 		enemy.move_and_slide()
 	
