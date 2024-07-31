@@ -1,6 +1,9 @@
 class_name Enemy
 extends CharacterBody3D
 
+enum EnemyTypes { REGULAR, SPEEDY, }
+@export var enemy_type : EnemyTypes = EnemyTypes.REGULAR
+
 @export_group("Collision Variables")
 @export var collider : CollisionShape3D
 @export var hurtboxes : Array[Damageable] = []
@@ -11,7 +14,11 @@ var anim_state_machine : AnimationNodeStateMachinePlayback
 enum Animations { RUN, ATTACK, JUMP, STUNNED, }
 var cur_anim
 
-# Movement variables
+@export_group("Movement Variables")
+@export var speedy_speed := 10.0
+var regular_turn_speed : float = 0.25
+var speedy_turn_speed : float = 0.5
+var turn_speed : float
 var min_speed := 4.0
 var max_speed := 7.0
 var speed : float
@@ -25,7 +32,7 @@ var is_initial_call := true
 
 @export_group("Health Variables")
 @export var health_bar : EnemyHealthBar
-var max_health := 100
+@export var max_health := 100
 var cur_health
 
 @export_group("Health Drop Variables")
@@ -54,7 +61,12 @@ func _ready():
 		state_machine.init(self)
 		
 		# Give the enemy a random speed
-		speed = randf_range(min_speed, max_speed)
+		if enemy_type == EnemyTypes.REGULAR:
+			speed = randf_range(min_speed, max_speed)
+			turn_speed = regular_turn_speed
+		elif enemy_type == EnemyTypes.SPEEDY:
+			speed = speedy_speed
+			turn_speed = speedy_turn_speed
 		#print("Enemy speed: " +str(speed))
 		# Connect the target timer's timeout signal to the set_target_position function
 		target_timer.timeout.connect(set_target_position)

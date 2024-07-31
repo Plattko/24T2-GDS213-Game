@@ -1,0 +1,18 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://djdnus0kppinu"]
+
+[ext_resource type="Texture2D" uid="uid://cu8p6se780uv0" path="res://Assets/Imports/RobotSoldier/Materials/M_RS_Body_M4_M_RS_Body_M4_BaseColor.png" id="1_oyc7f"]
+[ext_resource type="Texture2D" uid="uid://bq3b6cvscpy1u" path="res://Assets/Imports/RobotSoldier/Materials/M_RS_Body_M4_T_Rob_Body_M4_OcclusionRoughnessMetallic.png" id="2_vcpxh"]
+[ext_resource type="Texture2D" uid="uid://d3a1s3oqfn5n5" path="res://Assets/Imports/RobotSoldier/Materials/M_RS_Body_M4_T_Rob_Body_M4_Normal.png" id="3_6255k"]
+
+[resource]
+resource_name = "M_RS_Body_M4"
+albedo_texture = ExtResource("1_oyc7f")
+metallic = 1.0
+metallic_texture = ExtResource("2_vcpxh")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_vcpxh")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_6255k")
+ao_enabled = true
+ao_texture = ExtResource("2_vcpxh")

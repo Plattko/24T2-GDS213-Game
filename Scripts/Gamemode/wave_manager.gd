@@ -7,11 +7,14 @@ extends Node
 var player : MultiplayerPlayer
 
 const ROBOT = preload("res://Scenes/Enemies/robot_regular.tscn")
+const SPEEDY_ROBOT = preload("res://Scenes/Enemies/robot_speedy.tscn")
 
+@export_group("Wave Variables")
 @export var do_enemy_count_hard_cap : bool = true
 @export var enemy_count_hard_cap : int = 15
 
-# Wave variables
+@export_range(0.0, 1.0, 0.01) var speedy_robot_chance : float = 0.33
+
 var first_wave_delay := 5.0
 var intermission_delay := 5.0
 
@@ -67,7 +70,13 @@ func spawn_wave() -> void:
 
 func spawn_enemy() -> void:
 	# Instantiate enemy
-	var enemy = ROBOT.instantiate()
+	var roll := randf_range(0.0, 1.0)
+	var enemy
+	if roll <= speedy_robot_chance:
+		enemy = SPEEDY_ROBOT.instantiate()
+	else:
+		enemy = ROBOT.instantiate()
+	
 	# Initialise enemy
 	var scene_manager = get_tree().get_first_node_in_group("level")
 	var nav_layer = scene_manager.cur_zone

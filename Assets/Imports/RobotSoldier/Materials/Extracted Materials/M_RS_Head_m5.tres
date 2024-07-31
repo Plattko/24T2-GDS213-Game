@@ -1,0 +1,21 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://bq1d636toj7j6"]
+
+[ext_resource type="Texture2D" uid="uid://c4toj33dfimjx" path="res://Assets/Imports/RobotSoldier/Materials/M_RS_Head_m5_M_RS_Head_m5_BaseColor.png" id="1_4kl30"]
+[ext_resource type="Texture2D" uid="uid://dxidcikpvryml" path="res://Assets/Imports/RobotSoldier/Materials/M_RS_Head_m5_T_Rob_Head2_M5_OcclusionRoughnessMetallic.png" id="2_bl1jy"]
+[ext_resource type="Texture2D" uid="uid://bfu8chcvtclil" path="res://Assets/Imports/RobotSoldier/Materials/M_RS_Head_m5_T_Rob_Head2_M5_Emissive.png" id="3_qmxd2"]
+[ext_resource type="Texture2D" uid="uid://i3vxu070cw6s" path="res://Assets/Imports/RobotSoldier/Materials/M_RS_Head_m5_T_Rob_Head2_M5_Normal.png" id="4_lvw8f"]
+
+[resource]
+resource_name = "M_RS_Head_m5"
+albedo_texture = ExtResource("1_4kl30")
+metallic = 1.0
+metallic_texture = ExtResource("2_bl1jy")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_bl1jy")
+roughness_texture_channel = 1
+emission_enabled = true
+emission_texture = ExtResource("3_qmxd2")
+normal_enabled = true
+normal_texture = ExtResource("4_lvw8f")
+ao_enabled = true
+ao_texture = ExtResource("2_bl1jy")

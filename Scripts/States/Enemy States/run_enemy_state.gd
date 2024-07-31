@@ -29,7 +29,7 @@ func physics_update(delta : float) -> void:
 		if enemy.is_on_floor():
 			var next_location = enemy.nav_agent.get_next_path_position()
 			var new_velocity = (next_location - cur_location).normalized() * enemy.speed
-			enemy.velocity = enemy.velocity.move_toward(new_velocity, 0.25) # NOTE: DO NOT CHANGE!!!
+			enemy.velocity = enemy.velocity.move_toward(new_velocity, enemy.turn_speed) # NOTE: DO NOT CHANGE!!!
 		else:
 			enemy.velocity.y -= 18 * delta
 		## Apply soft collision push
