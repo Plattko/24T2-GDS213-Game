@@ -3,9 +3,10 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://x1e0ki41m828"
-path="res://.godot/imported/SM_wooden_bench_MI_wooden_bench_Inst_MetallicRoughness.png-7b6320b654578a6d426ce3f3bc6f858a.ctex"
+path.s3tc="res://.godot/imported/SM_wooden_bench_MI_wooden_bench_Inst_MetallicRoughness.png-7b6320b654578a6d426ce3f3bc6f858a.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 generator_parameters={
 "md5": "80cbf9a7a6d8d4a2c9ea574b4944edd1"
@@ -14,11 +15,11 @@ generator_parameters={
 [deps]
 
 source_file="res://Assets/Imports/StylizedHouses/Props/Meshes/SM_wooden_bench_MI_wooden_bench_Inst_MetallicRoughness.png"
-dest_files=["res://.godot/imported/SM_wooden_bench_MI_wooden_bench_Inst_MetallicRoughness.png-7b6320b654578a6d426ce3f3bc6f858a.ctex"]
+dest_files=["res://.godot/imported/SM_wooden_bench_MI_wooden_bench_Inst_MetallicRoughness.png-7b6320b654578a6d426ce3f3bc6f858a.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
@@ -34,4 +35,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

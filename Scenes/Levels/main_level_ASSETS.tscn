@@ -1,4 +1,4 @@
-[gd_scene load_steps=499 format=3 uid="uid://l54pr7l2tncg"]
+[gd_scene load_steps=501 format=3 uid="uid://l54pr7l2tncg"]
 
 [ext_resource type="Script" path="res://Scripts/Gamemode/scene_manager.gd" id="1_y2ya3"]
 [ext_resource type="Script" path="res://Scripts/Gamemode/wave_manager.gd" id="2_pbuah"]
@@ -481,6 +481,8 @@
 [ext_resource type="PackedScene" uid="uid://bi44hryknmxuh" path="res://Assets/Imports/FPS Bundle/AssortedProps/Meshes/SM_Trains_Train_02_C2.glb" id="478_428xm"]
 [ext_resource type="PackedScene" uid="uid://dd606h3wcmaqp" path="res://Assets/Imports/FPS Bundle/AssortedProps/Meshes/SM_Trains_Train_03_C1.glb" id="479_cccf3"]
 [ext_resource type="PackedScene" uid="uid://7sxca6iifs0q" path="res://Assets/Imports/FPS Bundle/AssortedProps/Meshes/SM_Trains_Train_03_C2.glb" id="480_8nxeo"]
+[ext_resource type="PackedScene" uid="uid://b3b42pdn6u8ip" path="res://Assets/Imports/Trees/IndustrialPack/Meshes/SM_tree_01.glb" id="482_qhnfq"]
+[ext_resource type="PackedScene" uid="uid://csy7ie7ea21io" path="res://Assets/Imports/Trees/IndustrialPack/Meshes/SM_tree_02.glb" id="483_jbjbg"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_b7t75"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -1999,7 +2001,7 @@ size = Vector3(25.0716, 0.1, 7.89012)
 material = ExtResource("5_mjqyo")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Zone2/Ground"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.3611, 7.73205, 59.045)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.3611, 7.73205, 108.54)
 use_collision = true
 size = Vector3(47.8142, 0.118848, 18.6637)
 material = ExtResource("5_mjqyo")
@@ -2510,7 +2512,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -62.66
 [node name="Brewery" type="Node" parent="NavigationRegion3D/LevelGeometry/Zone2"]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -65.5153, 12.6994, 52.2728)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -65.5153, 12.6994, 101.767)
 use_collision = true
 size = Vector3(0.1, 10, 30)
 material = ExtResource("4_mtal0")
@@ -2521,55 +2523,55 @@ operation = 2
 size = Vector3(2, 7, 15)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -65.5153, 12.7391, 67.2532)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -65.5153, 12.7391, 116.748)
 use_collision = true
 size = Vector3(0.1, 10, 30)
 material = ExtResource("4_mtal0")
 
 [node name="CSGBox3D11" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery"]
-transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, -65.5661, 12.1415, 65.038)
+transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, -65.5661, 12.2064, 114.762)
 use_collision = true
-size = Vector3(0.1, 3.46582, 29.9551)
+size = Vector3(0.1, 3.9248, 29.9551)
 material = ExtResource("5_mjqyo")
 
 [node name="CSGBox3D12" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery"]
-transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, -54.836, 12.1415, 53.981)
+transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, -54.836, 12.2058, 103.472)
 use_collision = true
 size = Vector3(0.1, 3.38721, 8.495)
 material = ExtResource("5_mjqyo")
 
 [node name="CSGBox3D15" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery"]
-transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, -71.8054, 12.1415, 62.1837)
+transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, -71.8054, 12.1415, 111.678)
 use_collision = true
 size = Vector3(0.1, 2.40845, 17.5331)
 material = ExtResource("5_mjqyo")
 
 [node name="CSGBox3D16" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery"]
-transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, -74.3913, 12.1415, 59.1433)
+transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, -73.2883, 12.1415, 108.638)
 use_collision = true
-size = Vector3(0.1, 3.82263, 12.3614)
+size = Vector3(0.1, 3.82263, 14.5673)
 material = ExtResource("5_mjqyo")
 
 [node name="CSGBox3D17" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery"]
-transform = Transform3D(-0.466973, -5.90648e-08, 0.884271, -0.884271, -1.82407e-08, -0.466973, 4.37114e-08, -1, -4.37114e-08, -74.758, 15.1647, 58.0339)
+transform = Transform3D(-0.466973, -5.90648e-08, 0.884271, -0.884271, -1.82407e-08, -0.466973, 4.37114e-08, -1, -4.37114e-08, -74.758, 15.1647, 108.237)
 use_collision = true
-size = Vector3(0.1, 1.59705, 13.0261)
+size = Vector3(0.1, 3, 13.026)
 material = ExtResource("5_mjqyo")
 
 [node name="CSGBox3D13" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery"]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -53.0319, 12.1415, 59.495)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -53.0319, 12.2058, 108.986)
 use_collision = true
 size = Vector3(0.1, 4.97095, 7.68828)
 material = ExtResource("5_mjqyo")
 
 [node name="CSGBox3D14" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery"]
-transform = Transform3D(-4.37114e-08, 1, 0, -0.880643, -3.84941e-08, 0.473781, 0.473781, 2.07096e-08, 0.880643, -65.5062, 9.85656, 56.7683)
+transform = Transform3D(-4.37114e-08, 1, 0, -0.880643, -3.84941e-08, 0.473781, 0.473781, 2.07096e-08, 0.880643, -64.5221, 9.85656, 106.263)
 use_collision = true
-size = Vector3(0.1, 4.97095, 9.61934)
+size = Vector3(0.1, 3, 9.619)
 material = ExtResource("5_mjqyo")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -80.5605, 15.2619, 59.7576)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -80.5605, 15.2619, 109.252)
 use_collision = true
 size = Vector3(0.213721, 15, 14.911)
 material = ExtResource("4_mtal0")
@@ -2580,7 +2582,7 @@ operation = 2
 size = Vector3(5, 4, 2)
 
 [node name="Door3" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery/CSGBox3D3"]
-transform = Transform3D(-4.37114e-08, 0, -0.999999, 0, 1, 0, 0.999999, 0, -4.37114e-08, 0.457527, -1.77022, -3.70267)
+transform = Transform3D(-4.37114e-08, 0, -0.999999, 0, 1, 0, 0.999999, 0, -4.37114e-08, 0.457527, -1.69279, -4.29826)
 operation = 2
 size = Vector3(2.6, 2.6, 2.6)
 
@@ -2590,13 +2592,13 @@ operation = 2
 size = Vector3(5, 4, 2)
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -50.2392, 12.6981, 59.7742)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -50.2392, 12.6981, 109.269)
 use_collision = true
 size = Vector3(0.765332, 10, 15)
 material = ExtResource("4_mtal0")
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -84.9248, 11.706, 52.2711)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -84.9248, 11.706, 101.766)
 use_collision = true
 size = Vector3(0.1, 8, 21.5385)
 material = ExtResource("4_mtal0")
@@ -2608,25 +2610,25 @@ size = Vector3(0.2, 15.8975, 0.4)
 material = ExtResource("5_mjqyo")
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -88.1925, 11.706, 65.4466)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -88.1925, 11.706, 114.941)
 use_collision = true
 size = Vector3(0.1, 8, 15)
 material = ExtResource("4_mtal0")
 
 [node name="CSGBox3D7" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery"]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -95.6475, 11.706, 58.8341)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -95.6475, 11.706, 108.329)
 use_collision = true
 size = Vector3(0.1, 8, 13.2935)
 material = ExtResource("4_mtal0")
 
 [node name="CSGBox3D8" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery"]
-transform = Transform3D(-0.166304, 0.986075, 1.45388e-08, 0.986074, 0.166304, -8.62054e-08, -8.74228e-08, 8.79426e-16, -1, -88.2155, 16.9195, 58.8341)
+transform = Transform3D(-0.166304, 0.986075, 1.45388e-08, 0.986074, 0.166304, -8.62054e-08, -8.74228e-08, 8.79426e-16, -1, -88.2155, 16.9195, 108.329)
 use_collision = true
 size = Vector3(0.1, 15.1654, 13.2935)
 material = ExtResource("5_mjqyo")
 
 [node name="CSGBox3D9" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery"]
-transform = Transform3D(0.166769, -0.985996, 0, 0.985996, 0.166769, 0, 0, 0, 1, -65.5743, 20.1936, 59.7605)
+transform = Transform3D(0.166769, -0.985996, 0, 0.985996, 0.166769, 0, 0, 0, 1, -65.5743, 20.1936, 109.255)
 use_collision = true
 size = Vector3(0.1, 30.5484, 15.0205)
 material = ExtResource("5_mjqyo")
@@ -2640,790 +2642,666 @@ spot_range = 34.7432
 spot_angle = 77.3438
 
 [node name="SpotLight3D4" type="SpotLight3D" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -86.9749, 16.3333, 58.1212)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -86.9749, 16.3333, 109.413)
 light_energy = 16.0
 light_volumetric_fog_energy = 0.0
 light_specular = 1.595
 spot_range = 34.7432
 spot_angle = 77.3438
 
-[node name="CSGBox3D18" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery"]
-transform = Transform3D(0.228827, 0, -0.973467, 0, 1, 0, 0.973467, 0, 0.228827, -54.1563, 8.49123, 54.5658)
-use_collision = true
-size = Vector3(1.5, 1.5, 1.5)
-material = ExtResource("4_mtal0")
-
-[node name="CSGBox3D19" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery"]
-transform = Transform3D(-0.0984687, 0, -0.99514, 0, 1, 0, 0.99514, 0, -0.0984687, -54.1563, 9.72691, 54.4105)
-use_collision = true
-material = ExtResource("4_mtal0")
-
-[node name="CSGBox3D20" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery"]
-transform = Transform3D(-0.0234725, 0, -0.999725, 0, 1, 0, 0.999725, 0, -0.0234725, -52.5639, 8.49123, 61.4982)
-use_collision = true
-size = Vector3(1.5, 1.5, 1.5)
-material = ExtResource("4_mtal0")
-
-[node name="CSGBox3D21" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery"]
-transform = Transform3D(-0.0234725, 0, -0.999725, 0, 1, 0, 0.999725, 0, -0.0234725, -52.9926, 8.7879, 59.7358)
-use_collision = true
-size = Vector3(2, 2, 2)
-material = ExtResource("4_mtal0")
-
-[node name="CSGBox3D22" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery"]
-transform = Transform3D(-0.0234725, 0, -0.999725, 0, 1, 0, 0.999725, 0, -0.0234725, -60.967, 9.03653, 66.4121)
-use_collision = true
-size = Vector3(1.5, 2.5, 1.5)
-material = ExtResource("4_mtal0")
-
-[node name="CSGBox3D23" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery"]
-transform = Transform3D(-0.0234725, 0, -0.999725, 0, 1, 0, 0.999725, 0, -0.0234725, -58.9508, 9.03653, 66.4121)
-use_collision = true
-size = Vector3(1.5, 2.5, 1.5)
-material = ExtResource("4_mtal0")
-
-[node name="CSGBox3D24" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery"]
-transform = Transform3D(-0.0984687, 0, -0.99514, 0, 1, 0, 0.99514, 0, -0.0984687, -52.5639, 9.72691, 61.4982)
-use_collision = true
-material = ExtResource("4_mtal0")
+[node name="SpotLight3D5" type="SpotLight3D" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -71.73, 20.358, 109.413)
+light_energy = 16.0
+light_volumetric_fog_energy = 0.0
+light_specular = 1.595
+spot_range = 34.7432
+spot_angle = 77.3438
 
 [node name="CSGCylinder3D12" type="CSGCylinder3D" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery"]
-transform = Transform3D(0.913971, 0, -0.40578, 0, 1, 0, 0.40578, 0, 0.913971, -59.3293, 8.26279, 59.4015)
+transform = Transform3D(0.913971, 0, -0.40578, 0, 1, 0, 0.40578, 0, 0.913971, -59.3293, 8.26279, 108.896)
 use_collision = true
 radius = 0.929404
 height = 32.0862
 material = ExtResource("4_mtal0")
 
 [node name="SM_frame_box11" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("24_uibej")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -68.513, 7.77665, 66.236)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -68.4575, 7.77665, 115.731)
 
 [node name="SM_frame_box12" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("24_uibej")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -70.4508, 7.77665, 66.236)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -70.4508, 7.77665, 115.731)
 
 [node name="SM_frame_box13" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("24_uibej")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -81.8558, 7.6623, 64.4748)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -81.8558, 7.72721, 113.969)
 
 [node name="SM_frame_box14" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("24_uibej")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -83.8536, 7.6623, 64.4748)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -83.8536, 7.72721, 113.969)
 
 [node name="SM_frame_box15" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("24_uibej")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -85.847, 7.6623, 64.4748)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -85.847, 7.72721, 113.969)
 
 [node name="SM_frame_box16" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("24_uibej")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -87.816, 7.6623, 64.4748)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -87.816, 7.72721, 113.969)
 
 [node name="SM_frame_box17" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("24_uibej")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -81.8558, 9.86771, 64.4748)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -81.8558, 9.93262, 113.969)
 
 [node name="SM_frame_box18" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("24_uibej")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -83.8536, 9.86771, 64.4748)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -83.8536, 9.93262, 113.969)
 
 [node name="SM_frame_box19" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("24_uibej")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -85.847, 9.86771, 64.4748)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -85.847, 9.93262, 113.969)
 
 [node name="SM_frame_box20" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("24_uibej")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -87.816, 9.86771, 64.4748)
-
-[node name="CSGBox3D25" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery"]
-transform = Transform3D(0.0226699, 0, -0.999743, 0, 1, 0, 0.999743, 0, 0.0226699, -68.5396, 8.58236, 66.3025)
-use_collision = true
-size = Vector3(1.5, 1.5, 1.5)
-material = ExtResource("4_mtal0")
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -87.816, 9.93262, 113.969)
 
 [node name="SM_cistern" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("26_goex8")]
-transform = Transform3D(0.224152, 0, -0.974554, 0, 1, 0, 0.974554, 0, 0.224152, -72.1494, 12.163, 60.9088)
+transform = Transform3D(0.224152, 0, -0.974554, 0, 1, 0, 0.974554, 0, 0.224152, -72.1494, 12.163, 111.592)
 
 [node name="SM_cistern2" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("26_goex8")]
-transform = Transform3D(0.0391551, 0, -0.999233, 0, 1, 0, 0.999233, 0, 0.0391551, -76.1926, 12.163, 61.0241)
+transform = Transform3D(0.0391551, 0, -0.999233, 0, 1, 0, 0.999233, 0, 0.0391551, -76.1926, 12.163, 111.707)
 
 [node name="SM_cistern_metal_02" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("27_qcndn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57.3422, 7.77702, 57.4928)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57.3422, 7.77702, 106.987)
 
 [node name="SM_cistern_metal_03" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("27_qcndn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57.3422, 7.77702, 61.5187)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57.3422, 7.77702, 111.013)
 
 [node name="SM_cistern_metal_04" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("27_qcndn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61.1203, 7.77702, 57.4928)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61.1203, 7.77702, 106.987)
 
 [node name="SM_cistern_metal_05" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("27_qcndn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61.1203, 7.77702, 61.5187)
-
-[node name="SM_wooden_barrel" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -81.3089, 7.74208, 64.992)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61.1203, 7.77702, 111.013)
 
 [node name="SM_wooden_barrel35" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -81.5489, 7.74208, 64.1429)
+transform = Transform3D(0.999943, 0.0106812, 4.66891e-10, 0, -4.37114e-08, 1, 0.0106812, -0.999943, -4.37089e-08, -81.4366, 8.14844, 114.306)
 
 [node name="SM_wooden_barrel36" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -82.1684, 7.74208, 64.8661)
+transform = Transform3D(0.999943, 0.0106812, 4.66891e-10, 0, -4.37114e-08, 1, 0.0106812, -0.999943, -4.37089e-08, -82.2903, 8.14844, 114.306)
 
 [node name="SM_wooden_barrel37" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(0.717166, 0, 0.696902, 0, 1, 0, -0.696902, 0, 0.717166, -82.1684, 8.69501, 64.8661)
-
-[node name="SM_wooden_barrel38" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(0.717166, 0, 0.696902, 0, 1, 0, -0.696902, 0, 0.717166, -81.3603, 8.69501, 64.9752)
-
-[node name="SM_wooden_barrel39" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -83.3066, 7.74208, 64.992)
-
-[node name="SM_wooden_barrel40" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -83.5467, 7.74208, 64.1429)
-
-[node name="SM_wooden_barrel41" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84.1662, 7.74208, 64.8661)
-
-[node name="SM_wooden_barrel42" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(0.717166, 0, 0.696902, 0, 1, 0, -0.696902, 0, 0.717166, -84.1662, 8.69501, 64.8661)
-
-[node name="SM_wooden_barrel43" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(0.717166, 0, 0.696902, 0, 1, 0, -0.696902, 0, 0.717166, -83.358, 8.69501, 64.9752)
-
-[node name="SM_wooden_barrel44" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85.3001, 7.74208, 64.992)
-
-[node name="SM_wooden_barrel45" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85.5401, 7.74208, 64.1429)
-
-[node name="SM_wooden_barrel46" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -86.1596, 7.74208, 64.8661)
-
-[node name="SM_wooden_barrel47" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(0.717166, 0, 0.696902, 0, 1, 0, -0.696902, 0, 0.717166, -86.1596, 8.69501, 64.8661)
-
-[node name="SM_wooden_barrel48" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(0.717166, 0, 0.696902, 0, 1, 0, -0.696902, 0, 0.717166, -85.3514, 8.69501, 64.9752)
-
-[node name="SM_wooden_barrel49" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -87.269, 7.74208, 64.992)
-
-[node name="SM_wooden_barrel50" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -87.5091, 7.74208, 64.1429)
-
-[node name="SM_wooden_barrel51" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -88.1286, 7.74208, 64.8661)
-
-[node name="SM_wooden_barrel52" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(0.717166, 0, 0.696902, 0, 1, 0, -0.696902, 0, 0.717166, -88.1286, 8.69501, 64.8661)
-
-[node name="SM_wooden_barrel53" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(0.717166, 0, 0.696902, 0, 1, 0, -0.696902, 0, 0.717166, -87.3204, 8.69501, 64.9752)
-
-[node name="SM_wooden_barrel54" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -81.3089, 9.94749, 64.992)
-
-[node name="SM_wooden_barrel55" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -81.5489, 9.94749, 64.1429)
-
-[node name="SM_wooden_barrel56" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -82.1684, 9.94749, 64.8661)
-
-[node name="SM_wooden_barrel57" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(0.717166, 0, 0.696902, 0, 1, 0, -0.696902, 0, 0.717166, -82.1684, 10.9004, 64.8661)
-
-[node name="SM_wooden_barrel58" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(0.717166, 0, 0.696902, 0, 1, 0, -0.696902, 0, 0.717166, -81.3603, 10.9004, 64.9752)
-
-[node name="SM_wooden_barrel59" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -83.3066, 9.94749, 64.992)
-
-[node name="SM_wooden_barrel60" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -83.5467, 9.94749, 64.1429)
-
-[node name="SM_wooden_barrel61" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84.1662, 9.94749, 64.8661)
+transform = Transform3D(0.999943, 0.0106812, 4.66891e-10, 0, -4.37114e-08, 1, 0.0106812, -0.999943, -4.37089e-08, -81.7626, 8.74629, 114.306)
 
 [node name="SM_wooden_barrel62" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(0.717166, 0, 0.696902, 0, 1, 0, -0.696902, 0, 0.717166, -84.1662, 10.9004, 64.8661)
+transform = Transform3D(0.999943, 0.0106812, 4.66891e-10, 0, -4.37114e-08, 1, 0.0106812, -0.999943, -4.37089e-08, -81.3894, 9.38268, 114.306)
 
-[node name="SM_wooden_barrel63" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(0.717166, 0, 0.696902, 0, 1, 0, -0.696902, 0, 0.717166, -83.358, 10.9004, 64.9752)
+[node name="SM_wooden_barrel38" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
+transform = Transform3D(0.999943, 0.0106812, 4.66891e-10, 0, -4.37114e-08, 1, 0.0106812, -0.999943, -4.37089e-08, -83.4521, 8.15343, 114.306)
 
-[node name="SM_wooden_barrel64" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85.3001, 9.94749, 64.992)
+[node name="SM_wooden_barrel39" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
+transform = Transform3D(0.999943, 0.0106812, 4.66891e-10, 0, -4.37114e-08, 1, 0.0106812, -0.999943, -4.37089e-08, -84.3058, 8.15343, 114.306)
 
-[node name="SM_wooden_barrel65" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85.5401, 9.94749, 64.1429)
+[node name="SM_wooden_barrel40" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
+transform = Transform3D(0.999943, 0.0106812, 4.66891e-10, 0, -4.37114e-08, 1, 0.0106812, -0.999943, -4.37089e-08, -83.7781, 8.75128, 114.306)
 
-[node name="SM_wooden_barrel66" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -86.1596, 9.94749, 64.8661)
+[node name="SM_wooden_barrel60" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
+transform = Transform3D(0.999943, 0.0106812, 4.66891e-10, 0, -4.37114e-08, 1, 0.0106812, -0.999943, -4.37089e-08, -83.4144, 9.42212, 114.306)
 
-[node name="SM_wooden_barrel67" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(0.717166, 0, 0.696902, 0, 1, 0, -0.696902, 0, 0.717166, -86.1596, 10.9004, 64.8661)
+[node name="SM_wooden_barrel61" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
+transform = Transform3D(0.999943, 0.0106812, 4.66891e-10, 0, -4.37114e-08, 1, 0.0106812, -0.999943, -4.37089e-08, -84.3278, 9.35335, 114.306)
 
-[node name="SM_wooden_barrel68" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(0.717166, 0, 0.696902, 0, 1, 0, -0.696902, 0, 0.717166, -85.3514, 10.9004, 64.9752)
+[node name="SM_wooden_barrel41" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
+transform = Transform3D(0.999943, 0.0106812, 4.66891e-10, 0, -4.37114e-08, 1, 0.0106812, -0.999943, -4.37089e-08, -85.4394, 8.15343, 114.306)
 
-[node name="SM_wooden_barrel69" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -87.269, 9.94749, 64.992)
+[node name="SM_wooden_barrel42" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
+transform = Transform3D(0.999943, 0.0106812, 4.66891e-10, 0, -4.37114e-08, 1, 0.0106812, -0.999943, -4.37089e-08, -86.2931, 8.15343, 114.306)
 
-[node name="SM_wooden_barrel70" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -87.5091, 9.94749, 64.1429)
+[node name="SM_wooden_barrel43" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
+transform = Transform3D(0.999943, 0.0106812, 4.66891e-10, 0, -4.37114e-08, 1, 0.0106812, -0.999943, -4.37089e-08, -85.7654, 8.75128, 114.306)
 
-[node name="SM_wooden_barrel71" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -88.1286, 9.94749, 64.8661)
+[node name="SM_wooden_barrel44" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
+transform = Transform3D(0.999943, 0.0106812, 4.66891e-10, 0, -4.37114e-08, 1, 0.0106812, -0.999943, -4.37089e-08, -87.3972, 8.15343, 114.306)
 
-[node name="SM_wooden_barrel72" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(0.717166, 0, 0.696902, 0, 1, 0, -0.696902, 0, 0.717166, -88.1286, 10.9004, 64.8661)
+[node name="SM_wooden_barrel45" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
+transform = Transform3D(0.999943, 0.0106812, 4.66891e-10, 0, -4.37114e-08, 1, 0.0106812, -0.999943, -4.37089e-08, -88.2509, 8.15343, 114.306)
 
-[node name="SM_wooden_barrel73" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(0.717166, 0, 0.696902, 0, 1, 0, -0.696902, 0, 0.717166, -87.3204, 10.9004, 64.9752)
+[node name="SM_wooden_barrel46" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
+transform = Transform3D(0.999943, 0.0106812, 4.66891e-10, 0, -4.37114e-08, 1, 0.0106812, -0.999943, -4.37089e-08, -87.7232, 8.75128, 114.306)
+
+[node name="SM_wooden_barrel47" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
+transform = Transform3D(0.999943, 0.0106812, 4.66891e-10, 0, -4.37114e-08, 1, 0.0106812, -0.999943, -4.37089e-08, -81.4366, 10.3455, 114.306)
+
+[node name="SM_wooden_barrel48" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
+transform = Transform3D(0.999943, 0.0106812, 4.66891e-10, 0, -4.37114e-08, 1, 0.0106812, -0.999943, -4.37089e-08, -82.2903, 10.3455, 114.306)
+
+[node name="SM_wooden_barrel49" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
+transform = Transform3D(0.999943, 0.0106812, 4.66891e-10, 0, -4.37114e-08, 1, 0.0106812, -0.999943, -4.37089e-08, -81.7626, 10.9434, 114.306)
+
+[node name="SM_wooden_barrel50" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
+transform = Transform3D(0.999943, 0.0106812, 4.66891e-10, 0, -4.37114e-08, 1, 0.0106812, -0.999943, -4.37089e-08, -83.4521, 10.3505, 114.306)
+
+[node name="SM_wooden_barrel51" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
+transform = Transform3D(0.999943, 0.0106812, 4.66891e-10, 0, -4.37114e-08, 1, 0.0106812, -0.999943, -4.37089e-08, -84.3058, 10.3505, 114.306)
+
+[node name="SM_wooden_barrel52" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
+transform = Transform3D(0.999943, 0.0106812, 4.66891e-10, 0, -4.37114e-08, 1, 0.0106812, -0.999943, -4.37089e-08, -83.7781, 10.9484, 114.306)
+
+[node name="SM_wooden_barrel59" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
+transform = Transform3D(0.995025, 0.0106287, -0.0990592, 0.0990536, 0.00105803, 0.995082, 0.0106812, -0.999943, -4.37089e-08, -84.3688, 11.3188, 114.306)
+
+[node name="SM_wooden_barrel53" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
+transform = Transform3D(0.999943, 0.0106812, 4.66891e-10, 0, -4.37114e-08, 1, 0.0106812, -0.999943, -4.37089e-08, -85.4394, 10.3505, 114.306)
+
+[node name="SM_wooden_barrel54" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
+transform = Transform3D(0.999943, 0.0106812, 4.66891e-10, 0, -4.37114e-08, 1, 0.0106812, -0.999943, -4.37089e-08, -86.2931, 10.3505, 114.306)
+
+[node name="SM_wooden_barrel55" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
+transform = Transform3D(0.999943, 0.0106812, 4.66891e-10, 0, -4.37114e-08, 1, 0.0106812, -0.999943, -4.37089e-08, -85.7654, 10.9484, 114.306)
+
+[node name="SM_wooden_barrel56" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
+transform = Transform3D(0.999943, 0.0106812, 4.66891e-10, 0, -4.37114e-08, 1, 0.0106812, -0.999943, -4.37089e-08, -87.3972, 10.3505, 114.306)
+
+[node name="SM_wooden_barrel57" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
+transform = Transform3D(0.999943, 0.0106812, 4.66891e-10, 0, -4.37114e-08, 1, 0.0106812, -0.999943, -4.37089e-08, -88.2509, 10.3505, 114.306)
+
+[node name="SM_wooden_barrel58" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
+transform = Transform3D(0.999943, 0.0106812, 4.66891e-10, 0, -4.37114e-08, 1, 0.0106812, -0.999943, -4.37089e-08, -87.7232, 10.9484, 114.306)
 
 [node name="SM_wooden_barrel29" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70.1405, 7.86119, 65.9748)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70.1405, 7.86119, 115.469)
 
 [node name="SM_wooden_barrel30" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70.8759, 7.86119, 66.6684)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70.8759, 7.86119, 116.163)
 
 [node name="SM_wooden_barrel31" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -71.9675, 7.86119, 66.6684)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -71.9675, 7.86119, 116.163)
 
 [node name="SM_wooden_barrel33" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(0.803805, 0, 0.594893, 0, 1, 0, -0.594893, 0, 0.803805, -71.9675, 8.82395, 66.6684)
+transform = Transform3D(0.803805, 0, 0.594893, 0, 1, 0, -0.594893, 0, 0.803805, -71.9675, 8.82395, 116.163)
 
 [node name="SM_wooden_barrel32" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -71.9675, 7.86119, 65.7797)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -71.9675, 7.86119, 115.274)
 
 [node name="SM_wooden_barrel2" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -79.5668, 12.1865, 58.1239)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -79.5668, 12.1865, 108.696)
 
 [node name="SM_wooden_barrel3" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -78.8048, 12.1906, 58.1239)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -78.8048, 12.1906, 108.696)
 
 [node name="SM_wooden_barrel4" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -78.0003, 12.1865, 58.1239)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -78.0003, 12.1865, 108.696)
 
 [node name="SM_wooden_barrel8" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(0.828539, 0, -0.559931, 0, 1, 0, 0.559931, 0, 0.828539, -78.0003, 12.1865, 59.0327)
+transform = Transform3D(0.828539, 0, -0.559931, 0, 1, 0, 0.559931, 0, 0.828539, -78.0003, 12.1865, 109.605)
 
 [node name="SM_wooden_barrel9" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(0.86558, 0, 0.500771, 0, 1, 0, -0.500771, 0, 0.86558, -79.5668, 13.1774, 58.1189)
+transform = Transform3D(0.86558, 0, 0.500771, 0, 1, 0, -0.500771, 0, 0.86558, -79.5668, 13.1774, 108.691)
 
 [node name="SM_wooden_barrel10" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(0.600546, 0, -0.79959, 0, 1, 0, 0.79959, 0, 0.600546, -78.8048, 13.1814, 58.1189)
+transform = Transform3D(0.600546, 0, -0.79959, 0, 1, 0, 0.79959, 0, 0.600546, -78.8048, 13.1814, 108.691)
 
 [node name="SM_wooden_barrel11" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(0.0318294, 0, 0.999493, 0, 1, 0, -0.999493, 0, 0.0318294, -78.0003, 13.1774, 58.1189)
+transform = Transform3D(0.0318294, 0, 0.999493, 0, 1, 0, -0.999493, 0, 0.0318294, -78.0003, 13.1774, 108.691)
 
 [node name="SM_wooden_barrel14" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(0.0318294, 0, 0.999493, 0, 1, 0, -0.999493, 0, 0.0318294, -78.0003, 13.1774, 59.0261)
+transform = Transform3D(0.0318294, 0, 0.999493, 0, 1, 0, -0.999493, 0, 0.0318294, -78.0003, 13.1774, 109.598)
 
 [node name="SM_wooden_barrel22" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(0.570499, 0, -0.821299, 0, 1, 0, 0.821299, 0, 0.570499, -78.8048, 12.1906, 59.8067)
+transform = Transform3D(0.570499, 0, -0.821299, 0, 1, 0, 0.821299, 0, 0.570499, -78.8048, 12.1906, 110.379)
 
 [node name="SM_wooden_barrel27" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(0.720382, 0, -0.693578, 0, 1, 0, 0.693578, 0, 0.720382, -79.5668, 12.1865, 61.508)
+transform = Transform3D(0.720382, 0, -0.693578, 0, 1, 0, 0.693578, 0, 0.720382, -79.5668, 12.1865, 112.08)
 
 [node name="SM_wooden_barrel28" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(0.570499, 0, -0.821299, 0, 1, 0, 0.821299, 0, 0.570499, -78.8048, 12.1906, 61.508)
+transform = Transform3D(0.570499, 0, -0.821299, 0, 1, 0, 0.821299, 0, 0.570499, -78.8048, 12.1906, 112.08)
 
 [node name="SM_wooden_barrel198" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(0.720382, 0, -0.693578, 0, 1, 0, 0.693578, 0, 0.720382, -79.5668, 13.1461, 61.508)
+transform = Transform3D(0.720382, 0, -0.693578, 0, 1, 0, 0.693578, 0, 0.720382, -79.5668, 13.1461, 112.08)
 
 [node name="SM_wooden_barrel199" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(0.570499, 0, -0.821299, 0, 1, 0, 0.821299, 0, 0.570499, -78.8048, 13.1502, 61.508)
+transform = Transform3D(0.570499, 0, -0.821299, 0, 1, 0, 0.821299, 0, 0.570499, -78.8048, 13.1502, 112.08)
 
 [node name="SM_wooden_barrel202" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(0.720382, 0, -0.693578, 0, 1, 0, 0.693578, 0, 0.720382, -79.5668, 14.1243, 61.508)
+transform = Transform3D(0.720382, 0, -0.693578, 0, 1, 0, 0.693578, 0, 0.720382, -79.5668, 14.1243, 112.08)
 
 [node name="SM_wooden_barrel203" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(0.570499, 0, -0.821299, 0, 1, 0, 0.821299, 0, 0.570499, -78.8048, 14.1284, 61.508)
+transform = Transform3D(0.570499, 0, -0.821299, 0, 1, 0, 0.821299, 0, 0.570499, -78.8048, 14.1284, 112.08)
 
 [node name="SM_wooden_barrel204" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(0.339493, 0, -0.940609, 0, 1, 0, 0.940609, 0, 0.339493, -79.5668, 15.091, 60.6972)
+transform = Transform3D(0.339493, 0, -0.940609, 0, 1, 0, 0.940609, 0, 0.339493, -79.5668, 15.091, 111.269)
 
 [node name="SM_wooden_barrel205" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(0.975634, 0, -0.219404, 0, 1, 0, 0.219404, 0, 0.975634, -78.8048, 15.0951, 60.6972)
+transform = Transform3D(0.975634, 0, -0.219404, 0, 1, 0, 0.219404, 0, 0.975634, -78.8048, 15.0951, 111.272)
 
 [node name="SM_wooden_barrel206" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(0.720382, 0, -0.693578, 0, 1, 0, 0.693578, 0, 0.720382, -79.5668, 15.091, 61.508)
+transform = Transform3D(0.720382, 0, -0.693578, 0, 1, 0, 0.693578, 0, 0.720382, -79.5668, 15.091, 112.08)
 
 [node name="SM_wooden_barrel207" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(0.570499, 0, -0.821299, 0, 1, 0, 0.821299, 0, 0.570499, -78.8048, 15.0951, 61.508)
+transform = Transform3D(0.570499, 0, -0.821299, 0, 1, 0, 0.821299, 0, 0.570499, -78.8048, 15.0951, 112.082)
 
 [node name="SM_wooden_barrel34" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(0.570499, 0, -0.821299, 0, 1, 0, 0.821299, 0, 0.570499, -54.9677, 12.1906, 62.9363)
+transform = Transform3D(0.570499, 0, -0.821299, 0, 1, 0, 0.821299, 0, 0.570499, -54.9677, 12.1906, 112.427)
 
 [node name="SM_wooden_barrel25" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(0.600546, 0, -0.79959, 0, 1, 0, 0.79959, 0, 0.600546, -78.8048, 13.1814, 59.8)
+transform = Transform3D(0.600546, 0, -0.79959, 0, 1, 0, 0.79959, 0, 0.600546, -78.8048, 13.1814, 110.372)
 
 [node name="SM_wooden_barrel194" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(0.86558, 0, 0.500771, 0, 1, 0, -0.500771, 0, 0.86558, -79.5668, 14.1451, 59.8)
+transform = Transform3D(0.86558, 0, 0.500771, 0, 1, 0, -0.500771, 0, 0.86558, -79.5668, 14.1451, 110.372)
 
 [node name="SM_wooden_barrel195" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(0.600546, 0, -0.79959, 0, 1, 0, 0.79959, 0, 0.600546, -78.8048, 14.1491, 59.8)
+transform = Transform3D(0.600546, 0, -0.79959, 0, 1, 0, 0.79959, 0, 0.600546, -78.8048, 14.1491, 110.372)
 
 [node name="SM_wooden_barrel15" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(0.86558, 0, 0.500771, 0, 1, 0, -0.500771, 0, 0.86558, -79.5668, 14.174, 58.1189)
+transform = Transform3D(0.86558, 0, 0.500771, 0, 1, 0, -0.500771, 0, 0.86558, -79.5668, 14.174, 108.691)
 
 [node name="SM_wooden_barrel16" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(0.600546, 0, -0.79959, 0, 1, 0, 0.79959, 0, 0.600546, -78.8048, 14.1781, 58.1189)
+transform = Transform3D(0.600546, 0, -0.79959, 0, 1, 0, 0.79959, 0, 0.600546, -78.8048, 14.1781, 108.691)
 
 [node name="SM_wooden_barrel17" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(0.0318294, 0, 0.999493, 0, 1, 0, -0.999493, 0, 0.0318294, -78.0003, 14.174, 58.1189)
+transform = Transform3D(0.0318294, 0, 0.999493, 0, 1, 0, -0.999493, 0, 0.0318294, -78.0003, 14.174, 108.691)
 
 [node name="SM_wooden_barrel18" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(0.86558, 0, 0.500771, 0, 1, 0, -0.500771, 0, 0.86558, -79.5668, 14.174, 59.0261)
+transform = Transform3D(0.86558, 0, 0.500771, 0, 1, 0, -0.500771, 0, 0.86558, -79.5668, 14.174, 109.598)
 
 [node name="SM_wooden_barrel19" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-0.0232631, 0, -0.999729, 0, 1, 0, 0.999729, 0, -0.0232631, -78.8048, 14.1781, 59.0261)
+transform = Transform3D(-0.0232631, 0, -0.999729, 0, 1, 0, 0.999729, 0, -0.0232631, -78.8048, 14.1781, 109.598)
 
 [node name="SM_wooden_barrel20" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(0.0318294, 0, 0.999493, 0, 1, 0, -0.999493, 0, 0.0318294, -78.0003, 14.174, 59.0261)
+transform = Transform3D(0.0318294, 0, 0.999493, 0, 1, 0, -0.999493, 0, 0.0318294, -78.0003, 14.174, 109.598)
 
 [node name="SM_wooden_barrel5" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -77.2382, 12.1906, 58.1239)
-
-[node name="CSGMesh3D" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("14_r5pyw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -77.2682, 8.23384, 66.6759)
-
-[node name="CSGMesh3D2" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("14_r5pyw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68.7615, 8.23384, 62.1313)
-
-[node name="CSGMesh3D3" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("14_r5pyw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75.9449, 8.23384, 62.1313)
-
-[node name="CSGMesh3D4" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("14_r5pyw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -77.0971, 8.23384, 53.1853)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -77.2382, 12.1906, 108.696)
 
 [node name="CSGMesh3D7" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("14_r5pyw")]
-transform = Transform3D(-0.718551, 0, 0.695474, 0, 1, 0, -0.695474, 0, -0.718551, -83.0184, 8.23384, 54.7424)
-
-[node name="CSGMesh3D5" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("14_r5pyw")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -54.9949, 12.5625, 59.512)
+transform = Transform3D(-0.718551, 0, 0.695474, 0, 1, 0, -0.695474, 0, -0.718551, -83.0184, 8.23384, 104.237)
 
 [node name="CSGMesh3D6" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("14_r5pyw")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -59.5892, 12.6581, 63.7821)
-
-[node name="CSGBox3D26" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery"]
-transform = Transform3D(-0.0234725, 0, -0.999725, 0, 1, 0, 0.999725, 0, -0.0234725, -82.2141, 13.3662, 52.7183)
-visible = false
-use_collision = true
-size = Vector3(0.868347, 8.09015, 3.15112)
-material = ExtResource("4_mtal0")
-
-[node name="CSGBox3D27" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -81.0995, 13.8324, 53.8707)
-visible = false
-use_collision = true
-size = Vector3(0.868347, 7.1095, 3.08484)
-material = ExtResource("4_mtal0")
-
-[node name="CSGBox3D28" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery"]
-transform = Transform3D(0.703866, 0, 0.710333, 0, 1, 0, -0.710333, 0, 0.703866, -82.3217, 13.8462, 53.9433)
-visible = false
-use_collision = true
-size = Vector3(0.868347, 7.13721, 3.2692)
-material = ExtResource("4_mtal0")
-
-[node name="CSGBox3D29" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -79.127, 14.0864, 59.6818)
-visible = false
-use_collision = true
-size = Vector3(2.76986, 4.05487, 4.74837)
-material = ExtResource("4_mtal0")
-
-[node name="CSGBox3D30" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76.793, 13.8454, 58.2254)
-visible = false
-use_collision = true
-size = Vector3(2.0905, 3.57288, 1.83561)
-material = ExtResource("4_mtal0")
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -59.5892, 12.6581, 113.277)
 
 [node name="SM_wooden_barrel74" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 8.10604, 61.8303)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 8.10604, 111.173)
 
 [node name="SM_wooden_barrel75" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 8.10604, 60.9657)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 8.10604, 110.308)
 
 [node name="SM_wooden_barrel76" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 8.10604, 60.1214)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 8.10604, 109.464)
 
 [node name="SM_wooden_barrel77" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 8.10604, 59.2768)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 8.10604, 108.619)
 
 [node name="SM_wooden_barrel78" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 8.10604, 58.4271)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 8.10604, 107.77)
 
 [node name="SM_wooden_barrel79" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 8.10604, 57.6004)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 8.10604, 106.943)
 
 [node name="SM_wooden_barrel80" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 8.10604, 56.7359)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 8.10604, 106.078)
 
 [node name="SM_wooden_barrel81" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 8.10604, 55.8915)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 8.10604, 105.234)
 
 [node name="SM_wooden_barrel82" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 8.10604, 55.0469)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 8.10604, 104.389)
 
 [node name="SM_wooden_barrel83" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 8.10604, 54.1972)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 8.10604, 103.54)
 
 [node name="SM_wooden_barrel85" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 8.77977, 61.386)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 8.77977, 110.728)
 
 [node name="SM_wooden_barrel86" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 8.77977, 60.5417)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 8.77977, 109.884)
 
 [node name="SM_wooden_barrel87" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 8.77977, 59.6971)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 8.77977, 109.04)
 
 [node name="SM_wooden_barrel88" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 8.77977, 58.8474)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 8.77977, 108.19)
 
 [node name="SM_wooden_barrel89" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 8.77977, 58.0207)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 8.77977, 107.363)
 
 [node name="SM_wooden_barrel90" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 8.77977, 57.1561)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 8.77977, 106.499)
 
 [node name="SM_wooden_barrel91" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 8.77977, 56.3118)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 8.77977, 105.654)
 
 [node name="SM_wooden_barrel92" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 8.77977, 55.4672)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 8.77977, 104.81)
 
 [node name="SM_wooden_barrel93" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 8.77977, 54.6175)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 8.77977, 103.96)
 
 [node name="SM_wooden_barrel95" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 9.32874, 60.9614)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 9.32874, 110.304)
 
 [node name="SM_wooden_barrel96" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 9.32874, 60.1171)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 9.32874, 109.46)
 
 [node name="SM_wooden_barrel97" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 9.32874, 59.2725)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 9.32874, 108.615)
 
 [node name="SM_wooden_barrel98" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 9.32874, 58.4228)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 9.32874, 107.765)
 
 [node name="SM_wooden_barrel99" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 9.32874, 57.5961)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 9.32874, 106.939)
 
 [node name="SM_wooden_barrel100" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 9.32874, 56.7316)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 9.32874, 106.074)
 
 [node name="SM_wooden_barrel101" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 9.32874, 55.8872)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 9.32874, 105.23)
 
 [node name="SM_wooden_barrel102" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 9.32874, 55.0426)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 9.32874, 104.385)
 
 [node name="SM_wooden_barrel106" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 9.86363, 60.5449)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 9.86363, 109.887)
 
 [node name="SM_wooden_barrel107" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 9.86363, 59.7003)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 9.86363, 109.043)
 
 [node name="SM_wooden_barrel108" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 9.86363, 58.8506)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 9.86363, 108.193)
 
 [node name="SM_wooden_barrel109" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 9.86363, 58.0239)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 9.86363, 107.366)
 
 [node name="SM_wooden_barrel190" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8685, 9.32874, 58.4228)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8685, 9.32874, 107.958)
 
 [node name="SM_wooden_barrel191" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8685, 9.86363, 58.0239)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8685, 9.86363, 107.559)
 
 [node name="SM_wooden_barrel192" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5321, 9.32874, 58.4228)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5321, 9.32874, 111.078)
 
 [node name="SM_wooden_barrel193" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5321, 9.86363, 58.0239)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5321, 9.86363, 110.679)
 
 [node name="SM_wooden_barrel110" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 9.86363, 57.1594)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 9.86363, 106.502)
 
 [node name="SM_wooden_barrel111" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 9.86363, 56.315)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 9.86363, 105.657)
 
 [node name="SM_wooden_barrel112" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 9.86363, 55.4704)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 9.86363, 104.813)
 
 [node name="SM_wooden_barrel116" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 10.4155, 60.1217)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 10.4155, 109.464)
 
 [node name="SM_wooden_barrel117" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 10.4155, 59.2771)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 10.4155, 108.62)
 
 [node name="SM_wooden_barrel118" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 10.4155, 58.4274)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 10.4155, 107.77)
 
 [node name="SM_wooden_barrel119" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 10.4155, 57.6007)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 10.4155, 106.943)
 
 [node name="SM_wooden_barrel120" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 10.4155, 56.7361)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 10.4155, 106.079)
 
 [node name="SM_wooden_barrel121" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 10.4155, 55.8918)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -91.1912, 10.4155, 105.234)
 
 [node name="SM_wooden_barrel84" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 8.10604, 61.74)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 8.10604, 111.275)
 
 [node name="SM_wooden_barrel94" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 8.10604, 60.8754)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 8.10604, 110.41)
 
 [node name="SM_wooden_barrel103" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 8.10604, 60.0311)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 8.10604, 109.566)
 
 [node name="SM_wooden_barrel104" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 8.10604, 59.1865)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 8.10604, 108.721)
 
 [node name="SM_wooden_barrel105" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 8.10604, 58.3368)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 8.10604, 107.872)
 
 [node name="SM_wooden_barrel113" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 8.10604, 57.5101)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 8.10604, 107.045)
 
 [node name="SM_wooden_barrel114" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 8.10604, 56.6456)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 8.10604, 106.181)
 
 [node name="SM_wooden_barrel115" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 8.10604, 55.8012)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 8.10604, 105.336)
 
 [node name="SM_wooden_barrel122" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 8.10604, 54.9566)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 8.10604, 104.492)
 
 [node name="SM_wooden_barrel123" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 8.10604, 54.1069)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 8.10604, 103.642)
 
 [node name="SM_wooden_barrel124" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 8.77977, 61.2957)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 8.77977, 110.831)
 
 [node name="SM_wooden_barrel125" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 8.77977, 60.4514)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 8.77977, 109.986)
 
 [node name="SM_wooden_barrel126" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 8.77977, 59.6068)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 8.77977, 109.142)
 
 [node name="SM_wooden_barrel127" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 8.77977, 58.7571)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 8.77977, 108.292)
 
 [node name="SM_wooden_barrel128" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 8.77977, 57.9304)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 8.77977, 107.465)
 
 [node name="SM_wooden_barrel129" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 8.77977, 57.0659)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 8.77977, 106.601)
 
 [node name="SM_wooden_barrel130" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 8.77977, 56.2215)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 8.77977, 105.756)
 
 [node name="SM_wooden_barrel131" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 8.77977, 55.3769)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 8.77977, 104.912)
 
 [node name="SM_wooden_barrel132" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 8.77977, 54.5272)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 8.77977, 104.062)
 
 [node name="SM_wooden_barrel133" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 9.32874, 60.8712)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 9.32874, 110.406)
 
 [node name="SM_wooden_barrel134" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 9.32874, 60.0268)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 9.32874, 109.562)
 
 [node name="SM_wooden_barrel135" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 9.32874, 59.1822)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 9.32874, 108.717)
 
 [node name="SM_wooden_barrel136" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 9.32874, 57.5059)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 9.32874, 107.041)
 
 [node name="SM_wooden_barrel137" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 9.32874, 56.6413)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 9.32874, 106.176)
 
 [node name="SM_wooden_barrel138" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 9.32874, 55.797)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 9.32874, 105.332)
 
 [node name="SM_wooden_barrel139" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 9.32874, 54.9523)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 9.32874, 104.487)
 
 [node name="SM_wooden_barrel140" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 9.86363, 60.4546)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 9.86363, 109.99)
 
 [node name="SM_wooden_barrel141" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 9.86363, 59.61)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 9.86363, 109.145)
 
 [node name="SM_wooden_barrel142" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 9.86363, 58.7603)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 9.86363, 108.295)
 
 [node name="SM_wooden_barrel143" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 9.86363, 57.0691)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 9.86363, 106.604)
 
 [node name="SM_wooden_barrel144" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 9.86363, 56.2247)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 9.86363, 105.76)
 
 [node name="SM_wooden_barrel145" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 9.86363, 55.3801)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 9.86363, 104.915)
 
 [node name="SM_wooden_barrel146" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 10.4155, 60.0314)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 10.4155, 109.566)
 
 [node name="SM_wooden_barrel147" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 10.4155, 59.1868)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 10.4155, 108.722)
 
 [node name="SM_wooden_barrel148" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 10.4155, 58.3371)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 10.4155, 107.872)
 
 [node name="SM_wooden_barrel149" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 10.4155, 57.5104)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 10.4155, 107.045)
 
 [node name="SM_wooden_barrel150" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 10.4155, 56.6459)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 10.4155, 106.181)
 
 [node name="SM_wooden_barrel151" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 10.4155, 55.8015)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.8637, 10.4155, 105.336)
 
 [node name="SM_wooden_barrel152" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 8.10604, 61.74)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 8.10604, 114.395)
 
 [node name="SM_wooden_barrel153" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 8.10604, 60.8754)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 8.10604, 113.53)
 
 [node name="SM_wooden_barrel154" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 8.10604, 60.0311)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 8.10604, 112.686)
 
 [node name="SM_wooden_barrel155" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 8.10604, 59.1865)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 8.10604, 111.841)
 
 [node name="SM_wooden_barrel156" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 8.10604, 58.3368)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 8.10604, 110.992)
 
 [node name="SM_wooden_barrel157" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 8.10604, 57.5101)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 8.10604, 110.165)
 
 [node name="SM_wooden_barrel158" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 8.10604, 56.6456)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 8.10604, 109.3)
 
 [node name="SM_wooden_barrel159" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 8.10604, 55.8012)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 8.10604, 108.456)
 
 [node name="SM_wooden_barrel160" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 8.10604, 54.9566)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 8.10604, 107.611)
 
 [node name="SM_wooden_barrel161" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 8.10604, 54.1069)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 8.10604, 106.762)
 
 [node name="SM_wooden_barrel162" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 8.77977, 61.2957)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 8.77977, 113.95)
 
 [node name="SM_wooden_barrel163" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 8.77977, 60.4514)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 8.77977, 113.106)
 
 [node name="SM_wooden_barrel164" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 8.77977, 59.6068)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 8.77977, 112.262)
 
 [node name="SM_wooden_barrel165" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 8.77977, 58.7571)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 8.77977, 111.412)
 
 [node name="SM_wooden_barrel166" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 8.77977, 57.9304)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 8.77977, 110.585)
 
 [node name="SM_wooden_barrel167" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 8.77977, 57.0659)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 8.77977, 109.721)
 
 [node name="SM_wooden_barrel168" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 8.77977, 56.2215)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 8.77977, 108.876)
 
 [node name="SM_wooden_barrel169" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 8.77977, 55.3769)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 8.77977, 108.032)
 
 [node name="SM_wooden_barrel170" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 8.77977, 54.5272)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 8.77977, 107.182)
 
 [node name="SM_wooden_barrel171" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 9.32874, 60.8712)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 9.32874, 113.526)
 
 [node name="SM_wooden_barrel172" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 9.32874, 60.0268)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 9.32874, 112.682)
 
 [node name="SM_wooden_barrel173" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 9.32874, 59.1822)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 9.32874, 111.837)
 
 [node name="SM_wooden_barrel174" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 9.32874, 57.5059)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 9.32874, 110.161)
 
 [node name="SM_wooden_barrel175" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 9.32874, 56.6413)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 9.32874, 109.296)
 
 [node name="SM_wooden_barrel176" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 9.32874, 55.797)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 9.32874, 108.452)
 
 [node name="SM_wooden_barrel177" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 9.32874, 54.9523)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 9.32874, 107.607)
 
 [node name="SM_wooden_barrel178" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 9.86363, 60.4546)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 9.86363, 113.109)
 
 [node name="SM_wooden_barrel179" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 9.86363, 59.61)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 9.86363, 112.265)
 
 [node name="SM_wooden_barrel180" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 9.86363, 58.7603)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 9.86363, 111.415)
 
 [node name="SM_wooden_barrel181" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 9.86363, 57.0691)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 9.86363, 109.724)
 
 [node name="SM_wooden_barrel182" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 9.86363, 56.2247)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 9.86363, 108.879)
 
 [node name="SM_wooden_barrel183" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 9.86363, 55.3801)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 9.86363, 108.035)
 
 [node name="SM_wooden_barrel184" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 10.4155, 60.0314)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 10.4155, 112.686)
 
 [node name="SM_wooden_barrel185" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 10.4155, 59.1868)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 10.4155, 111.842)
 
 [node name="SM_wooden_barrel186" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 10.4155, 58.3371)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 10.4155, 110.992)
 
 [node name="SM_wooden_barrel187" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 10.4155, 57.5104)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 10.4155, 110.165)
 
 [node name="SM_wooden_barrel188" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 10.4155, 56.6459)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 10.4155, 109.301)
 
 [node name="SM_wooden_barrel189" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 10.4155, 55.8015)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.5065, 10.4155, 108.456)
 
 [node name="SM_wooden_barrel6" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(0.720382, 0, -0.693578, 0, 1, 0, 0.693578, 0, 0.720382, -79.5668, 12.1865, 59.0327)
+transform = Transform3D(0.720382, 0, -0.693578, 0, 1, 0, 0.693578, 0, 0.720382, -79.5668, 12.1865, 109.605)
 
 [node name="SM_wooden_barrel7" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(0.570499, 0, -0.821299, 0, 1, 0, 0.821299, 0, 0.570499, -78.8048, 12.1906, 59.0327)
+transform = Transform3D(0.570499, 0, -0.821299, 0, 1, 0, 0.821299, 0, 0.570499, -78.8048, 12.1906, 109.605)
 
 [node name="SM_wooden_barrel12" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(0.86558, 0, 0.500771, 0, 1, 0, -0.500771, 0, 0.86558, -79.5668, 13.1774, 59.0261)
+transform = Transform3D(0.86558, 0, 0.500771, 0, 1, 0, -0.500771, 0, 0.86558, -79.5668, 13.1774, 109.598)
 
 [node name="SM_wooden_barrel13" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(0.600546, 0, -0.79959, 0, 1, 0, 0.79959, 0, 0.600546, -78.8048, 13.1814, 59.0261)
+transform = Transform3D(0.600546, 0, -0.79959, 0, 1, 0, 0.79959, 0, 0.600546, -78.8048, 13.1814, 109.598)
 
 [node name="SM_wooden_barrel21" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(0.720382, 0, -0.693578, 0, 1, 0, 0.693578, 0, 0.720382, -79.5668, 12.1865, 59.8067)
+transform = Transform3D(0.720382, 0, -0.693578, 0, 1, 0, 0.693578, 0, 0.720382, -79.5668, 12.1865, 110.379)
 
 [node name="SM_wooden_barrel23" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(0.339493, 0, -0.940609, 0, 1, 0, 0.940609, 0, 0.339493, -79.5668, 12.1865, 60.6972)
+transform = Transform3D(0.339493, 0, -0.940609, 0, 1, 0, 0.940609, 0, 0.339493, -79.5668, 12.1865, 111.269)
 
 [node name="SM_wooden_barrel26" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(0.975634, 0, -0.219404, 0, 1, 0, 0.219404, 0, 0.975634, -78.8048, 12.1906, 60.6972)
+transform = Transform3D(0.975634, 0, -0.219404, 0, 1, 0, 0.219404, 0, 0.975634, -78.8048, 12.1906, 111.269)
 
 [node name="SM_wooden_barrel196" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(0.339493, 0, -0.940609, 0, 1, 0, 0.940609, 0, 0.339493, -79.5668, 13.1461, 60.6972)
+transform = Transform3D(0.339493, 0, -0.940609, 0, 1, 0, 0.940609, 0, 0.339493, -79.5668, 13.1461, 111.269)
 
 [node name="SM_wooden_barrel197" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(0.975634, 0, -0.219404, 0, 1, 0, 0.219404, 0, 0.975634, -78.8048, 13.1502, 60.6972)
+transform = Transform3D(0.975634, 0, -0.219404, 0, 1, 0, 0.219404, 0, 0.975634, -78.8048, 13.1502, 111.269)
 
 [node name="SM_wooden_barrel200" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(0.339493, 0, -0.940609, 0, 1, 0, 0.940609, 0, 0.339493, -79.5668, 14.1243, 60.6972)
+transform = Transform3D(0.339493, 0, -0.940609, 0, 1, 0, 0.940609, 0, 0.339493, -79.5668, 14.1243, 111.269)
 
 [node name="SM_wooden_barrel201" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(0.975634, 0, -0.219404, 0, 1, 0, 0.219404, 0, 0.975634, -78.8048, 14.1284, 60.6972)
+transform = Transform3D(0.975634, 0, -0.219404, 0, 1, 0, 0.219404, 0, 0.975634, -78.8048, 14.1284, 111.269)
 
 [node name="SM_wooden_barrel24" parent="NavigationRegion3D/LevelGeometry/Zone2/Brewery" instance=ExtResource("28_3lnk1")]
-transform = Transform3D(0.86558, 0, 0.500771, 0, 1, 0, -0.500771, 0, 0.86558, -79.5668, 13.1774, 59.8)
+transform = Transform3D(0.86558, 0, 0.500771, 0, 1, 0, -0.500771, 0, 0.86558, -79.5668, 13.1774, 110.372)
 
 [node name="Containers" type="Node" parent="NavigationRegion3D/LevelGeometry/Zone2"]
 
@@ -6564,7 +6442,7 @@ transform = Transform3D(-0.0187088, 0, 0.999825, 0, 1, 0, -0.999825, 0, -0.01870
 transform = Transform3D(-0.0187088, 0, 0.999825, 0, 1, 0, -0.999825, 0, -0.0187088, 173.497, 7.62939e-06, 70.9132)
 
 [node name="SM_railing_01" parent="." instance=ExtResource("207_ngr6a")]
-transform = Transform3D(-0.0187088, 0, 0.999825, 0, 1, 0, -0.999825, 0, -0.0187088, 171.491, 7.62939e-06, 81.4608)
+transform = Transform3D(-0.998918, 0, -0.0464962, 0, 1, 0, 0.0464962, 0, -0.998918, 179.74, 7.62939e-06, 78.2154)
 
 [node name="SM_railing_02" parent="." instance=ExtResource("208_4uyra")]
 transform = Transform3D(-0.0187088, 0, 0.999825, 0, 1, 0, -0.999825, 0, -0.0187088, 170.059, 7.62939e-06, 79.3158)
@@ -6652,6 +6530,21 @@ transform = Transform3D(-0.0187088, 0, 0.999825, 0, 1, 0, -0.999825, 0, -0.01870
 
 [node name="SM_ventilation_props_25" parent="." instance=ExtResource("236_m7tlv")]
 transform = Transform3D(-0.0187088, 0, 0.999825, 0, 1, 0, -0.999825, 0, -0.0187088, 195.258, 8.58307e-06, 97.4216)
+
+[node name="SM_ventilation_props_28" parent="." instance=ExtResource("231_cht80")]
+transform = Transform3D(-0.0187088, 0, 0.999825, 0, 1, 0, -0.999825, 0, -0.0187088, -123.353, 8.58307e-06, 102.973)
+
+[node name="SM_ventilation_props_29" parent="." instance=ExtResource("234_j71kh")]
+transform = Transform3D(-0.0187088, 0, 0.999825, 0, 1, 0, -0.999825, 0, -0.0187088, -123.414, 8.58307e-06, 99.6846)
+
+[node name="SM_ventilation_props_30" parent="." instance=ExtResource("235_j7hvy")]
+transform = Transform3D(-0.0187088, 0, 0.999825, 0, 1, 0, -0.999825, 0, -0.0187088, -118.992, 8.58307e-06, 95.0836)
+
+[node name="SM_ventilation_props_32" parent="." instance=ExtResource("235_j7hvy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61.2874, 7.77944, 115.894)
+
+[node name="SM_ventilation_props_31" parent="." instance=ExtResource("236_m7tlv")]
+transform = Transform3D(-0.0187088, 0, 0.999825, 0, 1, 0, -0.999825, 0, -0.0187088, -119.319, 8.58307e-06, 99.924)
 
 [node name="SM_ventilation_props_26" parent="." instance=ExtResource("237_85a8p")]
 transform = Transform3D(-0.0187088, 0, 0.999825, 0, 1, 0, -0.999825, 0, -0.0187088, 191.102, 8.58307e-06, 92.8547)
@@ -6766,6 +6659,12 @@ transform = Transform3D(-0.0187088, 0, 0.999825, 0, 1, 0, -0.999825, 0, -0.01870
 
 [node name="SM_electric_props_01" parent="." instance=ExtResource("263_syx7q")]
 transform = Transform3D(-0.0187088, 0, 0.999825, 0, 1, 0, -0.999825, 0, -0.0187088, 195.214, 7.62939e-06, 74.3183)
+
+[node name="SM_electric_props_09" parent="." instance=ExtResource("263_syx7q")]
+transform = Transform3D(-0.0187088, 0, 0.999825, 0, 1, 0, -0.999825, 0, -0.0187088, -118.568, 7.62939e-06, 97.5894)
+
+[node name="SM_electric_props_10" parent="." instance=ExtResource("263_syx7q")]
+transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, -79.408, 7.81677, 102.206)
 
 [node name="SM_electric_props_02" parent="." instance=ExtResource("264_koh6e")]
 transform = Transform3D(-0.0187088, 0, 0.999825, 0, 1, 0, -0.999825, 0, -0.0187088, 193.608, 7.62939e-06, 74.235)
@@ -6887,6 +6786,12 @@ transform = Transform3D(-0.0187088, 0, 0.999825, 0, 1, 0, -0.999825, 0, -0.01870
 [node name="SM_wooden_barrel" parent="." instance=ExtResource("28_3lnk1")]
 transform = Transform3D(-0.0187088, 0, 0.999825, 0, 1, 0, -0.999825, 0, -0.0187088, 215.691, 7.62939e-06, 76.8471)
 
+[node name="SM_cart2" parent="." instance=ExtResource("279_evkd6")]
+transform = Transform3D(-0.0187088, 0, 0.999825, 0, 1, 0, -0.999825, 0, -0.0187088, -122.032, 7.62939e-06, 95.1492)
+
+[node name="SM_wooden_barrel2" parent="." instance=ExtResource("28_3lnk1")]
+transform = Transform3D(-0.0187088, 0, 0.999825, 0, 1, 0, -0.999825, 0, -0.0187088, -123.964, 7.62939e-06, 96.4079)
+
 [node name="SM_wooden_box_01" parent="." instance=ExtResource("295_madnn")]
 transform = Transform3D(-0.0187088, 0, 0.999825, 0, 1, 0, -0.999825, 0, -0.0187088, 220.095, 7.62939e-06, 67.1491)
 
@@ -6949,6 +6854,9 @@ transform = Transform3D(-0.0187088, 0, 0.999825, 0, 1, 0, -0.999825, 0, -0.01870
 
 [node name="SM_Pallet_02" parent="." instance=ExtResource("307_h0hmj")]
 transform = Transform3D(-0.0187088, 0, 0.999825, 0, 1, 0, -0.999825, 0, -0.0187088, 193.258, 7.62939e-06, 64.7574)
+
+[node name="SM_Pallet_04" parent="." instance=ExtResource("307_h0hmj")]
+transform = Transform3D(-0.0187088, 0, 0.999825, 0, 1, 0, -0.999825, 0, -0.0187088, -119.517, 7.62939e-06, 102.016)
 
 [node name="SM_Pallet_03" parent="." instance=ExtResource("307_h0hmj")]
 transform = Transform3D(-0.0187088, 0, 0.999825, 0, 1, 0, -0.999825, 0, -0.0187088, -81.2041, 7.62939e-06, -7.4091)
@@ -7017,7 +6925,7 @@ transform = Transform3D(-0.222764, 0, 1.98756, 0, 2, 0, -1.98756, 0, -0.222764, 
 transform = Transform3D(-0.0187088, 0, 0.999825, 0, 1, 0, -0.999825, 0, -0.0187088, 81.3136, 7.62939e-06, 68.4268)
 
 [node name="SM_wooden_box_32" parent="." instance=ExtResource("295_madnn")]
-transform = Transform3D(-0.0187088, 0, 0.999825, 0, 1, 0, -0.999825, 0, -0.0187088, -84.6172, 7.62939e-06, -13.3012)
+transform = Transform3D(-0.0187088, 0, 0.999825, 0, 1, 0, -0.999825, 0, -0.0187088, -88.9711, 7.62939e-06, -13.1071)
 
 [node name="SM_wooden_box_34" parent="." instance=ExtResource("295_madnn")]
 transform = Transform3D(0.0733526, 0, 1.69842, 0, 1.7, 0, -1.69842, 0, 0.0733526, -70.4891, 1.8757, 26.2958)
@@ -7050,7 +6958,7 @@ transform = Transform3D(0.0119624, 0, 2.29997, 0, 2.3, 0, -2.29997, 0, 0.0119624
 transform = Transform3D(-0.0187088, 0, 0.999825, 0, 1, 0, -0.999825, 0, -0.0187088, 78.6372, 7.62939e-06, 68.1062)
 
 [node name="SM_wooden_box_37" parent="." instance=ExtResource("297_yyt2s")]
-transform = Transform3D(-0.0187088, 0, 0.999825, 0, 1, 0, -0.999825, 0, -0.0187088, -87.3113, 7.62939e-06, -11.4179)
+transform = Transform3D(-0.0187088, 0, 0.999825, 0, 1, 0, -0.999825, 0, -0.0187088, -87.2093, 7.62939e-06, -14.6306)
 
 [node name="SM_wooden_box_38" parent="." instance=ExtResource("297_yyt2s")]
 transform = Transform3D(-0.0243215, 0, 1.29977, 0, 1.3, 0, -1.29977, 0, -0.0243215, -70.4893, 3.16338, 26.3242)
@@ -7062,7 +6970,7 @@ transform = Transform3D(0.524754, 0, 1.18938, 0, 1.3, 0, -1.18938, 0, 0.524754, 
 transform = Transform3D(-0.0187088, 0, 0.999825, 0, 1, 0, -0.999825, 0, -0.0187088, 78.2305, 8.10623e-06, 71.2079)
 
 [node name="SM_wooden_box_33" parent="." instance=ExtResource("298_5fdyv")]
-transform = Transform3D(-0.0187088, 0, 0.999825, 0, 1, 0, -0.999825, 0, -0.0187088, -82.8834, 8.10623e-06, -14.4463)
+transform = Transform3D(-0.0187088, 0, 0.999825, 0, 1, 0, -0.999825, 0, -0.0187088, -88.6801, 7.62939e-06, -15.3542)
 
 [node name="SM_wooden_box_12" parent="." instance=ExtResource("298_5fdyv")]
 transform = Transform3D(-2.6, 0, -3.92589e-07, 0, 2.6, 0, 3.92589e-07, 0, -2.6, 70.8334, 0.842635, 30.4523)
@@ -7074,7 +6982,7 @@ transform = Transform3D(3.82137e-15, 8.74228e-08, 2, 2, -8.74228e-08, 0, 8.74228
 transform = Transform3D(-0.0187088, 0, 0.999825, 0, 1, 0, -0.999825, 0, -0.0187088, 75.7306, 7.62939e-06, 67.272)
 
 [node name="SM_Box_18" parent="." instance=ExtResource("301_rrto5")]
-transform = Transform3D(-0.0187088, 0, 0.999825, 0, 1, 0, -0.999825, 0, -0.0187088, -85.7074, 0.500793, -13.5005)
+transform = Transform3D(-0.0187088, 0, 0.999825, 0, 1, 0, -0.999825, 0, -0.0187088, -84.9099, 0.500793, -11.639)
 
 [node name="SM_Box_05" parent="." instance=ExtResource("302_4m8ou")]
 transform = Transform3D(-0.0187088, 0, 0.999825, 0, 1, 0, -0.999825, 0, -0.0187088, 78.5545, 7.62939e-06, 65.5253)
@@ -7381,6 +7289,36 @@ transform = Transform3D(-6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, 
 
 [node name="SM_Props_Rack_04" parent="." instance=ExtResource("339_towey")]
 transform = Transform3D(-0.0187088, 0, 0.999825, 0, 1, 0, -0.999825, 0, -0.0187088, 200.086, 7.62939e-06, 55.4222)
+
+[node name="SM_Props_Rack_05" parent="." instance=ExtResource("337_ue5x7")]
+transform = Transform3D(-0.0187088, 0, 0.999825, 0, 1, 0, -0.999825, 0, -0.0187088, -121.773, 7.62939e-06, 99.8498)
+
+[node name="SM_Props_Rack_08" parent="." instance=ExtResource("337_ue5x7")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -77.0696, 7.78885, 111.655)
+
+[node name="SM_Props_Rack_25" parent="." instance=ExtResource("337_ue5x7")]
+transform = Transform3D(-6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, -55.0151, 12.2198, 106.984)
+
+[node name="SM_Props_Rack_24" parent="." instance=ExtResource("337_ue5x7")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -78.496, 7.78885, 116.163)
+
+[node name="SM_Props_Rack_21" parent="." instance=ExtResource("337_ue5x7")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -73.5221, 7.78885, 111.655)
+
+[node name="SM_Props_Rack_06" parent="." instance=ExtResource("339_towey")]
+transform = Transform3D(-0.0187088, 0, 0.999825, 0, 1, 0, -0.999825, 0, -0.0187088, -120.415, 7.62939e-06, 103.136)
+
+[node name="SM_Props_Rack_07" parent="." instance=ExtResource("339_towey")]
+transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, -76.361, 7.77698, 102.312)
+
+[node name="SM_Props_Rack_22" parent="." instance=ExtResource("339_towey")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -68.0127, 7.79049, 111.655)
+
+[node name="SM_Props_Rack_26" parent="." instance=ExtResource("339_towey")]
+transform = Transform3D(-6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, -55.012, 12.2261, 110.498)
+
+[node name="SM_Props_Rack_23" parent="." instance=ExtResource("339_towey")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -74.9499, 7.79049, 116.16)
 
 [node name="SM_Props_Rack_15" parent="." instance=ExtResource("337_ue5x7")]
 transform = Transform3D(-1.4, 0, 1.22392e-07, 0, 1.4, 0, -1.22392e-07, 0, -1.4, -24.0912, 1.442, 6.3485)
@@ -7938,7 +7876,49 @@ transform = Transform3D(-0.0187088, 0, 0.999825, 0, 1, 0, -0.999825, 0, -0.01870
 transform = Transform3D(-0.00401425, 0, 0.999992, 0, 1, 0, -0.999992, 0, -0.00401425, -74.4851, 4.99588, 13.7805)
 
 [node name="SM_Box5" parent="." instance=ExtResource("424_yxmlf")]
-transform = Transform3D(-0.0187088, 0, 0.999825, 0, 1, 0, -0.999825, 0, -0.0187088, -87.3164, 7.62939e-06, -13.1496)
+transform = Transform3D(-0.0187088, 0, 0.999825, 0, 1, 0, -0.999825, 0, -0.0187088, -87.7628, 7.62939e-06, -12.9692)
+
+[node name="SM_wooden_box_43" parent="." instance=ExtResource("295_madnn")]
+transform = Transform3D(-0.0187088, 0, 0.999825, 0, 1, 0, -0.999825, 0, -0.0187088, -125.363, 7.62939e-06, 94.875)
+
+[node name="SM_wooden_box_44" parent="." instance=ExtResource("297_yyt2s")]
+transform = Transform3D(-0.0187088, 0, 0.999825, 0, 1, 0, -0.999825, 0, -0.0187088, -123.601, 7.62939e-06, 93.3515)
+
+[node name="SM_cart3" parent="." instance=ExtResource("279_evkd6")]
+transform = Transform3D(-0.13082, 0, 0.991406, 0, 1, 0, -0.991406, 0, -0.13082, -52.7197, 7.68326, 110.218)
+
+[node name="SM_wooden_barrel3" parent="." instance=ExtResource("28_3lnk1")]
+transform = Transform3D(-0.13082, 0, 0.991406, 0, 1, 0, -0.991406, 0, -0.13082, -52.6367, 9.3486, 110.791)
+
+[node name="SM_wooden_box_47" parent="." instance=ExtResource("295_madnn")]
+transform = Transform3D(-0.177164, 0, 1.4895, 0, 1.5, 0, -1.4895, 0, -0.177164, -52.7971, 8.36126, 109.722)
+
+[node name="SM_wooden_box_49" parent="." instance=ExtResource("295_madnn")]
+transform = Transform3D(-0.153542, 0, 1.2909, 0, 1.3, 0, -1.2909, 0, -0.153542, -52.6717, 8.35888, 110.831)
+
+[node name="SM_wooden_box_48" parent="." instance=ExtResource("297_yyt2s")]
+transform = Transform3D(-0.000590803, -0.201563, 1.38541, -1.34056, 0.399492, 0.0575501, -0.403615, -1.32657, -0.193173, -52.9061, 8.29856, 108.778)
+
+[node name="SM_wooden_box_50" parent="." instance=ExtResource("297_yyt2s")]
+transform = Transform3D(1.39405, 0, 0.128954, 0, 1.4, 0, -0.128954, 0, 1.39405, -53.6143, 9.28039, 104.313)
+
+[node name="SM_wooden_box_51" parent="." instance=ExtResource("297_yyt2s")]
+transform = Transform3D(1.3013, 0, -0.516351, 0, 1.4, 0, 0.516351, 0, 1.3013, -53.6143, 9.67963, 104.313)
+
+[node name="SM_wooden_box_45" parent="." instance=ExtResource("298_5fdyv")]
+transform = Transform3D(-0.0187088, 0, 0.999825, 0, 1, 0, -0.999825, 0, -0.0187088, -125.072, 7.62939e-06, 92.6279)
+
+[node name="SM_wooden_box_46" parent="." instance=ExtResource("298_5fdyv")]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, -68.9529, 10.0361, 115.776)
+
+[node name="SM_Box6" parent="." instance=ExtResource("424_yxmlf")]
+transform = Transform3D(-0.0187088, 0, 0.999825, 0, 1, 0, -0.999825, 0, -0.0187088, -124.155, 7.62939e-06, 95.0129)
+
+[node name="SM_Box7" parent="." instance=ExtResource("424_yxmlf")]
+transform = Transform3D(-0.0374177, 0, 1.99965, 0, 2, 0, -1.99965, 0, -0.0374177, -68.4503, 7.83188, 115.733)
+
+[node name="SM_Box8" parent="." instance=ExtResource("424_yxmlf")]
+transform = Transform3D(-0.204613, 0, 1.98951, 0, 2, 0, -1.98951, 0, -0.204613, -53.5933, 7.80014, 104.272)
 
 [node name="SM_wooden_box_28" parent="." instance=ExtResource("295_madnn")]
 transform = Transform3D(-1.85861, 0, 1.1771, 0, 2.2, 0, -1.1771, 0, -1.85861, -23.8532, 0.000259578, 40.35)
@@ -8516,6 +8496,12 @@ transform = Transform3D(-0.000104709, 0, 1, 0, 1, 0, -1, 0, -0.000104709, -68.44
 
 [node name="SM_Trains_Train_03_C3" parent="." instance=ExtResource("480_8nxeo")]
 transform = Transform3D(-0.000104709, 0, 1, 0, 1, 0, -1, 0, -0.000104709, -68.4438, 2.06462, 16.9457)
+
+[node name="SM_tree_01" parent="." instance=ExtResource("482_qhnfq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 98.6034, 0, -24.8206)
+
+[node name="SM_tree_02" parent="." instance=ExtResource("483_jbjbg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 98.6034, 0, -18.4785)
 
 [connection signal="timeout" from="GamemodeManager/EndlessWaveTimer" to="GamemodeManager" method="_on_endless_wave_timer_timeout"]
 [connection signal="spawned" from="MultiplayerSpawner" to="." method="_on_multiplayer_spawner_spawned"]
