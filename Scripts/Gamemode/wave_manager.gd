@@ -17,7 +17,7 @@ var intermission_delay := 5.0
 
 var cur_wave := 1
 
-var max_enemies := 20
+var max_enemies := 5
 var alive_enemies := 0
 var enemy_spawn_delay := 1.0
 

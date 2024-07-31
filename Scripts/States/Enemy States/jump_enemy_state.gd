@@ -19,6 +19,9 @@ func enter(msg : Dictionary = {}) -> void:
 	if !msg.link_exit_position or !msg.link_entry_position:
 		printerr("Missing navigation entry or exit position.")
 	
+	# Look in direction of jump
+	enemy.look_at(Vector3(msg.link_exit_position.x, enemy.global_position.y, msg.link_exit_position.z), Vector3.UP)
+	
 	# Set bezier curve points
 	start_pos = msg.link_entry_position + Vector3.UP * enemy.collider.shape.height
 	end_pos = msg.link_exit_position + Vector3.UP * enemy.collider.shape.height

@@ -11,9 +11,10 @@ func enter(_msg : Dictionary = {}) -> void:
 	await enemy.anim_tree.animation_finished
 	on_attack_animation_finished()
 
-func physics_update(_delta : float) -> void:
+func physics_update(delta : float) -> void:
 	# Make enemy look at player
-	enemy.look_at(Vector3(enemy.player.global_position.x, enemy.global_position.y, enemy.player.global_position.z), Vector3.UP)
+	var player_dir = enemy.player.global_position - enemy.global_position
+	rotate_towards(player_dir, delta)
 
 func on_attack_animation_finished() -> void:
 	if enemy.target_in_range():

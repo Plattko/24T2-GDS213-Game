@@ -39,9 +39,9 @@ func physics_update(delta : float) -> void:
 		collision()
 	
 	# Make enemy look where they're running
-	var cur_velocity = Vector2(enemy.velocity.x, enemy.velocity.z).length()
-	if cur_velocity > 0.01:
-		enemy.look_at(Vector3(cur_location.x + enemy.velocity.x, cur_location.y, cur_location.z + enemy.velocity.z), Vector3.UP)
+	var cur_velocity = Vector3(enemy.velocity.x, 0.0, enemy.velocity.z)
+	if cur_velocity.length() > 0.01:
+		rotate_towards(cur_velocity, delta)
 
 func on_link_reached(details: Dictionary) -> void:
 	var height = abs(details.link_exit_position.y - details.link_entry_position.y)
