@@ -8,7 +8,6 @@
 resource_name = "MI_rock_wall"
 albedo_texture = ExtResource("1_6swdn")
 normal_enabled = true
-normal_scale = 16.0
 normal_texture = ExtResource("3_mgjoe")
 ao_enabled = true
 ao_texture = ExtResource("2_pr1d0")
