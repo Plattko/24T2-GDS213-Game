@@ -31,7 +31,7 @@ var cur_ammo
 
 @export var is_auto_fire : bool = true
 
-const HITSCAN_COLLISION_MASK := roundi(pow(2, 1-1))
+const HITSCAN_COLLISION_MASK := roundi(pow(2, 1-1)) + roundi(pow(2, 4-1))
 
 # Animation variables
 const SHOOT_ANIM : String = "Shoot"

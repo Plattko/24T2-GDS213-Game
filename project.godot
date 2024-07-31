@@ -120,6 +120,14 @@ weapon_scroll_down={
 ]
 }
 
+[layer_names]
+
+3d_physics/layer_1="Environment"
+3d_physics/layer_2="Player"
+3d_physics/layer_3="EnemyCollider"
+3d_physics/layer_4="EnemyHurtbox"
+3d_physics/layer_5="EnemyBarrier"
+
 [orchestrator]
 
 settings/action_favorites=PackedStringArray("Script/Nodes/Utilities/print_string")

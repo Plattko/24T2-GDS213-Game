@@ -32,11 +32,11 @@ func physics_update(delta : float) -> void:
 			enemy.velocity = enemy.velocity.move_toward(new_velocity, 0.25) # NOTE: DO NOT CHANGE!!!
 		else:
 			enemy.velocity.y -= 18 * delta
-		# Apply soft collision push
-		## TODO: Make it so soft collision prevents enemies bunching up after reaching destination
-		var push = soft_collide() * delta * push_force
-		enemy.velocity += push
-		enemy.move_and_slide()
+		## Apply soft collision push
+		### TODO: Make it so soft collision prevents enemies bunching up after reaching destination
+		#var push = soft_collide() * delta * push_force
+		#enemy.velocity += push
+		collision()
 	
 	# Make enemy look where they're running
 	var cur_velocity = Vector2(enemy.velocity.x, enemy.velocity.z).length()
@@ -122,3 +122,5 @@ func soft_collide() -> Vector3:
 		##return push_dir
 	#return Vector3.ZERO
 
+func collision() -> void:
+	enemy.move_and_slide()
