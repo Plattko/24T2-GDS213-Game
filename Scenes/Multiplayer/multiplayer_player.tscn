@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://d2x6finf6hnf4" path="res://Scenes/Weapons/pistol.tscn" id="6_6hiye"]
 [ext_resource type="PackedScene" uid="uid://co38vlsgcng80" path="res://Scenes/Weapons/rocket_launcher.tscn" id="6_vqpyd"]
 [ext_resource type="PackedScene" uid="uid://cj7xkscmie81y" path="res://Scenes/Weapons/shotgun.tscn" id="7_d8wuf"]
-[ext_resource type="Script" path="res://Scripts/States/state_machine.gd" id="8_l07di"]
+[ext_resource type="Script" path="res://Scripts/States/Player States/player_state_machine.gd" id="9_s0xnt"]
 [ext_resource type="Script" path="res://Scripts/States/Player States/idle_player_state.gd" id="9_u7svg"]
 [ext_resource type="Script" path="res://Scripts/States/Player States/air_player_state.gd" id="10_3uw0v"]
 [ext_resource type="Script" path="res://Scripts/States/Player States/walk_player_state.gd" id="11_3pdmq"]
@@ -586,7 +586,7 @@ bg_color = Color(0.329412, 0.027451, 0.027451, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0a0dl"]
 bg_color = Color(0.180666, 0.00854189, 0.00851971, 1)
 
-[node name="MulitplayerPlayer" type="CharacterBody3D" node_paths=PackedStringArray("input", "head", "camera", "animation_player", "ceiling_check")]
+[node name="MulitplayerPlayer" type="CharacterBody3D" node_paths=PackedStringArray("input", "head", "camera", "animation_player", "ceiling_check", "weapon_holder")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 collision_layer = 2
 collision_mask = 5
@@ -596,6 +596,8 @@ head = NodePath("Head")
 camera = NodePath("Head/Camera3D")
 animation_player = NodePath("AnimationPlayer")
 ceiling_check = NodePath("CeilingCheck")
+sensitivity = 0.18
+weapon_holder = NodePath("Head/Camera3D/WeaponHolder")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_vurwv")
@@ -655,24 +657,26 @@ fov = 90.0
 visible = false
 update_mode = 1
 
-[node name="WeaponManager" type="Node3D" parent="Head/Camera3D" node_paths=PackedStringArray("weapon_switch_cooldown")]
+[node name="WeaponHolder" type="Node3D" parent="Head/Camera3D"]
+
+[node name="WeaponManager" type="Node3D" parent="Head/Camera3D/WeaponHolder" node_paths=PackedStringArray("weapon_switch_cooldown")]
 unique_name_in_owner = true
 script = ExtResource("4_v17h1")
 weapon_switch_cooldown = NodePath("WeaponSwitchCooldown")
 
-[node name="Rifle" parent="Head/Camera3D/WeaponManager" instance=ExtResource("5_lxaa3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.519, -0.344, -0.747766)
+[node name="Rifle" parent="Head/Camera3D/WeaponHolder/WeaponManager" instance=ExtResource("5_lxaa3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.519, -0.344, -1.15)
 
-[node name="RocketLauncher" parent="Head/Camera3D/WeaponManager" instance=ExtResource("6_vqpyd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.519, -0.475, -0.76939)
+[node name="RocketLauncher" parent="Head/Camera3D/WeaponHolder/WeaponManager" instance=ExtResource("6_vqpyd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.519, -0.475, -0.9)
 
-[node name="Shotgun" parent="Head/Camera3D/WeaponManager" instance=ExtResource("7_d8wuf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.519, -0.344, -0.703794)
+[node name="Shotgun" parent="Head/Camera3D/WeaponHolder/WeaponManager" instance=ExtResource("7_d8wuf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.519, -0.344, -1.1)
 
-[node name="Pistol" parent="Head/Camera3D/WeaponManager" instance=ExtResource("6_6hiye")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.610238, -0.344, -0.748)
+[node name="Pistol" parent="Head/Camera3D/WeaponHolder/WeaponManager" instance=ExtResource("6_6hiye")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.519, -0.344, -0.75)
 
-[node name="WeaponSwitchCooldown" type="Timer" parent="Head/Camera3D/WeaponManager"]
+[node name="WeaponSwitchCooldown" type="Timer" parent="Head/Camera3D/WeaponHolder/WeaponManager"]
 wait_time = 0.15
 one_shot = true
 
@@ -683,7 +687,7 @@ libraries = {
 
 [node name="PlayerStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 unique_name_in_owner = true
-script = ExtResource("8_l07di")
+script = ExtResource("9_s0xnt")
 initial_state = NodePath("IdlePlayerState")
 
 [node name="IdlePlayerState" type="Node" parent="PlayerStateMachine"]
@@ -1062,9 +1066,9 @@ theme_override_font_sizes/font_size = 32
 text = "30"
 
 [connection signal="update_health" from="." to="UI/HUD" method="on_update_health"]
-[connection signal="update_ammo" from="Head/Camera3D/WeaponManager/Rifle" to="UI/HUD" method="on_update_ammo"]
-[connection signal="update_ammo" from="Head/Camera3D/WeaponManager/RocketLauncher" to="UI/HUD" method="on_update_ammo"]
-[connection signal="update_ammo" from="Head/Camera3D/WeaponManager/Shotgun" to="UI/HUD" method="on_update_ammo"]
-[connection signal="update_ammo" from="Head/Camera3D/WeaponManager/Pistol" to="UI/HUD" method="on_update_ammo"]
+[connection signal="update_ammo" from="Head/Camera3D/WeaponHolder/WeaponManager/Rifle" to="UI/HUD" method="on_update_ammo"]
+[connection signal="update_ammo" from="Head/Camera3D/WeaponHolder/WeaponManager/RocketLauncher" to="UI/HUD" method="on_update_ammo"]
+[connection signal="update_ammo" from="Head/Camera3D/WeaponHolder/WeaponManager/Shotgun" to="UI/HUD" method="on_update_ammo"]
+[connection signal="update_ammo" from="Head/Camera3D/WeaponHolder/WeaponManager/Pistol" to="UI/HUD" method="on_update_ammo"]
 [connection signal="closed_settings_menu" from="UI/HUD/SettingsMenu" to="Input" method="on_closed_settings_menu"]
 [connection signal="opened_settings_menu" from="UI/HUD/SettingsMenu" to="Input" method="on_opened_settings_menu"]

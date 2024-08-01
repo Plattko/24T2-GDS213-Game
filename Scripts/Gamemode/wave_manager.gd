@@ -6,14 +6,17 @@ extends Node
 
 var player : MultiplayerPlayer
 
-const ROBOT = preload("res://Scenes/Enemies/robot.tscn")
+const ROBOT = preload("res://Scenes/Enemies/robot_regular.tscn")
+const SPEEDY_ROBOT = preload("res://Scenes/Enemies/robot_speedy.tscn")
 
+@export_group("Wave Variables")
 @export var do_enemy_count_hard_cap : bool = true
 @export var enemy_count_hard_cap : int = 15
 
-# Wave variables
+@export_range(0.0, 1.0, 0.01) var speedy_robot_chance : float = 0.33
+
+@export var intermission_timer : Timer
 var first_wave_delay := 5.0
-var intermission_delay := 5.0
 
 var cur_wave := 1
 
@@ -67,9 +70,17 @@ func spawn_wave() -> void:
 
 func spawn_enemy() -> void:
 	# Instantiate enemy
-	var enemy = ROBOT.instantiate()
-	# Give enemy reference to player
-	enemy.initialise(player)
+	var roll := randf_range(0.0, 1.0)
+	var enemy
+	if roll <= speedy_robot_chance:
+		enemy = SPEEDY_ROBOT.instantiate()
+	else:
+		enemy = ROBOT.instantiate()
+	
+	# Initialise enemy
+	var scene_manager = get_tree().get_first_node_in_group("level")
+	var nav_layer = scene_manager.cur_zone
+	enemy.initialise(player, nav_layer)
 	# Connect to the enemy's enemy_defeated signal
 	enemy.enemy_defeated.connect(on_enemy_defeated)
 	# Add enemy as child of nav region
@@ -101,7 +112,8 @@ func start_intermission() -> void:
 		if roll <= cur_change_chance:
 			do_zone_change = true
 	
-	await get_tree().create_timer(intermission_delay).timeout
+	intermission_timer.start()
+	await intermission_timer.timeout
 	if do_zone_change:
 		start_zone_change()
 	else:
@@ -157,8 +169,10 @@ func _on_endless_wave_timer_timeout():
 	if enemy_count < 15:
 		# Instantiate enemy
 		var enemy = ROBOT.instantiate()
-		# Give enemy reference to player
-		enemy.initialise(player)
+		# Initialise enemy
+		var scene_manager = get_tree().get_first_node_in_group("level")
+		var nav_layer = scene_manager.cur_zone
+		enemy.initialise(player, nav_layer)
 		# Add enemy as child of nav region
 		enemies_node.add_child(enemy, true)
 		# Set enemy's spawn point to a random spawn point
@@ -190,5 +204,3 @@ func emit_intermission_entered() -> void:
 func emit_zone_change_entered() -> void:
 	zone_change_timer.start()
 	zone_change_entered.emit()
-
-

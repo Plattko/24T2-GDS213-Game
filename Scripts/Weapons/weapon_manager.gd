@@ -32,7 +32,7 @@ func initialise(player_camera: Camera3D, player_input: PlayerInput, player_retic
 			child.mesh.visible = false
 			child.init(camera)
 	
-	max_weapon_index = weapons.size() - 2 ##TODO: SET THIS BACK TO -1 AFTER PLAYTEST
+	max_weapon_index = weapons.size() - 1
 	current_weapon = weapons[0]
 	current_weapon.mesh.visible = true
 	current_weapon.update_ammo.emit([current_weapon.cur_ammo, current_weapon.MAX_AMMO])
@@ -68,18 +68,19 @@ func _physics_process(_delta):
 			current_weapon.reload()
 	
 	if input.is_weapon_1_pressed:
-		print("Pressed Weapon 1.")
+		#print("Pressed Weapon 1.")
 		#if !current_weapon.anim_player.is_playing():
 		if weapon_switch_cooldown.is_stopped():
 			change_weapon(weapons[0])
 	
 	if input.is_weapon_2_pressed:
-		print("Pressed Weapon 2.")
+		#print("Pressed Weapon 2.")
 		#if !current_weapon.anim_player.is_playing():
 		if weapon_switch_cooldown.is_stopped():
 			change_weapon(weapons[1])
 	
 	if input.is_weapon_3_pressed:
+		#print("Pressed Weapon 3.")
 		#if !current_weapon.anim_player.is_playing():
 		if weapon_switch_cooldown.is_stopped():
 			change_weapon(weapons[2])

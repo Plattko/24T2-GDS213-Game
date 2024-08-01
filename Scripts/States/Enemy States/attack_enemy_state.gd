@@ -1,0 +1,23 @@
+class_name AttackEnemyState
+extends EnemyState
+
+func enter(_msg : Dictionary = {}) -> void:
+	if multiplayer.is_server():
+		enemy.animate(enemy.Animations.ATTACK)
+		enemy.nav_agent.set_velocity(Vector3.ZERO)
+	else:
+		enemy.animate(enemy.cur_anim)
+	
+	await enemy.anim_tree.animation_finished
+	on_attack_animation_finished()
+
+func physics_update(delta : float) -> void:
+	# Make enemy look at player
+	var player_dir = enemy.player.global_position - enemy.global_position
+	rotate_towards(player_dir, delta)
+
+func on_attack_animation_finished() -> void:
+	if enemy.target_in_range():
+		transition.emit("AttackEnemyState")
+	else:
+		transition.emit("RunEnemyState")
