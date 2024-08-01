@@ -20,10 +20,17 @@ const MAX_CAMERA_TILT := deg_to_rad(90)
 
 @export_range(0.1, 0.25, 0.01) var sensitivity := 0.25
 
-const MAX_SIDE_TILT := deg_to_rad(3)
+const head_tilt_amount := deg_to_rad(3)
+var weapon_tilt_amount := deg_to_rad(5)
 var side_tilt_speed := 5.0
 enum Side_Tilt_Modes { DEFAULT, GROUND_ONLY, NEVER}
 var side_tilt_mode := Side_Tilt_Modes.DEFAULT
+
+@export var weapon_holder : Node3D
+var def_weapon_holder_pos : Vector3
+var weapon_sway_amount := deg_to_rad(0.25)
+
+var mouse_input : Vector2
 
 # Head bob variables
 const BOB_FREQ := 2.0
@@ -60,6 +67,7 @@ func _ready() -> void:
 	
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	camera.current = true
+	def_weapon_holder_pos = weapon_holder.position
 	
 	input.player = self
 	state_machine.init(self, input, debug)
@@ -77,6 +85,7 @@ func _input(event) -> void:
 		head.rotation.x -= mouse_delta.y
 		head.rotation.x = clamp(head.rotation.x, MIN_CAMERA_TILT, MAX_CAMERA_TILT)
 		rotation.y -= mouse_delta.x
+		mouse_input = event.relative
 
 func _unhandled_input(event) -> void:
 	if not is_multiplayer_authority(): return
@@ -100,6 +109,10 @@ func _physics_process(delta) -> void:
 	
 	# Side tilt
 	cam_side_tilt(input.input_direction.x, delta)
+	weapon_sway(delta)
+	
+	# Weapon bob
+	#weapon_bob(velocity.length(), delta)
 	
 	# FOV
 	var velocity_clamped = clamp (velocity.length(), 0.5, FOV_VELOCITY_CLAMP * 2.0)
@@ -138,6 +151,7 @@ func handle_connected_signals() -> void:
 	
 	var sensitivity_setting = find_child("SensitivitySliderSetting")
 	sensitivity_setting.sensitivity_updated.connect(set_sensitivity)
+	sensitivity_setting.slider.value = sensitivity * 100
 	var reload_type_setting = find_child("ReloadTypeSetting")
 	reload_type_setting.reload_type_updated.connect(weapon_manager.set_reload_type)
 	var do_side_tilt_setting = find_child("DoSideTiltSetting")
@@ -149,11 +163,30 @@ func handle_connected_signals() -> void:
 func cam_side_tilt(_input_x: float, _delta: float) -> void:
 	if side_tilt_mode == Side_Tilt_Modes.NEVER: return
 	if is_on_wall() or state_machine.current_state == state_machine.states.get("SlidePlayerState".to_lower()):
-		head.rotation.z = lerp(head.rotation.z, 0.0, _delta * side_tilt_speed)
+		tilt(head, 0.0, _delta)
+		tilt(weapon_holder, 0.0, _delta)
 	elif is_on_floor() or side_tilt_mode == Side_Tilt_Modes.DEFAULT:
-		head.rotation.z = lerp(head.rotation.z, -_input_x * MAX_SIDE_TILT, _delta * side_tilt_speed)
+		tilt(head, -_input_x * head_tilt_amount, _delta)
+		tilt(weapon_holder, -_input_x * weapon_tilt_amount, _delta)
 	else:
-		head.rotation.z = lerp(head.rotation.z, 0.0, _delta * side_tilt_speed)
+		tilt(head, 0.0, _delta)
+		tilt(weapon_holder, 0.0, _delta)
+
+func tilt(node: Node3D, target_tilt: float, delta: float) -> void:
+	node.rotation.z = lerp(node.rotation.z, target_tilt, delta * side_tilt_speed)
+
+func weapon_sway(delta) -> void:
+	mouse_input = lerp(mouse_input, Vector2.ZERO, delta * 10)
+	weapon_holder.rotation.x = lerp(weapon_holder.rotation.x, mouse_input.y * weapon_sway_amount, delta * 10)
+	weapon_holder.rotation.y = lerp(weapon_holder.rotation.y, mouse_input.x * weapon_sway_amount, delta * 10)
+
+#func weapon_bob(vel: float, delta: float) -> void:
+	#if vel > 0.01 and can_head_bob:
+		#weapon_holder.position.y = lerp(weapon_holder.position.y, def_weapon_holder_pos.y + sin(Time.get_ticks_msec() * BOB_FREQ) * BOB_AMP * 20, delta)
+		#weapon_holder.position.x = lerp(weapon_holder.position.x, def_weapon_holder_pos.x + sin(Time.get_ticks_msec() * BOB_FREQ) * BOB_AMP * 20, delta)
+	#else:
+		#weapon_holder.position.y = lerp(weapon_holder.position.y, def_weapon_holder_pos.y, delta)
+		#weapon_holder.position.x = lerp(weapon_holder.position.x, def_weapon_holder_pos.x, delta)
 
 func head_bob(time) -> Vector3:
 	var pos = Vector3.ZERO
