@@ -496,12 +496,12 @@
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 
-[sub_resource type="Sky" id="Sky_uxvi4"]
+[sub_resource type="Sky" id="Sky_x27jh"]
 sky_material = SubResource("ProceduralSkyMaterial_b7t75")
 
 [sub_resource type="Environment" id="Environment_sb4fc"]
 background_mode = 2
-sky = SubResource("Sky_uxvi4")
+sky = SubResource("Sky_x27jh")
 tonemap_mode = 2
 glow_enabled = true
 
@@ -514,7 +514,7 @@ size = Vector3(114.939, 0.1, 96.326)
 [sub_resource type="BoxShape3D" id="BoxShape3D_rtdbh"]
 size = Vector3(118.377, 0.1, 43.836)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4p8wi"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5blgx"]
 transparency = 1
 albedo_color = Color(0.0588235, 0.870588, 1, 0.745098)
 emission_enabled = true
@@ -522,7 +522,7 @@ emission = Color(0.0588235, 0.870588, 1, 1)
 emission_energy_multiplier = 3.0
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_ervbn"]
-material = SubResource("StandardMaterial3D_4p8wi")
+material = SubResource("StandardMaterial3D_5blgx")
 top_radius = 57.0
 bottom_radius = 57.0
 height = 0.1
@@ -797,7 +797,7 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_enetb"]
 size = Vector3(114.939, 0.1, 96.326)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p7q0o"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w8e1o"]
 transparency = 1
 albedo_color = Color(0.0588235, 0.870588, 1, 0)
 emission_enabled = true
@@ -805,7 +805,7 @@ emission = Color(0.0588235, 0.870588, 1, 1)
 emission_energy_multiplier = 3.0
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_l0vo3"]
-material = SubResource("StandardMaterial3D_p7q0o")
+material = SubResource("StandardMaterial3D_w8e1o")
 top_radius = 65.0
 bottom_radius = 65.0
 height = 0.1
