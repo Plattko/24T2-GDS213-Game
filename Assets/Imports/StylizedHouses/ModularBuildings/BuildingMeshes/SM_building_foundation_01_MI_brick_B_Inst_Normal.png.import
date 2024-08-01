@@ -2,7 +2,7 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bicyv8yx6plnb"
+uid="uid://c731q0c3m1h8o"
 path.s3tc="res://.godot/imported/SM_building_foundation_01_MI_brick_B_Inst_Normal.png-7ef46c6caa77298e8cc9b873e57c71be.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
@@ -28,7 +28,7 @@ compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=1
-roughness/src_normal="res://Assets/Imports/StylizedHouses/ModularBuildings/BuildingMeshes/SM_building_foundation_01_MI_brick_B_Inst_Normal.png"
+roughness/src_normal="res://Assets/Imports/StylizedHouses/ModularBuildings/Meshes/SM_building_foundation_01_MI_brick_B_Inst_Normal.png"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

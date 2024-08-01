@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cowpg3s3rlpvn"
+uid="uid://b260jar1si86m"
 path="res://.godot/imported/SM_frame_box_part_02.glb-ab4026a1e83e42313647ba2c61f65a98.scn"
 
 [deps]
@@ -32,7 +32,8 @@ import_script/path=""
 _subresources={
 "nodes": {
 "PATH:Mesh": {
-"generate/physics": true
+"generate/physics": true,
+"physics/shape_type": 1
 }
 }
 }

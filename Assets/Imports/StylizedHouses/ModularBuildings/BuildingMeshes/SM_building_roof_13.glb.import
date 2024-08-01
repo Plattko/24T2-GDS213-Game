@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://36c5em6ijlcj"
+uid="uid://mtjh0c2lpg6"
 path="res://.godot/imported/SM_building_roof_13.glb-3f8d840873fcf27c15994ce1e79a8dd9.scn"
 
 [deps]
@@ -29,6 +29,13 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={}
+_subresources={
+"nodes": {
+"PATH:Mesh": {
+"generate/physics": true,
+"physics/shape_type": 2
+}
+}
+}
 gltf/naming_version=1
 gltf/embedded_image_handling=1

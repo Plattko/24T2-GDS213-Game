@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bm1pqrddexwjl"
+uid="uid://dkgqtvjjnflpm"
 path="res://.godot/imported/SM_Props_TowerCrane_01_2.glb-8ce66b2b773456ea91e8e4fc97e7ec7d.scn"
 
 [deps]
@@ -29,6 +29,13 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={}
+_subresources={
+"nodes": {
+"PATH:Mesh": {
+"generate/physics": true,
+"physics/shape_type": 2
+}
+}
+}
 gltf/naming_version=1
 gltf/embedded_image_handling=1

@@ -2,7 +2,7 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://deboax2jqjk1c"
+uid="uid://b0cnfy27ej56"
 path.s3tc="res://.godot/imported/SM_building_wall_29_MI_wallpaper_A_Inst_Normal.png-d2b646b108e0ff85734dedf827ea55dd.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
@@ -28,7 +28,7 @@ compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=1
-roughness/src_normal="res://Assets/Imports/StylizedHouses/ModularBuildings/BuildingMeshes/SM_building_wall_29_MI_wallpaper_A_Inst_Normal.png"
+roughness/src_normal="res://Assets/Imports/StylizedHouses/ModularBuildings/Meshes/SM_building_wall_29_MI_wallpaper_A_Inst_Normal.png"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

@@ -1,0 +1,19 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://be0nag2jt4if1"]
+
+[ext_resource type="Texture2D" uid="uid://dmac4kuldr47m" path="res://Assets/Imports/IndustrialArea/BrickBuilding/Meshes/SM_brick_building_01_MI_brick_wall_Inst_BaseColor.png" id="1_vnsnb"]
+[ext_resource type="Texture2D" uid="uid://bs6173a6jmyuf" path="res://Assets/Imports/IndustrialArea/BrickBuilding/Meshes/SM_brick_building_01_MI_brick_wall_Inst_MetallicRoughness.png" id="2_abxhh"]
+[ext_resource type="Texture2D" uid="uid://cdiec7f0ym0um" path="res://Assets/Imports/IndustrialArea/BrickBuilding/Meshes/SM_brick_building_01_MI_brick_wall_Inst_Normal.png" id="3_jr82d"]
+
+[resource]
+resource_name = "MI_brick_wall_Inst"
+albedo_texture = ExtResource("1_vnsnb")
+metallic = 1.0
+metallic_texture = ExtResource("2_abxhh")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_abxhh")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_jr82d")
+uv1_scale = Vector3(0.2, 0.2, 0.2)
+uv1_triplanar = true
+uv1_world_triplanar = true

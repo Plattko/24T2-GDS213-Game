@@ -2,7 +2,7 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcadsj1h8decc"
+uid="uid://b7gv25ugdnqdd"
 path.s3tc="res://.godot/imported/SM_building_roof_06_MI_wooden_board_A_Inst_Normal.png-7bf5ea4ceee320f5f2882fa402472411.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
@@ -28,7 +28,7 @@ compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=1
-roughness/src_normal="res://Assets/Imports/StylizedHouses/ModularBuildings/BuildingMeshes/SM_building_roof_06_MI_wooden_board_A_Inst_Normal.png"
+roughness/src_normal="res://Assets/Imports/StylizedHouses/ModularBuildings/Meshes/SM_building_roof_06_MI_wooden_board_A_Inst_Normal.png"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

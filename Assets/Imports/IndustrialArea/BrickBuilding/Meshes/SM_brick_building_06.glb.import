@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bvbbc26iduujd"
+uid="uid://bykoh843xo72p"
 path="res://.godot/imported/SM_brick_building_06.glb-5d2f1268c32fcbf4ae503158ccdc121d.scn"
 
 [deps]
@@ -32,7 +32,8 @@ import_script/path=""
 _subresources={
 "nodes": {
 "PATH:Mesh": {
-"generate/physics": true
+"generate/physics": true,
+"physics/shape_type": 1
 }
 }
 }

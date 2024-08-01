@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bri672qu26aiv"
+uid="uid://dy47ia5k5ed0g"
 path="res://.godot/imported/SM_brick_building_14.glb-4f44fe5bb7c6abf4eeac58d92690fff2.scn"
 
 [deps]
@@ -30,9 +30,10 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
 _subresources={
-"nodes": {
-"PATH:Mesh": {
-"generate/physics": true
+"materials": {
+"MI_paving_stone_Inst_SM_brick_building_14": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Materials/Standard Materials/MI_paving_stone_Inst_SM_brick_building_14.tres"
 }
 }
 }

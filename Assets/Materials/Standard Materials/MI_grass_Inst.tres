@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://bjxarslk0yhes"]
+
+[ext_resource type="Texture2D" uid="uid://6sfyf2ypijyl" path="res://Assets/Imports/StylizedHouses/Roads/Meshes/SM_road_04_MI_grass_Inst_BaseColor.png" id="1_2askr"]
+[ext_resource type="Texture2D" uid="uid://d2twfbc1vb45i" path="res://Assets/Imports/StylizedHouses/Roads/Meshes/SM_road_04_MI_grass_Inst_Normal.png" id="2_i54mj"]
+
+[resource]
+resource_name = "MI_grass_Inst"
+albedo_texture = ExtResource("1_2askr")
+roughness = 0.819608
+normal_enabled = true
+normal_texture = ExtResource("2_i54mj")
+uv1_scale = Vector3(0.2, 0.2, 0.2)
+uv1_triplanar = true
+uv1_world_triplanar = true

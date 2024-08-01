@@ -2,7 +2,7 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxm3if3u1lwjw"
+uid="uid://c6gg3tq7p6eqf"
 path.s3tc="res://.godot/imported/SM_building_floor_02_MI_wood_floor_Inst_Normal.png-0b68f0ce11947c36ba69556d3d7853d0.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
@@ -28,7 +28,7 @@ compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=1
-roughness/src_normal="res://Assets/Imports/StylizedHouses/ModularBuildings/BuildingMeshes/SM_building_floor_02_MI_wood_floor_Inst_Normal.png"
+roughness/src_normal="res://Assets/Imports/StylizedHouses/ModularBuildings/Meshes/SM_building_floor_02_MI_wood_floor_Inst_Normal.png"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

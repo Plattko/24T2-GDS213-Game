@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dxipq31qeyu1d"
+uid="uid://btb6rqtg8plft"
 path="res://.godot/imported/SM_coal_trough_01.glb-86b13de64188f6d1939f534eda6a2bfe.scn"
 
 [deps]
@@ -32,7 +32,8 @@ import_script/path=""
 _subresources={
 "nodes": {
 "PATH:Mesh": {
-"generate/physics": true
+"generate/physics": true,
+"physics/shape_type": 1
 }
 }
 }

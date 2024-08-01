@@ -1,0 +1,19 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://djydrbuvifyni"]
+
+[ext_resource type="Texture2D" uid="uid://d2ctp53ltj7th" path="res://Assets/Imports/StylizedHouses/ModularBuildings/BuildingMeshes/SM_metal_fence_01_MI_metal_01_Inst_BaseColor.png" id="1_0mbpx"]
+[ext_resource type="Texture2D" uid="uid://6o6nv55tk6dv" path="res://Assets/Imports/StylizedHouses/ModularBuildings/BuildingMeshes/SM_metal_fence_01_MI_metal_01_Inst_MetallicRoughness.png" id="2_lnmxh"]
+[ext_resource type="Texture2D" uid="uid://cp2o514tijih0" path="res://Assets/Imports/StylizedHouses/ModularBuildings/BuildingMeshes/SM_metal_fence_01_MI_metal_01_Inst_Normal.png" id="3_clgnq"]
+
+[resource]
+resource_name = "MI_metal_01_Inst"
+albedo_texture = ExtResource("1_0mbpx")
+metallic = 1.0
+metallic_texture = ExtResource("2_lnmxh")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_lnmxh")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_clgnq")
+uv1_scale = Vector3(0.3, 0.3, 0.3)
+uv1_triplanar = true
+uv1_world_triplanar = true

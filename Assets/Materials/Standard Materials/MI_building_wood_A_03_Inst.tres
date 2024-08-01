@@ -1,0 +1,19 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://rps3xjn35fks"]
+
+[ext_resource type="Texture2D" uid="uid://dh8yuhob6ov2w" path="res://Assets/Imports/StylizedHouses/ModularBuildings/BuildingMeshes/SM_building_floor_01_MI_building_wood_A_03_Inst_BaseColor.png" id="1_n4exl"]
+[ext_resource type="Texture2D" uid="uid://43ekkycwm3vi" path="res://Assets/Imports/StylizedHouses/ModularBuildings/BuildingMeshes/SM_building_floor_01_MI_building_wood_A_03_Inst_MetallicRoughness.png" id="2_mt6pe"]
+[ext_resource type="Texture2D" uid="uid://oj27mo4a2jhg" path="res://Assets/Imports/StylizedHouses/ModularBuildings/BuildingMeshes/SM_building_floor_01_MI_building_wood_A_03_Inst_Normal.png" id="3_7buiu"]
+
+[resource]
+resource_name = "MI_building_wood_A_03_Inst"
+albedo_texture = ExtResource("1_n4exl")
+metallic = 1.0
+metallic_texture = ExtResource("2_mt6pe")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_mt6pe")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_7buiu")
+uv1_scale = Vector3(0.2, 0.2, 0.2)
+uv1_triplanar = true
+uv1_world_triplanar = true

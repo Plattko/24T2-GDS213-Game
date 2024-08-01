@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://d4m81ewiovaop"
+uid="uid://hnau2kjbfxqy"
 path="res://.godot/imported/SM_Hydrant.glb-ec34d466bf2df4d4d697e7c6e3af61bf.scn"
 
 [deps]
@@ -32,8 +32,7 @@ import_script/path=""
 _subresources={
 "nodes": {
 "PATH:Mesh": {
-"generate/physics": true,
-"physics/shape_type": 2
+"generate/physics": true
 }
 }
 }

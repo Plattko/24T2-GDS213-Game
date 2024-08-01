@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://2ajkvopr8y1e"
+uid="uid://v0a8bvbb3adx"
 path="res://.godot/imported/SM_metal_barrel.glb-e5fece259b9b3febc4763a12206a67bf.scn"
 
 [deps]
@@ -32,7 +32,8 @@ import_script/path=""
 _subresources={
 "nodes": {
 "PATH:Mesh": {
-"generate/physics": true
+"generate/physics": true,
+"physics/shape_type": 1
 }
 }
 }

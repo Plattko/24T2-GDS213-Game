@@ -1,0 +1,19 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://bcvlthd7axaoh"]
+
+[ext_resource type="Texture2D" uid="uid://dg7cjgtllcdp4" path="res://Assets/Imports/IndustrialArea/HangarFrame/SM_hangar_frame_20_MI_sheet_metal_A_Inst_BaseColor.png" id="1_86qqb"]
+[ext_resource type="Texture2D" uid="uid://hk7opo17vnhs" path="res://Assets/Imports/IndustrialArea/HangarFrame/SM_hangar_frame_20_MI_sheet_metal_A_Inst_MetallicRoughness.png" id="2_x05jm"]
+[ext_resource type="Texture2D" uid="uid://b5v1ut7sv8s7j" path="res://Assets/Imports/IndustrialArea/HangarFrame/SM_hangar_frame_20_MI_sheet_metal_A_Inst_Normal.png" id="3_7g3qd"]
+
+[resource]
+resource_name = "MI_sheet_metal_A_Inst"
+albedo_texture = ExtResource("1_86qqb")
+metallic = 1.0
+metallic_texture = ExtResource("2_x05jm")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_x05jm")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_7g3qd")
+uv1_scale = Vector3(0.3, 0.3, 0.3)
+uv1_triplanar = true
+uv1_world_triplanar = true

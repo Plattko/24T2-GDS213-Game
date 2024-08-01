@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://cck52ejnto4eu"
+path.s3tc="res://.godot/imported/SM_hangar_frame_21_MI_metal_cladding_B_Inst_MetallicRoughness.png-187b42c88b6396694b83b5b490c88f17.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "cbc5203cb3f6e081d4764554e93cfbe6"
+}
+
+[deps]
+
+source_file="res://Assets/Imports/IndustrialArea/HangarFrame/SM_hangar_frame_21_MI_metal_cladding_B_Inst_MetallicRoughness.png"
+dest_files=["res://.godot/imported/SM_hangar_frame_21_MI_metal_cladding_B_Inst_MetallicRoughness.png-187b42c88b6396694b83b5b490c88f17.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

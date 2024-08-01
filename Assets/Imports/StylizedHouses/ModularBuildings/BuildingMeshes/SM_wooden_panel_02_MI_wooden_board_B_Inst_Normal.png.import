@@ -2,7 +2,7 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cb6agl3u3ltqn"
+uid="uid://boky4rvd6dv0y"
 path.s3tc="res://.godot/imported/SM_wooden_panel_02_MI_wooden_board_B_Inst_Normal.png-594a8ce7bf32d0460005641ffbadbdb5.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
@@ -28,7 +28,7 @@ compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=1
-roughness/src_normal="res://Assets/Imports/StylizedHouses/ModularBuildings/BuildingMeshes/SM_wooden_panel_02_MI_wooden_board_B_Inst_Normal.png"
+roughness/src_normal="res://Assets/Imports/StylizedHouses/ModularBuildings/Meshes/SM_wooden_panel_02_MI_wooden_board_B_Inst_Normal.png"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

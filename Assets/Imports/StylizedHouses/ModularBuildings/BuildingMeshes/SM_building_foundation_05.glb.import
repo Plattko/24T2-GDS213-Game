@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c4bu3dorcyj8u"
+uid="uid://decm00jlcusoy"
 path="res://.godot/imported/SM_building_foundation_05.glb-8a7f6ed9661eeea20f418a93c4cea4e9.scn"
 
 [deps]
@@ -29,6 +29,13 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={}
+_subresources={
+"nodes": {
+"PATH:Mesh": {
+"generate/physics": true,
+"physics/shape_type": 1
+}
+}
+}
 gltf/naming_version=1
 gltf/embedded_image_handling=1

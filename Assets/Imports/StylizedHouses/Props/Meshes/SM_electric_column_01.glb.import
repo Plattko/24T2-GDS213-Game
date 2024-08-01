@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://gpqwbow25ker"
+uid="uid://duaffpak8t05p"
 path="res://.godot/imported/SM_electric_column_01.glb-4c7f2fd5ee9fd4ab1b94f20701be4e58.scn"
 
 [deps]
@@ -29,6 +29,12 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={}
+_subresources={
+"nodes": {
+"PATH:Mesh": {
+"generate/physics": true
+}
+}
+}
 gltf/naming_version=1
 gltf/embedded_image_handling=1

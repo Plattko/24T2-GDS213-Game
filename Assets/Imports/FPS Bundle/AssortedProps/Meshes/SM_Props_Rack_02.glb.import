@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://kgc1dknmwtpe"
+uid="uid://cse3ptudhm6e7"
 path="res://.godot/imported/SM_Props_Rack_02.glb-9ce16216981a51093da1f31b23dd37b8.scn"
 
 [deps]
@@ -32,7 +32,8 @@ import_script/path=""
 _subresources={
 "nodes": {
 "PATH:Mesh": {
-"generate/physics": true
+"generate/physics": true,
+"physics/shape_type": 1
 }
 }
 }

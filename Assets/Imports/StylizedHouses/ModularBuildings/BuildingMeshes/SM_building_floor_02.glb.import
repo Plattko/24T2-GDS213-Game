@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://0ynx5m0ei7qt"
+uid="uid://djrtelx3v65v3"
 path="res://.godot/imported/SM_building_floor_02.glb-7558023b074ee709fe2771740ad24cce.scn"
 
 [deps]
@@ -29,6 +29,13 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={}
+_subresources={
+"nodes": {
+"PATH:Mesh": {
+"generate/physics": true,
+"physics/shape_type": 1
+}
+}
+}
 gltf/naming_version=1
 gltf/embedded_image_handling=1

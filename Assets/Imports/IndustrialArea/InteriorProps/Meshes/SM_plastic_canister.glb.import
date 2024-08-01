@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dco7ma486y20"
+uid="uid://cag4kfacvg2in"
 path="res://.godot/imported/SM_plastic_canister.glb-de6c45508ffa12280c8d629106940d18.scn"
 
 [deps]
@@ -32,7 +32,8 @@ import_script/path=""
 _subresources={
 "nodes": {
 "PATH:Mesh": {
-"generate/physics": true
+"generate/physics": true,
+"physics/shape_type": 1
 }
 }
 }

@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://chyvfgmb7gsr3"
+uid="uid://d0klo2bl1t1n0"
 path="res://.godot/imported/SM_Props_CementC2_01.glb-3a6c5e7f71cdb36d2df6443e9f50c1db.scn"
 
 [deps]
@@ -32,7 +32,8 @@ import_script/path=""
 _subresources={
 "nodes": {
 "PATH:Mesh": {
-"generate/physics": true
+"generate/physics": true,
+"physics/shape_type": 1
 }
 }
 }

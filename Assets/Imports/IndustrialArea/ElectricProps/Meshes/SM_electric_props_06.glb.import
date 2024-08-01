@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c0v5vqjgi7dky"
+uid="uid://c2lo2j3f3wnf1"
 path="res://.godot/imported/SM_electric_props_06.glb-bb25bad8761ca088dbe41123ff6af5ec.scn"
 
 [deps]
@@ -32,7 +32,8 @@ import_script/path=""
 _subresources={
 "nodes": {
 "PATH:Mesh": {
-"generate/physics": true
+"generate/physics": true,
+"physics/shape_type": 1
 }
 }
 }

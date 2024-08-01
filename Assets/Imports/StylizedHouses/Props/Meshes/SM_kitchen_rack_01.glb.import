@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://d0gmf7dghnnqy"
+uid="uid://k01m3dcthfu0"
 path="res://.godot/imported/SM_kitchen_rack_01.glb-f018ed8efd4496c21972b494166931a6.scn"
 
 [deps]
@@ -32,7 +32,8 @@ import_script/path=""
 _subresources={
 "nodes": {
 "PATH:Mesh": {
-"generate/physics": true
+"generate/physics": true,
+"physics/shape_type": 1
 }
 }
 }

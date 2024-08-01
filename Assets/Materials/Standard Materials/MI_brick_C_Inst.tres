@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://ccsecy4u70k5l"]
+
+[ext_resource type="Texture2D" uid="uid://donn6ef7wnlf4" path="res://Assets/Imports/StylizedHouses/ModularBuildings/BuildingMeshes/SM_building_wall_22_MI_brick_C_Inst_BaseColor.png" id="1_i0kx1"]
+[ext_resource type="Texture2D" uid="uid://dmm3tmp885l2c" path="res://Assets/Imports/StylizedHouses/ModularBuildings/BuildingMeshes/SM_building_wall_22_MI_brick_C_Inst_Normal.png" id="2_0o8rw"]
+
+[resource]
+resource_name = "MI_brick_C_Inst"
+albedo_texture = ExtResource("1_i0kx1")
+roughness = 0.819608
+normal_enabled = true
+normal_texture = ExtResource("2_0o8rw")
+uv1_scale = Vector3(0.2, 0.2, 0.2)
+uv1_triplanar = true
+uv1_world_triplanar = true

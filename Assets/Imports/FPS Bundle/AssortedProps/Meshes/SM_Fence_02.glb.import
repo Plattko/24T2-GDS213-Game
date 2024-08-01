@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dfx7v0ygqptb0"
+uid="uid://dnu4gu34ed0h4"
 path="res://.godot/imported/SM_Fence_02.glb-3b2fdda7a20502a1517a705dce888280.scn"
 
 [deps]
@@ -32,7 +32,8 @@ import_script/path=""
 _subresources={
 "nodes": {
 "PATH:Mesh": {
-"generate/physics": true
+"generate/physics": true,
+"physics/shape_type": 1
 }
 }
 }

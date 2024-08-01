@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://74b7y8fbsh0v"
+uid="uid://df1ydxxbnk38d"
 path="res://.godot/imported/SM_cistern_metal_01.glb-793f3f1204eac592d94012d65dd51164.scn"
 
 [deps]
@@ -32,7 +32,8 @@ import_script/path=""
 _subresources={
 "nodes": {
 "PATH:Mesh": {
-"generate/physics": true
+"generate/physics": true,
+"physics/shape_type": 1
 }
 }
 }

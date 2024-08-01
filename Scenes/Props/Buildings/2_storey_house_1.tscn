@@ -1,9 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://3q42p7ymuwhl"]
+[gd_scene load_steps=15 format=3 uid="uid://3q42p7ymuwhl"]
 
-[ext_resource type="PackedScene" uid="uid://bpoocccwmm3x3" path="res://Assets/Imports/StylizedHouses/ModularBuildings/BuildingMeshes/SM_building_part_04.glb" id="1_fn2jj"]
 [ext_resource type="PackedScene" uid="uid://dlq58v46rj4mm" path="res://Assets/Imports/StylizedHouses/ModularBuildings/BuildingMeshes/SM_building_roof_04.glb" id="2_0uaab"]
 [ext_resource type="PackedScene" uid="uid://b5erdn67etlw2" path="res://Assets/Imports/StylizedHouses/ModularBuildings/BuildingMeshes/SM_building_roof_08.glb" id="3_lcpyy"]
-[ext_resource type="PackedScene" uid="uid://b4bqdr6i42tx6" path="res://Assets/Imports/StylizedHouses/ModularBuildings/BuildingMeshes/SM_building_roof_15.glb" id="4_hujrs"]
 [ext_resource type="PackedScene" uid="uid://d0d0yvlhbxjmd" path="res://Assets/Imports/StylizedHouses/ModularBuildings/BuildingMeshes/SM_building_stairs_03.glb" id="5_fa1qk"]
 [ext_resource type="PackedScene" uid="uid://565yn2nkkq6x" path="res://Assets/Imports/StylizedHouses/ModularBuildings/BuildingMeshes/SM_building_wall_01.glb" id="6_6rucs"]
 [ext_resource type="PackedScene" uid="uid://bu84egf2ykygg" path="res://Assets/Imports/StylizedHouses/ModularBuildings/BuildingMeshes/SM_building_wall_02.glb" id="7_qlxp1"]
@@ -16,13 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://bary4s06ty4vo" path="res://Assets/Imports/StylizedHouses/ModularBuildings/BuildingMeshes/SM_building_wall_13.glb" id="14_rmas0"]
 [ext_resource type="PackedScene" uid="uid://dsig7cht60kw1" path="res://Assets/Imports/StylizedHouses/ModularBuildings/BuildingMeshes/SM_building_wall_17.glb" id="15_7x0e7"]
 [ext_resource type="PackedScene" uid="uid://cfk5kbsjgv7jy" path="res://Assets/Imports/StylizedHouses/ModularBuildings/BuildingMeshes/SM_building_floor_01.glb" id="16_h6wyc"]
-[ext_resource type="PackedScene" uid="uid://0ynx5m0ei7qt" path="res://Assets/Imports/StylizedHouses/ModularBuildings/BuildingMeshes/SM_building_floor_02.glb" id="17_6opc3"]
-[ext_resource type="PackedScene" uid="uid://th85eyijphyi" path="res://Assets/Imports/StylizedHouses/ModularBuildings/BuildingMeshes/SM_building_floor_03.glb" id="18_m6cks"]
 
 [node name="Node3D" type="Node3D"]
-
-[node name="SM_building_part_08" parent="." instance=ExtResource("1_fn2jj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.84388, 4.64601, 21.7003)
 
 [node name="SM_building_roof_24" parent="." instance=ExtResource("2_0uaab")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.51, 8.087, 7.336)
@@ -47,9 +40,6 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7.506
 
 [node name="SM_building_roof_31" parent="." instance=ExtResource("3_lcpyy")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -7.50585, 8.087, 7.336)
-
-[node name="SM_building_roof_23" parent="." instance=ExtResource("4_hujrs")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.85376, 4.16515, 18.7919)
 
 [node name="SM_building_stairs_06" parent="." instance=ExtResource("5_fa1qk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.61913, 0, 5.0809)
@@ -176,9 +166,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.691, 0.0104593, -3.94)
 
 [node name="SM_building_floor_16" parent="." instance=ExtResource("16_h6wyc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.691, 0, 0.596673)
-
-[node name="SM_building_floor_02" parent="." instance=ExtResource("17_6opc3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8114, 0, 18.9913)
-
-[node name="SM_building_floor_03" parent="." instance=ExtResource("18_m6cks")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.2444, 0, 25.6007)

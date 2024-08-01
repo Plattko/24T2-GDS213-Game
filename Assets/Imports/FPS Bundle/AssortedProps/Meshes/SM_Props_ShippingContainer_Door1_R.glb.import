@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://ctw6kk50aen1p"
+uid="uid://bqy6allv1osid"
 path="res://.godot/imported/SM_Props_ShippingContainer_Door1_R.glb-f20b3ab9d2ea3107b8713b80ca44cdf0.scn"
 
 [deps]
@@ -32,7 +32,8 @@ import_script/path=""
 _subresources={
 "nodes": {
 "PATH:Mesh": {
-"generate/physics": true
+"generate/physics": true,
+"physics/shape_type": 1
 }
 }
 }

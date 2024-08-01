@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://4lvbxox5dxvt"
+uid="uid://2bjvbplw7nc2"
 path="res://.godot/imported/SM_Props_CableReel_01.glb-77ec3af0c009afb5b493773b5ee6c723.scn"
 
 [deps]
@@ -32,7 +32,8 @@ import_script/path=""
 _subresources={
 "nodes": {
 "PATH:Mesh": {
-"generate/physics": true
+"generate/physics": true,
+"physics/shape_type": 1
 }
 }
 }

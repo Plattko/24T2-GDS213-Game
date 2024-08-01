@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dhe8qnd6n5sjv"
+uid="uid://clf1elhq1vqnx"
 path="res://.godot/imported/SM_Props_Scaffolding_01.glb-a4da9c354ce01589489caa7933e93bfa.scn"
 
 [deps]
@@ -33,7 +33,9 @@ _subresources={
 "nodes": {
 "PATH:Mesh": {
 "generate/physics": true,
-"physics/shape_type": 2
+"physics/shape_type": 3,
+"primitive/position": Vector3(0, 2, 0),
+"primitive/size": Vector3(3, 0.1, 1.4)
 }
 }
 }

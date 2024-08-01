@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bl15hky8iirl2"
+uid="uid://cru86c1ag3tmr"
 path="res://.godot/imported/SM_metal_fence_01.glb-241e5ca30030ffbc663da0eb3bddd83e.scn"
 
 [deps]
@@ -29,6 +29,15 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={}
+_subresources={
+"nodes": {
+"PATH:Mesh": {
+"generate/physics": true,
+"physics/shape_type": 3,
+"primitive/position": Vector3(0, 1, 0),
+"primitive/size": Vector3(3, 2, 0.2)
+}
+}
+}
 gltf/naming_version=1
 gltf/embedded_image_handling=1

@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://brrtcpiplb5l4"
+uid="uid://7cpga44i0grp"
 path="res://.godot/imported/SM_building_wall_22.glb-be9d9211937afe6c15e358f5a2d8405e.scn"
 
 [deps]
@@ -30,9 +30,20 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
 _subresources={
+"materials": {
+"MI_brick_C_Inst": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Materials/Standard Materials/MI_brick_C_Inst.tres"
+},
+"MI_concrete_A_Inst": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Materials/Standard Materials/MI_concrete_A_Inst.tres"
+}
+},
 "nodes": {
 "PATH:Mesh": {
-"generate/physics": true
+"generate/physics": true,
+"physics/shape_type": 1
 }
 }
 }

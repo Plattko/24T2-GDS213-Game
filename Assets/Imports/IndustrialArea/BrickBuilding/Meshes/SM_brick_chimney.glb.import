@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://iwm8sy6kfcor"
+uid="uid://dlhc1ragxvv6"
 path="res://.godot/imported/SM_brick_chimney.glb-65efe9b6e91174c125b66889e3276f5e.scn"
 
 [deps]
@@ -32,7 +32,8 @@ import_script/path=""
 _subresources={
 "nodes": {
 "PATH:Mesh": {
-"generate/physics": true
+"generate/physics": true,
+"physics/shape_type": 1
 }
 }
 }

@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://doigkplowgy2d"
+uid="uid://vhh15vlckefc"
 path="res://.godot/imported/SM_corrugated_sheet_01.glb-6d8a13b37455a536e31ced6593c6d1ec.scn"
 
 [deps]
@@ -32,7 +32,8 @@ import_script/path=""
 _subresources={
 "nodes": {
 "PATH:Mesh": {
-"generate/physics": true
+"generate/physics": true,
+"physics/shape_type": 1
 }
 }
 }

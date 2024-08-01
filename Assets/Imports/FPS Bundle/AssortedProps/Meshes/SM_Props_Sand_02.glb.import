@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://ccqrep58wvg0v"
+uid="uid://bxx0d4vd35set"
 path="res://.godot/imported/SM_Props_Sand_02.glb-a474da8f45a61e80f6c8f0e264791e03.scn"
 
 [deps]
@@ -32,7 +32,8 @@ import_script/path=""
 _subresources={
 "nodes": {
 "PATH:Mesh": {
-"generate/physics": true
+"generate/physics": true,
+"physics/shape_type": 1
 }
 }
 }
