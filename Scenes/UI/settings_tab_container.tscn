@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://blnme4tmx8d71"]
+[gd_scene load_steps=4 format=3 uid="uid://blnme4tmx8d71"]
 
 [ext_resource type="PackedScene" uid="uid://pxpx3vsci2vw" path="res://Scenes/UI/sensitivity_slider_setting.tscn" id="1_6q1y2"]
 [ext_resource type="PackedScene" uid="uid://buhgpsmxunsqk" path="res://Scenes/UI/reload_type_setting.tscn" id="2_cri75"]
+[ext_resource type="PackedScene" uid="uid://2pq1le51ovfi" path="res://Scenes/UI/do_side_tilt_setting.tscn" id="3_i0c25"]
 
 [node name="SettingsTabContainer" type="Control"]
 layout_mode = 3
@@ -49,6 +50,9 @@ theme_override_constants/separation = 64
 layout_mode = 2
 
 [node name="ReloadTypeSetting" parent="TabContainer/Gameplay/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_cri75")]
+layout_mode = 2
+
+[node name="DoSideTiltSetting" parent="TabContainer/Gameplay/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("3_i0c25")]
 layout_mode = 2
 
 [node name="Video" type="TabBar" parent="TabContainer"]

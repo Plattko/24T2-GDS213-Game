@@ -29,11 +29,16 @@ func _ready() -> void:
 		#jump_buffer_cooldown.start()
 
 # --------------------------------MOVEMENT------------------------------------ #
+var input_direction : Vector2:
+	get:
+		if not is_server and can_move:
+			return Input.get_vector("move_left", "move_right", "move_forwards", "move_backwards")
+		return Vector2.ZERO
+
 var direction : Vector3:
 	get:
 		if not is_server and can_move:
-			var input_dir = Input.get_vector("move_left", "move_right", "move_forwards", "move_backwards")
-			return (player.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+			return (player.transform.basis * Vector3(input_direction.x, 0, input_direction.y)).normalized()
 		return Vector3.ZERO
 
 var is_move_forwards_pressed : bool:

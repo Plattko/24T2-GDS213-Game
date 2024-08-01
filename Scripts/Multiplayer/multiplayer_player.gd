@@ -7,7 +7,6 @@ extends CharacterBody3D
 @export var animation_player : AnimationPlayer
 @export var ceiling_check : ShapeCast3D
 
-#@onready var input = %Input
 @onready var state_machine : PlayerStateMachine = %PlayerStateMachine
 @onready var weapon_manager : WeaponManager = %WeaponManager
 @onready var reticle : Reticle = %Reticle
@@ -16,17 +15,15 @@ extends CharacterBody3D
 
 # Camera movement variables
 @export_group("Camera Movement Variables")
-var rotation_input : float
-var tilt_input : float
-var mouse_rotation : Vector3
-
-var player_rotation : Vector3
-var camera_rotation : Vector3
-
 const MIN_CAMERA_TILT := deg_to_rad(-90)
 const MAX_CAMERA_TILT := deg_to_rad(90)
 
 @export_range(0.1, 0.25, 0.01) var sensitivity := 0.25
+
+const MAX_SIDE_TILT := deg_to_rad(3)
+var side_tilt_speed := 5.0
+enum Side_Tilt_Modes { DEFAULT, GROUND_ONLY, NEVER}
+var side_tilt_mode := Side_Tilt_Modes.DEFAULT
 
 # Head bob variables
 const BOB_FREQ := 2.0
@@ -73,12 +70,16 @@ func _ready() -> void:
 	cur_health = max_health
 	update_health.emit([cur_health, max_health])
 
+func _input(event) -> void:
+	if not is_multiplayer_authority(): return
+	if event is InputEventMouseMotion and input.can_look:
+		var mouse_delta = event.relative * sensitivity * 0.01
+		head.rotation.x -= mouse_delta.y
+		head.rotation.x = clamp(head.rotation.x, MIN_CAMERA_TILT, MAX_CAMERA_TILT)
+		rotation.y -= mouse_delta.x
+
 func _unhandled_input(event) -> void:
 	if not is_multiplayer_authority(): return
-	
-	if event is InputEventMouseMotion and input.can_look: # TODO Move check to PlayerInput if possible
-		rotation_input = -event.relative.x * sensitivity
-		tilt_input = -event.relative.y * sensitivity
 	
 	# Health debug
 	if event is InputEventKey:
@@ -89,12 +90,6 @@ func _unhandled_input(event) -> void:
 		if event.pressed and event.keycode == KEY_I:
 			do_self_damage = !do_self_damage
 
-func _process(delta) -> void:
-	if not is_multiplayer_authority(): return
-	
-	# Handle camera movement
-	update_camera(delta)
-
 func _physics_process(delta) -> void:
 	if not is_multiplayer_authority(): return
 	
@@ -102,6 +97,9 @@ func _physics_process(delta) -> void:
 	if can_head_bob:
 		t_bob += delta * velocity.length()
 		camera.transform.origin = head_bob(t_bob)
+	
+	# Side tilt
+	cam_side_tilt(input.input_direction.x, delta)
 	
 	# FOV
 	var velocity_clamped = clamp (velocity.length(), 0.5, FOV_VELOCITY_CLAMP * 2.0)
@@ -142,24 +140,20 @@ func handle_connected_signals() -> void:
 	sensitivity_setting.sensitivity_updated.connect(set_sensitivity)
 	var reload_type_setting = find_child("ReloadTypeSetting")
 	reload_type_setting.reload_type_updated.connect(weapon_manager.set_reload_type)
+	var do_side_tilt_setting = find_child("DoSideTiltSetting")
+	do_side_tilt_setting.side_tilt_mode_updated.connect(set_side_tilt_mode)
 
 #-------------------------------------------------------------------------------
 # Camera
 #-------------------------------------------------------------------------------
-func update_camera(delta) -> void:
-	mouse_rotation.y += rotation_input * delta
-	mouse_rotation.x += tilt_input * delta
-	mouse_rotation.x = clamp(mouse_rotation.x, MIN_CAMERA_TILT, MAX_CAMERA_TILT)
-	
-	player_rotation = Vector3(0.0, mouse_rotation.y, 0.0)
-	camera_rotation = Vector3(mouse_rotation.x, 0.0, 0.0)
-	
-	global_transform.basis = Basis.from_euler(player_rotation)
-	head.transform.basis = Basis.from_euler(camera_rotation)
-	head.rotation.z = 0.0
-	
-	rotation_input = 0.0
-	tilt_input = 0.0
+func cam_side_tilt(_input_x: float, _delta: float) -> void:
+	if side_tilt_mode == Side_Tilt_Modes.NEVER: return
+	if is_on_wall() or state_machine.current_state == state_machine.states.get("SlidePlayerState".to_lower()):
+		head.rotation.z = lerp(head.rotation.z, 0.0, _delta * side_tilt_speed)
+	elif is_on_floor() or side_tilt_mode == Side_Tilt_Modes.DEFAULT:
+		head.rotation.z = lerp(head.rotation.z, -_input_x * MAX_SIDE_TILT, _delta * side_tilt_speed)
+	else:
+		head.rotation.z = lerp(head.rotation.z, 0.0, _delta * side_tilt_speed)
 
 func head_bob(time) -> Vector3:
 	var pos = Vector3.ZERO
@@ -170,6 +164,11 @@ func head_bob(time) -> Vector3:
 func set_sensitivity(value: float) -> void:
 	sensitivity = value
 	print("Player sensitivity: %s" % sensitivity)
+
+func set_side_tilt_mode(mode: Side_Tilt_Modes):
+	side_tilt_mode = mode
+	if (mode == Side_Tilt_Modes.GROUND_ONLY and !is_on_floor()) or mode == Side_Tilt_Modes.NEVER:
+		head.rotation.z = 0
 
 #-------------------------------------------------------------------------------
 # Health
