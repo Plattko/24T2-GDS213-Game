@@ -8,11 +8,11 @@ extends CharacterBody3D
 @export var ceiling_check : ShapeCast3D
 
 #@onready var input = %Input
-@onready var state_machine = %PlayerStateMachine
-@onready var weapon_manager = %WeaponManager
-@onready var reticle = %Reticle
-@onready var hitmarker = %Hitmarker
-@onready var debug = %DebugPanel
+@onready var state_machine : PlayerStateMachine = %PlayerStateMachine
+@onready var weapon_manager : WeaponManager = %WeaponManager
+@onready var reticle : Reticle = %Reticle
+@onready var hitmarker : Hitmarker = %Hitmarker
+@onready var debug : Debug = %DebugPanel
 
 # Camera movement variables
 @export_group("Camera Movement Variables")
@@ -65,7 +65,7 @@ func _ready() -> void:
 	camera.current = true
 	
 	input.player = self
-	state_machine.initialise(self, input, debug)
+	state_machine.init(self, input, debug)
 	weapon_manager.initialise(camera, input, reticle)
 	
 	handle_connected_signals()
