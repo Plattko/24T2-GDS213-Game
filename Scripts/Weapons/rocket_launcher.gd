@@ -2,7 +2,7 @@ class_name RocketLauncher
 
 extends Weapon
 
-@export var rocket_scene = load("res://Scenes/Weapons/Components/rocket.tscn")
+var rocket_scene = load("res://Scenes/Weapons/Components/rocket.tscn")
 @export var rocket_speed : float = 29.0
 
 func shoot() -> void:

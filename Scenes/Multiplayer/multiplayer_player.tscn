@@ -661,16 +661,16 @@ script = ExtResource("4_v17h1")
 weapon_switch_cooldown = NodePath("WeaponSwitchCooldown")
 
 [node name="Rifle" parent="Head/Camera3D/WeaponManager" instance=ExtResource("5_lxaa3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.519, -0.344, -0.747766)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.519, -0.344, -1.15)
 
 [node name="RocketLauncher" parent="Head/Camera3D/WeaponManager" instance=ExtResource("6_vqpyd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.519, -0.475, -0.76939)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.519, -0.475, -0.9)
 
 [node name="Shotgun" parent="Head/Camera3D/WeaponManager" instance=ExtResource("7_d8wuf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.519, -0.344, -0.703794)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.519, -0.344, -1.1)
 
 [node name="Pistol" parent="Head/Camera3D/WeaponManager" instance=ExtResource("6_6hiye")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.610238, -0.344, -0.748)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.519, -0.344, -0.75)
 
 [node name="WeaponSwitchCooldown" type="Timer" parent="Head/Camera3D/WeaponManager"]
 wait_time = 0.15

@@ -1,8 +1,6 @@
-[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://ca46g51b348y5"]
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://4t0aqxchgkfa"]
 
-[ext_resource type="Texture2D" uid="uid://cqt54i16o65qj" path="res://Assets/Imports/FPS Bundle/Weapons/RPG/Meshes/SM_HeavyWeapon2_01_3_T_Texture_01.png" id="1_r34ur"]
-
-[sub_resource type="Shader" id="Shader_pl84f"]
+[sub_resource type="Shader" id="Shader_o3quw"]
 code = "// NOTE: Shader automatically converted from Godot Engine 4.2.2.stable's StandardMaterial3D.
 
 shader_type spatial;
@@ -21,7 +19,7 @@ uniform vec3 uv1_offset;
 uniform vec3 uv2_scale;
 uniform vec3 uv2_offset;
 
-uniform float fov = 90;
+uniform float fov = 77;
 
 void vertex() {
 	UV=UV*uv1_scale.xy+uv1_offset.xy;
@@ -52,10 +50,13 @@ void fragment() {
 }
 "
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_tns7d"]
+load_path = "res://.godot/imported/SM_HeavyWeapon2_01_T_Texture_01.png-1db4f526cd11533f403a32a5edeb0e52.s3tc.ctex"
+
 [resource]
 resource_name = "M_LowPolyWeapons_MAIN"
 render_priority = 0
-shader = SubResource("Shader_pl84f")
+shader = SubResource("Shader_o3quw")
 shader_parameter/albedo = Color(1, 1, 1, 1)
 shader_parameter/point_size = 1.0
 shader_parameter/roughness = 0.8
@@ -66,5 +67,5 @@ shader_parameter/uv1_scale = Vector3(1, 1, 1)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(1, 1, 1)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
-shader_parameter/fov = 90.0
-shader_parameter/texture_albedo = ExtResource("1_r34ur")
+shader_parameter/fov = 77.0
+shader_parameter/texture_albedo = SubResource("CompressedTexture2D_tns7d")

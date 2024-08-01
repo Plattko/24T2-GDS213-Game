@@ -27,7 +27,7 @@ uniform vec3 uv1_offset;
 uniform vec3 uv2_scale;
 uniform vec3 uv2_offset;
 
-uniform float fov = 90;
+uniform float fov = 77;
 
 void vertex() {
 	UV=UV*uv1_scale.xy+uv1_offset.xy;
@@ -94,6 +94,6 @@ shader_parameter/uv1_scale = Vector3(1, 1, 1)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(1, 1, 1)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
-shader_parameter/fov = 90.0
+shader_parameter/fov = 77.0
 shader_parameter/texture_albedo = ExtResource("1_4qvdt")
 shader_parameter/texture_emission = ExtResource("1_4qvdt")

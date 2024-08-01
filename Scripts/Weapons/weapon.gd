@@ -5,7 +5,7 @@ extends Node
 var camera : Camera3D
 
 # Reference variables
-@onready var mesh = %Mesh
+@export var mesh : MeshInstance3D
 @onready var anim_player = %AnimationPlayer
 @export var muzzle_flash : MuzzleFlash
 

@@ -32,7 +32,7 @@ func initialise(player_camera: Camera3D, player_input: PlayerInput, player_retic
 			child.mesh.visible = false
 			child.init(camera)
 	
-	max_weapon_index = weapons.size() - 2 ##TODO: SET THIS BACK TO -1 AFTER PLAYTEST
+	max_weapon_index = weapons.size() - 1
 	current_weapon = weapons[0]
 	current_weapon.mesh.visible = true
 	current_weapon.update_ammo.emit([current_weapon.cur_ammo, current_weapon.MAX_AMMO])
