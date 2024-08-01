@@ -39,6 +39,12 @@ _subresources={
 "use_external/enabled": true,
 "use_external/path": "res://Assets/Materials/Standard Materials/MI_concrete_A_Inst.tres"
 }
+},
+"nodes": {
+"PATH:Mesh": {
+"generate/physics": true,
+"physics/shape_type": 1
+}
 }
 }
 gltf/naming_version=1

@@ -32,7 +32,12 @@ import_script/path=""
 _subresources={
 "nodes": {
 "PATH:Mesh": {
-"generate/physics": true
+"generate/physics": true,
+"physics/shape_type": 6,
+"primitive/height": 1.7,
+"primitive/position": Vector3(0, 0.3, 0),
+"primitive/radius": 0.3,
+"primitive/rotation": Vector3(85, 0, 0)
 }
 }
 }

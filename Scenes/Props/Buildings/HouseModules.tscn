@@ -398,7 +398,7 @@
 [ext_resource type="Material" uid="uid://ccsecy4u70k5l" path="res://Assets/Materials/Standard Materials/MI_brick_C_Inst.tres" id="396_5ribv"]
 [ext_resource type="Material" uid="uid://curviwvdgylph" path="res://Assets/Materials/Standard Materials/MI_wood_floor_Inst.tres" id="397_03utw"]
 [ext_resource type="Material" uid="uid://b634ek855ftyf" path="res://Assets/Materials/Standard Materials/MI_wooden_floor_WPO_Inst_SM_brick_building_13.tres" id="398_6cuxt"]
-[ext_resource type="PackedScene" uid="uid://eck8i1mdaecj" path="res://Scenes/Props/truck.tscn" id="398_wyref"]
+[ext_resource type="PackedScene" uid="uid://eck8i1mdaecj" path="res://Scenes/Props/Vehicles/truck.tscn" id="398_wyref"]
 [ext_resource type="Material" uid="uid://b5y2c7coteo7i" path="res://Assets/Materials/Standard Materials/MI_coal_A_Inst.tres" id="399_73m7v"]
 [ext_resource type="PackedScene" uid="uid://ckmsx5oqo4ck2" path="res://Scenes/Props/generator.tscn" id="399_jva3q"]
 [ext_resource type="PackedScene" uid="uid://b37bttipab74m" path="res://Scenes/Props/ShadedTable.tscn" id="400_45e4x"]
