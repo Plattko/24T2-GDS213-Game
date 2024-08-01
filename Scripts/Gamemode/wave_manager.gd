@@ -15,8 +15,8 @@ const SPEEDY_ROBOT = preload("res://Scenes/Enemies/robot_speedy.tscn")
 
 @export_range(0.0, 1.0, 0.01) var speedy_robot_chance : float = 0.33
 
+@export var intermission_timer : Timer
 var first_wave_delay := 5.0
-var intermission_delay := 5.0
 
 var cur_wave := 1
 
@@ -112,7 +112,8 @@ func start_intermission() -> void:
 		if roll <= cur_change_chance:
 			do_zone_change = true
 	
-	await get_tree().create_timer(intermission_delay).timeout
+	intermission_timer.start()
+	await intermission_timer.timeout
 	if do_zone_change:
 		start_zone_change()
 	else:
