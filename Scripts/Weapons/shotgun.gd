@@ -8,6 +8,10 @@ const RAY_RANGE := 2000.0
 @export var bullet_count : int
 @export var bullet_spread : int
 
+var player : MultiplayerPlayer
+var knockback := 0.5
+var aim_dir : Vector3
+
 func shoot() -> void:
 	# Call base method
 	super()
@@ -29,6 +33,7 @@ func shoot() -> void:
 			ray_end = ray_origin + camera.project_ray_normal(screen_centre + random_spread) * RAY_RANGE
 	
 		var query = PhysicsRayQueryParameters3D.create(ray_origin, ray_end, HITSCAN_COLLISION_MASK)
+		if n == 0: aim_dir = (ray_end - ray_origin).normalized()
 		query.collide_with_areas = true
 		
 		var result = space_state.intersect_ray(query)
@@ -53,3 +58,14 @@ func shoot() -> void:
 					print("Damage done: %s" % dmg)
 		else:
 			print ("Hit nothing.")
+		
+		## Apply knockback when in air
+		#var player_state : PlayerState = player.state_machine.current_state
+		#if player_state.name == "AirPlayerState":
+			#print("Aim direction length: " + str(aim_dir.length()))
+			#var knockback_vec = -aim_dir * knockback
+			#print("Knockback length: " + str(knockback_vec.length()))
+			##player.velocity.x += knockback_vec.x
+			##player.velocity.y += knockback_vec.y
+			##player.velocity.z += knockback_vec.z
+			#player.velocity += knockback_vec
