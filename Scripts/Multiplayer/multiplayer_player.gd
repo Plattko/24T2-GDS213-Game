@@ -115,7 +115,7 @@ func _physics_process(delta) -> void:
 	weapon_sway(delta)
 	
 	# Weapon bob
-	#weapon_bob(velocity.length(), delta)
+	weapon_bob(velocity.length(), delta)
 	
 	# FOV
 	var velocity_clamped = clamp (velocity.length(), 0.5, FOV_VELOCITY_CLAMP * 2.0)
@@ -180,16 +180,16 @@ func tilt(node: Node3D, target_tilt: float, delta: float) -> void:
 
 func weapon_sway(delta) -> void:
 	mouse_input = lerp(mouse_input, Vector2.ZERO, delta * 10)
-	weapon_holder.rotation.x = lerp(weapon_holder.rotation.x, mouse_input.y * weapon_sway_amount, delta * 10)
-	weapon_holder.rotation.y = lerp(weapon_holder.rotation.y, mouse_input.x * weapon_sway_amount, delta * 10)
+	weapon_holder.rotation.x = lerp(weapon_holder.rotation.x, mouse_input.y * weapon_sway_amount / 7, delta * 15)
+	weapon_holder.rotation.y = lerp(weapon_holder.rotation.y, mouse_input.x * weapon_sway_amount / 7, delta * 15)
 
-#func weapon_bob(vel: float, delta: float) -> void:
-	#if vel > 0.01 and can_head_bob:
-		#weapon_holder.position.y = lerp(weapon_holder.position.y, def_weapon_holder_pos.y + sin(Time.get_ticks_msec() * BOB_FREQ) * BOB_AMP * 20, delta)
-		#weapon_holder.position.x = lerp(weapon_holder.position.x, def_weapon_holder_pos.x + sin(Time.get_ticks_msec() * BOB_FREQ) * BOB_AMP * 20, delta)
-	#else:
-		#weapon_holder.position.y = lerp(weapon_holder.position.y, def_weapon_holder_pos.y, delta)
-		#weapon_holder.position.x = lerp(weapon_holder.position.x, def_weapon_holder_pos.x, delta)
+func weapon_bob(vel: float, delta: float) -> void:
+	if vel > 0.01 and can_head_bob:
+		weapon_holder.position.y = lerp(weapon_holder.position.y, def_weapon_holder_pos.y + sin(Time.get_ticks_msec() * 0.012) * 0.32, delta * (vel / 5))
+		weapon_holder.position.x = lerp(weapon_holder.position.x, def_weapon_holder_pos.x + sin(Time.get_ticks_msec() * 0.006) * 0.32, delta * (vel / 5))
+	else:
+		weapon_holder.position.y = lerp(weapon_holder.position.y, def_weapon_holder_pos.y, delta)
+		weapon_holder.position.x = lerp(weapon_holder.position.x, def_weapon_holder_pos.x, delta)
 
 func head_bob(time) -> Vector3:
 	var pos = Vector3.ZERO
