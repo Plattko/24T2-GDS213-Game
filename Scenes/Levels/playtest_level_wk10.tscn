@@ -647,13 +647,18 @@ initial_spawn_points = [NodePath("PlayerSpawnPoints/Spawn1"), NodePath("PlayerSp
 zones = [NodePath("ZoneData/Zone1"), NodePath("ZoneData/Zone2")]
 wave_manager = NodePath("GamemodeManager")
 
-[node name="GamemodeManager" type="Node" parent="." node_paths=PackedStringArray("enemies_node", "zone_change_timer", "endless_wave_timer", "zone_gate") groups=["wave_manager"]]
+[node name="GamemodeManager" type="Node" parent="." node_paths=PackedStringArray("enemies_node", "intermission_timer", "zone_change_timer", "endless_wave_timer", "zone_gate") groups=["wave_manager"]]
 script = ExtResource("108_6pedp")
 enemies_node = NodePath("../Enemies")
+intermission_timer = NodePath("IntermissionTimer")
 zone_change_timer = NodePath("ZoneChangeTimer")
 endless_wave_timer = NodePath("EndlessWaveTimer")
 zone_gate = NodePath("../Level/ZoneGate")
 change_possible_index = 2
+
+[node name="IntermissionTimer" type="Timer" parent="GamemodeManager"]
+wait_time = 15.0
+one_shot = true
 
 [node name="ZoneChangeTimer" type="Timer" parent="GamemodeManager"]
 wait_time = 30.0
@@ -1372,7 +1377,7 @@ size = Vector3(0.5, 4.27896, 0.5)
 material = ExtResource("16_e7mvx")
 
 [node name="ZoneGate" parent="Level" instance=ExtResource("36_a55l8")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -49.7605, 0, 37.307)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -49.4479, 0, 37.307)
 
 [node name="NavigationRegion3D1" type="NavigationRegion3D" parent="Level"]
 navigation_mesh = SubResource("NavigationMesh_5ml5q")
@@ -3029,6 +3034,7 @@ visible = false
 size = Vector3(2.17285, 1, 3.02124)
 
 [node name="NavigationRegion3D2" type="NavigationRegion3D" parent="Level"]
+visible = false
 navigation_mesh = SubResource("NavigationMesh_ma5b1")
 navigation_layers = 2
 
@@ -8221,66 +8227,66 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.04911, 0, -1.25621)
 [node name="Zone1" type="Node3D" parent="EnemySpawns/OLD"]
 
 [node name="SpawnPoint" type="Node3D" parent="EnemySpawns/OLD/Zone1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.96101, 0.981206, 36.2586)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.96101, 0.000499845, 36.2586)
 
 [node name="SpawnPoint2" type="Node3D" parent="EnemySpawns/OLD/Zone1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.7062, 3.3787, 24.9905)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.2911, 1.42501, 23.0751)
 
 [node name="SpawnPoint3" type="Node3D" parent="EnemySpawns/OLD/Zone1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.1866, 1.22868, 41.0089)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.1866, 0.000499964, 41.0089)
 
 [node name="SpawnPoint4" type="Node3D" parent="EnemySpawns/OLD/Zone1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.0426, 1.60321, 40.5745)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.0426, 0.000499964, 40.5745)
 
 [node name="SpawnPoint5" type="Node3D" parent="EnemySpawns/OLD/Zone1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.3867, 7.91896, 57.2531)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.3867, 7.09111, 57.2531)
 
 [node name="SpawnPoint6" type="Node3D" parent="EnemySpawns/OLD/Zone1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.349, 8.34286, 75.23)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.349, 9.03681, 75.23)
 
 [node name="SpawnPoint7" type="Node3D" parent="EnemySpawns/OLD/Zone1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.0209, 8.81623, 67.9147)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.0209, 7.07686, 67.9147)
 
 [node name="SpawnPoint8" type="Node3D" parent="EnemySpawns/OLD/Zone1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.3716, 1.81292, 29.0063)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.3716, 0.000499487, 29.0063)
 
 [node name="SpawnPoint9" type="Node3D" parent="EnemySpawns/OLD/Zone1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.7352, 2.33746, -12.2459)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.6925, 1.42501, -12.2459)
 
 [node name="SpawnPoint10" type="Node3D" parent="EnemySpawns/OLD/Zone1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.6505, 8.22424, 59.8577)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.6505, 7.09861, 59.8577)
 
 [node name="Zone2" type="Node3D" parent="EnemySpawns/OLD"]
 
 [node name="SpawnPoint11" type="Node3D" parent="EnemySpawns/OLD/Zone2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.3871, 8.529, 51.0514)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.3871, 7.79147, 51.0514)
 
 [node name="SpawnPoint12" type="Node3D" parent="EnemySpawns/OLD/Zone2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -126.723, 6.7919, 70.8511)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -126.723, 4.85158, 70.8511)
 
 [node name="SpawnPoint13" type="Node3D" parent="EnemySpawns/OLD/Zone2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84.9213, 1.7926, 44.5135)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84.9213, 0.000177391, 44.5135)
 
 [node name="SpawnPoint14" type="Node3D" parent="EnemySpawns/OLD/Zone2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84.9213, 1.7926, 6.13585)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84.9213, 0.000177391, 6.13585)
 
 [node name="SpawnPoint15" type="Node3D" parent="EnemySpawns/OLD/Zone2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -139.825, 22.4273, 37.7981)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -139.825, 21.6022, 37.7981)
 
 [node name="SpawnPoint16" type="Node3D" parent="EnemySpawns/OLD/Zone2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -173.564, 24.9708, 33.1301)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -173.564, 23.5987, 33.1301)
 
 [node name="SpawnPoint17" type="Node3D" parent="EnemySpawns/OLD/Zone2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -83.9323, 8.56637, 59.2118)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -83.9323, 7.79147, 59.2118)
 
 [node name="SpawnPoint18" type="Node3D" parent="EnemySpawns/OLD/Zone2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.9829, 2.57933, 17.7959)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.9829, 1.8791, 17.7959)
 
 [node name="SpawnPoint19" type="Node3D" parent="EnemySpawns/OLD/Zone2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -79.2124, 0.986655, 13.9295)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -79.2124, 0.000177391, 13.9295)
 
 [node name="SpawnPoint20" type="Node3D" parent="EnemySpawns/OLD/Zone2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -131.797, 5.90213, 28.9518)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -131.797, 4.85158, 28.9518)
 
 [node name="Enemies" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
