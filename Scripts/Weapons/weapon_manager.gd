@@ -13,12 +13,7 @@ var weapon_index := 0
 
 var weapons : Array[Weapon]
 
-enum Reload_Types {
-	AUTO,
-	ON_SHOOT,
-	MANUAL,
-}
-
+enum Reload_Types { AUTO, ON_SHOOT, MANUAL, }
 @export var reload_type : Reload_Types
 
 func initialise(player_camera: Camera3D, player_input: PlayerInput, player_reticle: Reticle) -> void:
@@ -43,73 +38,65 @@ func _physics_process(_delta):
 	# Handle shooting
 	if current_weapon.is_auto_fire:
 		if input.is_shoot_pressed:
-			if !current_weapon.anim_player.is_playing():
-				if current_weapon.cur_ammo > 0:
-					current_weapon.shoot()
-				# Reload on shoot
-				elif reload_type == Reload_Types.ON_SHOOT:
-					current_weapon.reload()
+			shoot_weapon()
 	else:
 		if input.is_shoot_just_pressed:
-			if !current_weapon.anim_player.is_playing():
-				if current_weapon.cur_ammo > 0:
-					current_weapon.shoot()
-				# Reload on shoot
-				elif reload_type == Reload_Types.ON_SHOOT:
-					current_weapon.reload()
+			shoot_weapon()
 	
 	# Auto reload
 	if current_weapon.cur_ammo <= 0 and reload_type == Reload_Types.AUTO:
 		if !current_weapon.anim_player.is_playing():
 			current_weapon.reload()
 	
+	# Manual reload
 	if input.is_reload_pressed:
 		if !current_weapon.anim_player.is_playing() and current_weapon.cur_ammo < current_weapon.MAX_AMMO:
 			current_weapon.reload()
 	
 	if input.is_weapon_1_pressed:
 		#print("Pressed Weapon 1.")
-		#if !current_weapon.anim_player.is_playing():
 		if weapon_switch_cooldown.is_stopped():
-			change_weapon(weapons[0])
+			change_weapon(0)
 	
 	if input.is_weapon_2_pressed:
 		#print("Pressed Weapon 2.")
-		#if !current_weapon.anim_player.is_playing():
 		if weapon_switch_cooldown.is_stopped():
-			change_weapon(weapons[1])
+			change_weapon(1)
 	
 	if input.is_weapon_3_pressed:
 		#print("Pressed Weapon 3.")
-		#if !current_weapon.anim_player.is_playing():
 		if weapon_switch_cooldown.is_stopped():
-			change_weapon(weapons[2])
+			change_weapon(2)
 	
 	if input.weapon_scroll_direction:
-		#if !current_weapon.anim_player.get_current_animation() == current_weapon.EQUIP_ANIM:
 		if weapon_switch_cooldown.is_stopped():
 			var dir = input.weapon_scroll_direction
 			scroll_weapon(dir)
 
-func scroll_weapon(dir: int) -> void:
-	weapon_index += dir
-	if weapon_index > max_weapon_index: weapon_index = 0
-	if weapon_index < 0: weapon_index = max_weapon_index
-	change_weapon(weapons[weapon_index])
+func shoot_weapon() -> void:
+	if !current_weapon.anim_player.is_playing():
+		if current_weapon.cur_ammo > 0:
+			current_weapon.shoot()
+		# Reload on shoot
+		elif reload_type == Reload_Types.ON_SHOOT:
+			current_weapon.reload()
 
-func change_weapon(next_weapon: Weapon) -> void:
+func scroll_weapon(dir: int) -> void:
+	var index = weapon_index + dir
+	if index > max_weapon_index: index = 0
+	elif index < 0: index = max_weapon_index
+	change_weapon(index)
+
+func change_weapon(index: int) -> void:
+	var next_weapon = weapons[index]
 	if next_weapon != current_weapon:
-		#current_weapon.anim_player.play(current_weapon.UNEQUIP_ANIM)
-		#await current_weapon.anim_player.animation_finished
-		
+		weapon_index = index
 		weapon_switch_cooldown.start()
 		current_weapon.anim_player.stop()
 		current_weapon.mesh.visible = false
 		
-		if reticle:
-			call_update_reticle(next_weapon)
-		else:
-			print("No reticle found.")
+		if reticle: call_update_reticle(next_weapon)
+		else: print("No reticle found.")
 		
 		next_weapon.update_ammo.emit([next_weapon.cur_ammo, next_weapon.MAX_AMMO])
 		next_weapon.anim_player.play(next_weapon.EQUIP_ANIM)
