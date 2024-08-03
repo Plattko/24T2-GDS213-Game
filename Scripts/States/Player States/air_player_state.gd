@@ -66,7 +66,7 @@ func enter(msg : Dictionary = {}):
 		is_air_strafing_enabled = true
 	
 	# Disable head bob
-	player.can_head_bob = false
+	player.can_bob = false
 	
 	if msg.has("do_jump"):
 		player.velocity.y += JUMP_VELOCITY
@@ -78,7 +78,7 @@ func enter(msg : Dictionary = {}):
 
 func exit():
 	# Re-enable head bob
-	player.can_head_bob = true
+	player.can_bob = true
 	# Reset is_in_wall_jump
 	is_in_wall_leap = false
 	# Reset mantle duration timer

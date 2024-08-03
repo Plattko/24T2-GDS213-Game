@@ -27,17 +27,19 @@ enum Side_Tilt_Modes { DEFAULT, GROUND_ONLY, NEVER}
 var side_tilt_mode := Side_Tilt_Modes.DEFAULT
 
 @export var weapon_holder : Node3D
-var def_weapon_holder_pos : Vector3
-var weapon_sway_amount := deg_to_rad(0.25)
-
+var weapon_sway_amount := deg_to_rad(0.25) / 6
 var mouse_input : Vector2
 
-# Head bob variables
-const BOB_FREQ := 2.0
-const BOB_AMP := 0.08
+# Bob variables
+var can_bob : bool = true
 var t_bob := 0.0
+var bob_freq := 2.0
+var bob_amp := 0.08
 
-var can_head_bob : bool = true
+var wpn_bob_freq := 0.012
+#var wpn_bob_amp := 0.32
+var wpn_bob_amp := 0.15
+var wpn_return_speed := 2.0
 
 # FOV variables
 const BASE_FOV := 90.0
@@ -67,7 +69,6 @@ func _ready() -> void:
 	
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	camera.current = true
-	def_weapon_holder_pos = weapon_holder.position
 	
 	input.player = self
 	state_machine.init(self, input, debug)
@@ -105,19 +106,13 @@ func _unhandled_input(event) -> void:
 func _physics_process(delta) -> void:
 	if not is_multiplayer_authority(): return
 	
-	# Head bob
-	if can_head_bob:
-		t_bob += delta * velocity.length()
-		camera.transform.origin = head_bob(t_bob)
-	
-	# Side tilt
-	cam_side_tilt(input.input_direction.x, delta)
+	# Handle weapon and head bob
+	head_bob(delta)
+	weapon_bob(delta)
+	# Handle side tilt
+	cam_side_tilt(delta)
 	weapon_sway(delta)
-	
-	# Weapon bob
-	weapon_bob(velocity.length(), delta)
-	
-	# FOV
+	# Handle FOV
 	var velocity_clamped = clamp (velocity.length(), 0.5, FOV_VELOCITY_CLAMP * 2.0)
 	var target_fov = BASE_FOV + FOV_CHANGE * velocity_clamped
 	camera.fov = lerp(camera.fov, target_fov, delta * 8.0)
@@ -134,68 +129,56 @@ func _physics_process(delta) -> void:
 		#debug.add_debug_property("Jump Buffer Cooldown", snappedf(input.jump_buffer_cooldown.time_left, 0.01), 4)
 		debug.add_debug_property("Air Strafing", state_machine.states.get("AirPlayerState".to_lower()).is_air_strafing_enabled, 4)
 	
+	# Respawn player if their health reaches 0
 	if cur_health <= 0 and not is_dead:
 		respawn_player()
 
 #-------------------------------------------------------------------------------
-# Initialisation
-#-------------------------------------------------------------------------------
-func handle_connected_signals() -> void:
-	for child in get_children():
-		if child is Damageable:
-			# Connect each damageable to the damaged signal
-			child.damaged.connect(on_damaged)
-	
-	for weapon in weapon_manager.get_children():
-		if weapon is Weapon:
-			# Connect the hitmarker to each weapon's regular and crit hit signals
-			weapon.regular_hit.connect(hitmarker.on_regular_hit)
-			weapon.crit_hit.connect(hitmarker.on_crit_hit)
-	
-	var sensitivity_setting = find_child("SensitivitySliderSetting")
-	sensitivity_setting.sensitivity_updated.connect(set_sensitivity)
-	sensitivity_setting.slider.value = sensitivity * 100
-	var reload_type_setting = find_child("ReloadTypeSetting")
-	reload_type_setting.reload_type_updated.connect(weapon_manager.set_reload_type)
-	var do_side_tilt_setting = find_child("DoSideTiltSetting")
-	do_side_tilt_setting.side_tilt_mode_updated.connect(set_side_tilt_mode)
-
-#-------------------------------------------------------------------------------
 # Camera
 #-------------------------------------------------------------------------------
-func cam_side_tilt(_input_x: float, _delta: float) -> void:
+func head_bob(delta: float) -> void:
+	if can_bob:
+		t_bob += delta * velocity.length()
+		var bob_pos = Vector3.ZERO
+		bob_pos.y = sin(t_bob * bob_freq) * bob_amp
+		bob_pos.x = cos(t_bob * bob_freq / 2) * bob_amp
+		camera.transform.origin = bob_pos
+
+func weapon_bob(delta: float) -> void: # TODO: Fix head bob and weapon bob being out of sync
+	var vel = velocity.length()
+	if can_bob and vel > 0.01:
+		var bob_pos = Vector3.ZERO
+		var speed_modifier = vel / PlayerState.WALK_SPEED
+		var time = Time.get_ticks_msec() * speed_modifier
+		var weight = delta * speed_modifier
+		bob_pos.y = sin(time * wpn_bob_freq) * wpn_bob_amp
+		bob_pos.x = sin(time * wpn_bob_freq / 2) * wpn_bob_amp
+		weapon_holder.position = lerp(weapon_holder.position, bob_pos, weight)
+	else:
+		var def_pos = Vector3.ZERO
+		var weight = wpn_return_speed * delta
+		weapon_holder.position = lerp(weapon_holder.position, def_pos, weight)
+
+func weapon_sway(delta: float) -> void:
+	mouse_input = lerp(mouse_input, Vector2.ZERO, delta * 10)
+	weapon_holder.rotation.x = lerp(weapon_holder.rotation.x, mouse_input.y * weapon_sway_amount, delta * 15)
+	weapon_holder.rotation.y = lerp(weapon_holder.rotation.y, mouse_input.x * weapon_sway_amount, delta * 15)
+
+func cam_side_tilt(_delta: float) -> void:
 	if side_tilt_mode == Side_Tilt_Modes.NEVER: return
 	if is_on_wall() or state_machine.current_state == state_machine.states.get("SlidePlayerState".to_lower()):
 		tilt(head, 0.0, _delta)
 		tilt(weapon_holder, 0.0, _delta)
 	elif is_on_floor() or side_tilt_mode == Side_Tilt_Modes.DEFAULT:
-		tilt(head, -_input_x * head_tilt_amount, _delta)
-		tilt(weapon_holder, -_input_x * weapon_tilt_amount, _delta)
+		var input_x = input.input_direction.x
+		tilt(head, -input_x * head_tilt_amount, _delta)
+		tilt(weapon_holder, -input_x * weapon_tilt_amount, _delta)
 	else:
 		tilt(head, 0.0, _delta)
 		tilt(weapon_holder, 0.0, _delta)
 
 func tilt(node: Node3D, target_tilt: float, delta: float) -> void:
 	node.rotation.z = lerp(node.rotation.z, target_tilt, delta * side_tilt_speed)
-
-func weapon_sway(delta) -> void:
-	mouse_input = lerp(mouse_input, Vector2.ZERO, delta * 10)
-	weapon_holder.rotation.x = lerp(weapon_holder.rotation.x, mouse_input.y * weapon_sway_amount / 7, delta * 15)
-	weapon_holder.rotation.y = lerp(weapon_holder.rotation.y, mouse_input.x * weapon_sway_amount / 7, delta * 15)
-
-func weapon_bob(vel: float, delta: float) -> void:
-	if vel > 0.01 and can_head_bob:
-		weapon_holder.position.y = lerp(weapon_holder.position.y, def_weapon_holder_pos.y + sin(Time.get_ticks_msec() * 0.012) * 0.32, delta * (vel / 5))
-		weapon_holder.position.x = lerp(weapon_holder.position.x, def_weapon_holder_pos.x + sin(Time.get_ticks_msec() * 0.006) * 0.32, delta * (vel / 5))
-	else:
-		weapon_holder.position.y = lerp(weapon_holder.position.y, def_weapon_holder_pos.y, delta)
-		weapon_holder.position.x = lerp(weapon_holder.position.x, def_weapon_holder_pos.x, delta)
-
-func head_bob(time) -> Vector3:
-	var pos = Vector3.ZERO
-	pos.y = sin(time * BOB_FREQ) * BOB_AMP
-	pos.x = cos(time * BOB_FREQ / 2) * BOB_AMP
-	return pos
 
 func set_sensitivity(value: float) -> void:
 	sensitivity = value
@@ -205,32 +188,6 @@ func set_side_tilt_mode(mode: Side_Tilt_Modes):
 	side_tilt_mode = mode
 	if (mode == Side_Tilt_Modes.GROUND_ONLY and !is_on_floor()) or mode == Side_Tilt_Modes.NEVER:
 		head.rotation.z = 0
-
-#-------------------------------------------------------------------------------
-# Health
-#-------------------------------------------------------------------------------
-func on_damaged(damage: float, _is_crit: bool) -> void:
-	if cur_health > 0.0:
-		cur_health -= damage
-		cur_health = clampf(cur_health, 0.0, max_health)
-		update_health.emit([cur_health, max_health])
-		print("Player health: " + str(cur_health))
-
-func on_healed(health: float) -> void:
-		cur_health += health
-		cur_health = clampf(cur_health, 0.0, max_health)
-		update_health.emit([cur_health, max_health])
-
-func respawn_player() -> void:
-	is_dead = true
-	horizontal_knockback = Vector3.ZERO
-	velocity = Vector3.ZERO
-	global_position = GameManager.cur_respawn_point
-	print("Current respawn position: " + str(GameManager.cur_respawn_point))
-	print("Player position after respawning: " + str(global_position))
-	cur_health = max_health
-	update_health.emit([cur_health, max_health])
-	is_dead = false
 
 #-------------------------------------------------------------------------------
 # Movement
@@ -268,3 +225,52 @@ func stand_up(current_state, anim_speed : float, is_repeating_check : bool) -> v
 	elif ceiling_check.is_colliding() == true and is_repeating_check:
 		await get_tree().create_timer(0.1).timeout
 		stand_up(current_state, anim_speed, true)
+
+#-------------------------------------------------------------------------------
+# Health
+#-------------------------------------------------------------------------------
+func on_damaged(damage: float, _is_crit: bool) -> void:
+	if cur_health > 0.0:
+		cur_health -= damage
+		cur_health = clampf(cur_health, 0.0, max_health)
+		update_health.emit([cur_health, max_health])
+		print("Player health: " + str(cur_health))
+
+func on_healed(health: float) -> void:
+	cur_health += health
+	cur_health = clampf(cur_health, 0.0, max_health)
+	update_health.emit([cur_health, max_health])
+
+func respawn_player() -> void:
+	is_dead = true
+	horizontal_knockback = Vector3.ZERO
+	velocity = Vector3.ZERO
+	global_position = GameManager.cur_respawn_point
+	print("Current respawn position: " + str(GameManager.cur_respawn_point))
+	print("Player position after respawning: " + str(global_position))
+	cur_health = max_health
+	update_health.emit([cur_health, max_health])
+	is_dead = false
+
+#-------------------------------------------------------------------------------
+# Initialisation
+#-------------------------------------------------------------------------------
+func handle_connected_signals() -> void:
+	for child in get_children():
+		if child is Damageable:
+			# Connect each damageable to the damaged signal
+			child.damaged.connect(on_damaged)
+	
+	for weapon in weapon_manager.get_children():
+		if weapon is Weapon:
+			# Connect the hitmarker to each weapon's regular and crit hit signals
+			weapon.regular_hit.connect(hitmarker.on_regular_hit)
+			weapon.crit_hit.connect(hitmarker.on_crit_hit)
+	
+	var sensitivity_setting = find_child("SensitivitySliderSetting")
+	sensitivity_setting.sensitivity_updated.connect(set_sensitivity)
+	sensitivity_setting.slider.value = sensitivity * 100
+	var reload_type_setting = find_child("ReloadTypeSetting")
+	reload_type_setting.reload_type_updated.connect(weapon_manager.set_reload_type)
+	var do_side_tilt_setting = find_child("DoSideTiltSetting")
+	do_side_tilt_setting.side_tilt_mode_updated.connect(set_side_tilt_mode)

@@ -6715,7 +6715,6 @@ material = ExtResource("16_e7mvx")
 
 [node name="ZoneGate" parent="Level" instance=ExtResource("36_a55l8")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -49.4479, 0, 37.307)
-visible = false
 
 [node name="NavigationLinks" type="Node" parent="Level"]
 

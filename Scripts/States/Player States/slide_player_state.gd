@@ -26,13 +26,13 @@ func enter(_msg : Dictionary = {}):
 	# Play the crouch animation
 	player.animation_player.play("Slide", -1, SLIDE_ANIM_SPEED)
 	# Disable head bob
-	player.can_head_bob = false
+	player.can_bob = false
 
 func exit():
 	# Reset slide timer
 	elapsed_time = 0.0
 	# Re-enable head bob
-	player.can_head_bob = true
+	player.can_bob = true
 
 func physics_update(delta):
 	if elapsed_time < SLIDE_DURATION:
