@@ -58,6 +58,8 @@ func on_intermission_entered() -> void:
 func on_zone_change_entered() -> void:
 	cur_wave_label.visible = false
 	zone_change_warning.visible = true
+	if enemies_left_label.visible:
+		enemies_left_label.visible = false
 
 func _on_zone_change_timer_timeout():
 	zone_change_warning.visible = false

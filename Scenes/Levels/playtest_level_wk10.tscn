@@ -657,7 +657,7 @@ zone_gate = NodePath("../Level/ZoneGate")
 change_possible_index = 2
 
 [node name="IntermissionTimer" type="Timer" parent="GamemodeManager"]
-wait_time = 15.0
+wait_time = 10.0
 one_shot = true
 
 [node name="ZoneChangeTimer" type="Timer" parent="GamemodeManager"]
