@@ -311,7 +311,6 @@ _data = {
 [node name="Shotgun" type="Node3D" node_paths=PackedStringArray("mesh", "muzzle_flash", "anim_player")]
 script = ExtResource("1_5vdia")
 bullet_count = 18
-bullet_spread = 70
 mesh = NodePath("Model/Body")
 muzzle_flash = NodePath("Barrel/MuzzleFlash")
 anim_player = NodePath("AnimationPlayer")
@@ -328,16 +327,19 @@ replication_config = SubResource("SceneReplicationConfig_8cnap")
 transform = Transform3D(-6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, 0, -0.0449747, 0.607886)
 
 [node name="Body" type="MeshInstance3D" parent="Model"]
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_elty3")
 skeleton = NodePath("")
 
 [node name="Pump" type="MeshInstance3D" parent="Model/Body"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.633, 0, 0)
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_86j6v")
 skeleton = NodePath("")
 
 [node name="Trigger" type="MeshInstance3D" parent="Model/Body"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0736232, -0.0173359, 0)
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_7k3kv")
 skeleton = NodePath("")
 

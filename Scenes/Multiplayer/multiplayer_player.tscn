@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://il6q27w1jqvw"]
+[gd_scene load_steps=46 format=3 uid="uid://il6q27w1jqvw"]
 
 [ext_resource type="Script" path="res://Scripts/Multiplayer/multiplayer_player.gd" id="1_0n7q4"]
 [ext_resource type="Script" path="res://Scripts/Player/player_input.gd" id="2_7s41b"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/Weapons/weapon_manager.gd" id="4_v17h1"]
 [ext_resource type="PackedScene" uid="uid://dqexibtsgatqp" path="res://Scenes/Weapons/rifle.tscn" id="5_lxaa3"]
 [ext_resource type="PackedScene" uid="uid://d2x6finf6hnf4" path="res://Scenes/Weapons/pistol.tscn" id="6_6hiye"]
+[ext_resource type="PackedScene" uid="uid://dd57urlaitec8" path="res://Scenes/Weapons/p90.tscn" id="6_h0gra"]
 [ext_resource type="PackedScene" uid="uid://co38vlsgcng80" path="res://Scenes/Weapons/rocket_launcher.tscn" id="6_vqpyd"]
 [ext_resource type="PackedScene" uid="uid://cj7xkscmie81y" path="res://Scenes/Weapons/shotgun.tscn" id="7_d8wuf"]
 [ext_resource type="Script" path="res://Scripts/States/Player States/player_state_machine.gd" id="9_s0xnt"]
@@ -676,6 +677,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.519, -0.344, -1.1)
 [node name="Pistol" parent="Head/Camera3D/WeaponHolder/WeaponManager" instance=ExtResource("6_6hiye")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.519, -0.344, -0.75)
 
+[node name="P90" parent="Head/Camera3D/WeaponHolder/WeaponManager" instance=ExtResource("6_h0gra")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.519, -0.344, -0.95)
+
 [node name="WeaponSwitchCooldown" type="Timer" parent="Head/Camera3D/WeaponHolder/WeaponManager"]
 wait_time = 0.15
 one_shot = true
@@ -1070,5 +1074,6 @@ text = "30"
 [connection signal="update_ammo" from="Head/Camera3D/WeaponHolder/WeaponManager/RocketLauncher" to="UI/HUD" method="on_update_ammo"]
 [connection signal="update_ammo" from="Head/Camera3D/WeaponHolder/WeaponManager/Shotgun" to="UI/HUD" method="on_update_ammo"]
 [connection signal="update_ammo" from="Head/Camera3D/WeaponHolder/WeaponManager/Pistol" to="UI/HUD" method="on_update_ammo"]
+[connection signal="update_ammo" from="Head/Camera3D/WeaponHolder/WeaponManager/P90" to="UI/HUD" method="on_update_ammo"]
 [connection signal="closed_settings_menu" from="UI/HUD/SettingsMenu" to="Input" method="on_closed_settings_menu"]
 [connection signal="opened_settings_menu" from="UI/HUD/SettingsMenu" to="Input" method="on_opened_settings_menu"]

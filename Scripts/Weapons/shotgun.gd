@@ -3,7 +3,7 @@ extends Weapon
 
 @export_category("Shotgun Data")
 @export var bullet_count : int
-@export var bullet_spread : int
+@export var bullet_spread : int = 70
 
 var player : MultiplayerPlayer
 var knockback := 0.5

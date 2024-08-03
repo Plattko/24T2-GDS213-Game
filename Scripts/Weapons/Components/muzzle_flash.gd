@@ -13,6 +13,6 @@ func _ready():
 @rpc("call_local")
 func add_muzzle_flash() -> void:
 	light.visible = true
-	emitter.emitting = true
+	emitter.restart()
 	await get_tree().create_timer(flash_time).timeout
 	light.visible = false
