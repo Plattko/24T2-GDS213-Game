@@ -10,6 +10,7 @@ var camera : Camera3D
 @export var anim_player : AnimationPlayer
 
 var bullet_decal = preload("res://Scenes/Weapons/Components/bullet_decal.tscn")
+var third_person_material = load("res://Assets/Materials/Shader Materials/weapon_third_person_shader.tres")
 
 @export_group("Weapon Data")
 @export_subgroup("Damage")
@@ -49,6 +50,12 @@ signal regular_hit(damage: float)
 signal crit_hit(damage: float)
 
 func _ready():
+	if !is_multiplayer_authority():
+		mesh.set_surface_override_material(0, third_person_material)
+		for child_mesh in mesh.get_children():
+			if child_mesh is MeshInstance3D:
+				child_mesh.set_surface_override_material(0, third_person_material)
+	
 	cur_ammo = MAX_AMMO
 
 func init(player_camera: Camera3D) -> void:

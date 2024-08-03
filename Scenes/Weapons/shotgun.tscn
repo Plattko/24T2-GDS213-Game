@@ -6,13 +6,13 @@
 [ext_resource type="Material" uid="uid://un70lvxarnb0" path="res://Assets/Materials/Shader Materials/muzzle_flash_rifle_shader.tres" id="4_gn0ue"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_8cnap"]
-properties/0/path = NodePath("Mesh:visible")
+properties/0/path = NodePath("Model/Body:visible")
 properties/0/spawn = true
 properties/0/replication_mode = 1
-properties/1/path = NodePath("Mesh:position")
+properties/1/path = NodePath(".:position")
 properties/1/spawn = true
 properties/1/replication_mode = 1
-properties/2/path = NodePath("Mesh:rotation")
+properties/2/path = NodePath(".:rotation")
 properties/2/spawn = true
 properties/2/replication_mode = 1
 
