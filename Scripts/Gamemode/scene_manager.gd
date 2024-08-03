@@ -41,7 +41,7 @@ func _ready() -> void:
 			# Manually set their initial spawn point
 			set_initial_spawn_point(player)
 			# [NOTE - TEMPORARY] Give the Wave Manager a reference to the player
-			if wave_manager: wave_manager.initialise(player)
+			if wave_manager: wave_manager.initialise(self, player)
 		
 		#TODO: Connect the UI to the player
 	

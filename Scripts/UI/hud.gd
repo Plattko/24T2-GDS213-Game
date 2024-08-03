@@ -49,8 +49,6 @@ func on_enemy_count_updated(enemy_count: int) -> void:
 
 func on_intermission_entered() -> void:
 	cur_wave_label.text = "Intermission"
-	#if enemies_left_label.visible:
-		#enemies_left_label.visible = false
 
 #-------------------------------------------------------------------------------
 # Zone Change Sequence
