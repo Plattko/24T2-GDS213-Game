@@ -4,14 +4,13 @@ extends Node
 
 var camera : Camera3D
 
-# Reference variables
+@export_group("Reference Variables")
 @export var mesh : MeshInstance3D
-@onready var anim_player = %AnimationPlayer
 @export var muzzle_flash : MuzzleFlash
+@export var anim_player : AnimationPlayer
 
 var bullet_decal = preload("res://Scenes/Weapons/Components/bullet_decal.tscn")
 
-# Weapon data
 @export_group("Weapon Data")
 @export_subgroup("Damage")
 @export var BULLET_DAMAGE : float
@@ -31,6 +30,7 @@ var cur_ammo
 
 @export var is_auto_fire : bool = true
 
+const HITSCAN_RAY_RANGE := 2000.0
 const HITSCAN_COLLISION_MASK := roundi(pow(2, 1-1)) + roundi(pow(2, 4-1))
 
 # Animation variables
@@ -57,40 +57,66 @@ func init(player_camera: Camera3D) -> void:
 func shoot() -> void:
 	# Display the muzzle flash
 	if muzzle_flash: muzzle_flash.add_muzzle_flash.rpc()
+	# Play the shoot animation
 	anim_player.play(SHOOT_ANIM)
-	
+	# Decrease the ammo by the ammo cose
 	cur_ammo -= AMMO_COST
+	# Update the ammo on the UI
 	update_ammo.emit([cur_ammo, MAX_AMMO])
 
 func reload() -> void:
+	# Play the reload animation
 	anim_player.play(RELOAD_ANIM, -1, 0.5)
 
 func reset_ammo() -> void:
+	# Set the ammo back to the max ammo
 	cur_ammo = MAX_AMMO
+	# Update the ammo on the UI
 	update_ammo.emit([cur_ammo, MAX_AMMO])
+
+func raycast_hit(result: Dictionary) -> void:
+	# Get the hit object's collider
+	var collider = result.collider
+	# If the collider is damageable apply the damage and signal a hit, otherwise spawn a bullet hole decal
+	if collider is Damageable:
+		# Calculate the distance of the hit from the player
+		var distance = Vector3(collider.global_position - camera.global_position).length()
+		# Apply damage with fall off and signal the hit
+		if collider.is_weak_point:
+			var dmg = damage_with_falloff(crit_damage, distance)
+			collider.take_damage.rpc(dmg, true)
+			crit_hit.emit(dmg)
+		else:
+			var dmg = damage_with_falloff(BULLET_DAMAGE, distance)
+			collider.take_damage.rpc(dmg, false)
+			regular_hit.emit(dmg)
+	else:
+		# Spawn a bullet hole decal
+		spawn_decal(result.get("position"), result.get("normal"))
 
 func spawn_decal(position: Vector3, normal: Vector3) -> void:
 	# Instantiate bullet decal
 	var instance = bullet_decal.instantiate()
+	# Give it a reference to the decal queue
+	instance.decal_queue = decal_queue
 	# Make it a child of the level scene
 	var level = get_tree().get_first_node_in_group("level")
 	level.add_child(instance)
 	# Set its position
 	instance.global_position = position
-	# Give the decal a reference to the decal queue
-	instance.decal_queue = decal_queue
-	# Rotate the decal in the direction of the surface's normal
+	# Rotate it in the direction of the surface's normal
 	if abs(normal.y) < 0.99:
 		instance.look_at(instance.global_transform.origin + normal, Vector3.UP)
 		instance.rotate_object_local(Vector3(1, 0, 0), 90)
 	# Add random rotation around the decal's local Y axis
 	instance.rotate_object_local(Vector3(0,1,0), randf_range(0.0,360.0))
-	
+	# Update the decal queue
 	update_decal_queue(instance)
 
 func update_decal_queue(decal):
+	# Add the new decal to the end of the queue
 	decal_queue.push_back(decal)
-	
+	# If the queue size is greater than the max queue size, remove and destroy the decal at the front of the queue
 	if decal_queue.size() > MAX_QUEUE_SIZE:
 		var decal_to_destroy = decal_queue.pop_front()
 		decal_to_destroy.queue_free()

@@ -272,10 +272,11 @@ _data = {
 "Unequip": SubResource("Animation_ohrl6")
 }
 
-[node name="Rifle" type="Node3D" node_paths=PackedStringArray("mesh", "muzzle_flash")]
+[node name="Rifle" type="Node3D" node_paths=PackedStringArray("mesh", "muzzle_flash", "anim_player")]
 script = ExtResource("1_al0dg")
 mesh = NodePath("Model/Body")
 muzzle_flash = NodePath("Barrel/MuzzleFlash")
+anim_player = NodePath("AnimationPlayer")
 BULLET_DAMAGE = 20.0
 FALLOFF_NEAR_DIST = 30.0
 FALLOFF_FAR_DIST = 50.0
@@ -326,7 +327,6 @@ process_material = SubResource("ParticleProcessMaterial_qm8cm")
 draw_pass_1 = SubResource("QuadMesh_m7h41")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_vlmsi")
 }

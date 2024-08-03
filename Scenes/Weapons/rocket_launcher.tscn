@@ -291,9 +291,10 @@ _data = {
 "Unequip": SubResource("Animation_y1hr3")
 }
 
-[node name="RocketLauncher" type="Node3D" node_paths=PackedStringArray("mesh")]
+[node name="RocketLauncher" type="Node3D" node_paths=PackedStringArray("mesh", "anim_player")]
 script = ExtResource("1_j0ibu")
 mesh = NodePath("Model/Body")
+anim_player = NodePath("AnimationPlayer")
 MAX_AMMO = 4
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
@@ -315,7 +316,6 @@ mesh = SubResource("ArrayMesh_dtouq")
 skeleton = NodePath("")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_vlmsi")
 }

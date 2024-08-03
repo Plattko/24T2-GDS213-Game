@@ -379,10 +379,11 @@ _data = {
 "Unequip": SubResource("Animation_y1hr3")
 }
 
-[node name="Pistol" type="Node3D" node_paths=PackedStringArray("mesh", "muzzle_flash")]
+[node name="Pistol" type="Node3D" node_paths=PackedStringArray("mesh", "muzzle_flash", "anim_player")]
 script = ExtResource("1_c6rr1")
 mesh = NodePath("Model/Body")
 muzzle_flash = NodePath("Barrel/MuzzleFlash")
+anim_player = NodePath("AnimationPlayer")
 BULLET_DAMAGE = 45.0
 FALLOFF_NEAR_DIST = 40.0
 FALLOFF_FAR_DIST = 60.0
@@ -447,7 +448,6 @@ process_material = SubResource("ParticleProcessMaterial_yf2va")
 draw_pass_1 = SubResource("QuadMesh_64s8x")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_vlmsi")
 }
