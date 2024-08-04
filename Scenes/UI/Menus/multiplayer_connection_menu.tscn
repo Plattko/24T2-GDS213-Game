@@ -24,7 +24,6 @@ lobbies_vbox = NodePath("SteamUI/Lobbies/VBoxContainer")
 script = ExtResource("2_elbp8")
 
 [node name="NetworkTypeUI" type="Panel" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -151,6 +150,7 @@ theme_override_font_sizes/font_size = 24
 text = "Start Game"
 
 [node name="SteamUI" type="Panel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
