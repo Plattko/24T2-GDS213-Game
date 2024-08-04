@@ -24,6 +24,7 @@ lobbies_vbox = NodePath("SteamUI/Lobbies/VBoxContainer")
 script = ExtResource("2_elbp8")
 
 [node name="NetworkTypeUI" type="Panel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -150,7 +151,6 @@ theme_override_font_sizes/font_size = 24
 text = "Start Game"
 
 [node name="SteamUI" type="Panel" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -192,6 +192,14 @@ grow_vertical = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="SteamUI/Lobbies"]
 layout_mode = 2
 
+[node name="StartGame" type="Button" parent="SteamUI"]
+offset_left = 600.0
+offset_right = 1200.0
+offset_bottom = 42.0
+theme_override_font_sizes/font_size = 24
+text = "Start Game
+"
+
 [connection signal="pressed" from="NetworkTypeUI/VBoxContainer/UseSteam" to="." method="use_steam"]
 [connection signal="pressed" from="NetworkTypeUI/VBoxContainer/UseLAN" to="." method="use_lan"]
 [connection signal="text_changed" from="LanUI/MarginContainer/VBoxContainer/IPHBox/IPLineEdit" to="LanUI/MarginContainer/VBoxContainer/IPHBox/IPLineEdit" method="_on_text_changed"]
@@ -200,3 +208,4 @@ layout_mode = 2
 [connection signal="pressed" from="LanUI/MarginContainer/VBoxContainer/ButtonsHBox/StartGame" to="." method="_on_start_game_pressed"]
 [connection signal="pressed" from="SteamUI/Options/HostGame" to="." method="become_host"]
 [connection signal="pressed" from="SteamUI/Options/ListLobbies" to="." method="list_steam_lobbies"]
+[connection signal="pressed" from="SteamUI/StartGame" to="." method="_on_start_game_pressed"]
