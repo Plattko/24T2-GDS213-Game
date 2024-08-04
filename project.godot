@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Global="*res://Scripts/Global/global.gd"
 GameManager="*res://Scripts/Gamemode/game_manager.gd"
+SteamManager="*res://Scripts/Multiplayer/Steam/steam_manager.gd"
 
 [display]
 
