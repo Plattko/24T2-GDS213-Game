@@ -2234,10 +2234,10 @@ size = Vector3(22.0263, 7.56207, 3)
 material = ExtResource("14_i5wdg")
 
 [node name="Roof7" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Zone2/Ground"]
-transform = Transform3D(-4.52397e-10, -0.0103496, 0.999946, 0.974173, -0.225789, -0.00233696, 0.225801, 0.974121, 0.0100823, -70.0301, 4.05217, 30.1452)
+transform = Transform3D(-4.52397e-10, -0.0103496, 0.999946, 0.969829, -0.243771, -0.00252308, 0.243784, 0.969777, 0.0100373, -70.0267, 4.18604, 29.8299)
 use_collision = true
-size = Vector3(0.1, 5.34922, 2)
-material = ExtResource("5_mjqyo")
+size = Vector3(0.1, 5.09504, 2)
+material = ExtResource("17_2kdsx")
 
 [node name="SM_Props_TowerCrane_02" parent="NavigationRegion3D/LevelGeometry/Zone2/Ground" instance=ExtResource("21_liwp6")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -74.6374, 1.81966, 29.6857)
@@ -2331,9 +2331,9 @@ size = Vector3(14.8777, 6.349, 0.1)
 material = ExtResource("29_iscwr")
 
 [node name="Wall7" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Zone2/Warehouse"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -75.5767, 5.02932, 20.0266)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -75.8437, 5.02932, 19.9641)
 use_collision = true
-size = Vector3(15, 6.349, 0.1)
+size = Vector3(14.875, 6.349, 0.1)
 material = ExtResource("29_iscwr")
 
 [node name="Door1" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry/Zone2/Warehouse/Wall7"]
@@ -7577,10 +7577,10 @@ transform = Transform3D(-3.49691e-08, 0, 0.8, 0, 0.8, 0, -0.8, 0, -3.49691e-08, 
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 304.827, 0, -47.857)
 
 [node name="SM_Trains_TrainPart_07" parent="." instance=ExtResource("476_43dp1")]
-transform = Transform3D(-0.000104709, 0, 1, 0, 1, 0, -1, 0, -0.000104709, -68.4444, 3.11375, 16.9535)
+transform = Transform3D(-0.000104709, 0, 0.8, 0, 1, 0, -1, 0, -8.37676e-05, -67.039, 3.11375, 16.9535)
 
 [node name="SM_Trains_Train_03_C3" parent="." instance=ExtResource("480_8nxeo")]
-transform = Transform3D(-0.000104709, 0, 1, 0, 1, 0, -1, 0, -0.000104709, -68.4438, 2.06462, 16.9457)
+transform = Transform3D(-0.000104709, 0, 0.8, 0, 1, 0, -1, 0, -8.37676e-05, -67.0384, 2.06462, 16.9457)
 
 [node name="SM_tree_01" parent="." instance=ExtResource("482_qhnfq")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 178.552, 0, -24.8206)
