@@ -136,6 +136,9 @@ func damage_with_falloff(damage: float, distance: float) -> float:
 	# Calculate how much of the minimum and maximum damage should be dealt
 	return dist_normalised * min_dmg + (1.0 - dist_normalised) * damage
 
+#-------------------------------------------------------------------------------
+# RPCs
+#-------------------------------------------------------------------------------
 @rpc("call_local")
 func play_anim(anim: String, custom_speed: float = 1.0) -> void:
 	anim_player.play(anim, -1, custom_speed)

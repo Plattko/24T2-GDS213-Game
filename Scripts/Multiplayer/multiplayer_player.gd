@@ -4,7 +4,7 @@ extends CharacterBody3D
 @export var input : PlayerInput
 @export var head : Node3D
 @export var camera : Camera3D
-@export var animation_player : AnimationPlayer
+@export var anim_player : AnimationPlayer
 @export var ceiling_check : ShapeCast3D
 
 @onready var state_machine : PlayerStateMachine = %PlayerStateMachine
@@ -12,6 +12,9 @@ extends CharacterBody3D
 @onready var reticle : Reticle = %Reticle
 @onready var hitmarker : Hitmarker = %Hitmarker
 @onready var debug : Debug = %DebugPanel
+
+const CROUCH_ANIM : String = "Crouch"
+const SLIDE_ANIM : String = "Slide"
 
 # Camera movement variables
 @export_group("Camera Movement Variables")
@@ -215,12 +218,12 @@ func stand_up(current_state, anim_speed : float, is_repeating_check : bool) -> v
 	if ceiling_check.is_colliding() == false:
 		# Check if it is the crouch or slide animation
 		if current_state == "CrouchPlayerState":
-			animation_player.play("Crouch", -1, -anim_speed, true)
+			play_anim.rpc(CROUCH_ANIM, -anim_speed, true)
 		elif current_state == "SlidePlayerState":
-			animation_player.play("Slide", -1, -anim_speed, true)
+			play_anim.rpc(SLIDE_ANIM, -anim_speed, true)
 		
-		if animation_player.is_playing():
-			await animation_player.animation_finished
+		if anim_player.is_playing():
+			await anim_player.animation_finished
 	# If there is something blocking the way, try to uncrouch again in 0.1 seconds
 	elif ceiling_check.is_colliding() == true and is_repeating_check:
 		await get_tree().create_timer(0.1).timeout
@@ -274,3 +277,15 @@ func handle_connected_signals() -> void:
 	reload_type_setting.reload_type_updated.connect(weapon_manager.set_reload_type)
 	var do_side_tilt_setting = find_child("DoSideTiltSetting")
 	do_side_tilt_setting.side_tilt_mode_updated.connect(set_side_tilt_mode)
+
+#-------------------------------------------------------------------------------
+# RPCs
+#-------------------------------------------------------------------------------
+@rpc("call_local")
+func play_anim(anim: String, custom_speed: float = 1.0, from_end: bool = false) -> void:
+	anim_player.play(anim, -1, custom_speed, from_end)
+
+@rpc("call_local")
+func seek_anim(anim: String, seconds: float) -> void:
+	anim_player.current_animation = anim
+	anim_player.seek(seconds, true)

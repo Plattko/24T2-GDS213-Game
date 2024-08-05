@@ -23,8 +23,8 @@ func enter(_msg : Dictionary = {}):
 	slide_direction = input.direction
 	# Set the slide start speed
 	actual_start_speed = maxf(SLIDE_START_SPEED, horizontal_velocity.length())
-	# Play the crouch animation
-	player.animation_player.play("Slide", -1, SLIDE_ANIM_SPEED)
+	# Play the slide animation
+	player.play_anim.rpc(player.SLIDE_ANIM, SLIDE_ANIM_SPEED)
 	# Disable head bob
 	player.can_bob = false
 
