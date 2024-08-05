@@ -8,22 +8,30 @@ var self_damage : float = explosion_damage * 0.45
 var knockback_strength : float = 12.0
 var is_direct_hit : bool = false
 
-#var do_self_damage : bool = true
-
 const ENEMY_COLLISION_MASK : int = roundi(pow(2, 1-1)) + roundi(pow(2, 3-1))
 const PLAYER_COLLISION_MASK : int = roundi(pow(2, 1-1)) + roundi(pow(2, 2-1))
 
-func _ready():
+@export var owner_id : int
+
+func _enter_tree() -> void:
+	if !multiplayer.is_server():
+		set_physics_process(false)
+		return
+	
 	await get_tree().create_timer(0.5).timeout
+	await get_tree().physics_frame
 	queue_free()
 
 func _physics_process(_delta) -> void:
+	# Only run by server
 	if !explosion_col.disabled:
 		explosion_col.disabled = true
 		set_physics_process(false)
 
-## TODO: Make it so only the player who shot the rocket is effected by player hits
-func _on_explosion_radius_body_entered(body):
+func _on_explosion_radius_body_entered(body: Node3D):
+	# Only run by server
+	if !multiplayer.is_server(): return
+	
 	if body is Enemy:
 		print("Enemy detected")
 		# Raycast from the explosion's centre to the enemy's collider
@@ -64,6 +72,10 @@ func _on_explosion_radius_body_entered(body):
 		body.velocity += knockback
 	
 	elif body is MultiplayerPlayer:
+		#if !body.is_multiplayer_authority(): return
+		if body.get_multiplayer_authority() != owner_id:
+			return
+		
 		# Raycast from the explosion's centre to the player's eyes
 		var query = PhysicsRayQueryParameters3D.create(global_position, body.head.global_position, PLAYER_COLLISION_MASK)
 		
@@ -86,17 +98,20 @@ func _on_explosion_radius_body_entered(body):
 		#print("Knockback: " + str(knockback))
 		#print("Knockback strength: " + str(knockback.length()))
 		
-		# Apply the self-damage
-		if body.do_self_damage: body.on_damaged(damage, false)
-		# Apply the vertical explosion knockback to the player
-		body.velocity.y += knockback.y
-		# Apply the horizontal explosion knockback to the player
-		var player_state : PlayerState = body.state_machine.current_state
-		if player_state.name == "AirPlayerState":
-			# If in the Air state, add it to the velocity directly
-			player_state.is_air_strafing_enabled = true
-			body.velocity.x += knockback.x * 1.3
-			body.velocity.z += knockback.z * 1.3
-		else:
-			# Otherwise, update the horizontal knockback
-			body.horizontal_knockback = knockback * 1.3
+		# NOTE: Super jank setup, only workaround I could find
+		body.rocket_self_hit.rpc_id(owner_id, damage, knockback)
+		
+		## Apply the self-damage
+		#if body.do_self_damage: body.on_damaged(damage, false)
+		## Apply the vertical explosion knockback to the player
+		#body.velocity.y += knockback.y
+		## Apply the horizontal explosion knockback to the player
+		#var player_state : PlayerState = body.state_machine.current_state
+		#if player_state.name == "AirPlayerState":
+			## If in the Air state, add it to the velocity directly
+			#player_state.is_air_strafing_enabled = true
+			#body.velocity.x += knockback.x * 1.3
+			#body.velocity.z += knockback.z * 1.3
+		#else:
+			## Otherwise, update the horizontal knockback
+			#body.horizontal_knockback = knockback * 1.3

@@ -18968,5 +18968,9 @@ libraries = {
 "": SubResource("AnimationLibrary_8wxbm")
 }
 
+[node name="RocketAndExplosionSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://Scenes/Weapons/Components/rocket.tscn", "res://Scenes/Weapons/Components/explosion.tscn")
+spawn_path = NodePath("..")
+
 [connection signal="timeout" from="GamemodeManager/EndlessWaveTimer" to="GamemodeManager" method="_on_endless_wave_timer_timeout"]
 [connection signal="spawned" from="MultiplayerSpawner" to="." method="_on_multiplayer_spawner_spawned"]

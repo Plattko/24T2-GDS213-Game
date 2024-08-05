@@ -51,7 +51,7 @@ const FOV_VELOCITY_CLAMP := 8.0
 
 # Health variables
 var max_health := 100
-var cur_health
+var cur_health : float
 var is_dead : bool = false
 
 # Knockback variables
@@ -289,3 +289,20 @@ func play_anim(anim: String, custom_speed: float = 1.0, from_end: bool = false) 
 func seek_anim(anim: String, seconds: float) -> void:
 	anim_player.current_animation = anim
 	anim_player.seek(seconds, true)
+
+@rpc("any_peer", "call_local")
+func rocket_self_hit(damage: float, knockback: Vector3) -> void:
+	# Apply the self-damage
+	if do_self_damage: on_damaged(damage, false)
+	# Apply the vertical explosion knockback to the player
+	velocity.y += knockback.y
+	# Apply the horizontal explosion knockback to the player
+	var player_state : PlayerState = state_machine.current_state
+	if player_state.name == "AirPlayerState":
+		# If in the Air state, add it to the velocity directly
+		player_state.is_air_strafing_enabled = true
+		velocity.x += knockback.x * 1.3
+		velocity.z += knockback.z * 1.3
+	else:
+		# Otherwise, update the horizontal knockback
+		horizontal_knockback = knockback * 1.3
