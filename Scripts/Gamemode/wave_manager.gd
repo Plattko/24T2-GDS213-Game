@@ -110,7 +110,7 @@ func spawn_enemy(is_endless_wave: bool) -> void:
 		else:
 			enemy = ROBOT.instantiate()
 	else:
-		ROBOT.instantiate()
+		enemy = ROBOT.instantiate()
 	# Initialise enemy
 	var nav_layer = scene_manager.cur_zone
 	enemy.initialise(player, nav_layer)
@@ -161,6 +161,7 @@ func initialise(_scene_manager: SceneManager, _player: MultiplayerPlayer) -> voi
 # Zone Change Sequence
 #-------------------------------------------------------------------------------
 func start_zone_change() -> void:
+	print("ZONE CHANGE STARTED")
 	# Reset zone change variables
 	wave_index = 0
 	cur_change_chance = 0.0

@@ -244,6 +244,7 @@ func on_healed(health: float) -> void:
 	cur_health = clampf(cur_health, 0.0, max_health)
 	update_health.emit([cur_health, max_health])
 
+@rpc("any_peer", "call_local")
 func respawn_player() -> void:
 	is_dead = true
 	horizontal_knockback = Vector3.ZERO
