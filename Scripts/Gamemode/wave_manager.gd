@@ -67,10 +67,9 @@ func spawn_wave() -> void:
 		spawn_enemy(false)
 
 func start_intermission() -> void:
+	print("INTERMISSION STARTED")
 	# Update the HUD to display that it's an intermission
 	emit_intermission_entered.rpc()
-	# Start the intermission timer
-	intermission_timer.start()
 	# Update zone change variables
 	wave_index += 1
 	#print("Wave index: " + str(wave_index))
@@ -128,6 +127,7 @@ func pick_random_spawn_point() -> Vector3:
 	return spawn_points.pick_random().global_position
 
 func on_enemy_defeated() -> void:
+	print("Enemy defeated!")
 	# Reduce enemies by 1
 	alive_enemies -= 1
 	emit_enemy_count_updated.rpc(alive_enemies)
@@ -177,9 +177,11 @@ func start_zone_change() -> void:
 
 func _on_zone_gate_anim_finished(anim_name: StringName) -> void:
 	if anim_name == "Open":
+		print("ZONE GATE OPENED")
 		# Start gate close animation
 		zone_gate.anim_player.play("Close")
 	elif anim_name == "Close":
+		print("ZONE GATE CLOSED")
 		# Stop the endless wave
 		endless_wave_timer.stop()
 		
@@ -193,6 +195,7 @@ func _on_zone_gate_anim_finished(anim_name: StringName) -> void:
 		start_new_wave()
 
 func _on_endless_wave_timer_timeout():
+	print("ENDLESS WAVE TIMER TIMED OUT")
 	# Restart the timer
 	endless_wave_timer.start()
 	# Spawn a new enemy if there are less than 15 currently alive
@@ -213,6 +216,7 @@ func emit_enemy_count_updated(enemy_count: int) -> void:
 
 @rpc("call_local")
 func emit_intermission_entered() -> void:
+	intermission_timer.start()
 	intermission_entered.emit()
 
 @rpc("call_local")
