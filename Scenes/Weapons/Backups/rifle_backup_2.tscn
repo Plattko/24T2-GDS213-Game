@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/Weapons/rifle.gd" id="1_6luyr"]
 [ext_resource type="Material" uid="uid://blq2tme80b4rk" path="res://Assets/Materials/Shader Materials/test_gun.tres" id="2_gwm16"]
 [ext_resource type="Script" path="res://Scripts/Weapons/Components/muzzle_flash.gd" id="3_l67b0"]
-[ext_resource type="Material" uid="uid://un70lvxarnb0" path="res://Assets/Materials/Shader Materials/muzzle_flash_rifle_shader.tres" id="4_shk2j"]
+[ext_resource type="Material" uid="uid://un70lvxarnb0" path="res://Assets/Materials/Shader Materials/muzzle_flash_shader.tres" id="4_shk2j"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_ng5jb"]
 properties/0/path = NodePath("Mesh:visible")

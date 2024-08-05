@@ -50,6 +50,7 @@ signal regular_hit(damage: float)
 signal crit_hit(damage: float)
 
 func _ready():
+	# Set weapon meshes to the third person material if not the player holding the weapon
 	if !is_multiplayer_authority():
 		mesh.set_surface_override_material(0, third_person_material)
 		for child_mesh in mesh.get_children():
