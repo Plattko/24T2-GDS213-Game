@@ -22,7 +22,7 @@ func _on_pickup_area_body_entered(body) -> void:
 	if body is MultiplayerPlayer:
 		if body.cur_health != body.max_health:
 			body.on_healed(health)
-			queue_free()
+			delete_orb.rpc_id(1)
 
 func _on_slow_flash_timer_timeout():
 	anim_player.play("SlowFlash")
@@ -33,4 +33,8 @@ func _on_fast_flash_timer_timeout():
 	deletion_timer.start()
 
 func _on_lifetime_timer_timeout():
+	delete_orb.rpc_id(1)
+
+@rpc("any_peer", "call_local")
+func delete_orb() -> void:
 	queue_free()

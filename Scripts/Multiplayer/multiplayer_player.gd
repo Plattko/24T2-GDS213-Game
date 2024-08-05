@@ -51,7 +51,7 @@ const FOV_VELOCITY_CLAMP := 8.0
 
 # Health variables
 var max_health := 100
-var cur_health : float
+@export var cur_health : float
 var is_dead : bool = false
 
 # Knockback variables

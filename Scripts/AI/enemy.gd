@@ -143,7 +143,7 @@ func die() -> void:
 		var health_orb = health_orb_scene.instantiate()
 		# Make it a child of the level scene
 		var level = get_tree().get_first_node_in_group("level")
-		level.add_child(health_orb)
+		level.add_child(health_orb, true)
 		# Set its position
 		health_orb.global_position = Vector3(global_position.x, global_position.y + 1.25, global_position.z)
 	queue_free()
