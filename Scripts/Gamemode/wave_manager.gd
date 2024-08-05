@@ -45,6 +45,7 @@ signal intermission_entered
 signal zone_change_entered
 
 func _ready() -> void:
+	if !multiplayer.is_server(): return
 	randomize()
 	handle_connected_signals()
 

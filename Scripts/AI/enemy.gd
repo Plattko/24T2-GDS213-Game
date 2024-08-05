@@ -12,7 +12,7 @@ enum EnemyTypes { REGULAR, SPEEDY, }
 @export var anim_tree : AnimationTree
 var anim_state_machine : AnimationNodeStateMachinePlayback
 enum Animations { RUN, ATTACK, JUMP, STUNNED, }
-var cur_anim
+@export var cur_anim : Animations
 
 @export_group("Movement Variables")
 @export var speedy_speed := 10.0
@@ -52,14 +52,14 @@ var player : MultiplayerPlayer
 signal enemy_defeated
 
 func _ready():
+	# Get animation state machine
+	anim_state_machine = anim_tree.get("parameters/playback")
+	# Activate animation tree
+	anim_tree.active = true
+	# Initialise state machine
+	state_machine.init(self)
+	
 	if multiplayer.is_server():
-		# Get animation state machine
-		anim_state_machine = anim_tree.get("parameters/playback")
-		# Activate animation tree
-		anim_tree.active = true
-		# Initialise state machine
-		state_machine.init(self)
-		
 		# Give the enemy a random speed
 		if enemy_type == EnemyTypes.REGULAR:
 			speed = randf_range(min_speed, max_speed)
@@ -67,7 +67,6 @@ func _ready():
 		elif enemy_type == EnemyTypes.SPEEDY:
 			speed = speedy_speed
 			turn_speed = speedy_turn_speed
-		#print("Enemy speed: " +str(speed))
 		# Connect the target timer's timeout signal to the set_target_position function
 		target_timer.timeout.connect(set_target_position)
 		# Set the initial target location
@@ -113,6 +112,7 @@ func set_target_position() -> void:
 #-------------------------------------------------------------------------------
 # Animation
 #-------------------------------------------------------------------------------
+@rpc("any_peer", "call_local")
 func animate(anim: Animations) -> void:
 	cur_anim = anim
 	

@@ -15,6 +15,8 @@ func init(_enemy: CharacterBody3D) -> void:
 	
 	# If there is an initial state call the state's enter and set it as the current state
 	if initial_state:
+		# Waiting one physics frame prevents an error when calling the animate RPC in the run state for the first time
+		await get_tree().physics_frame
 		initial_state.enter()
 		current_state = initial_state
 
@@ -38,5 +40,6 @@ func on_child_transition(new_state_name, msg : Dictionary = {}):
 
 func _on_nav_agent_link_reached(details):
 	if !multiplayer.is_server(): return
+	#print("Link entry position: " + str(details.link_entry_position))
 	# Call on_link_reached on the current state
 	current_state.on_link_reached(details)
