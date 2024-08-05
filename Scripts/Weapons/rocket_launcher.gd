@@ -32,5 +32,6 @@ func spawn_rocket(player_id: int, dir: Vector3, speed: float, pos: Vector3, rot:
 	rocket.global_position = pos
 	rocket.transform.basis = rot
 
+@rpc("any_peer", "call_local")
 func on_enemy_hit(damage: float) -> void:
 	regular_hit.emit(damage)

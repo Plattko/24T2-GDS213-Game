@@ -131,6 +131,7 @@ func animate(anim: Animations) -> void:
 #-------------------------------------------------------------------------------
 # Health
 #-------------------------------------------------------------------------------
+@rpc("any_peer", "call_local")
 func on_damaged(damage: float, is_crit: bool):
 	cur_health -= damage
 	health_bar.update_health(cur_health, is_crit)

@@ -562,7 +562,6 @@ one_shot = true
 
 [node name="NavRegionZone1" type="NavigationRegion3D" parent="Level"]
 navigation_mesh = SubResource("NavigationMesh_1bkg2")
-navigation_layers = 2
 
 [node name="Misc" type="Node" parent="Level/NavRegionZone1"]
 
