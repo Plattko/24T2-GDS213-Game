@@ -12,7 +12,7 @@ extends Node
 @export var lobbies_vbox : VBoxContainer
 
 var max_players : int = 4
-var cur_player_num := 2 # Set to 2 for player 2
+@export var cur_player_count := 0
 
 var multiplayer_scene = preload("res://Scenes/Levels/Testing/steam_multiplayer_testing.tscn")
 
@@ -119,9 +119,8 @@ func on_peer_disconnected(id: int) -> void:
 func on_connected_to_server(username: String) -> void: 
 	print("Connected to server.")
 	# Send connected player's information to the server
-	send_player_information.rpc_id(1, multiplayer.get_unique_id(), username, cur_player_num)
-	# ALERT: Player number not incremented because for clients it will always be 2
-	cur_player_num += 1
+	add_player_to_lobby.rpc_id(1, multiplayer.get_unique_id(), username)
+	print("Added player to lobby from connected to server")
 
 # Is only called from clients
 func on_connection_failed() -> void: 
@@ -138,6 +137,13 @@ func start_game() -> void:
 	get_tree().root.add_child(scene)
 	# Hide the connection menu
 	self.visible = false
+
+@rpc("any_peer", "call_local")
+func add_player_to_lobby(id: int, username: String) -> void:
+	cur_player_count += 1
+	print("Current player count: " + str(cur_player_count))
+	# Send connected player's information to the server
+	send_player_information(id, username, cur_player_count)
 
 ## NOTE: Use this if players select weapon loadout before entering game
 @rpc("any_peer")

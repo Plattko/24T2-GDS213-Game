@@ -53,7 +53,8 @@ func create_host() -> void:
 			# Establish the host as a multiplayer peer
 		multiplayer.set_multiplayer_peer(multiplayer_peer)
 		# Pass in the host's player information
-		multiplayer_manager.send_player_information(multiplayer.get_unique_id(), SteamManager.steam_username, 1)
+		multiplayer_manager.add_player_to_lobby(multiplayer.get_unique_id(), SteamManager.steam_username)
+		print("Added player to lobby from Steam network")
 	else:
 		print("Error creating host: " + str(error))
 

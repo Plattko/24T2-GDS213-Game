@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://2l0xgkulyboa"]
+[gd_scene load_steps=5 format=3 uid="uid://2l0xgkulyboa"]
 
 [ext_resource type="Script" path="res://Scripts/Multiplayer/multiplayer_manager.gd" id="1_l41eb"]
 [ext_resource type="Script" path="res://Scripts/Multiplayer/Networks/network_manager.gd" id="2_elbp8"]
 [ext_resource type="Script" path="res://Scripts/UI/ip_line_edit.gd" id="2_v72lq"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_7igjj"]
+properties/0/path = NodePath(".:cur_player_count")
+properties/0/spawn = true
+properties/0/replication_mode = 1
 
 [node name="MultiplayerConnectionMenu" type="Control" node_paths=PackedStringArray("network_manager", "network_type_ui", "lan_ui", "steam_ui", "name_line", "ip_line", "lobbies_vbox")]
 layout_mode = 3
@@ -19,6 +24,9 @@ steam_ui = NodePath("SteamUI")
 name_line = NodePath("LanUI/MarginContainer/VBoxContainer/NameHBox/NameLineEdit")
 ip_line = NodePath("LanUI/MarginContainer/VBoxContainer/IPHBox/IPLineEdit")
 lobbies_vbox = NodePath("SteamUI/Lobbies/VBoxContainer")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_7igjj")
 
 [node name="NetworkManager" type="Node" parent="."]
 script = ExtResource("2_elbp8")

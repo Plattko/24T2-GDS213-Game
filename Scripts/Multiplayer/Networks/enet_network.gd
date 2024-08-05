@@ -37,7 +37,8 @@ func become_host() -> void:
 		print("Waiting for players!")
 		
 		# Pass in the host's player information
-		multiplayer_manager.send_player_information(multiplayer.get_unique_id(), multiplayer_manager.name_line.text, 1)
+		multiplayer_manager.add_player_to_lobby(multiplayer.get_unique_id(), multiplayer_manager.name_line.text)
+		print("Added player to lobby from ENet network")
 	# If there is an error creating the server, print the error
 	else:
 		print("Cannot host: %s" % error)
