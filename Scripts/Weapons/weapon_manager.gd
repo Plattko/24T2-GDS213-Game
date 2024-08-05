@@ -92,14 +92,15 @@ func change_weapon(index: int) -> void:
 	if next_weapon != current_weapon:
 		weapon_index = index
 		weapon_switch_cooldown.start()
-		current_weapon.anim_player.stop()
+		current_weapon.stop_anim.rpc()
 		current_weapon.mesh.visible = false
 		
 		if reticle: call_update_reticle(next_weapon)
 		else: print("No reticle found.")
 		
 		next_weapon.update_ammo.emit([next_weapon.cur_ammo, next_weapon.MAX_AMMO])
-		next_weapon.anim_player.play(next_weapon.EQUIP_ANIM)
+		#next_weapon.anim_player.play(next_weapon.EQUIP_ANIM)
+		next_weapon.play_anim.rpc(next_weapon.EQUIP_ANIM)
 		current_weapon = next_weapon
 
 func call_update_reticle(weapon: Weapon) -> void:

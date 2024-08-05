@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cj7xkscmie81y"]
+[gd_scene load_steps=19 format=3 uid="uid://cj7xkscmie81y"]
 
 [ext_resource type="Script" path="res://Scripts/Weapons/shotgun.gd" id="1_5vdia"]
 [ext_resource type="Material" uid="uid://4t0aqxchgkfa" path="res://Assets/Materials/Shader Materials/weapon_shader.tres" id="2_b3qqb"]
@@ -294,18 +294,12 @@ tracks/2/keys = {
 "values": [Vector3(0.633, 0, 0), Vector3(0.633, 0, 0), Vector3(0.462072, 0, 0), Vector3(0.462072, 0, 0), Vector3(0.633, 0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_y1hr3"]
-resource_name = "Unequip"
-length = 0.1
-step = 0.01
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vlmsi"]
 _data = {
 "Equip": SubResource("Animation_3u4f5"),
 "RESET": SubResource("Animation_rf707"),
 "Reload": SubResource("Animation_5y7bq"),
-"Shoot": SubResource("Animation_m1qid"),
-"Unequip": SubResource("Animation_y1hr3")
+"Shoot": SubResource("Animation_m1qid")
 }
 
 [node name="Shotgun" type="Node3D" node_paths=PackedStringArray("mesh", "muzzle_flash", "anim_player")]

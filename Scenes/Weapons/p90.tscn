@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dd57urlaitec8"]
+[gd_scene load_steps=19 format=3 uid="uid://dd57urlaitec8"]
 
 [ext_resource type="Script" path="res://Scripts/Weapons/p90.gd" id="1_684iw"]
 [ext_resource type="Material" uid="uid://4t0aqxchgkfa" path="res://Assets/Materials/Shader Materials/weapon_shader.tres" id="2_i70j8"]
@@ -258,18 +258,12 @@ tracks/0/keys = {
 "values": [Vector3(0, 0, 0), Vector3(-0.035, 0, 0), Vector3(0, 0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_ohrl6"]
-resource_name = "Unequip"
-length = 0.1
-step = 0.01
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vlmsi"]
 _data = {
 "Equip": SubResource("Animation_pnqt0"),
 "RESET": SubResource("Animation_rf707"),
 "Reload": SubResource("Animation_5y7bq"),
-"Shoot": SubResource("Animation_m1qid"),
-"Unequip": SubResource("Animation_ohrl6")
+"Shoot": SubResource("Animation_m1qid")
 }
 
 [node name="P90" type="Node3D" node_paths=PackedStringArray("mesh", "muzzle_flash", "anim_player")]
