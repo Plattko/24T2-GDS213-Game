@@ -84,7 +84,7 @@ func update_zone() -> void:
 func body_in_vaporisation_area(body: Node3D) -> void:
 	if body is MultiplayerPlayer:
 		# TODO: Update to not respawn player for respawn time
-		body.respawn_player.rpc_id(body.name.to_int())
+		body.die.rpc_id(body.name.to_int(), true)
 		print("Player vaporised.")
 
 func get_enemy_spawn_points() -> Array[Node3D]:

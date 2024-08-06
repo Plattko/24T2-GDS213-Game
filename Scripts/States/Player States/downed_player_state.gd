@@ -28,3 +28,6 @@ func revive_player() -> void:
 		transition.emit("IdlePlayerState")
 	else:
 		transition.emit("CrouchPlayerState", {"left_downed" = true})
+
+func respawn_player() -> void:
+	transition.emit("IdlePlayerState", {"respawned" = true})

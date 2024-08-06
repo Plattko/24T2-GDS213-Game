@@ -2,10 +2,12 @@ class_name MultiplayerPlayer
 extends CharacterBody3D
 
 @export var input : PlayerInput
+@export var mesh : MeshInstance3D
 @export var head : Node3D
 @export var camera : Camera3D
 @export var anim_player : AnimationPlayer
 @export var ceiling_check : ShapeCast3D
+@export var hud : HUD
 
 @onready var state_machine : PlayerStateMachine = %PlayerStateMachine
 @onready var weapon_manager : WeaponManager = %WeaponManager
@@ -16,6 +18,7 @@ extends CharacterBody3D
 const CROUCH_ANIM : String = "Crouch"
 const SLIDE_ANIM : String = "Slide"
 const DOWNED_ANIM : String = "Downed"
+const RESPAWN_ANIM : String = "Respawn"
 
 # Camera movement variables
 @export_group("Camera Movement Variables")
@@ -53,11 +56,11 @@ const FOV_VELOCITY_CLAMP := 8.0
 # Health variables
 var max_health := 100
 @export var cur_health : float
-var is_dead : bool = false
 
 # Knockback variables
 var horizontal_knockback : Vector3 = Vector3.ZERO
 var kb_reduction_rate : float = 20.0
+
 
 # Temp(?) rocket jump variable
 @export_group("Rocket Jump Variables")
@@ -70,7 +73,17 @@ var kb_reduction_rate : float = 20.0
 @export var revive_health : float = 15.0
 @export var revive_invincibility_sec : float = 1.0
 
+@export_group("Death Variables")
+@export var death_timer : Timer
+@export var respawn_timer : Timer
+var is_dead : bool = false
+var is_vaporised : bool = false
+
 signal update_health
+signal player_downed
+signal player_died(is_vaporised: bool)
+signal player_revived
+signal player_respawned
 
 func _enter_tree() -> void:
 	set_multiplayer_authority(str(name).to_int())
@@ -84,9 +97,10 @@ func _ready() -> void:
 	input.player = self
 	state_machine.init(self, input, debug)
 	weapon_manager.initialise(camera, input, reticle)
-	var shotgun = weapon_manager.find_child("Shotgun")
-	print(shotgun)
-	if shotgun: shotgun.player = self
+	#var shotgun = weapon_manager.find_child("Shotgun")
+	#print(shotgun)
+	#if shotgun: shotgun.player = self
+	hud.init(death_timer, respawn_timer)
 	
 	handle_connected_signals()
 	
@@ -143,7 +157,7 @@ func _physics_process(delta) -> void:
 		debug.add_debug_property("Air Strafing", state_machine.states.get("AirPlayerState".to_lower()).is_air_strafing_enabled, 4)
 	
 	# Down player if their health reaches 0
-	if cur_health <= 0 and not is_downed: #is_dead:
+	if cur_health <= 0 and not is_downed and not is_dead:
 		down_player()
 
 #-------------------------------------------------------------------------------
@@ -249,36 +263,32 @@ func on_damaged(damage: float, _is_crit: bool) -> void:
 		update_health.emit([cur_health, max_health])
 		print("Player health: " + str(cur_health))
 
-func on_healed(health: float, is_revive_health: bool = false) -> void:
-	if is_downed and !is_revive_health: return
+func on_healed(health: float) -> void:
+	if is_downed or is_dead: return
 	cur_health += health
 	cur_health = clampf(cur_health, 0.0, max_health)
 	update_health.emit([cur_health, max_health])
 
-@rpc("any_peer", "call_local")
-func respawn_player() -> void:
-	is_dead = true
-	horizontal_knockback = Vector3.ZERO
-	velocity = Vector3.ZERO
-	global_position = GameManager.cur_respawn_point
-	print("Current respawn position: " + str(GameManager.cur_respawn_point))
-	print("Player position after respawning: " + str(global_position))
-	cur_health = max_health
-	update_health.emit([cur_health, max_health])
-	is_dead = false
-
 func down_player() -> void:
-	print("Player " + str(multiplayer.get_unique_id()) + " is downed: " + str(is_downed))
+	print("Player " + str(multiplayer.get_unique_id()) + " is downed.")
 	is_downed = true
 	is_invincible = true
 	input.can_shoot = false
+	death_timer.start()
+	# Show the downed UI
+	player_downed.emit()
 
 @rpc("any_peer", "call_local")
 func revive_player() -> void:
 	# Only run if the player is downed
 	if !is_downed: return
+	# Notify the HUD
+	player_revived.emit()
+	# Stop the death timer
+	death_timer.stop()
 	# Set their health to the revive health
-	on_healed(revive_health, true)
+	cur_health = revive_health
+	update_health.emit([cur_health, max_health])
 	# Set is_downed to false so the next state doesn't transition to it immediately
 	is_downed = false
 	# Assuming they're in the downed state, call the revive_player function
@@ -291,6 +301,60 @@ func revive_player() -> void:
 		input.can_shoot = true
 		await get_tree().create_timer(revive_invincibility_sec).timeout
 		is_invincible = false
+
+func die(vaporised: bool):
+	print("Player " + str(multiplayer.get_unique_id()) + " died.")
+	if vaporised: respawn_timer.start()
+	# Notify the HUD
+	player_died.emit(vaporised)
+	is_downed = false
+	is_dead = true
+	is_vaporised = vaporised
+	# Reset knockback and velocity
+	horizontal_knockback = Vector3.ZERO
+	velocity = Vector3.ZERO
+	# Hide mesh and disable collisions
+	mesh.hide()
+	set_collision_layer_value(2, false)
+	set_collision_mask_value(3, false)
+	# Hide the player's weapon
+	weapon_manager.current_weapon.stop_anim.rpc()
+	weapon_manager.current_weapon.mesh.visible = false
+	# Disable moving and shooting
+	input.can_move = false
+	input.can_shoot = false
+
+@rpc("any_peer", "call_local")
+func respawn_player() -> void:
+	# Notify the HUD
+	player_respawned.emit()
+	# Set their health to the max health
+	cur_health = max_health
+	update_health.emit([cur_health, max_health])
+	# Set is_dead and is_vaporised to false
+	is_dead = false
+	is_vaporised = false
+	is_invincible = false
+	# Assuming they're in the downed state, call the respawn_player function
+	state_machine.current_state.respawn_player()
+	# Show mesh and enable collisions
+	mesh.show()
+	set_collision_layer_value(2, true)
+	set_collision_mask_value(3, true)
+	# Set the player's position to the current respawn point
+	global_position = GameManager.cur_respawn_point
+	# Enable moving
+	input.can_move = true
+	# Reset to the player's first weapon
+	weapon_manager.reset_weapon()
+	# Enable shooting
+	input.can_shoot = true
+
+func _on_death_timer_timeout():
+	die(false)
+
+func _on_respawn_timer_timeout():
+	respawn_player()
 
 #-------------------------------------------------------------------------------
 # Initialisation
