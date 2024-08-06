@@ -135,6 +135,13 @@ var weapon_scroll_direction : int:
 			return scroll_dir
 		return 0
 
+# ------------------------------INTERACTION---------------------------------- #
+var is_interact_pressed : bool:
+	get:
+		if not is_server and can_shoot:
+			return Input.is_action_pressed("interact")
+		return false
+
 # --------------------------------TOGGLES------------------------------------ #
 func on_opened_settings_menu() -> void:
 	print("Disabled input.")

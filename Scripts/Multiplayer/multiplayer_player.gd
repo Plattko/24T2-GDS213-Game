@@ -61,7 +61,6 @@ var max_health := 100
 var horizontal_knockback : Vector3 = Vector3.ZERO
 var kb_reduction_rate : float = 20.0
 
-
 # Temp(?) rocket jump variable
 @export_group("Rocket Jump Variables")
 @export var do_self_damage : bool = true
@@ -78,6 +77,10 @@ var kb_reduction_rate : float = 20.0
 @export var respawn_timer : Timer
 var is_dead : bool = false
 var is_vaporised : bool = false
+
+@export_group("Interaction Variables")
+@export var interact_raycast : RayCast3D
+var interact_cast_result
 
 signal update_health
 signal player_downed
@@ -134,6 +137,11 @@ func _unhandled_input(event) -> void:
 
 func _physics_process(delta) -> void:
 	if not is_multiplayer_authority(): return
+	
+	if input.can_shoot:
+		interact_cast()
+	if input.is_interact_pressed:
+		interact()
 	
 	# Handle weapon and head bob
 	head_bob(delta)
@@ -374,6 +382,25 @@ func on_intermission_entered() -> void:
 		revive_player()
 	elif is_dead and not is_vaporised:
 		respawn_player()
+
+#-------------------------------------------------------------------------------
+# Interaction
+#-------------------------------------------------------------------------------
+func interact_cast() -> void:
+	## Only run if the interact raycast is colliding
+	#if !interact_raycast.is_colliding(): return
+	# Get the collider
+	var collider = interact_raycast.get_collider()
+	# If the collider is different from the last interact cast result, update it
+	if interact_cast_result != collider:
+		interact_cast_result = collider
+
+func interact() -> void:
+	# Only run if the interact cast result isn't null
+	if !interact_cast_result: return
+	
+	if interact_cast_result is MultiplayerPlayer:
+		print("Interacting with player.")
 
 #-------------------------------------------------------------------------------
 # Initialisation

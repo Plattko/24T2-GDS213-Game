@@ -24,6 +24,9 @@ extends Control
 @export var respawn_timer_text : Label
 @export var respawn_progress_bar : TextureProgressBar
 
+@export_group("Interact UI")
+@export var interact_ui : Control
+
 var death_timer : Timer
 var respawn_timer : Timer
 
@@ -35,6 +38,7 @@ func _ready():
 	zone_change_warning.visible = false
 	downed_ui.hide()
 	dead_ui.hide()
+	interact_ui.hide()
 	
 	wave_manager = get_tree().get_first_node_in_group("wave_manager")
 	if (wave_manager):
