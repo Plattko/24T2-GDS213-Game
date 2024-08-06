@@ -35,6 +35,11 @@ func exit():
 	player.can_bob = true
 
 func physics_update(delta):
+	# Transition to Downed state
+	if player.is_downed:
+		transition.emit("DownedPlayerState", {"left_slide" = true})
+		return
+	
 	if elapsed_time < SLIDE_DURATION:
 		## Last version
 		# Handle deceleration

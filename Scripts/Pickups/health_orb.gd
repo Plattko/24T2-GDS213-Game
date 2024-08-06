@@ -20,7 +20,7 @@ func _physics_process(delta) -> void:
 
 func _on_pickup_area_body_entered(body) -> void:
 	if body is MultiplayerPlayer:
-		if body.cur_health != body.max_health:
+		if body.cur_health != body.max_health and !body.is_downed:
 			body.on_healed(health)
 			delete_orb.rpc_id(1)
 

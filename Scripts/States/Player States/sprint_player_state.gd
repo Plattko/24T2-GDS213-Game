@@ -7,6 +7,10 @@ func enter(_msg : Dictionary = {}):
 	pass
 
 func physics_update(_delta : float):
+	# Transition to Downed state
+	if player.is_downed:
+		transition.emit("DownedPlayerState")
+		return
 	# Transition to Air state with jump
 	if input.is_jump_just_pressed and player.is_on_floor():
 		transition.emit("AirPlayerState", {"do_jump" = true})

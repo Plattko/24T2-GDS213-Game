@@ -15,6 +15,7 @@ extends CharacterBody3D
 
 const CROUCH_ANIM : String = "Crouch"
 const SLIDE_ANIM : String = "Slide"
+const DOWNED_ANIM : String = "Downed"
 
 # Camera movement variables
 @export_group("Camera Movement Variables")
@@ -62,6 +63,13 @@ var kb_reduction_rate : float = 20.0
 @export_group("Rocket Jump Variables")
 @export var do_self_damage : bool = true
 
+# Downed state
+@export_group("Downed State Variables")
+@export var is_downed : bool = false
+@export var is_invincible : bool = false
+@export var revive_health : float = 15.0
+@export var revive_invincibility_sec : float = 1.0
+
 signal update_health
 
 func _enter_tree() -> void:
@@ -105,6 +113,8 @@ func _unhandled_input(event) -> void:
 			on_healed(20)
 		if event.pressed and event.keycode == KEY_I:
 			do_self_damage = !do_self_damage
+		if event.pressed and event.keycode == KEY_L:
+			revive_player()
 
 func _physics_process(delta) -> void:
 	if not is_multiplayer_authority(): return
@@ -132,9 +142,9 @@ func _physics_process(delta) -> void:
 		#debug.add_debug_property("Jump Buffer Cooldown", snappedf(input.jump_buffer_cooldown.time_left, 0.01), 4)
 		debug.add_debug_property("Air Strafing", state_machine.states.get("AirPlayerState".to_lower()).is_air_strafing_enabled, 4)
 	
-	# Respawn player if their health reaches 0
-	if cur_health <= 0 and not is_dead:
-		respawn_player()
+	# Down player if their health reaches 0
+	if cur_health <= 0 and not is_downed: #is_dead:
+		down_player()
 
 #-------------------------------------------------------------------------------
 # Camera
@@ -169,7 +179,7 @@ func weapon_sway(delta: float) -> void:
 
 func cam_side_tilt(_delta: float) -> void:
 	if side_tilt_mode == Side_Tilt_Modes.NEVER: return
-	if is_on_wall() or state_machine.current_state == state_machine.states.get("SlidePlayerState".to_lower()):
+	if is_on_wall() or state_machine.current_state == state_machine.states.get("SlidePlayerState".to_lower()) or is_downed:
 		tilt(head, 0.0, _delta)
 		tilt(weapon_holder, 0.0, _delta)
 	elif is_on_floor() or side_tilt_mode == Side_Tilt_Modes.DEFAULT:
@@ -233,13 +243,14 @@ func stand_up(current_state, anim_speed : float, is_repeating_check : bool) -> v
 # Health
 #-------------------------------------------------------------------------------
 func on_damaged(damage: float, _is_crit: bool) -> void:
-	if cur_health > 0.0:
+	if cur_health > 0.0 and !is_invincible:
 		cur_health -= damage
 		cur_health = clampf(cur_health, 0.0, max_health)
 		update_health.emit([cur_health, max_health])
 		print("Player health: " + str(cur_health))
 
-func on_healed(health: float) -> void:
+func on_healed(health: float, is_revive_health: bool = false) -> void:
+	if is_downed and !is_revive_health: return
 	cur_health += health
 	cur_health = clampf(cur_health, 0.0, max_health)
 	update_health.emit([cur_health, max_health])
@@ -255,6 +266,31 @@ func respawn_player() -> void:
 	cur_health = max_health
 	update_health.emit([cur_health, max_health])
 	is_dead = false
+
+func down_player() -> void:
+	print("Player " + str(multiplayer.get_unique_id()) + " is downed: " + str(is_downed))
+	is_downed = true
+	is_invincible = true
+	input.can_shoot = false
+
+@rpc("any_peer", "call_local")
+func revive_player() -> void:
+	# Only run if the player is downed
+	if !is_downed: return
+	# Set their health to the revive health
+	on_healed(revive_health, true)
+	# Set is_downed to false so the next state doesn't transition to it immediately
+	is_downed = false
+	# Assuming they're in the downed state, call the revive_player function
+	state_machine.current_state.revive_player()
+	# Give them the ability to shoot after standing up
+	if anim_player.current_animation == DOWNED_ANIM:
+		print("In downed animation.")
+		await anim_player.animation_finished
+		print("Shooting restored.")
+		input.can_shoot = true
+		await get_tree().create_timer(revive_invincibility_sec).timeout
+		is_invincible = false
 
 #-------------------------------------------------------------------------------
 # Initialisation

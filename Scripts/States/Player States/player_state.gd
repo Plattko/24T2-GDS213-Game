@@ -12,6 +12,7 @@ var horizontal_velocity : Vector2:
 
 const WALK_SPEED : float = 5.0
 const SPRINT_SPEED : float = 8.0
+const DOWNED_SPEED : float = 2.0
 
 func init(_player: CharacterBody3D, _input: PlayerInput, _debug: Debug) -> void:
 	player = _player

@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://il6q27w1jqvw"]
+[gd_scene load_steps=48 format=3 uid="uid://il6q27w1jqvw"]
 
 [ext_resource type="Script" path="res://Scripts/Multiplayer/multiplayer_player.gd" id="1_0n7q4"]
 [ext_resource type="Script" path="res://Scripts/Player/player_input.gd" id="2_7s41b"]
@@ -22,6 +22,7 @@
 [ext_resource type="Script" path="res://Scripts/UI/reticle.gd" id="17_18grs"]
 [ext_resource type="Script" path="res://Scripts/UI/hitmarker.gd" id="18_bagsi"]
 [ext_resource type="Theme" uid="uid://ctri33ojacyl0" path="res://UI/Themes/debug.tres" id="18_v6r72"]
+[ext_resource type="Script" path="res://Scripts/States/Player States/downed_player_state.gd" id="18_wjjdp"]
 [ext_resource type="Script" path="res://Scripts/UI/debug.gd" id="19_atg5u"]
 [ext_resource type="PackedScene" uid="uid://bu0mtrnvhonpt" path="res://Scenes/UI/settings_menu.tscn" id="20_c20fv"]
 
@@ -41,6 +42,9 @@ properties/3/replication_mode = 1
 properties/4/path = NodePath(".:cur_health")
 properties/4/spawn = true
 properties/4/replication_mode = 1
+properties/5/path = NodePath(".:is_downed")
+properties/5/spawn = true
+properties/5/replication_mode = 1
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l214m"]
 resource_local_to_scene = true
@@ -318,9 +322,97 @@ tracks/6/keys = {
 "values": [Vector3(0, 0, 0), Vector3(0, -0.25, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_ayhor"]
+resource_name = "Downed"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape:shape:height")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [2.0, 1.5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.25, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Head:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.7, 0), Vector3(0, 0.2, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Damageable/DamageableShape:shape:height")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [2.0, 1.5]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Damageable/DamageableShape:position")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.25, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Mesh:mesh:height")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [2.0, 1.5]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Mesh:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.25, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_456lr"]
 _data = {
 "Crouch": SubResource("Animation_twumr"),
+"Downed": SubResource("Animation_ayhor"),
 "RESET": SubResource("Animation_qw5pv"),
 "Slide": SubResource("Animation_eqx5m")
 }
@@ -806,6 +898,9 @@ script = ExtResource("14_4j3tc")
 
 [node name="WallrunPlayerState" type="Node" parent="PlayerStateMachine"]
 script = ExtResource("15_enn73")
+
+[node name="DownedPlayerState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("18_wjjdp")
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3

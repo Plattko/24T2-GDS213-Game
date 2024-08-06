@@ -9,8 +9,8 @@ var is_crouch_released : bool = false
 func enter(msg : Dictionary = {}) -> void:
 	#print("Entered Crouch player state.")
 	
-	if msg.has("left_slide"):
-		# Transition to crouch animation from slide animation
+	if msg.has("left_slide") or msg.has("left_downed"):
+		# Transition to crouch animation from slide or downed animation
 		player.seek_anim.rpc(player.CROUCH_ANIM, 1.0)
 	else:
 		# Play the crouch animation
@@ -20,6 +20,10 @@ func exit():
 	is_crouch_released = false
 
 func physics_update(_delta) -> void:
+	# Transition to Downed state
+	if player.is_downed:
+		transition.emit("DownedPlayerState", {"left_crouch" = true})
+		return
 	## Last version
 	# Handle movement
 	#player.velocity.x = input.direction.x * WALK_SPEED
