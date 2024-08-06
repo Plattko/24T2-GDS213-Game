@@ -6784,9 +6784,6 @@ transform = Transform3D(-2.6665, 0, 1.37469, 0, 3, 0, -1.37469, 0, -2.6665, -25.
 [node name="SM_Props_Box_14" parent="." instance=ExtResource("313_8owe2")]
 transform = Transform3D(0.398877, 0, 1.65254, 0, 1.7, 0, -1.65254, 0, 0.398877, -26.1051, -0.00978589, 42.5382)
 
-[node name="SM_Box2" parent="." instance=ExtResource("424_yxmlf")]
-transform = Transform3D(-0.0187088, 0, 0.999825, 0, 1, 0, -0.999825, 0, -0.0187088, -21.9988, 1.68577, 27.4141)
-
 [node name="SM_wooden_box_14" parent="." instance=ExtResource("295_madnn")]
 transform = Transform3D(0.209796, 0, 3.29332, 0, 3.3, 0, -3.29332, 0, 0.209796, 20.1439, 1.41112, 14.6085)
 
