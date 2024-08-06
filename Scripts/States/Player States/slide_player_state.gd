@@ -36,7 +36,7 @@ func exit():
 
 func physics_update(delta):
 	# Transition to Downed state
-	if player.is_downed:
+	if player.is_downed or player.is_dead:
 		transition.emit("DownedPlayerState", {"left_slide" = true})
 		return
 	

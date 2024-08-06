@@ -29,7 +29,7 @@ func exit() -> void:
 
 func physics_update(delta: float) -> void:
 	# Transition to Downed state
-	if player.is_downed:
+	if player.is_downed or player.is_dead:
 		transition.emit("DownedPlayerState")
 		return
 	

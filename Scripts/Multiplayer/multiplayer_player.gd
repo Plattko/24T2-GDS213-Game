@@ -129,6 +129,8 @@ func _unhandled_input(event) -> void:
 			do_self_damage = !do_self_damage
 		if event.pressed and event.keycode == KEY_L:
 			revive_player()
+		if event.pressed and event.keycode == KEY_K:
+			respawn_player()
 
 func _physics_process(delta) -> void:
 	if not is_multiplayer_authority(): return
@@ -273,10 +275,41 @@ func down_player() -> void:
 	print("Player " + str(multiplayer.get_unique_id()) + " is downed.")
 	is_downed = true
 	is_invincible = true
+	# Disable shooting
 	input.can_shoot = false
+	# Start the death timer
 	death_timer.start()
-	# Show the downed UI
+	# Notify the HUD
 	player_downed.emit()
+
+@rpc("any_peer", "call_local")
+func die(_is_vaporised: bool):
+	print("Player " + str(multiplayer.get_unique_id()) + " died.")
+	if is_dead: return
+	if is_downed:
+		is_downed = false
+		death_timer.stop()
+	is_invincible = true
+	is_dead = true
+	is_vaporised = _is_vaporised
+	# Disable moving and shooting
+	input.can_move = false
+	input.can_shoot = false
+	# If the player was vaporised, start the respawn timer
+	if is_vaporised: respawn_timer.start()
+	# Notify the HUD
+	player_died.emit(is_vaporised)
+	# Reset knockback and velocity
+	horizontal_knockback = Vector3.ZERO
+	velocity = Vector3.ZERO
+	# Hide mesh
+	mesh.hide()
+	# Disable collisions except for the environment
+	set_collision_layer_value(2, false)
+	set_collision_mask_value(3, false)
+	# Hide the player's weapon
+	weapon_manager.current_weapon.stop_anim.rpc()
+	weapon_manager.current_weapon.mesh.visible = false
 
 @rpc("any_peer", "call_local")
 func revive_player() -> void:
@@ -291,41 +324,21 @@ func revive_player() -> void:
 	update_health.emit([cur_health, max_health])
 	# Set is_downed to false so the next state doesn't transition to it immediately
 	is_downed = false
-	# Assuming they're in the downed state, call the revive_player function
+	# Assuming they're in the downed state, transition to the idle or crouch state
 	state_machine.current_state.revive_player()
 	# Give them the ability to shoot after standing up
 	if anim_player.current_animation == DOWNED_ANIM:
-		print("In downed animation.")
 		await anim_player.animation_finished
-		print("Shooting restored.")
 		input.can_shoot = true
-		await get_tree().create_timer(revive_invincibility_sec).timeout
-		is_invincible = false
+	else:
+		input.can_shoot = true
+	# Disable invincibility after the revive invincibility duration ends
+	await get_tree().create_timer(revive_invincibility_sec).timeout
+	is_invincible = false
 
-func die(vaporised: bool):
-	print("Player " + str(multiplayer.get_unique_id()) + " died.")
-	if vaporised: respawn_timer.start()
-	# Notify the HUD
-	player_died.emit(vaporised)
-	is_downed = false
-	is_dead = true
-	is_vaporised = vaporised
-	# Reset knockback and velocity
-	horizontal_knockback = Vector3.ZERO
-	velocity = Vector3.ZERO
-	# Hide mesh and disable collisions
-	mesh.hide()
-	set_collision_layer_value(2, false)
-	set_collision_mask_value(3, false)
-	# Hide the player's weapon
-	weapon_manager.current_weapon.stop_anim.rpc()
-	weapon_manager.current_weapon.mesh.visible = false
-	# Disable moving and shooting
-	input.can_move = false
-	input.can_shoot = false
-
-@rpc("any_peer", "call_local")
 func respawn_player() -> void:
+	# Only run if the player is dead
+	if !is_dead: return
 	# Notify the HUD
 	player_respawned.emit()
 	# Set their health to the max health
@@ -335,7 +348,7 @@ func respawn_player() -> void:
 	is_dead = false
 	is_vaporised = false
 	is_invincible = false
-	# Assuming they're in the downed state, call the respawn_player function
+	# Assuming they're in the downed state, transition to the idle state
 	state_machine.current_state.respawn_player()
 	# Show mesh and enable collisions
 	mesh.show()
@@ -350,16 +363,25 @@ func respawn_player() -> void:
 	# Enable shooting
 	input.can_shoot = true
 
-func _on_death_timer_timeout():
+func _on_death_timer_timeout() -> void:
 	die(false)
 
-func _on_respawn_timer_timeout():
+func _on_respawn_timer_timeout() -> void:
 	respawn_player()
+
+func on_intermission_entered() -> void:
+	if is_downed:
+		revive_player()
+	elif is_dead and not is_vaporised:
+		respawn_player()
 
 #-------------------------------------------------------------------------------
 # Initialisation
 #-------------------------------------------------------------------------------
 func handle_connected_signals() -> void:
+	var wave_manager = get_tree().get_first_node_in_group("wave_manager") as WaveManager
+	wave_manager.intermission_entered.connect(on_intermission_entered)
+	
 	for child in get_children():
 		if child is Damageable:
 			# Connect each damageable to the damaged signal

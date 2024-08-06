@@ -11,7 +11,7 @@ func enter(msg : Dictionary = {}):
 
 func physics_update(delta : float):
 	# Transition to Downed state
-	if player.is_downed:
+	if player.is_downed or player.is_dead:
 		transition.emit("DownedPlayerState")
 		return
 	# Transition to Air state with jump
