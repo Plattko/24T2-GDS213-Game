@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=3 uid="uid://bpoqfu15iy0mj"]
+[gd_scene load_steps=85 format=3 uid="uid://bpoqfu15iy0mj"]
 
 [ext_resource type="PackedScene" uid="uid://d3bykv8hmnskj" path="res://Assets/Imports/StylizedHouses/ModularBuildings/BuildingMeshes/SM_building_column_05.glb" id="1_fueff"]
 [ext_resource type="PackedScene" uid="uid://cf2bt4wjlntn4" path="res://Assets/Imports/StylizedHouses/ModularBuildings/BuildingMeshes/SM_building_foundation_03.glb" id="2_0ku6x"]
@@ -80,6 +80,10 @@
 [ext_resource type="PackedScene" uid="uid://6chtph4munk0" path="res://Assets/Imports/Crystal Cave/Environment/SM_rock_small_05.glb" id="79_dr7a2"]
 [ext_resource type="PackedScene" uid="uid://cvce7muxvhh7a" path="res://Assets/Imports/Crystal Cave/Environment/SM_rock_small_06.glb" id="80_5k1og"]
 [ext_resource type="PackedScene" uid="uid://6hnp56wnmvu8" path="res://Assets/Imports/Crystal Cave/Environment/SM_torch_03.glb" id="81_tw6kl"]
+[ext_resource type="PackedScene" uid="uid://cg07asrquq1u6" path="res://Assets/Imports/Playground/Meshes/sandbox.glb" id="81_we4ah"]
+[ext_resource type="PackedScene" uid="uid://b7ub0h7ve2i4f" path="res://Assets/Imports/Playground/Meshes/slide.glb" id="82_bxvn7"]
+[ext_resource type="PackedScene" uid="uid://bnyduoctmuxev" path="res://Assets/Imports/Playground/Meshes/swing1.glb" id="83_lipg4"]
+[ext_resource type="PackedScene" uid="uid://dnk16krtjh56f" path="res://Assets/Imports/Playground/Meshes/swing2.glb" id="84_l6ani"]
 
 [node name="CSGMesh3D" type="CSGMesh3D"]
 use_collision = true
@@ -1627,12 +1631,6 @@ use_collision = true
 size = Vector3(25.1692, 1, 11)
 material = ExtResource("55_clud8")
 
-[node name="Label3D" type="Label3D" parent="Node3D/CSGBox3D15"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.792811, 0)
-billboard = 1
-text = "Playground"
-font_size = 100
-
 [node name="CSGBox3D63" type="CSGBox3D" parent="Node3D/CSGBox3D15"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0143242, 0.46513, 5.49422)
 size = Vector3(25.3064, 0.1, 0.1)
@@ -2842,3 +2840,15 @@ transform = Transform3D(-5.24537e-08, 0, 1.2, 0, 1.2, 0, -1.2, 0, -5.24537e-08, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.02065, -0.603432, -37.4977)
 visible = false
 radius = 2.94623
+
+[node name="sandbox" parent="." instance=ExtResource("81_we4ah")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.9731, 7.06519, -25.1296)
+
+[node name="slide" parent="." instance=ExtResource("82_bxvn7")]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -56.0258, 6.90996, -28.1232)
+
+[node name="swing1" parent="." instance=ExtResource("83_lipg4")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -50.233, 6.85315, -29.5309)
+
+[node name="swing2" parent="." instance=ExtResource("84_l6ani")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -62.6013, 7.03561, -28.219)
