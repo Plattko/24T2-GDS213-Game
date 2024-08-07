@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://il6q27w1jqvw"]
+[gd_scene load_steps=50 format=3 uid="uid://il6q27w1jqvw"]
 
 [ext_resource type="Script" path="res://Scripts/Multiplayer/multiplayer_player.gd" id="1_0n7q4"]
 [ext_resource type="Script" path="res://Scripts/Player/player_input.gd" id="2_7s41b"]
@@ -849,13 +849,7 @@ bg_color = Color(0.329412, 0.027451, 0.027451, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0a0dl"]
 bg_color = Color(0.180666, 0.00854189, 0.00851971, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e478w"]
-bg_color = Color(0.129412, 0.129412, 0.129412, 0.627451)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d6pte"]
-bg_color = Color(1, 1, 1, 1)
-
-[node name="MulitplayerPlayer" type="CharacterBody3D" node_paths=PackedStringArray("input", "mesh", "head", "camera", "anim_player", "ceiling_check", "hud", "weapon_holder", "death_timer", "respawn_timer", "interact_raycast")]
+[node name="MulitplayerPlayer" type="CharacterBody3D" node_paths=PackedStringArray("input", "mesh", "head", "camera", "anim_player", "ceiling_check", "hud", "weapon_holder", "death_timer", "respawn_timer", "interact_raycast", "revive_other_timer")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 collision_layer = 2
 collision_mask = 5
@@ -872,6 +866,7 @@ weapon_holder = NodePath("Head/Camera3D/WeaponHolder")
 death_timer = NodePath("DeathTimer")
 respawn_timer = NodePath("RespawnTimer")
 interact_raycast = NodePath("Head/Camera3D/InteractRaycast")
+revive_other_timer = NodePath("ReviveOtherTimer")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_vurwv")
@@ -1018,6 +1013,10 @@ one_shot = true
 wait_time = 20.0
 one_shot = true
 
+[node name="ReviveOtherTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
@@ -1028,7 +1027,7 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("15_jmxyw")
 
-[node name="HUD" type="Control" parent="UI" node_paths=PackedStringArray("health_label", "cur_ammo_label", "reticle", "cur_wave_label", "enemies_left_label", "zone_change_warning", "time_text", "downed_ui", "death_timer_text", "death_progress_bar", "dead_ui", "respawn_text", "respawn_timer_text", "respawn_progress_bar", "interact_ui")]
+[node name="HUD" type="Control" parent="UI" node_paths=PackedStringArray("health_label", "cur_ammo_label", "reticle", "cur_wave_label", "enemies_left_label", "zone_change_warning", "time_text", "downed_ui", "death_timer_text", "death_progress_bar", "dead_ui", "respawn_text", "respawn_timer_text", "respawn_progress_bar", "interact_ui", "interact_text", "interact_key_text", "interact_progress_bar")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1052,6 +1051,9 @@ respawn_text = NodePath("DeadUI/Panel/MarginContainer/HBoxContainer/RespawnText"
 respawn_timer_text = NodePath("DeadUI/Panel/MarginContainer/HBoxContainer/RespawnProgressBar/DeathTimerText")
 respawn_progress_bar = NodePath("DeadUI/Panel/MarginContainer/HBoxContainer/RespawnProgressBar")
 interact_ui = NodePath("InteractUI")
+interact_text = NodePath("InteractUI/InteractPrompt/InteractText")
+interact_key_text = NodePath("InteractUI/InteractPrompt/InteractProgressBar/InteractKeyText")
+interact_progress_bar = NodePath("InteractUI/InteractPrompt/InteractProgressBar")
 
 [node name="Reticle" type="CenterContainer" parent="UI/HUD" node_paths=PackedStringArray("lines")]
 unique_name_in_owner = true
@@ -1362,6 +1364,7 @@ theme_override_font_sizes/font_size = 32
 text = "30"
 
 [node name="DownedUI" type="Control" parent="UI/HUD"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1535,37 +1538,56 @@ offset_bottom = 105.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="InteractText" type="Label" parent="UI/HUD/InteractUI/InteractPrompt"]
+[node name="InteractProgressBar" type="TextureProgressBar" parent="UI/HUD/InteractUI/InteractPrompt"]
 layout_mode = 2
-size_flags_horizontal = 0
-theme_override_colors/font_color = Color(1, 1, 1, 0.627451)
-theme_override_font_sizes/font_size = 32
-text = "[F] Interact"
-horizontal_alignment = 1
-vertical_alignment = 1
+max_value = 20.0
+step = 0.01
+value = 3.0
+fill_mode = 4
+nine_patch_stretch = true
+stretch_margin_left = 45
+texture_under = ExtResource("26_xfog8")
+texture_progress = ExtResource("26_xfog8")
+tint_under = Color(0, 0, 0, 0.627451)
+tint_progress = Color(1, 1, 1, 0.627451)
 
-[node name="InteractProgressBar" type="ProgressBar" parent="UI/HUD/InteractUI"]
+[node name="InteractKeyText" type="Label" parent="UI/HUD/InteractUI/InteractPrompt/InteractProgressBar"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -125.0
-offset_top = 75.0
-offset_right = 125.0
-offset_bottom = 100.0
+offset_left = -27.0
+offset_top = -33.5
+offset_right = 27.0
+offset_bottom = 33.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/background = SubResource("StyleBoxFlat_e478w")
-theme_override_styles/fill = SubResource("StyleBoxFlat_d6pte")
-value = 50.0
-show_percentage = false
+theme_override_colors/font_color = Color(1, 1, 1, 0.627451)
+theme_override_font_sizes/font_size = 32
+text = "X
+"
+horizontal_alignment = 1
+vertical_alignment = 1
 
+[node name="InteractText" type="Label" parent="UI/HUD/InteractUI/InteractPrompt"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(1, 1, 1, 0.627451)
+theme_override_font_sizes/font_size = 32
+text = "Interact"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="interactable_focused" from="." to="UI/HUD" method="on_interactable_focused"]
+[connection signal="interactable_unfocused" from="." to="UI/HUD" method="on_interactable_unfocused"]
 [connection signal="player_died" from="." to="UI/HUD" method="on_player_died"]
 [connection signal="player_downed" from="." to="UI/HUD" method="on_player_downed"]
 [connection signal="player_respawned" from="." to="UI/HUD" method="on_player_respawned"]
 [connection signal="player_revived" from="." to="UI/HUD" method="on_player_revived"]
+[connection signal="revive_started" from="." to="UI/HUD" method="on_revive_started"]
+[connection signal="revive_stopped" from="." to="UI/HUD" method="on_revive_stopped"]
 [connection signal="update_health" from="." to="UI/HUD" method="on_update_health"]
 [connection signal="update_ammo" from="Head/Camera3D/WeaponHolder/WeaponManager/Rifle" to="UI/HUD" method="on_update_ammo"]
 [connection signal="update_ammo" from="Head/Camera3D/WeaponHolder/WeaponManager/RocketLauncher" to="UI/HUD" method="on_update_ammo"]
@@ -1574,5 +1596,6 @@ show_percentage = false
 [connection signal="update_ammo" from="Head/Camera3D/WeaponHolder/WeaponManager/P90" to="UI/HUD" method="on_update_ammo"]
 [connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]
 [connection signal="timeout" from="RespawnTimer" to="." method="_on_respawn_timer_timeout"]
+[connection signal="timeout" from="ReviveOtherTimer" to="." method="_on_revive_other_timer_timeout"]
 [connection signal="closed_settings_menu" from="UI/HUD/SettingsMenu" to="Input" method="on_closed_settings_menu"]
 [connection signal="opened_settings_menu" from="UI/HUD/SettingsMenu" to="Input" method="on_opened_settings_menu"]

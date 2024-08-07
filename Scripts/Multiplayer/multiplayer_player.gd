@@ -80,13 +80,19 @@ var is_vaporised : bool = false
 
 @export_group("Interaction Variables")
 @export var interact_raycast : RayCast3D
-var interact_cast_result
+@export var revive_other_timer : Timer
+var revive_target : MultiplayerPlayer
+var revive_target_id : int
 
 signal update_health
 signal player_downed
 signal player_died(is_vaporised: bool)
 signal player_revived
 signal player_respawned
+signal interactable_focused(interact_text: String, interact_key: String)
+signal interactable_unfocused
+signal revive_started
+signal revive_stopped
 
 func _enter_tree() -> void:
 	set_multiplayer_authority(str(name).to_int())
@@ -103,7 +109,7 @@ func _ready() -> void:
 	#var shotgun = weapon_manager.find_child("Shotgun")
 	#print(shotgun)
 	#if shotgun: shotgun.player = self
-	hud.init(death_timer, respawn_timer)
+	hud.init(death_timer, respawn_timer, revive_other_timer)
 	
 	handle_connected_signals()
 	
@@ -118,6 +124,9 @@ func _input(event) -> void:
 		head.rotation.x = clamp(head.rotation.x, MIN_CAMERA_TILT, MAX_CAMERA_TILT)
 		rotation.y -= mouse_delta.x
 		mouse_input = event.relative
+	
+	if input.is_interact_just_released and revive_target:
+		stop_revive()
 
 func _unhandled_input(event) -> void:
 	if not is_multiplayer_authority(): return
@@ -138,10 +147,7 @@ func _unhandled_input(event) -> void:
 func _physics_process(delta) -> void:
 	if not is_multiplayer_authority(): return
 	
-	if input.can_shoot:
-		interact_cast()
-	if input.is_interact_pressed:
-		interact()
+	interact_cast()
 	
 	# Handle weapon and head bob
 	head_bob(delta)
@@ -291,6 +297,14 @@ func down_player() -> void:
 	player_downed.emit()
 
 @rpc("any_peer", "call_local")
+func pause_death_timer() -> void:
+	death_timer.paused = true
+
+@rpc("any_peer", "call_local")
+func resume_death_timer() -> void:
+	death_timer.paused = false
+
+@rpc("any_peer", "call_local")
 func die(_is_vaporised: bool):
 	print("Player " + str(multiplayer.get_unique_id()) + " died.")
 	if is_dead: return
@@ -387,20 +401,49 @@ func on_intermission_entered() -> void:
 # Interaction
 #-------------------------------------------------------------------------------
 func interact_cast() -> void:
-	## Only run if the interact raycast is colliding
-	#if !interact_raycast.is_colliding(): return
-	# Get the collider
-	var collider = interact_raycast.get_collider()
-	# If the collider is different from the last interact cast result, update it
-	if interact_cast_result != collider:
-		interact_cast_result = collider
+	if interact_raycast.is_colliding() and input.can_shoot:
+		var focused = interact_raycast.get_collider()
+		# Handle interaction with downed players
+		if focused is MultiplayerPlayer and focused.is_downed:
+			var interact_text = "Revive"
+			# TODO: Replace with actively getting interact key
+			var interact_key = "F"
+			# Notify the HUD
+			interactable_focused.emit(interact_text, interact_key)
+			# If the player presses the interact button, start the revive
+			if input.is_interact_just_pressed:
+				revive_target = focused
+				revive_target_id = focused.name.to_int()
+				start_revive()
+		else:
+			# Notify the HUD
+			interactable_unfocused.emit()
+			# If there is an ongoing revive, stop it
+			if revive_target: stop_revive()
+	else:
+		# Notify the HUD
+		interactable_unfocused.emit()
+		# If there is an ongoing revive, stop it
+		if revive_target: stop_revive()
 
-func interact() -> void:
-	# Only run if the interact cast result isn't null
-	if !interact_cast_result: return
-	
-	if interact_cast_result is MultiplayerPlayer:
-		print("Interacting with player.")
+func start_revive() -> void:
+	print("Started revive.")
+	revive_target.pause_death_timer.rpc_id(revive_target_id)
+	revive_started.emit()
+	revive_other_timer.start()
+
+func stop_revive() -> void:
+	print("Stopped revive.")
+	revive_target.resume_death_timer.rpc_id(revive_target_id)
+	revive_stopped.emit()
+	revive_target = null
+	revive_target_id = 0
+	revive_other_timer.stop()
+
+func _on_revive_other_timer_timeout() -> void:
+	print("Revived player: " + str(revive_target_id))
+	# Revive the target player
+	revive_target.revive_player.rpc_id(revive_target_id)
 
 #-------------------------------------------------------------------------------
 # Initialisation

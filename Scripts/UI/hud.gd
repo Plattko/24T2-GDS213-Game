@@ -26,9 +26,14 @@ extends Control
 
 @export_group("Interact UI")
 @export var interact_ui : Control
+@export var interact_text : Label
+@export var interact_key_text : Label
+@export var interact_progress_bar : TextureProgressBar
+var is_interacting : bool = false
 
 var death_timer : Timer
 var respawn_timer : Timer
+var revive_other_timer : Timer
 
 var wave_manager : WaveManager
 
@@ -48,9 +53,10 @@ func _ready():
 		wave_manager.zone_change_entered.connect(on_zone_change_entered)
 		wave_manager.zone_change_timer.timeout.connect(_on_zone_change_timer_timeout)
 
-func init(_death_timer: Timer, _respawn_timer: Timer) -> void:
+func init(_death_timer: Timer, _respawn_timer: Timer, _revive_other_timer: Timer) -> void:
 	death_timer = _death_timer
 	respawn_timer = _respawn_timer
+	revive_other_timer = _revive_other_timer
 
 func _process(_delta) -> void:
 	if zone_change_warning.visible:
@@ -66,6 +72,12 @@ func _process(_delta) -> void:
 	if dead_ui.visible:
 		respawn_timer_text.text = str(snapped(respawn_timer.time_left, 1))
 		respawn_progress_bar.value = respawn_timer.time_left
+	
+	if interact_progress_bar.is_visible_in_tree():
+		if is_interacting:
+			interact_progress_bar.value = interact_progress_bar.max_value - revive_other_timer.time_left
+		else:
+			interact_progress_bar.value = 0.0
 
 func on_update_health(health) -> void:
 	health_label.text = "Health: " + str(roundi(health[0])) + "/" + str(health[1])
@@ -119,6 +131,23 @@ func on_player_respawned() -> void:
 	reticle.show_reticle()
 	# Hide the dead UI
 	dead_ui.hide()
+
+func on_interactable_focused(_interact_text: String, _interact_key: String) -> void:
+	interact_text.text = _interact_text
+	interact_key_text.text = _interact_key
+	interact_progress_bar.max_value = revive_other_timer.wait_time
+	if !interact_ui.visible:
+		interact_ui.show()
+
+func on_interactable_unfocused() -> void:
+	if interact_ui.visible:
+		interact_ui.hide()
+
+func on_revive_started() -> void:
+	if !is_interacting: is_interacting = true
+
+func on_revive_stopped() -> void:
+	if is_interacting: is_interacting = false
 
 #-------------------------------------------------------------------------------
 # Zone Change Sequence
