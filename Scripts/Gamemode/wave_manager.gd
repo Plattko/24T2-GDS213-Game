@@ -39,6 +39,14 @@ var change_chance_increase : float = 0.2
 var zone_change_duration : float = 30.0
 var do_zone_change : bool = false
 
+@export_group("Player Variables")
+@export var alive_player_count : int = 1:
+	set(value):
+		alive_player_count = value
+		print("Alive players: " + str(alive_player_count))
+		if alive_player_count <= 0:
+			game_over.rpc()
+
 signal enemy_count_updated(enemy_count: int)
 signal cur_wave_updated(wave: int)
 signal intermission_entered
@@ -224,3 +232,15 @@ func emit_intermission_entered() -> void:
 func emit_zone_change_entered() -> void:
 	zone_change_timer.start()
 	zone_change_entered.emit()
+
+@rpc("any_peer", "call_local")
+func on_player_died() -> void:
+	alive_player_count -= 1
+
+@rpc("any_peer", "call_local")
+func on_player_respawned() -> void:
+	alive_player_count += 1
+
+@rpc("call_local")
+func game_over() -> void:
+	print("GAME OVER")

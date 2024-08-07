@@ -332,6 +332,9 @@ func die(_is_vaporised: bool):
 	# Hide the player's weapon
 	weapon_manager.current_weapon.stop_anim.rpc()
 	weapon_manager.current_weapon.mesh.visible = false
+	# Notify the Wave Manager
+	var wave_manager = get_tree().get_first_node_in_group("wave_manager") as WaveManager
+	wave_manager.on_player_died.rpc_id(1)
 
 @rpc("any_peer", "call_local")
 func revive_player() -> void:
@@ -384,6 +387,9 @@ func respawn_player() -> void:
 	weapon_manager.reset_weapon()
 	# Enable shooting
 	input.can_shoot = true
+	# Notify the Wave Manager
+	var wave_manager = get_tree().get_first_node_in_group("wave_manager") as WaveManager
+	wave_manager.on_player_respawned.rpc_id(1)
 
 func _on_death_timer_timeout() -> void:
 	die(false)

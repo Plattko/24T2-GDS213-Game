@@ -31,17 +31,19 @@ func _ready() -> void:
 	
 	# Spawn the players
 	for i in GameManager.players:
-		var player = multiplayer_player.instantiate()
+		var player = multiplayer_player.instantiate() as MultiplayerPlayer
 		# Set the player's name to their unique ID
 		player.name = str(GameManager.players[i].id)
 		# Add the player as a child of the scene
 		add_child(player)
 		# Check if it's player 1
-		if GameManager.players[i].player_num == 1:
+		if i == 1: #GameManager.players[i].player_num == 1:
 			# Manually set their initial spawn point
 			set_initial_spawn_point(player)
 			# [NOTE - TEMPORARY] Give the Wave Manager a reference to the player
 			if wave_manager: wave_manager.initialise(self, player)
+		else:
+			wave_manager.alive_player_count += 1
 		
 		#TODO: Connect the UI to the player
 	
