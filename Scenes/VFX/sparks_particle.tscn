@@ -1,0 +1,124 @@
+[gd_scene load_steps=19 format=3 uid="uid://bgfxlrxa06gy1"]
+
+[ext_resource type="Texture2D" uid="uid://bq46llmhufw0r" path="res://Assets/Textures/Particles/flare.PNG" id="1_b1wc1"]
+[ext_resource type="Script" path="res://Scripts/VFX/sparks_particle.gd" id="1_llk45"]
+
+[sub_resource type="Gradient" id="Gradient_d205l"]
+interpolation_mode = 2
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3png3"]
+gradient = SubResource("Gradient_d205l")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8, 0.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ieiho"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("GradientTexture2D_3png3")
+billboard_keep_scale = true
+
+[sub_resource type="Curve" id="Curve_pxxl8"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_lb85u"]
+max_value = 3.0
+_data = [Vector2(0, 3), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_gu0r0"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_bj64u"]
+curve_x = SubResource("Curve_pxxl8")
+curve_y = SubResource("Curve_lb85u")
+curve_z = SubResource("Curve_gu0r0")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_k3im5"]
+lifetime_randomness = 0.5
+particle_flag_align_y = true
+emission_shape = 1
+emission_sphere_radius = 0.1
+direction = Vector3(0, 0, -1)
+spread = 20.0
+initial_velocity_min = 3.0
+initial_velocity_max = 6.0
+gravity = Vector3(0, -5, 0)
+scale_min = 0.02
+scale_max = 0.1
+scale_curve = SubResource("CurveXYZTexture_bj64u")
+color = Color(7.1, 1.78, 0.82, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_ubcap"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ifjkb"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_b1wc1")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_k0anm"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0clm3"]
+gradient = SubResource("Gradient_k0anm")
+
+[sub_resource type="Curve" id="Curve_iu75p"]
+_data = [Vector2(0, 0), 0.0, 1.96571, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_pxia6"]
+curve = SubResource("Curve_iu75p")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jsxk8"]
+lifetime_randomness = 1.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.1
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_pxia6")
+color = Color(7.1, 1.78, 0.82, 1)
+color_ramp = SubResource("GradientTexture1D_0clm3")
+
+[sub_resource type="QuadMesh" id="QuadMesh_pc80o"]
+
+[node name="SparksParticle" type="Node3D" node_paths=PackedStringArray("sparks", "flare")]
+script = ExtResource("1_llk45")
+sparks = NodePath("Sparks")
+flare = NodePath("Flare")
+
+[node name="Sparks" type="GPUParticles3D" parent="."]
+material_override = SubResource("StandardMaterial3D_ieiho")
+emitting = false
+amount = 30
+lifetime = 1.2
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_k3im5")
+draw_pass_1 = SubResource("QuadMesh_ubcap")
+
+[node name="Flare" type="GPUParticles3D" parent="."]
+material_override = SubResource("StandardMaterial3D_ifjkb")
+emitting = false
+amount = 4
+lifetime = 0.2
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_jsxk8")
+draw_pass_1 = SubResource("QuadMesh_pc80o")
+
+[connection signal="finished" from="Sparks" to="." method="_on_sparks_finished"]
+[connection signal="finished" from="Flare" to="." method="_on_flare_finished"]
