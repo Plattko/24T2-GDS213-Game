@@ -612,7 +612,7 @@ transform = Transform3D(-5.20727e-08, 1.19128, 0.144372, -1.2, -5.24537e-08, -2.
 transform = Transform3D(5.20723e-08, -1.19128, 0.144434, -1.2, -5.24536e-08, -2.41731e-16, 6.31342e-09, -0.144434, -1.19128, -51.7391, 8.61534, -66.8582)
 
 [node name="SM_wooden_box_19" parent="Node3D" instance=ExtResource("14_xtd8i")]
-transform = Transform3D(1.28109, 0, -0.220937, 0, 1.3, 0, 0.220937, 0, 1.28109, -29.6079, 8.60644, -21.6789)
+transform = Transform3D(1.28109, 0, -0.220937, 0, 1.3, 0, 0.220937, 0, 1.28109, -32.4147, 8.60644, -21.6789)
 
 [node name="SM_wooden_box_14" parent="Node3D" instance=ExtResource("14_xtd8i")]
 transform = Transform3D(3.47646, 0, -1.97844, 0, 4.2, 0, 1.97844, 0, 3.47646, -13.2812, 7.05256, -71.0965)
@@ -621,13 +621,19 @@ transform = Transform3D(3.47646, 0, -1.97844, 0, 4.2, 0, 1.97844, 0, 3.47646, -1
 transform = Transform3D(3.73482, 0, -1.43217, 0, 4.5, 0, 1.43217, 0, 3.73482, -10.3567, 7.05255, -69.3243)
 
 [node name="SM_wooden_box_13" parent="Node3D" instance=ExtResource("14_xtd8i")]
-transform = Transform3D(2.48819, 0, 0.242698, 0, 2.5, 0, -0.242698, 0, 2.48819, -9.32524, 7.00305, -45.5281)
+transform = Transform3D(2.48819, 0, 0.242698, 0, 2.5, 0, -0.242698, 0, 2.48819, -9.32524, 7.00305, -44.9677)
+
+[node name="SM_wooden_box_20" parent="Node3D" instance=ExtResource("14_xtd8i")]
+transform = Transform3D(1.56144, 0, 0.349138, 0, 1.6, 0, -0.349138, 0, 1.56144, -10.9195, 7.00305, -44.08)
+
+[node name="SM_wooden_box_21" parent="Node3D" instance=ExtResource("14_xtd8i")]
+transform = Transform3D(1.4807, 0, 0.239874, 0, 1.5, 0, -0.239874, 0, 1.4807, -10.9947, 7.00305, -45.3593)
 
 [node name="SM_wooden_box_16" parent="Node3D" instance=ExtResource("14_xtd8i")]
 transform = Transform3D(2.28914, 0, 0.223282, 0, 2.3, 0, -0.223282, 0, 2.28914, 8.77592, 7.01165, -55.2747)
 
 [node name="SM_wooden_box_18" parent="Node3D" instance=ExtResource("15_v0kei")]
-transform = Transform3D(1.29594, 0, -0.102653, 0, 1.3, 0, 0.102653, 0, 1.29594, -28.7912, 6.96858, -21.5168)
+transform = Transform3D(1.29594, 0, -0.102653, 0, 1.3, 0, 0.102653, 0, 1.29594, -31.598, 6.96858, -21.5168)
 
 [node name="SM_wooden_box_12" parent="Node3D" instance=ExtResource("15_v0kei")]
 transform = Transform3D(-0.0412584, 0, 2.99972, 0, 3, 0, -2.99972, 0, -0.0412584, -42.863, 6.85133, -47.0588)
@@ -1158,7 +1164,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -31.93
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.94628, 6.94749, -56.5982)
 
 [node name="SM_advertising_sign_05" parent="Node3D" instance=ExtResource("38_x7ufv")]
-transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -21.2968, 0.184804, -20.2686)
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -18.6494, 0.184804, -20.2686)
 
 [node name="SM_lamp_04" parent="Node3D" instance=ExtResource("39_410wg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.6758, 13.764, -46.6342)
@@ -1324,9 +1330,9 @@ size = Vector3(7, 0.1, 21.0251)
 material = ExtResource("49_mnrm7")
 
 [node name="CSGBox3D80" type="CSGBox3D" parent="Node3D"]
-transform = Transform3D(0.100987, -0.295855, -0.949879, 2.4938e-09, 0.95476, -0.297375, 0.994888, 0.0300309, 0.0964183, -13.4789, 7.87669, -45.1269)
+transform = Transform3D(0.100773, -0.357324, -0.928527, 0.00656793, 0.933497, -0.358523, 0.994888, 0.0300309, 0.0964183, -12.8224, 7.89802, -44.5184)
 use_collision = true
-size = Vector3(2, 0.199121, 6.78601)
+size = Vector3(3, 0.199, 5.59112)
 material = ExtResource("50_8cexd")
 
 [node name="CSGBox3D104" type="CSGBox3D" parent="Node3D"]
@@ -1390,7 +1396,7 @@ size = Vector3(1.2, 0.1, 4.074)
 material = ExtResource("50_8cexd")
 
 [node name="CSGBox3D90" type="CSGBox3D" parent="Node3D"]
-transform = Transform3D(-0.530037, 0, -0.847974, 0, 1, 0, 0.847974, 0, -0.530037, 33.0377, 8.70213, -38.1499)
+transform = Transform3D(-0.530037, 0, -0.847974, 0, 1, 0, 0.847974, 0, -0.530037, 36.6416, 8.70213, -38.1499)
 use_collision = true
 size = Vector3(6, 2, 2)
 material = ExtResource("45_536xn")
@@ -1399,37 +1405,37 @@ material = ExtResource("45_536xn")
 transform = Transform3D(-0.944301, 0, 0.329081, 0, 1, 0, -0.329081, 0, -0.944301, -7.48274, 8.57175, -39.8564)
 
 [node name="Crate5" type="CSGBox3D" parent="Node3D"]
-transform = Transform3D(-0.286508, 0, 0.958078, 0, 1, 0, -0.958078, 0, -0.286508, 28.6027, 8.87915, -38.772)
+transform = Transform3D(-0.286508, 0, 0.958078, 0, 1, 0, -0.958078, 0, -0.286508, 32.2066, 8.87915, -38.772)
 use_collision = true
 size = Vector3(1.5, 2.09772, 2.74512)
 material = ExtResource("45_536xn")
 
 [node name="Crate10" type="CSGBox3D" parent="Node3D"]
-transform = Transform3D(-0.635581, 0, 0.772035, 0, 1, 0, -0.772035, 0, -0.635581, 30.0848, 8.87915, -41.3949)
+transform = Transform3D(-0.635581, 0, 0.772035, 0, 1, 0, -0.772035, 0, -0.635581, 33.6887, 8.87915, -41.3949)
 use_collision = true
 size = Vector3(1.5, 2.09772, 2.74512)
 material = ExtResource("45_536xn")
 
 [node name="Crate7" type="CSGBox3D" parent="Node3D"]
-transform = Transform3D(-0.998127, 0.0478939, -0.0380524, 0.0461034, 0.997849, 0.0466135, 0.040203, 0.0447719, -0.998188, 28.6008, 10.547, -36.5436)
+transform = Transform3D(-0.998127, 0.0478939, -0.0380524, 0.0461034, 0.997849, 0.0466135, 0.040203, 0.0447719, -0.998188, 32.2047, 10.547, -36.5436)
 use_collision = true
 size = Vector3(1.5, 1.39832, 3.34424)
 material = ExtResource("45_536xn")
 
 [node name="Crate11" type="CSGBox3D" parent="Node3D"]
-transform = Transform3D(-0.400129, 0.0591665, -0.914547, 0.00644532, 0.998071, 0.0617501, 0.916436, 0.0188134, -0.399738, 31.9044, 10.3104, -39.1442)
+transform = Transform3D(-0.400129, 0.0591665, -0.914547, 0.00644532, 0.998071, 0.0617501, 0.916436, 0.0188134, -0.399738, 35.5083, 10.3104, -39.1442)
 use_collision = true
 size = Vector3(3.42041, 0.896914, 5.30444)
 material = ExtResource("45_536xn")
 
 [node name="Crate6" type="CSGBox3D" parent="Node3D"]
-transform = Transform3D(-0.999921, 0, 0.0125658, 0, 1, 0, -0.0125658, 0, -0.999921, 28.2396, 8.75295, -35.0226)
+transform = Transform3D(-0.999921, 0, 0.0125658, 0, 1, 0, -0.0125658, 0, -0.999921, 31.8435, 8.75295, -35.0226)
 use_collision = true
 size = Vector3(1.5, 1.98164, 1.34552)
 material = ExtResource("45_536xn")
 
 [node name="Crate8" type="CSGBox3D" parent="Node3D"]
-transform = Transform3D(-0.905532, 0, -0.424279, 0, 1, 0, 0.424279, 0, -0.905532, 29.9604, 7.94825, -35.098)
+transform = Transform3D(-0.905532, 0, -0.424279, 0, 1, 0, 0.424279, 0, -0.905532, 33.5643, 7.94825, -35.098)
 use_collision = true
 size = Vector3(1.5, 1.98769, 1.34552)
 material = ExtResource("45_536xn")
@@ -2371,7 +2377,7 @@ size = Vector3(2.16968, 0.1, 2.12744)
 material = ExtResource("50_8cexd")
 
 [node name="SM_beam_03" parent="Node3D" instance=ExtResource("61_14q67")]
-transform = Transform3D(3.09103, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 12.6146, 3.87043, -39.3787)
+transform = Transform3D(3.09103, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 12.6146, 3.87043, -39.8311)
 
 [node name="SM_beam_17" parent="Node3D" instance=ExtResource("61_14q67")]
 transform = Transform3D(4.09457, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -13.0128, 6.18024, -48.7541)

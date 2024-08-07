@@ -115,8 +115,9 @@ agent_height = 2.0
 [sub_resource type="NavigationMesh" id="NavigationMesh_ma5b1"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_b7t75"]
-sky_top_color = Color(1.44392e-06, 0.547097, 0.809855, 1)
-sky_horizon_color = Color(0.804369, 0.875436, 0.755199, 1)
+sky_top_color = Color(0.355282, 0.285471, 0.264448, 1)
+sky_horizon_color = Color(0.730365, 0.378559, 5.77569e-07, 1)
+sky_energy_multiplier = 2.0
 ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 
 [sub_resource type="Sky" id="Sky_uxvi4"]
@@ -132,12 +133,17 @@ ssao_intensity = 6.0
 sdfgi_enabled = true
 sdfgi_min_cell_size = 0.1
 glow_enabled = true
-fog_height = -1024.0
-fog_height_density = 0.1155
-volumetric_fog_density = 0.0
+fog_enabled = true
+fog_light_color = Color(0.756208, 0.245934, 0, 1)
+fog_light_energy = 0.1
+fog_sky_affect = 0.5
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.001
+volumetric_fog_albedo = Color(0.744433, 0.351184, 0.179399, 1)
+volumetric_fog_sky_affect = 0.5
 adjustment_enabled = true
-adjustment_brightness = 1.2
-adjustment_saturation = 1.1
+adjustment_brightness = 1.1
+adjustment_saturation = 1.2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6mxwp"]
 size = Vector3(114.939, 0.1, 96.326)
@@ -650,6 +656,7 @@ zone_change_timer = NodePath("ZoneChangeTimer")
 endless_wave_timer = NodePath("EndlessWaveTimer")
 zone_gate = NodePath("../Level/ZoneGate")
 change_possible_index = 2
+do_zone_change = true
 
 [node name="IntermissionTimer" type="Timer" parent="GamemodeManager"]
 wait_time = 10.0
@@ -1083,7 +1090,7 @@ size = Vector3(3, 0.1, 17.2616)
 material = ExtResource("9_meepy")
 
 [node name="CSGBox3D34" type="CSGBox3D" parent="Level/NavRegionZone1/Zone1/Ramps/CSGBox3D33"]
-transform = Transform3D(0.513031, 0, 0.858368, 0, 1, 0, -0.858368, 0, 0.513031, 0.13121, -0.0278811, -8.88149)
+transform = Transform3D(0.513031, 0, 0.858368, 0, 1, 0, -0.858368, 0, 0.513031, 0.287792, -0.0278811, -9.14612)
 operation = 2
 use_collision = true
 size = Vector3(3, 0.735449, 5.45043)
@@ -1102,23 +1109,10 @@ size = Vector3(3, 0.1, 21.714)
 material = ExtResource("9_meepy")
 
 [node name="CSGBox3D56" type="CSGBox3D" parent="Level/NavRegionZone1/Zone1/Ramps"]
-transform = Transform3D(0.909865, -0.0597806, 0.410574, -0.0294345, 0.977772, 0.207595, -0.413858, -0.200969, 0.887882, 21.5887, 5.52643, 44.3249)
+transform = Transform3D(0.999999, 0, 0, 0, 0.967559, 0.252644, 0, -0.252644, 0.96756, 19.3875, 5.51332, 43.8812)
 use_collision = true
-size = Vector3(3, 0.1, 13.4411)
+size = Vector3(3, 0.1, 12.4929)
 material = ExtResource("9_meepy")
-
-[node name="CSGBox3D57" type="CSGBox3D" parent="Level/NavRegionZone1/Zone1/Ramps"]
-transform = Transform3D(1, 0, 0, 0, 0.845868, 0.533393, 0, -0.533393, 0.845868, 23.8577, 6.76259, 49.4209)
-use_collision = true
-size = Vector3(3.5376, 0.1, 1.21852)
-material = ExtResource("9_meepy")
-
-[node name="CSGBox3D58" type="CSGBox3D" parent="Level/NavRegionZone1/Zone1/Ramps/CSGBox3D57"]
-transform = Transform3D(0.999504, -0.0266431, -0.0168008, 0.0266431, 0.999646, -0.000223845, 0.0168008, -0.000223786, 0.999859, 1.83841, -0.37348, -0.612335)
-operation = 2
-use_collision = true
-size = Vector3(3.7898, 0.890863, 1.23023)
-material = ExtResource("7_qgfsr")
 
 [node name="CSGBox3D59" type="CSGBox3D" parent="Level/NavRegionZone1/Zone1/Ramps"]
 transform = Transform3D(0.984357, -0.138228, 0.109247, 0.0607252, 0.848246, 0.52611, -0.165391, -0.511245, 0.843371, 13.745, 10.7179, 16.9593)
@@ -1336,7 +1330,7 @@ transform = Transform3D(-0.999973, 0, -0.00741764, 0, 1, 0, 0.00741764, 0, -0.99
 transform = Transform3D(0.999934, 0, 0.0114493, 0, 1, 0, -0.0114493, 0, 0.999934, -19.3068, 1.53682, 16.9004)
 
 [node name="SM_garbage_container9" parent="Level/NavRegionZone1/Zone1" instance=ExtResource("46_qud1o")]
-transform = Transform3D(0.999934, 0, 0.0114493, 0, 1, 0, -0.0114493, 0, 0.999934, -16.3707, 1.53682, 16.8937)
+transform = Transform3D(0.999934, 0, 0.0114493, 0, 1, 0, -0.0114493, 0, 0.999934, -16.5901, 1.53682, 16.8937)
 
 [node name="SM_Box_16" parent="Level/NavRegionZone1/Zone1" instance=ExtResource("47_2x8lq")]
 transform = Transform3D(0.0180954, 0, -2.39993, 0, 2.4, 0, 2.39993, 0, 0.0180954, -41.7036, 9.55396, -0.709644)
@@ -1567,7 +1561,7 @@ transform = Transform3D(-0.0280633, 0, 1.49974, 0, 1.5, 0, -1.49974, 0, -0.02806
 transform = Transform3D(-0.0280633, 0, 1.49974, 0, 1.5, 0, -1.49974, 0, -0.0280633, 4.74313, 3.09887, 0.38115)
 
 [node name="SM_Props_Generator_03" parent="Level/NavRegionZone1/Zone1" instance=ExtResource("66_iqikm")]
-transform = Transform3D(-6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, -13.3267, 1.42722, 17.1343)
+transform = Transform3D(-6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, -13.4949, 1.42722, 17.0414)
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="Level/NavRegionZone1/Zone1"]
 transform = Transform3D(-6.55671e-08, 0, 1.5, -0.712146, 1.32017, -3.11289e-08, -1.32017, -0.712146, -5.77065e-08, 22.7065, 6.85477, 74.81)
@@ -1789,7 +1783,7 @@ transform = Transform3D(1.37518, 0, 0.262454, 0, 1.4, 0, -0.262454, 0, 1.37518, 
 transform = Transform3D(-0.71009, 0, 1.20655, 0, 1.4, 0, -1.20655, 0, -0.71009, -15.8408, -0.0307423, 39.751)
 
 [node name="SM_Barrier15" parent="Level/NavRegionZone1/Zone1" instance=ExtResource("83_0w412")]
-transform = Transform3D(-0.399706, 0, 1.34173, 0, 1.4, 0, -1.34173, 0, -0.399706, -38.3474, -0.0423048, 35.4552)
+transform = Transform3D(-0.399706, 0, 1.34173, 0, 1.4, 0, -1.34173, 0, -0.399706, -38.3474, -0.0423048, 35.2991)
 
 [node name="SM_Barrier16" parent="Level/NavRegionZone1/Zone1" instance=ExtResource("83_0w412")]
 transform = Transform3D(0.0278048, 0, 1.39972, 0, 1.4, 0, -1.39972, 0, 0.0278048, -38.3474, -0.0808091, 40.143)
@@ -1835,9 +1829,6 @@ transform = Transform3D(-2.6665, 0, 1.37469, 0, 3, 0, -1.37469, 0, -2.6665, -25.
 
 [node name="SM_Props_Box_14" parent="Level/NavRegionZone1/Zone1" instance=ExtResource("52_da3nx")]
 transform = Transform3D(0.398877, 0, 1.65254, 0, 1.7, 0, -1.65254, 0, 0.398877, -26.1051, -0.00978589, 42.5382)
-
-[node name="SM_Box2" parent="Level/NavRegionZone1/Zone1" instance=ExtResource("87_buqgm")]
-transform = Transform3D(-0.0187088, 0, 0.999825, 0, 1, 0, -0.999825, 0, -0.0187088, -21.9988, 1.68577, 27.4141)
 
 [node name="SM_wooden_box_14" parent="Level/NavRegionZone1/Zone1" instance=ExtResource("53_tcrxa")]
 transform = Transform3D(0.165294, 0, 2.59474, 0, 2.6, 0, -2.59474, 0, 0.165294, 19.9725, 1.40411, 16.0355)
@@ -1930,9 +1921,33 @@ size = Vector3(4, 0.1, 11.2399)
 material = ExtResource("9_meepy")
 
 [node name="CSGBox3D37" type="CSGBox3D" parent="Level/NavRegionZone1/Zone1"]
-transform = Transform3D(-0.211308, 0, 0.97742, 0, 0.999999, 0, -0.97742, 0, -0.211308, 55.358, 9.06844, 41.897)
+transform = Transform3D(-0.211308, 0, 0.97742, 0, 0.999999, 0, -0.97742, 0, -0.211308, 55.358, 9.02427, 41.897)
 use_collision = true
 size = Vector3(4, 0.1, 17.8934)
+material = ExtResource("9_meepy")
+
+[node name="CSGBox3D41" type="CSGBox3D" parent="Level/NavRegionZone1/Zone1"]
+transform = Transform3D(-0.211308, 0, 0.97742, 0, 0.999999, 0, -0.97742, 0, -0.211308, 55.5042, 8.89673, 40.4073)
+use_collision = true
+size = Vector3(4, 0.1, 17.3206)
+material = ExtResource("9_meepy")
+
+[node name="CSGBox3D43" type="CSGBox3D" parent="Level/NavRegionZone1/Zone1"]
+transform = Transform3D(-0.211308, 0, 0.97742, 0, 0.999999, 0, -0.97742, 0, -0.211308, 55.1659, 8.89673, 42.2244)
+use_collision = true
+size = Vector3(4, 0.1, 17.301)
+material = ExtResource("9_meepy")
+
+[node name="CSGBox3D42" type="CSGBox3D" parent="Level/NavRegionZone1/Zone1"]
+transform = Transform3D(-0.211308, 0, 0.97742, 0, 0.999999, 0, -0.97742, 0, -0.211308, 55.4063, 8.9745, 40.7732)
+use_collision = true
+size = Vector3(3.32605, 0.1, 17.6667)
+material = ExtResource("9_meepy")
+
+[node name="CSGBox3D44" type="CSGBox3D" parent="Level/NavRegionZone1/Zone1"]
+transform = Transform3D(-0.211308, 0, 0.97742, 0, 0.999999, 0, -0.97742, 0, -0.211308, 55.2191, 8.9745, 42.4077)
+use_collision = true
+size = Vector3(3.32605, 0.1, 17.2835)
 material = ExtResource("9_meepy")
 
 [node name="CSGBox3D39" type="CSGBox3D" parent="Level/NavRegionZone1/Zone1"]
@@ -1995,6 +2010,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6.2389
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Level/NavRegionZone1/Zone1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.0762, 4.86703, 0.559395)
+use_collision = true
 size = Vector3(0.1, 7, 25.0001)
 material = ExtResource("92_mji4l")
 
@@ -2030,11 +2046,13 @@ material = ExtResource("5_hmjcq")
 
 [node name="CSGBox3D19" type="CSGBox3D" parent="Level/NavRegionZone1/Zone1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.5045, 3.40332, -10.7656)
+use_collision = true
 size = Vector3(0.1, 4.04047, 2.30191)
 material = ExtResource("5_hmjcq")
 
 [node name="CSGBox3D20" type="CSGBox3D" parent="Level/NavRegionZone1/Zone1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.5045, 3.40332, 10.8604)
+use_collision = true
 size = Vector3(0.1, 4.04047, 4.45878)
 material = ExtResource("5_hmjcq")
 
@@ -2051,6 +2069,7 @@ size = Vector3(1, 4.01929, 3.99512)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="Level/NavRegionZone1/Zone1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.0564, 4.86703, 2.06273)
+use_collision = true
 size = Vector3(0.1, 7, 28.0068)
 material = ExtResource("92_mji4l")
 
@@ -2062,6 +2081,7 @@ material = ExtResource("92_mji4l")
 
 [node name="CSGBox3D9" type="CSGBox3D" parent="Level/NavRegionZone1/Zone1"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -28.5632, 4.86703, 13.0496)
+use_collision = true
 size = Vector3(0.1, 7, 35.1105)
 material = ExtResource("92_mji4l")
 
@@ -2073,6 +2093,7 @@ material = ExtResource("92_mji4l")
 
 [node name="CSGBox3D10" type="CSGBox3D" parent="Level/NavRegionZone1/Zone1"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -28.5632, 4.86703, -11.9042)
+use_collision = true
 size = Vector3(0.1, 7, 35.1105)
 material = ExtResource("92_mji4l")
 
@@ -2268,10 +2289,7 @@ transform = Transform3D(-0.994204, 0, 0.107513, 0, 1, 0, -0.107513, 0, -0.994204
 transform = Transform3D(-0.836248, 0, -0.548352, 0, 1, 0, 0.548352, 0, -0.836248, 37.8027, 0.287429, 16.3874)
 
 [node name="Car4" parent="Level/NavRegionZone1/Zone1" instance=ExtResource("106_56kml")]
-transform = Transform3D(0.0193893, 0, -0.999812, 0, 1, 0, 0.999812, 0, 0.0193893, 25.4411, 1.69328, -3.79513)
-
-[node name="Car5" parent="Level/NavRegionZone1/Zone1" instance=ExtResource("107_ewiot")]
-transform = Transform3D(0.073447, 0, -0.997299, 0, 1, 0, 0.997299, 0, 0.073447, 25.8299, 1.80208, -0.781896)
+transform = Transform3D(0.0193893, 0, -0.999812, 0, 1, 0, 0.999812, 0, 0.0193893, 25.4411, 1.69328, -4.35933)
 
 [node name="Car6" parent="Level/NavRegionZone1/Zone1" instance=ExtResource("105_rdgns")]
 transform = Transform3D(-0.0286195, 0, 0.99959, 0, 1, 0, -0.99959, 0, -0.0286195, 25.6383, 1.71394, -16.7349)
@@ -2286,7 +2304,7 @@ transform = Transform3D(-0.546029, 0, 0.837766, 0, 1, 0, -0.837766, 0, -0.546029
 transform = Transform3D(-0.218365, 0, -0.975867, 0, 1, 0, 0.975867, 0, -0.218365, -16.5381, 0.27845, 35.9575)
 
 [node name="Car10" parent="Level/NavRegionZone1/Zone1" instance=ExtResource("105_rdgns")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.3939, 1.7526, 22.3549)
+transform = Transform3D(0.762341, 0, -0.647176, 0, 1, 0, 0.647176, 0, 0.762341, 12.0989, 1.7526, 22.6421)
 
 [node name="Car11" parent="Level/NavRegionZone1/Zone1" instance=ExtResource("106_56kml")]
 transform = Transform3D(0.621886, 0, 0.783108, 0, 1, 0, -0.783108, 0, 0.621886, 20.171, 7.36554, 67.6495)
@@ -2318,6 +2336,7 @@ visible = false
 size = Vector3(2.17285, 1, 3.02124)
 
 [node name="NavRegionZone2" type="NavigationRegion3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1.1, 0, 0, 0, 1, 0, 0, 0)
 navigation_mesh = SubResource("NavigationMesh_ma5b1")
 navigation_layers = 2
 
@@ -2328,15 +2347,21 @@ navigation_layers = 2
 [node name="Props" type="Node" parent="Level/NavRegionZone2/Zone2/Grounds"]
 
 [node name="CSGBox3D12" type="CSGBox3D" parent="Level/NavRegionZone2/Zone2/Grounds/Props"]
-transform = Transform3D(0.528202, 0, 0.849119, 0, 1, 0, -0.849119, 0, 0.528202, -126.923, 26.5762, 40.3549)
+transform = Transform3D(0.528202, 0, 0.849119, 0, 1, 0, -0.849119, 0, 0.528202, -126.923, 26.3773, 40.3549)
 use_collision = true
 size = Vector3(2.44222, 0.1, 17.1346)
 material = ExtResource("4_135wt")
 
 [node name="Roof7" type="CSGBox3D" parent="Level/NavRegionZone2/Zone2/Grounds/Props"]
-transform = Transform3D(-4.52397e-10, -0.0103496, 0.999946, 0.969829, -0.243771, -0.00252308, 0.243784, 0.969777, 0.0100373, -69.7367, 4.18604, 29.8168)
+transform = Transform3D(-4.52397e-10, -0.0103496, 0.999946, 0.969829, -0.243771, -0.00252308, 0.243784, 0.969777, 0.0100373, -69.7426, 4.21631, 30.4154)
 use_collision = true
-size = Vector3(0.1, 5.09504, 2)
+size = Vector3(0.1, 6.22928, 2)
+material = ExtResource("9_meepy")
+
+[node name="Roof8" type="CSGBox3D" parent="Level/NavRegionZone2/Zone2/Grounds/Props"]
+transform = Transform3D(0.00174533, 4.36351e-08, 0.999998, 0.999998, -4.37113e-08, -0.00174533, 4.36351e-08, 0.999999, -4.37113e-08, -72.004, 6.6197, 37.7491)
+use_collision = true
+size = Vector3(0.1, 13.092, 2)
 material = ExtResource("9_meepy")
 
 [node name="SM_Props_TowerCrane_02" parent="Level/NavRegionZone2/Zone2/Grounds/Props" instance=ExtResource("17_d6sah")]
@@ -2355,7 +2380,7 @@ transform = Transform3D(0.999452, 0, -0.0331199, 0, 1, 0, 0.0331199, 0, 0.999452
 transform = Transform3D(1.7422e-05, 0, -1, 0, 1, 0, 1, 0, 1.7422e-05, -72.8621, 1.57668, 33.1159)
 
 [node name="SK_Parking_01" parent="Level/NavRegionZone2/Zone2/Grounds/Props" instance=ExtResource("25_afad6")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -81.6854, 0, 31.1045)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -80.5938, 0, 30.7242)
 
 [node name="SK_Parking_02" parent="Level/NavRegionZone2/Zone2/Grounds/Props" instance=ExtResource("25_afad6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90.2138, 0, 29.5136)
@@ -2364,7 +2389,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90.2138, 0, 29.5136)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -98.1889, 4.81907, 46.1824)
 
 [node name="SM_Props_TowerCrane_01_2" parent="Level/NavRegionZone2/Zone2/Grounds/Props" instance=ExtResource("18_jn8ph")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -98.125, 20.8681, 46.2196)
+transform = Transform3D(1, 0, 0, 0, 1.1, 0, 0, 0, 1, -98.125, 20.8681, 46.2196)
 
 [node name="SM_container_38" parent="Level/NavRegionZone2/Zone2/Grounds/Props" instance=ExtResource("111_ub3hr")]
 transform = Transform3D(-5.24537e-08, 0, 2, 0, 1.2, 0, -1.2, 0, -8.74228e-08, -89.6729, 9.42404, 46.4301)
@@ -2397,22 +2422,22 @@ transform = Transform3D(-1.41891, 0, 0.48652, 0, 1.5, 0, -0.48652, 0, -1.41891, 
 transform = Transform3D(-1.16098, 0, -0.949808, 0, 1.5, 0, 0.949808, 0, -1.16098, -77.8803, 1.31293, 27.3083)
 
 [node name="SM_Props_CableReel_07" parent="Level/NavRegionZone2/Zone2/Grounds/Props" instance=ExtResource("60_x3ubu")]
-transform = Transform3D(-6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, -76.9728, 1.15461, 50.6866)
+transform = Transform3D(-6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, -76.9728, 0.975177, 50.6866)
 
 [node name="SM_Props_CableReel_14" parent="Level/NavRegionZone2/Zone2/Grounds/Props" instance=ExtResource("60_x3ubu")]
-transform = Transform3D(0.503892, 0, 1.41283, 0, 1.5, 0, -1.41283, 0, 0.503892, -79.0563, 1.15461, 49.3911)
+transform = Transform3D(0.503892, 0, 1.41283, 0, 1.5, 0, -1.41283, 0, 0.503892, -79.0563, 0.975177, 49.3911)
 
 [node name="SM_Props_CableReel_13" parent="Level/NavRegionZone2/Zone2/Grounds/Props" instance=ExtResource("60_x3ubu")]
-transform = Transform3D(-1.48425, 0, 0.216767, 0, 1.5, 0, -0.216767, 0, -1.48425, -76.9728, 3.07638, 50.6866)
+transform = Transform3D(-1.48425, 0, 0.216767, 0, 1.5, 0, -0.216767, 0, -1.48425, -76.9728, 2.87045, 50.6866)
 
 [node name="SM_Props_CableReel_20" parent="Level/NavRegionZone2/Zone2/Grounds/Props" instance=ExtResource("60_x3ubu")]
-transform = Transform3D(1.44392, 0, 0.406304, 0, 1.5, 0, -0.406304, 0, 1.44392, -76.9728, 1.15461, 48.3184)
+transform = Transform3D(1.44392, 0, 0.406304, 0, 1.5, 0, -0.406304, 0, 1.44392, -76.9728, 0.975177, 48.3184)
 
 [node name="SM_Props_CableReel_21" parent="Level/NavRegionZone2/Zone2/Grounds/Props" instance=ExtResource("60_x3ubu")]
-transform = Transform3D(-0.193375, 0, 1.48748, 0, 1.5, 0, -1.48748, 0, -0.193375, -76.9728, 3.07638, 48.3184)
+transform = Transform3D(-0.193375, 0, 1.48748, 0, 1.5, 0, -1.48748, 0, -0.193375, -76.9728, 2.87045, 48.3184)
 
 [node name="SM_Props_CableReel_19" parent="Level/NavRegionZone2/Zone2/Grounds/Props" instance=ExtResource("60_x3ubu")]
-transform = Transform3D(-1.4939, 0, 0.135088, 0, 1.5, 0, -0.135088, 0, -1.4939, -76.9728, 4.98088, 50.6866)
+transform = Transform3D(-1.4939, 0, 0.135088, 0, 1.5, 0, -0.135088, 0, -1.4939, -76.9728, 4.77495, 50.6866)
 
 [node name="SM_Props_Pallet_53" parent="Level/NavRegionZone2/Zone2/Grounds/Props" instance=ExtResource("61_5q7dd")]
 transform = Transform3D(-7.43094e-08, 0, 1.7, 0, 1.7, 0, -1.7, 0, -7.43094e-08, -62.6439, 0.00646228, 32.6346)
@@ -2454,7 +2479,7 @@ transform = Transform3D(-1.6, 0, 1.39876e-07, 0, 1.6, 0, -1.39876e-07, 0, -1.6, 
 transform = Transform3D(-1.6, 0, -1.39876e-07, 0, 1.6, 0, 1.39876e-07, 0, -1.6, -135.419, 21.5795, 28.2379)
 
 [node name="SM_wooden_box_52" parent="Level/NavRegionZone2/Zone2/Grounds/Props" instance=ExtResource("53_tcrxa")]
-transform = Transform3D(-0.0640427, 0, 1.99897, 0, 2, 0, -1.99897, 0, -0.0640427, -68.8516, 3.62032, 33.3337)
+transform = Transform3D(-0.0640427, 0, 1.99897, 0, 2, 0, -1.99897, 0, -0.0640427, -67.8193, 3.62032, 32.8482)
 
 [node name="SM_wooden_box_53" parent="Level/NavRegionZone2/Zone2/Grounds/Props" instance=ExtResource("53_tcrxa")]
 transform = Transform3D(-0.037591, 0, 1.29946, 0, 1.3, 0, -1.29946, 0, -0.037591, -62.597, 0.0259041, 34.1819)
@@ -2478,10 +2503,10 @@ transform = Transform3D(-0.717062, 0, 1.86704, 0, 2, 0, -1.86704, 0, -0.717062, 
 transform = Transform3D(-0.946516, 0, 1.76185, 0, 2, 0, -1.76185, 0, -0.946516, -136.565, 24.7466, 34.4045)
 
 [node name="SM_container_36" parent="Level/NavRegionZone2/Zone2/Grounds/Props" instance=ExtResource("45_nckpq")]
-transform = Transform3D(-0.619338, 0, -1.28478, 0, 1.2, 0, 1.02782, 0, -0.774174, -127.519, 26.4094, 39.9128)
+transform = Transform3D(-0.619338, 0, -1.28478, 0, 1.2, 0, 1.02782, 0, -0.774174, -127.519, 26.1786, 39.9128)
 
 [node name="SM_container_37" parent="Level/NavRegionZone2/Zone2/Grounds/Props" instance=ExtResource("45_nckpq")]
-transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.6, -72.0173, 6.52243, 37.4104)
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.6, -72.0173, 6.4481, 37.4104)
 
 [node name="Car20" parent="Level/NavRegionZone2/Zone2/Grounds/Props" instance=ExtResource("105_rdgns")]
 transform = Transform3D(0.00760958, 0, 0.999971, 0, 1, 0, -0.999971, 0, 0.00760958, -65.2631, 0.296142, 45.2447)
@@ -2515,19 +2540,19 @@ size = Vector3(30.3959, 1.47577, 9.96491)
 material = ExtResource("12_ou5fo")
 
 [node name="Road1" type="CSGBox3D" parent="Level/NavRegionZone2/Zone2/Grounds"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63.3942, -0.0250059, 37.2935)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63.3942, -0.0716768, 37.2935)
 use_collision = true
 size = Vector3(43.1746, 0.149634, 6.98655)
 material = ExtResource("1_e2drn")
 
 [node name="Road9" type="CSGBox3D" parent="Level/NavRegionZone2/Zone2/Grounds"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -98.016, -0.014281, 23.6164)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -98.016, -0.0650098, 23.6164)
 use_collision = true
 size = Vector3(7.03338, 0.149634, 19.6528)
 material = ExtResource("1_e2drn")
 
 [node name="Road11" type="CSGBox3D" parent="Level/NavRegionZone2/Zone2/Grounds"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -86.0992, -0.014281, 30.444)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -86.0992, -0.0703932, 30.444)
 use_collision = true
 size = Vector3(20.6786, 0.149634, 7.10243)
 material = ExtResource("1_e2drn")
@@ -2539,9 +2564,9 @@ size = Vector3(21.9358, 0.149634, 7.0517)
 material = ExtResource("1_e2drn")
 
 [node name="Road12" type="CSGBox3D" parent="Level/NavRegionZone2/Zone2/Grounds"]
-transform = Transform3D(0.905042, 0.425321, 0, -0.425321, 0.905042, 0, 0, 0, 1, -106.153, 0.809622, 23.6442)
+transform = Transform3D(0.905042, 0.425321, 0, -0.425321, 0.905042, 0, 0, 0, 1, -106.153, 0.809622, 23.605)
 use_collision = true
-size = Vector3(22.3105, 6.29248, 7.10243)
+size = Vector3(22.3105, 6.29248, 7.02399)
 material = ExtResource("5_hmjcq")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="Level/NavRegionZone2/Zone2/Grounds"]
@@ -2576,9 +2601,15 @@ size = Vector3(4, 0.1, 17.8149)
 material = ExtResource("9_meepy")
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="Level/NavRegionZone2/Zone2/Grounds"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -137.836, 10.7269, 32.3049)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -137.825, 10.7234, 32.3049)
 use_collision = true
-size = Vector3(6.4609, 21.7507, 17.7471)
+size = Vector3(6.48338, 21.7436, 17.7471)
+material = ExtResource("92_mji4l")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Level/NavRegionZone2/Zone2/Grounds"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -138.507, 10.7234, 41.3728)
+use_collision = true
+size = Vector3(7.80272, 21.7436, 1.10646)
 material = ExtResource("92_mji4l")
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="Level/NavRegionZone2/Zone2/Grounds"]
@@ -2606,9 +2637,9 @@ size = Vector3(0.1, 8, 21.5385)
 material = ExtResource("15_0vtxr")
 
 [node name="Wall25" type="CSGBox3D" parent="Level/NavRegionZone2/Zone2/Grounds"]
-transform = Transform3D(-1, 8.74228e-08, 0, -3.62536e-08, -0.414693, -0.909961, -7.95513e-08, -0.909961, 0.414693, -137.835, 18.4675, 20.9041)
+transform = Transform3D(-1, 8.74228e-08, 0, -3.62536e-08, -0.414693, -0.909961, -7.95513e-08, -0.909961, 0.414693, -137.826, 18.4675, 20.9041)
 use_collision = true
-size = Vector3(6.46944, 7.17627, 3.61201)
+size = Vector3(6.48667, 7.17627, 3.61201)
 material = ExtResource("92_mji4l")
 
 [node name="Wall27" type="CSGBox3D" parent="Level/NavRegionZone2/Zone2/Grounds"]
@@ -2742,22 +2773,22 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -70.21
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -68.223, 1.81025, 26.3382)
 
 [node name="SM_frame_box15" parent="Level/NavRegionZone2/Zone2/Warehouse" instance=ExtResource("27_i2fpu")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -66.2464, 1.81025, 26.3382)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -64.934, 1.81025, 26.3382)
 
 [node name="SM_frame_box16" parent="Level/NavRegionZone2/Zone2/Warehouse" instance=ExtResource("27_i2fpu")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -64.266, 1.81025, 26.3382)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -62.9536, 1.81025, 26.3382)
 
 [node name="SM_frame_box17" parent="Level/NavRegionZone2/Zone2/Warehouse" instance=ExtResource("27_i2fpu")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -66.2464, 4.05967, 26.3382)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -64.934, 4.05967, 26.3382)
 
 [node name="SM_frame_box18" parent="Level/NavRegionZone2/Zone2/Warehouse" instance=ExtResource("27_i2fpu")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -64.266, 4.05967, 26.3382)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -62.9536, 4.05967, 26.3382)
 
 [node name="SM_frame_box19" parent="Level/NavRegionZone2/Zone2/Warehouse" instance=ExtResource("27_i2fpu")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -62.3748, 1.81025, 26.3382)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -61.0624, 1.81025, 26.3382)
 
 [node name="SM_frame_box20" parent="Level/NavRegionZone2/Zone2/Warehouse" instance=ExtResource("27_i2fpu")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -62.3748, 4.05967, 26.3382)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -61.0624, 4.05967, 26.3382)
 
 [node name="SM_hangar_frame_22" parent="Level/NavRegionZone2/Zone2/Warehouse" instance=ExtResource("40_tq40t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.713, 1.84286, 12.52)
@@ -2946,13 +2977,13 @@ transform = Transform3D(0.0733526, 0, 1.69842, 0, 1.7, 0, -1.69842, 0, 0.0733526
 transform = Transform3D(-0.0670678, 0, 1.69868, 0, 1.7, 0, -1.69868, 0, -0.0670678, -68.246, 1.8757, 26.3768)
 
 [node name="SM_wooden_box_40" parent="Level/NavRegionZone2/Zone2/Warehouse" instance=ExtResource("53_tcrxa")]
-transform = Transform3D(0.0188108, 0, 1.6999, 0, 1.7, 0, -1.6999, 0, 0.0188108, -64.3337, 1.8757, 26.3768)
+transform = Transform3D(0.0188108, 0, 1.6999, 0, 1.7, 0, -1.6999, 0, 0.0188108, -63.0213, 1.8757, 26.3768)
 
 [node name="SM_wooden_box_41" parent="Level/NavRegionZone2/Zone2/Warehouse" instance=ExtResource("53_tcrxa")]
-transform = Transform3D(0.0188108, 0, 1.6999, 0, 1.7, 0, -1.6999, 0, 0.0188108, -64.3337, 4.11408, 26.3768)
+transform = Transform3D(0.0188108, 0, 1.6999, 0, 1.7, 0, -1.6999, 0, 0.0188108, -63.0213, 4.11408, 26.3768)
 
 [node name="SM_wooden_box_42" parent="Level/NavRegionZone2/Zone2/Warehouse" instance=ExtResource("53_tcrxa")]
-transform = Transform3D(-0.137018, 0, 1.69447, 0, 1.7, 0, -1.69447, 0, -0.137018, -62.3529, 4.11408, 26.3768)
+transform = Transform3D(-0.137018, 0, 1.69447, 0, 1.7, 0, -1.69447, 0, -0.137018, -61.0405, 4.11408, 26.3768)
 
 [node name="SM_wooden_box_35" parent="Level/NavRegionZone2/Zone2/Warehouse" instance=ExtResource("53_tcrxa")]
 transform = Transform3D(0.0308854, 0, 1.69972, 0, 1.7, 0, -1.69972, 0, 0.0308854, -74.2213, 1.8757, 26.2827)
@@ -3358,89 +3389,119 @@ transform = Transform3D(-0.0232631, 0, -0.999729, 0, 1, 0, 0.999729, 0, -0.02326
 [node name="SM_wooden_barrel20" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
 transform = Transform3D(0.0318294, 0, 0.999493, 0, 1, 0, -0.999493, 0, 0.0318294, -77.7103, 14.174, 60.0802)
 
+[node name="SM_wooden_barrel66" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
+transform = Transform3D(0.86558, 0, 0.500771, 0, 1, 0, -0.500771, 0, 0.86558, -79.2768, 15.1571, 59.1732)
+
+[node name="SM_wooden_barrel67" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
+transform = Transform3D(0.600546, 0, -0.79959, 0, 1, 0, 0.79959, 0, 0.600546, -78.5148, 15.1612, 59.1732)
+
+[node name="SM_wooden_barrel68" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
+transform = Transform3D(0.0318294, 0, 0.999493, 0, 1, 0, -0.999493, 0, 0.0318294, -77.7103, 15.1571, 59.1732)
+
+[node name="SM_wooden_barrel69" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
+transform = Transform3D(0.86558, 0, 0.500771, 0, 1, 0, -0.500771, 0, 0.86558, -79.2768, 15.1571, 60.0802)
+
+[node name="SM_wooden_barrel70" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
+transform = Transform3D(-0.0232631, 0, -0.999729, 0, 1, 0, 0.999729, 0, -0.0232631, -78.5148, 15.1612, 60.0802)
+
+[node name="SM_wooden_barrel72" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
+transform = Transform3D(0.86558, 0, 0.500771, 0, 1, 0, -0.500771, 0, 0.86558, -79.2768, 16.1236, 59.1732)
+
+[node name="SM_wooden_barrel73" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
+transform = Transform3D(0.600546, 0, -0.79959, 0, 1, 0, 0.79959, 0, 0.600546, -78.5148, 16.1277, 59.1732)
+
+[node name="SM_wooden_barrel82" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
+transform = Transform3D(0.86558, 0, 0.500771, 0, 1, 0, -0.500771, 0, 0.86558, -79.2768, 16.1236, 60.0802)
+
+[node name="SM_wooden_barrel83" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
+transform = Transform3D(-0.0232631, 0, -0.999729, 0, 1, 0, 0.999729, 0, -0.0232631, -78.5148, 16.1277, 60.0802)
+
+[node name="SM_wooden_barrel71" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
+transform = Transform3D(0.0318294, 0, 0.999493, 0, 1, 0, -0.999493, 0, 0.0318294, -77.7103, 15.1571, 60.0802)
+
 [node name="SM_wooden_barrel5" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76.9482, 12.1906, 59.1782)
 
 [node name="SM_wooden_barrel74" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -90.9012, 8.10604, 61.6552)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -94.1958, 8.10604, 64.7218)
 
 [node name="SM_wooden_barrel75" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -90.9012, 8.10604, 60.7902)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -94.1958, 8.10604, 63.8568)
 
 [node name="SM_wooden_barrel76" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -90.9012, 8.10604, 59.9462)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -94.1958, 8.10604, 63.0128)
 
 [node name="SM_wooden_barrel77" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -90.9012, 8.10604, 59.1012)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -94.1958, 8.10604, 62.1678)
 
 [node name="SM_wooden_barrel78" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -90.9012, 8.10604, 58.2522)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -94.1958, 8.10604, 61.3188)
 
 [node name="SM_wooden_barrel79" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -90.9012, 8.10604, 57.4252)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -94.1958, 8.10604, 60.4918)
 
 [node name="SM_wooden_barrel80" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -90.9012, 8.10604, 56.5602)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -94.1958, 8.10604, 59.6268)
 
 [node name="SM_wooden_barrel81" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -90.9012, 8.10604, 55.7162)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -94.1958, 8.10604, 58.7828)
 
 [node name="SM_wooden_barrel85" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -90.9012, 8.77977, 61.2102)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -94.1958, 8.77977, 64.2768)
 
 [node name="SM_wooden_barrel86" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -90.9012, 8.77977, 60.3662)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -94.1958, 8.77977, 63.4328)
 
 [node name="SM_wooden_barrel87" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -90.9012, 8.77977, 59.5222)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -94.1958, 8.77977, 62.5888)
 
 [node name="SM_wooden_barrel88" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -90.9012, 8.77977, 58.6722)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -94.1958, 8.77977, 61.7388)
 
 [node name="SM_wooden_barrel89" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -90.9012, 8.77977, 57.8452)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -94.1958, 8.77977, 60.9118)
 
 [node name="SM_wooden_barrel90" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -90.9012, 8.77977, 56.9812)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -94.1958, 8.77977, 60.0478)
 
 [node name="SM_wooden_barrel91" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -90.9012, 8.77977, 56.1362)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -94.1958, 8.77977, 59.2028)
 
 [node name="SM_wooden_barrel95" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -90.9012, 9.32874, 60.7862)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -94.1958, 9.32874, 63.8528)
 
 [node name="SM_wooden_barrel96" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -90.9012, 9.32874, 59.9422)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -94.1958, 9.32874, 63.0088)
 
 [node name="SM_wooden_barrel97" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -90.9012, 9.32874, 59.0972)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -94.1958, 9.32874, 62.1638)
 
 [node name="SM_wooden_barrel98" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -90.9012, 9.32874, 58.2472)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -94.1958, 9.32874, 61.3138)
 
 [node name="SM_wooden_barrel99" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -90.9012, 9.32874, 57.4212)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -94.1958, 9.32874, 60.4878)
 
 [node name="SM_wooden_barrel100" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -90.9012, 9.32874, 56.5562)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -94.1958, 9.32874, 59.6228)
 
 [node name="SM_wooden_barrel106" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -90.9012, 9.86363, 60.3692)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -94.1958, 9.86363, 63.4358)
 
 [node name="SM_wooden_barrel107" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -90.9012, 9.86363, 59.5252)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -94.1958, 9.86363, 62.5918)
 
 [node name="SM_wooden_barrel108" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -90.9012, 9.86363, 58.6752)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -94.1958, 9.86363, 61.7418)
 
 [node name="SM_wooden_barrel109" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -90.9012, 9.86363, 57.8482)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -94.1958, 9.86363, 60.9148)
 
 [node name="SM_wooden_barrel190" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.5785, 9.32874, 58.4402)
+transform = Transform3D(-0.000820323, 0, 1, 0, 1, 0, -1, 0, -0.000820323, -87.9204, 7.81177, 54.0223)
 
 [node name="SM_wooden_barrel191" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.5785, 9.86363, 58.0412)
+transform = Transform3D(-0.000820323, 0, 1, 0, 1, 0, -1, 0, -0.000820323, -88.319, 7.81177, 54.5575)
 
 [node name="SM_wooden_barrel192" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.2421, 9.32874, 61.5602)
@@ -3449,103 +3510,103 @@ transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.24
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.2421, 9.86363, 61.1612)
 
 [node name="SM_wooden_barrel110" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -90.9012, 9.86363, 56.9842)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -94.1958, 9.86363, 60.0508)
 
 [node name="SM_wooden_barrel116" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -90.9012, 10.4155, 59.9462)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -94.1958, 10.4155, 63.0128)
 
 [node name="SM_wooden_barrel117" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -90.9012, 10.4155, 59.1022)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -94.1958, 10.4155, 62.1688)
 
 [node name="SM_wooden_barrel118" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -90.9012, 10.4155, 58.2522)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -94.1958, 10.4155, 61.3188)
 
 [node name="SM_wooden_barrel119" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -90.9012, 10.4155, 57.4252)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -94.1958, 10.4155, 60.4918)
 
 [node name="SM_wooden_barrel84" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.5737, 8.10604, 61.7572)
+transform = Transform3D(-0.000820323, 0, 1, 0, 1, 0, -1, 0, -0.000820323, -84.6045, 7.81177, 52.797)
 
 [node name="SM_wooden_barrel94" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.5737, 8.10604, 60.8922)
+transform = Transform3D(-0.000820323, 0, 1, 0, 1, 0, -1, 0, -0.000820323, -85.4695, 7.81177, 52.7977)
 
 [node name="SM_wooden_barrel103" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.5737, 8.10604, 60.0482)
+transform = Transform3D(-0.000820323, 0, 1, 0, 1, 0, -1, 0, -0.000820323, -86.3135, 7.81177, 52.7984)
 
 [node name="SM_wooden_barrel104" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.5737, 8.10604, 59.2032)
+transform = Transform3D(-0.000820323, 0, 1, 0, 1, 0, -1, 0, -0.000820323, -87.1584, 7.81177, 52.7991)
 
 [node name="SM_wooden_barrel105" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.5737, 8.10604, 58.3542)
+transform = Transform3D(-0.000820323, 0, 1, 0, 1, 0, -1, 0, -0.000820323, -88.0075, 7.81177, 52.7998)
 
 [node name="SM_wooden_barrel113" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.5737, 8.10604, 57.5272)
+transform = Transform3D(-0.000820323, 0, 1, 0, 1, 0, -1, 0, -0.000820323, -88.8344, 7.81177, 52.8004)
 
 [node name="SM_wooden_barrel114" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.5737, 8.10604, 56.6632)
+transform = Transform3D(-0.000820323, 0, 1, 0, 1, 0, -1, 0, -0.000820323, -89.6984, 7.81177, 52.8012)
 
 [node name="SM_wooden_barrel115" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.5737, 8.10604, 55.8182)
+transform = Transform3D(-0.000820323, 0, 1, 0, 1, 0, -1, 0, -0.000820323, -90.5434, 7.81177, 52.8018)
 
 [node name="SM_wooden_barrel124" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.5737, 8.77977, 61.3132)
+transform = Transform3D(-0.000820323, 0, 1, 0, 1, 0, -1, 0, -0.000820323, -85.0479, 7.81177, 53.471)
 
 [node name="SM_wooden_barrel125" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.5737, 8.77977, 60.4682)
+transform = Transform3D(-0.000820323, 0, 1, 0, 1, 0, -1, 0, -0.000820323, -85.8929, 7.81177, 53.4717)
 
 [node name="SM_wooden_barrel126" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.5737, 8.77977, 59.6242)
+transform = Transform3D(-0.000820323, 0, 1, 0, 1, 0, -1, 0, -0.000820323, -86.7369, 7.81177, 53.4724)
 
 [node name="SM_wooden_barrel127" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.5737, 8.77977, 58.7742)
+transform = Transform3D(-0.000820323, 0, 1, 0, 1, 0, -1, 0, -0.000820323, -87.5869, 7.81177, 53.4731)
 
 [node name="SM_wooden_barrel128" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.5737, 8.77977, 57.9472)
+transform = Transform3D(-0.000820323, 0, 1, 0, 1, 0, -1, 0, -0.000820323, -88.4139, 7.81177, 53.4738)
 
 [node name="SM_wooden_barrel129" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.5737, 8.77977, 57.0832)
+transform = Transform3D(-0.000820323, 0, 1, 0, 1, 0, -1, 0, -0.000820323, -89.2779, 7.81177, 53.4745)
 
 [node name="SM_wooden_barrel130" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.5737, 8.77977, 56.2382)
+transform = Transform3D(-0.000820323, 0, 1, 0, 1, 0, -1, 0, -0.000820323, -90.1229, 7.81177, 53.4752)
 
 [node name="SM_wooden_barrel133" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.5737, 9.32874, 60.8882)
+transform = Transform3D(-0.000820323, 0, 1, 0, 1, 0, -1, 0, -0.000820323, -85.4725, 7.81177, 54.0202)
 
 [node name="SM_wooden_barrel134" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.5737, 9.32874, 60.0442)
+transform = Transform3D(-0.000820323, 0, 1, 0, 1, 0, -1, 0, -0.000820323, -86.3164, 7.81177, 54.0209)
 
 [node name="SM_wooden_barrel135" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.5737, 9.32874, 59.1992)
+transform = Transform3D(-0.000820323, 0, 1, 0, 1, 0, -1, 0, -0.000820323, -87.1614, 7.81177, 54.0216)
 
 [node name="SM_wooden_barrel136" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.5737, 9.32874, 57.5232)
+transform = Transform3D(-0.000820323, 0, 1, 0, 1, 0, -1, 0, -0.000820323, -88.8374, 7.81177, 54.023)
 
 [node name="SM_wooden_barrel137" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.5737, 9.32874, 56.6582)
+transform = Transform3D(-0.000820323, 0, 1, 0, 1, 0, -1, 0, -0.000820323, -89.7024, 7.81177, 54.0237)
 
 [node name="SM_wooden_barrel140" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.5737, 9.86363, 60.4722)
+transform = Transform3D(-0.000820323, 0, 1, 0, 1, 0, -1, 0, -0.000820323, -85.888, 7.81177, 54.5554)
 
 [node name="SM_wooden_barrel141" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.5737, 9.86363, 59.6272)
+transform = Transform3D(-0.000820323, 0, 1, 0, 1, 0, -1, 0, -0.000820323, -86.733, 7.81177, 54.5561)
 
 [node name="SM_wooden_barrel142" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.5737, 9.86363, 58.7772)
+transform = Transform3D(-0.000820323, 0, 1, 0, 1, 0, -1, 0, -0.000820323, -87.583, 7.81177, 54.5568)
 
 [node name="SM_wooden_barrel143" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.5737, 9.86363, 57.0862)
+transform = Transform3D(-0.000820323, 0, 1, 0, 1, 0, -1, 0, -0.000820323, -89.274, 7.81177, 54.5582)
 
 [node name="SM_wooden_barrel146" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.5737, 10.4155, 60.0482)
+transform = Transform3D(-0.000820323, 0, 1, 0, 1, 0, -1, 0, -0.000820323, -86.3116, 7.81177, 55.1076)
 
 [node name="SM_wooden_barrel147" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.5737, 10.4155, 59.2042)
+transform = Transform3D(-0.000820323, 0, 1, 0, 1, 0, -1, 0, -0.000820323, -87.1556, 7.81177, 55.1083)
 
 [node name="SM_wooden_barrel148" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.5737, 10.4155, 58.3542)
+transform = Transform3D(-0.000820323, 0, 1, 0, 1, 0, -1, 0, -0.000820323, -88.0056, 7.81177, 55.109)
 
 [node name="SM_wooden_barrel149" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -87.5737, 10.4155, 57.5272)
+transform = Transform3D(-0.000820323, 0, 1, 0, 1, 0, -1, 0, -0.000820323, -88.8326, 7.81177, 55.1096)
 
 [node name="SM_wooden_barrel152" parent="Level/NavRegionZone2/Zone2/Brewery" instance=ExtResource("30_rm43t")]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -95.2165, 8.10604, 64.8772)
@@ -3796,9 +3857,9 @@ size = Vector3(32.501, 5, 35.42)
 material = ExtResource("12_ou5fo")
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="Level/NavRegionZone2/Zone2/Containers"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -132.025, 6.33484, 33.7432)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -132.025, 6.33484, 34.4444)
 use_collision = true
-size = Vector3(5.41391, 12.9665, 16.0996)
+size = Vector3(5.41391, 12.9665, 14.6973)
 material = ExtResource("92_mji4l")
 
 [node name="CSGBox3D17" type="CSGBox3D" parent="Level/NavRegionZone2/Zone2/Containers"]
@@ -3841,89 +3902,89 @@ size = Vector3(3.38119, 2.59821, 5.48806)
 material = ExtResource("26_11rv1")
 
 [node name="SM_container_04" parent="Level/NavRegionZone2/Zone2/Containers" instance=ExtResource("111_ub3hr")]
-transform = Transform3D(-0.996727, 0, -0.0970111, 0, 1, 0, 0.0808425, 0, -1.19607, -99.945, 4.84264, 35.7481)
+transform = Transform3D(-0.996727, 0, -0.0970109, 0, 1.1, 0, 0.0808425, 0, -1.19607, -99.945, 4.84264, 35.7481)
 
 [node name="SM_container_09" parent="Level/NavRegionZone2/Zone2/Containers" instance=ExtResource("111_ub3hr")]
-transform = Transform3D(-0.653896, 0, 0.907901, 0, 1, 0, -0.756584, 0, -0.784675, -124.42, 4.87373, 30.9909)
+transform = Transform3D(-0.653896, 0, 0.907901, 0, 1.1, 0, -0.756584, 0, -0.784675, -124.42, 4.87373, 30.9909)
 
 [node name="SM_container_10" parent="Level/NavRegionZone2/Zone2/Containers" instance=ExtResource("111_ub3hr")]
-transform = Transform3D(-0.999863, 0, -0.0198749, 0, 1, 0, 0.0165624, 0, -1.19984, -109.492, 4.85095, 37.7751)
+transform = Transform3D(-0.999863, 0, -0.0198749, 0, 1.1, 0, 0.0165623, 0, -1.19984, -109.492, 4.85095, 37.7751)
 
 [node name="SM_container_11" parent="Level/NavRegionZone2/Zone2/Containers" instance=ExtResource("111_ub3hr")]
-transform = Transform3D(-0.99883, 0, -0.058034, 0, 1, 0, 0.0483617, 0, -1.1986, -106.72, 4.85095, 37.7751)
+transform = Transform3D(-0.99883, 0, -0.0580342, 0, 1.1, 0, 0.0483617, 0, -1.1986, -106.72, 4.85095, 37.7751)
 
 [node name="SM_container_12" parent="Level/NavRegionZone2/Zone2/Containers" instance=ExtResource("111_ub3hr")]
-transform = Transform3D(-0.999863, 0, -0.0198749, 0, 1, 0, 0.0165624, 0, -1.19984, -109.492, 7.44501, 37.962)
+transform = Transform3D(-0.999863, 0, -0.0198749, 0, 1.1, 0, 0.0165623, 0, -1.19984, -109.492, 7.6754, 37.962)
 
 [node name="SM_container_14" parent="Level/NavRegionZone2/Zone2/Containers" instance=ExtResource("111_ub3hr")]
-transform = Transform3D(-0.999636, 0, 0.0323964, 0, 1, 0, -0.0269969, 0, -1.19956, -116.48, 4.85095, 36.8908)
+transform = Transform3D(-0.999636, 0, 0.0323961, 0, 1.1, 0, -0.0269968, 0, -1.19956, -116.48, 4.85095, 36.8908)
 
 [node name="SM_container_15" parent="Level/NavRegionZone2/Zone2/Containers" instance=ExtResource("111_ub3hr")]
-transform = Transform3D(-0.999636, 0, 0.0323964, 0, 1, 0, -0.0269969, 0, -1.19956, -116.488, 7.44501, 37.0775)
+transform = Transform3D(-0.999636, 0, 0.0323961, 0, 1.1, 0, -0.0269968, 0, -1.19956, -116.488, 7.6754, 37.0775)
 
 [node name="SM_container_13" parent="Level/NavRegionZone2/Zone2/Containers" instance=ExtResource("111_ub3hr")]
-transform = Transform3D(-0.99883, 0, -0.058034, 0, 1, 0, 0.0483617, 0, -1.1986, -106.72, 7.44501, 37.5345)
+transform = Transform3D(-0.99883, 0, -0.0580342, 0, 1.1, 0, 0.0483617, 0, -1.1986, -106.72, 7.6754, 37.5345)
 
 [node name="SM_container_26" parent="Level/NavRegionZone2/Zone2/Containers" instance=ExtResource("111_ub3hr")]
-transform = Transform3D(-0.0150267, 0, -1.19986, 0, 1, 0, 0.999887, 0, -0.0180321, -113.03, 9.99645, 38.435)
+transform = Transform3D(-0.0150266, 0, -1.19986, 0, 1.1, 0, 0.999887, 0, -0.0180319, -113.03, 10.4326, 38.435)
 
 [node name="SM_container_28" parent="Level/NavRegionZone2/Zone2/Containers" instance=ExtResource("111_ub3hr")]
-transform = Transform3D(0.00310675, 0, 1.19999, 0, 1, 0, -0.999995, 0, 0.00372809, -113.368, 9.98853, 49.4064)
+transform = Transform3D(0.00310678, 0, 1.19999, 0, 1.1, 0, -0.999995, 0, 0.00372813, -113.368, 10.4247, 49.4064)
 
 [node name="SM_container_29" parent="Level/NavRegionZone2/Zone2/Containers" instance=ExtResource("111_ub3hr")]
-transform = Transform3D(-0.918998, 0, -0.473115, 0, 1, 0, 0.394263, 0, -1.1028, -126.034, 4.8568, 56.5214)
+transform = Transform3D(-0.918998, 0, -0.473116, 0, 1.1, 0, 0.394263, 0, -1.1028, -126.034, 4.8568, 56.5214)
 
 [node name="SM_container_05" parent="Level/NavRegionZone2/Zone2/Containers" instance=ExtResource("45_nckpq")]
-transform = Transform3D(0.0468798, 0, 1.19868, 0, 1, 0, -0.9989, 0, 0.0562557, -110.884, 4.82906, 29.1351)
+transform = Transform3D(0.0468798, 0, 1.19868, 0, 1.1, 0, -0.9989, 0, 0.0562558, -110.884, 4.82906, 29.1351)
 
 [node name="SM_container_30" parent="Level/NavRegionZone2/Zone2/Containers" instance=ExtResource("45_nckpq")]
-transform = Transform3D(-0.999537, 0, 0.0365204, 0, 1, 0, -0.0304338, 0, -1.19944, -127.74, 4.85025, 42.8401)
+transform = Transform3D(-0.999537, 0, 0.0365205, 0, 1.1, 0, -0.0304339, 0, -1.19944, -127.74, 4.79556, 42.8401)
 
 [node name="SM_container_31" parent="Level/NavRegionZone2/Zone2/Containers" instance=ExtResource("45_nckpq")]
-transform = Transform3D(-0.0388237, 0, -1.1991, 0, 1, 0, 0.999246, 0, -0.0465883, -113.821, 4.85427, 61.0022)
+transform = Transform3D(-0.0388237, 0, -1.1991, 0, 1.1, 0, 0.999246, 0, -0.0465886, -113.821, 4.75255, 60.7671)
 
 [node name="SM_container_32" parent="Level/NavRegionZone2/Zone2/Containers" instance=ExtResource("45_nckpq")]
-transform = Transform3D(0.931412, 0, -0.43676, 0, 1, 0, 0.363967, 0, 1.11769, -102.278, 5.03741, 57.6658)
+transform = Transform3D(0.931412, 0, -0.436759, 0, 1.1, 0, 0.363967, 0, 1.11769, -102.278, 4.77645, 57.6658)
 
 [node name="SM_container_16" parent="Level/NavRegionZone2/Zone2/Containers" instance=ExtResource("45_nckpq")]
-transform = Transform3D(-0.99761, 0, 0.0829138, 0, 1, 0, -0.0690948, 0, -1.19713, -119.285, 4.82906, 36.7511)
+transform = Transform3D(-0.99761, 0, 0.0829136, 0, 1.1, 0, -0.0690948, 0, -1.19713, -119.285, 4.82906, 36.7511)
 
 [node name="SM_container_18" parent="Level/NavRegionZone2/Zone2/Containers" instance=ExtResource("111_ub3hr")]
-transform = Transform3D(-0.994239, 0, 0.128621, 0, 1, 0, -0.107184, 0, -1.19309, -117.413, 4.85095, 50.8277)
+transform = Transform3D(-0.994239, 0, 0.128621, 0, 1.1, 0, -0.107184, 0, -1.19309, -117.413, 4.85095, 50.8277)
 
 [node name="SM_container_19" parent="Level/NavRegionZone2/Zone2/Containers" instance=ExtResource("111_ub3hr")]
-transform = Transform3D(-0.994239, 0, 0.128621, 0, 1, 0, -0.107184, 0, -1.19309, -117.436, 7.44501, 51.0132)
+transform = Transform3D(-0.994239, 0, 0.128621, 0, 1.1, 0, -0.107184, 0, -1.19309, -117.436, 7.6754, 51.0132)
 
 [node name="SM_container_24" parent="Level/NavRegionZone2/Zone2/Containers" instance=ExtResource("111_ub3hr")]
-transform = Transform3D(-0.998926, 0, 0.0556072, 0, 1, 0, -0.0463393, 0, -1.19871, -108.797, 7.44501, 50.7638)
+transform = Transform3D(-0.998926, 0, 0.0556071, 0, 1.1, 0, -0.0463393, 0, -1.19871, -108.797, 7.6754, 50.7638)
 
 [node name="SM_container_25" parent="Level/NavRegionZone2/Zone2/Containers" instance=ExtResource("111_ub3hr")]
-transform = Transform3D(-0.999615, 0, 0.0332756, 0, 1, 0, -0.0277297, 0, -1.19954, -106.13, 7.44501, 50.6083)
+transform = Transform3D(-0.999615, 0, 0.0332757, 0, 1.1, 0, -0.0277297, 0, -1.19954, -106.13, 7.6754, 50.6083)
 
 [node name="SM_container_21" parent="Level/NavRegionZone2/Zone2/Containers" instance=ExtResource("111_ub3hr")]
-transform = Transform3D(-0.992486, 0, 0.146825, 0, 1, 0, -0.122354, 0, -1.19098, -120.165, 7.44501, 50.5964)
+transform = Transform3D(-0.992486, 0, 0.146825, 0, 1.1, 0, -0.122354, 0, -1.19098, -120.165, 7.6754, 50.5964)
 
 [node name="SM_container_20" parent="Level/NavRegionZone2/Zone2/Containers" instance=ExtResource("45_nckpq")]
-transform = Transform3D(-0.98884, 0, 0.17878, 0, 1, 0, -0.148983, 0, -1.18661, -120.197, 4.82906, 50.4632)
+transform = Transform3D(-0.98884, 0, 0.17878, 0, 1.1, 0, -0.148983, 0, -1.18661, -120.197, 4.82906, 50.4632)
 
 [node name="SM_container_22" parent="Level/NavRegionZone2/Zone2/Containers" instance=ExtResource("45_nckpq")]
-transform = Transform3D(-0.999571, 0, 0.0351389, 0, 1, 0, -0.0292824, 0, -1.19949, -108.929, 4.82906, 50.7946)
+transform = Transform3D(-0.999571, 0, 0.035139, 0, 1.1, 0, -0.0292823, 0, -1.19949, -108.929, 4.82906, 50.7946)
 
 [node name="SM_container_23" parent="Level/NavRegionZone2/Zone2/Containers" instance=ExtResource("45_nckpq")]
-transform = Transform3D(-0.999714, 0, 0.0286904, 0, 1, 0, -0.0239087, 0, -1.19966, -106.195, 4.82906, 50.6354)
+transform = Transform3D(-0.999714, 0, 0.0286904, 0, 1.1, 0, -0.0239086, 0, -1.19966, -106.195, 4.82906, 50.6354)
 
 [node name="SM_container_17" parent="Level/NavRegionZone2/Zone2/Containers" instance=ExtResource("45_nckpq")]
-transform = Transform3D(-0.99761, 0, 0.0829138, 0, 1, 0, -0.0690948, 0, -1.19713, -119.285, 7.4216, 36.7511)
+transform = Transform3D(-0.99761, 0, 0.0829136, 0, 1.1, 0, -0.0690948, 0, -1.19713, -119.285, 7.56946, 36.7511)
 
 [node name="SM_container_27" parent="Level/NavRegionZone2/Zone2/Containers" instance=ExtResource("111_ub3hr")]
-transform = Transform3D(0.999946, 0, 0.0124404, 0, 1, 0, -0.010367, 0, 1.19994, -107.221, 9.97591, 44.1484)
+transform = Transform3D(0.999946, 0, 0.0124405, 0, 1.1, 0, -0.010367, 0, 1.19994, -107.221, 10.412, 44.1484)
 
 [node name="Depot" type="Node" parent="Level/NavRegionZone2/Zone2"]
 
 [node name="CSGBox3D7" type="CSGBox3D" parent="Level/NavRegionZone2/Zone2/Depot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -159.638, 10.4112, 23.0976)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -159.638, 10.4261, 23.0976)
 use_collision = true
-size = Vector3(37.195, 22.3052, 35.8933)
+size = Vector3(37.195, 22.3351, 35.8933)
 material = ExtResource("92_mji4l")
 
 [node name="CSGBox3D8" type="CSGBox3D" parent="Level/NavRegionZone2/Zone2/Depot"]
@@ -3959,10 +4020,10 @@ size = Vector3(32.6923, 1.91803, 12.717)
 material = ExtResource("9_meepy")
 
 [node name="CSGBox3D16" type="CSGBox3D" parent="Level/NavRegionZone2/Zone2/Depot/CSGBox3D15"]
-transform = Transform3D(-4.37114e-08, 0.463296, 0.886204, 0, 0.886204, -0.463296, -1, -2.02513e-08, -3.87372e-08, 10.9778, -1.75788, 6.71799)
+transform = Transform3D(-4.37114e-08, 0.463296, 0.886204, 0, 0.886204, -0.463296, -1, -2.02513e-08, -3.87372e-08, 11.0658, 0.335186, 6.71799)
 operation = 2
 use_collision = true
-size = Vector3(32.6923, 3.78665, 12.717)
+size = Vector3(32.6923, 3.78665, 21.7525)
 material = ExtResource("9_meepy")
 
 [node name="CSGBox3D16" type="CSGBox3D" parent="Level/NavRegionZone2/Zone2/Depot"]
@@ -4023,6 +4084,12 @@ material = ExtResource("26_11rv1")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.246857, 5.09197, -0.0651894)
 operation = 2
 size = Vector3(4, 4, 4)
+material = ExtResource("26_11rv1")
+
+[node name="CSGBox3D68" type="CSGBox3D" parent="Level/NavRegionZone2/Zone2/Depot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -142.438, 29.9214, 41.4005)
+use_collision = true
+size = Vector3(0.1, 18, 1.03975)
 material = ExtResource("26_11rv1")
 
 [node name="CSGBox3D56" type="CSGBox3D" parent="Level/NavRegionZone2/Zone2/Depot"]
@@ -4295,7 +4362,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -157.5
 transform = Transform3D(0.0245978, 0, 1.79983, 0, 1.8, 0, -1.79983, 0, 0.0245978, -148.838, 21.6126, 23.2193)
 
 [node name="SM_Props_Pallet_60" parent="Level/NavRegionZone2/Zone2/Depot" instance=ExtResource("61_5q7dd")]
-transform = Transform3D(-0.15447, 0, 1.79336, 0, 1.8, 0, -1.79336, 0, -0.15447, -149.987, 23.3951, 23.2193)
+transform = Transform3D(-0.15447, 0, 1.79336, 0, 1.8, 0, -1.79336, 0, -0.15447, -150.917, 23.3951, 23.2193)
 
 [node name="SM_Props_Pallet_59" parent="Level/NavRegionZone2/Zone2/Depot" instance=ExtResource("61_5q7dd")]
 transform = Transform3D(-7.86805e-08, 0, 1.8, 0, 1.8, 0, -1.8, 0, -7.86805e-08, -151.016, 21.6126, 23.4109)
@@ -4424,7 +4491,7 @@ transform = Transform3D(0.0839954, 0, 1.99824, 0, 2, 0, -1.99824, 0, 0.0839954, 
 transform = Transform3D(-0.0010821, 0, 2, 0, 2, 0, -2, 0, -0.0010821, -153.499, 21.5826, 30.0648)
 
 [node name="SM_Box_31" parent="Level/NavRegionZone2/Zone2/Depot" instance=ExtResource("59_0nik3")]
-transform = Transform3D(-0.191573, 0, 3.09407, 0, 3.1, 0, -3.09407, 0, -0.191573, -147.73, 29.9521, 34.575)
+transform = Transform3D(-0.191573, 0, 3.09407, 0, 3.1, 0, -3.09407, 0, -0.191573, -147.32, 29.9521, 34.575)
 
 [node name="SM_Box_27" parent="Level/NavRegionZone2/Zone2/Depot" instance=ExtResource("59_0nik3")]
 transform = Transform3D(-0.0391195, 0, 1.59952, 0, 1.6, 0, -1.59952, 0, -0.0391195, -147.453, 24.6233, 30.0343)
@@ -4466,7 +4533,7 @@ transform = Transform3D(-7.86805e-08, 0, 1.8, 0, 1.8, 0, -1.8, 0, -7.86805e-08, 
 transform = Transform3D(-7.86805e-08, 0, 1.8, 0, 1.8, 0, -1.8, 0, -7.86805e-08, -155.514, 23.8899, 34.9837)
 
 [node name="SM_container_34" parent="Level/NavRegionZone2/Zone2/Depot" instance=ExtResource("45_nckpq")]
-transform = Transform3D(-1.1969, 0, -0.10769, 0, 1.2, 0, 0.0861522, 0, -1.49613, -144.863, 28.4307, 31.5808)
+transform = Transform3D(-1.1996, 0, -0.0385848, 0, 1.2, 0, 0.0308683, 0, -1.4995, -144.41, 28.4307, 31.5808)
 
 [node name="SM_container_35" parent="Level/NavRegionZone2/Zone2/Depot" instance=ExtResource("45_nckpq")]
 transform = Transform3D(-1.19722, 0, 0.102101, 0, 1.2, 0, -0.081681, 0, -1.49652, -144.593, 28.4307, 17.1532)
@@ -4496,16 +4563,16 @@ transform = Transform3D(-1.40357, 0, 0.529134, 0, 1.5, 0, -0.529134, 0, -1.40357
 transform = Transform3D(-1.40357, 0, 0.529134, 0, 1.5, 0, -0.529134, 0, -1.40357, -146.88, 29.6349, 36.593)
 
 [node name="SM_Props_Barrel_45" parent="Level/NavRegionZone2/Zone2/Depot" instance=ExtResource("49_cjl1x")]
-transform = Transform3D(-1.42626, 0, 0.464521, 0, 1.5, 0, -0.464521, 0, -1.42626, -146.975, 32.9996, 37.8558)
+transform = Transform3D(-1.42626, 0, 0.464521, 0, 1.5, 0, -0.464521, 0, -1.42626, -146.975, 32.9996, 36.9608)
 
 [node name="SM_Props_Barrel_33" parent="Level/NavRegionZone2/Zone2/Depot" instance=ExtResource("51_gf8bm")]
 transform = Transform3D(-6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, -156.686, 28.5333, 27.4001)
 
 [node name="SM_Props_Barrel_43" parent="Level/NavRegionZone2/Zone2/Depot" instance=ExtResource("51_gf8bm")]
-transform = Transform3D(-6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, -146.799, 33.0166, 40.2433)
+transform = Transform3D(-6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, -146.342, 33.0166, 37.8659)
 
 [node name="SM_Props_Barrel_44" parent="Level/NavRegionZone2/Zone2/Depot" instance=ExtResource("51_gf8bm")]
-transform = Transform3D(0.256733, 0, 1.47787, 0, 1.5, 0, -1.47787, 0, 0.256733, -146.309, 33.0166, 37.206)
+transform = Transform3D(0.256733, 0, 1.47787, 0, 1.5, 0, -1.47787, 0, 0.256733, -146.309, 33.0166, 36.311)
 
 [node name="SM_Props_Barrel_34" parent="Level/NavRegionZone2/Zone2/Depot" instance=ExtResource("51_gf8bm")]
 transform = Transform3D(-1.10379, 0, 1.0157, 0, 1.5, 0, -1.0157, 0, -1.10379, -156.196, 28.5333, 28.1787)
@@ -4526,10 +4593,10 @@ transform = Transform3D(-6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, 
 transform = Transform3D(-6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, -144.789, 33.9586, 37.0806)
 
 [node name="SM_Props_CableReel_18" parent="Level/NavRegionZone2/Zone2/Depot" instance=ExtResource("60_x3ubu")]
-transform = Transform3D(1.96701e-07, -1.5, 6.55671e-08, -5.73206e-15, 6.55671e-08, 1.5, -1.5, -1.96701e-07, 2.86603e-15, -145.755, 34.1805, 39.4517)
+transform = Transform3D(1.96701e-07, -1.5, 6.55671e-08, -5.73206e-15, 6.55671e-08, 1.5, -1.5, -1.96701e-07, 2.86603e-15, -145.965, 34.1805, 39.4517)
 
 [node name="SM_Props_CableReel_17" parent="Level/NavRegionZone2/Zone2/Depot" instance=ExtResource("60_x3ubu")]
-transform = Transform3D(-6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, -143.539, 33.9586, 39.5146)
+transform = Transform3D(-6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, -143.749, 33.9586, 39.5146)
 
 [node name="SM_garbage_container13" parent="Level/NavRegionZone2/Zone2/Depot" instance=ExtResource("46_qud1o")]
 transform = Transform3D(0.00794119, 0, -0.999969, 0, 1, 0, 0.999969, 0, 0.00794119, -143.263, 32.9959, 17.9088)
@@ -4538,7 +4605,7 @@ transform = Transform3D(0.00794119, 0, -0.999969, 0, 1, 0, 0.999969, 0, 0.007941
 transform = Transform3D(-6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, -143.836, 35.926, 38.1738)
 
 [node name="SM_Props_Scaffolding_11" parent="Level/NavRegionZone2/Zone2/Depot" instance=ExtResource("71_87vbu")]
-transform = Transform3D(-0.124734, 0, 1.4948, 0, 1.5, 0, -1.4948, 0, -0.124734, -147.63, 28.4748, 30.6934)
+transform = Transform3D(-0.124734, 0, 1.4948, 0, 1.5, 0, -1.4948, 0, -0.124734, -147.22, 28.4748, 30.6934)
 
 [node name="SM_Props_Pallet_80" parent="Level/NavRegionZone2/Zone2/Depot" instance=ExtResource("63_gouk0")]
 transform = Transform3D(-6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, -153.784, 28.4901, 19.365)
@@ -4666,7 +4733,7 @@ size = Vector3(2.99756, 0.1, 16.9839)
 material = ExtResource("1_e2drn")
 
 [node name="CSGBox3D50" type="CSGBox3D" parent="Level/NavRegionZone2/Zone2/Railyard"]
-transform = Transform3D(-4.37105e-08, 0, -0.999981, 0, 0.999999, 0, 0.99998, 0, -4.37106e-08, -104.302, 0.925452, 6.57568)
+transform = Transform3D(-4.37105e-08, 0, -0.999981, 0, 0.999999, 0, 0.99998, 0, -4.37106e-08, -104.302, 0.925452, 5.90968)
 use_collision = true
 size = Vector3(2.99756, 0.1, 20.3067)
 material = ExtResource("1_e2drn")
@@ -4678,7 +4745,7 @@ size = Vector3(2.99756, 0.1, 2.75304)
 material = ExtResource("1_e2drn")
 
 [node name="Wall8" type="CSGBox3D" parent="Level/NavRegionZone2/Zone2/Railyard"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -134.636, 9.52943, 18.6765)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -134.605, 9.52943, 18.6765)
 use_collision = true
 size = Vector3(16.8957, 9.13292, 0.1)
 material = ExtResource("15_0vtxr")
@@ -4691,9 +4758,9 @@ size = Vector3(16.8957, 9.13292, 1.18345)
 material = ExtResource("15_0vtxr")
 
 [node name="Wall9" type="CSGBox3D" parent="Level/NavRegionZone2/Zone2/Railyard"]
-transform = Transform3D(1.31134e-07, 1, 4.37114e-08, 0.20424, 1.60072e-08, -0.978921, -0.978921, 1.37298e-07, -0.20424, -122.592, 12.8603, 21.5226)
+transform = Transform3D(1.31134e-07, 1, 4.37114e-08, 0.20424, 1.60072e-08, -0.978921, -0.978921, 1.37298e-07, -0.20424, -119.862, 12.8603, 21.5226)
 use_collision = true
-size = Vector3(11.3956, 24.0666, 0.1)
+size = Vector3(11.3956, 29.5267, 0.1)
 material = ExtResource("4_135wt")
 
 [node name="Wall13" type="CSGBox3D" parent="Level/NavRegionZone2/Zone2/Railyard"]
@@ -4878,9 +4945,9 @@ size = Vector3(7.5204, 4.24871, 0.1)
 material = ExtResource("15_0vtxr")
 
 [node name="Wall11" type="CSGBox3D" parent="Level/NavRegionZone2/Zone2/Railyard"]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -122.592, 7.90714, 27.0978)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -119.879, 7.45276, 27.0978)
 use_collision = true
-size = Vector3(7.60801, 24.0666, 0.1)
+size = Vector3(8.51677, 29.4935, 0.1)
 material = ExtResource("15_0vtxr")
 
 [node name="CSGBox3D53" type="CSGBox3D" parent="Level/NavRegionZone2/Zone2/Railyard"]
@@ -4909,7 +4976,7 @@ transform = Transform3D(0.586404, 0, 1.16023, 0, 1.3, 0, -1.16023, 0, 0.586404, 
 transform = Transform3D(0.45108, 0, 0.892484, 0, 1, 0, -0.892484, 0, 0.45108, -87.6554, 1.73183, 8.44324)
 
 [node name="SM_wooden_box_43" parent="Level/NavRegionZone2/Zone2/Railyard" instance=ExtResource("55_bot3d")]
-transform = Transform3D(-0.157101, 0, 1.29047, 0, 1.3, 0, -1.29047, 0, -0.157101, -117.365, 8.41193, 21.0608)
+transform = Transform3D(-0.157101, 0, 1.29047, 0, 1.3, 0, -1.29047, 0, -0.157101, -118.32, 8.41193, 20.9371)
 
 [node name="SM_wooden_box_45" parent="Level/NavRegionZone2/Zone2/Railyard" instance=ExtResource("53_tcrxa")]
 transform = Transform3D(0.150673, 0, 1.49241, 0, 1.5, 0, -1.49241, 0, 0.150673, -130.417, 20.2957, 13.0809)
@@ -4948,19 +5015,19 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -103.5
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -110.235, 0.903461, 16.9376)
 
 [node name="SM_Trains_Railway_09" parent="Level/NavRegionZone2/Zone2/Railyard" instance=ExtResource("98_0fw86")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -104.516, 0.903461, 6.55554)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -104.516, 0.903461, 5.88954)
 
 [node name="SM_Trains_Railway_10" parent="Level/NavRegionZone2/Zone2/Railyard" instance=ExtResource("98_0fw86")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -114.055, 0.903461, 6.55554)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -114.055, 0.903461, 5.88954)
 
 [node name="SM_Box6" parent="Level/NavRegionZone2/Zone2/Railyard" instance=ExtResource("87_buqgm")]
-transform = Transform3D(-0.225235, 0, 1.48299, 0, 1.5, 0, -1.48299, 0, -0.225235, -117.354, 10.0606, 21.1371)
+transform = Transform3D(-0.225235, 0, 1.48299, 0, 1.5, 0, -1.48299, 0, -0.225235, -118.309, 10.0606, 21.0134)
 
 [node name="SM_Trains_TrainPart_14" parent="Level/NavRegionZone2/Zone2/Railyard" instance=ExtResource("99_vf8n5")]
 transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -127.591, 8.40189, 19.8425)
 
 [node name="SM_Trains_Train_02_C3" parent="Level/NavRegionZone2/Zone2/Railyard" instance=ExtResource("116_kovjo")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -104.336, 1.09701, 6.54108)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -104.336, 1.09701, 5.87508)
 
 [node name="SM_Trains_Train_03_C4" parent="Level/NavRegionZone2/Zone2/Railyard" instance=ExtResource("117_3umcs")]
 transform = Transform3D(-3.49691e-08, 0, 0.8, 0, 0.8, 0, -0.8, 0, -3.49691e-08, -101.313, 1.04619, 16.9406)
@@ -4996,8 +5063,6 @@ transform = Transform3D(0.296189, 0, 1.36831, 0, 1.4, 0, -1.36831, 0, 0.296189, 
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -101.352, 1.82413, 16.8953)
 
 [node name="Perimiter" type="Node" parent="Level"]
-
-[node name="MeshFences" type="Node" parent="Level/Perimiter"]
 
 [node name="Walls" type="Node" parent="Level/Perimiter"]
 
@@ -5043,6 +5108,30 @@ use_collision = true
 size = Vector3(0.2, 23.4704, 24.4342)
 material = ExtResource("7_qgfsr")
 
+[node name="CSGBox3D59" type="CSGBox3D" parent="Level/Perimiter/Walls" groups=["boundaries"]]
+transform = Transform3D(-6.11951e-08, 0, 1.39998, 0, 1.39993, 0, -1.39998, 0, -6.11951e-08, -71.5491, 43.2529, 66.8173)
+visible = false
+cast_shadow = 0
+use_collision = true
+size = Vector3(0.2, 23.4704, 35.6486)
+material = ExtResource("7_qgfsr")
+
+[node name="CSGBox3D60" type="CSGBox3D" parent="Level/Perimiter/Walls" groups=["boundaries"]]
+transform = Transform3D(-6.11951e-08, 0, 1.39998, 0, 1.39993, 0, -1.39998, 0, -6.11951e-08, -112.931, 43.2529, 61.8291)
+visible = false
+cast_shadow = 0
+use_collision = true
+size = Vector3(0.2, 23.4704, 24.9285)
+material = ExtResource("7_qgfsr")
+
+[node name="CSGBox3D63" type="CSGBox3D" parent="Level/Perimiter/Walls" groups=["boundaries"]]
+transform = Transform3D(-6.11951e-08, 0, 1.39998, 0, 1.39993, 0, -1.39998, 0, -6.11951e-08, -146.217, 53.3087, 41.4321)
+visible = false
+cast_shadow = 0
+use_collision = true
+size = Vector3(0.2, 23.4704, 24.9027)
+material = ExtResource("7_qgfsr")
+
 [node name="CSGBox3D34" type="CSGBox3D" parent="Level/Perimiter/Walls" groups=["boundaries"]]
 transform = Transform3D(1.39998, 0, 0, 0, 1.39993, 0, 0, 0, 1.39998, -96.5722, 10.1472, 65.5238)
 cast_shadow = 0
@@ -5057,8 +5146,24 @@ use_collision = true
 size = Vector3(0.2, 23.4704, 14.9303)
 material = ExtResource("7_qgfsr")
 
+[node name="CSGBox3D61" type="CSGBox3D" parent="Level/Perimiter/Walls" groups=["boundaries"]]
+transform = Transform3D(1.39998, 0, 0, 0, 1.39993, 0, 0, 0, 1.39998, -95.3139, 43.4628, 64.9909)
+visible = false
+cast_shadow = 0
+use_collision = true
+size = Vector3(0.2, 23.4704, 4.60978)
+material = ExtResource("7_qgfsr")
+
+[node name="CSGBox3D62" type="CSGBox3D" parent="Level/Perimiter/Walls" groups=["boundaries"]]
+transform = Transform3D(1.39998, 0, 0, 0, 1.39993, 0, 0, 0, 1.39998, -129.208, 43.4628, 52.3021)
+visible = false
+cast_shadow = 0
+use_collision = true
+size = Vector3(0.2, 23.4704, 15.4403)
+material = ExtResource("7_qgfsr")
+
 [node name="CSGBox3D42" type="CSGBox3D" parent="Level/Perimiter/Walls" groups=["boundaries"]]
-transform = Transform3D(-6.11951e-08, 0, 1.39998, 0, 1.39993, 0, -1.39998, 0, -6.11951e-08, -129.509, 10.1472, 9.60581)
+transform = Transform3D(-6.11951e-08, 0, 1.39998, 0, 1.39993, 0, -1.39998, 0, -6.11951e-08, -129.509, 10.1472, 9.52919)
 cast_shadow = 0
 use_collision = true
 size = Vector3(0.2, 23.4704, 16.3942)
@@ -5076,6 +5181,30 @@ transform = Transform3D(-6.11951e-08, 0, 1.39998, 0, 1.39993, 0, -1.39998, 0, -6
 cast_shadow = 0
 use_collision = true
 size = Vector3(0.2, 23.4704, 23.1343)
+material = ExtResource("7_qgfsr")
+
+[node name="CSGBox3D54" type="CSGBox3D" parent="Level/Perimiter/Walls" groups=["boundaries"]]
+transform = Transform3D(-6.11951e-08, 0, 1.39998, 0, 1.39993, 0, -1.39998, 0, -6.11951e-08, -129.73, 43.6823, 10.4515)
+visible = false
+cast_shadow = 0
+use_collision = true
+size = Vector3(0.2, 23.4704, 18.1701)
+material = ExtResource("7_qgfsr")
+
+[node name="CSGBox3D55" type="CSGBox3D" parent="Level/Perimiter/Walls" groups=["boundaries"]]
+transform = Transform3D(-6.11951e-08, 0, 1.39998, 0, 1.39993, 0, -1.39998, 0, -6.11951e-08, -98.249, 43.6823, 2.2636)
+visible = false
+cast_shadow = 0
+use_collision = true
+size = Vector3(0.2, 23.4704, 28.4523)
+material = ExtResource("7_qgfsr")
+
+[node name="CSGBox3D56" type="CSGBox3D" parent="Level/Perimiter/Walls" groups=["boundaries"]]
+transform = Transform3D(-6.11951e-08, 0, 1.39998, 0, 1.39993, 0, -1.39998, 0, -6.11951e-08, -63.2058, 43.6823, 12.9255)
+visible = false
+cast_shadow = 0
+use_collision = true
+size = Vector3(0.2, 23.4704, 23.8063)
 material = ExtResource("7_qgfsr")
 
 [node name="CSGBox3D47" type="CSGBox3D" parent="Level/Perimiter/Walls" groups=["boundaries"]]
@@ -5141,19 +5270,21 @@ use_collision = true
 size = Vector3(0.2, 23.4704, 6.37265)
 material = ExtResource("7_qgfsr")
 
-[node name="CSGBox3D29" type="CSGBox3D" parent="Level/Perimiter/Walls" groups=["boundaries"]]
-transform = Transform3D(1.39998, 0, 0.00188315, 0, 1.39992, 0, -0.00188315, 0, 1.39998, -49.433, -0.367025, 31.1483)
+[node name="CSGBox3D57" type="CSGBox3D" parent="Level/Perimiter/Walls" groups=["boundaries"]]
+transform = Transform3D(1.39998, 0, 0, 0, 1.39993, 0, 0, 0, 1.39998, -79.8794, 42.8468, 7.26789)
+visible = false
 cast_shadow = 0
 use_collision = true
-size = Vector3(0.2, 25.9914, 26.6443)
-material = ExtResource("84_iiuq8")
+size = Vector3(0.2, 23.4704, 8.27756)
+material = ExtResource("7_qgfsr")
 
-[node name="CSGBox3D36" type="CSGBox3D" parent="Level/Perimiter/Walls/CSGBox3D29" groups=["boundaries"]]
-transform = Transform3D(1, 0, 1.16415e-10, 0, 1, 0, -1.16415e-10, 0, 1, -0.0870628, 2.88526, 4.29776)
-operation = 2
+[node name="CSGBox3D58" type="CSGBox3D" parent="Level/Perimiter/Walls" groups=["boundaries"]]
+transform = Transform3D(1.39998, 0, 0, 0, 1.39993, 0, 0, 0, 1.39998, -117.051, 42.8468, 5.77266)
+visible = false
+cast_shadow = 0
 use_collision = true
-size = Vector3(2.08955, 5.78979, 4.60858)
-material = ExtResource("84_iiuq8")
+size = Vector3(0.2, 23.4704, 6.76131)
+material = ExtResource("7_qgfsr")
 
 [node name="CSGBox3D27" type="CSGBox3D" parent="Level/Perimiter/Walls" groups=["boundaries"]]
 transform = Transform3D(-6.11943e-08, 0, 1.39996, 0, 1.3999, 0, -1.39996, 0, -6.11943e-08, 7.79727, 10.0215, 109.405)
@@ -5241,13 +5372,6 @@ use_collision = true
 size = Vector3(0.2, 25.9914, 26.6443)
 material = ExtResource("84_iiuq8")
 
-[node name="CSGBox3D36" type="CSGBox3D" parent="Level/Perimiter/Walls/CSGBox3D70" groups=["boundaries"]]
-transform = Transform3D(1, 0, 1.16415e-10, 0, 1, 0, -1.16415e-10, 0, 1, -0.0870628, 2.88526, 4.29776)
-operation = 2
-use_collision = true
-size = Vector3(2.08955, 5.78979, 4.60858)
-material = ExtResource("84_iiuq8")
-
 [node name="CSGBox3D71" type="CSGBox3D" parent="Level/Perimiter/Walls" groups=["boundaries"]]
 transform = Transform3D(0.107595, 0, 1.39582, 0, 1.39991, 0, -1.39582, 0, 0.107595, -47.9256, 33.6688, 49.8125)
 visible = false
@@ -5305,270 +5429,330 @@ use_collision = true
 size = Vector3(0.2, 25.1468, 1.07293)
 material = ExtResource("84_iiuq8")
 
+[node name="CSGMesh3D" parent="Level/Perimiter/Walls" instance=ExtResource("108_3v632")]
+transform = Transform3D(-2.70695e-07, 0, 1, 0, 1, 0, -6.19278, 0, -4.37114e-08, 74.38, 0.044, 30.479)
+
+[node name="CSGMesh3D10" parent="Level/Perimiter/Walls" instance=ExtResource("108_3v632")]
+transform = Transform3D(-2.70695e-07, 0, 1, 0, 1, 0, -6.19278, 0, -4.37114e-08, 60.7212, 0.044, 91.4466)
+
+[node name="CSGMesh3D12" parent="Level/Perimiter/Walls" instance=ExtResource("108_3v632")]
+transform = Transform3D(-2.70695e-07, 0, 1, 0, 1, 0, -6.19278, 0, -4.37114e-08, -46.1851, 0.044, 92.375)
+
+[node name="CSGMesh3D14" parent="Level/Perimiter/Walls" instance=ExtResource("108_3v632")]
+transform = Transform3D(-8.11454e-08, 0, 1, 0, 1, 0, -1.85639, 0, -4.37114e-08, -49.5579, 0.044, 62.4393)
+
+[node name="CSGMesh3D17" parent="Level/Perimiter/Walls" instance=ExtResource("108_3v632")]
+transform = Transform3D(-2.10214e-08, 0, 1, 0, 1, 0, -0.480913, 0, -4.37114e-08, -95.9026, 0.044, 65.6647)
+
+[node name="CSGMesh3D27" parent="Level/Perimiter/Walls" instance=ExtResource("108_3v632")]
+transform = Transform3D(-0.410656, 0, -8.74228e-08, 0, 1, 0, 3.59007e-08, 0, -1, -47.1666, -0.0634753, 49.8478)
+
+[node name="CSGMesh3D22" parent="Level/Perimiter/Walls" instance=ExtResource("108_3v632")]
+transform = Transform3D(-2.2788e-08, 0, 1, 0, 1, 0, -0.521329, 0, -4.37114e-08, -141.162, 0.044, 8.19699)
+
+[node name="CSGMesh3D23" parent="Level/Perimiter/Walls" instance=ExtResource("108_3v632")]
+transform = Transform3D(-3.84121e-08, 0, 1, 0, 1, 0, -0.878767, 0, -4.37114e-08, -117.798, 0.044, 7.48081)
+
+[node name="CSGMesh3D26" parent="Level/Perimiter/Walls" instance=ExtResource("108_3v632")]
+transform = Transform3D(-4.50967e-08, 0, 1, 0, 1, 0, -1.03169, 0, -4.37114e-08, -79.007, 0.044, 8.91803)
+
+[node name="CSGMesh3D18" parent="Level/Perimiter/Walls" instance=ExtResource("108_3v632")]
+transform = Transform3D(-9.19417e-08, 0, 1, 0, 1, 0, -2.10338, 0, -4.37114e-08, -129.918, 0.044, 56.0143)
+
+[node name="CSGMesh3D15" parent="Level/Perimiter/Walls" instance=ExtResource("108_3v632")]
+transform = Transform3D(4.70777, 0, 0, 0, 1, 0, 0, 0, 1, -81.8125, 0.044, 67.6186)
+
+[node name="CSGMesh3D16" parent="Level/Perimiter/Walls" instance=ExtResource("108_3v632")]
+transform = Transform3D(3.44948, 0, 0, 0, 1, 0, 0, 0, 1, -119.328, 0.044, 62.6291)
+
+[node name="CSGMesh3D21" parent="Level/Perimiter/Walls" instance=ExtResource("108_3v632")]
+transform = Transform3D(2.48319, 0, 0, 0, 1, 0, 0, 0, 1, -134.609, 0.0439962, 9.92698)
+
+[node name="CSGMesh3D24" parent="Level/Perimiter/Walls" instance=ExtResource("108_3v632")]
+transform = Transform3D(3.96305, 0, 0, 0, 1, 0, 0, 0, 1, -105.492, 0.0439962, 1.62349)
+
+[node name="CSGMesh3D25" parent="Level/Perimiter/Walls" instance=ExtResource("108_3v632")]
+transform = Transform3D(3.32614, 0, 0, 0, 1, 0, 0, 0, 1, -68.9623, 0.0439962, 12.0298)
+
+[node name="CSGMesh3D19" parent="Level/Perimiter/Walls" instance=ExtResource("108_3v632")]
+transform = Transform3D(3.44948, 0, 0, 0, 1, 0, 0, 0, 1, -153.455, 9.60979, 42.1507)
+
+[node name="CSGMesh3D20" parent="Level/Perimiter/Walls" instance=ExtResource("108_3v632")]
+transform = Transform3D(3.44948, 0, 0, 0, 1, 0, 0, 0, 1, -164.655, 9.60979, 4.50653)
+
+[node name="CSGMesh3D13" parent="Level/Perimiter/Walls" instance=ExtResource("108_3v632")]
+transform = Transform3D(-1.37756e-07, 0, 1, 0, 1, 0, -3.15148, 0, -4.37114e-08, -46.1851, 0.044, 2.28894)
+
+[node name="CSGMesh3D28" parent="Level/Perimiter/Walls" instance=ExtResource("108_3v632")]
+transform = Transform3D(-1.79223e-07, 0, 1, 0, 1, 0, -4.10014, 0, -4.37114e-08, -49.3493, 0.044, 37.1296)
+
+[node name="CSGBox3D14" type="CSGBox3D" parent="Level/Perimiter/Walls/CSGMesh3D28"]
+transform = Transform3D(0.763344, 0, 0, 0, 1, 0, 1.32161e-12, 0, 1, -0.030508, 10.3191, 0)
+operation = 2
+size = Vector3(1.96802, 21.6382, 1)
+
+[node name="CSGMesh3D11" parent="Level/Perimiter/Walls" instance=ExtResource("108_3v632")]
+transform = Transform3D(-10.9524, 0, 8.74228e-08, 0, 1, 0, -9.57489e-07, 0, -1, 27.2128, 0.044, 109.05)
+
+[node name="CSGMesh3D3" parent="Level/Perimiter/Walls" instance=ExtResource("108_3v632")]
+transform = Transform3D(-1.85356e-08, 0, 1, 0, 1, 0, -0.424045, 0, -4.37114e-08, 53.031, 0.044, -12.573)
+
+[node name="CSGMesh3D5" parent="Level/Perimiter/Walls" instance=ExtResource("108_3v632")]
+transform = Transform3D(-9.13828e-08, 0, 1, 0, 1, 0, -2.0906, 0, -4.37114e-08, 48.298, 0.044, -19.167)
+
+[node name="CSGMesh3D7" parent="Level/Perimiter/Walls" instance=ExtResource("108_3v632")]
+transform = Transform3D(-6.11264e-08, 0, 1, 0, 1, 0, -1.39841, 0, -4.37114e-08, 18.4927, 0.044, -22.669)
+
+[node name="CSGMesh3D2" parent="Level/Perimiter/Walls" instance=ExtResource("108_3v632")]
+transform = Transform3D(2.28353, 0, 0, 0, 1, 0, 0, 0, 1, 59.8572, 0.0440753, -11.3445)
+
+[node name="CSGMesh3D9" parent="Level/Perimiter/Walls" instance=ExtResource("108_3v632")]
+transform = Transform3D(1.35594, 0, 0, 0, 1, 0, 0, 0, 1, 64.9119, 0.0440753, 49.4448)
+
+[node name="CSGMesh3D4" parent="Level/Perimiter/Walls" instance=ExtResource("108_3v632")]
+transform = Transform3D(0.500812, 0, 0, 0, 1, 0, 0, 0, 1, 49.4952, 0.0440753, -12.6848)
+
+[node name="CSGMesh3D6" parent="Level/Perimiter/Walls" instance=ExtResource("108_3v632")]
+transform = Transform3D(3.06689, 0, 0, 0, 1, 0, 0, 0, 1, 27.2074, 0.0440753, -32.1394)
+
+[node name="CSGMesh3D8" parent="Level/Perimiter/Walls" instance=ExtResource("108_3v632")]
+transform = Transform3D(6.52361, 0, 0, 0, 1, 0, 0, 0, 1, -26.09, 0.0440753, -18.3946)
+
 [node name="NavMeshBlockers" type="Node" parent="Level/Perimiter"]
 
 [node name="Blocker1" type="CSGBox3D" parent="Level/Perimiter/NavMeshBlockers"]
 transform = Transform3D(0.999862, 1.49012e-08, 0.0165974, -1.49012e-08, 1, 0, -0.0165974, 0, 0.999862, 26.2538, 10.0833, 64.5157)
-visible = false
 size = Vector3(0.5, 10, 0.5)
 material = ExtResource("16_e7mvx")
 
 [node name="Blocker2" type="CSGBox3D" parent="Level/Perimiter/NavMeshBlockers"]
 transform = Transform3D(0.999862, 1.49012e-08, 0.0165974, -1.49012e-08, 1, 0, -0.0165974, 0, 0.999862, 33.1831, 10.0833, 64.1634)
-visible = false
 size = Vector3(0.5, 10, 0.5)
 material = ExtResource("16_e7mvx")
 
 [node name="Blocker3" type="CSGBox3D" parent="Level/Perimiter/NavMeshBlockers"]
-transform = Transform3D(0.999862, 1.49012e-08, 0.0165974, -1.49012e-08, 1, 0, -0.0165974, 0, 0.999862, 43.4514, 4.23618, 47.8423)
-visible = false
-size = Vector3(0.5, 10, 0.5)
+transform = Transform3D(0.999862, 1.49012e-08, 0.0165974, -1.49012e-08, 1, 0, -0.0165974, 0, 0.999862, 43.4514, 2.85581, 47.8423)
+size = Vector3(0.5, 7.23926, 0.5)
 material = ExtResource("16_e7mvx")
 
 [node name="Blocker4" type="CSGBox3D" parent="Level/Perimiter/NavMeshBlockers"]
 transform = Transform3D(0.999862, 1.49012e-08, 0.0165974, -1.49012e-08, 1, 0, -0.0165974, 0, 0.999862, 43.3804, 3.70686, 41.9027)
-visible = false
 size = Vector3(0.5, 10, 0.5)
 material = ExtResource("16_e7mvx")
 
 [node name="Blocker5" type="CSGBox3D" parent="Level/Perimiter/NavMeshBlockers"]
 transform = Transform3D(0.999862, 1.49012e-08, 0.0165974, -1.49012e-08, 1, 0, -0.0165974, 0, 0.999862, 43.4874, 0.144694, 30.523)
-visible = false
 size = Vector3(0.5, 10, 0.5)
 material = ExtResource("16_e7mvx")
 
 [node name="Blocker6" type="CSGBox3D" parent="Level/Perimiter/NavMeshBlockers"]
 transform = Transform3D(0.999862, 1.49012e-08, 0.0165974, -1.49012e-08, 1, 0, -0.0165974, 0, 0.999862, 43.4026, 0.396975, 24.4928)
-visible = false
 size = Vector3(0.5, 10, 0.5)
 material = ExtResource("16_e7mvx")
 
 [node name="Blocker7" type="CSGBox3D" parent="Level/Perimiter/NavMeshBlockers"]
 transform = Transform3D(0.999862, 1.49012e-08, 0.0165974, -1.49012e-08, 1, 0, -0.0165974, 0, 0.999862, 43.4965, 0.493338, 6.09266)
-visible = false
 size = Vector3(0.5, 10, 0.5)
 material = ExtResource("16_e7mvx")
 
 [node name="Blocker8" type="CSGBox3D" parent="Level/Perimiter/NavMeshBlockers"]
 transform = Transform3D(0.999862, 1.49012e-08, 0.0165974, -1.49012e-08, 1, 0, -0.0165974, 0, 0.999862, 43.3804, 0.493338, 0.0411879)
-visible = false
 size = Vector3(0.5, 10, 0.5)
 material = ExtResource("16_e7mvx")
 
 [node name="Blocker9" type="CSGBox3D" parent="Level/Perimiter/NavMeshBlockers"]
 transform = Transform3D(0.999862, 1.49012e-08, 0.0165974, -1.49012e-08, 1, 0, -0.0165974, 0, 0.999862, 45.2328, 0.493338, -8.63082)
-visible = false
 size = Vector3(0.5, 10, 0.5)
 material = ExtResource("16_e7mvx")
 
 [node name="Blocker10" type="CSGBox3D" parent="Level/Perimiter/NavMeshBlockers"]
 transform = Transform3D(0.999862, 1.49012e-08, 0.0165974, -1.49012e-08, 1, 0, -0.0165974, 0, 0.999862, 51.2601, 0.493338, -8.63367)
-visible = false
 size = Vector3(0.5, 10, 0.5)
 material = ExtResource("16_e7mvx")
 
 [node name="Blocker11" type="CSGBox3D" parent="Level/Perimiter/NavMeshBlockers"]
 transform = Transform3D(0.999862, 1.49012e-08, 0.0165974, -1.49012e-08, 1, 0, -0.0165974, 0, 0.999862, 22.7409, 3.76228, -12.2654)
-visible = false
 size = Vector3(0.5, 10, 0.5)
 material = ExtResource("16_e7mvx")
 
 [node name="Blocker12" type="CSGBox3D" parent="Level/Perimiter/NavMeshBlockers"]
 transform = Transform3D(0.999862, 1.49012e-08, 0.0165974, -1.49012e-08, 1, 0, -0.0165974, 0, 0.999862, 22.6454, 3.76228, -6.21616)
-visible = false
 size = Vector3(0.5, 10, 0.5)
 material = ExtResource("16_e7mvx")
 
 [node name="Blocker13" type="CSGBox3D" parent="Level/Perimiter/NavMeshBlockers"]
 transform = Transform3D(0.999862, 1.49012e-08, 0.0165974, -1.49012e-08, 1, 0, -0.0165974, 0, 0.999862, 22.8354, 3.76228, 13.0023)
-visible = false
 size = Vector3(0.5, 10, 0.5)
 material = ExtResource("16_e7mvx")
 
 [node name="Blocker14" type="CSGBox3D" parent="Level/Perimiter/NavMeshBlockers"]
-transform = Transform3D(0.999862, 1.49012e-08, 0.0165974, -1.49012e-08, 1, 0, -0.0165974, 0, 0.999862, 22.7318, 3.76228, 18.8978)
-visible = false
+transform = Transform3D(0.999862, 1.49012e-08, 0.0165974, -1.49012e-08, 1, 0, -0.0165974, 0, 0.999862, 23.1456, 3.76228, 18.8978)
 size = Vector3(0.5, 10, 0.5)
 material = ExtResource("16_e7mvx")
 
 [node name="Blocker15" type="CSGBox3D" parent="Level/Perimiter/NavMeshBlockers"]
 transform = Transform3D(0.999862, 1.49012e-08, 0.0165974, -1.49012e-08, 1, 0, -0.0165974, 0, 0.999862, 9.5851, 3.76228, 19.9341)
-visible = false
 size = Vector3(0.5, 10, 0.5)
 material = ExtResource("16_e7mvx")
 
 [node name="Blocker16" type="CSGBox3D" parent="Level/Perimiter/NavMeshBlockers"]
 transform = Transform3D(0.999862, 1.49012e-08, 0.0165974, -1.49012e-08, 1, 0, -0.0165974, 0, 0.999862, 3.56408, 3.76228, 19.9264)
-visible = false
 size = Vector3(0.5, 10, 0.5)
 material = ExtResource("16_e7mvx")
 
 [node name="Blocker17" type="CSGBox3D" parent="Level/Perimiter/NavMeshBlockers"]
 transform = Transform3D(0.999862, 1.49012e-08, 0.0165974, -1.49012e-08, 1, 0, -0.0165974, 0, 0.999862, -36.0014, 3.05745, 15.6004)
-visible = false
 size = Vector3(0.5, 8.59033, 0.5)
 material = ExtResource("16_e7mvx")
 
 [node name="Blocker18" type="CSGBox3D" parent="Level/Perimiter/NavMeshBlockers"]
 transform = Transform3D(0.999862, 1.49012e-08, 0.0165974, -1.49012e-08, 1, 0, -0.0165974, 0, 0.999862, -44.9032, 3.04445, 15.4983)
-visible = false
 size = Vector3(0.5, 8.56433, 0.5)
 material = ExtResource("16_e7mvx")
 
 [node name="Blocker19" type="CSGBox3D" parent="Level/Perimiter/NavMeshBlockers"]
 transform = Transform3D(0.999862, 1.49012e-08, 0.0165974, -1.49012e-08, 1, 0, -0.0165974, 0, 0.999862, -16.0235, 9.52147, 13.0893)
-visible = false
 size = Vector3(0.5, 10, 0.5)
 material = ExtResource("16_e7mvx")
 
 [node name="Blocker20" type="CSGBox3D" parent="Level/Perimiter/NavMeshBlockers"]
 transform = Transform3D(0.999862, 1.49012e-08, 0.0165974, -1.49012e-08, 1, 0, -0.0165974, 0, 0.999862, -15.285, 9.52147, 104.184)
-visible = false
 size = Vector3(0.5, 10, 0.5)
 material = ExtResource("16_e7mvx")
 
 [node name="Blocker21" type="CSGBox3D" parent="Level/Perimiter/NavMeshBlockers"]
 transform = Transform3D(0.999862, 1.49012e-08, 0.0165974, -1.49012e-08, 1, 0, -0.0165974, 0, 0.999862, -14.3041, 8.90088, 60.0106)
-visible = false
 size = Vector3(0.5, 10, 0.5)
 material = ExtResource("16_e7mvx")
 
 [node name="Blocker22" type="CSGBox3D" parent="Level/Perimiter/NavMeshBlockers"]
 transform = Transform3D(0.999862, 1.49012e-08, 0.0165974, -1.49012e-08, 1, 0, -0.0165974, 0, 0.999862, 54.9674, 6.4515, 73.4033)
-visible = false
 size = Vector3(0.5, 10, 0.5)
 material = ExtResource("16_e7mvx")
 
 [node name="Blocker23" type="CSGBox3D" parent="Level/Perimiter/NavMeshBlockers"]
 transform = Transform3D(0.999862, 1.49012e-08, 0.0165974, -1.49012e-08, 1, 0, -0.0165974, 0, 0.999862, 50.2734, 6.47837, 73.3086)
-visible = false
 size = Vector3(0.5, 10, 0.5)
 material = ExtResource("16_e7mvx")
 
 [node name="Blocker24" type="CSGBox3D" parent="Level/Perimiter/NavMeshBlockers"]
 transform = Transform3D(0.999862, 1.49012e-08, 0.0165974, -1.49012e-08, 1, 0, -0.0165974, 0, 0.999862, 55.7139, 8.53881, 95.5628)
-visible = false
 size = Vector3(0.5, 10, 0.5)
 material = ExtResource("16_e7mvx")
 
 [node name="Blocker25" type="CSGBox3D" parent="Level/Perimiter/NavMeshBlockers"]
-transform = Transform3D(0.999862, 1.49012e-08, 0.0165974, -1.49012e-08, 1, 0, -0.0165974, 0, 0.999862, -68.967, 10.4207, 49.5863)
-visible = false
+transform = Transform3D(0.999862, 1.49012e-08, 0.0165974, -1.49012e-08, 1, 0, -0.0165974, 0, 0.999862, -68.6919, 10.4207, 49.5863)
 size = Vector3(0.5, 10, 0.5)
 material = ExtResource("16_e7mvx")
 
 [node name="Blocker26" type="CSGBox3D" parent="Level/Perimiter/NavMeshBlockers"]
 transform = Transform3D(0.999862, 1.49012e-08, 0.0165974, -1.49012e-08, 1, 0, -0.0165974, 0, 0.999862, -52.4366, 3.09423, 46.7072)
-visible = false
 size = Vector3(0.5, 10, 0.5)
 material = ExtResource("16_e7mvx")
 
 [node name="Blocker27" type="CSGBox3D" parent="Level/Perimiter/NavMeshBlockers"]
 transform = Transform3D(0.999862, 1.49012e-08, 0.0165974, -1.49012e-08, 1, 0, -0.0165974, 0, 0.999862, -53.6605, 3.09423, 27.5245)
-visible = false
 size = Vector3(0.5, 10, 0.5)
 material = ExtResource("16_e7mvx")
 
 [node name="Blocker28" type="CSGBox3D" parent="Level/Perimiter/NavMeshBlockers"]
 transform = Transform3D(0.999862, 1.49012e-08, 0.0165974, -1.49012e-08, 1, 0, -0.0165974, 0, 0.999862, -59.5823, 3.09423, 27.5245)
-visible = false
 size = Vector3(0.5, 10, 0.5)
 material = ExtResource("16_e7mvx")
 
 [node name="Blocker29" type="CSGBox3D" parent="Level/Perimiter/NavMeshBlockers"]
 transform = Transform3D(0.999862, 1.49012e-08, 0.0165974, -1.49012e-08, 1, 0, -0.0165974, 0, 0.999862, -73.1701, 3.08289, 23.6843)
-visible = false
 size = Vector3(0.5, 10, 0.5)
 material = ExtResource("16_e7mvx")
 
 [node name="Blocker30" type="CSGBox3D" parent="Level/Perimiter/NavMeshBlockers"]
 transform = Transform3D(0.999862, 1.49012e-08, 0.0165974, -1.49012e-08, 1, 0, -0.0165974, 0, 0.999862, -73.1867, 3.08289, 20.8565)
-visible = false
 size = Vector3(0.5, 10, 0.5)
 material = ExtResource("16_e7mvx")
 
 [node name="Blocker31" type="CSGBox3D" parent="Level/Perimiter/NavMeshBlockers"]
-transform = Transform3D(0.999862, 1.49012e-08, 0.0165974, -1.49012e-08, 1, 0, -0.0165974, 0, 0.999862, -93.1589, 3.08289, 45.4807)
-visible = false
+transform = Transform3D(0.999862, 1.49012e-08, 0.0165974, -1.49012e-08, 1, 0, -0.0165974, 0, 0.999862, -92.878, 3.08289, 45.4807)
 size = Vector3(0.5, 10, 0.5)
 material = ExtResource("16_e7mvx")
 
 [node name="Blocker32" type="CSGBox3D" parent="Level/Perimiter/NavMeshBlockers"]
-transform = Transform3D(0.999862, 1.49012e-08, 0.0165974, -1.49012e-08, 1, 0, -0.0165974, 0, 0.999862, -113.972, 3.08289, 5.81151)
-visible = false
-size = Vector3(0.5, 10, 0.5)
-material = ExtResource("16_e7mvx")
-
-[node name="Blocker44" type="CSGBox3D" parent="Level/Perimiter/NavMeshBlockers"]
-transform = Transform3D(0.999862, 1.49012e-08, 0.0165974, -1.49012e-08, 1, 0, -0.0165974, 0, 0.999862, -113.972, 3.08289, 8.82171)
-visible = false
+transform = Transform3D(0.999862, 1.49012e-08, 0.0165974, -1.49012e-08, 1, 0, -0.0165974, 0, 0.999862, -114.799, 7.48234, 20.0471)
 size = Vector3(0.5, 10, 0.5)
 material = ExtResource("16_e7mvx")
 
 [node name="Blocker33" type="CSGBox3D" parent="Level/Perimiter/NavMeshBlockers"]
 transform = Transform3D(0.999862, 1.49012e-08, 0.0165974, -1.49012e-08, 1, 0, -0.0165974, 0, 0.999862, -123.959, 4.49475, 5.45666)
-visible = false
 size = Vector3(0.5, 4.41943, 0.5)
 material = ExtResource("16_e7mvx")
 
 [node name="Blocker34" type="CSGBox3D" parent="Level/Perimiter/NavMeshBlockers"]
 transform = Transform3D(0.999862, 1.49012e-08, 0.0165974, -1.49012e-08, 1, 0, -0.0165974, 0, 0.999862, -134.331, 8.50197, 6.84693)
-visible = false
 size = Vector3(0.5, 4.41943, 0.5)
 material = ExtResource("16_e7mvx")
 
 [node name="Blocker35" type="CSGBox3D" parent="Level/Perimiter/NavMeshBlockers"]
 transform = Transform3D(0.999862, 1.49012e-08, 0.0165974, -1.49012e-08, 1, 0, -0.0165974, 0, 0.999862, -120.839, 15.7669, 6.78038)
-visible = false
 size = Vector3(0.5, 4.93091, 0.5)
 material = ExtResource("16_e7mvx")
 
 [node name="Blocker36" type="CSGBox3D" parent="Level/Perimiter/NavMeshBlockers"]
-transform = Transform3D(0.999862, 1.49012e-08, 0.0165974, -1.49012e-08, 1, 0, -0.0165974, 0, 0.999862, -141.342, 23.9038, 20.027)
-visible = false
+transform = Transform3D(0.999862, 1.49012e-08, 0.0165974, -1.49012e-08, 1, 0, -0.0165974, 0, 0.999862, -141.067, 23.9038, 23.4589)
 size = Vector3(0.5, 6.53668, 0.5)
 material = ExtResource("16_e7mvx")
 
 [node name="Blocker37" type="CSGBox3D" parent="Level/Perimiter/NavMeshBlockers"]
-transform = Transform3D(0.999862, 1.49012e-08, 0.0165974, -1.49012e-08, 1, 0, -0.0165974, 0, 0.999862, -141.342, 23.9038, 27.197)
-visible = false
+transform = Transform3D(0.999862, 1.49012e-08, 0.0165974, -1.49012e-08, 1, 0, -0.0165974, 0, 0.999862, -135.313, 21.7173, 15.8254)
 size = Vector3(0.5, 6.53668, 0.5)
 material = ExtResource("16_e7mvx")
 
 [node name="Blocker38" type="CSGBox3D" parent="Level/Perimiter/NavMeshBlockers"]
-transform = Transform3D(0.999862, 1.49012e-08, 0.0165974, -1.49012e-08, 1, 0, -0.0165974, 0, 0.999862, -161.815, 23.9038, 25.1015)
-visible = false
+transform = Transform3D(0.999862, 1.49012e-08, 0.0165974, -1.49012e-08, 1, 0, -0.0165974, 0, 0.999862, -161.439, 23.9038, 25.1015)
 size = Vector3(0.5, 6.53668, 0.5)
 material = ExtResource("16_e7mvx")
 
 [node name="Blocker39" type="CSGBox3D" parent="Level/Perimiter/NavMeshBlockers"]
 transform = Transform3D(0.999862, 1.49012e-08, 0.0165974, -1.49012e-08, 1, 0, -0.0165974, 0, 0.999862, -158.796, 23.9038, 25.1015)
-visible = false
 size = Vector3(0.5, 6.53668, 0.5)
 material = ExtResource("16_e7mvx")
 
 [node name="Blocker40" type="CSGBox3D" parent="Level/Perimiter/NavMeshBlockers"]
-transform = Transform3D(0.999862, 1.49012e-08, 0.0165974, -1.49012e-08, 1, 0, -0.0165974, 0, 0.999862, -158.796, 31.3631, 37.6866)
-visible = false
+transform = Transform3D(0.999862, 1.49012e-08, 0.0165974, -1.49012e-08, 1, 0, -0.0165974, 0, 0.999862, -158.579, 31.3631, 37.6866)
 size = Vector3(0.5, 6.53668, 0.5)
 material = ExtResource("16_e7mvx")
 
 [node name="Blocker41" type="CSGBox3D" parent="Level/Perimiter/NavMeshBlockers"]
-transform = Transform3D(0.999862, 1.49012e-08, 0.0165974, -1.49012e-08, 1, 0, -0.0165974, 0, 0.999862, -147.731, 30.2343, 24.5012)
-visible = false
-size = Vector3(0.5, 4.27896, 0.5)
-material = ExtResource("16_e7mvx")
-
-[node name="Blocker43" type="CSGBox3D" parent="Level/Perimiter/NavMeshBlockers"]
-transform = Transform3D(0.999862, 1.49012e-08, 0.0165974, -1.49012e-08, 1, 0, -0.0165974, 0, 0.999862, -147.731, 34.9036, 16.6644)
-visible = false
+transform = Transform3D(0.999862, 1.49012e-08, 0.0165974, -1.49012e-08, 1, 0, -0.0165974, 0, 0.999862, -147.731, 30.2343, 24.6419)
 size = Vector3(0.5, 4.27896, 0.5)
 material = ExtResource("16_e7mvx")
 
 [node name="Blocker42" type="CSGBox3D" parent="Level/Perimiter/NavMeshBlockers"]
-transform = Transform3D(0.999862, 1.49012e-08, 0.0165974, -1.49012e-08, 1, 0, -0.0165974, 0, 0.999862, -150.732, 30.2343, 24.5012)
-visible = false
+transform = Transform3D(0.999862, 1.49012e-08, 0.0165974, -1.49012e-08, 1, 0, -0.0165974, 0, 0.999862, -150.487, 30.2343, 24.6419)
 size = Vector3(0.5, 4.27896, 0.5)
+material = ExtResource("16_e7mvx")
+
+[node name="Blocker43" type="CSGBox3D" parent="Level/Perimiter/NavMeshBlockers"]
+transform = Transform3D(0.999862, 1.49012e-08, 0.0165974, -1.49012e-08, 1, 0, -0.0165974, 0, 0.999862, -147.486, 34.9036, 16.6644)
+size = Vector3(0.5, 4.27896, 0.5)
+material = ExtResource("16_e7mvx")
+
+[node name="Blocker44" type="CSGBox3D" parent="Level/Perimiter/NavMeshBlockers"]
+transform = Transform3D(0.999862, 1.49012e-08, 0.0165974, -1.49012e-08, 1, 0, -0.0165974, 0, 0.999862, -96.7263, 7.48234, 31.279)
+size = Vector3(0.5, 10, 0.5)
+material = ExtResource("16_e7mvx")
+
+[node name="Blocker45" type="CSGBox3D" parent="Level/Perimiter/NavMeshBlockers"]
+transform = Transform3D(0.999862, 1.49012e-08, 0.0165974, -1.49012e-08, 1, 0, -0.0165974, 0, 0.999862, -114.315, 20.3011, 13.6977)
+size = Vector3(0.5, 3.55573, 0.5)
+material = ExtResource("16_e7mvx")
+
+[node name="Blocker46" type="CSGBox3D" parent="Level/Perimiter/NavMeshBlockers"]
+transform = Transform3D(0.999862, 1.49012e-08, 0.0165974, -1.49012e-08, 1, 0, -0.0165974, 0, 0.999862, -69.0212, 14.4034, 60.145)
+size = Vector3(0.5, 4.82364, 0.5)
+material = ExtResource("16_e7mvx")
+
+[node name="Blocker47" type="CSGBox3D" parent="Level/Perimiter/NavMeshBlockers"]
+transform = Transform3D(0.999862, 1.49012e-08, 0.0165974, -1.49012e-08, 1, 0, -0.0165974, 0, 0.999862, -65.8796, 14.5099, 61.0445)
+size = Vector3(0.5, 5.03665, 0.5)
 material = ExtResource("16_e7mvx")
 
 [node name="ZoneGate" parent="Level" instance=ExtResource("36_a55l8")]
@@ -5673,16 +5857,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.8315, 3.95133, -16.6259)
 end_position = Vector3(3.06025, 3.35686, -0.434036)
 
 [node name="NavigationLink3D24" type="NavigationLink3D" parent="Level/NavigationLinks/Zone1/Bidirectional"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.9848, 1.52511, -4.12056)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.9848, 1.52511, -4.68476)
 end_position = Vector3(3.735, 2.392, 0.181)
-
-[node name="NavigationLink3D25" type="NavigationLink3D" parent="Level/NavigationLinks/Zone1/Bidirectional"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.9848, 1.52511, -0.7103)
-end_position = Vector3(3.735, 2.392, -0.054)
-
-[node name="NavigationLink3D26" type="NavigationLink3D" parent="Level/NavigationLinks/Zone1/Bidirectional"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.1893, 3.41694, -0.7103)
-end_position = Vector3(-0.065, 0.042, -3.509)
 
 [node name="NavigationLink3D27" type="NavigationLink3D" parent="Level/NavigationLinks/Zone1/Bidirectional"]
 transform = Transform3D(-0.174748, 0, 0.984613, 0, 1, 0, -0.984613, 0, -0.174748, 25.6558, 1.50877, 6.82946)
@@ -5698,6 +5874,10 @@ end_position = Vector3(0.255, 2.472, -5.569)
 
 [node name="NavigationLink3D30" type="NavigationLink3D" parent="Level/NavigationLinks/Zone1/Bidirectional"]
 transform = Transform3D(-0.174748, 0, 0.984613, 0, 1, 0, -0.984613, 0, -0.174748, 19.9367, 6.39019, 6.95193)
+end_position = Vector3(2.04, 1.527, 1.211)
+
+[node name="NavigationLink3D200" type="NavigationLink3D" parent="Level/NavigationLinks/Zone1/Bidirectional"]
+transform = Transform3D(-0.174748, 0, 0.984613, 0, 1, 0, -0.984613, 0, -0.174748, 19.8361, 4.97944, 9.54798)
 end_position = Vector3(2.04, 1.527, 1.211)
 
 [node name="NavigationLink3D31" type="NavigationLink3D" parent="Level/NavigationLinks/Zone1/Bidirectional"]
@@ -6173,8 +6353,8 @@ transform = Transform3D(-0.796255, 0, 0.604961, 0, 1, 0, -0.604961, 0, -0.796255
 end_position = Vector3(2.90873, 3.17274, -2.46278)
 
 [node name="NavigationLink3D149" type="NavigationLink3D" parent="Level/NavigationLinks/Zone1/Bidirectional"]
-transform = Transform3D(-0.796255, 0, 0.604961, 0, 1, 0, -0.604961, 0, -0.796255, 1.5261, 10.0579, 75.214)
-end_position = Vector3(1.86515, 0.427664, -1.34203)
+transform = Transform3D(-0.796255, 0, 0.604961, 0, 1, 0, -0.604961, 0, -0.796255, 1.90643, 9.0908, 74.9976)
+end_position = Vector3(2.00838, 1.02168, -1.55561)
 
 [node name="NavigationLink3D150" type="NavigationLink3D" parent="Level/NavigationLinks/Zone1/Bidirectional"]
 transform = Transform3D(-0.796255, 0, 0.604961, 0, 1, 0, -0.604961, 0, -0.796255, -5.6961, 7.12397, 72.303)
@@ -6234,7 +6414,7 @@ end_position = Vector3(3.391, -5.51, -0.03)
 
 [node name="NavigationLink3D164" type="NavigationLink3D" parent="Level/NavigationLinks/Zone1/Bidirectional"]
 transform = Transform3D(-0.796255, 0, 0.604961, 0, 1, 0, -0.604961, 0, -0.796255, -39.0358, 8.36506, 75.5534)
-end_position = Vector3(2.385, 2.902, 5.922)
+end_position = Vector3(5.681, 2.806, 3.554)
 
 [node name="NavigationLink3D165" type="NavigationLink3D" parent="Level/NavigationLinks/Zone1/Bidirectional"]
 transform = Transform3D(-0.796255, 0, 0.604961, 0, 1, 0, -0.604961, 0, -0.796255, -42.9076, 8.36506, 63.6302)
@@ -6249,7 +6429,7 @@ transform = Transform3D(-0.796255, 0, 0.604961, 0, 1, 0, -0.604961, 0, -0.796255
 end_position = Vector3(-1.593, 1.62, -5.218)
 
 [node name="NavigationLink3D168" type="NavigationLink3D" parent="Level/NavigationLinks/Zone1/Bidirectional"]
-transform = Transform3D(-0.796255, 0, 0.604961, 0, 1, 0, -0.604961, 0, -0.796255, -33.0207, 8.36506, 64.5451)
+transform = Transform3D(-0.796255, 0, 0.604961, 0, 1, 0, -0.604961, 0, -0.796255, -36.2731, 8.36506, 64.5451)
 end_position = Vector3(0.973, 3.018, -3.991)
 
 [node name="NavigationLink3D169" type="NavigationLink3D" parent="Level/NavigationLinks/Zone1/Bidirectional"]
@@ -6302,7 +6482,15 @@ end_position = Vector3(3.295, 2.212, -1.062)
 
 [node name="NavigationLink3D181" type="NavigationLink3D" parent="Level/NavigationLinks/Zone1/Bidirectional"]
 transform = Transform3D(-0.796255, 0, 0.604961, 0, 1, 0, -0.604961, 0, -0.796255, 22.0736, 7.39437, 55.6827)
-end_position = Vector3(3.749, 1.462, 2.483)
+end_position = Vector3(1.244, 1.437, 4.253)
+
+[node name="NavigationLink3D202" type="NavigationLink3D" parent="Level/NavigationLinks/Zone1/Bidirectional"]
+transform = Transform3D(-0.796255, 0, 0.604961, 0, 1, 0, -0.604961, 0, -0.796255, 23.2675, 8.68585, 50.9592)
+end_position = Vector3(-1.846, 1.112, 0.563)
+
+[node name="NavigationLink3D203" type="NavigationLink3D" parent="Level/NavigationLinks/Zone1/Bidirectional"]
+transform = Transform3D(-0.796255, 0, 0.604961, 0, 1, 0, -0.604961, 0, -0.796255, 25.0231, 7.19554, 54.4518)
+end_position = Vector3(-7.431, 0.032, 5.463)
 
 [node name="NavigationLink3D182" type="NavigationLink3D" parent="Level/NavigationLinks/Zone1/Bidirectional"]
 transform = Transform3D(-0.796255, 0, 0.604961, 0, 1, 0, -0.604961, 0, -0.796255, 6.00729, 9.59299, 52.7389)
@@ -6311,6 +6499,10 @@ end_position = Vector3(1.228, -2.455, -8.269)
 [node name="NavigationLink3D183" type="NavigationLink3D" parent="Level/NavigationLinks/Zone1/Bidirectional"]
 transform = Transform3D(-0.796255, 0, 0.604961, 0, 1, 0, -0.604961, 0, -0.796255, 6.00729, 9.59299, 52.7389)
 end_position = Vector3(3.713, 3.72, -2.604)
+
+[node name="NavigationLink3D204" type="NavigationLink3D" parent="Level/NavigationLinks/Zone1/Bidirectional"]
+transform = Transform3D(-0.796255, 0, 0.604961, 0, 1, 0, -0.604961, 0, -0.796255, -1.379, 13.9799, 55.5096)
+end_position = Vector3(1.77445, 0.0730619, -3.78098)
 
 [node name="NavigationLink3D184" type="NavigationLink3D" parent="Level/NavigationLinks/Zone1/Bidirectional"]
 transform = Transform3D(-0.796255, 0, 0.604961, 0, 1, 0, -0.604961, 0, -0.796255, -8.51162, 7.27791, 54.608)
@@ -6376,6 +6568,10 @@ end_position = Vector3(1.907, 0.316, -3.545)
 transform = Transform3D(-0.796255, 0, 0.604961, 0, 1, 0, -0.604961, 0, -0.796255, -20.2695, 15.2433, -5.62157)
 end_position = Vector3(-7.511, -4.725, 4.106)
 
+[node name="NavigationLink3D201" type="NavigationLink3D" parent="Level/NavigationLinks/Zone1/Bidirectional"]
+transform = Transform3D(-0.992034, 0, -0.125973, 0, 1, 0, 0.125973, 0, -0.992034, 10.3776, 0.883761, 60.1296)
+end_position = Vector3(-3.529, 3.479, -1.359)
+
 [node name="Jumps" type="Node" parent="Level/NavigationLinks/Zone1"]
 
 [node name="NavigationLink3D" type="NavigationLink3D" parent="Level/NavigationLinks/Zone1/Jumps"]
@@ -6384,7 +6580,7 @@ bidirectional = false
 end_position = Vector3(5.879, 5.65, 1.824)
 
 [node name="NavigationLink3D2" type="NavigationLink3D" parent="Level/NavigationLinks/Zone1/Jumps"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5123, -1.43051e-06, 43.9499)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.4402, -1.43051e-06, 43.9499)
 bidirectional = false
 end_position = Vector3(5.18391, 5.61129, -1.01954)
 
@@ -6436,9 +6632,9 @@ bidirectional = false
 end_position = Vector3(-2.552, -6.974, 0.7)
 
 [node name="NavigationLink3D5" type="NavigationLink3D" parent="Level/NavigationLinks/Zone1/Falls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.8023, 6.50762, 47.6651)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.7849, 6.50762, 46.968)
 bidirectional = false
-end_position = Vector3(-3.113, -6.487, 0.708)
+end_position = Vector3(0.447, -6.429, 1.512)
 
 [node name="NavigationLink3D6" type="NavigationLink3D" parent="Level/NavigationLinks/Zone1/Falls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.4437, 7.27909, 51.7123)
@@ -6458,6 +6654,571 @@ end_position = Vector3(3.309, -9.203, -2.785)
 [node name="Zone2" type="Node" parent="Level/NavigationLinks"]
 
 [node name="Bidirectional" type="Node" parent="Level/NavigationLinks/Zone2"]
+
+[node name="NavigationLink3D" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61.8464, 0.16688, 43.5111)
+navigation_layers = 2
+end_position = Vector3(-1.93419, 2.23055, 1.59355)
+
+[node name="NavigationLink3D2" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -66.7753, 1.73708, 44.8995)
+navigation_layers = 2
+end_position = Vector3(-2.179, 1.301, -0.196)
+
+[node name="NavigationLink3D3" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70.2842, 2.87142, 45.2925)
+navigation_layers = 2
+end_position = Vector3(-2.954, -0.544, 0.304)
+
+[node name="NavigationLink3D4" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75.3627, 1.7062, 45.2925)
+navigation_layers = 2
+end_position = Vector3(-2.954, -1.564, 0.304)
+
+[node name="NavigationLink3D5" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.9231, 2.90625, 44.3676)
+navigation_layers = 2
+end_position = Vector3(-0.614, -2.699, -1.781)
+
+[node name="NavigationLink3D6" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.6775, 2.90625, 45.6115)
+navigation_layers = 2
+end_position = Vector3(-2.249, 3.831, -1.781)
+
+[node name="NavigationLink3D7" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61.8581, 5.23656, 48.0834)
+navigation_layers = 2
+end_position = Vector3(-1.659, 2.721, 2.344)
+
+[node name="NavigationLink3D8" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.9472, 3.766, 48.0834)
+navigation_layers = 2
+end_position = Vector3(2.926, -3.654, -2.541)
+
+[node name="NavigationLink3D9" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -71.2389, 7.83931, 47.6247)
+navigation_layers = 2
+end_position = Vector3(-0.656, -1.058, -4.267)
+
+[node name="NavigationLink3D10" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.231, 7.83931, 47.6247)
+navigation_layers = 2
+end_position = Vector3(1.422, 1.923, -6.269)
+
+[node name="NavigationLink3D11" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -67.4609, 7.83931, 55.8129)
+navigation_layers = 2
+end_position = Vector3(0.736, 4.511, 2.353)
+
+[node name="NavigationLink3D12" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64.1754, 10.9292, 57.9378)
+navigation_layers = 2
+end_position = Vector3(-4.623, 1.783, 0.676)
+
+[node name="NavigationLink3D13" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64.1754, 10.9292, 57.9378)
+navigation_layers = 2
+end_position = Vector3(5.861, 1.395, -4.661)
+
+[node name="NavigationLink3D14" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -82.0945, 18.0679, 57.9378)
+navigation_layers = 2
+end_position = Vector3(2.259, 4.796, 0.825)
+
+[node name="NavigationLink3D15" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -78.935, 18.0679, 59.4426)
+navigation_layers = 2
+end_position = Vector3(-0.131, -1.996, 2.635)
+
+[node name="NavigationLink3D16" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -78.935, 16.0851, 62.0457)
+navigation_layers = 2
+end_position = Vector3(-0.441, -3.726, 1.975)
+
+[node name="NavigationLink3D17" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.9122, 16.0851, 59.0153)
+navigation_layers = 2
+end_position = Vector3(-0.816, 1.459, 2.895)
+
+[node name="NavigationLink3D18" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.9122, 16.0851, 59.0153)
+navigation_layers = 2
+end_position = Vector3(3.016, 1.494, 2.835)
+
+[node name="NavigationLink3D19" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64.1657, 12.346, 61.2974)
+navigation_layers = 2
+end_position = Vector3(3.55, 2.089, -4.004)
+
+[node name="NavigationLink3D20" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64.1657, 12.346, 62.4998)
+navigation_layers = 2
+end_position = Vector3(2.83, 2.249, -1.049)
+
+[node name="NavigationLink3D21" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53.7136, 12.346, 64.338)
+navigation_layers = 2
+end_position = Vector3(-3.375, 2.243, -2.886)
+
+[node name="NavigationLink3D22" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55.8878, 12.346, 54.3612)
+navigation_layers = 2
+end_position = Vector3(-1.346, 2.078, 3.127)
+
+[node name="NavigationLink3D23" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63.4211, 7.82275, 63.9367)
+navigation_layers = 2
+end_position = Vector3(1.909, 2.071, 2.412)
+
+[node name="NavigationLink3D24" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76.6775, 7.82275, 54.7)
+navigation_layers = 2
+end_position = Vector3(-1.765, 4.52, 3.373)
+
+[node name="NavigationLink3D25" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -81.9474, 7.82275, 61.2791)
+navigation_layers = 2
+end_position = Vector3(-1.565, 4.46, 3.003)
+
+[node name="NavigationLink3D26" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -92.4439, 7.82275, 61.2791)
+navigation_layers = 2
+end_position = Vector3(-1.825, 3.131, -0.853)
+
+[node name="NavigationLink3D27" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -88.0419, 12.2717, 64.4877)
+navigation_layers = 2
+end_position = Vector3(-5.976, -1.292, -2.154)
+
+[node name="NavigationLink3D28" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -88.0419, 8.25133, 56.9229)
+navigation_layers = 2
+end_position = Vector3(-0.19, 0.827, -3.131)
+
+[node name="NavigationLink3D30" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.4514, 8.25133, 50.3106)
+navigation_layers = 2
+end_position = Vector3(-2.528, -2.396, 0.105)
+
+[node name="NavigationLink3D31" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76.7417, 5.76734, 50.3106)
+navigation_layers = 2
+end_position = Vector3(-0.238, -1.871, -1.973)
+
+[node name="NavigationLink3D32" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.3616, 7.90949, 50.3106)
+navigation_layers = 2
+end_position = Vector3(-11.038, -4.704, -0.789)
+
+[node name="NavigationLink3D33" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -77.2272, 5.8649, 50.3106)
+navigation_layers = 2
+end_position = Vector3(-4.31, -5.68, -0.4)
+
+[node name="NavigationLink3D34" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -77.2272, 4.16779, 47.9386)
+navigation_layers = 2
+end_position = Vector3(-3.29961, -4.05172, -1.73814)
+
+[node name="NavigationLink3D35" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -77.2272, 4.16779, 47.9386)
+navigation_layers = 2
+end_position = Vector3(-1.804, -2.16, 1.089)
+
+[node name="NavigationLink3D36" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -79.1525, 2.28426, 49.0899)
+navigation_layers = 2
+end_position = Vector3(-2.814, -2.074, -1.161)
+
+[node name="NavigationLink3D37" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -83.8623, 0.186565, 49.0899)
+navigation_layers = 2
+end_position = Vector3(-1.824, 2.931, -0.636)
+
+[node name="NavigationLink3D38" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -88.3771, 3.2415, 50.66)
+navigation_layers = 2
+end_position = Vector3(-7.233, 3.662, 0.242)
+
+[node name="NavigationLink3D39" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -88.3771, 3.2415, 49.0758)
+navigation_layers = 2
+end_position = Vector3(-7.233, -0.113, 0.242)
+
+[node name="NavigationLink3D40" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -88.3771, 3.2415, 48.3827)
+navigation_layers = 2
+end_position = Vector3(-2.773, -3.138, -0.108)
+
+[node name="NavigationLink3D41" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.5021, 6.87311, 48.6725)
+navigation_layers = 2
+end_position = Vector3(-2.773, 1.077, -0.108)
+
+[node name="NavigationLink3D42" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -96.095, 6.87311, 50.051)
+navigation_layers = 2
+end_position = Vector3(-0.027, 1.019, 3.174)
+
+[node name="NavigationLink3D43" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -98.5343, 8.01233, 51.2043)
+navigation_layers = 2
+end_position = Vector3(-2.722, -0.275, 4.187)
+
+[node name="NavigationLink3D44" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -98.5343, 5.08901, 55.8836)
+navigation_layers = 2
+end_position = Vector3(2.107, 2.854, 0.333)
+
+[node name="NavigationLink3D45" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -104.369, 5.08901, 55.8836)
+navigation_layers = 2
+end_position = Vector3(2.107, 2.594, 0.333)
+
+[node name="NavigationLink3D46" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -103.022, 7.64531, 59.8878)
+navigation_layers = 2
+end_position = Vector3(6.529, 0.221, -0.631)
+
+[node name="NavigationLink3D47" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -103.992, 7.64531, 59.8878)
+navigation_layers = 2
+end_position = Vector3(-6.917, 0.018, 1.147)
+
+[node name="NavigationLink3D48" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -98.1082, 8.03086, 49.3077)
+navigation_layers = 2
+end_position = Vector3(3.31338, 4.56559, -2.25618)
+
+[node name="NavigationLink3D49" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -101.84, 7.66334, 54.736)
+navigation_layers = 2
+end_position = Vector3(-3.899, 2.867, -1.432)
+
+[node name="NavigationLink3D50" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -111.744, 7.66334, 59.8877)
+navigation_layers = 2
+end_position = Vector3(2.83, 2.894, -6.787)
+
+[node name="NavigationLink3D51" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -116.89, 7.66334, 59.8877)
+navigation_layers = 2
+end_position = Vector3(-0.893, 3.01, -6.301)
+
+[node name="NavigationLink3D52" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -114.454, 5.10985, 57.7805)
+navigation_layers = 2
+end_position = Vector3(-0.149, 2.525, 2.964)
+
+[node name="NavigationLink3D53" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -122.681, 5.10985, 57.7805)
+navigation_layers = 2
+end_position = Vector3(-2.23, 2.742, 0.728)
+
+[node name="NavigationLink3D54" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124.66, 5.10985, 43.6658)
+navigation_layers = 2
+end_position = Vector3(-3.05988, 2.82998, 0.595478)
+
+[node name="NavigationLink3D55" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -123.468, 5.10985, 33.2304)
+navigation_layers = 2
+end_position = Vector3(-2.773, 2.846, -0.435)
+
+[node name="NavigationLink3D56" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -112.703, 5.10985, 31.3823)
+navigation_layers = 2
+end_position = Vector3(-0.407, 2.595, -1.977)
+
+[node name="NavigationLink3D57" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -99.7896, 5.10985, 31.1024)
+navigation_layers = 2
+end_position = Vector3(-0.118, 2.745, 1.96)
+
+[node name="NavigationLink3D58" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -126.426, 7.81442, 54.9851)
+navigation_layers = 2
+end_position = Vector3(5.804, 2.785, -1.662)
+
+[node name="NavigationLink3D59" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -127.239, 7.81442, 45.4454)
+navigation_layers = 2
+end_position = Vector3(7.00282, 2.7465, 2.72798)
+
+[node name="NavigationLink3D60" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -126.943, 7.81442, 39.8178)
+navigation_layers = 2
+end_position = Vector3(6.652, 2.635, -0.545)
+
+[node name="NavigationLink3D61" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -122.323, 7.81442, 29.8795)
+navigation_layers = 2
+end_position = Vector3(2.789, 2.668, 4.073)
+
+[node name="NavigationLink3D62" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -113.835, 7.81442, 29.2961)
+navigation_layers = 2
+end_position = Vector3(-2.209, 2.722, 4.954)
+
+[node name="NavigationLink3D63" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -109.527, 7.81442, 29.6147)
+navigation_layers = 2
+end_position = Vector3(-0.158, 2.76, 5.836)
+
+[node name="NavigationLink3D64" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100.229, 8.229, 35.8047)
+navigation_layers = 2
+end_position = Vector3(-6.267, 2.455, 0.234)
+
+[node name="NavigationLink3D65" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -99.8653, 8.229, 38.6965)
+navigation_layers = 2
+end_position = Vector3(-0.94, -3.05, 4.568)
+
+[node name="NavigationLink3D66" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -106.774, 10.474, 38.5174)
+navigation_layers = 2
+end_position = Vector3(-1.079, 2.789, 3.189)
+
+[node name="NavigationLink3D67" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -108.18, 10.474, 37.029)
+navigation_layers = 2
+end_position = Vector3(-2.335, 2.825, 1.266)
+
+[node name="NavigationLink3D68" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -109.053, 10.474, 49.614)
+navigation_layers = 2
+end_position = Vector3(-1.532, 2.847, -0.06)
+
+[node name="NavigationLink3D69" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -106.881, 10.474, 49.7728)
+navigation_layers = 2
+end_position = Vector3(0.102, 2.906, -2.625)
+
+[node name="NavigationLink3D70" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -118.551, 10.474, 50.4644)
+navigation_layers = 2
+end_position = Vector3(2.644, 2.888, -1.022)
+
+[node name="NavigationLink3D71" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -118.551, 10.474, 38.1721)
+navigation_layers = 2
+end_position = Vector3(2.829, 2.906, 0.321)
+
+[node name="NavigationLink3D72" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -119.926, 10.474, 36.3963)
+navigation_layers = 2
+end_position = Vector3(-5.406, 1.798, 2.169)
+
+[node name="NavigationLink3D73" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -120.071, 10.474, 35.1593)
+navigation_layers = 2
+end_position = Vector3(-4.592, 1.674, -0.934)
+
+[node name="NavigationLink3D74" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -118.202, 10.474, 33.6924)
+navigation_layers = 2
+end_position = Vector3(-2.25, 1.646, -7.475)
+
+[node name="NavigationLink3D75" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -107.352, 13.2965, 42.5091)
+navigation_layers = 2
+end_position = Vector3(-3.27533, 0.173397, -3.67591)
+
+[node name="NavigationLink3D76" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -107.547, 13.2965, 46.8561)
+navigation_layers = 2
+end_position = Vector3(-3.64246, 0.105848, 2.35771)
+
+[node name="NavigationLink3D77" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -119.066, 10.7346, 47.6907)
+navigation_layers = 2
+end_position = Vector3(0.104, -0.088, -8.009)
+
+[node name="NavigationLink3D78" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -119.066, 5.32906, 41.9952)
+navigation_layers = 2
+end_position = Vector3(-0.175, 2.575, -2.605)
+
+[node name="NavigationLink3D79" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -119.066, 5.32906, 31.8885)
+navigation_layers = 2
+end_position = Vector3(0.008, 2.616, 1.938)
+
+[node name="NavigationLink3D80" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -122.048, 7.71623, 29.6145)
+navigation_layers = 2
+end_position = Vector3(3.284, 0.163, 4.341)
+
+[node name="NavigationLink3D81" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -91.0684, 0.589529, 40.3395)
+navigation_layers = 2
+end_position = Vector3(-3.397, 1.554, -0.032)
+
+[node name="NavigationLink3D82" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.2466, 3.78606, 34.4945)
+navigation_layers = 2
+end_position = Vector3(-2.562, 1.244, -0.032)
+
+[node name="NavigationLink3D83" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -104.556, 3.78606, 24.9339)
+navigation_layers = 2
+end_position = Vector3(1.69, 1.5, 3.595)
+
+[node name="NavigationLink3D84" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -99.9427, 1.67734, 24.9653)
+navigation_layers = 2
+end_position = Vector3(1.275, 3.365, 2.895)
+
+[node name="NavigationLink3D85" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -105.244, 4.3379, 21.2635)
+navigation_layers = 2
+end_position = Vector3(1.421, -3.215, -2.029)
+
+[node name="NavigationLink3D86" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -105.244, 4.3379, 21.2635)
+navigation_layers = 2
+end_position = Vector3(1.088, -0.196, -4.252)
+
+[node name="NavigationLink3D87" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -105.244, 4.3379, 21.2635)
+navigation_layers = 2
+end_position = Vector3(-1.38, -2.344, -4.303)
+
+[node name="NavigationLink3D88" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -86.0964, 0.579938, 13.0277)
+navigation_layers = 2
+end_position = Vector3(2.52, 1.792, -0.828)
+
+[node name="NavigationLink3D89" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90.0073, 0.579938, 8.46173)
+navigation_layers = 2
+end_position = Vector3(2.416, 2.627, -0.247)
+
+[node name="NavigationLink3D90" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -99.0942, 1.20989, 8.52054)
+navigation_layers = 2
+end_position = Vector3(2.682, 4.113, -2.515)
+
+[node name="NavigationLink3D91" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -110.129, 1.20989, 8.52054)
+navigation_layers = 2
+end_position = Vector3(2.3578, 4.0791, -2.17005)
+
+[node name="NavigationLink3D92" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -110.129, 1.20989, 2.99195)
+navigation_layers = 2
+end_position = Vector3(0.268, 4.149, 2.685)
+
+[node name="NavigationLink3D93" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -102.016, 1.20989, 2.99195)
+navigation_layers = 2
+end_position = Vector3(0.268, 4.149, 2.685)
+
+[node name="NavigationLink3D94" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -115.841, 1.20989, 6.18843)
+navigation_layers = 2
+end_position = Vector3(2.57, 4.15, 0.467)
+
+[node name="NavigationLink3D95" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -120.198, 8.50273, 13.578)
+navigation_layers = 2
+end_position = Vector3(-1.76337, 2.43106, -2.20463)
+
+[node name="NavigationLink3D96" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -125.449, 12.4738, 11.5816)
+navigation_layers = 2
+end_position = Vector3(0.942, 2.459, 2.935)
+
+[node name="NavigationLink3D97" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -139.676, 18.8299, 13.1875)
+navigation_layers = 2
+end_position = Vector3(-1.942, 2.88, 1.421)
+
+[node name="NavigationLink3D98" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -139.676, 19.4018, 17.5801)
+navigation_layers = 2
+end_position = Vector3(-2.003, 2.353, 3.37)
+
+[node name="NavigationLink3D99" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -139.676, 21.9746, 27.7358)
+navigation_layers = 2
+end_position = Vector3(0.725, 1.447, 2.146)
+
+[node name="NavigationLink3D100" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -138.865, 22.9706, 29.9369)
+navigation_layers = 2
+end_position = Vector3(0.725, 1.897, 2.146)
+
+[node name="NavigationLink3D101" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -138.046, 24.6179, 33.0927)
+navigation_layers = 2
+end_position = Vector3(1.542, 1.865, 1.451)
+
+[node name="NavigationLink3D102" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -136.378, 26.3739, 34.8869)
+navigation_layers = 2
+end_position = Vector3(2.958, 0.395, 1.26)
+
+[node name="NavigationLink3D103" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -132.615, 26.5244, 36.4505)
+navigation_layers = 2
+end_position = Vector3(2.255, 2.863, 1.422)
+
+[node name="NavigationLink3D104" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -93.0439, 12.6319, 47.4696)
+navigation_layers = 2
+end_position = Vector3(1.479, 4.041, 5.629)
+
+[node name="NavigationLink3D105" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -136.967, 19.1885, 13.4677)
+navigation_layers = 2
+end_position = Vector3(3.589, 3.394, 0.663)
+
+[node name="NavigationLink3D106" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -133.967, 19.1885, 13.4677)
+navigation_layers = 2
+end_position = Vector3(2.316, 1.183, -0.418)
+
+[node name="NavigationLink3D107" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -132.855, 19.1885, 15.0077)
+navigation_layers = 2
+end_position = Vector3(2.752, 2.323, -1.843)
+
+[node name="NavigationLink3D108" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -141.123, 21.7417, 33.2147)
+navigation_layers = 2
+end_position = Vector3(2.802, 2.841, -1.389)
+
+[node name="NavigationLink3D109" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -146.238, 21.7417, 23.7419)
+navigation_layers = 2
+end_position = Vector3(-2.226, 1.89, -0.319)
+
+[node name="NavigationLink3D110" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -148.891, 23.4797, 23.2558)
+navigation_layers = 2
+end_position = Vector3(-1.953, 1.774, -0.087)
+
+[node name="NavigationLink3D111" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -151.155, 25.1877, 22.8598)
+navigation_layers = 2
+end_position = Vector3(-4.649, 0.039, -1.07)
+
+[node name="NavigationLink3D112" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -151.155, 25.1877, 22.8598)
+navigation_layers = 2
+end_position = Vector3(-1.569, 1.098, -6.656)
+
+[node name="NavigationLink3D113" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -151.155, 25.1877, 22.8598)
+navigation_layers = 2
+end_position = Vector3(3.982, 1.074, -6.397)
+
+[node name="NavigationLink3D29" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -93.6574, 10.9518, 60.3065)
+navigation_layers = 2
+end_position = Vector3(5.052, -1.958, -5.44)
 
 [node name="Jumps" type="Node" parent="Level/NavigationLinks/Zone2"]
 
@@ -6623,6 +7384,30 @@ omni_range = 9.84959
 
 [node name="OmniLight3D59" type="OmniLight3D" parent="Atmosphere/Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.4876, 5.32653, 29.7562)
+light_color = Color(1, 0.788235, 0.72549, 1)
+light_energy = 4.145
+omni_range = 9.84959
+
+[node name="OmniLight3D134" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.1034, 13.4224, 78.4898)
+light_color = Color(1, 0.788235, 0.72549, 1)
+light_energy = 4.145
+omni_range = 9.84959
+
+[node name="OmniLight3D135" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.62256, 11.381, 78.4898)
+light_color = Color(1, 0.788235, 0.72549, 1)
+light_energy = 4.145
+omni_range = 9.84959
+
+[node name="OmniLight3D136" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.7368, 11.381, 78.4898)
+light_color = Color(1, 0.788235, 0.72549, 1)
+light_energy = 4.145
+omni_range = 9.84959
+
+[node name="OmniLight3D137" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.6721, 10.5512, 95.8036)
 light_color = Color(1, 0.788235, 0.72549, 1)
 light_energy = 4.145
 omni_range = 9.84959
@@ -6873,6 +7658,473 @@ light_size = 0.3
 light_specular = 0.6
 omni_range = 6.78551
 
+[node name="OmniLight3D60" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53.2549, 10.243, 55.4054)
+light_color = Color(1, 1, 0.933333, 1)
+light_energy = 2.0
+omni_range = 7.39286
+
+[node name="OmniLight3D61" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53.2549, 10.243, 63.8366)
+light_color = Color(1, 1, 0.933333, 1)
+light_energy = 2.0
+omni_range = 7.39286
+
+[node name="OmniLight3D62" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53.2549, 15.5774, 55.4054)
+light_color = Color(1, 1, 0.933333, 1)
+light_energy = 2.0
+omni_range = 7.39286
+
+[node name="OmniLight3D63" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53.2549, 15.5774, 63.8366)
+light_color = Color(1, 1, 0.933333, 1)
+light_energy = 2.0
+omni_range = 7.39286
+
+[node name="OmniLight3D64" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.1275, 15.5774, 63.8366)
+light_color = Color(1, 1, 0.933333, 1)
+light_energy = 2.0
+omni_range = 7.39286
+
+[node name="OmniLight3D65" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -160.455, 26.1516, 37.05)
+light_color = Color(1, 1, 0.933333, 1)
+light_energy = 2.0
+omni_range = 7.39286
+
+[node name="OmniLight3D66" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -153.943, 26.1516, 37.05)
+light_color = Color(1, 1, 0.933333, 1)
+light_energy = 2.0
+omni_range = 7.39286
+
+[node name="OmniLight3D67" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -144.732, 26.1516, 37.05)
+light_color = Color(1, 1, 0.933333, 1)
+light_energy = 2.0
+omni_range = 7.39286
+
+[node name="OmniLight3D68" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -160.455, 25.3856, 32.5908)
+light_color = Color(1, 1, 0.933333, 1)
+light_energy = 2.0
+omni_range = 7.39286
+
+[node name="OmniLight3D69" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -153.943, 26.1516, 32.5908)
+light_color = Color(1, 1, 0.933333, 1)
+light_energy = 2.0
+omni_range = 7.39286
+
+[node name="OmniLight3D70" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -144.732, 26.1516, 32.5908)
+light_color = Color(1, 1, 0.933333, 1)
+light_energy = 2.0
+omni_range = 7.39286
+
+[node name="OmniLight3D71" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -160.455, 26.1516, 26.8081)
+light_color = Color(1, 1, 0.933333, 1)
+light_energy = 2.0
+omni_range = 7.39286
+
+[node name="OmniLight3D72" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -153.943, 26.1516, 26.8081)
+light_color = Color(1, 1, 0.933333, 1)
+light_energy = 2.0
+omni_range = 7.39286
+
+[node name="OmniLight3D73" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -157.129, 32.3745, 36.0538)
+light_color = Color(1, 1, 0.933333, 1)
+light_energy = 2.0
+omni_range = 6.26205
+
+[node name="OmniLight3D74" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -152.73, 31.3488, 36.0538)
+light_color = Color(1, 1, 0.933333, 1)
+light_energy = 2.0
+omni_range = 6.26205
+
+[node name="OmniLight3D75" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -145.787, 31.7706, 38.3077)
+light_color = Color(1, 1, 0.933333, 1)
+light_energy = 2.0
+omni_range = 6.26205
+
+[node name="OmniLight3D76" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -145.787, 31.7706, 25.4702)
+light_color = Color(1, 1, 0.933333, 1)
+light_energy = 2.0
+omni_range = 6.26205
+
+[node name="OmniLight3D77" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -145.787, 31.7706, 8.99968)
+light_color = Color(1, 1, 0.933333, 1)
+light_energy = 2.0
+omni_range = 6.26205
+
+[node name="OmniLight3D78" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -155.128, 31.7706, 8.99968)
+light_color = Color(1, 1, 0.933333, 1)
+light_energy = 2.0
+omni_range = 6.26205
+
+[node name="OmniLight3D79" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -152.927, 31.7706, 16.412)
+light_color = Color(1, 1, 0.933333, 1)
+light_energy = 2.0
+omni_range = 6.26205
+
+[node name="OmniLight3D80" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -151.116, 31.4155, 27.7054)
+light_color = Color(1, 1, 0.933333, 1)
+light_energy = 2.0
+omni_range = 12.3046
+
+[node name="OmniLight3D81" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -148.503, 36.9071, 37.3192)
+light_color = Color(1, 1, 0.933333, 1)
+light_energy = 2.0
+omni_range = 12.3046
+
+[node name="OmniLight3D82" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128.353, 27.8445, 39.251)
+light_color = Color(1, 1, 0.933333, 1)
+light_energy = 2.0
+omni_range = 4.63898
+
+[node name="OmniLight3D83" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -113.685, 8.81516, 44.0846)
+light_color = Color(1, 1, 0.933333, 1)
+light_energy = 2.0
+omni_range = 4.63898
+
+[node name="OmniLight3D84" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -120.226, 6.04884, 50.2836)
+light_color = Color(1, 1, 0.933333, 1)
+light_energy = 2.0
+omni_range = 4.63898
+
+[node name="OmniLight3D85" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -119.303, 6.40862, 37.2038)
+light_color = Color(1, 1, 0.933333, 1)
+light_energy = 2.0
+omni_range = 4.63898
+
+[node name="OmniLight3D86" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -119.303, 8.86106, 37.2038)
+light_color = Color(1, 1, 0.933333, 1)
+light_energy = 2.0
+omni_range = 4.63898
+
+[node name="OmniLight3D87" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -110.795, 5.88826, 29.2356)
+light_color = Color(1, 1, 0.933333, 1)
+light_energy = 2.0
+omni_range = 4.63898
+
+[node name="OmniLight3D88" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72.0457, 7.94292, 36.9009)
+light_color = Color(1, 1, 0.933333, 1)
+light_energy = 2.0
+omni_range = 4.63898
+
+[node name="OmniLight3D89" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -108.959, 6.04884, 50.2836)
+light_color = Color(1, 1, 0.933333, 1)
+light_energy = 2.0
+omni_range = 4.63898
+
+[node name="OmniLight3D90" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -106.178, 6.04884, 50.2836)
+light_color = Color(1, 1, 0.933333, 1)
+light_energy = 2.0
+omni_range = 4.63898
+
+[node name="OmniLight3D91" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -102.39, 6.16767, 57.9027)
+light_color = Color(1, 1, 0.933333, 1)
+light_energy = 2.0
+omni_range = 4.63898
+
+[node name="OmniLight3D92" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -113.472, 6.16767, 60.8208)
+light_color = Color(1, 1, 0.933333, 1)
+light_energy = 2.0
+omni_range = 4.63898
+
+[node name="OmniLight3D93" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -127.548, 6.16767, 43.0881)
+light_color = Color(1, 1, 0.933333, 1)
+light_energy = 2.0
+omni_range = 4.63898
+
+[node name="OmniLight3D94" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -125.626, 9.6935, 36.9737)
+light_color = Color(1, 1, 0.933333, 1)
+light_energy = 2.0
+omni_range = 10.4888
+
+[node name="OmniLight3D95" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -125.626, 9.6935, 32.2669)
+light_color = Color(1, 1, 0.933333, 1)
+light_energy = 2.0
+omni_range = 10.4888
+
+[node name="OmniLight3D96" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -171.235, 28.114, 33.9314)
+light_color = Color(1, 1, 0.933333, 1)
+light_energy = 2.0
+omni_range = 12.3046
+
+[node name="OmniLight3D97" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -147.39, 36.9071, 9.66622)
+light_color = Color(1, 1, 0.933333, 1)
+light_energy = 2.0
+omni_range = 12.3046
+
+[node name="OmniLight3D98" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -144.732, 26.1516, 26.8081)
+light_color = Color(1, 1, 0.933333, 1)
+light_energy = 2.0
+omni_range = 7.39286
+
+[node name="OmniLight3D99" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -146.94, 27.4552, 9.8081)
+light_color = Color(1, 1, 0.933333, 1)
+light_energy = 2.0
+omni_range = 7.39286
+
+[node name="OmniLight3D100" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -153.755, 27.4552, 9.8081)
+light_color = Color(1, 1, 0.933333, 1)
+light_energy = 2.0
+omni_range = 7.39286
+
+[node name="OmniLight3D101" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -159.489, 27.4552, 9.8081)
+light_color = Color(1, 1, 0.933333, 1)
+light_energy = 2.0
+omni_range = 7.39286
+
+[node name="OmniLight3D102" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -166.214, 27.4552, 9.8081)
+light_color = Color(1, 1, 0.933333, 1)
+light_energy = 2.0
+omni_range = 7.39286
+
+[node name="OmniLight3D103" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -171.214, 27.4552, 9.8081)
+light_color = Color(1, 1, 0.933333, 1)
+light_energy = 2.0
+omni_range = 7.39286
+
+[node name="OmniLight3D104" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -146.94, 27.4552, 15.3962)
+light_color = Color(1, 1, 0.933333, 1)
+light_energy = 2.0
+omni_range = 7.39286
+
+[node name="OmniLight3D105" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -153.755, 27.4552, 15.3962)
+light_color = Color(1, 1, 0.933333, 1)
+light_energy = 2.0
+omni_range = 7.39286
+
+[node name="OmniLight3D106" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -159.489, 27.4552, 15.3962)
+light_color = Color(1, 1, 0.933333, 1)
+light_energy = 2.0
+omni_range = 7.39286
+
+[node name="OmniLight3D107" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -171.048, 27.4552, 15.3962)
+light_color = Color(1, 1, 0.933333, 1)
+light_energy = 2.0
+omni_range = 7.39286
+
+[node name="OmniLight3D108" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -77.9056, 15.926, 65.4883)
+light_color = Color(1, 1, 0.933333, 1)
+light_energy = 2.0
+omni_range = 10.0145
+
+[node name="OmniLight3D109" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -91.1241, 15.2559, 62.1582)
+light_color = Color(1, 1, 0.933333, 1)
+light_energy = 2.0
+omni_range = 10.0145
+
+[node name="OmniLight3D110" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -91.1241, 15.2559, 55.489)
+light_color = Color(1, 1, 0.933333, 1)
+light_energy = 2.0
+omni_range = 10.0145
+
+[node name="OmniLight3D111" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84.6567, 15.2559, 58.489)
+light_color = Color(1, 1, 0.933333, 1)
+light_energy = 2.0
+omni_range = 10.0145
+
+[node name="OmniLight3D112" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76.2839, 10.9957, 63.0347)
+light_color = Color(1, 1, 0.933333, 1)
+omni_range = 10.7113
+
+[node name="OmniLight3D113" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65.9049, 5.63274, 23.0931)
+light_color = Color(1, 1, 0.933333, 1)
+omni_range = 10.7113
+
+[node name="OmniLight3D114" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68.0891, 7.28134, 14.8496)
+light_color = Color(1, 1, 0.933333, 1)
+omni_range = 10.7113
+
+[node name="OmniLight3D115" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -112.79, 5.84082, 13.0743)
+light_color = Color(1, 1, 0.933333, 1)
+omni_range = 10.7113
+
+[node name="OmniLight3D116" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -117.12, 5.84082, 13.0743)
+light_color = Color(1, 1, 0.933333, 1)
+omni_range = 10.7113
+
+[node name="OmniLight3D117" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -121.763, 7.01372, 13.0743)
+light_color = Color(1, 1, 0.933333, 1)
+omni_range = 10.7113
+
+[node name="OmniLight3D118" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128.376, 10.5632, 13.0743)
+light_color = Color(1, 1, 0.933333, 1)
+omni_range = 10.7113
+
+[node name="OmniLight3D119" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -117.527, 11.2991, 22.8863)
+light_color = Color(1, 1, 0.933333, 1)
+omni_range = 10.7113
+
+[node name="OmniLight3D120" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -129.521, 11.2991, 22.8863)
+light_color = Color(1, 1, 0.933333, 1)
+omni_range = 10.7113
+
+[node name="OmniLight3D121" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -122.646, 11.2991, 22.8863)
+light_color = Color(1, 1, 0.933333, 1)
+omni_range = 10.7113
+
+[node name="OmniLight3D122" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -111.519, 11.8417, 18.3132)
+light_color = Color(1, 1, 0.933333, 1)
+omni_range = 10.7113
+
+[node name="OmniLight3D123" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -121.268, 10.5632, 13.0743)
+light_color = Color(1, 1, 0.933333, 1)
+omni_range = 10.7113
+
+[node name="OmniLight3D124" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -121.268, 14.6141, 13.0743)
+light_color = Color(1, 1, 0.933333, 1)
+omni_range = 10.7113
+
+[node name="OmniLight3D125" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -130.332, 15.5461, 13.0743)
+light_color = Color(1, 1, 0.933333, 1)
+omni_range = 10.7113
+
+[node name="OmniLight3D126" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -130.332, 21.8456, 13.0743)
+light_color = Color(1, 1, 0.933333, 1)
+omni_range = 10.7113
+
+[node name="OmniLight3D127" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -125.21, 21.8456, 13.0743)
+light_color = Color(1, 1, 0.933333, 1)
+omni_range = 10.7113
+
+[node name="OmniLight3D128" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -119.276, 21.8456, 13.0743)
+light_color = Color(1, 1, 0.933333, 1)
+omni_range = 10.7113
+
+[node name="OmniLight3D129" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -113.26, 10.5632, 13.0743)
+light_color = Color(1, 1, 0.933333, 1)
+omni_range = 10.7113
+
+[node name="OmniLight3D130" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -113.26, 15.7109, 13.0743)
+light_color = Color(1, 1, 0.933333, 1)
+omni_range = 10.7113
+
+[node name="OmniLight3D131" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -131.85, 10.5632, 13.0743)
+light_color = Color(1, 1, 0.933333, 1)
+omni_range = 10.7113
+
+[node name="OmniLight3D132" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54.223, 7.28134, 14.8496)
+light_color = Color(1, 1, 0.933333, 1)
+omni_range = 10.7113
+
+[node name="OmniLight3D133" type="OmniLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64.9394, 10.9957, 63.0347)
+light_color = Color(1, 1, 0.933333, 1)
+omni_range = 10.7113
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -67.239, 19.8081, 58.9106)
+light_energy = 5.0
+spot_range = 29.8862
+spot_angle = 66.0938
+
+[node name="SpotLight3D5" type="SpotLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -168.462, 42.6521, 22.2273)
+light_color = Color(0.788235, 0.827451, 0.937255, 1)
+light_energy = 15.0
+spot_range = 44.6658
+spot_angle = 54.5504
+
+[node name="SpotLight3D6" type="SpotLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -151.528, 42.6521, 22.2273)
+light_color = Color(0.788235, 0.827451, 0.937255, 1)
+light_energy = 15.0
+spot_range = 44.6658
+spot_angle = 54.5504
+
+[node name="SpotLight3D7" type="SpotLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -160.254, 42.6521, 22.2273)
+light_color = Color(0.788235, 0.827451, 0.937255, 1)
+light_energy = 15.0
+spot_range = 44.6658
+spot_angle = 54.5504
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -56.4503, 9.61244, 19.8024)
+light_energy = 5.0
+spot_range = 29.8862
+spot_angle = 66.0938
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -69.7356, 9.69014, 19.8024)
+light_energy = 5.0
+spot_range = 29.8862
+spot_angle = 79.6565
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Atmosphere/Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -86.2111, 17.2761, 58.9106)
+light_energy = 5.0
+spot_range = 29.8862
+spot_angle = 66.0938
+
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("res://Scenes/Multiplayer/multiplayer_player.tscn")
 spawn_path = NodePath("..")
@@ -6999,7 +8251,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.96101, 0.000499845, 36.258
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.2911, 1.42501, 23.0751)
 
 [node name="SpawnPoint3" type="Node3D" parent="EnemySpawns/OLD/Zone1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.1866, 0.000499964, 41.0089)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.2248, 0.000499964, 45.1386)
 
 [node name="SpawnPoint4" type="Node3D" parent="EnemySpawns/OLD/Zone1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.0426, 0.000499964, 40.5745)
@@ -7008,16 +8260,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.0426, 0.000499964, 40.5745
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.3867, 7.09111, 57.2531)
 
 [node name="SpawnPoint6" type="Node3D" parent="EnemySpawns/OLD/Zone1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.349, 9.03681, 75.23)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0902, 7.04754, 75.23)
 
 [node name="SpawnPoint7" type="Node3D" parent="EnemySpawns/OLD/Zone1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.0209, 7.07686, 67.9147)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.108, 7.07686, 67.9147)
 
 [node name="SpawnPoint8" type="Node3D" parent="EnemySpawns/OLD/Zone1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.3716, 0.000499487, 29.0063)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.9772, 0.000499487, 28.6301)
 
 [node name="SpawnPoint9" type="Node3D" parent="EnemySpawns/OLD/Zone1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.6925, 1.42501, -12.2459)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.6925, 1.42501, -9.37517)
 
 [node name="SpawnPoint10" type="Node3D" parent="EnemySpawns/OLD/Zone1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.6505, 7.09861, 59.8577)
@@ -7025,34 +8277,34 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.6505, 7.09861, 59.8577)
 [node name="Zone2" type="Node3D" parent="EnemySpawns/OLD"]
 
 [node name="SpawnPoint11" type="Node3D" parent="EnemySpawns/OLD/Zone2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.3871, 7.79147, 51.0514)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.3871, 7.79147, 50.8199)
 
 [node name="SpawnPoint12" type="Node3D" parent="EnemySpawns/OLD/Zone2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -126.723, 4.85158, 70.8511)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -121.694, 4.85158, 56.5018)
 
 [node name="SpawnPoint13" type="Node3D" parent="EnemySpawns/OLD/Zone2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84.9213, 0.000177391, 44.5135)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84.9213, 0.000177272, 43.6574)
 
 [node name="SpawnPoint14" type="Node3D" parent="EnemySpawns/OLD/Zone2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84.9213, 0.000177391, 6.13585)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -83.4931, 0.000176914, 6.13585)
 
 [node name="SpawnPoint15" type="Node3D" parent="EnemySpawns/OLD/Zone2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -139.825, 21.6022, 37.7981)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -139.825, 21.5952, 37.7981)
 
 [node name="SpawnPoint16" type="Node3D" parent="EnemySpawns/OLD/Zone2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -173.564, 23.5987, 33.1301)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -172.823, 23.5987, 33.1301)
 
 [node name="SpawnPoint17" type="Node3D" parent="EnemySpawns/OLD/Zone2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -83.9323, 7.79147, 59.2118)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -83.9323, 7.81177, 59.2118)
 
 [node name="SpawnPoint18" type="Node3D" parent="EnemySpawns/OLD/Zone2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.9829, 1.8791, 17.7959)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -86.0572, 0.00442401, 23.5883)
 
 [node name="SpawnPoint19" type="Node3D" parent="EnemySpawns/OLD/Zone2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -79.2124, 0.000177391, 13.9295)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100.12, 0.964702, 12.4267)
 
 [node name="SpawnPoint20" type="Node3D" parent="EnemySpawns/OLD/Zone2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -131.797, 4.85158, 28.9518)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -102.588, 4.85158, 28.9518)
 
 [node name="Enemies" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
@@ -7195,86 +8447,11 @@ libraries = {
 "": SubResource("AnimationLibrary_8wxbm")
 }
 
-[node name="CSGMesh3D" parent="." instance=ExtResource("108_3v632")]
-transform = Transform3D(-2.70695e-07, 0, 1, 0, 1, 0, -6.19278, 0, -4.37114e-08, 74.38, 0.044, 30.479)
-
-[node name="CSGMesh3D10" parent="." instance=ExtResource("108_3v632")]
-transform = Transform3D(-2.70695e-07, 0, 1, 0, 1, 0, -6.19278, 0, -4.37114e-08, 60.7212, 0.044, 91.4466)
-
-[node name="CSGMesh3D12" parent="." instance=ExtResource("108_3v632")]
-transform = Transform3D(-2.70695e-07, 0, 1, 0, 1, 0, -6.19278, 0, -4.37114e-08, -46.1851, 0.044, 92.375)
-
-[node name="CSGMesh3D14" parent="." instance=ExtResource("108_3v632")]
-transform = Transform3D(-8.11454e-08, 0, 1, 0, 1, 0, -1.85639, 0, -4.37114e-08, -49.5579, 0.044, 62.4393)
-
-[node name="CSGMesh3D17" parent="." instance=ExtResource("108_3v632")]
-transform = Transform3D(-2.10214e-08, 0, 1, 0, 1, 0, -0.480913, 0, -4.37114e-08, -95.9026, 0.044, 65.6647)
-
-[node name="CSGMesh3D27" parent="." instance=ExtResource("108_3v632")]
-transform = Transform3D(-0.410656, 0, -8.74228e-08, 0, 1, 0, 3.59007e-08, 0, -1, -47.1666, -0.0634753, 49.8478)
-
-[node name="CSGMesh3D22" parent="." instance=ExtResource("108_3v632")]
-transform = Transform3D(-2.2788e-08, 0, 1, 0, 1, 0, -0.521329, 0, -4.37114e-08, -141.162, 0.044, 8.19699)
-
-[node name="CSGMesh3D23" parent="." instance=ExtResource("108_3v632")]
-transform = Transform3D(-3.84121e-08, 0, 1, 0, 1, 0, -0.878767, 0, -4.37114e-08, -117.798, 0.044, 7.48081)
-
-[node name="CSGMesh3D26" parent="." instance=ExtResource("108_3v632")]
-transform = Transform3D(-4.50967e-08, 0, 1, 0, 1, 0, -1.03169, 0, -4.37114e-08, -79.007, 0.044, 8.91803)
-
-[node name="CSGMesh3D18" parent="." instance=ExtResource("108_3v632")]
-transform = Transform3D(-9.19417e-08, 0, 1, 0, 1, 0, -2.10338, 0, -4.37114e-08, -129.918, 0.044, 56.0143)
-
-[node name="CSGMesh3D15" parent="." instance=ExtResource("108_3v632")]
-transform = Transform3D(4.70777, 0, 0, 0, 1, 0, 0, 0, 1, -81.8125, 0.044, 67.6186)
-
-[node name="CSGMesh3D16" parent="." instance=ExtResource("108_3v632")]
-transform = Transform3D(3.44948, 0, 0, 0, 1, 0, 0, 0, 1, -119.328, 0.044, 62.6291)
-
-[node name="CSGMesh3D21" parent="." instance=ExtResource("108_3v632")]
-transform = Transform3D(2.48319, 0, 0, 0, 1, 0, 0, 0, 1, -134.609, 0.0439962, 10.0036)
-
-[node name="CSGMesh3D24" parent="." instance=ExtResource("108_3v632")]
-transform = Transform3D(3.96305, 0, 0, 0, 1, 0, 0, 0, 1, -105.492, 0.0439962, 1.62349)
-
-[node name="CSGMesh3D25" parent="." instance=ExtResource("108_3v632")]
-transform = Transform3D(3.32614, 0, 0, 0, 1, 0, 0, 0, 1, -68.9623, 0.0439962, 12.0298)
-
-[node name="CSGMesh3D19" parent="." instance=ExtResource("108_3v632")]
-transform = Transform3D(3.44948, 0, 0, 0, 1, 0, 0, 0, 1, -153.455, 9.60979, 42.1507)
-
-[node name="CSGMesh3D20" parent="." instance=ExtResource("108_3v632")]
-transform = Transform3D(3.44948, 0, 0, 0, 1, 0, 0, 0, 1, -164.655, 9.60979, 4.50653)
-
-[node name="CSGMesh3D13" parent="." instance=ExtResource("108_3v632")]
-transform = Transform3D(-1.37756e-07, 0, 1, 0, 1, 0, -3.15148, 0, -4.37114e-08, -46.1851, 0.044, 2.28894)
-
-[node name="CSGMesh3D11" parent="." instance=ExtResource("108_3v632")]
-transform = Transform3D(-10.9524, 0, 8.74228e-08, 0, 1, 0, -9.57489e-07, 0, -1, 27.2128, 0.044, 109.05)
-
-[node name="CSGMesh3D3" parent="." instance=ExtResource("108_3v632")]
-transform = Transform3D(-1.85356e-08, 0, 1, 0, 1, 0, -0.424045, 0, -4.37114e-08, 53.031, 0.044, -12.573)
-
-[node name="CSGMesh3D5" parent="." instance=ExtResource("108_3v632")]
-transform = Transform3D(-9.13828e-08, 0, 1, 0, 1, 0, -2.0906, 0, -4.37114e-08, 48.298, 0.044, -19.167)
-
-[node name="CSGMesh3D7" parent="." instance=ExtResource("108_3v632")]
-transform = Transform3D(-6.11264e-08, 0, 1, 0, 1, 0, -1.39841, 0, -4.37114e-08, 18.4927, 0.044, -22.669)
-
-[node name="CSGMesh3D2" parent="." instance=ExtResource("108_3v632")]
-transform = Transform3D(2.28353, 0, 0, 0, 1, 0, 0, 0, 1, 59.8572, 0.0440753, -11.3445)
-
-[node name="CSGMesh3D9" parent="." instance=ExtResource("108_3v632")]
-transform = Transform3D(1.35594, 0, 0, 0, 1, 0, 0, 0, 1, 64.9119, 0.0440753, 49.4448)
-
-[node name="CSGMesh3D4" parent="." instance=ExtResource("108_3v632")]
-transform = Transform3D(0.500812, 0, 0, 0, 1, 0, 0, 0, 1, 49.4952, 0.0440753, -12.6848)
-
-[node name="CSGMesh3D6" parent="." instance=ExtResource("108_3v632")]
-transform = Transform3D(3.06689, 0, 0, 0, 1, 0, 0, 0, 1, 27.2074, 0.0440753, -32.1394)
-
-[node name="CSGMesh3D8" parent="." instance=ExtResource("108_3v632")]
-transform = Transform3D(6.52361, 0, 0, 0, 1, 0, 0, 0, 1, -26.09, 0.0440753, -18.3946)
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(0.855002, 0.518624, 0, -0.518624, 0.855002, 0, 0, 0, 1, -18.6719, 8.54842, 1.6417)
+visible = false
+use_collision = true
+size = Vector3(2.02063, 1, 3.00586)
 
 [connection signal="timeout" from="GamemodeManager/EndlessWaveTimer" to="GamemodeManager" method="_on_endless_wave_timer_timeout"]
 [connection signal="spawned" from="MultiplayerSpawner" to="." method="_on_multiplayer_spawner_spawned"]
