@@ -463,6 +463,17 @@ func handle_connected_signals() -> void:
 			weapon.regular_hit.connect(hitmarker.on_regular_hit)
 			weapon.crit_hit.connect(hitmarker.on_crit_hit)
 	
+	# Connect signals to HUD
+	update_health.connect(hud.on_update_health)
+	player_downed.connect(hud.on_player_downed)
+	player_died.connect(hud.on_player_died)
+	player_revived.connect(hud.on_player_revived)
+	player_respawned.connect(hud.on_player_respawned)
+	interactable_focused.connect(hud.on_interactable_focused)
+	interactable_unfocused.connect(hud.on_interactable_unfocused)
+	revive_started.connect(hud.on_revive_started)
+	revive_stopped.connect(hud.on_revive_stopped)
+	
 	var sensitivity_setting = find_child("SensitivitySliderSetting")
 	sensitivity_setting.sensitivity_updated.connect(set_sensitivity)
 	sensitivity_setting.slider.value = sensitivity * 100

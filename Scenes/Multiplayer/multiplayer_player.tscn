@@ -1,6 +1,6 @@
 [gd_scene load_steps=50 format=3 uid="uid://il6q27w1jqvw"]
 
-[ext_resource type="Script" path="res://Scripts/Multiplayer/multiplayer_player.gd" id="1_0n7q4"]
+[ext_resource type="Script" path="res://Scripts/Multiplayer/multiplayer_player.gd" id="1_mtm2n"]
 [ext_resource type="Script" path="res://Scripts/Player/player_input.gd" id="2_7s41b"]
 [ext_resource type="PackedScene" uid="uid://caqpeyq7g56bn" path="res://Scenes/damageable.tscn" id="3_sfxmm"]
 [ext_resource type="Script" path="res://Scripts/Weapons/weapon_manager.gd" id="4_v17h1"]
@@ -853,7 +853,7 @@ bg_color = Color(0.180666, 0.00854189, 0.00851971, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 collision_layer = 2
 collision_mask = 5
-script = ExtResource("1_0n7q4")
+script = ExtResource("1_mtm2n")
 input = NodePath("Input")
 mesh = NodePath("Mesh")
 head = NodePath("Head")
@@ -1580,15 +1580,6 @@ text = "Interact"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="interactable_focused" from="." to="UI/HUD" method="on_interactable_focused"]
-[connection signal="interactable_unfocused" from="." to="UI/HUD" method="on_interactable_unfocused"]
-[connection signal="player_died" from="." to="UI/HUD" method="on_player_died"]
-[connection signal="player_downed" from="." to="UI/HUD" method="on_player_downed"]
-[connection signal="player_respawned" from="." to="UI/HUD" method="on_player_respawned"]
-[connection signal="player_revived" from="." to="UI/HUD" method="on_player_revived"]
-[connection signal="revive_started" from="." to="UI/HUD" method="on_revive_started"]
-[connection signal="revive_stopped" from="." to="UI/HUD" method="on_revive_stopped"]
-[connection signal="update_health" from="." to="UI/HUD" method="on_update_health"]
 [connection signal="update_ammo" from="Head/Camera3D/WeaponHolder/WeaponManager/Rifle" to="UI/HUD" method="on_update_ammo"]
 [connection signal="update_ammo" from="Head/Camera3D/WeaponHolder/WeaponManager/RocketLauncher" to="UI/HUD" method="on_update_ammo"]
 [connection signal="update_ammo" from="Head/Camera3D/WeaponHolder/WeaponManager/Shotgun" to="UI/HUD" method="on_update_ammo"]

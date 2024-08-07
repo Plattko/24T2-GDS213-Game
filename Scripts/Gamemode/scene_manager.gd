@@ -1,7 +1,7 @@
 class_name SceneManager
 extends Node3D
 
-var multiplayer_player = preload("res://Scenes/Multiplayer/multiplayer_player.tscn")
+var multiplayer_player = load("res://Scenes/Multiplayer/multiplayer_player.tscn")
 
 @export_group("Initial Spawn Points")
 @export var initial_spawn_points : Array[Node3D] = []
