@@ -1,9 +1,14 @@
-[gd_scene load_steps=20 format=3 uid="uid://dqexibtsgatqp"]
+[gd_scene load_steps=26 format=3 uid="uid://dqexibtsgatqp"]
 
 [ext_resource type="Script" path="res://Scripts/Weapons/rifle.gd" id="1_al0dg"]
 [ext_resource type="Material" uid="uid://4t0aqxchgkfa" path="res://Assets/Materials/Shader Materials/weapon_shader.tres" id="2_be4dv"]
 [ext_resource type="Script" path="res://Scripts/Weapons/Components/muzzle_flash.gd" id="3_gtc4h"]
 [ext_resource type="Material" uid="uid://un70lvxarnb0" path="res://Assets/Materials/Shader Materials/muzzle_flash_rifle_shader.tres" id="4_kmv0e"]
+[ext_resource type="AudioStream" uid="uid://bx1lkdho8x6a5" path="res://Assets/Audio/Guns/Rifle/Gunshots/7Mag Bolt Action Rifle - Gunshot A 001.wav" id="5_hqryf"]
+[ext_resource type="AudioStream" uid="uid://cj8jpkebcq71n" path="res://Assets/Audio/Guns/Rifle/Gunshots/7Mag Bolt Action Rifle - Gunshot A 002.wav" id="6_t2na2"]
+[ext_resource type="AudioStream" uid="uid://bq6xm8dxl863h" path="res://Assets/Audio/Guns/Rifle/Gunshots/7Mag Bolt Action Rifle - Gunshot A 003.wav" id="7_jscry"]
+[ext_resource type="AudioStream" uid="uid://dpyjaykiyprmn" path="res://Assets/Audio/Guns/Rifle/Gunshots/7Mag Bolt Action Rifle - Gunshot A 004.wav" id="8_qiljy"]
+[ext_resource type="AudioStream" uid="uid://b8lc3kligmhat" path="res://Assets/Audio/Guns/Rifle/Gunshots/7Mag Bolt Action Rifle - Gunshot A 005.wav" id="9_djnkm"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_ng5jb"]
 properties/0/path = NodePath("Mesh:visible")
@@ -272,8 +277,22 @@ _data = {
 "Unequip": SubResource("Animation_ohrl6")
 }
 
-[node name="Rifle" type="Node3D" node_paths=PackedStringArray("mesh", "muzzle_flash", "anim_player")]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_okyob"]
+streams_count = 5
+stream_0/stream = ExtResource("5_hqryf")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("6_t2na2")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("7_jscry")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("8_qiljy")
+stream_3/weight = 1.0
+stream_4/stream = ExtResource("9_djnkm")
+stream_4/weight = 1.0
+
+[node name="Rifle" type="Node3D" node_paths=PackedStringArray("rifle_gunshots_sfx", "mesh", "muzzle_flash", "anim_player")]
 script = ExtResource("1_al0dg")
+rifle_gunshots_sfx = NodePath("Audio/GunshotsPlayer")
 mesh = NodePath("Model/Body")
 muzzle_flash = NodePath("Barrel/MuzzleFlash")
 anim_player = NodePath("AnimationPlayer")
@@ -333,3 +352,10 @@ draw_pass_1 = SubResource("QuadMesh_m7h41")
 libraries = {
 "": SubResource("AnimationLibrary_vlmsi")
 }
+
+[node name="Audio" type="Node3D" parent="."]
+
+[node name="GunshotsPlayer" type="AudioStreamPlayer3D" parent="Audio"]
+stream = SubResource("AudioStreamRandomizer_okyob")
+max_distance = 50.0
+bus = &"Firearms"

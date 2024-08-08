@@ -1,7 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://co38vlsgcng80"]
+[gd_scene load_steps=18 format=3 uid="uid://co38vlsgcng80"]
 
 [ext_resource type="Script" path="res://Scripts/Weapons/rocket_launcher.gd" id="1_j0ibu"]
 [ext_resource type="Material" uid="uid://4t0aqxchgkfa" path="res://Assets/Materials/Shader Materials/weapon_shader.tres" id="2_egseg"]
+[ext_resource type="AudioStream" uid="uid://cs8x7t60hhsqw" path="res://Assets/Audio/Guns/Rocket Launcher/Firing/Missile Start 001.wav" id="3_pjq0k"]
+[ext_resource type="AudioStream" uid="uid://d1xil40t7b12k" path="res://Assets/Audio/Guns/Rocket Launcher/Firing/Missile Start 002.wav" id="4_8m648"]
+[ext_resource type="AudioStream" uid="uid://b3fam6uv5f847" path="res://Assets/Audio/Guns/Rocket Launcher/Firing/Missile Start 003.wav" id="5_ovxgu"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_xat8i"]
 properties/0/path = NodePath("Mesh:visible")
@@ -291,8 +294,18 @@ _data = {
 "Unequip": SubResource("Animation_y1hr3")
 }
 
-[node name="RocketLauncher" type="Node3D" node_paths=PackedStringArray("mesh", "anim_player")]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_f6nbd"]
+streams_count = 3
+stream_0/stream = ExtResource("3_pjq0k")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("4_8m648")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("5_ovxgu")
+stream_2/weight = 1.0
+
+[node name="RocketLauncher" type="Node3D" node_paths=PackedStringArray("rocket_firing_sfx", "mesh", "anim_player")]
 script = ExtResource("1_j0ibu")
+rocket_firing_sfx = NodePath("Audio/RocketFiringPlayer")
 mesh = NodePath("Model/Body")
 anim_player = NodePath("AnimationPlayer")
 MAX_AMMO = 4
@@ -319,3 +332,9 @@ skeleton = NodePath("")
 libraries = {
 "": SubResource("AnimationLibrary_vlmsi")
 }
+
+[node name="Audio" type="Node3D" parent="."]
+
+[node name="RocketFiringPlayer" type="AudioStreamPlayer3D" parent="Audio"]
+stream = SubResource("AudioStreamRandomizer_f6nbd")
+bus = &"Firearms"

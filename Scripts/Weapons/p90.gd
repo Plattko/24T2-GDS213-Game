@@ -4,9 +4,12 @@ extends Weapon
 @export_group("P90 Data")
 @export var bullet_spread : int = 25
 
+@export var P90_gunshots_sfx : AudioStreamPlayer3D
+
 func shoot() -> void:
 	# Call base method
 	super()
+	P90_gunshots_sfx.play()
 	
 	var space_state = camera.get_world_3d().direct_space_state
 	var screen_centre = get_viewport().get_size() / 2
