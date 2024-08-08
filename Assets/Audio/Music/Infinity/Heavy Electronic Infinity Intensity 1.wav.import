@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d3rcy2sehkjdy"
+path="res://.godot/imported/Heavy Electronic Infinity Intensity 1.wav-d01b82d4950b75b01be73c3491d1cf5c.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Music/Infinity/Heavy Electronic Infinity Intensity 1.wav"
+dest_files=["res://.godot/imported/Heavy Electronic Infinity Intensity 1.wav-d01b82d4950b75b01be73c3491d1cf5c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

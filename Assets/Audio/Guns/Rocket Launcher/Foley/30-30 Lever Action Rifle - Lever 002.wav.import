@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://brds1x2cloxnr"
+path="res://.godot/imported/30-30 Lever Action Rifle - Lever 002.wav-8aa8527b1f1d70cc37b2e8bec46316af.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Guns/Rocket Launcher/Foley/30-30 Lever Action Rifle - Lever 002.wav"
+dest_files=["res://.godot/imported/30-30 Lever Action Rifle - Lever 002.wav-8aa8527b1f1d70cc37b2e8bec46316af.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

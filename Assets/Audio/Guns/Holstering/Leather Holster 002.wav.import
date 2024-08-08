@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b5yg02to24r3l"
+path="res://.godot/imported/Leather Holster 002.wav-bbf52584de1b30676c1f4add93aa3cbf.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Guns/Holstering/Leather Holster 002.wav"
+dest_files=["res://.godot/imported/Leather Holster 002.wav-bbf52584de1b30676c1f4add93aa3cbf.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

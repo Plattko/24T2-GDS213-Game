@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b8r4klbukd0tj"
+path="res://.godot/imported/9mm Micro Pistol - Gunshot A 002.wav-3fb6088ac3bf7ebae42867068540c4be.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Guns/P90/Gunshots/9mm Micro Pistol - Gunshot A 002.wav"
+dest_files=["res://.godot/imported/9mm Micro Pistol - Gunshot A 002.wav-3fb6088ac3bf7ebae42867068540c4be.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

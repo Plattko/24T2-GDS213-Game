@@ -3920,7 +3920,7 @@ size = Vector3(3.38119, 2.59821, 5.48806)
 material = ExtResource("26_11rv1")
 
 [node name="SM_container_04" parent="Level/NavRegionZone2/Zone2/Containers" instance=ExtResource("111_ub3hr")]
-transform = Transform3D(-0.996727, 0, -0.0970109, 0, 1.1, 0, 0.0808425, 0, -1.19607, -99.945, 4.84264, 35.7481)
+transform = Transform3D(-0.999973, 0, -0.00885916, 0, 1.1, 0, 0.00738256, 0, -1.19997, -100.281, 4.84264, 35.9399)
 
 [node name="SM_container_09" parent="Level/NavRegionZone2/Zone2/Containers" instance=ExtResource("111_ub3hr")]
 transform = Transform3D(-0.653896, 0, 0.907901, 0, 1.1, 0, -0.756584, 0, -0.784675, -124.42, 4.87373, 30.9909)
