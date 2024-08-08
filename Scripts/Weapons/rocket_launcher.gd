@@ -4,9 +4,12 @@ extends Weapon
 var rocket_scene = load("res://Scenes/Weapons/Components/rocket.tscn")
 @export var rocket_speed : float = 29.0
 
+@export var rocket_firing_sfx : AudioStreamPlayer3D
+
 func shoot() -> void:
 	# Call base method
 	super()
+	rocket_firing_sfx.play()
 	
 	# Instantiate the rocket
 	var rocket = rocket_scene.instantiate() as CharacterBody3D

@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://brc2h44edbj5a"]
+[gd_scene load_steps=31 format=3 uid="uid://brc2h44edbj5a"]
 
 [ext_resource type="Script" path="res://Scripts/Player/player.gd" id="1_4jpfc"]
 [ext_resource type="Script" path="res://Scripts/States/state_machine.gd" id="2_tc3yw"]
@@ -20,6 +20,8 @@
 [ext_resource type="Script" path="res://Scripts/UI/ui_manager.gd" id="14_7y8rs"]
 [ext_resource type="PackedScene" uid="uid://bu0mtrnvhonpt" path="res://Scenes/UI/settings_menu.tscn" id="18_wxgc6"]
 [ext_resource type="Script" path="res://Scripts/Player/player_input.gd" id="20_hcigh"]
+[ext_resource type="AudioStream" uid="uid://bojed37o0o4ia" path="res://Assets/Audio/Guns/Hitmarker/click1.ogg" id="21_x4yi5"]
+[ext_resource type="AudioStream" uid="uid://c0xa26hoo0hv7" path="res://Assets/Audio/Guns/Hitmarker/click4.ogg" id="22_5uxhr"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l214m"]
 
@@ -208,7 +210,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.519, -0.344, -0.747766)
 [node name="Pistol" parent="Head/Camera3D/WeaponManager" instance=ExtResource("4_oi7c2")]
 
 [node name="Shotgun" parent="Head/Camera3D/WeaponManager" instance=ExtResource("6_tnj4j")]
-bullet_count = 18
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -360,6 +361,14 @@ layout_mode = 2
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
+
+[node name="NormalHitmakerPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("21_x4yi5")
+pitch_scale = 1.8
+
+[node name="HeadshotHitmarkerPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("22_5uxhr")
+pitch_scale = 1.45
 
 [connection signal="update_health" from="." to="UI/HUD" method="on_update_health"]
 [connection signal="update_ammo" from="Head/Camera3D/WeaponManager/Rifle" to="UI/HUD" method="on_update_ammo"]

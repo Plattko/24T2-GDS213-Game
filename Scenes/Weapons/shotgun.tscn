@@ -1,9 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://cj7xkscmie81y"]
+[gd_scene load_steps=21 format=3 uid="uid://cj7xkscmie81y"]
 
 [ext_resource type="Script" path="res://Scripts/Weapons/shotgun.gd" id="1_5vdia"]
 [ext_resource type="Material" uid="uid://4t0aqxchgkfa" path="res://Assets/Materials/Shader Materials/weapon_shader.tres" id="2_b3qqb"]
 [ext_resource type="Script" path="res://Scripts/Weapons/Components/muzzle_flash.gd" id="3_iw2pk"]
 [ext_resource type="Material" uid="uid://un70lvxarnb0" path="res://Assets/Materials/Shader Materials/muzzle_flash_rifle_shader.tres" id="4_gn0ue"]
+[ext_resource type="AudioStream" uid="uid://co3ltpkj4wdkb" path="res://Assets/Audio/Guns/Shotgun/Gunshots/shotgun_blast.wav" id="5_35bs7"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_8cnap"]
 properties/0/path = NodePath("Mesh:visible")
@@ -308,9 +309,10 @@ _data = {
 "Unequip": SubResource("Animation_y1hr3")
 }
 
-[node name="Shotgun" type="Node3D" node_paths=PackedStringArray("mesh", "muzzle_flash", "anim_player")]
+[node name="Shotgun" type="Node3D" node_paths=PackedStringArray("shotgun_gunshots_sfx", "mesh", "muzzle_flash", "anim_player")]
 script = ExtResource("1_5vdia")
 bullet_count = 18
+shotgun_gunshots_sfx = NodePath("Audio/GunshotsPlayer")
 mesh = NodePath("Model/Body")
 muzzle_flash = NodePath("Barrel/MuzzleFlash")
 anim_player = NodePath("AnimationPlayer")
@@ -370,3 +372,11 @@ draw_pass_1 = SubResource("QuadMesh_64s8x")
 libraries = {
 "": SubResource("AnimationLibrary_vlmsi")
 }
+
+[node name="Audio" type="Node3D" parent="."]
+
+[node name="GunshotsPlayer" type="AudioStreamPlayer3D" parent="Audio"]
+stream = ExtResource("5_35bs7")
+volume_db = -20.0
+max_distance = 50.0
+bus = &"Firearms"
