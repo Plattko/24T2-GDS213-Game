@@ -48,6 +48,7 @@ shape = SubResource("SphereShape3D_kl43k")
 
 [node name="ExplosionPlayer" type="AudioStreamPlayer3D" parent="Audio"]
 stream = SubResource("AudioStreamRandomizer_kftp3")
+max_distance = 50.0
 bus = &"Explosives"
 
 [connection signal="body_entered" from="ExplosionRadius" to="." method="_on_explosion_radius_body_entered"]

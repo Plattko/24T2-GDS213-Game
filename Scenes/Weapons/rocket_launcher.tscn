@@ -337,4 +337,5 @@ libraries = {
 
 [node name="RocketFiringPlayer" type="AudioStreamPlayer3D" parent="Audio"]
 stream = SubResource("AudioStreamRandomizer_f6nbd")
+max_distance = 25.0
 bus = &"Firearms"

@@ -394,4 +394,6 @@ libraries = {
 
 [node name="GunshotsPlayer" type="AudioStreamPlayer3D" parent="Audio"]
 stream = SubResource("AudioStreamRandomizer_bnrqf")
+pitch_scale = 0.5
+max_distance = 50.0
 bus = &"Firearms"
