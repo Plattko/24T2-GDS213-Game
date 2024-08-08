@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://h40kwv22axbu"
+path="res://.godot/imported/Droid Killer Phrase 002.wav-b0d05a3ce5af4ed225d5b4816568f26c.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Enemies/Barks/Droid Killer Phrase 002.wav"
+dest_files=["res://.godot/imported/Droid Killer Phrase 002.wav-b0d05a3ce5af4ed225d5b4816568f26c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=2
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
