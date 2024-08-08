@@ -2340,6 +2340,12 @@ transform = Transform3D(0.839421, 0.543482, 0, -0.543482, 0.839421, 0, 0, 0, 1, 
 visible = false
 size = Vector3(2.17285, 1, 3.02124)
 
+[node name="CSGBox3D12" type="CSGBox3D" parent="Level/NavRegionZone1/Zone1"]
+transform = Transform3D(0.855002, 0.518624, 0, -0.518624, 0.855002, 0, 0, 0, 1, -18.6719, 8.54842, 1.6417)
+visible = false
+use_collision = true
+size = Vector3(2.02063, 1, 3.00586)
+
 [node name="NavRegionZone2" type="NavigationRegion3D" parent="Level"]
 transform = Transform3D(1, 0, 0, 0, 1.1, 0, 0, 0, 1, 0, 0, 0)
 navigation_mesh = SubResource("NavigationMesh_ma5b1")
@@ -6725,1146 +6731,1375 @@ end_position = Vector3(3.309, -9.203, -2.785)
 
 [node name="NavigationLink3D" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61.8464, 0.16688, 43.5111)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-1.93419, 2.23055, 1.59355)
 
 [node name="NavigationLink3D2" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -66.7753, 1.73708, 44.8995)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-2.179, 1.301, -0.196)
 
 [node name="NavigationLink3D3" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70.2842, 2.87142, 45.2925)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-2.954, -0.544, 0.304)
 
 [node name="NavigationLink3D4" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75.3627, 1.7062, 45.2925)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-2.954, -1.564, 0.304)
 
 [node name="NavigationLink3D5" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.9231, 2.90625, 44.3676)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-0.614, -2.699, -1.781)
 
 [node name="NavigationLink3D6" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.6775, 2.90625, 45.6115)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-2.249, 3.831, -1.781)
 
 [node name="NavigationLink3D7" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61.8581, 5.23656, 48.0834)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-1.659, 2.721, 2.344)
 
 [node name="NavigationLink3D8" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.9472, 3.766, 48.0834)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(2.926, -3.654, -2.541)
 
 [node name="NavigationLink3D9" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -71.2389, 7.83931, 47.6247)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-0.656, -1.058, -4.267)
 
 [node name="NavigationLink3D10" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.231, 7.83931, 47.6247)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(1.422, 1.923, -6.269)
 
 [node name="NavigationLink3D11" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -67.4609, 7.83931, 55.8129)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(0.736, 4.511, 2.353)
 
 [node name="NavigationLink3D12" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64.1754, 10.9292, 57.9378)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-4.623, 1.783, 0.676)
 
 [node name="NavigationLink3D13" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64.1754, 10.9292, 57.9378)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(5.861, 1.395, -4.661)
 
 [node name="NavigationLink3D14" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -82.0945, 18.0679, 57.9378)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(2.259, 4.796, 0.825)
 
 [node name="NavigationLink3D15" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -78.935, 18.0679, 59.4426)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-0.131, -1.996, 2.635)
 
 [node name="NavigationLink3D16" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -78.935, 16.0851, 62.0457)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-0.441, -3.726, 1.975)
 
 [node name="NavigationLink3D17" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.9122, 16.0851, 59.0153)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-0.816, 1.459, 2.895)
 
 [node name="NavigationLink3D18" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.9122, 16.0851, 59.0153)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(3.016, 1.494, 2.835)
 
 [node name="NavigationLink3D19" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64.1657, 12.346, 61.2974)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(3.55, 2.089, -4.004)
 
 [node name="NavigationLink3D20" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64.1657, 12.346, 62.4998)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(2.83, 2.249, -1.049)
 
 [node name="NavigationLink3D21" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53.7136, 12.346, 64.338)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-3.375, 2.243, -2.886)
 
 [node name="NavigationLink3D22" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55.8878, 12.346, 54.3612)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-1.346, 2.078, 3.127)
 
 [node name="NavigationLink3D23" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63.4211, 7.82275, 63.9367)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(1.909, 2.071, 2.412)
 
 [node name="NavigationLink3D24" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76.6775, 7.82275, 54.7)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-1.765, 4.52, 3.373)
 
 [node name="NavigationLink3D25" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -81.9474, 7.82275, 61.2791)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-1.565, 4.46, 3.003)
 
 [node name="NavigationLink3D26" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -92.4439, 7.82275, 61.2791)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-1.825, 3.131, -0.853)
 
 [node name="NavigationLink3D27" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -88.0419, 12.2717, 64.4877)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-5.976, -1.292, -2.154)
 
 [node name="NavigationLink3D28" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -88.0419, 8.25133, 56.9229)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-0.19, 0.827, -3.131)
 
 [node name="NavigationLink3D30" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.4514, 8.25133, 50.3106)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-2.528, -2.396, 0.105)
 
 [node name="NavigationLink3D31" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76.7417, 5.76734, 50.3106)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-0.238, -1.871, -1.973)
 
 [node name="NavigationLink3D32" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.3616, 7.90949, 50.3106)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-11.038, -4.704, -0.789)
 
 [node name="NavigationLink3D33" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -77.2272, 5.8649, 50.3106)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-4.31, -5.68, -0.4)
 
 [node name="NavigationLink3D34" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -77.2272, 4.16779, 47.9386)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-3.29961, -4.05172, -1.73814)
 
 [node name="NavigationLink3D35" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -77.2272, 4.16779, 47.9386)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-1.804, -2.16, 1.089)
 
 [node name="NavigationLink3D36" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -79.1525, 2.28426, 49.0899)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-2.814, -2.074, -1.161)
 
 [node name="NavigationLink3D37" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -83.8623, 0.186565, 49.0899)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-1.824, 2.931, -0.636)
 
 [node name="NavigationLink3D38" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -88.3771, 3.2415, 50.66)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-7.233, 3.662, 0.242)
 
 [node name="NavigationLink3D39" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -88.3771, 3.2415, 49.0758)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-7.233, -0.113, 0.242)
 
 [node name="NavigationLink3D40" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -88.3771, 3.2415, 48.3827)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-2.773, -3.138, -0.108)
 
 [node name="NavigationLink3D41" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.5021, 6.87311, 48.6725)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-2.773, 1.077, -0.108)
 
 [node name="NavigationLink3D42" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -96.095, 6.87311, 50.051)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-0.027, 1.019, 3.174)
 
 [node name="NavigationLink3D43" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -98.5343, 8.01233, 51.2043)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-2.722, -0.275, 4.187)
 
 [node name="NavigationLink3D44" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -98.5343, 5.08901, 55.8836)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(2.107, 2.854, 0.333)
 
 [node name="NavigationLink3D45" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -104.369, 5.08901, 55.8836)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(2.107, 2.594, 0.333)
 
 [node name="NavigationLink3D46" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -103.022, 7.64531, 59.8878)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(6.529, 0.221, -0.631)
 
 [node name="NavigationLink3D47" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -103.992, 7.64531, 59.8878)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-6.917, 0.018, 1.147)
 
 [node name="NavigationLink3D48" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -98.1082, 8.03086, 49.3077)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(3.31338, 4.56559, -2.25618)
 
 [node name="NavigationLink3D49" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -101.84, 7.66334, 54.736)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-3.899, 2.867, -1.432)
 
 [node name="NavigationLink3D50" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -111.744, 7.66334, 59.8877)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(2.83, 2.894, -6.787)
 
 [node name="NavigationLink3D51" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -116.89, 7.66334, 59.8877)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-0.893, 3.01, -6.301)
 
 [node name="NavigationLink3D52" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -114.454, 5.10985, 57.7805)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-0.149, 2.525, 2.964)
 
 [node name="NavigationLink3D53" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -122.681, 5.10985, 57.7805)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-2.23, 2.742, 0.728)
 
 [node name="NavigationLink3D54" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -124.66, 5.10985, 43.6658)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-3.05988, 2.82998, 0.595478)
 
 [node name="NavigationLink3D55" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -123.468, 5.10985, 33.2304)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-2.773, 2.846, -0.435)
 
 [node name="NavigationLink3D56" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -112.703, 5.10985, 31.3823)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-0.407, 2.595, -1.977)
 
 [node name="NavigationLink3D57" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -99.7896, 5.10985, 31.1024)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-0.118, 2.745, 1.96)
 
 [node name="NavigationLink3D58" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -126.426, 7.81442, 54.9851)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(5.804, 2.785, -1.662)
 
 [node name="NavigationLink3D59" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -127.239, 7.81442, 45.4454)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(7.00282, 2.7465, 2.72798)
 
 [node name="NavigationLink3D60" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -126.943, 7.81442, 39.8178)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(6.652, 2.635, -0.545)
 
 [node name="NavigationLink3D61" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -122.323, 7.81442, 29.8795)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(2.789, 2.668, 4.073)
 
 [node name="NavigationLink3D62" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -113.835, 7.81442, 29.2961)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-2.209, 2.722, 4.954)
 
 [node name="NavigationLink3D63" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -109.527, 7.81442, 29.6147)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-0.158, 2.76, 5.836)
 
 [node name="NavigationLink3D64" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100.229, 8.229, 35.8047)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-6.267, 2.455, 0.234)
 
 [node name="NavigationLink3D65" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -99.8653, 8.229, 38.6965)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-0.94, -3.05, 4.568)
 
 [node name="NavigationLink3D66" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -106.774, 10.474, 38.5174)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-1.079, 2.789, 3.189)
 
 [node name="NavigationLink3D67" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -108.18, 10.474, 37.029)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-2.335, 2.825, 1.266)
 
 [node name="NavigationLink3D68" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -109.053, 10.474, 49.614)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-1.532, 2.847, -0.06)
 
 [node name="NavigationLink3D69" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -106.881, 10.474, 49.7728)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(0.102, 2.906, -2.625)
 
 [node name="NavigationLink3D70" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -118.551, 10.474, 50.4644)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(2.644, 2.888, -1.022)
 
 [node name="NavigationLink3D71" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -118.551, 10.474, 38.1721)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(2.829, 2.906, 0.321)
 
 [node name="NavigationLink3D72" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -119.54, 10.474, 36.3963)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-5.796, 1.798, 2.169)
 
 [node name="NavigationLink3D73" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -119.319, 10.474, 35.1593)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-6.202, 1.674, -0.934)
 
 [node name="NavigationLink3D74" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -118.202, 10.474, 33.6924)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-2.25, 1.646, -7.475)
 
 [node name="NavigationLink3D75" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -107.352, 13.2965, 42.5091)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-3.27533, 0.173397, -3.67591)
 
 [node name="NavigationLink3D76" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -107.547, 13.2965, 46.8561)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-3.64246, 0.105848, 2.35771)
 
 [node name="NavigationLink3D77" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -119.066, 10.7346, 47.6907)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(0.104, -0.088, -8.009)
 
 [node name="NavigationLink3D78" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -119.066, 5.32906, 41.9952)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-0.175, 2.575, -2.605)
 
 [node name="NavigationLink3D79" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -119.066, 5.32906, 31.8885)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(0.008, 2.616, 1.938)
 
 [node name="NavigationLink3D80" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -122.048, 7.71623, 29.6145)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(3.284, 0.163, 4.341)
 
 [node name="NavigationLink3D81" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -91.0684, 0.589529, 40.3395)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-3.397, 1.554, -0.032)
 
 [node name="NavigationLink3D82" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.2466, 3.78606, 34.4945)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-2.562, 1.244, -0.032)
 
 [node name="NavigationLink3D83" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -104.556, 3.78606, 24.9339)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(1.69, 1.5, 3.595)
 
 [node name="NavigationLink3D84" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -99.9427, 1.67734, 24.9653)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(1.275, 3.365, 2.895)
 
 [node name="NavigationLink3D85" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -105.244, 4.3379, 21.2635)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(1.421, -3.215, -2.029)
 
 [node name="NavigationLink3D86" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -105.244, 4.3379, 21.2635)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(1.088, -0.196, -4.252)
 
 [node name="NavigationLink3D87" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -105.244, 4.3379, 21.2635)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-1.38, -2.344, -4.303)
 
 [node name="NavigationLink3D88" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -86.0964, 0.579938, 13.0277)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(2.22443, 1.83296, -1.40035)
 
 [node name="NavigationLink3D229" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -83.6189, 2.21114, 11.5244)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-4.04866, 0.776514, -3.39181)
 
 [node name="NavigationLink3D89" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90.0073, 0.579938, 8.46173)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(2.416, 2.627, -0.247)
 
 [node name="NavigationLink3D90" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -99.0942, 1.20989, 8.52054)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(2.682, 4.113, -2.515)
 
 [node name="NavigationLink3D91" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -110.129, 1.20989, 8.52054)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(2.3578, 4.0791, -2.17005)
 
 [node name="NavigationLink3D92" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -110.129, 1.20989, 2.99195)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(0.268, 4.149, 2.685)
 
 [node name="NavigationLink3D93" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -102.016, 1.20989, 2.99195)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(0.268, 4.149, 2.685)
 
 [node name="NavigationLink3D94" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -115.841, 1.20989, 6.18843)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(2.57, 4.15, 0.467)
 
 [node name="NavigationLink3D95" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -120.198, 8.50273, 13.578)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-1.76337, 2.43106, -2.20463)
 
 [node name="NavigationLink3D96" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -125.449, 12.4738, 11.5816)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(0.942, 2.459, 2.935)
 
 [node name="NavigationLink3D97" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -139.676, 18.8299, 13.1875)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-1.942, 2.88, 1.421)
 
 [node name="NavigationLink3D98" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -139.676, 19.4018, 17.5801)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-2.003, 2.353, 3.37)
 
 [node name="NavigationLink3D228" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -135.427, 19.105, 17.2473)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(1.996, -4.992, 0.11)
 
 [node name="NavigationLink3D99" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -139.676, 21.9746, 27.7358)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(0.725, 1.447, 2.146)
 
 [node name="NavigationLink3D100" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -138.865, 22.9706, 29.9369)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(0.725, 1.897, 2.146)
 
 [node name="NavigationLink3D101" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -138.046, 24.6179, 33.0927)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(1.542, 1.865, 1.451)
 
 [node name="NavigationLink3D102" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -136.378, 26.3739, 34.8869)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(2.958, 0.395, 1.26)
 
 [node name="NavigationLink3D103" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -132.615, 26.5244, 36.4505)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(2.255, 2.863, 1.422)
 
 [node name="NavigationLink3D227" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -123.103, 26.5244, 42.5934)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-0.895, 2.863, -1.273)
 
 [node name="NavigationLink3D104" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -93.0439, 12.6319, 47.4696)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(1.479, 4.041, 5.629)
 
 [node name="NavigationLink3D105" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -136.967, 19.1885, 13.4677)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(3.589, 3.394, 0.663)
 
 [node name="NavigationLink3D106" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -133.967, 19.1885, 13.4677)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(2.316, 1.183, -0.418)
 
 [node name="NavigationLink3D107" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -132.855, 19.1885, 15.0077)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(2.752, 2.323, -1.843)
 
 [node name="NavigationLink3D108" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -141.123, 21.7417, 33.2147)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(2.802, 2.841, -1.389)
 
 [node name="NavigationLink3D109" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -146.238, 21.7417, 23.7419)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-2.226, 1.89, -0.319)
 
 [node name="NavigationLink3D110" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -148.891, 23.4797, 23.2558)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-1.953, 1.774, -0.087)
 
 [node name="NavigationLink3D111" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -151.155, 25.1877, 22.8598)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-4.649, 0.039, -1.07)
 
 [node name="NavigationLink3D112" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -151.155, 25.1877, 22.8598)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-1.569, 1.098, -6.656)
 
 [node name="NavigationLink3D113" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -151.155, 25.1877, 22.8598)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(3.982, 1.074, -6.397)
 
 [node name="NavigationLink3D114" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -148.736, 21.7939, 21.2713)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-1.865, 3.429, 1.662)
 
 [node name="NavigationLink3D115" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -153.19, 21.7939, 24.822)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(2.159, 3.597, -1.808)
 
 [node name="NavigationLink3D116" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -156.234, 21.7939, 23.7449)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(0.426, 3.421, -2.04)
 
 [node name="NavigationLink3D117" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -146.531, 21.7939, 18.9766)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(0.211, 4.511, -2.505)
 
 [node name="NavigationLink3D118" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -151.668, 21.7939, 18.9766)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(0.211, 4.511, -2.505)
 
 [node name="NavigationLink3D119" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -157.291, 21.7939, 18.9766)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-0.149, 3.482, -2.94)
 
 [node name="NavigationLink3D120" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -162.523, 21.7939, 18.9766)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(0.001, 4.567, -2.46)
 
 [node name="NavigationLink3D121" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -168.421, 21.7939, 18.9766)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(0.001, 3.512, -3.225)
 
 [node name="NavigationLink3D122" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -165.563, 22.7657, 13.5677)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-2.054, 3.512, -0.09)
 
 [node name="NavigationLink3D123" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -165.563, 22.7657, 15.3277)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(2.116, 3.512, -0.09)
 
 [node name="NavigationLink3D124" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -165.563, 22.7657, 9.50327)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(2.611, 2.512, -0.09)
 
 [node name="NavigationLink3D125" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -171.476, 22.7657, 9.50327)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(2.611, 3.517, -0.09)
 
 [node name="NavigationLink3D126" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -160.237, 22.7657, 9.50327)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(2.611, 3.517, -0.09)
 
 [node name="NavigationLink3D127" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -154.896, 22.7657, 9.50327)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-1.599, 3.517, -0.09)
 
 [node name="NavigationLink3D128" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -154.896, 22.7657, 12.0942)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(1.981, 3.517, -0.09)
 
 [node name="NavigationLink3D129" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -149.365, 22.7657, 12.0942)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-1.579, 3.517, -0.09)
 
 [node name="NavigationLink3D130" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -149.365, 22.7657, 13.8872)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(2.086, 3.517, -0.09)
 
 [node name="NavigationLink3D131" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -144.177, 22.7657, 13.8872)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-1.479, 3.517, -0.09)
 
 [node name="NavigationLink3D132" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -144.177, 22.7657, 9.3034)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-1.969, 2.392, -0.09)
 
 [node name="NavigationLink3D133" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -149.772, 22.7657, 9.3034)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-1.969, 2.392, -0.09)
 
 [node name="NavigationLink3D134" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -149.772, 22.7657, 9.3034)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(2.876, 2.392, -0.09)
 
 [node name="NavigationLink3D135" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -154.783, 22.7657, 8.76482)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(2.57411, 2.48834, 0.113452)
 
 [node name="NavigationLink3D136" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -165.816, 22.7657, 8.76482)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(2.57411, 2.48834, 0.113452)
 
 [node name="NavigationLink3D137" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -160.28, 22.7657, 8.76482)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-2.296, 2.488, 0.113)
 
 [node name="NavigationLink3D138" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -171.047, 22.7657, 15.4235)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(2.282, 2.602, 0.871)
 
 [node name="NavigationLink3D139" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -171.047, 22.7657, 15.4235)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-1.63, 2.897, -1.848)
 
 [node name="NavigationLink3D140" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -172.241, 22.7657, 8.65937)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-1.63, 2.882, -1.848)
 
 [node name="NavigationLink3D141" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -172.241, 25.5986, 12.6594)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-1.792, 0.083, -5.835)
 
 [node name="NavigationLink3D142" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -172.241, 25.5986, 12.6594)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(3.09317, 0.599993, -0.0645218)
 
 [node name="NavigationLink3D143" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -168.404, 25.1542, 15.3992)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-0.043, 1.032, -2.316)
 
 [node name="NavigationLink3D144" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -162.524, 25.1542, 9.13218)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-0.008, 1.032, 2.404)
 
 [node name="NavigationLink3D145" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -157.249, 25.1542, 15.6758)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-0.008, 1.032, -2.001)
 
 [node name="NavigationLink3D146" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -152.032, 25.1542, 9.2376)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-0.008, 1.032, 1.949)
 
 [node name="NavigationLink3D147" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -146.911, 25.1542, 9.2376)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-0.008, 1.032, 1.949)
 
 [node name="NavigationLink3D148" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -167.641, 26.2325, 11.0564)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(4.013, -0.011, 0.733)
 
 [node name="NavigationLink3D149" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -161.79, 26.2325, 13.0407)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(4.213, -0.011, -0.967)
 
 [node name="NavigationLink3D150" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -156.503, 26.2325, 13.0407)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(4.213, -0.011, 0.808)
 
 [node name="NavigationLink3D151" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -151.021, 26.2325, 13.0407)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(4.213, -0.011, -0.892)
 
 [node name="NavigationLink3D152" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -155.913, 25.3395, 21.9121)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-1.95, -0.149, -6.275)
 
 [node name="NavigationLink3D153" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -162.109, 22.0428, 21.9121)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-1.777, 1.651, -1.301)
 
 [node name="NavigationLink3D154" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -162.77, 22.0428, 30.2699)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(2.557, 2.745, -0.799)
 
 [node name="NavigationLink3D155" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -159.905, 26.1071, 32.5067)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(2.167, 2.655, -0.799)
 
 [node name="NavigationLink3D156" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -160.702, 28.6379, 38.1862)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-7.625, 1.596, -4.467)
 
 [node name="NavigationLink3D157" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -168.476, 30.2774, 33.8093)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-2.628, 0.045, 5.104)
 
 [node name="NavigationLink3D158" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -168.476, 30.2774, 33.8093)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-3.167, 0.108, -5.406)
 
 [node name="NavigationLink3D159" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -171.283, 30.2774, 39.0466)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-0.463, -0.099, -10.65)
 
 [node name="NavigationLink3D160" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -155.83, 28.7254, 37.7697)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(0.508, 2.379, -2.836)
 
 [node name="NavigationLink3D161" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -154.988, 28.7254, 32.3739)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-0.511, 2.549, 1.929)
 
 [node name="NavigationLink3D162" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -153.732, 28.7254, 28.884)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-1.19122, 2.63723, -2.38448)
 
 [node name="NavigationLink3D163" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -156.773, 28.7254, 24.4528)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(1.834, 2.287, 1.985)
 
 [node name="NavigationLink3D164" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -155.79, 28.7254, 19.3111)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(1.822, 3.003, 0.117)
 
 [node name="NavigationLink3D165" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -151.727, 28.7254, 19.3111)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-2.188, 3.003, 0.117)
 
 [node name="NavigationLink3D166" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -151.727, 28.7254, 15.3912)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-0.218, 3.003, -2.038)
 
 [node name="NavigationLink3D167" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -153.171, 28.7254, 13.1744)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-0.218, 3.003, -2.038)
 
 [node name="NavigationLink3D168" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -153.171, 28.7254, 8.9382)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-0.253, 3.126, 2.149)
 
 [node name="NavigationLink3D169" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -149.836, 28.7254, 33.5111)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(2.089, 2.738, 0.993)
 
 [node name="NavigationLink3D170" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -149.836, 28.7254, 29.4999)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(2.089, 3.068, 0.993)
 
 [node name="NavigationLink3D171" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -153.781, 31.6884, 19.498)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(4.416, -0.171, 1.115)
 
 [node name="NavigationLink3D172" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -153.781, 31.6884, 19.498)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(4.91, 1.616, -4.342)
 
 [node name="NavigationLink3D173" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -153.781, 31.6884, 19.498)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-1.135, -0.679, 6.311)
 
 [node name="NavigationLink3D174" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -153.781, 31.6884, 19.498)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(2.24, 0.067, -6.499)
 
 [node name="NavigationLink3D175" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -153.38, 31.7239, 10.7949)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(1.792, 0.053, 2.424)
 
 [node name="NavigationLink3D176" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -153.38, 31.7239, 10.7949)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(1.675, 1.772, 0.36)
 
 [node name="NavigationLink3D177" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -151.553, 31.7239, 13.1971)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-0.0349884, 1.58097, -2.10459)
 
 [node name="NavigationLink3D178" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -151.553, 31.7239, 13.1971)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(2.332, 1.433, -0.207)
 
 [node name="NavigationLink3D179" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -151.553, 33.3223, 10.8271)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(2.378, -0.156, 2.236)
 
 [node name="NavigationLink3D180" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -149.251, 32.594, 18.6959)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(2.746, 0.482, 1.096)
 
 [node name="NavigationLink3D181" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -148.004, 31.7143, 29.5783)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(1.791, 1.582, 0.361)
 
 [node name="NavigationLink3D182" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -148.004, 31.7143, 34.0734)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(1.791, 1.582, 0.361)
 
 [node name="NavigationLink3D183" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -146.008, 33.3711, 34.0734)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(1.17, 1.659, 2.991)
 
 [node name="NavigationLink3D184" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -144.616, 34.9959, 37.0531)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(0.862, 1.933, 1.078)
 
 [node name="NavigationLink3D185" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -145.11, 33.0709, 17.2018)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(1.712, 1.977, 0.687)
 
 [node name="NavigationLink3D186" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -145.11, 33.0709, 12.7214)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-1.117, 1.365, -2.668)
 
 [node name="NavigationLink3D226" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -145.11, 33.0709, 14.6264)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-1.117, 6.335, -2.668)
 
 [node name="NavigationLink3D187" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -78.2146, 0.000176437, 14.0691)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(1.907, 1.984, -0.074)
 
 [node name="NavigationLink3D188" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -78.2146, 0.000176437, 14.0691)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(0.418312, 2.41666, 2.88903)
 
 [node name="NavigationLink3D189" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -78.2146, 0.000176437, 20.2961)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(0.469, 2.277, -3.38)
 
 [node name="NavigationLink3D190" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -78.2146, 0.000176437, 20.2961)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(1.944, 1.992, -0.291)
 
 [node name="NavigationLink3D191" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -79.06, 0.000176437, 24.8017)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(2.669, 1.943, -0.019)
 
 [node name="NavigationLink3D192" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -79.06, 0.000176437, 29.2347)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(2.669, 1.943, -0.019)
 
 [node name="NavigationLink3D193" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.8829, 0.000176437, 33.008)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(2.669, 2.668, -0.019)
 
 [node name="NavigationLink3D194" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72.8085, 0.364594, 35.8409)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(0.635, 2.275, -2.376)
 
 [node name="NavigationLink3D195" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70.0745, 0.364594, 35.8409)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(0.536, 3.408, -1.941)
 
 [node name="NavigationLink3D196" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65.5155, 0.364594, 35.8409)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(0.536, 3.408, -1.941)
 
 [node name="NavigationLink3D197" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60.0394, 0.364594, 32.7537)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-2.456, 1.438, -0.09)
 
 [node name="NavigationLink3D198" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60.0394, 0.364594, 32.7537)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-0.231, 1.686, -3.048)
 
 [node name="NavigationLink3D199" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.8304, 1.89687, 32.7537)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-2.485, 1.815, 0.112)
 
 [node name="NavigationLink3D200" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.6774, 0.110237, 32.7537)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-0.083, 1.923, -2.849)
 
 [node name="NavigationLink3D201" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55.0634, 1.3056, 29.9552)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(3.016, 0.743, -0.632)
 
 [node name="NavigationLink3D202" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -67.7839, 2.10355, 28.8746)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-1.557, 3.091, 0.131)
 
 [node name="NavigationLink3D203" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -66.329, 2.10355, 29.909)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(0.502, 1.74, 2.642)
 
 [node name="NavigationLink3D204" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72.4075, 2.87292, 32.4232)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(2.171, 1.156, 1.124)
 
 [node name="NavigationLink3D205" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -67.928, 5.28517, 32.7885)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-3.98, 1.641, -0.314)
 
 [node name="NavigationLink3D206" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -67.928, 5.28517, 32.7885)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-1.798, -0.657, -3.486)
 
 [node name="NavigationLink3D207" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -71.7177, 6.83695, 32.7885)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(1.993, -1.699, -4.523)
 
 [node name="NavigationLink3D208" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -71.7177, 6.83695, 32.0533)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(1.27, 1.812, -5.947)
 
 [node name="NavigationLink3D209" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -71.7177, 9.83695, 33.4301)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(1.27, -1.173, -6.792)
 
 [node name="NavigationLink3D210" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -71.7177, 9.83695, 33.3453)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-0.095, -2.815, -1.505)
 
 [node name="NavigationLink3D211" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -71.7177, 9.83695, 41.2482)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-0.095, -2.815, 2.53)
 
 [node name="NavigationLink3D212" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.2532, 8.65664, 26.9005)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-0.095, -3.695, 2.53)
 
 [node name="NavigationLink3D213" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68.232, 4.30778, 26.0945)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(0.293, -1.961, -2.162)
 
 [node name="NavigationLink3D214" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70.1196, 4.30778, 26.0945)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(0.465, 0.751, 1.928)
 
 [node name="NavigationLink3D215" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72.1998, 4.30778, 26.0945)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(0.179, -2.289, -1.88)
 
 [node name="NavigationLink3D216" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68.1604, 4.30778, 26.0945)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(2.96349, 2.04076, 0.262022)
 
 [node name="NavigationLink3D217" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61.0556, 6.38796, 26.0945)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(3.767, -1.166, -3.853)
 
 [node name="NavigationLink3D218" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61.0556, 2.16608, 22.6577)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(3.882, 3.459, -0.728)
 
 [node name="NavigationLink3D225" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63.8931, 2.16608, 24.0604)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(0.588, 4.248, 2.272)
 
 [node name="NavigationLink3D219" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53.2584, 2.16608, 24.3711)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-0.886, 3.086, -2.348)
 
 [node name="NavigationLink3D220" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60.9729, 5.32894, 13.8725)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-0.246, 0.715, 2.735)
 
 [node name="NavigationLink3D221" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65.7753, 5.32894, 13.8725)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-0.246, 0.715, 2.735)
 
 [node name="NavigationLink3D222" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.7753, 5.32894, 13.8725)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-0.246, 0.715, 2.735)
 
 [node name="NavigationLink3D223" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.7753, 5.32894, 13.8725)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-4.325, 1.629, -0.185)
 
 [node name="NavigationLink3D224" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57.5062, 5.32894, 20.169)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(-4.103, 0.447, -2.945)
 
 [node name="NavigationLink3D29" type="NavigationLink3D" parent="Level/NavigationLinks/Zone2/Bidirectional"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -93.6574, 10.9518, 60.3065)
+enabled = false
 navigation_layers = 2
 end_position = Vector3(5.052, -1.958, -5.44)
 
@@ -9094,12 +9329,6 @@ skeleton = NodePath("../../Zone1")
 libraries = {
 "": SubResource("AnimationLibrary_8wxbm")
 }
-
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(0.855002, 0.518624, 0, -0.518624, 0.855002, 0, 0, 0, 1, -18.6719, 8.54842, 1.6417)
-visible = false
-use_collision = true
-size = Vector3(2.02063, 1, 3.00586)
 
 [node name="Node3D3" parent="." instance=ExtResource("109_bfkcq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -139.956, 20.8061, 54.1406)

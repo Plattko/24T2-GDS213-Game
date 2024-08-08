@@ -61,7 +61,7 @@ particles_anim_loop = false
 material = SubResource("StandardMaterial3D_5o5jj")
 size = Vector2(10, 10)
 
-[node name="Node3D" type="Node3D"]
+[node name="SmokePlumeParticle" type="Node3D"]
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 amount = 100
