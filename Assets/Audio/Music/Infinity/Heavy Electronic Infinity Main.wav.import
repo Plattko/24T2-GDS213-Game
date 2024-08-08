@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bkmqrsx08m0hf"
+path="res://.godot/imported/Heavy Electronic Infinity Main.wav-b630c26fd675da9040e96c61fbac06e4.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Music/Infinity/Heavy Electronic Infinity Main.wav"
+dest_files=["res://.godot/imported/Heavy Electronic Infinity Main.wav-b630c26fd675da9040e96c61fbac06e4.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

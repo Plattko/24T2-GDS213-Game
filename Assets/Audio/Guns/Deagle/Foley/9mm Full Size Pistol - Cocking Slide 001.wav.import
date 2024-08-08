@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dvpf6okfw8h80"
+path="res://.godot/imported/9mm Full Size Pistol - Cocking Slide 001.wav-b5586f38f245c62c4d0a01ab95a4db9f.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Guns/Deagle/Foley/9mm Full Size Pistol - Cocking Slide 001.wav"
+dest_files=["res://.godot/imported/9mm Full Size Pistol - Cocking Slide 001.wav-b5586f38f245c62c4d0a01ab95a4db9f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

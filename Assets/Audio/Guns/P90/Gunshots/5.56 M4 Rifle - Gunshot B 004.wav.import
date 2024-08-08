@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://svu2bi7f83ew"
+path="res://.godot/imported/5.56 M4 Rifle - Gunshot B 004.wav-0fbfd30d40097cdcd8aeefb6c320133a.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Guns/P90/Gunshots/5.56 M4 Rifle - Gunshot B 004.wav"
+dest_files=["res://.godot/imported/5.56 M4 Rifle - Gunshot B 004.wav-0fbfd30d40097cdcd8aeefb6c320133a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://vs5x13iy4n5q"
+path="res://.godot/imported/12ga Pump Shotgun - Load Shells 003.wav-08cfce332a4beac99e2df545e9e7f57e.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Guns/Shotgun/Foley/12ga Pump Shotgun - Load Shells 003.wav"
+dest_files=["res://.godot/imported/12ga Pump Shotgun - Load Shells 003.wav-08cfce332a4beac99e2df545e9e7f57e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

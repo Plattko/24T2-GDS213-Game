@@ -8,17 +8,22 @@ var self_damage : float = explosion_damage * 0.45
 var knockback_strength : float = 12.0
 var is_direct_hit : bool = false
 
+@export var owner_id : int
+
+@export var explosion_sfx : AudioStreamPlayer3D
+
+#var do_self_damage : bool = true
+
 const ENEMY_COLLISION_MASK : int = roundi(pow(2, 1-1)) + roundi(pow(2, 3-1))
 const PLAYER_COLLISION_MASK : int = roundi(pow(2, 1-1)) + roundi(pow(2, 2-1))
-
-@export var owner_id : int
 
 func _enter_tree() -> void:
 	if !multiplayer.is_server():
 		set_physics_process(false)
 		return
 	
-	await get_tree().create_timer(0.5).timeout
+	explosion_sfx.play()
+	await get_tree().create_timer(0.9).timeout
 	await get_tree().physics_frame
 	queue_free()
 

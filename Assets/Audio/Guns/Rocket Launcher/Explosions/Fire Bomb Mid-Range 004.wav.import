@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://klw5gx46amrc"
+path="res://.godot/imported/Fire Bomb Mid-Range 004.wav-64c1e2d6187bbee8ac3800198ce0cf36.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Guns/Rocket Launcher/Explosions/Fire Bomb Mid-Range 004.wav"
+dest_files=["res://.godot/imported/Fire Bomb Mid-Range 004.wav-64c1e2d6187bbee8ac3800198ce0cf36.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

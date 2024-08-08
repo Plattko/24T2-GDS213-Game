@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://uhpo4cpvuuw6"
+path="res://.godot/imported/Leather Unholster 002.wav-73de6ae9b7c3179749506105a1a21ee5.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Guns/Holstering/Leather Unholster 002.wav"
+dest_files=["res://.godot/imported/Leather Unholster 002.wav-73de6ae9b7c3179749506105a1a21ee5.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

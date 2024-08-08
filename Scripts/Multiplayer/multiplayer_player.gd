@@ -7,6 +7,7 @@ extends CharacterBody3D
 @export var camera : Camera3D
 @export var anim_player : AnimationPlayer
 @export var ceiling_check : ShapeCast3D
+@export var player_audio : Node
 @export var ui : UIManager
 @export var hud : HUD
 
@@ -480,7 +481,9 @@ func handle_connected_signals() -> void:
 		if weapon is Weapon:
 			# Connect the hitmarker to each weapon's regular and crit hit signals
 			weapon.regular_hit.connect(hitmarker.on_regular_hit)
+			weapon.regular_hit.connect(player_audio.PlayNormalHitmarker)
 			weapon.crit_hit.connect(hitmarker.on_crit_hit)
+			weapon.crit_hit.connect(player_audio.PlayHeadshotHitmarker)
 	
 	# Connect signals to HUD
 	update_health.connect(hud.on_update_health)

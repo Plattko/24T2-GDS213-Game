@@ -1,0 +1,78 @@
+[gd_scene load_steps=3 format=3 uid="uid://cm3ga2s1kts4t"]
+
+[ext_resource type="Material" uid="uid://cjca13u7ussve" path="res://Assets/Materials/Standard Materials/MI_concrete_A_Inst.tres" id="1_bbv56"]
+[ext_resource type="Material" uid="uid://d1251j4kqby6q" path="res://Assets/Materials/Standard Materials/MI_corrugated_metal_D_Inst.tres" id="2_8pi2b"]
+
+[node name="Test" type="Node3D"]
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGMesh3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.84125, 1.46019, -0.0358887)
+size = Vector3(10, 3, 0.5)
+material = ExtResource("1_bbv56")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGMesh3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.84125, 5.45503, -0.0358887)
+size = Vector3(10, 3, 0.5)
+material = ExtResource("1_bbv56")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGMesh3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.84405, 3.4566, -0.0346797)
+size = Vector3(10, 1, 0.7)
+material = ExtResource("1_bbv56")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGMesh3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.84125, 9.45273, -0.0358887)
+size = Vector3(10, 3, 0.5)
+material = ExtResource("1_bbv56")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="CSGMesh3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.84405, 7.4543, -0.0346797)
+size = Vector3(10, 1, 0.7)
+material = ExtResource("1_bbv56")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="CSGMesh3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.84125, 13.4547, -0.0358887)
+size = Vector3(10, 3, 0.5)
+material = ExtResource("1_bbv56")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="CSGMesh3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.84405, 11.4563, -0.0346797)
+size = Vector3(10, 1, 0.7)
+material = ExtResource("1_bbv56")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="CSGMesh3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.84125, 17.45, -0.0358887)
+size = Vector3(10, 3, 0.5)
+material = ExtResource("1_bbv56")
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="CSGMesh3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.84405, 15.4516, -0.0346797)
+size = Vector3(10, 1, 0.7)
+material = ExtResource("1_bbv56")
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="CSGMesh3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.84125, 21.445, -0.0358887)
+size = Vector3(10, 3, 0.5)
+material = ExtResource("1_bbv56")
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="CSGMesh3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.84405, 19.4466, -0.0346797)
+size = Vector3(10, 1, 0.7)
+material = ExtResource("1_bbv56")
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="CSGMesh3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.84405, 23.4387, -0.0346797)
+size = Vector3(10, 1, 0.7)
+material = ExtResource("1_bbv56")
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="CSGMesh3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.84125, 25.4311, -0.0358887)
+size = Vector3(10, 3, 0.5)
+material = ExtResource("1_bbv56")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGMesh3D"]
+transform = Transform3D(-4.37114e-08, -1, 0, 0.918557, -4.01514e-08, -0.395289, 0.395289, -1.72786e-08, 0.918557, 1.84137, 27.3094, -0.0253345)
+height = 10.0
+material = ExtResource("2_8pi2b")

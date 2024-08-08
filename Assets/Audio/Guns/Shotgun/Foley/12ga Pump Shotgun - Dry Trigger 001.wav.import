@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bkc3ugcup2sus"
+path="res://.godot/imported/12ga Pump Shotgun - Dry Trigger 001.wav-174660694a667c48e34337cd2f2dbd06.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Guns/Shotgun/Foley/12ga Pump Shotgun - Dry Trigger 001.wav"
+dest_files=["res://.godot/imported/12ga Pump Shotgun - Dry Trigger 001.wav-174660694a667c48e34337cd2f2dbd06.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

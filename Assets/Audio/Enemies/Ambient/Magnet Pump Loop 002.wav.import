@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bl7bvjdxj0nr3"
+path="res://.godot/imported/Magnet Pump Loop 002.wav-f62fd0258d8f128c39c73b8938cdfbad.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Enemies/Ambient/Magnet Pump Loop 002.wav"
+dest_files=["res://.godot/imported/Magnet Pump Loop 002.wav-f62fd0258d8f128c39c73b8938cdfbad.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

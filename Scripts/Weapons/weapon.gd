@@ -9,8 +9,9 @@ var camera : Camera3D
 @export var muzzle_flash : MuzzleFlash
 @export var anim_player : AnimationPlayer
 
-var bullet_decal = load("res://Scenes/Weapons/Components/bullet_decal.tscn")
 var third_person_material = load("res://Assets/Materials/Shader Materials/weapon_third_person_shader.tres")
+var bullet_decal = load("res://Scenes/Weapons/Components/bullet_decal.tscn")
+var sparks_particle = load("res://Scenes/VFX/sparks_particle.tscn")
 
 @export_group("Weapon Data")
 @export_subgroup("Damage")
@@ -97,6 +98,8 @@ func raycast_hit(result: Dictionary) -> void:
 			var dmg = damage_with_falloff(BULLET_DAMAGE, distance)
 			collider.take_damage.rpc(dmg, false)
 			regular_hit.emit(dmg)
+		# Spawn the sparks particle effect
+		spawn_sparks(result.get("position"), result.get("normal"))
 	else:
 		# Spawn a bullet hole decal
 		spawn_decal(result.get("position"), result.get("normal"))
@@ -119,6 +122,18 @@ func spawn_decal(position: Vector3, normal: Vector3) -> void:
 	instance.rotate_object_local(Vector3(0,1,0), randf_range(0.0,360.0))
 	# Update the decal queue
 	update_decal_queue(instance)
+
+func spawn_sparks(pos: Vector3, normal: Vector3) -> void:
+	# Instantiate the sparks particle
+	var sparks = sparks_particle.instantiate() as Node3D
+	# Make it a child of the level scene
+	var level = get_tree().get_first_node_in_group("level")
+	level.add_child(sparks)
+	# Set its position
+	sparks.global_position = pos
+	# Make it fire in the direction of the collider's normal
+	sparks.look_at(pos + normal, Vector3.UP)
+	sparks.look_at(pos + normal, Vector3.RIGHT)
 
 func update_decal_queue(decal):
 	# Add the new decal to the end of the queue

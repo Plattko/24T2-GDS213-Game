@@ -1,6 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://caikardaaqlll"]
+[gd_scene load_steps=10 format=3 uid="uid://caikardaaqlll"]
 
 [ext_resource type="Script" path="res://Scripts/Weapons/Components/explosion.gd" id="1_6p53y"]
+[ext_resource type="AudioStream" uid="uid://ced8lqfnr7rlm" path="res://Assets/Audio/Guns/Rocket Launcher/Explosions/Fire Bomb Mid-Range 001.wav" id="2_0vyvj"]
+[ext_resource type="AudioStream" uid="uid://cpx72l4l88er6" path="res://Assets/Audio/Guns/Rocket Launcher/Explosions/Fire Bomb Mid-Range 002.wav" id="3_gqh7o"]
+[ext_resource type="AudioStream" uid="uid://h1ghut8x1ahb" path="res://Assets/Audio/Guns/Rocket Launcher/Explosions/Fire Bomb Mid-Range 003.wav" id="4_y2j6d"]
+[ext_resource type="AudioStream" uid="uid://klw5gx46amrc" path="res://Assets/Audio/Guns/Rocket Launcher/Explosions/Fire Bomb Mid-Range 004.wav" id="5_4pjf3"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_5n8t8"]
 properties/0/path = NodePath(".:position")
@@ -22,9 +26,21 @@ height = 6.0
 [sub_resource type="SphereShape3D" id="SphereShape3D_kl43k"]
 radius = 3.0
 
-[node name="Explosion" type="Node3D" node_paths=PackedStringArray("explosion_col")]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_kftp3"]
+streams_count = 4
+stream_0/stream = ExtResource("2_0vyvj")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("3_gqh7o")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("4_y2j6d")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("5_4pjf3")
+stream_3/weight = 1.0
+
+[node name="Explosion" type="Node3D" node_paths=PackedStringArray("explosion_col", "explosion_sfx")]
 script = ExtResource("1_6p53y")
 explosion_col = NodePath("ExplosionRadius/CollisionSphere")
+explosion_sfx = NodePath("Audio/ExplosionPlayer")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_5n8t8")
@@ -38,5 +54,12 @@ collision_mask = 7
 
 [node name="CollisionSphere" type="CollisionShape3D" parent="ExplosionRadius"]
 shape = SubResource("SphereShape3D_kl43k")
+
+[node name="Audio" type="Node3D" parent="."]
+
+[node name="ExplosionPlayer" type="AudioStreamPlayer3D" parent="Audio"]
+stream = SubResource("AudioStreamRandomizer_kftp3")
+max_distance = 50.0
+bus = &"Explosives"
 
 [connection signal="body_entered" from="ExplosionRadius" to="." method="_on_explosion_radius_body_entered"]
