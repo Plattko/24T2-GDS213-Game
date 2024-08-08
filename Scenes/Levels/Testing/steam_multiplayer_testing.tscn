@@ -558,6 +558,7 @@ zone_change_timer = NodePath("ZoneChangeTimer")
 endless_wave_timer = NodePath("EndlessWaveTimer")
 enemies_node = NodePath("../Enemies")
 zone_gate = NodePath("../Level/ZoneGate")
+waves_enabled = false
 do_immediate_zone_change = true
 
 [node name="IntermissionTimer" type="Timer" parent="GamemodeManager"]

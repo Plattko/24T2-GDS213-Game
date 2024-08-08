@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://il6q27w1jqvw"]
+[gd_scene load_steps=54 format=3 uid="uid://il6q27w1jqvw"]
 
 [ext_resource type="Script" path="res://Scripts/Multiplayer/multiplayer_player.gd" id="1_mtm2n"]
 [ext_resource type="Script" path="res://Scripts/Player/player_input.gd" id="2_7s41b"]
@@ -853,7 +853,7 @@ bg_color = Color(0.329412, 0.027451, 0.027451, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0a0dl"]
 bg_color = Color(0.180666, 0.00854189, 0.00851971, 1)
 
-[node name="MulitplayerPlayer" type="CharacterBody3D" node_paths=PackedStringArray("input", "mesh", "head", "camera", "anim_player", "ceiling_check", "ui", "hud", "weapon_holder", "death_timer", "respawn_timer", "interact_raycast", "revive_other_timer")]
+[node name="MulitplayerPlayer" type="CharacterBody3D" node_paths=PackedStringArray("input", "mesh", "head", "camera", "anim_player", "ceiling_check", "player_audio", "ui", "hud", "weapon_holder", "death_timer", "respawn_timer", "interact_raycast", "revive_other_timer")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 collision_layer = 2
 collision_mask = 5
@@ -864,9 +864,9 @@ head = NodePath("Head")
 camera = NodePath("Head/Camera3D")
 anim_player = NodePath("AnimationPlayer")
 ceiling_check = NodePath("CeilingCheck")
+player_audio = NodePath("Audio")
 ui = NodePath("UI")
 hud = NodePath("UI/HUD")
-player_audio = NodePath("Audio")
 sensitivity = 0.18
 weapon_holder = NodePath("Head/Camera3D/WeaponHolder")
 death_timer = NodePath("DeathTimer")
@@ -1012,6 +1012,7 @@ script = ExtResource("15_enn73")
 script = ExtResource("18_wjjdp")
 
 [node name="DeathTimer" type="Timer" parent="."]
+wait_time = 30.0
 one_shot = true
 
 [node name="RespawnTimer" type="Timer" parent="."]

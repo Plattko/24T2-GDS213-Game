@@ -22,10 +22,12 @@ func _enter_tree() -> void:
 		set_physics_process(false)
 		return
 	
-	explosion_sfx.play()
 	await get_tree().create_timer(0.9).timeout
 	await get_tree().physics_frame
 	queue_free()
+
+func _ready() -> void:
+	explosion_sfx.play()
 
 func _physics_process(_delta) -> void:
 	# Only run by server
