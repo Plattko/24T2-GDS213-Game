@@ -31,11 +31,9 @@ func become_host() -> void:
 		# Apply compression to reduce bandwidth use
 		# NOTE: Can be disabled if it causes issues
 		multiplayer_peer.get_host().compress(ENetConnection.COMPRESS_RANGE_CODER)
-		
 		# Set yourself as the server peer
 		multiplayer.set_multiplayer_peer(multiplayer_peer)
 		print("Waiting for players!")
-		
 		# Pass in the host's player information
 		multiplayer_manager.add_player_to_lobby(multiplayer.get_unique_id(), multiplayer_manager.name_line.text)
 		print("Added player to lobby from ENet network")

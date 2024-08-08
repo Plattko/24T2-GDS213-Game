@@ -44,8 +44,13 @@ var do_zone_change : bool = false
 	set(value):
 		alive_player_count = value
 		print("Alive players: " + str(alive_player_count))
-		if alive_player_count <= 0:
+		if alive_player_count <= 0 and multiplayer.is_server:
+			await get_tree().create_timer(3.0).timeout
 			game_over.rpc()
+
+# Game over variables
+var game_over_menu_scene = load("res://Scenes/UI/Menus/game_over_menu.tscn")
+var fade_to_black_transition_scene = load("res://UI/fade_to_black_transition.tscn")
 
 signal enemy_count_updated(enemy_count: int)
 signal cur_wave_updated(wave: int)
@@ -244,3 +249,31 @@ func on_player_respawned() -> void:
 @rpc("call_local")
 func game_over() -> void:
 	print("GAME OVER")
+	var level = get_tree().get_first_node_in_group("level")
+	# Instantiate the fade to black transition
+	var fade = fade_to_black_transition_scene.instantiate() as FadeToBlackTransition
+	# Add it as a child of the level
+	level.add_child(fade)
+	fade.anim_player.animation_finished.connect(change_to_game_over_menu)
+	## Wait for the fade to black animation to end
+	#await fade.anim_player.animation_finished
+	## Instantiate the game over menu
+	#var game_over_menu = game_over_menu_scene.instantiate()
+	## Add it as a child of the level's parent
+	#level.get_parent().add_child(game_over_menu)
+	## Delete the level
+	#level.queue_free()
+	## Show the mouse
+	#Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+
+func change_to_game_over_menu(_anim_name: StringName) -> void:
+	# Instantiate the game over menu
+	var game_over_menu = game_over_menu_scene.instantiate()
+	# Add it as a child of the level's parent
+	var level = get_tree().get_first_node_in_group("level")
+	level.get_parent().add_child(game_over_menu)
+	# Delete the level
+	level.queue_free()
+	# Show the mouse
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	

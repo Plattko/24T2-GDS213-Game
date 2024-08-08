@@ -4,9 +4,9 @@ extends Node
 @export var network_manager : NetworkManager
 
 # UI variables
-@export var network_type_ui : Panel
-@export var lan_ui : Panel
-@export var steam_ui : Panel
+@export var network_type_ui : Control
+@export var lan_ui : Control
+@export var steam_ui : Control
 @export var name_line : LineEdit
 @export var ip_line : LineEdit
 @export var lobbies_vbox : VBoxContainer

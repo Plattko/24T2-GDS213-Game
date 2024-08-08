@@ -100,7 +100,9 @@ func _enter_tree() -> void:
 func _ready() -> void:
 	if not is_multiplayer_authority(): return
 	
+	# Hide the cursor and capture it at the centre of the screen
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	# Set the camera as current if we are this player
 	camera.current = true
 	
 	input.player = self

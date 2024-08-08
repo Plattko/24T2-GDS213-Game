@@ -18,12 +18,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_l41eb")
 network_manager = NodePath("NetworkManager")
-network_type_ui = NodePath("NetworkTypeUI")
-lan_ui = NodePath("LanUI")
-steam_ui = NodePath("SteamUI")
-name_line = NodePath("LanUI/MarginContainer/VBoxContainer/NameHBox/NameLineEdit")
-ip_line = NodePath("LanUI/MarginContainer/VBoxContainer/IPHBox/IPLineEdit")
-lobbies_vbox = NodePath("SteamUI/Lobbies/VBoxContainer")
+network_type_ui = NodePath("Panel/MarginContainer/NetworkTypeUI")
+lan_ui = NodePath("Panel/MarginContainer/LanUI")
+steam_ui = NodePath("Panel/MarginContainer/SteamUI")
+name_line = NodePath("Panel/MarginContainer/LanUI/VBoxContainer/NameHBox/NameLineEdit")
+ip_line = NodePath("Panel/MarginContainer/LanUI/VBoxContainer/IPHBox/IPLineEdit")
+lobbies_vbox = NodePath("Panel/MarginContainer/SteamUI/HBoxContainer/Options/Lobbies/VBoxContainer")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_7igjj")
@@ -31,7 +31,7 @@ replication_config = SubResource("SceneReplicationConfig_7igjj")
 [node name="NetworkManager" type="Node" parent="."]
 script = ExtResource("2_elbp8")
 
-[node name="NetworkTypeUI" type="Panel" parent="."]
+[node name="Panel" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -39,7 +39,29 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="NetworkTypeUI"]
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="Title" type="Label" parent="Panel/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 48
+text = "Multiplayer"
+
+[node name="NetworkTypeUI" type="Control" parent="Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/NetworkTypeUI"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -53,71 +75,65 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="UseSteam" type="Button" parent="NetworkTypeUI/VBoxContainer"]
+[node name="UseSteam" type="Button" parent="Panel/MarginContainer/NetworkTypeUI/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Use Steam"
 
-[node name="UseLAN" type="Button" parent="NetworkTypeUI/VBoxContainer"]
+[node name="UseLAN" type="Button" parent="Panel/MarginContainer/NetworkTypeUI/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Use LAN"
 
-[node name="LanUI" type="Panel" parent="."]
+[node name="LanUI" type="Control" parent="Panel/MarginContainer"]
 visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="LanUI"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 30
-theme_override_constants/margin_top = 30
-theme_override_constants/margin_right = 30
-theme_override_constants/margin_bottom = 30
-
-[node name="VBoxContainer" type="VBoxContainer" parent="LanUI/MarginContainer"]
 layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/LanUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -310.0
+offset_top = -101.0
+offset_right = 310.0
+offset_bottom = 101.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = 20
 
-[node name="NameHBox" type="HBoxContainer" parent="LanUI/MarginContainer/VBoxContainer"]
+[node name="NameHBox" type="HBoxContainer" parent="Panel/MarginContainer/LanUI/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 10
 alignment = 2
 
-[node name="NameLabel" type="Label" parent="LanUI/MarginContainer/VBoxContainer/NameHBox"]
+[node name="NameLabel" type="Label" parent="Panel/MarginContainer/LanUI/VBoxContainer/NameHBox"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 36
 text = "Username:"
 
-[node name="NameLineEdit" type="LineEdit" parent="LanUI/MarginContainer/VBoxContainer/NameHBox"]
+[node name="NameLineEdit" type="LineEdit" parent="Panel/MarginContainer/LanUI/VBoxContainer/NameHBox"]
 custom_minimum_size = Vector2(419, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 36
 max_length = 12
 
-[node name="IPHBox" type="HBoxContainer" parent="LanUI/MarginContainer/VBoxContainer"]
+[node name="IPHBox" type="HBoxContainer" parent="Panel/MarginContainer/LanUI/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 10
 alignment = 2
 
-[node name="NameLabel" type="Label" parent="LanUI/MarginContainer/VBoxContainer/IPHBox"]
+[node name="NameLabel" type="Label" parent="Panel/MarginContainer/LanUI/VBoxContainer/IPHBox"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 36
 text = "IP:"
 
-[node name="IPLineEdit" type="LineEdit" parent="LanUI/MarginContainer/VBoxContainer/IPHBox"]
+[node name="IPLineEdit" type="LineEdit" parent="Panel/MarginContainer/LanUI/VBoxContainer/IPHBox"]
 custom_minimum_size = Vector2(419, 60)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -126,99 +142,85 @@ placeholder_text = " Joining player only"
 max_length = 19
 script = ExtResource("2_v72lq")
 
-[node name="ButtonsHBox" type="HBoxContainer" parent="LanUI/MarginContainer/VBoxContainer"]
+[node name="ButtonsHBox" type="HBoxContainer" parent="Panel/MarginContainer/LanUI/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = 10
 
-[node name="HostGame" type="Button" parent="LanUI/MarginContainer/VBoxContainer/ButtonsHBox"]
+[node name="HostGame" type="Button" parent="Panel/MarginContainer/LanUI/VBoxContainer/ButtonsHBox"]
 custom_minimum_size = Vector2(200, 42)
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Host Game"
 
-[node name="JoinAsClient" type="Button" parent="LanUI/MarginContainer/VBoxContainer/ButtonsHBox"]
+[node name="JoinAsClient" type="Button" parent="Panel/MarginContainer/LanUI/VBoxContainer/ButtonsHBox"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Join as Client"
 
-[node name="StartGame" type="Button" parent="LanUI/MarginContainer/VBoxContainer/ButtonsHBox"]
+[node name="StartGame" type="Button" parent="Panel/MarginContainer/LanUI/VBoxContainer/ButtonsHBox"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Start Game"
 
-[node name="SteamUI" type="Panel" parent="."]
+[node name="SteamUI" type="Control" parent="Panel/MarginContainer"]
 visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/SteamUI"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -542.0
+offset_top = -46.0
+offset_right = 542.0
+offset_bottom = 46.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Options" type="VBoxContainer" parent="SteamUI"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -1320.0
-offset_bottom = -992.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Options" type="VBoxContainer" parent="Panel/MarginContainer/SteamUI/HBoxContainer"]
+layout_mode = 2
 
-[node name="HostGame" type="Button" parent="SteamUI/Options"]
+[node name="HostGame" type="Button" parent="Panel/MarginContainer/SteamUI/HBoxContainer/Options"]
+custom_minimum_size = Vector2(540, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Host Game"
 
-[node name="ListLobbies" type="Button" parent="SteamUI/Options"]
+[node name="ListLobbies" type="Button" parent="Panel/MarginContainer/SteamUI/HBoxContainer/Options"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Join Game"
 
-[node name="Lobbies" type="ScrollContainer" parent="SteamUI"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 88.0
-offset_right = -1320.0
-offset_bottom = -792.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Lobbies" type="ScrollContainer" parent="Panel/MarginContainer/SteamUI/HBoxContainer/Options"]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="SteamUI/Lobbies"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/SteamUI/HBoxContainer/Options/Lobbies"]
 layout_mode = 2
 
-[node name="StartGame" type="Button" parent="SteamUI"]
-layout_mode = 0
-offset_left = 600.0
-offset_right = 1200.0
-offset_bottom = 42.0
+[node name="StartGame" type="Button" parent="Panel/MarginContainer/SteamUI/HBoxContainer"]
+custom_minimum_size = Vector2(540, 0)
+layout_mode = 2
+size_flags_vertical = 0
 theme_override_font_sizes/font_size = 24
 text = "Start Game
 "
 
-[node name="Title" type="Label" parent="."]
-layout_mode = 2
-offset_left = 827.0
-offset_top = 30.0
-offset_right = 1092.0
-offset_bottom = 97.0
-size_flags_horizontal = 4
-size_flags_vertical = 0
-theme_override_font_sizes/font_size = 48
-text = "Multiplayer"
-
-[connection signal="pressed" from="NetworkTypeUI/VBoxContainer/UseSteam" to="." method="use_steam"]
-[connection signal="pressed" from="NetworkTypeUI/VBoxContainer/UseLAN" to="." method="use_lan"]
-[connection signal="text_changed" from="LanUI/MarginContainer/VBoxContainer/IPHBox/IPLineEdit" to="LanUI/MarginContainer/VBoxContainer/IPHBox/IPLineEdit" method="_on_text_changed"]
-[connection signal="pressed" from="LanUI/MarginContainer/VBoxContainer/ButtonsHBox/HostGame" to="." method="become_host"]
-[connection signal="pressed" from="LanUI/MarginContainer/VBoxContainer/ButtonsHBox/JoinAsClient" to="." method="join_as_client"]
-[connection signal="pressed" from="LanUI/MarginContainer/VBoxContainer/ButtonsHBox/StartGame" to="." method="_on_start_game_pressed"]
-[connection signal="pressed" from="SteamUI/Options/HostGame" to="." method="become_host"]
-[connection signal="pressed" from="SteamUI/Options/ListLobbies" to="." method="list_steam_lobbies"]
-[connection signal="pressed" from="SteamUI/StartGame" to="." method="_on_start_game_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/NetworkTypeUI/VBoxContainer/UseSteam" to="." method="use_steam"]
+[connection signal="pressed" from="Panel/MarginContainer/NetworkTypeUI/VBoxContainer/UseLAN" to="." method="use_lan"]
+[connection signal="text_changed" from="Panel/MarginContainer/LanUI/VBoxContainer/IPHBox/IPLineEdit" to="Panel/MarginContainer/LanUI/VBoxContainer/IPHBox/IPLineEdit" method="_on_text_changed"]
+[connection signal="pressed" from="Panel/MarginContainer/LanUI/VBoxContainer/ButtonsHBox/HostGame" to="." method="become_host"]
+[connection signal="pressed" from="Panel/MarginContainer/LanUI/VBoxContainer/ButtonsHBox/JoinAsClient" to="." method="join_as_client"]
+[connection signal="pressed" from="Panel/MarginContainer/LanUI/VBoxContainer/ButtonsHBox/StartGame" to="." method="_on_start_game_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/SteamUI/HBoxContainer/Options/HostGame" to="." method="become_host"]
+[connection signal="pressed" from="Panel/MarginContainer/SteamUI/HBoxContainer/Options/ListLobbies" to="." method="list_steam_lobbies"]
+[connection signal="pressed" from="Panel/MarginContainer/SteamUI/HBoxContainer/StartGame" to="." method="_on_start_game_pressed"]

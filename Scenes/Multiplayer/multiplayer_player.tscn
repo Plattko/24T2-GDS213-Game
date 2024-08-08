@@ -1006,7 +1006,6 @@ script = ExtResource("15_enn73")
 script = ExtResource("18_wjjdp")
 
 [node name="DeathTimer" type="Timer" parent="."]
-wait_time = 30.0
 one_shot = true
 
 [node name="RespawnTimer" type="Timer" parent="."]
