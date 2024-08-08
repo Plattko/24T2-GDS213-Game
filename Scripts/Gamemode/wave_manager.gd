@@ -1,8 +1,8 @@
 class_name WaveManager
 extends Node
 
-const ROBOT = preload("res://Scenes/Enemies/robot_regular.tscn")
-const SPEEDY_ROBOT = preload("res://Scenes/Enemies/robot_speedy.tscn")
+var ROBOT = load("res://Scenes/Enemies/robot_regular.tscn")
+var SPEEDY_ROBOT = load("res://Scenes/Enemies/robot_speedy.tscn")
 var player : MultiplayerPlayer
 
 @export_group("Reference Variables")

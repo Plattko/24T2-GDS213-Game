@@ -9,7 +9,7 @@ var camera : Camera3D
 @export var muzzle_flash : MuzzleFlash
 @export var anim_player : AnimationPlayer
 
-var bullet_decal = preload("res://Scenes/Weapons/Components/bullet_decal.tscn")
+var bullet_decal = load("res://Scenes/Weapons/Components/bullet_decal.tscn")
 var third_person_material = load("res://Assets/Materials/Shader Materials/weapon_third_person_shader.tres")
 
 @export_group("Weapon Data")

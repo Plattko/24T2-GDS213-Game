@@ -35,8 +35,7 @@ var is_initial_call := true
 @export var max_health := 100
 var cur_health
 
-@export_group("Health Drop Variables")
-@export var health_orb_scene = preload("res://Scenes/Pickups/health_orb.tscn")
+var health_orb_scene = load("res://Scenes/Pickups/health_orb.tscn")
 var health_drop_chance : float = 0.2
 
 # Attack variables

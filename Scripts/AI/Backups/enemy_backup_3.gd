@@ -6,7 +6,7 @@ extends CharacterBody3D
 @export var anim_tree : AnimationTree
 @export var health_bar : EnemyHealthBar
 
-@export var health_orb_scene = preload("res://Scenes/Pickups/health_orb.tscn")
+@export var health_orb_scene = load("res://Scenes/Pickups/health_orb.tscn")
 
 var anim_state_machine : AnimationNodeStateMachinePlayback
 var player : MultiplayerPlayer

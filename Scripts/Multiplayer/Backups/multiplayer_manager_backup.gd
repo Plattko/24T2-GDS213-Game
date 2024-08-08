@@ -2,7 +2,7 @@ extends Node
 
 @export var name_line : LineEdit
 @export var ip_line : LineEdit
-var network_testing_scene = preload("res://Scenes/Levels/Testing/steam_multiplayer_testing.tscn")
+var network_testing_scene = load("res://Scenes/Levels/Testing/steam_multiplayer_testing.tscn")
 
 # Server variables
 const SERVER_PORT := 8080

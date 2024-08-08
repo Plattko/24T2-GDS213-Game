@@ -45,6 +45,7 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+visible = false
 layout_mode = 2
 
 [node name="HostButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
@@ -62,94 +63,7 @@ theme_override_font_sizes/font_size = 32
 toggle_mode = true
 text = "Join"
 
-[node name="HostPanel" type="Panel" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/HostPanel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 30
-theme_override_constants/margin_top = 30
-theme_override_constants/margin_right = 30
-theme_override_constants/margin_bottom = 30
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/HostPanel/MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_constants/separation = 20
-
-[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/HostPanel/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-theme_override_font_sizes/font_size = 40
-text = "Create Lobby"
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/HostPanel/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/HostPanel/MarginContainer/VBoxContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 20
-
-[node name="LabelVBox" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/HostPanel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="LobbyName" type="Label" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/HostPanel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/LabelVBox"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 36
-text = "Lobby Name"
-
-[node name="Private" type="Label" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/HostPanel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/LabelVBox"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 36
-text = "Private"
-
-[node name="Password" type="Label" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/HostPanel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/LabelVBox"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 36
-text = "Password"
-
-[node name="InputVBox" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/HostPanel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="LobbyNameLine" type="LineEdit" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/HostPanel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/InputVBox"]
-custom_minimum_size = Vector2(400, 0)
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="PrivateButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/HostPanel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/InputVBox"]
-custom_minimum_size = Vector2(50, 0)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 3
-theme_override_font_sizes/font_size = 24
-text = "X"
-
-[node name="PasswordLine" type="LineEdit" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/HostPanel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/InputVBox"]
-custom_minimum_size = Vector2(400, 0)
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Spacer" type="Panel" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/HostPanel/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_styles/panel = SubResource("StyleBoxEmpty_srhy8")
-
-[node name="CreateButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/HostPanel/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Create"
-
 [node name="JoinPanel" type="Panel" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -261,8 +175,124 @@ text = "Plattko's Lobby
 "
 horizontal_alignment = 2
 
-[node name="Button" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/JoinPanel/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/JoinPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/separation = 10
+
+[node name="JoinButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/JoinPanel/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_font_sizes/font_size = 32
+disabled = true
 text = "Join Game"
+
+[node name="CreateButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/JoinPanel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 32
+text = "Create Game"
+
+[node name="CreateLobbyUI" type="PanelContainer" parent="Panel/MarginContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/CreateLobbyUI"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/CreateLobbyUI/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/CreateLobbyUI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/CreateLobbyUI/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 40
+text = "Create Lobby"
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/CreateLobbyUI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/CreateLobbyUI/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="LabelVBox" type="VBoxContainer" parent="Panel/MarginContainer/CreateLobbyUI/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="LobbyName" type="Label" parent="Panel/MarginContainer/CreateLobbyUI/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/LabelVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Lobby Name"
+
+[node name="Private" type="Label" parent="Panel/MarginContainer/CreateLobbyUI/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/LabelVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Private"
+
+[node name="Password" type="Label" parent="Panel/MarginContainer/CreateLobbyUI/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/LabelVBox"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Password"
+
+[node name="Spacer" type="Panel" parent="Panel/MarginContainer/CreateLobbyUI/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/LabelVBox"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_srhy8")
+
+[node name="InputVBox" type="VBoxContainer" parent="Panel/MarginContainer/CreateLobbyUI/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="LobbyNameLine" type="LineEdit" parent="Panel/MarginContainer/CreateLobbyUI/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/InputVBox"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PrivateButton" type="Button" parent="Panel/MarginContainer/CreateLobbyUI/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/InputVBox"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 24
+text = "X"
+
+[node name="PasswordLine" type="LineEdit" parent="Panel/MarginContainer/CreateLobbyUI/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/InputVBox"]
+visible = false
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Spacer" type="Panel" parent="Panel/MarginContainer/CreateLobbyUI/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/InputVBox"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_srhy8")
+
+[node name="CreateButton" type="Button" parent="Panel/MarginContainer/CreateLobbyUI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Create"
+
+[node name="CloseButton" type="Button" parent="Panel/MarginContainer/CreateLobbyUI/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 32
+text = "X"
+flat = true
