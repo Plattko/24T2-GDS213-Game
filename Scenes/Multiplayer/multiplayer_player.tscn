@@ -741,14 +741,13 @@ HeadshotHitmarker = NodePath("HeadshotHitmarkerPlayer")
 
 [node name="NormalHitmakerPlayer" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("18_beqnl")
-pitch_scale = 1.8
+pitch_scale = 1.3
 mix_target = 2
 bus = &"Hitmarkers"
 
 [node name="HeadshotHitmarkerPlayer" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("19_erlfy")
-pitch_scale = 1.6
-mix_target = 2
+pitch_scale = 1.3
 bus = &"Hitmarkers"
 
 [node name="UI" type="Control" parent="."]
