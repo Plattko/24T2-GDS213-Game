@@ -48,6 +48,10 @@ var do_zone_change : bool = false
 			await get_tree().create_timer(3.0).timeout
 			game_over.rpc()
 
+@export var waves_survived : int = 0
+@export var robots_killed : int = 0
+@export var zone_swaps : int = 0
+
 # Game over variables
 var game_over_menu_scene = load("res://Scenes/UI/Menus/game_over_menu.tscn")
 var fade_to_black_transition_scene = load("res://UI/fade_to_black_transition.tscn")
@@ -56,6 +60,7 @@ signal enemy_count_updated(enemy_count: int)
 signal cur_wave_updated(wave: int)
 signal intermission_entered
 signal zone_change_entered
+signal game_over_entered
 
 func _ready() -> void:
 	if !multiplayer.is_server(): return
@@ -83,6 +88,8 @@ func start_intermission() -> void:
 	print("INTERMISSION STARTED")
 	# Update the HUD to display that it's an intermission
 	emit_intermission_entered.rpc()
+	# Track the waves survived
+	waves_survived += 1
 	# Update zone change variables
 	wave_index += 1
 	#print("Wave index: " + str(wave_index))
@@ -129,6 +136,8 @@ func spawn_enemy(is_endless_wave: bool) -> void:
 	enemy.initialise(player, nav_layer)
 	# Connect to the enemy's enemy_defeated signal if it is a regular wave
 	if !is_endless_wave: enemy.enemy_defeated.connect(on_enemy_defeated)
+	# Track the robots killed
+	enemy.enemy_defeated.connect(update_robots_killed)
 	# Add enemy as child of nav region
 	enemies_node.add_child(enemy, true)
 	# Set enemy's spawn point to a random spawn point
@@ -206,6 +215,9 @@ func _on_zone_gate_anim_finished(anim_name: StringName) -> void:
 		
 		# TODO: Start new wave without respawning players
 		await get_tree().create_timer(3.0).timeout
+		# Track the zone swaps
+		zone_swaps += 1
+		# Start a new wave immediately
 		start_new_wave()
 
 func _on_endless_wave_timer_timeout():
@@ -267,13 +279,21 @@ func game_over() -> void:
 	#Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 func change_to_game_over_menu(_anim_name: StringName) -> void:
+	# Emit the game over signal
+	game_over_entered.emit()
 	# Instantiate the game over menu
-	var game_over_menu = game_over_menu_scene.instantiate()
+	var game_over_menu = game_over_menu_scene.instantiate() as GameOverMenu
+	# Set its variables
+	game_over_menu.waves_survived = waves_survived
+	game_over_menu.robots_killed = robots_killed
+	game_over_menu.zone_swaps = zone_swaps
 	# Add it as a child of the level's parent
 	var level = get_tree().get_first_node_in_group("level")
 	level.get_parent().add_child(game_over_menu)
-	# Delete the level
-	level.queue_free()
+	## Delete the level
+	#level.queue_free()
 	# Show the mouse
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	
+
+func update_robots_killed() -> void:
+	robots_killed += 1

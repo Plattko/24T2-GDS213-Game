@@ -1,5 +1,8 @@
+class_name UIManager
 extends Control
 
+@export var blur : ColorRect
+@export var hud : HUD
 @onready var settings_menu = %SettingsMenu
 
 func _ready() -> void:
@@ -20,3 +23,7 @@ func open_settings_menu() -> void:
 
 func close_settings_menu() -> void:
 	settings_menu.close()
+
+func show_blur() -> void:
+	hud.hide()
+	blur.show()

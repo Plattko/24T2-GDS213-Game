@@ -25,6 +25,20 @@ SteamManager="*res://Scripts/Multiplayer/Steam/steam_manager.gd"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/size/mode=3
+
+[file_customization]
+
+folder_colors={
+"res://Assets/": "red",
+"res://Assets/Animations/": "red",
+"res://Assets/Bone Maps/": "red",
+"res://Assets/Imports/": "red",
+"res://Assets/Materials/": "red",
+"res://Assets/Meshes/": "red",
+"res://Assets/Shaders/": "red",
+"res://Assets/Textures/": "red"
+}
 
 [input]
 

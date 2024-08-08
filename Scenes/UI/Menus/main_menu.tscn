@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://d1epidal3of6t"]
+[gd_scene load_steps=3 format=3 uid="uid://d1epidal3of6t"]
 
 [ext_resource type="Script" path="res://Scripts/UI/main_menu.gd" id="1_8rmxx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_si2ml"]
 
 [node name="MainMenu" type="Control" node_paths=PackedStringArray("play_button", "tutorial_button", "options_button", "credits_button", "quit_button", "use_steam_button", "use_lan_button")]
 layout_mode = 3
@@ -57,6 +59,7 @@ theme_override_constants/separation = 15
 [node name="PlayButton" type="Button" parent="Panel/MarginContainer/ButtonsVBox/HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxEmpty_si2ml")
 text = "Play"
 flat = true
 alignment = 0
@@ -64,6 +67,7 @@ alignment = 0
 [node name="UseSteam" type="Button" parent="Panel/MarginContainer/ButtonsVBox/HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxEmpty_si2ml")
 text = "Steam"
 flat = true
 alignment = 0
@@ -71,6 +75,7 @@ alignment = 0
 [node name="UseLAN" type="Button" parent="Panel/MarginContainer/ButtonsVBox/HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxEmpty_si2ml")
 text = "LAN"
 flat = true
 alignment = 0
@@ -78,6 +83,7 @@ alignment = 0
 [node name="TutorialButton" type="Button" parent="Panel/MarginContainer/ButtonsVBox"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxEmpty_si2ml")
 disabled = true
 text = "Tutorial"
 flat = true
@@ -86,6 +92,7 @@ alignment = 0
 [node name="OptionsButton" type="Button" parent="Panel/MarginContainer/ButtonsVBox"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxEmpty_si2ml")
 disabled = true
 text = "Options"
 flat = true
@@ -94,6 +101,7 @@ alignment = 0
 [node name="CreditsButton" type="Button" parent="Panel/MarginContainer/ButtonsVBox"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxEmpty_si2ml")
 disabled = true
 text = "Credits"
 flat = true
@@ -102,7 +110,7 @@ alignment = 0
 [node name="QuitButton" type="Button" parent="Panel/MarginContainer/ButtonsVBox"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
-disabled = true
+theme_override_styles/focus = SubResource("StyleBoxEmpty_si2ml")
 text = "Quit"
 flat = true
 alignment = 0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://il6q27w1jqvw"]
+[gd_scene load_steps=51 format=3 uid="uid://il6q27w1jqvw"]
 
 [ext_resource type="Script" path="res://Scripts/Multiplayer/multiplayer_player.gd" id="1_mtm2n"]
 [ext_resource type="Script" path="res://Scripts/Player/player_input.gd" id="2_7s41b"]
@@ -26,6 +26,7 @@
 [ext_resource type="Script" path="res://Scripts/UI/debug.gd" id="19_atg5u"]
 [ext_resource type="PackedScene" uid="uid://bu0mtrnvhonpt" path="res://Scenes/UI/settings_menu.tscn" id="20_c20fv"]
 [ext_resource type="Texture2D" uid="uid://dwe2gnlquqbvt" path="res://Assets/Textures/UI/ring_texture.png" id="26_xfog8"]
+[ext_resource type="Material" uid="uid://c472eyc5fiib0" path="res://Assets/Materials/Shader Materials/blur.tres" id="27_f7dg3"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_vurwv"]
 properties/0/path = NodePath(".:position")
@@ -849,7 +850,7 @@ bg_color = Color(0.329412, 0.027451, 0.027451, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0a0dl"]
 bg_color = Color(0.180666, 0.00854189, 0.00851971, 1)
 
-[node name="MulitplayerPlayer" type="CharacterBody3D" node_paths=PackedStringArray("input", "mesh", "head", "camera", "anim_player", "ceiling_check", "hud", "weapon_holder", "death_timer", "respawn_timer", "interact_raycast", "revive_other_timer")]
+[node name="MulitplayerPlayer" type="CharacterBody3D" node_paths=PackedStringArray("input", "mesh", "head", "camera", "anim_player", "ceiling_check", "ui", "hud", "weapon_holder", "death_timer", "respawn_timer", "interact_raycast", "revive_other_timer")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 collision_layer = 2
 collision_mask = 5
@@ -860,6 +861,7 @@ head = NodePath("Head")
 camera = NodePath("Head/Camera3D")
 anim_player = NodePath("AnimationPlayer")
 ceiling_check = NodePath("CeilingCheck")
+ui = NodePath("UI")
 hud = NodePath("UI/HUD")
 sensitivity = 0.18
 weapon_holder = NodePath("Head/Camera3D/WeaponHolder")
@@ -1016,7 +1018,7 @@ one_shot = true
 wait_time = 10.0
 one_shot = true
 
-[node name="UI" type="Control" parent="."]
+[node name="UI" type="Control" parent="." node_paths=PackedStringArray("blur", "hud")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -1025,6 +1027,18 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("15_jmxyw")
+blur = NodePath("Blur")
+hud = NodePath("HUD")
+
+[node name="Blur" type="ColorRect" parent="UI"]
+visible = false
+material = ExtResource("27_f7dg3")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="HUD" type="Control" parent="UI" node_paths=PackedStringArray("health_label", "cur_ammo_label", "reticle", "cur_wave_label", "enemies_left_label", "zone_change_warning", "time_text", "downed_ui", "death_timer_text", "death_progress_bar", "dead_ui", "respawn_text", "respawn_timer_text", "respawn_progress_bar", "interact_ui", "interact_text", "interact_key_text", "interact_progress_bar")]
 layout_mode = 1
