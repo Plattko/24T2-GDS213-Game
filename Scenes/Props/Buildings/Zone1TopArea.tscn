@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=3 uid="uid://bpoqfu15iy0mj"]
+[gd_scene load_steps=84 format=3 uid="uid://bpoqfu15iy0mj"]
 
 [ext_resource type="PackedScene" uid="uid://d3bykv8hmnskj" path="res://Assets/Imports/StylizedHouses/ModularBuildings/BuildingMeshes/SM_building_column_05.glb" id="1_fueff"]
 [ext_resource type="PackedScene" uid="uid://cf2bt4wjlntn4" path="res://Assets/Imports/StylizedHouses/ModularBuildings/BuildingMeshes/SM_building_foundation_03.glb" id="2_0ku6x"]
@@ -59,30 +59,29 @@
 [ext_resource type="Material" uid="uid://clau1arwwv1yw" path="res://Assets/Materials/Standard Materials/prototype_orange.tres" id="58_6tk8n"]
 [ext_resource type="Material" uid="uid://bghuwqih7lfrg" path="res://Assets/Materials/Standard Materials/MI_concrete_slab_A_Inst.tres" id="59_61cwi"]
 [ext_resource type="PackedScene" uid="uid://d181i1bkg820c" path="res://Scenes/Props/mesh_fence.tscn" id="60_cdjjb"]
-[ext_resource type="PackedScene" uid="uid://c0eoh4t0i8dpy" path="res://Assets/Imports/Crystal Cave/Mine/SM_beam_02.glb" id="61_14q67"]
-[ext_resource type="PackedScene" uid="uid://c2d5e0kxlkrso" path="res://Assets/Imports/Crystal Cave/Mine/SM_mine_module_02.glb" id="62_wq8eg"]
-[ext_resource type="PackedScene" uid="uid://c1beir8b0kmcw" path="res://Assets/Imports/Crystal Cave/Mine/SM_mine_module_05.glb" id="63_h1vbd"]
-[ext_resource type="PackedScene" uid="uid://dygdghjb5hc5r" path="res://Assets/Imports/Crystal Cave/Mine/SM_mine_module_06.glb" id="64_41ci3"]
-[ext_resource type="PackedScene" uid="uid://wxwk1nrccae" path="res://Assets/Imports/Crystal Cave/Mine/SM_wood_entrance.glb" id="65_niun2"]
-[ext_resource type="PackedScene" uid="uid://g0xe78ro056s" path="res://Assets/Imports/Crystal Cave/Environment/SM_barrel.glb" id="66_ol1o0"]
-[ext_resource type="PackedScene" uid="uid://oipd08yslu8o" path="res://Assets/Imports/Crystal Cave/Environment/SM_Box.glb" id="67_mlokw"]
-[ext_resource type="PackedScene" uid="uid://fxids7bsdoe8" path="res://Assets/Imports/Crystal Cave/Environment/SM_Box_02.glb" id="68_660ad"]
-[ext_resource type="PackedScene" uid="uid://n6c0cgdf65lf" path="res://Assets/Imports/Crystal Cave/Environment/SM_Cart_02.glb" id="69_dd8wb"]
-[ext_resource type="PackedScene" uid="uid://vgabenumpr1r" path="res://Assets/Imports/Crystal Cave/Environment/SM_crystals_rocks_03.glb" id="70_cjrdr"]
-[ext_resource type="PackedScene" uid="uid://mwcndwmjx8au" path="res://Assets/Imports/Crystal Cave/Environment/SM_crystal_01.glb" id="71_w0r2n"]
-[ext_resource type="PackedScene" uid="uid://kv8a4hki67wh" path="res://Assets/Imports/Crystal Cave/Environment/SM_crystal_02.glb" id="72_1oo53"]
-[ext_resource type="PackedScene" uid="uid://bdfe6dax5fhhy" path="res://Assets/Imports/Crystal Cave/Environment/SM_crystal_03.glb" id="73_6btcn"]
-[ext_resource type="PackedScene" uid="uid://342erk76sl72" path="res://Assets/Imports/Crystal Cave/Environment/SM_crystal_group_01.glb" id="74_feyqn"]
-[ext_resource type="PackedScene" uid="uid://dbe50tkonvqlo" path="res://Assets/Imports/Crystal Cave/Environment/SM_crystal_group_02.glb" id="75_g34ni"]
+[ext_resource type="PackedScene" uid="uid://c0eoh4t0i8dpy" path="res://Assets/Meshes/UsedProps/SM_beam_02.glb" id="61_14q67"]
+[ext_resource type="PackedScene" uid="uid://c2d5e0kxlkrso" path="res://Assets/Meshes/UsedProps/SM_mine_module_02.glb" id="62_wq8eg"]
+[ext_resource type="PackedScene" uid="uid://c1beir8b0kmcw" path="res://Assets/Meshes/UsedProps/SM_mine_module_05.glb" id="63_h1vbd"]
+[ext_resource type="PackedScene" uid="uid://dygdghjb5hc5r" path="res://Assets/Meshes/UsedProps/SM_mine_module_06.glb" id="64_41ci3"]
+[ext_resource type="PackedScene" uid="uid://wxwk1nrccae" path="res://Assets/Meshes/UsedProps/SM_wood_entrance.glb" id="65_niun2"]
+[ext_resource type="PackedScene" uid="uid://g0xe78ro056s" path="res://Assets/Meshes/UsedProps/SM_barrel.glb" id="66_ol1o0"]
+[ext_resource type="PackedScene" uid="uid://oipd08yslu8o" path="res://Assets/Meshes/UsedProps/SM_Box.glb" id="67_mlokw"]
+[ext_resource type="PackedScene" uid="uid://fxids7bsdoe8" path="res://Assets/Meshes/UsedProps/SM_Box_02.glb" id="68_660ad"]
+[ext_resource type="PackedScene" uid="uid://n6c0cgdf65lf" path="res://Assets/Meshes/UsedProps/SM_Cart_02.glb" id="69_dd8wb"]
+[ext_resource type="PackedScene" uid="uid://vgabenumpr1r" path="res://Assets/Meshes/UsedProps/SM_crystals_rocks_03.glb" id="70_cjrdr"]
+[ext_resource type="PackedScene" uid="uid://mwcndwmjx8au" path="res://Assets/Meshes/UsedProps/SM_crystal_01.glb" id="71_w0r2n"]
+[ext_resource type="PackedScene" uid="uid://kv8a4hki67wh" path="res://Assets/Meshes/UsedProps/SM_crystal_02.glb" id="72_1oo53"]
+[ext_resource type="PackedScene" uid="uid://bdfe6dax5fhhy" path="res://Assets/Meshes/UsedProps/SM_crystal_03.glb" id="73_6btcn"]
+[ext_resource type="PackedScene" uid="uid://342erk76sl72" path="res://Assets/Meshes/UsedProps/SM_crystal_group_01.glb" id="74_feyqn"]
+[ext_resource type="PackedScene" uid="uid://dbe50tkonvqlo" path="res://Assets/Meshes/UsedProps/SM_crystal_group_02.glb" id="75_g34ni"]
 [ext_resource type="PackedScene" uid="uid://bdud48a886404" path="res://Assets/Imports/Crystal Cave/Environment/SM_Rail.glb" id="76_nvoma"]
-[ext_resource type="PackedScene" uid="uid://bebibn15d21yk" path="res://Assets/Imports/Crystal Cave/Environment/SM_rock_small_01.glb" id="77_u0h4i"]
-[ext_resource type="PackedScene" uid="uid://dhwnci5socrqc" path="res://Assets/Imports/Crystal Cave/Environment/SM_rock_small_03.glb" id="78_jhqtu"]
-[ext_resource type="PackedScene" uid="uid://6chtph4munk0" path="res://Assets/Imports/Crystal Cave/Environment/SM_rock_small_05.glb" id="79_dr7a2"]
-[ext_resource type="PackedScene" uid="uid://cvce7muxvhh7a" path="res://Assets/Imports/Crystal Cave/Environment/SM_rock_small_06.glb" id="80_5k1og"]
-[ext_resource type="PackedScene" uid="uid://6hnp56wnmvu8" path="res://Assets/Imports/Crystal Cave/Environment/SM_torch_03.glb" id="81_tw6kl"]
+[ext_resource type="PackedScene" uid="uid://bebibn15d21yk" path="res://Assets/Meshes/UsedProps/SM_rock_small_01.glb" id="77_u0h4i"]
+[ext_resource type="PackedScene" uid="uid://dhwnci5socrqc" path="res://Assets/Meshes/UsedProps/SM_rock_small_03.glb" id="78_jhqtu"]
+[ext_resource type="PackedScene" uid="uid://6chtph4munk0" path="res://Assets/Meshes/UsedProps/SM_rock_small_05.glb" id="79_dr7a2"]
+[ext_resource type="PackedScene" uid="uid://cvce7muxvhh7a" path="res://Assets/Meshes/UsedProps/SM_rock_small_06.glb" id="80_5k1og"]
+[ext_resource type="PackedScene" uid="uid://6hnp56wnmvu8" path="res://Assets/Meshes/UsedProps/SM_torch_03.glb" id="81_tw6kl"]
 [ext_resource type="PackedScene" uid="uid://cg07asrquq1u6" path="res://Assets/Imports/Playground/Meshes/sandbox.glb" id="81_we4ah"]
 [ext_resource type="PackedScene" uid="uid://b7ub0h7ve2i4f" path="res://Assets/Imports/Playground/Meshes/slide.glb" id="82_bxvn7"]
-[ext_resource type="PackedScene" uid="uid://bnyduoctmuxev" path="res://Assets/Imports/Playground/Meshes/swing1.glb" id="83_lipg4"]
 [ext_resource type="PackedScene" uid="uid://dnk16krtjh56f" path="res://Assets/Imports/Playground/Meshes/swing2.glb" id="84_l6ani"]
 
 [node name="CSGMesh3D" type="CSGMesh3D"]
@@ -2842,13 +2841,10 @@ visible = false
 radius = 2.94623
 
 [node name="sandbox" parent="." instance=ExtResource("81_we4ah")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.9731, 7.06519, -25.1296)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.8027, 7.06519, -28.1111)
 
 [node name="slide" parent="." instance=ExtResource("82_bxvn7")]
-transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -56.0258, 6.90996, -28.1232)
-
-[node name="swing1" parent="." instance=ExtResource("83_lipg4")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -50.233, 6.85315, -29.5309)
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -53.8709, 6.90996, -27.4579)
 
 [node name="swing2" parent="." instance=ExtResource("84_l6ani")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -62.6013, 7.03561, -28.219)

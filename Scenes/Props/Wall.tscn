@@ -77,3 +77,8 @@ transform = Transform3D(-4.37114e-08, -1, 0, 0.918557, -4.01514e-08, -0.395289, 
 radius = 1.0
 height = 10.0
 material = ExtResource("3_38wk2")
+
+[node name="CSGBox3D14" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.85783, 13.0337, -0.0440063)
+visible = false
+size = Vector3(10.0981, 27.0673, 0.735229)

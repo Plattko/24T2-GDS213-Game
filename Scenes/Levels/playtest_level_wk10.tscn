@@ -1,4 +1,4 @@
-[gd_scene load_steps=129 format=3 uid="uid://c6qxbn3y8kkjl"]
+[gd_scene load_steps=128 format=3 uid="uid://c6qxbn3y8kkjl"]
 
 [ext_resource type="Material" uid="uid://b5y2c7coteo7i" path="res://Assets/Materials/Standard Materials/MI_coal_A_Inst.tres" id="1_e2drn"]
 [ext_resource type="Script" path="res://Scripts/Gamemode/scene_manager.gd" id="1_q5wbq"]
@@ -101,7 +101,6 @@
 [ext_resource type="Script" path="res://Scripts/Gamemode/wave_manager.gd" id="108_6pedp"]
 [ext_resource type="PackedScene" uid="uid://dtimv1b738ha7" path="res://Scenes/SmokePlume.tscn" id="109_bfkcq"]
 [ext_resource type="Script" path="res://Scripts/Gamemode/zone.gd" id="109_y4awo"]
-[ext_resource type="PackedScene" uid="uid://cijv620fyb8x1" path="res://Scenes/Props/road_barrier_yellow.tscn" id="110_a5smi"]
 [ext_resource type="PackedScene" uid="uid://dlhc1ragxvv6" path="res://Assets/Imports/IndustrialArea/BrickBuilding/Meshes/SM_brick_chimney.glb" id="110_rpmwh"]
 [ext_resource type="PackedScene" uid="uid://dcpkj0v1tkqnu" path="res://Assets/Imports/IndustrialArea/Containers/SM_container_01.glb" id="111_ub3hr"]
 [ext_resource type="PackedScene" uid="uid://d0klo2bl1t1n0" path="res://Assets/Imports/FPS Bundle/AssortedProps/Meshes/SM_Props_CementC2_01.glb" id="112_eaeyn"]
@@ -1723,7 +1722,7 @@ transform = Transform3D(-0.0374177, 0, 1.99965, 0, 2, 0, -1.99965, 0, -0.0374177
 transform = Transform3D(-0.0374177, 0, 1.99965, 0, 2, 0, -1.99965, 0, -0.0374177, -2.81077, 10.4565, -13.6764)
 
 [node name="SM_Barrier17" parent="Level/NavRegionZone1/Zone1" instance=ExtResource("82_oty77")]
-transform = Transform3D(-0.275451, 0, 1.37264, 0, 1.4, 0, -1.37264, 0, -0.275451, 13.2504, 6.97454, 71.1494)
+transform = Transform3D(-0.275451, 0, 1.37264, 0, 1.4, 0, -1.37264, 0, -0.275451, 13.0826, 6.97454, 71.0304)
 
 [node name="SM_Barrier22" parent="Level/NavRegionZone1/Zone1" instance=ExtResource("82_oty77")]
 transform = Transform3D(-0.148454, 0, 1.39211, 0, 1.4, 0, -1.39211, 0, -0.148454, -26.8493, 7.76812, 69.3517)
@@ -1750,13 +1749,13 @@ transform = Transform3D(0.0917105, 0, 1.39699, 0, 1.4, 0, -1.39699, 0, 0.0917105
 transform = Transform3D(0.0178122, 0, 1.39989, 0, 1.4, 0, -1.39989, 0, 0.0178122, 12.934, 6.97454, 69.0036)
 
 [node name="SM_Barrier19" parent="Level/NavRegionZone1/Zone1" instance=ExtResource("82_oty77")]
-transform = Transform3D(-0.490084, 0, 1.31142, 0, 1.4, 0, -1.31142, 0, -0.490084, 12.9082, 6.97454, 64.5624)
+transform = Transform3D(-0.309309, 0, 1.36541, 0, 1.4, 0, -1.36541, 0, -0.309309, 12.9497, 6.97454, 64.2101)
 
 [node name="SM_Barrier20" parent="Level/NavRegionZone1/Zone1" instance=ExtResource("82_oty77")]
 transform = Transform3D(0.0267297, 0, 1.39974, 0, 1.4, 0, -1.39974, 0, 0.0267297, 12.9082, 6.97454, 62.1045)
 
 [node name="SM_Barrier21" parent="Level/NavRegionZone1/Zone1" instance=ExtResource("82_oty77")]
-transform = Transform3D(-0.298863, 0, 1.36773, 0, 1.4, 0, -1.36773, 0, -0.298863, 11.9508, 6.97454, 58.9401)
+transform = Transform3D(-0.298863, 0, 1.36773, 0, 1.4, 0, -1.36773, 0, -0.298863, 12.6815, 6.97454, 59.721)
 
 [node name="SM_Barrier12" parent="Level/NavRegionZone1/Zone1" instance=ExtResource("82_oty77")]
 transform = Transform3D(-0.706782, -1.18928, -0.214649, 0, -0.248664, 1.37774, -1.20849, 0.695544, 0.125537, -0.810259, 0.325699, 33.0223)
@@ -3138,9 +3137,16 @@ size = Vector3(0.2, 15.8975, 0.4)
 material = ExtResource("26_11rv1")
 
 [node name="CSGBox3D42" type="CSGBox3D" parent="Level/NavRegionZone2/Zone2/Brewery"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -87.9025, 11.706, 65.4232)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -87.9025, 13.0638, 65.4232)
 use_collision = true
-size = Vector3(0.1, 8, 15)
+size = Vector3(0.1, 10.7157, 15)
+material = ExtResource("15_0vtxr")
+
+[node name="CSGBox3D46" type="CSGBox3D" parent="Level/NavRegionZone2/Zone2/Brewery/CSGBox3D42"]
+transform = Transform3D(1, 7.28293e-09, 6.10996e-10, -7.28293e-09, 0.986022, 0.166614, 6.10989e-10, -0.166614, 0.986022, -1.17623, 6.31852, -0.644424)
+operation = 2
+use_collision = true
+size = Vector3(3.47574, 5.01166, 16.3125)
 material = ExtResource("15_0vtxr")
 
 [node name="CSGBox3D43" type="CSGBox3D" parent="Level/NavRegionZone2/Zone2/Brewery"]
@@ -3150,9 +3156,9 @@ size = Vector3(0.1, 8, 13.2935)
 material = ExtResource("15_0vtxr")
 
 [node name="CSGBox3D44" type="CSGBox3D" parent="Level/NavRegionZone2/Zone2/Brewery"]
-transform = Transform3D(-0.166304, 0.986075, 1.45388e-08, 0.986074, 0.166304, -8.62054e-08, -8.74228e-08, 8.79426e-16, -1, -87.9255, 16.9195, 58.8112)
+transform = Transform3D(-0.166304, 0.986075, 1.45388e-08, 0.986074, 0.166304, -8.62054e-08, -8.74228e-08, 8.79426e-16, -1, -87.9255, 16.9195, 59.7698)
 use_collision = true
-size = Vector3(0.1, 15.1654, 13.2935)
+size = Vector3(0.1, 15.1654, 15.2107)
 material = ExtResource("4_135wt")
 
 [node name="CSGBox3D45" type="CSGBox3D" parent="Level/NavRegionZone2/Zone2/Brewery"]
@@ -5497,9 +5503,8 @@ transform = Transform3D(-1.37756e-07, 0, 1, 0, 1, 0, -3.15148, 0, -4.37114e-08, 
 
 [node name="CSGMesh3D28" parent="Level/Perimiter/Walls" instance=ExtResource("108_3v632")]
 transform = Transform3D(-1.79223e-07, 0, 1, 0, 1, 0, -4.10014, 0, -4.37114e-08, -49.3493, 0.044, 37.1296)
-transparency = 0.5
 
-[node name="CSGBox3D14" type="CSGBox3D" parent="Level/Perimiter/Walls/CSGMesh3D28"]
+[node name="CSGBox3D15" type="CSGBox3D" parent="Level/Perimiter/Walls/CSGMesh3D28"]
 transform = Transform3D(0.763344, 0, 0, 0, 1, 0, 1.32161e-12, 0, 1, -0.030508, 10.3191, 0)
 operation = 2
 size = Vector3(1.96802, 21.6382, 1)
@@ -8973,9 +8978,6 @@ skeleton = NodePath("../../Zone1")
 libraries = {
 "": SubResource("AnimationLibrary_8wxbm")
 }
-
-[node name="TestRoadblock" parent="." instance=ExtResource("110_a5smi")]
-transform = Transform3D(-0.0413068, 0, 1.49943, 0, 1.5, 0, -1.49943, 0, -0.0413068, 5.84529, 0.000499964, 31.8673)
 
 [connection signal="timeout" from="GamemodeManager/EndlessWaveTimer" to="GamemodeManager" method="_on_endless_wave_timer_timeout"]
 [connection signal="spawned" from="MultiplayerSpawner" to="." method="_on_multiplayer_spawner_spawned"]
