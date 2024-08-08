@@ -14,7 +14,7 @@ extends Node
 var max_players : int = 4
 @export var cur_player_count := 0
 
-var multiplayer_scene = load("res://Scenes/Levels/Testing/steam_multiplayer_testing.tscn")
+var multiplayer_scene = load("res://Scenes/Levels/playtest_level_wk10.tscn")
 
 func _ready() -> void:
 	network_manager.multiplayer_manager = self
