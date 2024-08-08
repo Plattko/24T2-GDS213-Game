@@ -33,7 +33,9 @@ _subresources={
 "nodes": {
 "PATH:Mesh": {
 "generate/physics": true,
-"physics/shape_type": 1
+"physics/shape_type": 3,
+"primitive/position": Vector3(0, 0.15, 0),
+"primitive/size": Vector3(0.8, 0.3, 0.51)
 }
 }
 }
