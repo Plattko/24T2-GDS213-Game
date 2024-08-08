@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://cijv620fyb8x1"]
+
+[ext_resource type="PackedScene" uid="uid://c3rnpj55iq6rx" path="res://Assets/Imports/StylizedTokyo/RoadProps/Meshes/SM_Barrier02.glb" id="1_6pb13"]
+
+[node name="SM_Barrier02" instance=ExtResource("1_6pb13")]

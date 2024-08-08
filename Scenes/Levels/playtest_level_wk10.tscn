@@ -1,4 +1,4 @@
-[gd_scene load_steps=128 format=3 uid="uid://c6qxbn3y8kkjl"]
+[gd_scene load_steps=129 format=3 uid="uid://c6qxbn3y8kkjl"]
 
 [ext_resource type="Material" uid="uid://b5y2c7coteo7i" path="res://Assets/Materials/Standard Materials/MI_coal_A_Inst.tres" id="1_e2drn"]
 [ext_resource type="Script" path="res://Scripts/Gamemode/scene_manager.gd" id="1_q5wbq"]
@@ -101,6 +101,7 @@
 [ext_resource type="Script" path="res://Scripts/Gamemode/wave_manager.gd" id="108_6pedp"]
 [ext_resource type="PackedScene" uid="uid://dtimv1b738ha7" path="res://Scenes/SmokePlume.tscn" id="109_bfkcq"]
 [ext_resource type="Script" path="res://Scripts/Gamemode/zone.gd" id="109_y4awo"]
+[ext_resource type="PackedScene" uid="uid://cijv620fyb8x1" path="res://Scenes/Props/road_barrier_yellow.tscn" id="110_a5smi"]
 [ext_resource type="PackedScene" uid="uid://dlhc1ragxvv6" path="res://Assets/Imports/IndustrialArea/BrickBuilding/Meshes/SM_brick_chimney.glb" id="110_rpmwh"]
 [ext_resource type="PackedScene" uid="uid://dcpkj0v1tkqnu" path="res://Assets/Imports/IndustrialArea/Containers/SM_container_01.glb" id="111_ub3hr"]
 [ext_resource type="PackedScene" uid="uid://d0klo2bl1t1n0" path="res://Assets/Imports/FPS Bundle/AssortedProps/Meshes/SM_Props_CementC2_01.glb" id="112_eaeyn"]
@@ -9335,6 +9336,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -139.956, 20.8061, 54.1406)
 
 [node name="Node3D2" parent="." instance=ExtResource("109_bfkcq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.2412, 20.8061, 116.925)
+
+[node name="SM_Barrier02" parent="." instance=ExtResource("110_a5smi")]
+transform = Transform3D(-0.0413068, 0, 1.49943, 0, 1.5, 0, -1.49943, 0, -0.0413068, 5.84529, 0.000499964, 31.8673)
 
 [connection signal="timeout" from="GamemodeManager/EndlessWaveTimer" to="GamemodeManager" method="_on_endless_wave_timer_timeout"]
 [connection signal="spawned" from="MultiplayerSpawner" to="." method="_on_multiplayer_spawner_spawned"]
