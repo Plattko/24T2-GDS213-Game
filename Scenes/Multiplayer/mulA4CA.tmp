@@ -1,0 +1,1424 @@
+[gd_scene load_steps=49 format=3 uid="uid://il6q27w1jqvw"]
+
+[ext_resource type="Script" path="res://Scripts/Multiplayer/multiplayer_player.gd" id="1_0n7q4"]
+[ext_resource type="Script" path="res://Scripts/Player/player_input.gd" id="2_7s41b"]
+[ext_resource type="PackedScene" uid="uid://caqpeyq7g56bn" path="res://Scenes/damageable.tscn" id="3_sfxmm"]
+[ext_resource type="Script" path="res://Scripts/Weapons/weapon_manager.gd" id="4_v17h1"]
+[ext_resource type="PackedScene" uid="uid://dqexibtsgatqp" path="res://Scenes/Weapons/rifle.tscn" id="5_lxaa3"]
+[ext_resource type="PackedScene" uid="uid://d2x6finf6hnf4" path="res://Scenes/Weapons/pistol.tscn" id="6_6hiye"]
+[ext_resource type="PackedScene" uid="uid://dd57urlaitec8" path="res://Scenes/Weapons/p90.tscn" id="6_h0gra"]
+[ext_resource type="PackedScene" uid="uid://co38vlsgcng80" path="res://Scenes/Weapons/rocket_launcher.tscn" id="6_vqpyd"]
+[ext_resource type="PackedScene" uid="uid://cj7xkscmie81y" path="res://Scenes/Weapons/shotgun.tscn" id="7_d8wuf"]
+[ext_resource type="Script" path="res://Scripts/States/Player States/player_state_machine.gd" id="9_s0xnt"]
+[ext_resource type="Script" path="res://Scripts/States/Player States/idle_player_state.gd" id="9_u7svg"]
+[ext_resource type="Script" path="res://Scripts/States/Player States/air_player_state.gd" id="10_3uw0v"]
+[ext_resource type="Script" path="res://Scripts/States/Player States/walk_player_state.gd" id="11_3pdmq"]
+[ext_resource type="Script" path="res://Scripts/States/Player States/sprint_player_state.gd" id="12_lap8s"]
+[ext_resource type="Script" path="res://Scripts/States/Player States/crouch_player_state.gd" id="13_e54bo"]
+[ext_resource type="Script" path="res://Scripts/States/Player States/slide_player_state.gd" id="14_4j3tc"]
+[ext_resource type="Script" path="res://Scripts/States/Player States/wallrun_player_state.gd" id="15_enn73"]
+[ext_resource type="Script" path="res://Scripts/UI/ui_manager.gd" id="15_jmxyw"]
+[ext_resource type="Script" path="res://Scripts/UI/hud.gd" id="16_e684x"]
+[ext_resource type="Script" path="res://Scripts/UI/reticle.gd" id="17_18grs"]
+[ext_resource type="Script" path="res://Scripts/UI/hitmarker.gd" id="18_bagsi"]
+[ext_resource type="Theme" uid="uid://ctri33ojacyl0" path="res://UI/Themes/debug.tres" id="18_v6r72"]
+[ext_resource type="Script" path="res://Scripts/States/Player States/downed_player_state.gd" id="18_wjjdp"]
+[ext_resource type="Script" path="res://Scripts/UI/debug.gd" id="19_atg5u"]
+[ext_resource type="PackedScene" uid="uid://bu0mtrnvhonpt" path="res://Scenes/UI/settings_menu.tscn" id="20_c20fv"]
+[ext_resource type="Texture2D" uid="uid://dwe2gnlquqbvt" path="res://Assets/Textures/UI/ring_texture.png" id="26_xfog8"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_vurwv"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("Head:position")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath("Head:rotation")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+properties/4/path = NodePath(".:cur_health")
+properties/4/spawn = true
+properties/4/replication_mode = 1
+properties/5/path = NodePath(".:is_downed")
+properties/5/spawn = true
+properties/5/replication_mode = 1
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l214m"]
+resource_local_to_scene = true
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ge1xk"]
+resource_local_to_scene = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fvek4"]
+albedo_color = Color(0, 0.654902, 0.894118, 1)
+roughness = 0.5
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_3r45p"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jyr28"]
+size = Vector3(0.1, 0.2, 0.5)
+
+[sub_resource type="Animation" id="Animation_twumr"]
+resource_name = "Crouch"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape:shape:height")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [2.0, 1.5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.25, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Head:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.7, 0), Vector3(0, 0.2, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Damageable/DamageableShape:shape:height")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [2.0, 1.5]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Damageable/DamageableShape:position")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.25, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Mesh:mesh:height")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [2.0, 1.5]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Mesh:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.25, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_qw5pv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape:shape:height")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Head:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.7, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Damageable/DamageableShape:shape:height")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Damageable/DamageableShape:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Mesh:mesh:height")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Mesh:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_eqx5m"]
+resource_name = "Slide"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape:shape:height")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [2.0, 1.5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.25, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Head:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.7, 0), Vector3(0, 0.2, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Damageable/DamageableShape:shape:height")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [2.0, 1.5]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Damageable/DamageableShape:position")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.25, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Mesh:mesh:height")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [2.0, 1.5]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Mesh:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.25, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ayhor"]
+resource_name = "Downed"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape:shape:height")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [2.0, 1.5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.25, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Head:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.7, 0), Vector3(0, 0.2, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Damageable/DamageableShape:shape:height")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [2.0, 1.5]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Damageable/DamageableShape:position")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.25, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Mesh:mesh:height")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [2.0, 1.5]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Mesh:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.25, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_456lr"]
+_data = {
+"Crouch": SubResource("Animation_twumr"),
+"Downed": SubResource("Animation_ayhor"),
+"RESET": SubResource("Animation_qw5pv"),
+"Slide": SubResource("Animation_eqx5m")
+}
+
+[sub_resource type="Curve" id="Curve_klsw6"]
+_data = [Vector2(0, 1), 0.0, -1.0, 0, 1, Vector2(1, 0), -1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Animation" id="Animation_52xg5"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RegHit/TopLeft:default_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.741176)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RegHit/TopRight:default_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.741176)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RegHit/BottomRight:default_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.741176)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RegHit/BottomLeft:default_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.741176)]
+}
+
+[sub_resource type="Animation" id="Animation_543v0"]
+resource_name = "Regular_Hit"
+length = 0.25
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RegHit/TopLeft:default_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.741176), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RegHit/TopRight:default_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.741176), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RegHit/BottomRight:default_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.741176), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RegHit/BottomLeft:default_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.741176), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_exo1b"]
+_data = {
+"RESET": SubResource("Animation_52xg5"),
+"RegHit": SubResource("Animation_543v0")
+}
+
+[sub_resource type="Animation" id="Animation_kkb73"]
+resource_name = "CritHit"
+length = 0.3
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CritHit/TopLeft:default_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.893742, 0.214702, 0.214702, 0.741176), Color(0.894118, 0.215686, 0.215686, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CritHit/TopLeft:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-10, -10), Vector2(-13, -13)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CritHit/TopRight:default_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.893742, 0.214702, 0.214702, 0.741176), Color(0.894118, 0.215686, 0.215686, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CritHit/TopRight:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(10, -10), Vector2(13, -13)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CritHit/BottomRight:default_color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.893742, 0.214702, 0.214702, 0.741176), Color(0.894118, 0.215686, 0.215686, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CritHit/BottomRight:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(10, 10), Vector2(13, 13)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CritHit/BottomLeft:default_color")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.893742, 0.214702, 0.214702, 0.741176), Color(0.894118, 0.215686, 0.215686, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CritHit/BottomLeft:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-10, 10), Vector2(-13, 13)]
+}
+
+[sub_resource type="Animation" id="Animation_k5wue"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CritHit/TopLeft:default_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.893742, 0.214702, 0.214702, 0.741176)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CritHit/TopLeft:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-10, -10)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CritHit/TopRight:default_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.893742, 0.214702, 0.214702, 0.741176)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CritHit/TopRight:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(10, -10)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CritHit/BottomRight:default_color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.893742, 0.214702, 0.214702, 0.741176)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CritHit/BottomRight:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(10, 10)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CritHit/BottomLeft:default_color")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.893742, 0.214702, 0.214702, 0.741176)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CritHit/BottomLeft:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-10, 10)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4d0i2"]
+_data = {
+"CritHit": SubResource("Animation_kkb73"),
+"RESET": SubResource("Animation_k5wue")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hqtb7"]
+bg_color = Color(0.723958, 0.115004, 0.115004, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.329931, 0.0279585, 0.0283865, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_61hn2"]
+bg_color = Color(0.329412, 0.027451, 0.027451, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_frr6w"]
+bg_color = Color(0.329412, 0.027451, 0.027451, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0a0dl"]
+bg_color = Color(0.180666, 0.00854189, 0.00851971, 1)
+
+[node name="MulitplayerPlayer" type="CharacterBody3D" node_paths=PackedStringArray("input", "head", "camera", "anim_player", "ceiling_check", "hud", "weapon_holder", "death_timer", "respawn_timer")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_0n7q4")
+input = NodePath("Input")
+head = NodePath("Head")
+camera = NodePath("Head/Camera3D")
+anim_player = NodePath("AnimationPlayer")
+ceiling_check = NodePath("CeilingCheck")
+hud = NodePath("UI/HUD")
+sensitivity = 0.18
+weapon_holder = NodePath("Head/Camera3D/WeaponHolder")
+death_timer = NodePath("DeathTimer")
+respawn_timer = NodePath("RespawnTimer")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_vurwv")
+
+[node name="Input" type="Node" parent="." node_paths=PackedStringArray("jump_buffer", "jump_buffer_cooldown")]
+script = ExtResource("2_7s41b")
+jump_buffer = NodePath("JumpBuffer")
+jump_buffer_cooldown = NodePath("JumpBufferCooldown")
+
+[node name="JumpBuffer" type="Timer" parent="Input"]
+wait_time = 0.1
+one_shot = true
+
+[node name="JumpBufferCooldown" type="Timer" parent="Input"]
+wait_time = 0.2
+one_shot = true
+
+[node name="CollisionShape" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_l214m")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_ge1xk")
+surface_material_override/0 = SubResource("StandardMaterial3D_fvek4")
+
+[node name="CeilingCheck" type="ShapeCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("SphereShape3D_3r45p")
+target_position = Vector3(0, 0.5, 0)
+debug_shape_custom_color = Color(0, 0.901961, 0, 1)
+
+[node name="FloorCheck" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+target_position = Vector3(0, -0.5, 0)
+
+[node name="LedgeCheck" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65, 0)
+target_position = Vector3(0, 0, -1)
+
+[node name="WallCheck" type="ShapeCast3D" parent="LedgeCheck"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, -0.5)
+shape = SubResource("BoxShape3D_jyr28")
+target_position = Vector3(0, 0, 0)
+
+[node name="Damageable" parent="." instance=ExtResource("3_sfxmm")]
+collision_layer = 2
+
+[node name="DamageableShape" type="CollisionShape3D" parent="Damageable"]
+shape = SubResource("CapsuleShape3D_l214m")
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Head"]
+fov = 90.0
+
+[node name="ReflectionProbe" type="ReflectionProbe" parent="Head/Camera3D"]
+visible = false
+update_mode = 1
+
+[node name="WeaponHolder" type="Node3D" parent="Head/Camera3D"]
+
+[node name="WeaponManager" type="Node3D" parent="Head/Camera3D/WeaponHolder" node_paths=PackedStringArray("weapon_switch_cooldown")]
+unique_name_in_owner = true
+script = ExtResource("4_v17h1")
+weapon_switch_cooldown = NodePath("WeaponSwitchCooldown")
+
+[node name="Rifle" parent="Head/Camera3D/WeaponHolder/WeaponManager" instance=ExtResource("5_lxaa3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.519, -0.344, -1.15)
+
+[node name="RocketLauncher" parent="Head/Camera3D/WeaponHolder/WeaponManager" instance=ExtResource("6_vqpyd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.519, -0.475, -0.9)
+
+[node name="Shotgun" parent="Head/Camera3D/WeaponHolder/WeaponManager" instance=ExtResource("7_d8wuf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.519, -0.344, -1.1)
+
+[node name="Pistol" parent="Head/Camera3D/WeaponHolder/WeaponManager" instance=ExtResource("6_6hiye")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.519, -0.344, -0.75)
+
+[node name="P90" parent="Head/Camera3D/WeaponHolder/WeaponManager" instance=ExtResource("6_h0gra")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.519, -0.344, -0.95)
+
+[node name="WeaponSwitchCooldown" type="Timer" parent="Head/Camera3D/WeaponHolder/WeaponManager"]
+wait_time = 0.15
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_456lr")
+}
+
+[node name="PlayerStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+unique_name_in_owner = true
+script = ExtResource("9_s0xnt")
+initial_state = NodePath("IdlePlayerState")
+
+[node name="IdlePlayerState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("9_u7svg")
+
+[node name="AirPlayerState" type="Node" parent="PlayerStateMachine" node_paths=PackedStringArray("floor_check", "wallrun_cooldown", "ledge_check", "wall_check", "mantle_duration")]
+script = ExtResource("10_3uw0v")
+floor_check = NodePath("../../FloorCheck")
+wallrun_cooldown = NodePath("WallrunCooldown")
+ledge_check = NodePath("../../LedgeCheck")
+wall_check = NodePath("../../LedgeCheck/WallCheck")
+mantle_duration = NodePath("MantleDuration")
+is_air_strafing_enabled = false
+max_air_speed = 0.7
+
+[node name="WallrunCooldown" type="Timer" parent="PlayerStateMachine/AirPlayerState"]
+wait_time = 0.4
+one_shot = true
+
+[node name="MantleDuration" type="Timer" parent="PlayerStateMachine/AirPlayerState"]
+wait_time = 0.2
+one_shot = true
+
+[node name="WalkPlayerState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("11_3pdmq")
+
+[node name="SprintPlayerState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("12_lap8s")
+
+[node name="CrouchPlayerState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("13_e54bo")
+
+[node name="SlidePlayerState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("14_4j3tc")
+
+[node name="WallrunPlayerState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("15_enn73")
+
+[node name="DownedPlayerState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("18_wjjdp")
+
+[node name="DeathTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="RespawnTimer" type="Timer" parent="."]
+wait_time = 20.0
+one_shot = true
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("15_jmxyw")
+
+[node name="HUD" type="Control" parent="UI" node_paths=PackedStringArray("health_label", "cur_ammo_label", "reticle", "cur_wave_label", "enemies_left_label", "zone_change_warning", "time_text", "downed_ui", "death_timer_text", "death_progress_bar", "dead_ui", "respawn_text", "respawn_timer_text", "respawn_progress_bar")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("16_e684x")
+health_label = NodePath("MarginContainer/Health")
+cur_ammo_label = NodePath("MarginContainer/Ammo")
+reticle = NodePath("Reticle")
+cur_wave_label = NodePath("MarginContainer/WaveVBox/CurrentWave")
+enemies_left_label = NodePath("MarginContainer/WaveVBox/EnemiesRemaining")
+zone_change_warning = NodePath("ZoneChangeWarning")
+time_text = NodePath("ZoneChangeWarning/MarginContainer/HBoxContainer/Info/TimeRemainingPanel/MarginContainer/HBoxContainer/TimePanel/CenterContainer/TimeText")
+downed_ui = NodePath("DownedUI")
+death_timer_text = NodePath("DownedUI/DeathTimerText")
+death_progress_bar = NodePath("DownedUI/DeathProgressBar")
+dead_ui = NodePath("DeadUI")
+respawn_text = NodePath("DeadUI/Panel/MarginContainer/HBoxContainer/RespawnText")
+respawn_timer_text = NodePath("DeadUI/Panel/MarginContainer/HBoxContainer/RespawnProgressBar/DeathTimerText")
+respawn_progress_bar = NodePath("DeadUI/Panel/MarginContainer/HBoxContainer/RespawnProgressBar")
+
+[node name="Reticle" type="CenterContainer" parent="UI/HUD" node_paths=PackedStringArray("lines")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("17_18grs")
+lines = [NodePath("Top"), NodePath("Right"), NodePath("Bottom"), NodePath("Left")]
+
+[node name="Top" type="Line2D" parent="UI/HUD/Reticle"]
+points = PackedVector2Array(0, -5, 0, -15)
+width = 2.0
+
+[node name="Right" type="Line2D" parent="UI/HUD/Reticle"]
+points = PackedVector2Array(5, 0, 15, 0)
+width = 2.0
+
+[node name="Bottom" type="Line2D" parent="UI/HUD/Reticle"]
+points = PackedVector2Array(0, 5, 0, 15)
+width = 2.0
+
+[node name="Left" type="Line2D" parent="UI/HUD/Reticle"]
+points = PackedVector2Array(-5, 0, -15, 0)
+width = 2.0
+
+[node name="Hitmarker" type="CenterContainer" parent="UI/HUD" node_paths=PackedStringArray("reg_anim_player", "crit_anim_player", "reg_hitmarkers", "crit_hitmarkers")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("18_bagsi")
+reg_anim_player = NodePath("RegAnimPlayer")
+crit_anim_player = NodePath("CritAnimPlayer")
+reg_hitmarkers = [NodePath("RegHit/TopLeft"), NodePath("RegHit/TopRight"), NodePath("RegHit/BottomRight"), NodePath("RegHit/BottomLeft")]
+crit_hitmarkers = [NodePath("CritHit/TopLeft"), NodePath("CritHit/TopRight"), NodePath("CritHit/BottomRight"), NodePath("CritHit/BottomLeft")]
+
+[node name="RegHit" type="Control" parent="UI/HUD/Hitmarker"]
+layout_mode = 2
+
+[node name="TopLeft" type="Line2D" parent="UI/HUD/Hitmarker/RegHit"]
+position = Vector2(-10, -10)
+rotation = 5.49779
+points = PackedVector2Array(0, 0, 0, -20)
+width = 6.0
+width_curve = SubResource("Curve_klsw6")
+default_color = Color(1, 1, 1, 0.741176)
+antialiased = true
+
+[node name="TopRight" type="Line2D" parent="UI/HUD/Hitmarker/RegHit"]
+position = Vector2(10, -10)
+rotation = 0.785398
+points = PackedVector2Array(0, 0, 0, -20)
+width = 6.0
+width_curve = SubResource("Curve_klsw6")
+default_color = Color(1, 1, 1, 0.741176)
+antialiased = true
+
+[node name="BottomRight" type="Line2D" parent="UI/HUD/Hitmarker/RegHit"]
+position = Vector2(10, 10)
+rotation = 2.35619
+points = PackedVector2Array(0, 0, 0, -20)
+width = 6.0
+width_curve = SubResource("Curve_klsw6")
+default_color = Color(1, 1, 1, 0.741176)
+antialiased = true
+
+[node name="BottomLeft" type="Line2D" parent="UI/HUD/Hitmarker/RegHit"]
+position = Vector2(-10, 10)
+rotation = -2.35619
+points = PackedVector2Array(0, 0, 0, -20)
+width = 6.0
+width_curve = SubResource("Curve_klsw6")
+default_color = Color(1, 1, 1, 0.741176)
+antialiased = true
+
+[node name="CritHit" type="Control" parent="UI/HUD/Hitmarker"]
+layout_mode = 2
+
+[node name="TopLeft" type="Line2D" parent="UI/HUD/Hitmarker/CritHit"]
+position = Vector2(-10, -10)
+rotation = -0.785398
+scale = Vector2(2, 2)
+points = PackedVector2Array(0, 0, 0, -20)
+width = 5.0
+width_curve = SubResource("Curve_klsw6")
+default_color = Color(0.893742, 0.214702, 0.214702, 0.741176)
+antialiased = true
+
+[node name="TopRight" type="Line2D" parent="UI/HUD/Hitmarker/CritHit"]
+position = Vector2(10, -10)
+rotation = 0.785398
+scale = Vector2(2, 2)
+points = PackedVector2Array(0, 0, 0, -20)
+width = 5.0
+width_curve = SubResource("Curve_klsw6")
+default_color = Color(0.893742, 0.214702, 0.214702, 0.741176)
+antialiased = true
+
+[node name="BottomRight" type="Line2D" parent="UI/HUD/Hitmarker/CritHit"]
+position = Vector2(10, 10)
+rotation = 2.35619
+scale = Vector2(2, 2)
+points = PackedVector2Array(0, 0, 0, -20)
+width = 5.0
+width_curve = SubResource("Curve_klsw6")
+default_color = Color(0.893742, 0.214702, 0.214702, 0.741176)
+antialiased = true
+
+[node name="BottomLeft" type="Line2D" parent="UI/HUD/Hitmarker/CritHit"]
+position = Vector2(-10, 10)
+rotation = -2.35619
+scale = Vector2(2, 2)
+points = PackedVector2Array(0, 0, 0, -20)
+width = 5.0
+width_curve = SubResource("Curve_klsw6")
+default_color = Color(0.893742, 0.214702, 0.214702, 0.741176)
+antialiased = true
+
+[node name="RegAnimPlayer" type="AnimationPlayer" parent="UI/HUD/Hitmarker"]
+libraries = {
+"": SubResource("AnimationLibrary_exo1b")
+}
+
+[node name="CritAnimPlayer" type="AnimationPlayer" parent="UI/HUD/Hitmarker"]
+libraries = {
+"": SubResource("AnimationLibrary_4d0i2")
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/HUD"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="Health" type="Label" parent="UI/HUD/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 48
+text = "Health: 100/100"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Ammo" type="Label" parent="UI/HUD/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 48
+text = "Ammo: 24/24"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="WaveVBox" type="VBoxContainer" parent="UI/HUD/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="CurrentWave" type="Label" parent="UI/HUD/MarginContainer/WaveVBox"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 48
+text = "Wave 123"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EnemiesRemaining" type="Label" parent="UI/HUD/MarginContainer/WaveVBox"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 32
+text = "Enemies Remaining: 123"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DebugPanel" type="PanelContainer" parent="UI/HUD" node_paths=PackedStringArray("property_container")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 210.0
+offset_bottom = 50.0
+theme = ExtResource("18_v6r72")
+script = ExtResource("19_atg5u")
+property_container = NodePath("MarginContainer/VBoxContainer")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/HUD/DebugPanel"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/HUD/DebugPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="ZoneChangeWarning" type="PanelContainer" parent="UI/HUD"]
+custom_minimum_size = Vector2(500, 200)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -250.0
+offset_top = 10.0
+offset_right = 250.0
+offset_bottom = 210.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_hqtb7")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/HUD/ZoneChangeWarning"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/HUD/ZoneChangeWarning/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="AlertSymbol" type="Panel" parent="UI/HUD/ZoneChangeWarning/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(156, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_61hn2")
+
+[node name="CenterContainer" type="CenterContainer" parent="UI/HUD/ZoneChangeWarning/MarginContainer/HBoxContainer/AlertSymbol"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = -11.5
+offset_right = 0.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="UI/HUD/ZoneChangeWarning/MarginContainer/HBoxContainer/AlertSymbol/CenterContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 128
+text = "!"
+vertical_alignment = 1
+
+[node name="Info" type="VBoxContainer" parent="UI/HUD/ZoneChangeWarning/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TitleText" type="Label" parent="UI/HUD/ZoneChangeWarning/MarginContainer/HBoxContainer/Info"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "ZONE CHANGE"
+
+[node name="AlertText" type="Label" parent="UI/HUD/ZoneChangeWarning/MarginContainer/HBoxContainer/Info"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "DEPLOYING VAPORISATION RAY TO ERADICATE ALL ROBOTS IN VICINITY"
+autowrap_mode = 3
+
+[node name="TimeRemainingPanel" type="PanelContainer" parent="UI/HUD/ZoneChangeWarning/MarginContainer/HBoxContainer/Info"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_frr6w")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/HUD/ZoneChangeWarning/MarginContainer/HBoxContainer/Info/TimeRemainingPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/HUD/ZoneChangeWarning/MarginContainer/HBoxContainer/Info/TimeRemainingPanel/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TimeToEvacText" type="Label" parent="UI/HUD/ZoneChangeWarning/MarginContainer/HBoxContainer/Info/TimeRemainingPanel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Time to evacuate:"
+
+[node name="TimePanel" type="Panel" parent="UI/HUD/ZoneChangeWarning/MarginContainer/HBoxContainer/Info/TimeRemainingPanel/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(54, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0a0dl")
+
+[node name="CenterContainer" type="CenterContainer" parent="UI/HUD/ZoneChangeWarning/MarginContainer/HBoxContainer/Info/TimeRemainingPanel/MarginContainer/HBoxContainer/TimePanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TimeText" type="Label" parent="UI/HUD/ZoneChangeWarning/MarginContainer/HBoxContainer/Info/TimeRemainingPanel/MarginContainer/HBoxContainer/TimePanel/CenterContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "30"
+
+[node name="DownedUI" type="Control" parent="UI/HUD"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DeadInText" type="Label" parent="UI/HUD/DownedUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -63.5
+offset_top = -160.0
+offset_right = 63.5007
+offset_bottom = -115.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.627451)
+theme_override_font_sizes/font_size = 32
+text = "DEAD IN"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DeathTimerText" type="Label" parent="UI/HUD/DownedUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -63.5004
+offset_top = -22.5
+offset_right = 63.5004
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.627451)
+theme_override_font_sizes/font_size = 48
+text = "20
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DeathProgressBar" type="TextureProgressBar" parent="UI/HUD/DownedUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -464.0
+offset_top = -455.0
+offset_right = 464.0
+offset_bottom = 455.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.25, 0.25)
+pivot_offset = Vector2(464, 455)
+max_value = 20.0
+step = 0.01
+value = 20.0
+fill_mode = 5
+texture_progress = ExtResource("26_xfog8")
+tint_progress = Color(1, 1, 1, 0.627451)
+
+[node name="DeadUI" type="Control" parent="UI/HUD"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="UI/HUD/DeadUI"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/HUD/DeadUI/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="DeadText" type="Label" parent="UI/HUD/DeadUI/Panel/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(1, 1, 1, 0.627451)
+theme_override_font_sizes/font_size = 48
+text = "DEAD"
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/HUD/DeadUI/Panel/MarginContainer"]
+layout_direction = 3
+layout_mode = 2
+
+[node name="RespawnProgressBar" type="TextureProgressBar" parent="UI/HUD/DeadUI/Panel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+max_value = 20.0
+step = 0.01
+value = 20.0
+fill_mode = 5
+nine_patch_stretch = true
+stretch_margin_left = 130
+texture_progress = ExtResource("26_xfog8")
+tint_progress = Color(1, 1, 1, 0.627451)
+
+[node name="DeathTimerText" type="Label" parent="UI/HUD/DeadUI/Panel/MarginContainer/HBoxContainer/RespawnProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.0
+offset_top = -33.5
+offset_right = 27.0
+offset_bottom = 33.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.627451)
+theme_override_font_sizes/font_size = 48
+text = "20
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RespawnText" type="Label" parent="UI/HUD/DeadUI/Panel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.627451)
+theme_override_font_sizes/font_size = 32
+text = "Respawning in"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SettingsMenu" parent="UI/HUD" instance=ExtResource("20_c20fv")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
+[connection signal="player_died" from="." to="UI/HUD" method="on_player_died"]
+[connection signal="player_downed" from="." to="UI/HUD" method="on_player_downed"]
+[connection signal="player_respawned" from="." to="UI/HUD" method="on_player_respawned"]
+[connection signal="player_revived" from="." to="UI/HUD" method="on_player_revived"]
+[connection signal="update_health" from="." to="UI/HUD" method="on_update_health"]
+[connection signal="update_ammo" from="Head/Camera3D/WeaponHolder/WeaponManager/Rifle" to="UI/HUD" method="on_update_ammo"]
+[connection signal="update_ammo" from="Head/Camera3D/WeaponHolder/WeaponManager/RocketLauncher" to="UI/HUD" method="on_update_ammo"]
+[connection signal="update_ammo" from="Head/Camera3D/WeaponHolder/WeaponManager/Shotgun" to="UI/HUD" method="on_update_ammo"]
+[connection signal="update_ammo" from="Head/Camera3D/WeaponHolder/WeaponManager/Pistol" to="UI/HUD" method="on_update_ammo"]
+[connection signal="update_ammo" from="Head/Camera3D/WeaponHolder/WeaponManager/P90" to="UI/HUD" method="on_update_ammo"]
+[connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]
+[connection signal="timeout" from="RespawnTimer" to="." method="_on_respawn_timer_timeout"]
+[connection signal="closed_settings_menu" from="UI/HUD/SettingsMenu" to="Input" method="on_closed_settings_menu"]
+[connection signal="opened_settings_menu" from="UI/HUD/SettingsMenu" to="Input" method="on_opened_settings_menu"]

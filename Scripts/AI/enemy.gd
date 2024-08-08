@@ -12,7 +12,7 @@ enum EnemyTypes { REGULAR, SPEEDY, }
 @export var anim_tree : AnimationTree
 var anim_state_machine : AnimationNodeStateMachinePlayback
 enum Animations { RUN, ATTACK, JUMP, STUNNED, }
-var cur_anim
+@export var cur_anim : Animations
 
 @export_group("Movement Variables")
 @export var speedy_speed := 10.0
@@ -35,8 +35,7 @@ var is_initial_call := true
 @export var max_health := 100
 var cur_health
 
-@export_group("Health Drop Variables")
-@export var health_orb_scene = preload("res://Scenes/Pickups/health_orb.tscn")
+var health_orb_scene = load("res://Scenes/Pickups/health_orb.tscn")
 var health_drop_chance : float = 0.2
 
 # Attack variables
@@ -47,19 +46,20 @@ var has_attack_hit := false
 @export_group("State Machine Variables")
 @export var state_machine : EnemyStateMachine
 
-var player : MultiplayerPlayer
+var players : Array[MultiplayerPlayer] = []
+var target_player : MultiplayerPlayer
 
 signal enemy_defeated
 
 func _ready():
+	# Get animation state machine
+	anim_state_machine = anim_tree.get("parameters/playback")
+	# Activate animation tree
+	anim_tree.active = true
+	# Initialise state machine
+	state_machine.init(self)
+	
 	if multiplayer.is_server():
-		# Get animation state machine
-		anim_state_machine = anim_tree.get("parameters/playback")
-		# Activate animation tree
-		anim_tree.active = true
-		# Initialise state machine
-		state_machine.init(self)
-		
 		# Give the enemy a random speed
 		if enemy_type == EnemyTypes.REGULAR:
 			speed = randf_range(min_speed, max_speed)
@@ -67,11 +67,11 @@ func _ready():
 		elif enemy_type == EnemyTypes.SPEEDY:
 			speed = speedy_speed
 			turn_speed = speedy_turn_speed
-		#print("Enemy speed: " +str(speed))
 		# Connect the target timer's timeout signal to the set_target_position function
 		target_timer.timeout.connect(set_target_position)
 		# Set the initial target location
-		target_position = player.global_position
+		target_player = players.pick_random()
+		target_position = target_player.global_position
 		set_target_position()
 		# Start the target timer
 		target_timer.start()
@@ -85,12 +85,15 @@ func _ready():
 		if hurtbox is Damageable:
 			hurtbox.damaged.connect(on_damaged)
 
-func initialise(_player: MultiplayerPlayer, nav_layer: int):
-	player = _player
+func initialise(_players: Array[MultiplayerPlayer], nav_layer: int):
+	players = _players
 	nav_agent.set_navigation_layer_value(nav_layer, true)
 
 func _physics_process(_delta):
 	if !multiplayer.is_server(): return
+	if target_player.is_downed or target_player.is_dead:
+		target_player = players.pick_random()
+	
 	if cur_health <= 0:
 		die()
 
@@ -101,18 +104,19 @@ func _physics_process(_delta):
 func set_target_position() -> void:
 	await get_tree().physics_frame
 	# Check there is a reference to the player
-	if !player: return
+	if !target_player: return
 	# Check if player has moved from current target position
-	if (player.global_position - target_position).length() < dist_threshold and !is_initial_call: return
+	if (target_player.global_position - target_position).length() < dist_threshold and !is_initial_call: return
 	# Disable is_initial_call after the first call
 	if is_initial_call: is_initial_call = false
 	# Update the target position
-	target_position = player.global_position
+	target_position = target_player.global_position
 	nav_agent.set_target_position(target_position)
 
 #-------------------------------------------------------------------------------
 # Animation
 #-------------------------------------------------------------------------------
+@rpc("any_peer", "call_local")
 func animate(anim: Animations) -> void:
 	cur_anim = anim
 	
@@ -131,6 +135,7 @@ func animate(anim: Animations) -> void:
 #-------------------------------------------------------------------------------
 # Health
 #-------------------------------------------------------------------------------
+@rpc("any_peer", "call_local")
 func on_damaged(damage: float, is_crit: bool):
 	cur_health -= damage
 	health_bar.update_health(cur_health, is_crit)
@@ -143,7 +148,7 @@ func die() -> void:
 		var health_orb = health_orb_scene.instantiate()
 		# Make it a child of the level scene
 		var level = get_tree().get_first_node_in_group("level")
-		level.add_child(health_orb)
+		level.add_child(health_orb, true)
 		# Set its position
 		health_orb.global_position = Vector3(global_position.x, global_position.y + 1.25, global_position.z)
 	queue_free()
@@ -152,7 +157,7 @@ func die() -> void:
 # Attacking
 #-------------------------------------------------------------------------------
 func target_in_range():
-	return global_position.distance_to(player.global_position) < ATTACK_RANGE
+	return global_position.distance_to(target_player.global_position) < ATTACK_RANGE
 
 func reset_has_attack_hit() -> void:
 	has_attack_hit = false

@@ -10,10 +10,10 @@ extends EnemyState
 #@export var max_separation_force : float = 2.5
 
 func enter(_msg : Dictionary = {}):
-	if multiplayer.is_server():
-		enemy.animate(enemy.Animations.RUN)
-	else:
-		enemy.animate(enemy.cur_anim)
+	# Only run by the server
+	if !multiplayer.is_server(): return
+	# Play the run animation
+	enemy.animate.rpc(enemy.Animations.RUN)
 
 func physics_update(delta : float) -> void:
 	# Transition to Attack state if player is in range

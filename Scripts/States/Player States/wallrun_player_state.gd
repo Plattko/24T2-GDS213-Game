@@ -28,6 +28,11 @@ func exit() -> void:
 	#player.camera.rotation.z = 0
 
 func physics_update(delta: float) -> void:
+	# Transition to Downed state
+	if player.is_downed or player.is_dead:
+		transition.emit("DownedPlayerState")
+		return
+	
 	if player.is_on_wall():
 		# Get player velocity direction
 		velocity_dir = horizontal_velocity.normalized()

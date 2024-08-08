@@ -1,81 +1,112 @@
+class_name MultiplayerManager
 extends Node
 
+@export var network_manager : NetworkManager
+
+# UI variables
+@export var network_type_ui : Control
+@export var lan_ui : Control
+@export var steam_ui : Control
 @export var name_line : LineEdit
 @export var ip_line : LineEdit
-var network_testing_scene = preload("res://Scenes/Levels/playtest_level_wk10.tscn")
+@export var lobbies_vbox : VBoxContainer
 
-# Server variables
-const SERVER_PORT := 8080
-const SERVER_IP = "127.0.0.1"
-const MAX_PLAYERS := 4
+var max_players : int = 4
+@export var cur_player_count := 0
 
-var cur_player_num := 2
+var multiplayer_scene = load("res://Scenes/Levels/Testing/steam_multiplayer_testing.tscn")
 
-func _ready():
-	# Connect lifecycle callbacks
-	multiplayer.peer_connected.connect(on_peer_connected) # Calls this function when a peer connects to the server
-	multiplayer.peer_disconnected.connect(on_peer_disconnected)
-	multiplayer.connected_to_server.connect(on_connected_to_server)
-	multiplayer.connection_failed.connect(on_connection_failed)
+func _ready() -> void:
+	network_manager.multiplayer_manager = self
 
-#---------------------------------BUTTONS---------------------------------------
-## Formerly called become_host
-func _on_host_new_game_pressed() -> void:
-	print("Starting host.")
-	# Create a new peer
-	var server_peer = ENetMultiplayerPeer.new()
-	# Check for an error creating the server
-	var error = server_peer.create_server(SERVER_PORT, MAX_PLAYERS)
-	if error != OK:
-		print("Cannot host: %s" % error)
-		return
-	# Apply compression to reduce bandwidth use NOTE: Can be disabled if it causes issues
-	server_peer.get_host().compress(ENetConnection.COMPRESS_RANGE_CODER)
-	
-	# Sets the server peer as my peer
-	multiplayer.set_multiplayer_peer(server_peer) #multiplayer.multiplayer_peer = server_peer
-	print("Waiting for players!")
-	
-	# Pass in the host's player information
-	send_player_information(multiplayer.get_unique_id(), name_line.text, 1)
+#-------------------------------------------------------------------------------
+# UI
+#-------------------------------------------------------------------------------
+func use_steam() -> void:
+	print("Using Steam!")
+	# Show the Steam UI
+	network_type_ui.hide()
+	steam_ui.show()
+	# Initialise steam
+	SteamManager.initialise_steam()
+	# Connect the lobby match list signal
+	Steam.lobby_match_list.connect(on_lobby_match_list)
+	# Set the active network type to Steam
+	network_manager.active_network_type = NetworkManager.Multiplayer_Network_Type.STEAM
 
-func _on_join_as_player_2_pressed() -> void:
-	print("Player 2 joining.")
-	# Create a new peer
-	var client_peer = ENetMultiplayerPeer.new()
-	# Make it a client of the chosen server
-	var error = client_peer.create_client(get_server_ip(), SERVER_PORT)
-	# Check for an error creating the client
-	if error != OK:
-		print("Cannot create client: %s" % error)
-		return
-	# Apply compression to reduce bandwidth use NOTE: Can be disabled if it causes issues
-	client_peer.get_host().compress(ENetConnection.COMPRESS_RANGE_CODER)
-	# Set yourself as the multiplayer peer
-	multiplayer.set_multiplayer_peer(client_peer) #multiplayer.multiplayer_peer = client_peer
+func use_lan() -> void:
+	print("Using LAN!")
+	# Show the LAN UI
+	network_type_ui.hide()
+	lan_ui.show()
+
+func become_host() -> void:
+	print("Host Game pressed.")
+	network_manager.become_host()
+
+func join_as_client() -> void:
+	print("Join as Client pressed.")
+	join_lobby()
 
 func _on_start_game_pressed() -> void:
 	# Call start_game on all peers
 	start_game.rpc()
 
-func get_server_ip() -> String:
+func list_steam_lobbies() -> void:
+	# Steam only
+	print("Listing Steam lobbies.")
+	network_manager.list_lobbies()
+
+func get_server_ip(server_ip) -> String:
+	# LAN only
 	if ip_line.text != "":
 		print("Server IP: " + ip_line.text)
 		return ip_line.text
 	else:
-		print("Server IP: " + SERVER_IP)
-		return SERVER_IP
+		print("Server IP: " + server_ip)
+		return server_ip
 
-#--------------------------------CONNECTIONS------------------------------------
-## Formerly called add_player_to_game
-# Is called on the server and clients when someone connects
+#-------------------------------------------------------------------------------
+# Lobbies
+#-------------------------------------------------------------------------------
+func on_lobby_match_list(lobbies: Array) -> void:
+	print("Lobby match list called.")
+	# Clear the existing lobbies from the list
+	for lobby in lobbies_vbox.get_children():
+		# Delete the lobby
+		lobby.queue_free()
+	# Display the new lobbies
+	for lobby in lobbies:
+		# Get the lobby name
+		var lobby_name = Steam.getLobbyData(lobby, "name")
+		# Only show lobbies with a name
+		if lobby_name != "":
+			# Create lobby button
+			var lobby_button = Button.new()
+			lobby_button.text = lobby_name
+			lobby_button.size.x = 600
+			lobby_button.add_theme_font_size_override("font_size", 24)
+			# NOTE: Can override font, use Steam API tutorial to see how
+			lobby_button.name = "Lobby_" + str(lobby)
+			lobby_button.alignment = HORIZONTAL_ALIGNMENT_LEFT
+			# Connect the button to the join_lobby function
+			lobby_button.pressed.connect(join_lobby.bind(lobby))
+			# Add it to the lobbies VBox
+			lobbies_vbox.add_child(lobby_button)
+
+func join_lobby(lobby_id: int = 0) -> void:
+	network_manager.join_as_client(lobby_id)
+
+#-------------------------------------------------------------------------------
+# Connections
+#-------------------------------------------------------------------------------
+# Is called on the server and clients when a peer connects to the server
 func on_peer_connected(id: int) -> void:
-	print("Player %s connected!" % id)
+	print("Player " + str(id) + " connected!")
 
-## Formerly called remove_player_from_game
 # Is called on the server and clients when someone disconnects
 func on_peer_disconnected(id: int) -> void:
-	print("Player %s disconnected!" % id)
+	print("Player " + str(id) + " disconnected!")
 	# Delete the player
 	var player = get_node_or_null(str(id))
 	if player:
@@ -85,29 +116,38 @@ func on_peer_disconnected(id: int) -> void:
 
 # Is only called from clients
 # If you want to send information from the client to the server, do it from here
-func on_connected_to_server() -> void: 
+func on_connected_to_server(username: String) -> void: 
 	print("Connected to server.")
 	# Send connected player's information to the server
-	send_player_information.rpc_id(1, multiplayer.get_unique_id(), name_line.text, cur_player_num)
-	cur_player_num += 1
+	add_player_to_lobby.rpc_id(1, multiplayer.get_unique_id(), username)
+	print("Added player to lobby from connected to server")
 
 # Is only called from clients
 func on_connection_failed() -> void: 
 	print("Connection failed.")
 
-#------------------------------------RPCS---------------------------------------
+#-------------------------------------------------------------------------------
+# RPCs
+#-------------------------------------------------------------------------------
 @rpc("any_peer", "call_local")
 func start_game() -> void:
 	# Load the scene
-	var scene = network_testing_scene.instantiate()
+	var scene = multiplayer_scene.instantiate()
 	# Add it to our tree
 	get_tree().root.add_child(scene)
 	# Hide the connection menu
 	self.visible = false
 
+@rpc("any_peer", "call_local")
+func add_player_to_lobby(id: int, username: String) -> void:
+	cur_player_count += 1
+	print("Current player count: " + str(cur_player_count))
+	# Send connected player's information to the server
+	send_player_information(id, username, cur_player_count)
+
 ## NOTE: Use this if players select weapon loadout before entering game
 @rpc("any_peer")
-func send_player_information(id, username, player_num) -> void:
+func send_player_information(id: int, username: String, player_num: int) -> void:
 	# If the player doesn't already exist, send the player information to the server
 	if !GameManager.players.has(id):
 		GameManager.players[id] = {
@@ -115,7 +155,6 @@ func send_player_information(id, username, player_num) -> void:
 			"username" : username,
 			"player_num" : player_num,
 		}
-	
 	# Pass the player information from the server to every peer
 	if multiplayer.is_server():
 		for n in GameManager.players:

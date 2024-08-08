@@ -31,6 +31,7 @@ func initialise(player_camera: Camera3D, player_input: PlayerInput, player_retic
 	current_weapon = weapons[0]
 	current_weapon.mesh.visible = true
 	current_weapon.update_ammo.emit([current_weapon.cur_ammo, current_weapon.MAX_AMMO])
+	reticle.update_reticle(current_weapon)
 
 func _physics_process(_delta):
 	if not is_multiplayer_authority(): return
@@ -92,15 +93,31 @@ func change_weapon(index: int) -> void:
 	if next_weapon != current_weapon:
 		weapon_index = index
 		weapon_switch_cooldown.start()
-		current_weapon.anim_player.stop()
+		current_weapon.stop_anim.rpc()
 		current_weapon.mesh.visible = false
 		
 		if reticle: call_update_reticle(next_weapon)
 		else: print("No reticle found.")
 		
 		next_weapon.update_ammo.emit([next_weapon.cur_ammo, next_weapon.MAX_AMMO])
-		next_weapon.anim_player.play(next_weapon.EQUIP_ANIM)
+		#next_weapon.anim_player.play(next_weapon.EQUIP_ANIM)
+		next_weapon.play_anim.rpc(next_weapon.EQUIP_ANIM)
 		current_weapon = next_weapon
+
+func reset_weapon() -> void:
+	# Reset current weapon
+	current_weapon = weapons[0]
+	# Reset weapon index
+	weapon_index = 0
+	# Reset reticle
+	call_update_reticle(current_weapon)
+	# Reset all guns to max ammo
+	for weapon in weapons:
+		weapon.cur_ammo = weapon.MAX_AMMO
+	# Update the ammo UI
+	current_weapon.update_ammo.emit([current_weapon.cur_ammo, current_weapon.MAX_AMMO])
+	# Play the equip animation
+	current_weapon.play_anim.rpc(current_weapon.EQUIP_ANIM)
 
 func call_update_reticle(weapon: Weapon) -> void:
 	reticle.update_reticle(weapon)

@@ -6,6 +6,14 @@
 [ext_resource type="AudioStream" uid="uid://h1ghut8x1ahb" path="res://Assets/Audio/Guns/Rocket Launcher/Explosions/Fire Bomb Mid-Range 003.wav" id="4_y2j6d"]
 [ext_resource type="AudioStream" uid="uid://klw5gx46amrc" path="res://Assets/Audio/Guns/Rocket Launcher/Explosions/Fire Bomb Mid-Range 004.wav" id="5_4pjf3"]
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_5n8t8"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:owner_id")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uovch"]
 transparency = 1
 albedo_color = Color(1, 1, 1, 0.294118)
@@ -33,6 +41,9 @@ stream_3/weight = 1.0
 script = ExtResource("1_6p53y")
 explosion_col = NodePath("ExplosionRadius/CollisionSphere")
 explosion_sfx = NodePath("Audio/ExplosionPlayer")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_5n8t8")
 
 [node name="VisualMesh" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_4otjf")

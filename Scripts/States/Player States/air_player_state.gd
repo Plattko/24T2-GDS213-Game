@@ -87,6 +87,11 @@ func exit():
 	if is_air_strafing_enabled: is_air_strafing_enabled = false
 
 func physics_update(delta : float):
+	# Transition to Downed state
+	if player.is_downed or player.is_dead:
+		transition.emit("DownedPlayerState")
+		return
+	
 	# Apply gravity
 	player.update_gravity(delta)
 	

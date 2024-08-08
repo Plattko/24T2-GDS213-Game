@@ -9,6 +9,7 @@ var camera : Camera3D
 @export var muzzle_flash : MuzzleFlash
 @export var anim_player : AnimationPlayer
 
+var third_person_material = load("res://Assets/Materials/Shader Materials/weapon_third_person_shader.tres")
 var bullet_decal = load("res://Scenes/Weapons/Components/bullet_decal.tscn")
 var sparks_particle = load("res://Scenes/VFX/sparks_particle.tscn")
 
@@ -38,7 +39,6 @@ const HITSCAN_COLLISION_MASK := roundi(pow(2, 1-1)) + roundi(pow(2, 4-1))
 const SHOOT_ANIM : String = "Shoot"
 const RELOAD_ANIM : String = "Reload"
 const EQUIP_ANIM : String = "Equip"
-const UNEQUIP_ANIM : String = "Unequip"
 
 # Bullet hole variables
 var decal_queue = []
@@ -50,6 +50,13 @@ signal regular_hit(damage: float)
 signal crit_hit(damage: float)
 
 func _ready():
+	# Set weapon meshes to the third person material if not the player holding the weapon
+	if !is_multiplayer_authority():
+		mesh.set_surface_override_material(0, third_person_material)
+		for child_mesh in mesh.get_children():
+			if child_mesh is MeshInstance3D:
+				child_mesh.set_surface_override_material(0, third_person_material)
+	
 	cur_ammo = MAX_AMMO
 
 func init(player_camera: Camera3D) -> void:
@@ -59,7 +66,7 @@ func shoot() -> void:
 	# Display the muzzle flash
 	if muzzle_flash: muzzle_flash.add_muzzle_flash.rpc()
 	# Play the shoot animation
-	anim_player.play(SHOOT_ANIM)
+	play_anim.rpc(SHOOT_ANIM)
 	# Decrease the ammo by the ammo cose
 	cur_ammo -= AMMO_COST
 	# Update the ammo on the UI
@@ -67,7 +74,7 @@ func shoot() -> void:
 
 func reload() -> void:
 	# Play the reload animation
-	anim_player.play(RELOAD_ANIM, -1, 0.5)
+	play_anim.rpc(RELOAD_ANIM, 0.5)
 
 func reset_ammo() -> void:
 	# Set the ammo back to the max ammo
@@ -144,3 +151,13 @@ func damage_with_falloff(damage: float, distance: float) -> float:
 	# Calculate how much of the minimum and maximum damage should be dealt
 	return dist_normalised * min_dmg + (1.0 - dist_normalised) * damage
 
+#-------------------------------------------------------------------------------
+# RPCs
+#-------------------------------------------------------------------------------
+@rpc("call_local")
+func play_anim(anim: String, custom_speed: float = 1.0) -> void:
+	anim_player.play(anim, -1, custom_speed)
+
+@rpc("call_local")
+func stop_anim() -> void:
+	anim_player.stop()

@@ -11,19 +11,30 @@ func shoot() -> void:
 	super()
 	rocket_firing_sfx.play()
 	
+	var player_id = get_multiplayer_authority()
+	var dir = -camera.get_global_transform().basis.z
+	var pos = camera.global_position
+	var rot = camera.global_transform.basis
+	spawn_rocket.rpc_id(1, player_id, dir, rocket_speed, pos, rot)
+
+@rpc("any_peer", "call_local")
+func spawn_rocket(player_id: int, dir: Vector3, speed: float, pos: Vector3, rot: Basis) -> void:
 	# Instantiate the rocket
 	var rocket = rocket_scene.instantiate() as CharacterBody3D
+	# Give the player that shot the rocket ownership of it
+	rocket.owner_id = player_id
 	# Give it a reference to the rocket launcher
 	rocket.rocket_launcher = self
 	# Set its direction and speed
-	rocket.direction = -camera.get_global_transform().basis.z
-	rocket.speed = rocket_speed
+	rocket.direction = dir
+	rocket.speed = speed
 	# Make it a child of the level scene
 	var level = get_tree().get_first_node_in_group("level")
-	level.add_child(rocket)
+	level.add_child(rocket, true)
 	# Set its position and rotation
-	rocket.global_position = camera.global_position
-	rocket.transform.basis = camera.global_transform.basis
+	rocket.global_position = pos
+	rocket.transform.basis = rot
 
+@rpc("any_peer", "call_local")
 func on_enemy_hit(damage: float) -> void:
 	regular_hit.emit(damage)

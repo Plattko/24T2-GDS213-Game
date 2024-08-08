@@ -10,11 +10,10 @@ var jump_speed_mod : float = 1.5
 var jump_time : float
 
 func enter(msg : Dictionary = {}) -> void:
-	if multiplayer.is_server():
-		enemy.animate(enemy.Animations.JUMP)
-	else:
-		enemy.animate(enemy.cur_anim)
-		return
+	# Only run by the server
+	if !multiplayer.is_server(): return
+	# Play the jump animation
+	enemy.animate.rpc(enemy.Animations.JUMP)
 	
 	if !msg.link_exit_position or !msg.link_entry_position:
 		printerr("Missing navigation entry or exit position.")
@@ -25,6 +24,8 @@ func enter(msg : Dictionary = {}) -> void:
 	# Set bezier curve points
 	start_pos = msg.link_entry_position + Vector3.UP * enemy.collider.shape.height
 	end_pos = msg.link_exit_position + Vector3.UP * enemy.collider.shape.height
+	#print("Start position: " + str(start_pos))
+	#print("End position: " + str(end_pos))
 	mid_pos = ((end_pos - start_pos) * 0.5 + start_pos)
 	var peak_height := maxf(start_pos.y + jump_clearance, end_pos.y + jump_clearance)
 	mid_pos.y = peak_height

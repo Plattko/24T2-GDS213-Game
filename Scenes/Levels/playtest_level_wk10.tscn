@@ -653,12 +653,12 @@ initial_spawn_points = [NodePath("PlayerSpawnPoints/Spawn1"), NodePath("PlayerSp
 zones = [NodePath("ZoneData/Zone1"), NodePath("ZoneData/Zone2")]
 wave_manager = NodePath("GamemodeManager")
 
-[node name="GamemodeManager" type="Node" parent="." node_paths=PackedStringArray("enemies_node", "intermission_timer", "zone_change_timer", "endless_wave_timer", "zone_gate") groups=["wave_manager"]]
+[node name="GamemodeManager" type="Node" parent="." node_paths=PackedStringArray("intermission_timer", "zone_change_timer", "endless_wave_timer", "enemies_node", "zone_gate") groups=["wave_manager"]]
 script = ExtResource("108_6pedp")
-enemies_node = NodePath("../Enemies")
 intermission_timer = NodePath("IntermissionTimer")
 zone_change_timer = NodePath("ZoneChangeTimer")
 endless_wave_timer = NodePath("EndlessWaveTimer")
+enemies_node = NodePath("../Enemies")
 zone_gate = NodePath("../Level/ZoneGate")
 change_possible_index = 2
 do_zone_change = true

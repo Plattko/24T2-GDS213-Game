@@ -1,7 +1,7 @@
 class_name SceneManager
 extends Node3D
 
-var multiplayer_player = preload("res://Scenes/Multiplayer/multiplayer_player.tscn")
+var multiplayer_player = load("res://Scenes/Multiplayer/multiplayer_player.tscn")
 
 @export_group("Initial Spawn Points")
 @export var initial_spawn_points : Array[Node3D] = []
@@ -29,24 +29,29 @@ func _ready() -> void:
 			else:
 				print("Non-area node detected in Vaporisation Zone.")
 	
+	var players : Array[MultiplayerPlayer] = []
+	
 	# Spawn the players
 	for i in GameManager.players:
-		var player = multiplayer_player.instantiate()
+		var player = multiplayer_player.instantiate() as MultiplayerPlayer
 		# Set the player's name to their unique ID
 		player.name = str(GameManager.players[i].id)
 		# Add the player as a child of the scene
 		add_child(player)
 		# Check if it's player 1
-		if GameManager.players[i].player_num == 1:
+		if i == 1: #GameManager.players[i].player_num == 1:
 			# Manually set their initial spawn point
 			set_initial_spawn_point(player)
-			# [NOTE - TEMPORARY] Give the Wave Manager a reference to the player
-			if wave_manager: wave_manager.initialise(player)
+		else:
+			wave_manager.alive_player_count += 1
+		# Add them to the players array
+		players.append(player)
 		
 		#TODO: Connect the UI to the player
 	
+	if wave_manager: wave_manager.initialise(self, players)
 	# Set the current respawn point
-	set_respawn_point.rpc()
+	set_respawn_point.rpc(cur_zone)
 
 ## Temporary fix TODO: Make work differently
 func _on_multiplayer_spawner_spawned(node):
@@ -62,12 +67,14 @@ func set_initial_spawn_point(player) -> void:
 		print("Player " + str(player_num) + " position: " + str(player.global_position))
 
 func vaporise_zone() -> void:
-	zones[cur_zone - 1].vaporisation_beam.get_child(0).play("Strike")
+	#zones[cur_zone - 1].vaporisation_beam.get_child(0).play("Strike")
+	play_anim.rpc(cur_zone, "Strike")
 	
-	#vaporisation_beams[cur_zone - 1].get_child(0).play("Strike")
 	update_zone()
 
 func vaporise_enemies() -> void:
+	# Only run by the server
+	if !multiplayer.is_server(): return
 	for enemy in get_tree().get_nodes_in_group("enemies"):
 		enemy.queue_free()
 		print("Enemy vaporised.")
@@ -77,12 +84,12 @@ func update_zone() -> void:
 		cur_zone = 2
 	elif cur_zone == 2:
 		cur_zone = 1
-	set_respawn_point.rpc()
+	set_respawn_point.rpc(cur_zone)
 
 func body_in_vaporisation_area(body: Node3D) -> void:
 	if body is MultiplayerPlayer:
 		# TODO: Update to not respawn player for respawn time
-		body.respawn_player()
+		body.die.rpc_id(body.name.to_int(), true)
 		print("Player vaporised.")
 
 func get_enemy_spawn_points() -> Array[Node3D]:
@@ -91,6 +98,11 @@ func get_enemy_spawn_points() -> Array[Node3D]:
 		spawn_points.append(spawn_point)
 	return spawn_points
 
+@rpc("call_local")
+func play_anim(_cur_zone: int, anim: String) -> void:
+	var anim_player = zones[_cur_zone - 1].vaporisation_beam.get_child(0)
+	anim_player.play(anim)
+
 @rpc("any_peer", "call_local")
-func set_respawn_point() -> void:
-	GameManager.cur_respawn_point = zones[cur_zone - 1].respawn_point.global_position
+func set_respawn_point(_cur_zone: int) -> void:
+	GameManager.cur_respawn_point = zones[_cur_zone - 1].respawn_point.global_position

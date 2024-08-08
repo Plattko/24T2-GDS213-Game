@@ -9,18 +9,21 @@ var is_crouch_released : bool = false
 func enter(msg : Dictionary = {}) -> void:
 	#print("Entered Crouch player state.")
 	
-	if msg.has("left_slide"):
-		# Transition to crouch animation from slide animation
-		player.animation_player.current_animation = "Crouch"
-		player.animation_player.seek(1.0, true)
+	if msg.has("left_slide") or msg.has("left_downed"):
+		# Transition to crouch animation from slide or downed animation
+		player.seek_anim.rpc(player.CROUCH_ANIM, 1.0)
 	else:
 		# Play the crouch animation
-		player.animation_player.play("Crouch", -1, CROUCH_ANIM_SPEED)
+		player.play_anim.rpc(player.CROUCH_ANIM, CROUCH_ANIM_SPEED)
 
 func exit():
 	is_crouch_released = false
 
 func physics_update(_delta) -> void:
+	# Transition to Downed state
+	if player.is_downed or player.is_dead:
+		transition.emit("DownedPlayerState", {"left_crouch" = true})
+		return
 	## Last version
 	# Handle movement
 	#player.velocity.x = input.direction.x * WALK_SPEED
@@ -49,11 +52,11 @@ func physics_update(_delta) -> void:
 func uncrouch() -> void:
 	# If there is nothing blocking the player from standing up, play the uncrouch animation
 	if !player.ceiling_check.is_colliding() and !input.is_crouch_pressed:
-		player.animation_player.play("Crouch", -1, -CROUCH_ANIM_SPEED, true)
+		player.play_anim.rpc(player.CROUCH_ANIM, -CROUCH_ANIM_SPEED, true)
 		
 		# Wait for uncrouch animation to end
-		if player.animation_player.is_playing():
-			await player.animation_player.animation_finished
+		if player.anim_player.is_playing():
+			await player.anim_player.animation_finished
 		
 		# Transition to Idle state
 		if !input.direction:

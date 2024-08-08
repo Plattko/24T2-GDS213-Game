@@ -4,11 +4,16 @@ extends PlayerState
 
 const STOP_SPEED = 7.0
 
-func enter(_msg : Dictionary = {}):
+func enter(msg : Dictionary = {}):
 	#print("Entered Idle player state.")
-	pass
+	if msg.has("respawned"):
+		player.play_anim.rpc(player.RESPAWN_ANIM)
 
 func physics_update(delta : float):
+	# Transition to Downed state
+	if player.is_downed or player.is_dead:
+		transition.emit("DownedPlayerState")
+		return
 	# Transition to Air state with jump
 	if input.is_jump_just_pressed and player.is_on_floor():
 		transition.emit("AirPlayerState", {"do_jump" = true})

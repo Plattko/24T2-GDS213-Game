@@ -1,6 +1,6 @@
-[gd_scene load_steps=49 format=3 uid="uid://il6q27w1jqvw"]
+[gd_scene load_steps=51 format=3 uid="uid://il6q27w1jqvw"]
 
-[ext_resource type="Script" path="res://Scripts/Multiplayer/multiplayer_player.gd" id="1_0n7q4"]
+[ext_resource type="Script" path="res://Scripts/Multiplayer/multiplayer_player.gd" id="1_mtm2n"]
 [ext_resource type="Script" path="res://Scripts/Player/player_input.gd" id="2_7s41b"]
 [ext_resource type="PackedScene" uid="uid://caqpeyq7g56bn" path="res://Scenes/damageable.tscn" id="3_sfxmm"]
 [ext_resource type="Script" path="res://Scripts/Weapons/weapon_manager.gd" id="4_v17h1"]
@@ -24,9 +24,12 @@
 [ext_resource type="AudioStream" uid="uid://bojed37o0o4ia" path="res://Assets/Audio/Guns/Hitmarker/click1.ogg" id="18_beqnl"]
 [ext_resource type="Script" path="res://Scripts/SFX/player_audio.gd" id="18_hkwb5"]
 [ext_resource type="Theme" uid="uid://ctri33ojacyl0" path="res://UI/Themes/debug.tres" id="18_v6r72"]
+[ext_resource type="Script" path="res://Scripts/States/Player States/downed_player_state.gd" id="18_wjjdp"]
 [ext_resource type="Script" path="res://Scripts/UI/debug.gd" id="19_atg5u"]
 [ext_resource type="AudioStream" uid="uid://c0xa26hoo0hv7" path="res://Assets/Audio/Guns/Hitmarker/click4.ogg" id="19_erlfy"]
 [ext_resource type="PackedScene" uid="uid://bu0mtrnvhonpt" path="res://Scenes/UI/settings_menu.tscn" id="20_c20fv"]
+[ext_resource type="Texture2D" uid="uid://dwe2gnlquqbvt" path="res://Assets/Textures/UI/ring_texture.png" id="26_xfog8"]
+[ext_resource type="Material" uid="uid://c472eyc5fiib0" path="res://Assets/Materials/Shader Materials/blur.tres" id="27_f7dg3"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_vurwv"]
 properties/0/path = NodePath(".:position")
@@ -41,10 +44,21 @@ properties/2/replication_mode = 1
 properties/3/path = NodePath("Head:rotation")
 properties/3/spawn = true
 properties/3/replication_mode = 1
+properties/4/path = NodePath(".:cur_health")
+properties/4/spawn = true
+properties/4/replication_mode = 1
+properties/5/path = NodePath(".:is_downed")
+properties/5/spawn = true
+properties/5/replication_mode = 1
+properties/6/path = NodePath("Mesh:visible")
+properties/6/spawn = true
+properties/6/replication_mode = 1
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l214m"]
+resource_local_to_scene = true
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ge1xk"]
+resource_local_to_scene = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fvek4"]
 albedo_color = Color(0, 0.654902, 0.894118, 1)
@@ -117,6 +131,117 @@ tracks/4/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, -0.25, 0)]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Mesh:mesh:height")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [2.0, 1.5]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Mesh:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.25, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ayhor"]
+resource_name = "Downed"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape:shape:height")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [2.0, 1.5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.25, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Head:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.7, 0), Vector3(0, 0.2, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Damageable/DamageableShape:shape:height")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [2.0, 1.5]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Damageable/DamageableShape:position")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.25, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Mesh:mesh:height")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [2.0, 1.5]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Mesh:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.25, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_qw5pv"]
 length = 0.001
@@ -175,6 +300,118 @@ tracks/4/path = NodePath("Damageable/DamageableShape:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Mesh:mesh:height")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Mesh:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_sn57i"]
+resource_name = "Respawn"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape:shape:height")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Head:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.7, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Damageable/DamageableShape:shape:height")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Damageable/DamageableShape:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Mesh:mesh:height")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Mesh:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -243,11 +480,37 @@ tracks/4/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, -0.25, 0)]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Mesh:mesh:height")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [2.0, 1.5]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Mesh:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.25, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_456lr"]
 _data = {
 "Crouch": SubResource("Animation_twumr"),
+"Downed": SubResource("Animation_ayhor"),
 "RESET": SubResource("Animation_qw5pv"),
+"Respawn": SubResource("Animation_sn57i"),
 "Slide": SubResource("Animation_eqx5m")
 }
 
@@ -590,19 +853,26 @@ bg_color = Color(0.329412, 0.027451, 0.027451, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0a0dl"]
 bg_color = Color(0.180666, 0.00854189, 0.00851971, 1)
 
-[node name="MulitplayerPlayer" type="CharacterBody3D" node_paths=PackedStringArray("input", "head", "camera", "animation_player", "ceiling_check", "player_audio", "weapon_holder")]
+[node name="MulitplayerPlayer" type="CharacterBody3D" node_paths=PackedStringArray("input", "mesh", "head", "camera", "anim_player", "ceiling_check", "ui", "hud", "weapon_holder", "death_timer", "respawn_timer", "interact_raycast", "revive_other_timer")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 collision_layer = 2
 collision_mask = 5
-script = ExtResource("1_0n7q4")
+script = ExtResource("1_mtm2n")
 input = NodePath("Input")
+mesh = NodePath("Mesh")
 head = NodePath("Head")
 camera = NodePath("Head/Camera3D")
-animation_player = NodePath("AnimationPlayer")
+anim_player = NodePath("AnimationPlayer")
 ceiling_check = NodePath("CeilingCheck")
+ui = NodePath("UI")
+hud = NodePath("UI/HUD")
 player_audio = NodePath("Audio")
 sensitivity = 0.18
 weapon_holder = NodePath("Head/Camera3D/WeaponHolder")
+death_timer = NodePath("DeathTimer")
+respawn_timer = NodePath("RespawnTimer")
+interact_raycast = NodePath("Head/Camera3D/InteractRaycast")
+revive_other_timer = NodePath("ReviveOtherTimer")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_vurwv")
@@ -688,6 +958,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.519, -0.344, -0.95)
 wait_time = 0.15
 one_shot = true
 
+[node name="InteractRaycast" type="RayCast3D" parent="Head/Camera3D"]
+target_position = Vector3(0, 0, -2)
+collision_mask = 7
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_456lr")
@@ -734,6 +1008,20 @@ script = ExtResource("14_4j3tc")
 [node name="WallrunPlayerState" type="Node" parent="PlayerStateMachine"]
 script = ExtResource("15_enn73")
 
+[node name="DownedPlayerState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("18_wjjdp")
+
+[node name="DeathTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="RespawnTimer" type="Timer" parent="."]
+wait_time = 20.0
+one_shot = true
+
+[node name="ReviveOtherTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
 [node name="Audio" type="Node" parent="." node_paths=PackedStringArray("NormalHitmarker", "HeadshotHitmarker")]
 script = ExtResource("18_hkwb5")
 NormalHitmarker = NodePath("NormalHitmakerPlayer")
@@ -750,7 +1038,7 @@ stream = ExtResource("19_erlfy")
 pitch_scale = 1.3
 bus = &"Hitmarkers"
 
-[node name="UI" type="Control" parent="."]
+[node name="UI" type="Control" parent="." node_paths=PackedStringArray("blur", "hud")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -759,8 +1047,20 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("15_jmxyw")
+blur = NodePath("Blur")
+hud = NodePath("HUD")
 
-[node name="HUD" type="Control" parent="UI" node_paths=PackedStringArray("health_label", "cur_ammo_label", "cur_wave_label", "enemies_left_label", "zone_change_warning", "time_text")]
+[node name="Blur" type="ColorRect" parent="UI"]
+visible = false
+material = ExtResource("27_f7dg3")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HUD" type="Control" parent="UI" node_paths=PackedStringArray("health_label", "cur_ammo_label", "reticle", "cur_wave_label", "enemies_left_label", "zone_change_warning", "time_text", "downed_ui", "death_timer_text", "death_progress_bar", "dead_ui", "respawn_text", "respawn_timer_text", "respawn_progress_bar", "interact_ui", "interact_text", "interact_key_text", "interact_progress_bar")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -771,10 +1071,22 @@ mouse_filter = 1
 script = ExtResource("16_e684x")
 health_label = NodePath("MarginContainer/Health")
 cur_ammo_label = NodePath("MarginContainer/Ammo")
+reticle = NodePath("Reticle")
 cur_wave_label = NodePath("MarginContainer/WaveVBox/CurrentWave")
 enemies_left_label = NodePath("MarginContainer/WaveVBox/EnemiesRemaining")
 zone_change_warning = NodePath("ZoneChangeWarning")
 time_text = NodePath("ZoneChangeWarning/MarginContainer/HBoxContainer/Info/TimeRemainingPanel/MarginContainer/HBoxContainer/TimePanel/CenterContainer/TimeText")
+downed_ui = NodePath("DownedUI")
+death_timer_text = NodePath("DownedUI/DeathTimerText")
+death_progress_bar = NodePath("DownedUI/DeathProgressBar")
+dead_ui = NodePath("DeadUI")
+respawn_text = NodePath("DeadUI/Panel/MarginContainer/HBoxContainer/RespawnText")
+respawn_timer_text = NodePath("DeadUI/Panel/MarginContainer/HBoxContainer/RespawnProgressBar/DeathTimerText")
+respawn_progress_bar = NodePath("DeadUI/Panel/MarginContainer/HBoxContainer/RespawnProgressBar")
+interact_ui = NodePath("InteractUI")
+interact_text = NodePath("InteractUI/InteractPrompt/InteractText")
+interact_key_text = NodePath("InteractUI/InteractPrompt/InteractProgressBar/InteractKeyText")
+interact_progress_bar = NodePath("InteractUI/InteractPrompt/InteractProgressBar")
 
 [node name="Reticle" type="CenterContainer" parent="UI/HUD" node_paths=PackedStringArray("lines")]
 unique_name_in_owner = true
@@ -979,11 +1291,6 @@ layout_mode = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/HUD/DebugPanel/MarginContainer"]
 layout_mode = 2
 
-[node name="SettingsMenu" parent="UI/HUD" instance=ExtResource("20_c20fv")]
-unique_name_in_owner = true
-visible = false
-layout_mode = 1
-
 [node name="ZoneChangeWarning" type="PanelContainer" parent="UI/HUD"]
 custom_minimum_size = Vector2(500, 200)
 layout_mode = 1
@@ -1089,11 +1396,230 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "30"
 
-[connection signal="update_health" from="." to="UI/HUD" method="on_update_health"]
+[node name="DownedUI" type="Control" parent="UI/HUD"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DeadInText" type="Label" parent="UI/HUD/DownedUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -63.5
+offset_top = -160.0
+offset_right = 63.5007
+offset_bottom = -115.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.627451)
+theme_override_font_sizes/font_size = 32
+text = "DEAD IN"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DeathTimerText" type="Label" parent="UI/HUD/DownedUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -63.5004
+offset_top = -22.5
+offset_right = 63.5004
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.627451)
+theme_override_font_sizes/font_size = 48
+text = "20
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DeathProgressBar" type="TextureProgressBar" parent="UI/HUD/DownedUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -464.0
+offset_top = -455.0
+offset_right = 464.0
+offset_bottom = 455.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.25, 0.25)
+pivot_offset = Vector2(464, 455)
+max_value = 20.0
+step = 0.01
+value = 20.0
+fill_mode = 5
+texture_progress = ExtResource("26_xfog8")
+tint_progress = Color(1, 1, 1, 0.627451)
+
+[node name="DeadUI" type="Control" parent="UI/HUD"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="UI/HUD/DeadUI"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/HUD/DeadUI/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="DeadText" type="Label" parent="UI/HUD/DeadUI/Panel/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(1, 1, 1, 0.627451)
+theme_override_font_sizes/font_size = 48
+text = "DEAD"
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/HUD/DeadUI/Panel/MarginContainer"]
+layout_direction = 3
+layout_mode = 2
+
+[node name="RespawnProgressBar" type="TextureProgressBar" parent="UI/HUD/DeadUI/Panel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+max_value = 20.0
+step = 0.01
+value = 20.0
+fill_mode = 5
+nine_patch_stretch = true
+stretch_margin_left = 130
+texture_progress = ExtResource("26_xfog8")
+tint_progress = Color(1, 1, 1, 0.627451)
+
+[node name="DeathTimerText" type="Label" parent="UI/HUD/DeadUI/Panel/MarginContainer/HBoxContainer/RespawnProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.0
+offset_top = -33.5
+offset_right = 27.0
+offset_bottom = 33.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.627451)
+theme_override_font_sizes/font_size = 48
+text = "20
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RespawnText" type="Label" parent="UI/HUD/DeadUI/Panel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.627451)
+theme_override_font_sizes/font_size = 32
+text = "Respawning in"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SettingsMenu" parent="UI/HUD" instance=ExtResource("20_c20fv")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
+[node name="InteractUI" type="Control" parent="UI/HUD"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InteractPrompt" type="HBoxContainer" parent="UI/HUD/InteractUI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -85.0
+offset_top = 60.0
+offset_right = 85.0
+offset_bottom = 105.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InteractProgressBar" type="TextureProgressBar" parent="UI/HUD/InteractUI/InteractPrompt"]
+layout_mode = 2
+max_value = 20.0
+step = 0.01
+value = 3.0
+fill_mode = 4
+nine_patch_stretch = true
+stretch_margin_left = 45
+texture_under = ExtResource("26_xfog8")
+texture_progress = ExtResource("26_xfog8")
+tint_under = Color(0, 0, 0, 0.627451)
+tint_progress = Color(1, 1, 1, 0.627451)
+
+[node name="InteractKeyText" type="Label" parent="UI/HUD/InteractUI/InteractPrompt/InteractProgressBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.0
+offset_top = -33.5
+offset_right = 27.0
+offset_bottom = 33.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.627451)
+theme_override_font_sizes/font_size = 32
+text = "X
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InteractText" type="Label" parent="UI/HUD/InteractUI/InteractPrompt"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(1, 1, 1, 0.627451)
+theme_override_font_sizes/font_size = 32
+text = "Interact"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="update_ammo" from="Head/Camera3D/WeaponHolder/WeaponManager/Rifle" to="UI/HUD" method="on_update_ammo"]
 [connection signal="update_ammo" from="Head/Camera3D/WeaponHolder/WeaponManager/RocketLauncher" to="UI/HUD" method="on_update_ammo"]
 [connection signal="update_ammo" from="Head/Camera3D/WeaponHolder/WeaponManager/Shotgun" to="UI/HUD" method="on_update_ammo"]
 [connection signal="update_ammo" from="Head/Camera3D/WeaponHolder/WeaponManager/Pistol" to="UI/HUD" method="on_update_ammo"]
 [connection signal="update_ammo" from="Head/Camera3D/WeaponHolder/WeaponManager/P90" to="UI/HUD" method="on_update_ammo"]
+[connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]
+[connection signal="timeout" from="RespawnTimer" to="." method="_on_respawn_timer_timeout"]
+[connection signal="timeout" from="ReviveOtherTimer" to="." method="_on_revive_other_timer_timeout"]
 [connection signal="closed_settings_menu" from="UI/HUD/SettingsMenu" to="Input" method="on_closed_settings_menu"]
 [connection signal="opened_settings_menu" from="UI/HUD/SettingsMenu" to="Input" method="on_opened_settings_menu"]

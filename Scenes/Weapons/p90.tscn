@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/Weapons/p90.gd" id="1_684iw"]
 [ext_resource type="Material" uid="uid://4t0aqxchgkfa" path="res://Assets/Materials/Shader Materials/weapon_shader.tres" id="2_i70j8"]
 [ext_resource type="Script" path="res://Scripts/Weapons/Components/muzzle_flash.gd" id="3_1lsqo"]
-[ext_resource type="Material" uid="uid://un70lvxarnb0" path="res://Assets/Materials/Shader Materials/muzzle_flash_rifle_shader.tres" id="4_j1f7k"]
+[ext_resource type="Material" uid="uid://un70lvxarnb0" path="res://Assets/Materials/Shader Materials/muzzle_flash_shader.tres" id="4_j1f7k"]
 [ext_resource type="AudioStream" uid="uid://dq6e2vfp2siry" path="res://Assets/Audio/Guns/P90/Gunshots/5.56 M4 Rifle - Gunshot B 001.wav" id="5_05q88"]
 [ext_resource type="AudioStream" uid="uid://mq0gfpdqysx2" path="res://Assets/Audio/Guns/P90/Gunshots/5.56 M4 Rifle - Gunshot B 002.wav" id="6_udx07"]
 [ext_resource type="AudioStream" uid="uid://b0m4xusmpid6q" path="res://Assets/Audio/Guns/P90/Gunshots/5.56 M4 Rifle - Gunshot B 003.wav" id="7_ixcq1"]
@@ -11,13 +11,13 @@
 [ext_resource type="AudioStream" uid="uid://chja6i8vy4gr3" path="res://Assets/Audio/Guns/P90/Gunshots/5.56 M4 Rifle - Gunshot B 005.wav" id="9_exfb0"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_ng5jb"]
-properties/0/path = NodePath("Mesh:visible")
+properties/0/path = NodePath("Model/Body:visible")
 properties/0/spawn = true
 properties/0/replication_mode = 1
-properties/1/path = NodePath("Mesh:position")
+properties/1/path = NodePath(".:position")
 properties/1/spawn = true
 properties/1/replication_mode = 1
-properties/2/path = NodePath("Mesh:rotation")
+properties/2/path = NodePath(".:rotation")
 properties/2/spawn = true
 properties/2/replication_mode = 1
 
@@ -263,18 +263,12 @@ tracks/0/keys = {
 "values": [Vector3(0, 0, 0), Vector3(-0.035, 0, 0), Vector3(0, 0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_ohrl6"]
-resource_name = "Unequip"
-length = 0.1
-step = 0.01
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vlmsi"]
 _data = {
 "Equip": SubResource("Animation_pnqt0"),
 "RESET": SubResource("Animation_rf707"),
 "Reload": SubResource("Animation_5y7bq"),
-"Shoot": SubResource("Animation_m1qid"),
-"Unequip": SubResource("Animation_ohrl6")
+"Shoot": SubResource("Animation_m1qid")
 }
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_osmpo"]

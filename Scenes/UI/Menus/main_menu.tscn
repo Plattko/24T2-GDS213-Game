@@ -1,0 +1,116 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1epidal3of6t"]
+
+[ext_resource type="Script" path="res://Scripts/UI/main_menu.gd" id="1_8rmxx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_si2ml"]
+
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("play_button", "tutorial_button", "options_button", "credits_button", "quit_button", "use_steam_button", "use_lan_button")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8rmxx")
+play_button = NodePath("Panel/MarginContainer/ButtonsVBox/HBoxContainer/PlayButton")
+tutorial_button = NodePath("Panel/MarginContainer/ButtonsVBox/TutorialButton")
+options_button = NodePath("Panel/MarginContainer/ButtonsVBox/OptionsButton")
+credits_button = NodePath("Panel/MarginContainer/ButtonsVBox/CreditsButton")
+quit_button = NodePath("Panel/MarginContainer/ButtonsVBox/QuitButton")
+use_steam_button = NodePath("Panel/MarginContainer/ButtonsVBox/HBoxContainer/UseSteam")
+use_lan_button = NodePath("Panel/MarginContainer/ButtonsVBox/HBoxContainer/UseLAN")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="Title" type="Label" parent="Panel/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 60
+text = "Born Without Breaks"
+
+[node name="ButtonsVBox" type="VBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/ButtonsVBox"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="PlayButton" type="Button" parent="Panel/MarginContainer/ButtonsVBox/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxEmpty_si2ml")
+text = "Play"
+flat = true
+alignment = 0
+
+[node name="UseSteam" type="Button" parent="Panel/MarginContainer/ButtonsVBox/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxEmpty_si2ml")
+text = "Steam"
+flat = true
+alignment = 0
+
+[node name="UseLAN" type="Button" parent="Panel/MarginContainer/ButtonsVBox/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxEmpty_si2ml")
+text = "LAN"
+flat = true
+alignment = 0
+
+[node name="TutorialButton" type="Button" parent="Panel/MarginContainer/ButtonsVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxEmpty_si2ml")
+disabled = true
+text = "Tutorial"
+flat = true
+alignment = 0
+
+[node name="OptionsButton" type="Button" parent="Panel/MarginContainer/ButtonsVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxEmpty_si2ml")
+disabled = true
+text = "Options"
+flat = true
+alignment = 0
+
+[node name="CreditsButton" type="Button" parent="Panel/MarginContainer/ButtonsVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxEmpty_si2ml")
+disabled = true
+text = "Credits"
+flat = true
+alignment = 0
+
+[node name="QuitButton" type="Button" parent="Panel/MarginContainer/ButtonsVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+theme_override_styles/focus = SubResource("StyleBoxEmpty_si2ml")
+text = "Quit"
+flat = true
+alignment = 0
