@@ -3,7 +3,7 @@ extends Node
 
 var ROBOT = load("res://Scenes/Enemies/robot_regular.tscn")
 var SPEEDY_ROBOT = load("res://Scenes/Enemies/robot_speedy.tscn")
-var player : MultiplayerPlayer
+var players : Array[MultiplayerPlayer] = []
 
 @export_group("Reference Variables")
 @export var intermission_timer : Timer
@@ -133,7 +133,7 @@ func spawn_enemy(is_endless_wave: bool) -> void:
 		enemy = ROBOT.instantiate()
 	# Initialise enemy
 	var nav_layer = scene_manager.cur_zone
-	enemy.initialise(player, nav_layer)
+	enemy.initialise(players, nav_layer)
 	# Connect to the enemy's enemy_defeated signal if it is a regular wave
 	if !is_endless_wave: enemy.enemy_defeated.connect(on_enemy_defeated)
 	# Track the robots killed
@@ -165,11 +165,11 @@ func handle_connected_signals() -> void:
 	zone_gate.anim_player.animation_finished.connect(_on_zone_gate_anim_finished)
 
 # Called by Scene Manager
-func initialise(_scene_manager: SceneManager, _player: MultiplayerPlayer) -> void:
+func initialise(_scene_manager: SceneManager, _players: Array[MultiplayerPlayer]) -> void:
 	# Set scene manager reference
 	scene_manager = _scene_manager
 	# Set player reference
-	player = _player
+	players = _players
 	# Start the waves
 	if waves_enabled:
 		# Set the max enemies to the initial max enemies

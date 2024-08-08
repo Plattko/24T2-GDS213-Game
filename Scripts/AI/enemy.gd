@@ -46,7 +46,8 @@ var has_attack_hit := false
 @export_group("State Machine Variables")
 @export var state_machine : EnemyStateMachine
 
-var player : MultiplayerPlayer
+var players : Array[MultiplayerPlayer] = []
+var target_player : MultiplayerPlayer
 
 signal enemy_defeated
 
@@ -69,7 +70,8 @@ func _ready():
 		# Connect the target timer's timeout signal to the set_target_position function
 		target_timer.timeout.connect(set_target_position)
 		# Set the initial target location
-		target_position = player.global_position
+		target_player = players.pick_random()
+		target_position = target_player.global_position
 		set_target_position()
 		# Start the target timer
 		target_timer.start()
@@ -83,12 +85,15 @@ func _ready():
 		if hurtbox is Damageable:
 			hurtbox.damaged.connect(on_damaged)
 
-func initialise(_player: MultiplayerPlayer, nav_layer: int):
-	player = _player
+func initialise(_players: Array[MultiplayerPlayer], nav_layer: int):
+	players = _players
 	nav_agent.set_navigation_layer_value(nav_layer, true)
 
 func _physics_process(_delta):
 	if !multiplayer.is_server(): return
+	if target_player.is_downed or target_player.is_dead:
+		target_player = players.pick_random()
+	
 	if cur_health <= 0:
 		die()
 
@@ -99,13 +104,13 @@ func _physics_process(_delta):
 func set_target_position() -> void:
 	await get_tree().physics_frame
 	# Check there is a reference to the player
-	if !player: return
+	if !target_player: return
 	# Check if player has moved from current target position
-	if (player.global_position - target_position).length() < dist_threshold and !is_initial_call: return
+	if (target_player.global_position - target_position).length() < dist_threshold and !is_initial_call: return
 	# Disable is_initial_call after the first call
 	if is_initial_call: is_initial_call = false
 	# Update the target position
-	target_position = player.global_position
+	target_position = target_player.global_position
 	nav_agent.set_target_position(target_position)
 
 #-------------------------------------------------------------------------------
@@ -152,7 +157,7 @@ func die() -> void:
 # Attacking
 #-------------------------------------------------------------------------------
 func target_in_range():
-	return global_position.distance_to(player.global_position) < ATTACK_RANGE
+	return global_position.distance_to(target_player.global_position) < ATTACK_RANGE
 
 func reset_has_attack_hit() -> void:
 	has_attack_hit = false

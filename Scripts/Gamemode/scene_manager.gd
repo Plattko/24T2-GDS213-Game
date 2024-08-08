@@ -29,6 +29,8 @@ func _ready() -> void:
 			else:
 				print("Non-area node detected in Vaporisation Zone.")
 	
+	var players : Array[MultiplayerPlayer] = []
+	
 	# Spawn the players
 	for i in GameManager.players:
 		var player = multiplayer_player.instantiate() as MultiplayerPlayer
@@ -40,13 +42,14 @@ func _ready() -> void:
 		if i == 1: #GameManager.players[i].player_num == 1:
 			# Manually set their initial spawn point
 			set_initial_spawn_point(player)
-			# [NOTE - TEMPORARY] Give the Wave Manager a reference to the player
-			if wave_manager: wave_manager.initialise(self, player)
 		else:
 			wave_manager.alive_player_count += 1
+		# Add them to the players array
+		players.append(player)
 		
 		#TODO: Connect the UI to the player
 	
+	if wave_manager: wave_manager.initialise(self, players)
 	# Set the current respawn point
 	set_respawn_point.rpc(cur_zone)
 

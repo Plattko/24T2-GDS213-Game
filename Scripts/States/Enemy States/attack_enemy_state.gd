@@ -14,7 +14,7 @@ func enter(_msg : Dictionary = {}) -> void:
 
 func physics_update(delta : float) -> void:
 	# Make enemy look at player
-	var player_dir = enemy.player.global_position - enemy.global_position
+	var player_dir = enemy.target_player.global_position - enemy.global_position
 	rotate_towards(player_dir, delta)
 
 func on_attack_animation_finished() -> void:
