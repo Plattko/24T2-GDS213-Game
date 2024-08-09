@@ -25,20 +25,21 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 30
+theme_override_constants/margin_left = 250
 theme_override_constants/margin_top = 30
-theme_override_constants/margin_right = 30
-theme_override_constants/margin_bottom = 30
+theme_override_constants/margin_right = 250
+theme_override_constants/margin_bottom = 100
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 30
 
 [node name="Title" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 theme_override_font_sizes/font_size = 48
-text = "Steam Multiplayer"
+text = "Online Lobbies"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -63,17 +64,12 @@ theme_override_font_sizes/font_size = 32
 toggle_mode = true
 text = "Join"
 
-[node name="JoinPanel" type="Panel" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="JoinPanel" type="PanelContainer" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/JoinPanel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 theme_override_constants/margin_left = 30
 theme_override_constants/margin_top = 30
 theme_override_constants/margin_right = 30
@@ -84,23 +80,19 @@ layout_mode = 2
 theme_override_constants/separation = 20
 
 [node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/JoinPanel/MarginContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme_override_font_sizes/font_size = 40
 text = "Find Lobby"
 
-[node name="Panel" type="Panel" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/JoinPanel/MarginContainer/VBoxContainer"]
+[node name="Panel" type="PanelContainer" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/JoinPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/JoinPanel/MarginContainer/VBoxContainer/Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
@@ -117,28 +109,28 @@ layout_mode = 2
 [node name="PrivateTitle" type="Label" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/JoinPanel/MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/TitleHBox"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
-theme_override_font_sizes/font_size = 36
+theme_override_font_sizes/font_size = 32
 text = "Private"
 horizontal_alignment = 2
 
 [node name="HostTitle" type="Label" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/JoinPanel/MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/TitleHBox"]
 custom_minimum_size = Vector2(294, 0)
 layout_mode = 2
-theme_override_font_sizes/font_size = 36
+theme_override_font_sizes/font_size = 32
 text = "Host"
 horizontal_alignment = 2
 
 [node name="PlayersTitle" type="Label" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/JoinPanel/MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/TitleHBox"]
 custom_minimum_size = Vector2(294, 0)
 layout_mode = 2
-theme_override_font_sizes/font_size = 36
+theme_override_font_sizes/font_size = 32
 text = "Players"
 horizontal_alignment = 2
 
 [node name="LobbyNameTitle" type="Label" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/JoinPanel/MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/TitleHBox"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 36
+theme_override_font_sizes/font_size = 32
 text = "Lobby Name"
 horizontal_alignment = 2
 
@@ -149,36 +141,49 @@ layout_mode = 2
 [node name="PrivateTitle" type="Label" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/JoinPanel/MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/LobbyExample"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 24
 text = "Yes"
 horizontal_alignment = 2
 
 [node name="HostTitle" type="Label" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/JoinPanel/MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/LobbyExample"]
 custom_minimum_size = Vector2(294, 0)
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 24
 text = "Plattko"
 horizontal_alignment = 2
 
 [node name="PlayersTitle" type="Label" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/JoinPanel/MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/LobbyExample"]
 custom_minimum_size = Vector2(294, 0)
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 24
 text = "1/4"
 horizontal_alignment = 2
 
 [node name="LobbyNameTitle" type="Label" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/JoinPanel/MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/LobbyExample"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 24
 text = "Plattko's Lobby
 "
 horizontal_alignment = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/JoinPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 8
+size_flags_vertical = 4
 theme_override_constants/separation = 10
+
+[node name="RefreshButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/JoinPanel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 32
+text = "Refresh List"
+
+[node name="Spacer" type="Panel" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/JoinPanel/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_srhy8")
 
 [node name="JoinButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer/JoinPanel/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2

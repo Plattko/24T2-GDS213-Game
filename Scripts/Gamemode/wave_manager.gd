@@ -32,6 +32,7 @@ var enemy_spawn_delay := 1.0
 @export_group("Zone Change Variables")
 @export var zone_changes_enabled : bool = true
 @export var do_immediate_zone_change : bool = false
+@export var is_zone_change_guaranteed : bool = false
 @export var change_possible_index : int = 4
 var wave_index : int = 0
 var cur_change_chance : float = 0.0
@@ -94,11 +95,14 @@ func start_intermission() -> void:
 	wave_index += 1
 	#print("Wave index: " + str(wave_index))
 	if wave_index >= change_possible_index:
-		cur_change_chance += change_chance_increase
-		#print("Current zone change chance: " + str(cur_change_chance))
-		var roll := randf_range(0.0, 1.0)
-		if roll <= cur_change_chance:
+		if is_zone_change_guaranteed:
 			do_zone_change = true
+		else:
+			cur_change_chance += change_chance_increase
+			#print("Current zone change chance: " + str(cur_change_chance))
+			var roll := randf_range(0.0, 1.0)
+			if roll <= cur_change_chance:
+				do_zone_change = true
 	# Wait for the intermission timer to end and start a new wave or a zone change sequence
 	await intermission_timer.timeout
 	if zone_changes_enabled and (do_zone_change or do_immediate_zone_change):
