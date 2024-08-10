@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dqexibtsgatqp"]
+[gd_scene load_steps=25 format=3 uid="uid://dqexibtsgatqp"]
 
 [ext_resource type="Script" path="res://Scripts/Weapons/rifle.gd" id="1_al0dg"]
 [ext_resource type="Material" uid="uid://4t0aqxchgkfa" path="res://Assets/Materials/Shader Materials/weapon_shader.tres" id="2_be4dv"]

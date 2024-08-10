@@ -9,7 +9,8 @@ var camera : Camera3D
 @export var muzzle_flash : MuzzleFlash
 @export var anim_player : AnimationPlayer
 
-var third_person_material = load("res://Assets/Materials/Shader Materials/weapon_third_person_shader.tres")
+#var third_person_material = load("res://Assets/Materials/Shader Materials/weapon_third_person_shader.tres")
+var third_person_material = load("res://Assets/Materials/Standard Materials/weapon_third_person_material.tres")
 var bullet_decal = load("res://Scenes/Weapons/Components/bullet_decal.tscn")
 var sparks_particle = load("res://Scenes/VFX/sparks_particle.tscn")
 

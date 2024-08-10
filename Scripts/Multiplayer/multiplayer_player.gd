@@ -17,6 +17,8 @@ extends CharacterBody3D
 @onready var hitmarker : Hitmarker = %Hitmarker
 @onready var debug : Debug = %DebugPanel
 
+var third_person_material = load("res://Assets/Materials/Standard Materials/player_third_person_material.tres")
+
 const CROUCH_ANIM : String = "Crouch"
 const SLIDE_ANIM : String = "Slide"
 const DOWNED_ANIM : String = "Downed"
@@ -100,7 +102,10 @@ func _enter_tree() -> void:
 	set_multiplayer_authority(str(name).to_int())
 
 func _ready() -> void:
-	if not is_multiplayer_authority(): return
+	if not is_multiplayer_authority(): 
+		# Set player's mesh to the third person material if not the client's player
+		mesh.set_surface_override_material(0, third_person_material)
+		return
 	
 	# Hide the cursor and capture it at the centre of the screen
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED

@@ -26,8 +26,8 @@ SteamManager="*res://Scripts/Multiplayer/Steam/steam_manager.gd"
 window/size/viewport_width=2560
 window/size/viewport_height=1440
 window/size/mode=3
-window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
+window/size/window_width_override=1920
+window/size/window_height_override=1080
 
 [file_customization]
 

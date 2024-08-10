@@ -1,0 +1,19 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://bog64vvownns3"]
+
+[ext_resource type="Texture2D" uid="uid://bnxbctvwnsl15" path="res://Assets/Imports/FPS Bundle/Weapons/AssaultRifle/SM_AssaultRifle4_01_T_Texture_01.png" id="1_uhi0c"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_53gtj"]
+resource_name = "M_LowPolyWeapons_MAIN"
+transparency = 1
+depth_draw_mode = 1
+albedo_texture = ExtResource("1_uhi0c")
+roughness = 0.8
+
+[resource]
+render_priority = -1
+next_pass = SubResource("StandardMaterial3D_53gtj")
+transparency = 1
+depth_draw_mode = 1
+no_depth_test = true
+shading_mode = 0
+albedo_color = Color(0.0588235, 0.870588, 1, 1)

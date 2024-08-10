@@ -1,10 +1,10 @@
-[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://4t0aqxchgkfa"]
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://bsvcwyho0n2vx"]
 
 [sub_resource type="Shader" id="Shader_o3quw"]
 code = "// NOTE: Shader automatically converted from Godot Engine 4.2.2.stable's StandardMaterial3D.
 
 shader_type spatial;
-render_mode blend_mix,depth_draw_always,cull_back,diffuse_burley,specular_schlick_ggx;
+render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx;
 uniform vec4 albedo : source_color;
 uniform sampler2D texture_albedo : source_color,filter_linear_mipmap,repeat_enable;
 uniform float point_size : hint_range(0,128);
@@ -32,9 +32,12 @@ void vertex() {
 	POSITION.z = mix(POSITION.z, 0, 0.99);
 }
 
+
+
+
+
+
 void fragment() {
-	float alpha = ALPHA; // Only read to put the shader in the transparent pipeline
-	
 	vec2 base_uv = UV;
 	vec4 albedo_tex = texture(texture_albedo,base_uv);
 	ALBEDO = albedo.rgb * albedo_tex.rgb;

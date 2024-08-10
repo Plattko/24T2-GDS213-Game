@@ -1,9 +1,8 @@
-[gd_scene load_steps=57 format=3 uid="uid://il6q27w1jqvw"]
+[gd_scene load_steps=54 format=3 uid="uid://il6q27w1jqvw"]
 
 [ext_resource type="Script" path="res://Scripts/Multiplayer/multiplayer_player.gd" id="1_mtm2n"]
 [ext_resource type="Script" path="res://Scripts/Player/player_input.gd" id="2_7s41b"]
 [ext_resource type="PackedScene" uid="uid://caqpeyq7g56bn" path="res://Scenes/damageable.tscn" id="3_sfxmm"]
-[ext_resource type="Shader" path="res://Assets/Shaders/ally_outline.gdshader" id="3_t1ph4"]
 [ext_resource type="Script" path="res://Scripts/Weapons/weapon_manager.gd" id="4_v17h1"]
 [ext_resource type="PackedScene" uid="uid://dqexibtsgatqp" path="res://Scenes/Weapons/rifle.tscn" id="5_lxaa3"]
 [ext_resource type="PackedScene" uid="uid://d2x6finf6hnf4" path="res://Scenes/Weapons/pistol.tscn" id="6_6hiye"]
@@ -58,21 +57,13 @@ properties/6/replication_mode = 1
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l214m"]
 resource_local_to_scene = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2p4nu"]
-render_priority = 0
-shader = ExtResource("3_t1ph4")
-shader_parameter/outline_colour = null
-shader_parameter/outline_width = 2.0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_juaeo"]
-next_pass = SubResource("ShaderMaterial_2p4nu")
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_ge1xk"]
-resource_local_to_scene = true
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fvek4"]
 albedo_color = Color(0, 0.654902, 0.894118, 1)
 roughness = 0.5
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ge1xk"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_fvek4")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3r45p"]
 
@@ -904,9 +895,7 @@ one_shot = true
 shape = SubResource("CapsuleShape3D_l214m")
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
-material_override = SubResource("StandardMaterial3D_juaeo")
 mesh = SubResource("CapsuleMesh_ge1xk")
-surface_material_override/0 = SubResource("StandardMaterial3D_fvek4")
 
 [node name="CeilingCheck" type="ShapeCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
