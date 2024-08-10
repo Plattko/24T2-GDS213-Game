@@ -3,6 +3,7 @@ extends Area3D
 @export var trauma_amount : float = 0.1
 @export var unlimited_range : bool = false
 
+@rpc("call_local")
 func cause_trauma() -> void:
 	var trauma_areas
 	if unlimited_range:
@@ -12,3 +13,6 @@ func cause_trauma() -> void:
 	for area in trauma_areas:
 		if area is ShakeableCamera:
 			area.add_trauma(trauma_amount)
+
+func synchronised_cause_trauma() -> void:
+	cause_trauma.rpc()
