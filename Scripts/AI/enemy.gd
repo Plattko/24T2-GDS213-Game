@@ -138,7 +138,8 @@ func animate(anim: Animations) -> void:
 @rpc("any_peer", "call_local")
 func on_damaged(damage: float, is_crit: bool):
 	cur_health -= damage
-	health_bar.update_health(cur_health, is_crit)
+	if is_instance_valid(health_bar):
+		health_bar.update_health(cur_health, is_crit)
 
 func die() -> void:
 	enemy_defeated.emit()

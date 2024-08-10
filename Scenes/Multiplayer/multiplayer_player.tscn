@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://il6q27w1jqvw"]
+[gd_scene load_steps=55 format=3 uid="uid://il6q27w1jqvw"]
 
 [ext_resource type="Script" path="res://Scripts/Multiplayer/multiplayer_player.gd" id="1_mtm2n"]
 [ext_resource type="Script" path="res://Scripts/Player/player_input.gd" id="2_7s41b"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://Scripts/States/Player States/player_state_machine.gd" id="9_s0xnt"]
 [ext_resource type="Script" path="res://Scripts/States/Player States/idle_player_state.gd" id="9_u7svg"]
 [ext_resource type="Script" path="res://Scripts/States/Player States/air_player_state.gd" id="10_3uw0v"]
+[ext_resource type="PackedScene" uid="uid://dxscdc1e1l6ra" path="res://Scenes/VFX/shakeable_area.tscn" id="10_6qwol"]
 [ext_resource type="Script" path="res://Scripts/States/Player States/walk_player_state.gd" id="11_3pdmq"]
 [ext_resource type="Script" path="res://Scripts/States/Player States/sprint_player_state.gd" id="12_lap8s"]
 [ext_resource type="Script" path="res://Scripts/States/Player States/crouch_player_state.gd" id="13_e54bo"]
@@ -961,6 +962,9 @@ one_shot = true
 [node name="InteractRaycast" type="RayCast3D" parent="Head/Camera3D"]
 target_position = Vector3(0, 0, -2)
 collision_mask = 7
+
+[node name="ShakeableArea" parent="Head/Camera3D" instance=ExtResource("10_6qwol")]
+noise_speed = 150.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
