@@ -1,12 +1,17 @@
 class_name SettingsMenu
-
 extends Control
+
+@export var exit_button : Button
+
+@export var is_on_main_menu : bool = false
 
 signal opened_settings_menu
 signal closed_settings_menu
 
 func _ready():
-	set_process(false)
+	if !is_on_main_menu: 
+		exit_button.pressed.connect(close)
+		set_process(false)
 
 func open() -> void:
 	visible = true

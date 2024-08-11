@@ -1,8 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://blnme4tmx8d71"]
+[gd_scene load_steps=7 format=3 uid="uid://blnme4tmx8d71"]
 
 [ext_resource type="PackedScene" uid="uid://pxpx3vsci2vw" path="res://Scenes/UI/sensitivity_slider_setting.tscn" id="1_6q1y2"]
 [ext_resource type="PackedScene" uid="uid://buhgpsmxunsqk" path="res://Scenes/UI/reload_type_setting.tscn" id="2_cri75"]
 [ext_resource type="PackedScene" uid="uid://2pq1le51ovfi" path="res://Scenes/UI/do_side_tilt_setting.tscn" id="3_i0c25"]
+[ext_resource type="PackedScene" uid="uid://dvkkexoj26opl" path="res://Scenes/UI/input_rebind_button.tscn" id="4_cpn4g"]
+[ext_resource type="Script" path="res://Scripts/UI/input_interceptor.gd" id="5_xoub4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sr1v8"]
 
 [node name="SettingsTabContainer" type="Control"]
 layout_mode = 3
@@ -23,6 +27,7 @@ offset_right = -100.0
 offset_bottom = -50.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/font_size = 24
 
 [node name="Gameplay" type="TabBar" parent="TabContainer"]
 layout_mode = 2
@@ -117,3 +122,190 @@ theme_override_constants/margin_bottom = 24
 layout_mode = 2
 theme_override_constants/separation = 64
 alignment = 1
+
+[node name="InputInterceptor" type="Panel" parent="." groups=["input_interceptor"]]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_sr1v8")
+script = ExtResource("5_xoub4")
+
+[node name="Controls" type="TabBar" parent="."]
+visible = false
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 100.0
+offset_top = 92.0
+offset_right = 100.0
+offset_bottom = 50.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Controls"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Controls/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Controls/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Controls/MarginContainer/ScrollContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 64
+
+[node name="InputNameVBox" type="VBoxContainer" parent="Controls/MarginContainer/ScrollContainer/MarginContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 19
+
+[node name="InputForward" type="Label" parent="Controls/MarginContainer/ScrollContainer/MarginContainer/HBoxContainer/InputNameVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Input"
+
+[node name="InputBack" type="Label" parent="Controls/MarginContainer/ScrollContainer/MarginContainer/HBoxContainer/InputNameVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Input"
+
+[node name="InputLeft" type="Label" parent="Controls/MarginContainer/ScrollContainer/MarginContainer/HBoxContainer/InputNameVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Input"
+
+[node name="InputRight" type="Label" parent="Controls/MarginContainer/ScrollContainer/MarginContainer/HBoxContainer/InputNameVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Input"
+
+[node name="InputJump" type="Label" parent="Controls/MarginContainer/ScrollContainer/MarginContainer/HBoxContainer/InputNameVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Input"
+
+[node name="InputCrouch" type="Label" parent="Controls/MarginContainer/ScrollContainer/MarginContainer/HBoxContainer/InputNameVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Input"
+
+[node name="InputShoot" type="Label" parent="Controls/MarginContainer/ScrollContainer/MarginContainer/HBoxContainer/InputNameVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Input"
+
+[node name="InputReload" type="Label" parent="Controls/MarginContainer/ScrollContainer/MarginContainer/HBoxContainer/InputNameVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Input"
+
+[node name="InputWeapon1" type="Label" parent="Controls/MarginContainer/ScrollContainer/MarginContainer/HBoxContainer/InputNameVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Input"
+
+[node name="InputWeapon2" type="Label" parent="Controls/MarginContainer/ScrollContainer/MarginContainer/HBoxContainer/InputNameVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Input"
+
+[node name="InputPrevWeapon" type="Label" parent="Controls/MarginContainer/ScrollContainer/MarginContainer/HBoxContainer/InputNameVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Input"
+
+[node name="InputNextWeapon" type="Label" parent="Controls/MarginContainer/ScrollContainer/MarginContainer/HBoxContainer/InputNameVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Input"
+
+[node name="InputInteract" type="Label" parent="Controls/MarginContainer/ScrollContainer/MarginContainer/HBoxContainer/InputNameVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Input"
+
+[node name="InputOptionsMenu" type="Label" parent="Controls/MarginContainer/ScrollContainer/MarginContainer/HBoxContainer/InputNameVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Input"
+
+[node name="InputButtonVBox" type="VBoxContainer" parent="Controls/MarginContainer/ScrollContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 64
+
+[node name="ForwardButton" parent="Controls/MarginContainer/ScrollContainer/MarginContainer/HBoxContainer/InputButtonVBox" instance=ExtResource("4_cpn4g")]
+layout_mode = 2
+action_name = "move_forwards"
+
+[node name="BackButton" parent="Controls/MarginContainer/ScrollContainer/MarginContainer/HBoxContainer/InputButtonVBox" instance=ExtResource("4_cpn4g")]
+layout_mode = 2
+action_name = "move_backwards"
+
+[node name="LeftButton" parent="Controls/MarginContainer/ScrollContainer/MarginContainer/HBoxContainer/InputButtonVBox" instance=ExtResource("4_cpn4g")]
+layout_mode = 2
+action_name = "move_left"
+
+[node name="RightButton" parent="Controls/MarginContainer/ScrollContainer/MarginContainer/HBoxContainer/InputButtonVBox" instance=ExtResource("4_cpn4g")]
+layout_mode = 2
+action_name = "move_right"
+
+[node name="JumpButton" parent="Controls/MarginContainer/ScrollContainer/MarginContainer/HBoxContainer/InputButtonVBox" instance=ExtResource("4_cpn4g")]
+layout_mode = 2
+action_name = "jump"
+
+[node name="CrouchButton" parent="Controls/MarginContainer/ScrollContainer/MarginContainer/HBoxContainer/InputButtonVBox" instance=ExtResource("4_cpn4g")]
+layout_mode = 2
+action_name = "crouch"
+
+[node name="ShootButton" parent="Controls/MarginContainer/ScrollContainer/MarginContainer/HBoxContainer/InputButtonVBox" instance=ExtResource("4_cpn4g")]
+layout_mode = 2
+action_name = "shoot"
+
+[node name="ReloadButton" parent="Controls/MarginContainer/ScrollContainer/MarginContainer/HBoxContainer/InputButtonVBox" instance=ExtResource("4_cpn4g")]
+layout_mode = 2
+action_name = "reload"
+
+[node name="Weapon1Button" parent="Controls/MarginContainer/ScrollContainer/MarginContainer/HBoxContainer/InputButtonVBox" instance=ExtResource("4_cpn4g")]
+layout_mode = 2
+action_name = "weapon_1"
+
+[node name="Weapon2Button" parent="Controls/MarginContainer/ScrollContainer/MarginContainer/HBoxContainer/InputButtonVBox" instance=ExtResource("4_cpn4g")]
+layout_mode = 2
+action_name = "weapon_2"
+
+[node name="PrevWeaponButton" parent="Controls/MarginContainer/ScrollContainer/MarginContainer/HBoxContainer/InputButtonVBox" instance=ExtResource("4_cpn4g")]
+layout_mode = 2
+action_name = "weapon_scroll_up"
+
+[node name="NextWeaponButton" parent="Controls/MarginContainer/ScrollContainer/MarginContainer/HBoxContainer/InputButtonVBox" instance=ExtResource("4_cpn4g")]
+layout_mode = 2
+action_name = "weapon_scroll_down"
+
+[node name="InteractButton" parent="Controls/MarginContainer/ScrollContainer/MarginContainer/HBoxContainer/InputButtonVBox" instance=ExtResource("4_cpn4g")]
+layout_mode = 2
+action_name = "interact"
+
+[node name="OptionsMenuButton" parent="Controls/MarginContainer/ScrollContainer/MarginContainer/HBoxContainer/InputButtonVBox" instance=ExtResource("4_cpn4g")]
+layout_mode = 2
+action_name = "settings_menu"
