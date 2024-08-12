@@ -42,7 +42,7 @@ func use_lan() -> void:
 
 func become_host() -> void:
 	print("Host Game pressed.")
-	network_manager.become_host()
+	#network_manager.become_host()
 
 func join_as_client() -> void:
 	print("Join as Client pressed.")

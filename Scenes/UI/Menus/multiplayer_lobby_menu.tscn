@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://doaxn0r31cu2k"]
+[gd_scene load_steps=6 format=3 uid="uid://doaxn0r31cu2k"]
 
 [ext_resource type="Script" path="res://Scripts/UI/Menus/multiplayer_lobby_menu.gd" id="1_luwsf"]
 [ext_resource type="PackedScene" uid="uid://n4dlwi2t0u0i" path="res://Scenes/UI/Menus/Components/player_lobby_display.tscn" id="2_oendw"]
+[ext_resource type="PackedScene" uid="uid://u63y8f7vegjg" path="res://Scenes/UI/Menus/Components/weapon_select_button.tscn" id="3_fhv75"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_l7165"]
 properties/0/path = NodePath("Panel/MarginContainer/VBoxContainer/LobbyName:text")
@@ -14,7 +15,7 @@ properties/1/replication_mode = 1
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6bljn"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[node name="MultiplayerLobbyMenu" type="Control" node_paths=PackedStringArray("lobby_name_label", "player_count_label", "player_displays_vbox", "ready_button", "start_game_button")]
+[node name="MultiplayerLobbyMenu" type="Control" node_paths=PackedStringArray("lobby_name_label", "player_count_label", "player_displays_vbox", "primary_weapon_button", "primary_weapon_panel", "secondary_weapon_button", "secondary_weapon_panel", "weapon_grids", "ready_button", "start_game_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,8 +24,13 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_luwsf")
 lobby_name_label = NodePath("Panel/MarginContainer/VBoxContainer/LobbyName")
-player_count_label = NodePath("Panel/MarginContainer/VBoxContainer/LobbyUI/MarginContainer/VBoxContainer/PlayerListVBox/HBoxContainer/PlayerCountLabel")
+player_count_label = NodePath("Panel/MarginContainer/VBoxContainer/LobbyUI/MarginContainer/VBoxContainer/PlayerListVBox/HBoxContainer/PlayersLabel")
 player_displays_vbox = NodePath("Panel/MarginContainer/VBoxContainer/LobbyUI/MarginContainer/VBoxContainer/PlayerListVBox/PlayerDisplaysVBox")
+primary_weapon_button = NodePath("Panel/MarginContainer/VBoxContainer/LobbyUI/MarginContainer/VBoxContainer/WeaponSelectVBox/HBoxContainer/PrimaryWeaponButton")
+primary_weapon_panel = NodePath("Panel/MarginContainer/VBoxContainer/LobbyUI/MarginContainer/VBoxContainer/WeaponSelectVBox/HBoxContainer/PrimaryWeaponPanel")
+secondary_weapon_button = NodePath("Panel/MarginContainer/VBoxContainer/LobbyUI/MarginContainer/VBoxContainer/WeaponSelectVBox/HBoxContainer/SecondaryWeaponButton")
+secondary_weapon_panel = NodePath("Panel/MarginContainer/VBoxContainer/LobbyUI/MarginContainer/VBoxContainer/WeaponSelectVBox/HBoxContainer/SecondaryWeaponPanel")
+weapon_grids = [NodePath("Panel/MarginContainer/VBoxContainer/LobbyUI/MarginContainer/VBoxContainer/WeaponSelectVBox/HBoxContainer/PrimaryWeaponPanel/PrimaryWeaponsGrid"), NodePath("Panel/MarginContainer/VBoxContainer/LobbyUI/MarginContainer/VBoxContainer/WeaponSelectVBox/HBoxContainer/SecondaryWeaponPanel/SecondaryWeaponsGrid")]
 ready_button = NodePath("Panel/MarginContainer/VBoxContainer/LobbyUI/MarginContainer/VBoxContainer/ReadyGameHBox/ReadyButton")
 start_game_button = NodePath("Panel/MarginContainer/VBoxContainer/LobbyUI/MarginContainer/VBoxContainer/ReadyGameHBox/StartGameButton")
 
@@ -86,9 +92,10 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 32
-text = "Players"
+text = "Players (0/4)"
 
 [node name="PlayerCountLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/LobbyUI/MarginContainer/VBoxContainer/PlayerListVBox/HBoxContainer"]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "0/4"
@@ -98,6 +105,7 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="PlayerDisplayExample" parent="Panel/MarginContainer/VBoxContainer/LobbyUI/MarginContainer/VBoxContainer/PlayerListVBox/PlayerDisplaysVBox" instance=ExtResource("2_oendw")]
+visible = false
 layout_mode = 2
 
 [node name="WeaponSelectVBox" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/LobbyUI/MarginContainer/VBoxContainer"]
@@ -127,49 +135,52 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="WeaponsGrid" type="GridContainer" parent="Panel/MarginContainer/VBoxContainer/LobbyUI/MarginContainer/VBoxContainer/WeaponSelectVBox/HBoxContainer/PrimaryWeaponPanel"]
+[node name="PrimaryWeaponsGrid" type="GridContainer" parent="Panel/MarginContainer/VBoxContainer/LobbyUI/MarginContainer/VBoxContainer/WeaponSelectVBox/HBoxContainer/PrimaryWeaponPanel"]
 layout_mode = 2
 theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 10
 columns = 3
 
-[node name="RifleButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/LobbyUI/MarginContainer/VBoxContainer/WeaponSelectVBox/HBoxContainer/PrimaryWeaponPanel/WeaponsGrid"]
+[node name="RifleButton" parent="Panel/MarginContainer/VBoxContainer/LobbyUI/MarginContainer/VBoxContainer/WeaponSelectVBox/HBoxContainer/PrimaryWeaponPanel/PrimaryWeaponsGrid" instance=ExtResource("3_fhv75")]
+visible = false
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_font_sizes/font_size = 24
-toggle_mode = true
-button_pressed = true
-text = "Rifle"
 
-[node name="DeagleButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/LobbyUI/MarginContainer/VBoxContainer/WeaponSelectVBox/HBoxContainer/PrimaryWeaponPanel/WeaponsGrid"]
+[node name="DeagleButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/LobbyUI/MarginContainer/VBoxContainer/WeaponSelectVBox/HBoxContainer/PrimaryWeaponPanel/PrimaryWeaponsGrid"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 1
 theme_override_font_sizes/font_size = 24
 toggle_mode = true
 text = "Deagle"
 
-[node name="ShotgunButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/LobbyUI/MarginContainer/VBoxContainer/WeaponSelectVBox/HBoxContainer/PrimaryWeaponPanel/WeaponsGrid"]
+[node name="ShotgunButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/LobbyUI/MarginContainer/VBoxContainer/WeaponSelectVBox/HBoxContainer/PrimaryWeaponPanel/PrimaryWeaponsGrid"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 1
 theme_override_font_sizes/font_size = 24
 toggle_mode = true
 text = "Shotgun"
 
-[node name="RocketLauncherButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/LobbyUI/MarginContainer/VBoxContainer/WeaponSelectVBox/HBoxContainer/PrimaryWeaponPanel/WeaponsGrid"]
+[node name="RocketLauncherButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/LobbyUI/MarginContainer/VBoxContainer/WeaponSelectVBox/HBoxContainer/PrimaryWeaponPanel/PrimaryWeaponsGrid"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 1
 theme_override_font_sizes/font_size = 24
 toggle_mode = true
 text = "Rocket Launcher"
 
-[node name="P90Button" type="Button" parent="Panel/MarginContainer/VBoxContainer/LobbyUI/MarginContainer/VBoxContainer/WeaponSelectVBox/HBoxContainer/PrimaryWeaponPanel/WeaponsGrid"]
+[node name="P90Button" type="Button" parent="Panel/MarginContainer/VBoxContainer/LobbyUI/MarginContainer/VBoxContainer/WeaponSelectVBox/HBoxContainer/PrimaryWeaponPanel/PrimaryWeaponsGrid"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 1
 theme_override_font_sizes/font_size = 24
 toggle_mode = true
 text = "P90"
@@ -181,55 +192,65 @@ size_flags_vertical = 3
 theme_override_font_sizes/font_size = 24
 text = "Deagle"
 
-[node name="WeaponsPanel2" type="PanelContainer" parent="Panel/MarginContainer/VBoxContainer/LobbyUI/MarginContainer/VBoxContainer/WeaponSelectVBox/HBoxContainer"]
+[node name="SecondaryWeaponPanel" type="PanelContainer" parent="Panel/MarginContainer/VBoxContainer/LobbyUI/MarginContainer/VBoxContainer/WeaponSelectVBox/HBoxContainer"]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="WeaponsGrid" type="GridContainer" parent="Panel/MarginContainer/VBoxContainer/LobbyUI/MarginContainer/VBoxContainer/WeaponSelectVBox/HBoxContainer/WeaponsPanel2"]
+[node name="SecondaryWeaponsGrid" type="GridContainer" parent="Panel/MarginContainer/VBoxContainer/LobbyUI/MarginContainer/VBoxContainer/WeaponSelectVBox/HBoxContainer/SecondaryWeaponPanel"]
 layout_mode = 2
 theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 10
 columns = 3
 
-[node name="RifleButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/LobbyUI/MarginContainer/VBoxContainer/WeaponSelectVBox/HBoxContainer/WeaponsPanel2/WeaponsGrid"]
+[node name="RifleButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/LobbyUI/MarginContainer/VBoxContainer/WeaponSelectVBox/HBoxContainer/SecondaryWeaponPanel/SecondaryWeaponsGrid"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 1
 theme_override_font_sizes/font_size = 24
 toggle_mode = true
 text = "Rifle"
 
-[node name="DeagleButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/LobbyUI/MarginContainer/VBoxContainer/WeaponSelectVBox/HBoxContainer/WeaponsPanel2/WeaponsGrid"]
+[node name="DeagleButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/LobbyUI/MarginContainer/VBoxContainer/WeaponSelectVBox/HBoxContainer/SecondaryWeaponPanel/SecondaryWeaponsGrid"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 1
 theme_override_font_sizes/font_size = 24
 toggle_mode = true
 button_pressed = true
 text = "Deagle"
 
-[node name="ShotgunButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/LobbyUI/MarginContainer/VBoxContainer/WeaponSelectVBox/HBoxContainer/WeaponsPanel2/WeaponsGrid"]
+[node name="ShotgunButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/LobbyUI/MarginContainer/VBoxContainer/WeaponSelectVBox/HBoxContainer/SecondaryWeaponPanel/SecondaryWeaponsGrid"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 1
 theme_override_font_sizes/font_size = 24
 toggle_mode = true
 text = "Shotgun"
 
-[node name="RocketLauncherButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/LobbyUI/MarginContainer/VBoxContainer/WeaponSelectVBox/HBoxContainer/WeaponsPanel2/WeaponsGrid"]
+[node name="RocketLauncherButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/LobbyUI/MarginContainer/VBoxContainer/WeaponSelectVBox/HBoxContainer/SecondaryWeaponPanel/SecondaryWeaponsGrid"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 1
 theme_override_font_sizes/font_size = 24
 toggle_mode = true
 text = "Rocket Launcher"
 
-[node name="P90Button" type="Button" parent="Panel/MarginContainer/VBoxContainer/LobbyUI/MarginContainer/VBoxContainer/WeaponSelectVBox/HBoxContainer/WeaponsPanel2/WeaponsGrid"]
+[node name="P90Button" type="Button" parent="Panel/MarginContainer/VBoxContainer/LobbyUI/MarginContainer/VBoxContainer/WeaponSelectVBox/HBoxContainer/SecondaryWeaponPanel/SecondaryWeaponsGrid"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 1
 theme_override_font_sizes/font_size = 24
 toggle_mode = true
 text = "P90"

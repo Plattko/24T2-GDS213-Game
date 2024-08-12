@@ -43,7 +43,9 @@ func _ready() -> void:
 	private_button.text = ""
 	private_button.button_pressed = false
 
-# Show lobbies
+#-------------------------------------------------------------------------------
+# Listing Lobbies
+#-------------------------------------------------------------------------------
 func on_lobby_match_list(lobbies: Array) -> void:
 	print("List lobbies called.")
 	# Clear the existing lobbies from the list
@@ -67,16 +69,13 @@ func on_lobby_match_list(lobbies: Array) -> void:
 		# Add it to the lobbies VBox
 		lobbies_vbox.add_child(lobby_display)
 
-
-
-# Refresh lobbies
 func on_refresh_list_button_pressed() -> void:
 	unselect_lobby()
 	refresh_lobbies_requested.emit()
 
-
-
-# Click on lobby and click join game to join lobby
+#-------------------------------------------------------------------------------
+# Joining Lobby
+#-------------------------------------------------------------------------------
 func on_lobby_selected(lobby) -> void:
 	selected_lobby = lobby
 	join_button.disabled = false
@@ -87,11 +86,9 @@ func unselect_lobby() -> void:
 func join_lobby() -> void:
 	join_lobby_requested.emit(selected_lobby)
 
-
-
-
-
-# Click create game to show create lobby menu
+#-------------------------------------------------------------------------------
+# Creating Lobby
+#-------------------------------------------------------------------------------
 func on_create_game_button_pressed() -> void:
 	lobbies_ui.hide()
 	unselect_lobby()
@@ -128,7 +125,6 @@ func on_password_line_text_changed(new_text: String) -> void:
 	else:
 		create_button.disabled = false
 
-# Create lobby
 func on_create_button_pressed() -> void:
 	# Set the lobby name to the text in the lobby name line
 	var lobby_name = lobby_name_line.text

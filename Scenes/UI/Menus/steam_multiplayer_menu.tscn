@@ -18,7 +18,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_2valx")
 lobbies_ui = NodePath("Panel/MarginContainer/VBoxContainer/LobbiesUI")
-lobbies_vbox = NodePath("Panel/MarginContainer/VBoxContainer/LobbiesUI/MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/LobbiesVBox")
+lobbies_vbox = NodePath("Panel/MarginContainer/VBoxContainer/LobbiesUI/MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/LobbiesVBox")
 refresh_list_button = NodePath("Panel/MarginContainer/VBoxContainer/LobbiesUI/MarginContainer/VBoxContainer/HBoxContainer/RefreshButton")
 join_button = NodePath("Panel/MarginContainer/VBoxContainer/LobbiesUI/MarginContainer/VBoxContainer/HBoxContainer/JoinButton")
 create_game_button = NodePath("Panel/MarginContainer/VBoxContainer/LobbiesUI/MarginContainer/VBoxContainer/HBoxContainer/CreateGameButton")
@@ -133,10 +133,26 @@ theme_override_font_sizes/font_size = 32
 text = "Lobby Name"
 horizontal_alignment = 2
 
-[node name="LobbiesVBox" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/LobbiesUI/MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/MarginContainer/VBoxContainer/LobbiesUI/MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
 
-[node name="LobbyDisplay" parent="Panel/MarginContainer/VBoxContainer/LobbiesUI/MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/LobbiesVBox" instance=ExtResource("2_wvxkq")]
+[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer/LobbiesUI/MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="LobbiesVBox" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/LobbiesUI/MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="LobbyDisplay" parent="Panel/MarginContainer/VBoxContainer/LobbiesUI/MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/LobbiesVBox" instance=ExtResource("2_wvxkq")]
 visible = false
 layout_mode = 2
 
@@ -242,6 +258,7 @@ custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 24
+max_length = 20
 caret_blink = true
 
 [node name="PrivateButton" type="Button" parent="Panel/MarginContainer/CreateLobbyUI/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/InputVBox"]

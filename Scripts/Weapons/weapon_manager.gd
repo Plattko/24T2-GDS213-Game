@@ -12,20 +12,33 @@ var max_weapon_index : int
 var weapon_index := 0
 
 var weapons : Array[Weapon]
+var primary_weapon : String
+var secondary_weapon : String
 
 enum Reload_Types { AUTO, ON_SHOOT, MANUAL, }
 @export var reload_type : Reload_Types
 
-func initialise(player_camera: Camera3D, player_input: PlayerInput, player_reticle: Reticle) -> void:
+func initialise(player_camera: Camera3D, player_input: PlayerInput, player_reticle: Reticle, _primary_weapon: String, _secondary_weapon: String) -> void:
 	camera = player_camera
 	input = player_input
 	reticle = player_reticle
+	primary_weapon = _primary_weapon
+	secondary_weapon = _secondary_weapon
 	
 	for child in get_children():
 		if child is Weapon:
-			weapons.append(child)
-			child.mesh.visible = false
-			child.init(camera)
+			if child.name == primary_weapon:
+				move_child(child, 0)
+				weapons.push_front(child)
+				child.mesh.visible = false
+				child.init(camera)
+			elif child.name == secondary_weapon:
+				move_child(child, 1)
+				weapons.append(child)
+				child.mesh.visible = false
+				child.init(camera)	
+			else:
+				child.queue_free()
 	
 	max_weapon_index = weapons.size() - 1
 	current_weapon = weapons[0]
@@ -64,10 +77,10 @@ func _physics_process(_delta):
 		if weapon_switch_cooldown.is_stopped():
 			change_weapon(1)
 	
-	if input.is_weapon_3_pressed:
-		#print("Pressed Weapon 3.")
-		if weapon_switch_cooldown.is_stopped():
-			change_weapon(2)
+	#if input.is_weapon_3_pressed:
+		##print("Pressed Weapon 3.")
+		#if weapon_switch_cooldown.is_stopped():
+			#change_weapon(2)
 	
 	if input.weapon_scroll_direction:
 		if weapon_switch_cooldown.is_stopped():

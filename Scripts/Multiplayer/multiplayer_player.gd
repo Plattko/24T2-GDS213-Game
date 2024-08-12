@@ -88,6 +88,9 @@ var is_vaporised : bool = false
 var revive_target : MultiplayerPlayer
 var revive_target_id : int
 
+var primary_weapon : String
+var secondary_weapon : String
+
 signal update_health
 signal player_downed
 signal player_died(is_vaporised: bool)
@@ -114,7 +117,7 @@ func _ready() -> void:
 	
 	input.player = self
 	state_machine.init(self, input, debug)
-	weapon_manager.initialise(camera, input, reticle)
+	weapon_manager.initialise(camera, input, reticle, primary_weapon, secondary_weapon)
 	#var shotgun = weapon_manager.find_child("Shotgun")
 	#print(shotgun)
 	#if shotgun: shotgun.player = self
@@ -389,7 +392,8 @@ func respawn_player() -> void:
 	set_collision_layer_value(2, true)
 	set_collision_mask_value(3, true)
 	# Set the player's position to the current respawn point
-	global_position = GameManager.cur_respawn_point
+	var scene_manager = get_tree().get_first_node_in_group("level")
+	global_position = scene_manager.cur_respawn_point
 	# Enable moving
 	input.can_move = true
 	# Reset to the player's first weapon

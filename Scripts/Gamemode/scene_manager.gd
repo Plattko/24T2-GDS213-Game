@@ -5,11 +5,13 @@ var multiplayer_player = load("res://Scenes/Multiplayer/multiplayer_player.tscn"
 
 @export_group("Initial Spawn Points")
 @export var initial_spawn_points : Array[Node3D] = []
+var players_spawned : int = 0
 
 # Zone variables
 @export_group("Zone Variables")
 @export var zones : Array[Zone] = []
 var cur_zone : int = 1
+@export var cur_respawn_point : Vector3
 
 # Gamemode variables
 @export_group("Gamemode Variables")
@@ -28,28 +30,31 @@ func _ready() -> void:
 				print("Vaporisation area connected.")
 			else:
 				print("Non-area node detected in Vaporisation Zone.")
-	
-	var players : Array[MultiplayerPlayer] = []
-	
-	# Spawn the players
-	for i in GameManager.players:
+
+func spawn_players(players: Dictionary = {}) -> void:
+	# Set up an array to use for the Wave Manager
+	var players_array : Array[MultiplayerPlayer] = []
+	# Spawn a player for each player ID in the players dictionary
+	for player_id in players:
+		# Instantiate the player
 		var player = multiplayer_player.instantiate() as MultiplayerPlayer
-		# Set the player's name to their unique ID
-		player.name = str(GameManager.players[i].id)
-		# Add the player as a child of the scene
+		# Set the player object's name to the player's ID
+		player.name = str(player_id)
+		# Set the player's primary and secondary weapon names
+		player.primary_weapon = players[player_id].primary_weapon
+		player.secondary_weapon = players[player_id].secondary_weapon
+		# Add the player as a child of the level
 		add_child(player)
-		# Check if it's player 1
-		if i == 1: #GameManager.players[i].player_num == 1:
-			# Manually set their initial spawn point
-			set_initial_spawn_point(player)
-		else:
-			wave_manager.alive_player_count += 1
+		# Manually set the host's initial spawn point
+		if player_id == 1: set_initial_spawn_point(player)
 		# Add them to the players array
-		players.append(player)
-		
-		#TODO: Connect the UI to the player
-	
-	if wave_manager: wave_manager.initialise(self, players)
+		players_array.append(player)
+	# Set up the Wave Manager
+	if wave_manager:
+		# Set the alive players to the number of players
+		wave_manager.alive_player_count = players.size()
+		# Give it a reference to the scene manager and the players array
+		wave_manager.initialise(self, players_array)
 	# Set the current respawn point
 	set_respawn_point.rpc(cur_zone)
 
@@ -62,9 +67,9 @@ func set_initial_spawn_point(player) -> void:
 	# Only set the spawn point if its the client's player
 	if player.name.to_int() == multiplayer.get_unique_id():
 		# Set the player's position to their respective spawn point
-		var player_num = GameManager.players[player.name.to_int()].player_num
-		player.global_position = initial_spawn_points[player_num - 1].global_position
-		print("Player " + str(player_num) + " position: " + str(player.global_position))
+		player.global_position = initial_spawn_points[players_spawned].global_position
+		# Increased the players spawned count by 1
+		players_spawned += 1
 
 func vaporise_zone() -> void:
 	#zones[cur_zone - 1].vaporisation_beam.get_child(0).play("Strike")
@@ -105,4 +110,4 @@ func play_anim(_cur_zone: int, anim: String) -> void:
 
 @rpc("any_peer", "call_local")
 func set_respawn_point(_cur_zone: int) -> void:
-	GameManager.cur_respawn_point = zones[_cur_zone - 1].respawn_point.global_position
+	cur_respawn_point = zones[_cur_zone - 1].respawn_point.global_position

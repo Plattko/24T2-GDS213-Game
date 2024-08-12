@@ -40,6 +40,7 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Plattko"
 horizontal_alignment = 2
+clip_text = true
 
 [node name="PlayerCount" type="Label" parent="HBoxContainer"]
 custom_minimum_size = Vector2(294, 0)
@@ -55,3 +56,4 @@ theme_override_font_sizes/font_size = 24
 text = "Plattko's Lobby
 "
 horizontal_alignment = 2
+clip_text = true
