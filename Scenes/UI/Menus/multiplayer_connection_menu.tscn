@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://2l0xgkulyboa"]
+[gd_scene load_steps=7 format=3 uid="uid://2l0xgkulyboa"]
 
 [ext_resource type="Script" path="res://Scripts/UI/Menus/multiplayer_connection_menu.gd" id="1_80y6a"]
-[ext_resource type="Script" path="res://Scripts/Multiplayer/multiplayer_manager.gd" id="1_l41eb"]
 [ext_resource type="Script" path="res://Scripts/Multiplayer/Networks/network_manager.gd" id="2_elbp8"]
 [ext_resource type="PackedScene" uid="uid://dkmfe1bob4s2x" path="res://Scenes/UI/Menus/steam_multiplayer_menu.tscn" id="4_01f2i"]
 [ext_resource type="PackedScene" uid="uid://bvaal4cfqsoik" path="res://Scenes/UI/Menus/lan_multiplayer_menu.tscn" id="5_ai236"]
@@ -12,7 +11,7 @@ properties/0/path = NodePath("MultiplayerManager:cur_player_count")
 properties/0/spawn = true
 properties/0/replication_mode = 1
 
-[node name="MultiplayerConnectionMenu" type="Control" node_paths=PackedStringArray("multiplayer_manager", "network_manager", "steam_multiplayer_menu")]
+[node name="MultiplayerConnectionMenu" type="Control" node_paths=PackedStringArray("network_manager", "steam_multiplayer_menu", "multiplayer_lobby_menu", "level_node")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,16 +19,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_80y6a")
-multiplayer_manager = NodePath("MultiplayerManager")
-network_manager = NodePath("MultiplayerManager/NetworkManager")
-steam_multiplayer_menu = NodePath("SteamMultiplayerMenu")
-is_using_steam = true
-
-[node name="MultiplayerManager" type="Node" parent="." node_paths=PackedStringArray("network_manager")]
-script = ExtResource("1_l41eb")
 network_manager = NodePath("NetworkManager")
+is_using_steam = true
+steam_multiplayer_menu = NodePath("SteamMultiplayerMenu")
+multiplayer_lobby_menu = NodePath("MultiplayerLobbyMenu")
+level_node = NodePath("Level")
 
-[node name="NetworkManager" type="Node" parent="MultiplayerManager"]
+[node name="NetworkManager" type="Node" parent="."]
 script = ExtResource("2_elbp8")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
@@ -46,3 +42,10 @@ layout_mode = 1
 [node name="MultiplayerLobbyMenu" parent="." instance=ExtResource("6_il38p")]
 visible = false
 layout_mode = 1
+
+[node name="Level" type="Node" parent="."]
+
+[node name="LevelSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://Scenes/Levels/Testing/steam_multiplayer_testing.tscn")
+spawn_path = NodePath("../Level")
+spawn_limit = 1

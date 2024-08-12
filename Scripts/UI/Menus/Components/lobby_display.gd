@@ -10,11 +10,11 @@ extends PanelContainer
 var lobby_name : String
 var player_count : int
 var host_name : String
-var availability : bool
+var availability : String
+var password : String
 
 func _ready() -> void:
 	lobby_name_label.text = lobby_name
 	player_count_label.text = str(player_count) + "/4"
 	host_name_label.text = host_name
-	if availability: availability_label.text = "Public"
-	else: availability_label.text = "Private"
+	availability_label.text = availability

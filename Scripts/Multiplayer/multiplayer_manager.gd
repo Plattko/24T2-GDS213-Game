@@ -20,7 +20,8 @@ var max_players : int = 4
 @export var lobbies_vbox : VBoxContainer
 
 func _ready() -> void:
-	network_manager.multiplayer_manager = self
+	#network_manager.multiplayer_manager = self
+	pass
 
 #-------------------------------------------------------------------------------
 # UI
@@ -45,7 +46,7 @@ func use_lan() -> void:
 
 func become_host() -> void:
 	print("Host Game pressed.")
-	network_manager.become_host()
+	#network_manager.become_host()
 
 func join_as_client() -> void:
 	print("Join as Client pressed.")

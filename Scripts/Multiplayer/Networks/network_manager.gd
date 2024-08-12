@@ -1,7 +1,8 @@
 class_name NetworkManager
 extends Node
 
-var multiplayer_manager : MultiplayerManager
+#var multiplayer_manager : MultiplayerManager
+var multiplayer_connection_menu : MultiplayerConnectionMenu
 
 enum Multiplayer_Network_Type { ENET, STEAM, }
 var active_network_type : Multiplayer_Network_Type = Multiplayer_Network_Type.ENET
@@ -27,12 +28,13 @@ func build_multiplayer_network() -> void:
 
 func set_active_network(active_network_scene):
 	active_network = active_network_scene.instantiate()
-	active_network.multiplayer_manager = multiplayer_manager
+	#active_network.multiplayer_manager = multiplayer_manager
+	active_network.multiplayer_connection_menu = multiplayer_connection_menu
 	add_child(active_network)
 
-func become_host() -> void:
+func become_host(lobby_name: String, is_private: bool = false, password: String = "") -> void:
 	build_multiplayer_network()
-	active_network.become_host()
+	active_network.become_host(lobby_name, is_private, password)
 
 func join_as_client(lobby_id: int = 0) -> void:
 	build_multiplayer_network()
