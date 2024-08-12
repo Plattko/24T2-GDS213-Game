@@ -42,7 +42,8 @@ func on_lobby_created(_connect: int, lobby_id: int) -> void:
 		# Set the lobby name
 		# TODO: Make the player choose this
 		Steam.setLobbyData(hosted_lobby_id, "name", lobby_name)
-		# TODO: Add host name, player count, etc.
+		Steam.setLobbyData(hosted_lobby_id, "player_count", str(multiplayer_manager.cur_player_count))
+		Steam.setLobbyData(hosted_lobby_id, "host_name", SteamManager.steam_username)
 		
 		create_host()
 
@@ -97,7 +98,8 @@ func connect_socket(steam_id: int) -> void:
 func list_lobbies() -> void:
 	# Set the distance filter for the lobby list
 	Steam.addRequestLobbyListDistanceFilter(Steam.LOBBY_DISTANCE_FILTER_DEFAULT)
-	# TODO: Add name filter
+	# Add a filter on the lobby names
+	Steam.addRequestLobbyListStringFilter("name", "BWOB", Steam.LOBBY_COMPARISON_EQUAL)
 	# Request the list of lobbies
 	Steam.requestLobbyList()
 

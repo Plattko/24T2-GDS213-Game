@@ -1,0 +1,57 @@
+[gd_scene load_steps=3 format=3 uid="uid://xt7wdw7m4cbf"]
+
+[ext_resource type="Script" path="res://Scripts/UI/Menus/Components/lobby_display.gd" id="1_ttu8k"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kxbfs"]
+
+[node name="LobbyDisplay" type="PanelContainer" node_paths=PackedStringArray("button", "lobby_name_label", "player_count_label", "host_name_label", "availability_label")]
+layout_direction = 3
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_kxbfs")
+script = ExtResource("1_ttu8k")
+button = NodePath("Button")
+lobby_name_label = NodePath("HBoxContainer/LobbyName")
+player_count_label = NodePath("HBoxContainer/PlayerCount")
+host_name_label = NodePath("HBoxContainer/HostName")
+availability_label = NodePath("HBoxContainer/Availability")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Availability" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Private"
+horizontal_alignment = 2
+
+[node name="HostName" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(294, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Plattko"
+horizontal_alignment = 2
+
+[node name="PlayerCount" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(294, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "1/4"
+horizontal_alignment = 2
+
+[node name="LobbyName" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "Plattko's Lobby
+"
+horizontal_alignment = 2
