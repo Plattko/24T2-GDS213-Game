@@ -5,7 +5,7 @@ var multiplayer_connection_menu : MultiplayerConnectionMenu
 var multiplayer_peer : SteamMultiplayerPeer = SteamMultiplayerPeer.new()
 
 var hosted_lobby_id : int
-var lobby_name_prefix : String = "[BWOB] "
+var name_filter : String = "BWOB"
 
 var lobby_name : String
 var is_private : bool
@@ -43,7 +43,8 @@ func on_lobby_created(_connect: int, lobby_id: int) -> void:
 		# Make the lobby joinable
 		Steam.setLobbyJoinable(hosted_lobby_id, true)
 		# Set the lobby data
-		Steam.setLobbyData(hosted_lobby_id, "name", lobby_name_prefix + lobby_name)
+		Steam.setLobbyData(hosted_lobby_id, "name", name_filter)
+		Steam.setLobbyData(hosted_lobby_id, "lobby_name", lobby_name)
 		Steam.setLobbyData(hosted_lobby_id, "player_count", "1")
 		Steam.setLobbyData(hosted_lobby_id, "host_name", SteamManager.steam_username)
 		if is_private: 
@@ -122,7 +123,7 @@ func list_lobbies() -> void:
 	# Set the distance filter for the lobby list
 	Steam.addRequestLobbyListDistanceFilter(Steam.LOBBY_DISTANCE_FILTER_DEFAULT)
 	# Add a filter on the lobby names
-	Steam.addRequestLobbyListStringFilter("name", lobby_name_prefix, Steam.LOBBY_COMPARISON_EQUAL)
+	Steam.addRequestLobbyListStringFilter("name", name_filter, Steam.LOBBY_COMPARISON_EQUAL)
 	# Request the list of lobbies
 	Steam.requestLobbyList()
 

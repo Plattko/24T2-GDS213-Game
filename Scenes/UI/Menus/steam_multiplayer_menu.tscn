@@ -101,32 +101,37 @@ theme_override_constants/margin_bottom = 10
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="TitleHBox" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/LobbiesUI/MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer/LobbiesUI/MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+
+[node name="TitleHBox" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/LobbiesUI/MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/MarginContainer"]
 layout_direction = 3
 layout_mode = 2
 
-[node name="AvailabilityTitle" type="Label" parent="Panel/MarginContainer/VBoxContainer/LobbiesUI/MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/TitleHBox"]
+[node name="AvailabilityTitle" type="Label" parent="Panel/MarginContainer/VBoxContainer/LobbiesUI/MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/MarginContainer/TitleHBox"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Availability"
 horizontal_alignment = 2
 
-[node name="HostTitle" type="Label" parent="Panel/MarginContainer/VBoxContainer/LobbiesUI/MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/TitleHBox"]
+[node name="HostTitle" type="Label" parent="Panel/MarginContainer/VBoxContainer/LobbiesUI/MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/MarginContainer/TitleHBox"]
 custom_minimum_size = Vector2(294, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Host"
 horizontal_alignment = 2
 
-[node name="PlayersTitle" type="Label" parent="Panel/MarginContainer/VBoxContainer/LobbiesUI/MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/TitleHBox"]
+[node name="PlayersTitle" type="Label" parent="Panel/MarginContainer/VBoxContainer/LobbiesUI/MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/MarginContainer/TitleHBox"]
 custom_minimum_size = Vector2(294, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Players"
 horizontal_alignment = 2
 
-[node name="LobbyNameTitle" type="Label" parent="Panel/MarginContainer/VBoxContainer/LobbiesUI/MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/TitleHBox"]
+[node name="LobbyNameTitle" type="Label" parent="Panel/MarginContainer/VBoxContainer/LobbiesUI/MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/MarginContainer/TitleHBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 32

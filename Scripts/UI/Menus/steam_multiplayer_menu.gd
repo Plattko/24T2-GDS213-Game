@@ -57,7 +57,7 @@ func on_lobby_match_list(lobbies: Array) -> void:
 		# Create lobby display
 		var lobby_display = lobby_display_scene.instantiate() as LobbyDisplay
 		# Set the lobby display data
-		lobby_display.lobby_name = Steam.getLobbyData(lobby, "name")
+		lobby_display.lobby_name = Steam.getLobbyData(lobby, "lobby_name")
 		lobby_display.player_count = Steam.getLobbyData(lobby, "player_count").to_int()
 		lobby_display.host_name = Steam.getLobbyData(lobby, "host_name")
 		lobby_display.availability = Steam.getLobbyData(lobby, "availability")
