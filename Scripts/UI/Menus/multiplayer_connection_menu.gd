@@ -16,7 +16,6 @@ var multiplayer_level := load("res://Scenes/Levels/Testing/steam_multiplayer_tes
 
 # Player Variables
 var max_players : int = 4
-var player_count : int = 0
 var players : Dictionary = {}
 
 func _ready() -> void:
@@ -68,6 +67,13 @@ func on_lobby_created() -> void:
 	if is_using_steam: steam_multiplayer_menu.hide()
 	# Set up the lobby menu
 	multiplayer_lobby_menu.set_lobby_name_text(network_manager.active_network.lobby_name)
+	# Show the lobby menu
+	multiplayer_lobby_menu.show()
+
+func on_lobby_joined() -> void:
+	print("Lobby joined.")
+	# Hide the multiplayer menu
+	if is_using_steam: steam_multiplayer_menu.hide()
 	# Show the lobby menu
 	multiplayer_lobby_menu.show()
 

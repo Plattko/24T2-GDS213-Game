@@ -5,7 +5,7 @@ extends Control
 @export var lobbies_ui : PanelContainer
 @export var lobbies_vbox : VBoxContainer
 @export var refresh_list_button : Button
-@export var join_button : Button
+@export var join_game_button : Button
 
 @export_group("Create Lobby")
 @export var create_game_button : Button
@@ -28,6 +28,7 @@ signal create_lobby_requested(lobby_name: String, is_private: bool, password: St
 
 func _ready() -> void:
 	refresh_list_button.pressed.connect(on_refresh_list_button_pressed)
+	join_game_button.pressed.connect(on_join_game_button_pressed)
 	create_game_button.pressed.connect(on_create_game_button_pressed)
 	close_button.pressed.connect(on_close_button_pressed)
 	private_button.toggled.connect(on_private_button_toggled)
@@ -78,12 +79,12 @@ func on_refresh_list_button_pressed() -> void:
 #-------------------------------------------------------------------------------
 func on_lobby_selected(lobby) -> void:
 	selected_lobby = lobby
-	join_button.disabled = false
+	join_game_button.disabled = false
 
 func unselect_lobby() -> void:
-	join_button.disabled = true
+	join_game_button.disabled = true
 
-func join_lobby() -> void:
+func on_join_game_button_pressed() -> void:
 	join_lobby_requested.emit(selected_lobby)
 
 #-------------------------------------------------------------------------------

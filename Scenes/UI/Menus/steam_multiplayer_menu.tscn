@@ -9,7 +9,7 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_agax3"]
 
-[node name="SteamMultiplayerMenu" type="Control" node_paths=PackedStringArray("lobbies_ui", "lobbies_vbox", "refresh_list_button", "join_button", "create_game_button", "create_lobby_ui", "close_button", "lobby_name_line", "private_button", "password_label", "password_line", "label_spacer", "input_spacer", "create_button")]
+[node name="SteamMultiplayerMenu" type="Control" node_paths=PackedStringArray("lobbies_ui", "lobbies_vbox", "refresh_list_button", "join_game_button", "create_game_button", "create_lobby_ui", "close_button", "lobby_name_line", "private_button", "password_label", "password_line", "label_spacer", "input_spacer", "create_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,7 +20,7 @@ script = ExtResource("1_2valx")
 lobbies_ui = NodePath("Panel/MarginContainer/VBoxContainer/LobbiesUI")
 lobbies_vbox = NodePath("Panel/MarginContainer/VBoxContainer/LobbiesUI/MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/LobbiesVBox")
 refresh_list_button = NodePath("Panel/MarginContainer/VBoxContainer/LobbiesUI/MarginContainer/VBoxContainer/HBoxContainer/RefreshButton")
-join_button = NodePath("Panel/MarginContainer/VBoxContainer/LobbiesUI/MarginContainer/VBoxContainer/HBoxContainer/JoinButton")
+join_game_button = NodePath("Panel/MarginContainer/VBoxContainer/LobbiesUI/MarginContainer/VBoxContainer/HBoxContainer/JoinGameButton")
 create_game_button = NodePath("Panel/MarginContainer/VBoxContainer/LobbiesUI/MarginContainer/VBoxContainer/HBoxContainer/CreateGameButton")
 create_lobby_ui = NodePath("Panel/MarginContainer/CreateLobbyUI")
 close_button = NodePath("Panel/MarginContainer/CreateLobbyUI/MarginContainer/CloseButton")
@@ -179,7 +179,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxEmpty_srhy8")
 
-[node name="JoinButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/LobbiesUI/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="JoinGameButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/LobbiesUI/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_font_sizes/font_size = 24

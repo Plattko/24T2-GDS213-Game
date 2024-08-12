@@ -113,6 +113,8 @@ func connect_socket(steam_id: int) -> void:
 		print("Connecting peer to host...")
 		# Establish the client as a multiplayer peer
 		multiplayer.set_multiplayer_peer(multiplayer_peer)
+		# Notify the multiplayer connection menu that the lobby has been joined
+		multiplayer_connection_menu.on_lobby_joined()
 	else:
 		print("Error creating client: " + str(error))
 
