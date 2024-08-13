@@ -174,6 +174,9 @@ func update_player_weapons(player_id: int, p_name: String, s_name: String) -> vo
 # Readying Up
 #-------------------------------------------------------------------------------
 func on_ready_button_toggled(is_toggled: bool) -> void:
+	# Update the ready button's text
+	if is_toggled: ready_button.text = "Unready"
+	else: ready_button.text = "Ready"
 	# Update the readied players on the server
 	update_readied_players.rpc_id(1, multiplayer.get_unique_id(), is_toggled)
 

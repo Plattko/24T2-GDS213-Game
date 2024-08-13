@@ -276,6 +276,7 @@ layout_mode = 2
 alignment = 2
 
 [node name="ReadyButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/LobbyUI/MarginContainer/VBoxContainer/ReadyGameHBox"]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 32
@@ -288,6 +289,7 @@ size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_6bljn")
 
 [node name="StartGameButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/LobbyUI/MarginContainer/VBoxContainer/ReadyGameHBox"]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 disabled = true
