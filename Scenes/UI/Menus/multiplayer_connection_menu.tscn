@@ -1,10 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://2l0xgkulyboa"]
+[gd_scene load_steps=7 format=3 uid="uid://2l0xgkulyboa"]
 
 [ext_resource type="Script" path="res://Scripts/UI/Menus/multiplayer_connection_menu.gd" id="1_80y6a"]
 [ext_resource type="Script" path="res://Scripts/Multiplayer/Networks/network_manager.gd" id="2_elbp8"]
 [ext_resource type="PackedScene" uid="uid://dkmfe1bob4s2x" path="res://Scenes/UI/Menus/steam_multiplayer_menu.tscn" id="4_01f2i"]
 [ext_resource type="PackedScene" uid="uid://bvaal4cfqsoik" path="res://Scenes/UI/Menus/lan_multiplayer_menu.tscn" id="5_ai236"]
 [ext_resource type="PackedScene" uid="uid://doaxn0r31cu2k" path="res://Scenes/UI/Menus/multiplayer_lobby_menu.tscn" id="6_il38p"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_0u5hp"]
+properties/0/path = NodePath("MultiplayerLobbyMenu:visible")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("SteamMultiplayerMenu:visible")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("LANMultiplayerMenu:visible")
+properties/2/spawn = true
+properties/2/replication_mode = 1
 
 [node name="MultiplayerConnectionMenu" type="Control" node_paths=PackedStringArray("network_manager", "steam_multiplayer_menu", "multiplayer_lobby_menu", "level_node")]
 layout_mode = 3
@@ -15,13 +26,15 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_80y6a")
 network_manager = NodePath("NetworkManager")
-is_using_steam = true
 steam_multiplayer_menu = NodePath("SteamMultiplayerMenu")
 multiplayer_lobby_menu = NodePath("MultiplayerLobbyMenu")
 level_node = NodePath("Level")
 
 [node name="NetworkManager" type="Node" parent="."]
 script = ExtResource("2_elbp8")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_0u5hp")
 
 [node name="SteamMultiplayerMenu" parent="." instance=ExtResource("4_01f2i")]
 visible = false

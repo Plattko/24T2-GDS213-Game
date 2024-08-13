@@ -21,6 +21,7 @@ var players : Dictionary = {}
 func _ready() -> void:
 	network_manager.multiplayer_connection_menu = self
 	
+	is_using_steam = GameManager.is_using_steam
 	if is_using_steam:
 		use_steam()
 		steam_multiplayer_menu.refresh_lobbies_requested.connect(list_steam_lobbies)
@@ -61,6 +62,7 @@ func list_steam_lobbies() -> void:
 	print("Listing Steam lobbies.")
 	network_manager.list_lobbies()
 
+# Called by the Steam Network script
 func on_lobby_created() -> void:
 	print("Lobby created.")
 	# Hide the multiplayer menu
@@ -70,12 +72,13 @@ func on_lobby_created() -> void:
 	# Show the lobby menu
 	multiplayer_lobby_menu.show()
 
+# Called by the Steam Network script
 func on_lobby_joined() -> void:
 	print("Lobby joined.")
-	# Hide the multiplayer menu
-	if is_using_steam: steam_multiplayer_menu.hide()
-	# Show the lobby menu
-	multiplayer_lobby_menu.show()
+	## Hide the multiplayer menu
+	#if is_using_steam: steam_multiplayer_menu.hide()
+	## Show the lobby menu
+	#multiplayer_lobby_menu.show()
 
 # To be called on the server
 @rpc("any_peer", "call_local")

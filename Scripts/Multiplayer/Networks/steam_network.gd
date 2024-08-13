@@ -134,9 +134,13 @@ func list_lobbies() -> void:
 #-------------------------------------------------------------------------------
 func on_peer_connected(id: int) -> void:
 	multiplayer_connection_menu.on_peer_connected(id)
+	if !multiplayer.is_server(): return
+	Steam.setLobbyData(hosted_lobby_id, "player_count", str(Steam.getNumLobbyMembers(hosted_lobby_id)))
 
 func on_peer_disconnected(id: int) -> void:
 	multiplayer_connection_menu.on_peer_disconnected(id)
+	if !multiplayer.is_server(): return
+	Steam.setLobbyData(hosted_lobby_id, "player_count", str(Steam.getNumLobbyMembers(hosted_lobby_id)))
 
 func on_connected_to_server() -> void:
 	multiplayer_connection_menu.on_connected_to_server(SteamManager.steam_username)

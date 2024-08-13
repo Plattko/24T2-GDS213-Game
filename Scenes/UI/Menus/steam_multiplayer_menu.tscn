@@ -9,7 +9,7 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_agax3"]
 
-[node name="SteamMultiplayerMenu" type="Control" node_paths=PackedStringArray("lobbies_ui", "lobbies_vbox", "refresh_list_button", "join_game_button", "create_game_button", "create_lobby_ui", "close_button", "lobby_name_line", "private_button", "password_label", "password_line", "label_spacer", "input_spacer", "create_button")]
+[node name="SteamMultiplayerMenu" type="Control" node_paths=PackedStringArray("lobbies_ui", "lobbies_vbox", "refresh_list_button", "join_game_button", "lobby_password_ui", "close_password_button", "join_password_line", "join_button", "incorrect_password_ui", "inc_pass_ok_button", "create_game_button", "create_lobby_ui", "close_create_button", "lobby_name_line", "private_button", "password_label", "create_password_line", "label_spacer", "input_spacer", "create_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -21,13 +21,19 @@ lobbies_ui = NodePath("Panel/MarginContainer/VBoxContainer/LobbiesUI")
 lobbies_vbox = NodePath("Panel/MarginContainer/VBoxContainer/LobbiesUI/MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/ScrollContainer/MarginContainer/LobbiesVBox")
 refresh_list_button = NodePath("Panel/MarginContainer/VBoxContainer/LobbiesUI/MarginContainer/VBoxContainer/HBoxContainer/RefreshButton")
 join_game_button = NodePath("Panel/MarginContainer/VBoxContainer/LobbiesUI/MarginContainer/VBoxContainer/HBoxContainer/JoinGameButton")
+lobby_password_ui = NodePath("Panel/MarginContainer/LobbyPasswordUI")
+close_password_button = NodePath("Panel/MarginContainer/LobbyPasswordUI/MarginContainer/CloseButton")
+join_password_line = NodePath("Panel/MarginContainer/LobbyPasswordUI/MarginContainer/VBoxContainer/PasswordHBox/JoinPasswordLine")
+join_button = NodePath("Panel/MarginContainer/LobbyPasswordUI/MarginContainer/VBoxContainer/JoinButton")
+incorrect_password_ui = NodePath("Panel/MarginContainer/IncorrectPasswordUI")
+inc_pass_ok_button = NodePath("Panel/MarginContainer/IncorrectPasswordUI/MarginContainer/VBoxContainer/IncPassOKButton")
 create_game_button = NodePath("Panel/MarginContainer/VBoxContainer/LobbiesUI/MarginContainer/VBoxContainer/HBoxContainer/CreateGameButton")
 create_lobby_ui = NodePath("Panel/MarginContainer/CreateLobbyUI")
-close_button = NodePath("Panel/MarginContainer/CreateLobbyUI/MarginContainer/CloseButton")
+close_create_button = NodePath("Panel/MarginContainer/CreateLobbyUI/MarginContainer/CloseButton")
 lobby_name_line = NodePath("Panel/MarginContainer/CreateLobbyUI/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/InputVBox/LobbyNameLine")
 private_button = NodePath("Panel/MarginContainer/CreateLobbyUI/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/InputVBox/PrivateButton")
 password_label = NodePath("Panel/MarginContainer/CreateLobbyUI/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/LabelVBox/Password")
-password_line = NodePath("Panel/MarginContainer/CreateLobbyUI/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/InputVBox/PasswordLine")
+create_password_line = NodePath("Panel/MarginContainer/CreateLobbyUI/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/InputVBox/PasswordLine")
 label_spacer = NodePath("Panel/MarginContainer/CreateLobbyUI/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/LabelVBox/Spacer")
 input_spacer = NodePath("Panel/MarginContainer/CreateLobbyUI/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/InputVBox/Spacer")
 create_button = NodePath("Panel/MarginContainer/CreateLobbyUI/MarginContainer/VBoxContainer/CreateButton")
@@ -304,3 +310,91 @@ theme_override_font_sizes/font_size = 32
 theme_override_styles/focus = SubResource("StyleBoxEmpty_agax3")
 text = "X"
 flat = true
+
+[node name="LobbyPasswordUI" type="PanelContainer" parent="Panel/MarginContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/LobbyPasswordUI"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/LobbyPasswordUI/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/LobbyPasswordUI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 40
+text = "Lobby Requires Password"
+vertical_alignment = 1
+
+[node name="PasswordHBox" type="HBoxContainer" parent="Panel/MarginContainer/LobbyPasswordUI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Password" type="Label" parent="Panel/MarginContainer/LobbyPasswordUI/MarginContainer/VBoxContainer/PasswordHBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Password"
+
+[node name="JoinPasswordLine" type="LineEdit" parent="Panel/MarginContainer/LobbyPasswordUI/MarginContainer/VBoxContainer/PasswordHBox"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 24
+caret_blink = true
+secret = true
+
+[node name="JoinButton" type="Button" parent="Panel/MarginContainer/LobbyPasswordUI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Join"
+
+[node name="CloseButton" type="Button" parent="Panel/MarginContainer/LobbyPasswordUI/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxEmpty_agax3")
+text = "X"
+flat = true
+
+[node name="IncorrectPasswordUI" type="PanelContainer" parent="Panel/MarginContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/IncorrectPasswordUI"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/IncorrectPasswordUI/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/IncorrectPasswordUI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 40
+text = "Password is Incorrect"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="IncPassOKButton" type="Button" parent="Panel/MarginContainer/IncorrectPasswordUI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "OK"

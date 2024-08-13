@@ -1,6 +1,8 @@
 class_name MainMenu
 extends Control
 
+var multiplayer_connection_menu := load("res://Scenes/UI/Menus/multiplayer_connection_menu.tscn")
+
 @export_group("Menus")
 @export var menu_margin_container : MarginContainer
 @export var options_menu : SettingsMenu
@@ -26,10 +28,12 @@ func on_play_button_pressed() -> void:
 	use_lan_button.show() if !use_lan_button.is_visible_in_tree() else use_lan_button.hide()
 
 func on_use_steam_button_pressed() -> void:
-	pass
+	GameManager.is_using_steam = true
+	get_tree().change_scene_to_packed(multiplayer_connection_menu)
 
 func on_use_lan_button_pressed() -> void:
-	pass
+	GameManager.is_using_steam = false
+	get_tree().change_scene_to_packed(multiplayer_connection_menu)
 
 func on_tutorial_button_pressed() -> void:
 	if use_steam_button.is_visible_in_tree(): use_steam_button.hide()
