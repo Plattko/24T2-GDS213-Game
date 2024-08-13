@@ -41,7 +41,7 @@ func on_lobby_created(_connect: int, lobby_id: int) -> void:
 		hosted_lobby_id = lobby_id
 		print("Created lobby: " + str(hosted_lobby_id))
 		# Make the lobby joinable
-		Steam.setLobbyJoinable(hosted_lobby_id, true)
+		set_lobby_joinable(true)
 		# Set the lobby data
 		Steam.setLobbyData(hosted_lobby_id, "name", name_filter)
 		Steam.setLobbyData(hosted_lobby_id, "lobby_name", lobby_name)
@@ -118,6 +118,8 @@ func connect_socket(steam_id: int) -> void:
 	else:
 		print("Error creating client: " + str(error))
 
+func set_lobby_joinable(is_joinable: bool) -> void:
+	Steam.setLobbyJoinable(hosted_lobby_id, is_joinable)
 #-------------------------------------------------------------------------------
 # Listing Lobbies
 #-------------------------------------------------------------------------------

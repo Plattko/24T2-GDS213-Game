@@ -106,6 +106,9 @@ func remove_player_from_lobby(id: int) -> void:
 # Starting Game
 #-------------------------------------------------------------------------------
 func start_game(_players: Dictionary) -> void:
+	if is_using_steam:
+		# Make the lobby not joinable
+		network_manager.active_network.set_lobby_joinable(false)
 	# Load the multiplayer level scene
 	var level = multiplayer_level.instantiate() as SceneManager
 	# Add it to the level node
