@@ -5,10 +5,11 @@ var multiplayer_level := load("res://Scenes/Levels/Testing/steam_multiplayer_tes
 
 @export_group("Network Management")
 @export var network_manager : NetworkManager
-@export var is_using_steam : bool = false
+var is_using_steam : bool = false
 
 @export_group("Menus")
 @export var steam_multiplayer_menu : SteamMultiplayerMenu
+@export var lan_multiplayer_menu : LANMultiplayerMenu
 @export var multiplayer_lobby_menu : MultiplayerLobbyMenu
 
 @export_group("Level")
@@ -27,6 +28,10 @@ func _ready() -> void:
 		steam_multiplayer_menu.refresh_lobbies_requested.connect(list_steam_lobbies)
 		steam_multiplayer_menu.join_lobby_requested.connect(join_lobby)
 		steam_multiplayer_menu.create_lobby_requested.connect(create_lobby)
+	else:
+		use_lan()
+		lan_multiplayer_menu.join_lobby_requested.connect(join_lobby)
+		lan_multiplayer_menu.create_lobby_requested.connect(create_lobby)
 	
 	multiplayer_lobby_menu.start_game_requested.connect(start_game)
 
@@ -40,6 +45,11 @@ func use_steam() -> void:
 	network_manager.active_network_type = NetworkManager.Multiplayer_Network_Type.STEAM
 	# Show the Steam multiplayer menu
 	steam_multiplayer_menu.show()
+
+func use_lan() -> void:
+	print("Using LAN!")
+	# Show the LAN multiplayer menu
+	lan_multiplayer_menu.show()
 
 #-------------------------------------------------------------------------------
 # UI (Signalled from their respective menus
@@ -67,6 +77,7 @@ func on_lobby_created() -> void:
 	print("Lobby created.")
 	# Hide the multiplayer menu
 	if is_using_steam: steam_multiplayer_menu.hide()
+	else: lan_multiplayer_menu.hide()
 	# Set up the lobby menu
 	multiplayer_lobby_menu.set_lobby_name_text(network_manager.active_network.lobby_name)
 	# Show the lobby menu

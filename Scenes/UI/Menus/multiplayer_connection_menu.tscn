@@ -17,7 +17,7 @@ properties/2/path = NodePath("LANMultiplayerMenu:visible")
 properties/2/spawn = true
 properties/2/replication_mode = 1
 
-[node name="MultiplayerConnectionMenu" type="Control" node_paths=PackedStringArray("network_manager", "steam_multiplayer_menu", "multiplayer_lobby_menu", "level_node")]
+[node name="MultiplayerConnectionMenu" type="Control" node_paths=PackedStringArray("network_manager", "steam_multiplayer_menu", "lan_multiplayer_menu", "multiplayer_lobby_menu", "level_node")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -27,6 +27,7 @@ grow_vertical = 2
 script = ExtResource("1_80y6a")
 network_manager = NodePath("NetworkManager")
 steam_multiplayer_menu = NodePath("SteamMultiplayerMenu")
+lan_multiplayer_menu = NodePath("LANMultiplayerMenu")
 multiplayer_lobby_menu = NodePath("MultiplayerLobbyMenu")
 level_node = NodePath("Level")
 

@@ -40,9 +40,6 @@ func spawn_players(players: Dictionary = {}) -> void:
 		var player = multiplayer_player.instantiate() as MultiplayerPlayer
 		# Set the player object's name to the player's ID
 		player.name = str(player_id)
-		# Set the player's primary and secondary weapon names
-		player.primary_weapon = players[player_id].primary_weapon
-		player.secondary_weapon = players[player_id].secondary_weapon
 		# Add the player as a child of the level
 		add_child(player)
 		# Manually set the host's initial spawn point
@@ -68,8 +65,9 @@ func set_initial_spawn_point(player) -> void:
 	if player.name.to_int() == multiplayer.get_unique_id():
 		# Set the player's position to their respective spawn point
 		player.global_position = initial_spawn_points[players_spawned].global_position
-		# Increased the players spawned count by 1
-		players_spawned += 1
+	# Increased the players spawned count by 1
+	players_spawned += 1
+	print("Players spawned: " + str(players_spawned))
 
 func vaporise_zone() -> void:
 	#zones[cur_zone - 1].vaporisation_beam.get_child(0).play("Strike")

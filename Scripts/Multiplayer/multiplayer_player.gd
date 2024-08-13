@@ -117,7 +117,7 @@ func _ready() -> void:
 	
 	input.player = self
 	state_machine.init(self, input, debug)
-	weapon_manager.initialise(camera, input, reticle, primary_weapon, secondary_weapon)
+	weapon_manager.initialise(camera, input, reticle)
 	#var shotgun = weapon_manager.find_child("Shotgun")
 	#print(shotgun)
 	#if shotgun: shotgun.player = self

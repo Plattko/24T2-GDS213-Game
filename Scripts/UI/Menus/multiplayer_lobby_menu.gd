@@ -5,7 +5,7 @@ var player_lobby_display := load("res://Scenes/UI/Menus/Components/player_lobby_
 var weapon_select_button_scene := load("res://Scenes/UI/Menus/Components/weapon_select_button.tscn")
 
 # Variables to be injected by/referenced from another script
-var players : Dictionary = {}
+@export var players : Dictionary = {}
 var player_count : int
 var readied_player_count : int
 
@@ -22,6 +22,8 @@ var readied_player_count : int
 @export var secondary_weapon_panel : PanelContainer
 @export var weapon_grids : Array[GridContainer]
 var weapon_names : Array[String] = ["Rifle", "Deagle", "Shotgun", "Rocket Launcher", "P90"]
+var default_primary_weapon : String
+var default_secondary_weapon : String
 
 @export_group("Game Start Buttons")
 @export var ready_button : Button
@@ -43,6 +45,9 @@ func _ready() -> void:
 	secondary_weapon_panel.hide()
 	primary_weapon_button.show()
 	secondary_weapon_button.show()
+	
+	default_primary_weapon = primary_weapon_button.text
+	default_secondary_weapon = secondary_weapon_button.text
 
 # Set name at top to lobby name
 func set_lobby_name_text(lobby_name: String) -> void:
@@ -56,14 +61,16 @@ func add_player(player_id: int, username: String) -> void:
 	# Set the player display data
 	player_display.player_name = username
 	# Add it to the players list
-	player_displays_vbox.add_child(player_display)
+	player_displays_vbox.add_child(player_display, true)
 	# Add the player to the dictionary
 	players[player_id] = { 
 			"player_display" : player_display,
 			"ready_status" : false,
-			"primary_weapon" : primary_weapon_button.text,
-			"secondary_weapon" : secondary_weapon_button.text,
+			"primary_weapon" : "",
+			"secondary_weapon" : "",
 		}
+	# Update the player's weapons
+	update_player_weapons(player_id, default_primary_weapon, default_secondary_weapon)
 	# Updated the player count
 	player_count += 1
 	# Update the player count text
@@ -128,7 +135,7 @@ func on_primary_weapon_select_button_pressed(button: WeaponSelectButton) -> void
 	primary_weapon_button.text = selected_weapon
 	# Update the player's weapons
 	var player_id = multiplayer.get_unique_id()
-	update_player_weapons.rpc_id(1, player_id)
+	update_player_weapons.rpc_id(1, player_id, primary_weapon_button.text, secondary_weapon_button.text)
 	# Hide the weapon selection panel
 	primary_weapon_panel.hide()
 	# Show the weapon button
@@ -144,7 +151,7 @@ func on_secondary_weapon_select_button_pressed(button: WeaponSelectButton) -> vo
 	secondary_weapon_button.text = selected_weapon
 	# Update the player's weapons
 	var player_id = multiplayer.get_unique_id()
-	update_player_weapons.rpc_id(1, player_id)
+	update_player_weapons.rpc_id(1, player_id, primary_weapon_button.text, secondary_weapon_button.text)
 	# Hide the weapon selection panel
 	secondary_weapon_panel.hide()
 	# Show the weapon button
@@ -152,13 +159,16 @@ func on_secondary_weapon_select_button_pressed(button: WeaponSelectButton) -> vo
 
 # Store each player's selected weapons
 @rpc("any_peer", "call_local")
-func update_player_weapons(player_id: int) -> void:
-	var primary_weapon_name = primary_weapon_button.text
-	if primary_weapon_name == "Rocket Launcher": primary_weapon_name = "RocketLauncher"
-	var secondary_weapon_name = secondary_weapon_button.text
-	if secondary_weapon_name == "Rocket Launcher": secondary_weapon_name = "RocketLauncher"
+func update_player_weapons(player_id: int, p_name: String, s_name: String) -> void:
+	var primary_weapon_name = p_name
+	if primary_weapon_name == "Deagle": primary_weapon_name = "Pistol"
+	elif primary_weapon_name == "Rocket Launcher": primary_weapon_name = "RocketLauncher"
+	var secondary_weapon_name = s_name
+	if secondary_weapon_name == "Deagle": secondary_weapon_name = "Pistol"
+	elif secondary_weapon_name == "Rocket Launcher": secondary_weapon_name = "RocketLauncher"
 	players[player_id].primary_weapon = primary_weapon_name
 	players[player_id].secondary_weapon = secondary_weapon_name
+	print("Player " + str(player_id) + "'s weapons: " + players[player_id].primary_weapon + " " + players[player_id].secondary_weapon)
 
 #-------------------------------------------------------------------------------
 # Readying Up

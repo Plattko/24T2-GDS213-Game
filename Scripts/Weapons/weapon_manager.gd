@@ -18,12 +18,14 @@ var secondary_weapon : String
 enum Reload_Types { AUTO, ON_SHOOT, MANUAL, }
 @export var reload_type : Reload_Types
 
-func initialise(player_camera: Camera3D, player_input: PlayerInput, player_reticle: Reticle, _primary_weapon: String, _secondary_weapon: String) -> void:
+func initialise(player_camera: Camera3D, player_input: PlayerInput, player_reticle: Reticle) -> void:
+	var lobby = get_tree().get_first_node_in_group("lobby") as MultiplayerLobbyMenu
+	primary_weapon = lobby.players[multiplayer.get_unique_id()].primary_weapon
+	secondary_weapon = lobby.players[multiplayer.get_unique_id()].secondary_weapon
+	
 	camera = player_camera
 	input = player_input
 	reticle = player_reticle
-	primary_weapon = _primary_weapon
-	secondary_weapon = _secondary_weapon
 	
 	for child in get_children():
 		if child is Weapon:
@@ -36,9 +38,9 @@ func initialise(player_camera: Camera3D, player_input: PlayerInput, player_retic
 				move_child(child, 1)
 				weapons.append(child)
 				child.mesh.visible = false
-				child.init(camera)	
+				child.init(camera)
 			else:
-				child.queue_free()
+				child.mesh.visible = false
 	
 	max_weapon_index = weapons.size() - 1
 	current_weapon = weapons[0]

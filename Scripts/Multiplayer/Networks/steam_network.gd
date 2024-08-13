@@ -11,8 +11,6 @@ var lobby_name : String
 var is_private : bool
 var password : String
 
-signal lobby_created
-
 func _ready() -> void:
 	# Connect lifecycle callbacks
 	multiplayer.peer_connected.connect(on_peer_connected)
@@ -120,6 +118,7 @@ func connect_socket(steam_id: int) -> void:
 
 func set_lobby_joinable(is_joinable: bool) -> void:
 	Steam.setLobbyJoinable(hosted_lobby_id, is_joinable)
+
 #-------------------------------------------------------------------------------
 # Listing Lobbies
 #-------------------------------------------------------------------------------

@@ -10,11 +10,14 @@ properties/0/replication_mode = 1
 properties/1/path = NodePath("Panel/MarginContainer/VBoxContainer/LobbyUI/MarginContainer/VBoxContainer/PlayerListVBox/HBoxContainer/PlayersLabel:text")
 properties/1/spawn = true
 properties/1/replication_mode = 1
+properties/2/path = NodePath(".:players")
+properties/2/spawn = true
+properties/2/replication_mode = 1
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6bljn"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[node name="MultiplayerLobbyMenu" type="Control" node_paths=PackedStringArray("lobby_name_label", "player_count_label", "player_displays_vbox", "primary_weapon_button", "primary_weapon_panel", "secondary_weapon_button", "secondary_weapon_panel", "weapon_grids", "ready_button", "start_game_button")]
+[node name="MultiplayerLobbyMenu" type="Control" node_paths=PackedStringArray("lobby_name_label", "player_count_label", "player_displays_vbox", "primary_weapon_button", "primary_weapon_panel", "secondary_weapon_button", "secondary_weapon_panel", "weapon_grids", "ready_button", "start_game_button") groups=["lobby"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

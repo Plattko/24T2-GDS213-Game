@@ -6,8 +6,10 @@ var old_text = ""
 func _ready() -> void:
 	# Sets it to check for the numbers 0-9 and "."
 	regex.compile("^[0-9.]*$")
+	# Connect the text changed signal to the function
+	text_changed.connect(on_text_changed)
 
-func _on_text_changed(new_text):
+func on_text_changed(new_text):
 	# Checks if the new text contains only the numbers 0-9 or "."
 	if regex.search(new_text):
 		# If it does, sets the old text to the new text
