@@ -1,7 +1,8 @@
 class_name MultiplayerConnectionMenu
 extends Control
 
-var multiplayer_level := load("res://Scenes/Levels/Testing/steam_multiplayer_testing.tscn")
+#var multiplayer_level := load("res://Scenes/Levels/Testing/steam_multiplayer_testing.tscn")
+var multiplayer_level := load("res://Scenes/Levels/playtest_level_wk10.tscn")
 
 @export_group("Network Management")
 @export var network_manager : NetworkManager
@@ -86,10 +87,6 @@ func on_lobby_created() -> void:
 # Called by the Steam Network script
 func on_lobby_joined() -> void:
 	print("Lobby joined.")
-	## Hide the multiplayer menu
-	#if is_using_steam: steam_multiplayer_menu.hide()
-	## Show the lobby menu
-	#multiplayer_lobby_menu.show()
 
 # To be called on the server
 @rpc("any_peer", "call_local")

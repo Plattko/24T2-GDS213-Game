@@ -16,7 +16,7 @@ var scene_manager : SceneManager
 @export_group("Wave Variables")
 @export var waves_enabled : bool = true
 
-var first_wave_delay := 5.0
+var first_wave_delay := 10.0
 var cur_wave := 1
 
 @export var initial_max_enemies : int = 5
@@ -218,7 +218,7 @@ func _on_zone_gate_anim_finished(anim_name: StringName) -> void:
 		scene_manager.vaporise_zone()
 		
 		# TODO: Start new wave without respawning players
-		await get_tree().create_timer(3.0).timeout
+		await get_tree().create_timer(5.6).timeout
 		# Track the zone swaps
 		zone_swaps += 1
 		# Start a new wave immediately

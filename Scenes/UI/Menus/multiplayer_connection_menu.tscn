@@ -52,6 +52,6 @@ layout_mode = 1
 [node name="Level" type="Node" parent="."]
 
 [node name="LevelSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://Scenes/Levels/Testing/steam_multiplayer_testing.tscn")
+_spawnable_scenes = PackedStringArray("res://Scenes/Levels/Testing/steam_multiplayer_testing.tscn", "res://Scenes/Levels/playtest_level_wk10.tscn")
 spawn_path = NodePath("../Level")
 spawn_limit = 1

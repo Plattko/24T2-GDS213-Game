@@ -1,7 +1,7 @@
 class_name SceneManager
 extends Node3D
 
-var multiplayer_player = load("res://Scenes/Multiplayer/multiplayer_player.tscn")
+#var multiplayer_player = load("res://Scenes/Multiplayer/multiplayer_player.tscn")
 
 @export_group("Spawning Players")
 @export var players_node : Node
@@ -10,8 +10,9 @@ var players_spawned : int = 0
 
 @export_group("Zone Variables")
 @export var zones : Array[Zone] = []
-var cur_zone : int = 1
+@export var zone_nav_regions : Array[NavigationRegion3D] = []
 @export var cur_respawn_point : Vector3
+var cur_zone : int = 1
 
 @export_group("Gamemode Variables")
 @export var wave_manager : WaveManager
@@ -22,6 +23,7 @@ var cur_zone : int = 1
 @export var game_over_menu : GameOverMenu
 
 func _ready() -> void:
+	print("CALLED READY IN SCENE MANAGER.")
 	if !multiplayer.is_server(): return
 	
 	wave_manager.game_over_entered.connect(on_game_over)
@@ -39,12 +41,13 @@ func _ready() -> void:
 				print("Non-area node detected in Vaporisation Zone.")
 
 func spawn_players(players: Dictionary = {}) -> void:
+	print("Called spawn players.")
 	# Set up an array to use for the Wave Manager
 	var players_array : Array[MultiplayerPlayer] = []
 	# Spawn a player for each player ID in the players dictionary
 	for player_id in players:
 		# Instantiate the player
-		var player = multiplayer_player.instantiate() as MultiplayerPlayer
+		var player = load("res://Scenes/Multiplayer/multiplayer_player.tscn").instantiate() as MultiplayerPlayer
 		# Set the player object's name to the player's ID
 		player.name = str(player_id)
 		# Make the player invisible
@@ -92,6 +95,13 @@ func vaporise_enemies() -> void:
 	for enemy in get_tree().get_nodes_in_group("enemies"):
 		enemy.queue_free()
 		print("Enemy vaporised.")
+	# Update the active nav mesh
+	if cur_zone == 1:
+		zone_nav_regions[0].enabled = false
+		zone_nav_regions[1].enabled = true
+	elif cur_zone == 2:
+		zone_nav_regions[1].enabled = false
+		zone_nav_regions[0].enabled = true
 
 func update_zone() -> void:
 	if cur_zone == 1:
