@@ -18,6 +18,8 @@ var secondary_weapon : String
 enum Reload_Types { AUTO, ON_SHOOT, MANUAL, }
 @export var reload_type : Reload_Types
 
+signal update_weapon(cur_ammo: int, max_ammo: int, equipped_weapon: Weapon, unequipped_weapon: Weapon)
+
 func initialise(player_camera: Camera3D, player_input: PlayerInput, player_reticle: Reticle) -> void:
 	var lobby = get_tree().get_first_node_in_group("lobby") as MultiplayerLobbyMenu
 	primary_weapon = lobby.players[multiplayer.get_unique_id()].primary_weapon
@@ -45,7 +47,7 @@ func initialise(player_camera: Camera3D, player_input: PlayerInput, player_retic
 	max_weapon_index = weapons.size() - 1
 	current_weapon = weapons[0]
 	current_weapon.mesh.visible = true
-	current_weapon.update_ammo.emit([current_weapon.cur_ammo, current_weapon.MAX_AMMO])
+	update_weapon.emit(current_weapon.cur_ammo, current_weapon.MAX_AMMO, current_weapon, weapons[1])
 	reticle.update_reticle(current_weapon)
 
 func _physics_process(_delta):
@@ -114,7 +116,7 @@ func change_weapon(index: int) -> void:
 		if reticle: call_update_reticle(next_weapon)
 		else: print("No reticle found.")
 		
-		next_weapon.update_ammo.emit([next_weapon.cur_ammo, next_weapon.MAX_AMMO])
+		update_weapon.emit(next_weapon.cur_ammo, next_weapon.MAX_AMMO, next_weapon, current_weapon)
 		#next_weapon.anim_player.play(next_weapon.EQUIP_ANIM)
 		next_weapon.play_anim.rpc(next_weapon.EQUIP_ANIM)
 		current_weapon = next_weapon
@@ -129,8 +131,8 @@ func reset_weapon() -> void:
 	# Reset all guns to max ammo
 	for weapon in weapons:
 		weapon.cur_ammo = weapon.MAX_AMMO
-	# Update the ammo UI
-	current_weapon.update_ammo.emit([current_weapon.cur_ammo, current_weapon.MAX_AMMO])
+	# Update the weapon UI
+	update_weapon.emit(current_weapon.cur_ammo, current_weapon.MAX_AMMO, current_weapon, weapons[1])
 	# Play the equip animation
 	current_weapon.play_anim.rpc(current_weapon.EQUIP_ANIM)
 
