@@ -53,7 +53,9 @@ func _ready() -> void:
 func set_lobby_name_text(lobby_name: String) -> void:
 	lobby_name_label.text = lobby_name
 
-
+#-------------------------------------------------------------------------------
+# Adding and Removing Players
+#-------------------------------------------------------------------------------
 func add_player(player_id: int, username: String) -> void:
 	print("Add player called.")
 	# Create a player display
@@ -75,6 +77,8 @@ func add_player(player_id: int, username: String) -> void:
 	player_count += 1
 	# Update the player count text
 	player_count_label.text = "Players (%s/4)" % player_count
+	# Update whether the start button is enabled
+	update_start_button_enabled()
 
 func remove_player(player_id: int) -> void:
 	print("Remove player called.")
@@ -88,6 +92,8 @@ func remove_player(player_id: int) -> void:
 	player_count -= 1
 	# Update the player count text
 	player_count_label.text = "Players (%s/4)" % player_count
+	# Update whether the start button is enabled
+	update_start_button_enabled()
 
 #-------------------------------------------------------------------------------
 # Weapon Selection
@@ -191,14 +197,39 @@ func update_readied_players(player_id: int, is_ready: bool) -> void:
 	players[player_id].ready_status = is_ready
 	# Update the player's ready status text
 	players[player_id].player_display.update_ready_status_text(is_ready)
+	# Update whether the start button is enabled
+	update_start_button_enabled()
+
+#-------------------------------------------------------------------------------
+# Starting Game
+#-------------------------------------------------------------------------------
+func update_start_button_enabled() -> void:
 	# Enable the start game button if all players are ready
 	if readied_player_count == player_count:
 		start_game_button.disabled = false
 	else:
 		start_game_button.disabled = true
 
-#-------------------------------------------------------------------------------
-# Starting Game
-#-------------------------------------------------------------------------------
 func on_start_game_button_pressed() -> void:
 	start_game_requested.emit(players)
+
+#-------------------------------------------------------------------------------
+# Returning to Lobby
+#-------------------------------------------------------------------------------
+func return_to_lobby() -> void:
+	# Reset the readied player count
+	readied_player_count = 0
+	for player_id in players:
+		# Reset each player's ready status
+		players[player_id].ready_status = false
+		# Reset each player's ready status text
+		players[player_id].player_display.update_ready_status_text(false)
+	# Reset the ready buttons
+	reset_ready_button.rpc()
+	# Reset the start button
+	start_game_button.disabled = true
+
+@rpc("any_peer", "call_local")
+func reset_ready_button() -> void:
+	ready_button.set_pressed_no_signal(false)
+	ready_button.text = "Ready"

@@ -7,18 +7,24 @@ var multiplayer_player = load("res://Scenes/Multiplayer/multiplayer_player.tscn"
 @export var initial_spawn_points : Array[Node3D] = []
 var players_spawned : int = 0
 
-# Zone variables
 @export_group("Zone Variables")
 @export var zones : Array[Zone] = []
 var cur_zone : int = 1
 @export var cur_respawn_point : Vector3
 
-# Gamemode variables
 @export_group("Gamemode Variables")
 @export var wave_manager : WaveManager
 
+@export_group("Game Over")
+@export var map_camera : Camera3D
+@export var fade_to_black : FadeToBlackTransition
+@export var game_over_menu : GameOverMenu
+
 func _ready() -> void:
 	if !multiplayer.is_server(): return
+	
+	wave_manager.game_over_entered.connect(on_game_over)
+	fade_to_black.anim_player.animation_finished.connect(on_fade_to_black_animation_finished)
 	
 	#TODO: Instantiate the UI
 	
@@ -109,3 +115,45 @@ func play_anim(_cur_zone: int, anim: String) -> void:
 @rpc("any_peer", "call_local")
 func set_respawn_point(_cur_zone: int) -> void:
 	cur_respawn_point = zones[_cur_zone - 1].respawn_point.global_position
+
+#-------------------------------------------------------------------------------
+# Removing Players
+#-------------------------------------------------------------------------------
+func remove_player(player_id: int) -> void:
+	# If a player node's name is the same as the disconnected peer's ID, remove that node from the level
+	for player_node in get_tree().get_nodes_in_group("players"):
+		if is_instance_valid(player_node) and player_node.name.to_int() == player_id:
+			player_node.queue_free()
+	# Remove the player in the wave manager
+	wave_manager.remove_player()
+	# Remove the player in the game over menu
+	game_over_menu.remove_player(player_id)
+
+#-------------------------------------------------------------------------------
+# Game Over
+#-------------------------------------------------------------------------------
+func on_game_over() -> void:
+	# Play the fade to black animation
+	fade_to_black.show()
+	fade_to_black.play.rpc()
+
+func on_fade_to_black_animation_finished(_anim_name: String) -> void:
+	# Set the player's camera to the map camera
+	map_camera.current = true
+	# Delete the players
+	if multiplayer.is_server():
+		for player in wave_manager.players:
+			if is_instance_valid(player):
+				player.queue_free()
+	# Set the game over menu's game stats text
+	game_over_menu.init(wave_manager.waves_survived, wave_manager.robots_killed, wave_manager.zone_swaps)
+	# Hide the fade to black
+	fade_to_black.hide()
+	# Show the Game Over Menu
+	game_over_menu.show()
+	# Give the player control of their mouse
+	give_mouse_control.rpc()
+
+@rpc("any_peer", "call_local")
+func give_mouse_control() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE

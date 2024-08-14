@@ -1,7 +1,9 @@
-[gd_scene load_steps=25 format=3 uid="uid://dhx3ph4xhqgji"]
+[gd_scene load_steps=28 format=3 uid="uid://dhx3ph4xhqgji"]
 
 [ext_resource type="Script" path="res://Scripts/Gamemode/scene_manager.gd" id="1_fh8v2"]
 [ext_resource type="Script" path="res://Scripts/Gamemode/wave_manager.gd" id="2_u7k2x"]
+[ext_resource type="PackedScene" uid="uid://dyw64wskaoor7" path="res://Scenes/UI/fade_to_black_transition.tscn" id="7_8mxq2"]
+[ext_resource type="PackedScene" uid="uid://03p3s41yxbsb" path="res://Scenes/UI/Menus/game_over_menu.tscn" id="8_wis0s"]
 [ext_resource type="Material" uid="uid://bbyh52cc6ljvg" path="res://Assets/Materials/Standard Materials/prototype_grey.tres" id="9_e6bj4"]
 [ext_resource type="Material" uid="uid://clau1arwwv1yw" path="res://Assets/Materials/Standard Materials/prototype_orange.tres" id="74_631q3"]
 [ext_resource type="PackedScene" uid="uid://6saq0gdbyimu" path="res://Scenes/Props/zone_gate.tscn" id="108_hhgmt"]
@@ -545,11 +547,22 @@ _data = {
 "Strike": SubResource("Animation_vt268")
 }
 
-[node name="SteamMultiplayerTesting" type="Node3D" node_paths=PackedStringArray("initial_spawn_points", "zones", "wave_manager") groups=["level"]]
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_ueu3j"]
+properties/0/path = NodePath("FadeToBlackTransition:visible")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("GameOverMenu:visible")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
+[node name="SteamMultiplayerTesting" type="Node3D" node_paths=PackedStringArray("initial_spawn_points", "zones", "wave_manager", "map_camera", "fade_to_black", "game_over_menu") groups=["level"]]
 script = ExtResource("1_fh8v2")
 initial_spawn_points = [NodePath("PlayerSpawnPoints/Spawn1"), NodePath("PlayerSpawnPoints/Spawn2"), NodePath("PlayerSpawnPoints/Spawn3"), NodePath("PlayerSpawnPoints/Spawn4")]
 zones = [NodePath("ZoneData/Zone1"), NodePath("ZoneData/Zone2")]
 wave_manager = NodePath("GamemodeManager")
+map_camera = NodePath("MapCamera")
+fade_to_black = NodePath("GameOverUI/FadeToBlackTransition")
+game_over_menu = NodePath("GameOverUI/GameOverMenu")
 
 [node name="GamemodeManager" type="Node" parent="." node_paths=PackedStringArray("intermission_timer", "zone_change_timer", "endless_wave_timer", "enemies_node", "zone_gate") groups=["wave_manager"]]
 script = ExtResource("2_u7k2x")
@@ -19027,6 +19040,26 @@ spawn_path = NodePath("..")
 
 [node name="MapCamera" type="Camera3D" parent="." groups=["map_camera"]]
 transform = Transform3D(0.707107, -0.444997, 0.549525, 0, 0.777146, 0.62932, -0.707107, -0.444997, 0.549525, 19, 25, 19)
+
+[node name="GameOverUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="GameOverUI"]
+replication_config = SubResource("SceneReplicationConfig_ueu3j")
+
+[node name="FadeToBlackTransition" parent="GameOverUI" instance=ExtResource("7_8mxq2")]
+visible = false
+z_index = 1
+layout_mode = 1
+
+[node name="GameOverMenu" parent="GameOverUI" instance=ExtResource("8_wis0s")]
+visible = false
+layout_mode = 1
 
 [connection signal="timeout" from="GamemodeManager/EndlessWaveTimer" to="GamemodeManager" method="_on_endless_wave_timer_timeout"]
 [connection signal="spawned" from="PlayerSpawner" to="." method="_on_multiplayer_spawner_spawned"]

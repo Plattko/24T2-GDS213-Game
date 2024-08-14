@@ -17,7 +17,7 @@ properties/2/path = NodePath("LANMultiplayerMenu:visible")
 properties/2/spawn = true
 properties/2/replication_mode = 1
 
-[node name="MultiplayerConnectionMenu" type="Control" node_paths=PackedStringArray("network_manager", "steam_multiplayer_menu", "lan_multiplayer_menu", "multiplayer_lobby_menu", "level_node")]
+[node name="MultiplayerConnectionMenu" type="Control" node_paths=PackedStringArray("network_manager", "steam_multiplayer_menu", "lan_multiplayer_menu", "multiplayer_lobby_menu", "level_node") groups=["multiplayer_connection_menu"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

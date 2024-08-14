@@ -110,8 +110,6 @@ func remove_player_from_lobby(id: int) -> void:
 	print("Player %s removed from lobby." % id)
 	# Remove the player from the lobby
 	multiplayer_lobby_menu.remove_player(id)
-	# Remove the player from the players dictionary
-	players.erase(id)
 
 #-------------------------------------------------------------------------------
 # Starting Game
@@ -128,6 +126,19 @@ func start_game(_players: Dictionary) -> void:
 	multiplayer_lobby_menu.hide()
 	# Spawn the players
 	level.spawn_players(_players)
+	# Connect to the game over menu's return to lobby signal
+	level.game_over_menu.return_to_lobby_requested.connect(return_to_lobby)
+
+#-------------------------------------------------------------------------------
+# Returning to Lobby
+#-------------------------------------------------------------------------------
+func return_to_lobby() -> void:
+	# Delete the level
+	level_node.get_child(0).queue_free()
+	# Call return to lobby on the lobby menu script
+	multiplayer_lobby_menu.return_to_lobby()
+	# Show the lobby menu
+	multiplayer_lobby_menu.show()
 
 #-------------------------------------------------------------------------------
 # Connections
@@ -139,7 +150,14 @@ func on_peer_disconnected(id: int) -> void:
 	print("Player %s disconnected!" % id)
 	# Only run as the server
 	if !multiplayer.is_server(): return
+	# Remove the player from the lobby
 	remove_player_from_lobby(id)
+	# Get a reference to the level
+	var level = get_tree().get_first_node_in_group("level") as SceneManager
+	# If there is a level, remove the player from it
+	if level: level.remove_player(id)
+	# Remove the player from the players dictionary
+	players.erase(id)
 
 func on_connected_to_server(username: String) -> void: 
 	print("Connected to server.")

@@ -416,15 +416,6 @@ func on_intermission_entered() -> void:
 	elif is_dead and not is_vaporised:
 		respawn_player()
 
-func on_game_over() -> void:
-	# Set the player's camera to the map camera
-	var map_camera = get_tree().get_first_node_in_group("map_camera") as Camera3D
-	map_camera.current = true
-	# Blur the background
-	ui.show_blur()
-	# Prevent the players from respawning
-	respawn_timer.stop()
-
 #-------------------------------------------------------------------------------
 # Interaction
 #-------------------------------------------------------------------------------
@@ -479,7 +470,6 @@ func _on_revive_other_timer_timeout() -> void:
 func handle_connected_signals() -> void:
 	var wave_manager = get_tree().get_first_node_in_group("wave_manager") as WaveManager
 	wave_manager.intermission_entered.connect(on_intermission_entered)
-	wave_manager.game_over_entered.connect(on_game_over)
 	
 	for child in get_children():
 		if child is Damageable:

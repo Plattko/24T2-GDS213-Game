@@ -45,17 +45,17 @@ var do_zone_change : bool = false
 	set(value):
 		alive_player_count = value
 		print("Alive players: " + str(alive_player_count))
-		if alive_player_count <= 0 and multiplayer.is_server:
+		if multiplayer.is_server and alive_player_count <= 0:
+			game_state = Game_States.GAME_OVER
 			await get_tree().create_timer(3.0).timeout
-			game_over.rpc()
+			game_over()
+
+enum Game_States { IN_GAME, GAME_OVER }
+var game_state = Game_States.IN_GAME
 
 @export var waves_survived : int = 0
 @export var robots_killed : int = 0
 @export var zone_swaps : int = 0
-
-# Game over variables
-var game_over_menu_scene = load("res://Scenes/UI/Menus/game_over_menu.tscn")
-var fade_to_black_transition_scene = load("res://UI/fade_to_black_transition.tscn")
 
 signal enemy_count_updated(enemy_count: int)
 signal cur_wave_updated(wave: int)
@@ -262,42 +262,20 @@ func on_player_died() -> void:
 func on_player_respawned() -> void:
 	alive_player_count += 1
 
-@rpc("call_local")
-func game_over() -> void:
-	print("GAME OVER")
-	var level = get_tree().get_first_node_in_group("level")
-	# Instantiate the fade to black transition
-	var fade = fade_to_black_transition_scene.instantiate() as FadeToBlackTransition
-	# Add it as a child of the level
-	level.add_child(fade)
-	fade.anim_player.animation_finished.connect(change_to_game_over_menu)
-	## Wait for the fade to black animation to end
-	#await fade.anim_player.animation_finished
-	## Instantiate the game over menu
-	#var game_over_menu = game_over_menu_scene.instantiate()
-	## Add it as a child of the level's parent
-	#level.get_parent().add_child(game_over_menu)
-	## Delete the level
-	#level.queue_free()
-	## Show the mouse
-	#Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-
-func change_to_game_over_menu(_anim_name: StringName) -> void:
-	# Emit the game over signal
-	game_over_entered.emit()
-	# Instantiate the game over menu
-	var game_over_menu = game_over_menu_scene.instantiate() as GameOverMenu
-	# Set its variables
-	game_over_menu.waves_survived = waves_survived
-	game_over_menu.robots_killed = robots_killed
-	game_over_menu.zone_swaps = zone_swaps
-	# Add it as a child of the level's parent
-	var level = get_tree().get_first_node_in_group("level")
-	level.get_parent().add_child(game_over_menu)
-	## Delete the level
-	#level.queue_free()
-	# Show the mouse
-	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-
 func update_robots_killed() -> void:
 	robots_killed += 1
+
+#-------------------------------------------------------------------------------
+# Removing Players
+#-------------------------------------------------------------------------------
+func remove_player() -> void:
+	# If the players are in game, reduce the alive player count by 1
+	if game_state == Game_States.IN_GAME:
+		alive_player_count -= 1
+
+#-------------------------------------------------------------------------------
+# Game Over
+#-------------------------------------------------------------------------------
+func game_over() -> void:
+	print("GAME OVER")
+	game_over_entered.emit()
