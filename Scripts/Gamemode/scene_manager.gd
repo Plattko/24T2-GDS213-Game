@@ -3,7 +3,8 @@ extends Node3D
 
 var multiplayer_player = load("res://Scenes/Multiplayer/multiplayer_player.tscn")
 
-@export_group("Initial Spawn Points")
+@export_group("Spawning Players")
+@export var players_node : Node
 @export var initial_spawn_points : Array[Node3D] = []
 var players_spawned : int = 0
 
@@ -46,8 +47,10 @@ func spawn_players(players: Dictionary = {}) -> void:
 		var player = multiplayer_player.instantiate() as MultiplayerPlayer
 		# Set the player object's name to the player's ID
 		player.name = str(player_id)
+		# Make the player invisible
+		player.visible = false
 		# Add the player as a child of the level
-		add_child(player)
+		players_node.add_child(player)
 		# Manually set the host's initial spawn point
 		if player_id == 1: set_initial_spawn_point(player)
 		# Add them to the players array
@@ -71,6 +74,8 @@ func set_initial_spawn_point(player) -> void:
 	if player.name.to_int() == multiplayer.get_unique_id():
 		# Set the player's position to their respective spawn point
 		player.global_position = initial_spawn_points[players_spawned].global_position
+		# Make the player visible
+		player.visible = true
 	# Increased the players spawned count by 1
 	players_spawned += 1
 	print("Players spawned: " + str(players_spawned))

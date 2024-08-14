@@ -53,6 +53,9 @@ properties/5/replication_mode = 1
 properties/6/path = NodePath("Mesh:visible")
 properties/6/spawn = true
 properties/6/replication_mode = 1
+properties/7/path = NodePath(".:visible")
+properties/7/spawn = true
+properties/7/replication_mode = 1
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l214m"]
 resource_local_to_scene = true
@@ -1023,7 +1026,7 @@ wait_time = 20.0
 one_shot = true
 
 [node name="ReviveOtherTimer" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 5.0
 one_shot = true
 
 [node name="Audio" type="Node" parent="." node_paths=PackedStringArray("NormalHitmarker", "HeadshotHitmarker")]
@@ -1537,11 +1540,6 @@ text = "Respawning in"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SettingsMenu" parent="UI/HUD" instance=ExtResource("20_c20fv")]
-unique_name_in_owner = true
-visible = false
-layout_mode = 1
-
 [node name="InteractUI" type="Control" parent="UI/HUD"]
 layout_mode = 1
 anchors_preset = 15
@@ -1605,6 +1603,11 @@ theme_override_font_sizes/font_size = 32
 text = "Interact"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="SettingsMenu" parent="UI/HUD" instance=ExtResource("20_c20fv")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
 
 [connection signal="update_ammo" from="Head/Camera3D/WeaponHolder/WeaponManager/Rifle" to="UI/HUD" method="on_update_ammo"]
 [connection signal="update_ammo" from="Head/Camera3D/WeaponHolder/WeaponManager/RocketLauncher" to="UI/HUD" method="on_update_ammo"]

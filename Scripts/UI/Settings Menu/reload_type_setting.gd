@@ -1,5 +1,4 @@
 class_name ReloadTypeSetting
-
 extends Control
 
 signal reload_type_updated(type: WeaponManager.Reload_Types)

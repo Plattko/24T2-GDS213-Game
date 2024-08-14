@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://blnme4tmx8d71"]
+[gd_scene load_steps=9 format=3 uid="uid://blnme4tmx8d71"]
 
 [ext_resource type="PackedScene" uid="uid://pxpx3vsci2vw" path="res://Scenes/UI/sensitivity_slider_setting.tscn" id="1_6q1y2"]
+[ext_resource type="PackedScene" uid="uid://kyfjr3wg1jsl" path="res://Scenes/UI/auto_sprint_setting.tscn" id="2_4ap87"]
 [ext_resource type="PackedScene" uid="uid://buhgpsmxunsqk" path="res://Scenes/UI/reload_type_setting.tscn" id="2_cri75"]
+[ext_resource type="PackedScene" uid="uid://buwvwv5fh6uyx" path="res://Scenes/UI/wall_jump_on_release_setting.tscn" id="3_bdtnu"]
 [ext_resource type="PackedScene" uid="uid://2pq1le51ovfi" path="res://Scenes/UI/do_side_tilt_setting.tscn" id="3_i0c25"]
 [ext_resource type="PackedScene" uid="uid://dvkkexoj26opl" path="res://Scenes/UI/input_rebind_button.tscn" id="4_cpn4g"]
 [ext_resource type="Script" path="res://Scripts/UI/input_interceptor.gd" id="5_xoub4"]
@@ -54,10 +56,16 @@ theme_override_constants/separation = 64
 [node name="SensitivitySliderSetting" parent="TabContainer/Gameplay/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_6q1y2")]
 layout_mode = 2
 
-[node name="ReloadTypeSetting" parent="TabContainer/Gameplay/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_cri75")]
+[node name="AutoSprintSetting" parent="TabContainer/Gameplay/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_4ap87")]
+layout_mode = 2
+
+[node name="WallJumpOnReleaseSetting" parent="TabContainer/Gameplay/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("3_bdtnu")]
 layout_mode = 2
 
 [node name="DoSideTiltSetting" parent="TabContainer/Gameplay/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("3_i0c25")]
+layout_mode = 2
+
+[node name="ReloadTypeSetting" parent="TabContainer/Gameplay/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_cri75")]
 layout_mode = 2
 
 [node name="Video" type="TabBar" parent="TabContainer"]

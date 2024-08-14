@@ -555,8 +555,9 @@ properties/1/path = NodePath("GameOverMenu:visible")
 properties/1/spawn = true
 properties/1/replication_mode = 1
 
-[node name="SteamMultiplayerTesting" type="Node3D" node_paths=PackedStringArray("initial_spawn_points", "zones", "wave_manager", "map_camera", "fade_to_black", "game_over_menu") groups=["level"]]
+[node name="SteamMultiplayerTesting" type="Node3D" node_paths=PackedStringArray("players_node", "initial_spawn_points", "zones", "wave_manager", "map_camera", "fade_to_black", "game_over_menu") groups=["level"]]
 script = ExtResource("1_fh8v2")
+players_node = NodePath("Players")
 initial_spawn_points = [NodePath("PlayerSpawnPoints/Spawn1"), NodePath("PlayerSpawnPoints/Spawn2"), NodePath("PlayerSpawnPoints/Spawn3"), NodePath("PlayerSpawnPoints/Spawn4")]
 zones = [NodePath("ZoneData/Zone1"), NodePath("ZoneData/Zone2")]
 wave_manager = NodePath("GamemodeManager")
@@ -18869,11 +18870,6 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Atmosphere"]
 environment = SubResource("Environment_sb4fc")
 
-[node name="PlayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://Scenes/Multiplayer/multiplayer_player.tscn")
-spawn_path = NodePath("..")
-spawn_limit = 4
-
 [node name="PlayerSpawnPoints" type="Node" parent="."]
 
 [node name="Spawn1" type="Node3D" parent="PlayerSpawnPoints"]
@@ -18888,12 +18884,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.207, 1, 5.637)
 [node name="Spawn4" type="Node3D" parent="PlayerSpawnPoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.152, 1, 6.064)
 
-[node name="EnemySpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://Scenes/Enemies/robot_regular.tscn", "res://Scenes/Enemies/robot_speedy.tscn")
-spawn_path = NodePath("../Enemies")
+[node name="Players" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
+
+[node name="PlayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://Scenes/Multiplayer/multiplayer_player.tscn")
+spawn_path = NodePath("../Players")
+spawn_limit = 4
 
 [node name="Enemies" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
+
+[node name="EnemySpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://Scenes/Enemies/robot_regular.tscn", "res://Scenes/Enemies/robot_speedy.tscn")
+spawn_path = NodePath("../Enemies")
 
 [node name="ZoneData" type="Node" parent="."]
 
@@ -19048,6 +19052,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="GameOverUI"]
 replication_config = SubResource("SceneReplicationConfig_ueu3j")
@@ -19056,6 +19061,7 @@ replication_config = SubResource("SceneReplicationConfig_ueu3j")
 visible = false
 z_index = 1
 layout_mode = 1
+mouse_filter = 2
 
 [node name="GameOverMenu" parent="GameOverUI" instance=ExtResource("8_wis0s")]
 visible = false

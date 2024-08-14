@@ -495,12 +495,17 @@ func handle_connected_signals() -> void:
 	revive_started.connect(hud.on_revive_started)
 	revive_stopped.connect(hud.on_revive_stopped)
 	
-	var sensitivity_setting = find_child("SensitivitySliderSetting")
+	var sensitivity_setting = find_child("SensitivitySliderSetting") as SensitivitySetting
 	sensitivity_setting.sensitivity_updated.connect(set_sensitivity)
 	sensitivity_setting.slider.value = sensitivity * 100
-	var reload_type_setting = find_child("ReloadTypeSetting")
+	var auto_sprint_setting = find_child("AutoSprintSetting") as AutoSprintSetting
+	auto_sprint_setting.do_auto_sprint_updated.connect(input.set_auto_sprint)
+	var wall_jump_on_release_setting = find_child("WallJumpOnReleaseSetting") as WallJumpOnReleaseSetting
+	var wallrun_player_state = state_machine.states["WallrunPlayerState".to_lower()] as WallrunPlayerState
+	wall_jump_on_release_setting.wall_jump_on_release_updated.connect(wallrun_player_state.set_wall_jump_on_release)
+	var reload_type_setting = find_child("ReloadTypeSetting") as ReloadTypeSetting
 	reload_type_setting.reload_type_updated.connect(weapon_manager.set_reload_type)
-	var do_side_tilt_setting = find_child("DoSideTiltSetting")
+	var do_side_tilt_setting = find_child("DoSideTiltSetting") as DoSideTiltSetting
 	do_side_tilt_setting.side_tilt_mode_updated.connect(set_side_tilt_mode)
 
 #-------------------------------------------------------------------------------

@@ -33,10 +33,10 @@ func physics_update(_delta : float):
 	elif !input.direction:
 		transition.emit("IdlePlayerState")
 	# Transition to Walk state
-	elif input.is_sprint_just_released:
+	elif !input.is_sprint_pressed: #input.is_sprint_just_released
 		transition.emit("WalkPlayerState")
 	# Handle crouch
-	if input.is_crouch_pressed:
+	elif input.is_crouch_pressed:
 		# Transition to Slide state
 		if input.is_move_forwards_pressed and player.velocity.length() > 6.0:
 			transition.emit("SlidePlayerState")

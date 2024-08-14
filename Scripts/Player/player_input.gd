@@ -11,6 +11,8 @@ var can_move : bool = true
 var can_shoot : bool = true
 var can_look : bool = true
 
+var do_auto_sprint : bool = true
+
 # Input buffer variables
 @export_group("Input Buffer Variables")
 @export var jump_buffer : Timer
@@ -68,7 +70,8 @@ var is_jump_just_released : bool:
 var is_sprint_pressed : bool:
 	get:
 		if not is_server and can_move:
-			return Input.is_action_pressed("sprint")
+			if do_auto_sprint: return !Input.is_action_pressed("sprint")
+			else: return Input.is_action_pressed("sprint")
 		return false
 
 var is_sprint_just_released : bool:
@@ -166,6 +169,9 @@ func on_closed_settings_menu() -> void:
 	can_move = true
 	can_shoot = true
 	can_look = true
+
+func set_auto_sprint(_do_auto_sprint: bool) -> void:
+	do_auto_sprint = _do_auto_sprint
 
 # --------------------------------BUFFERS------------------------------------- #
 #var is_jump_buffered : bool = false:

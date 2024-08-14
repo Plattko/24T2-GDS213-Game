@@ -29,7 +29,7 @@ text = "Sensitivity"
 layout_mode = 2
 
 [node name="HSlider" type="HSlider" parent="HBoxContainer"]
-custom_minimum_size = Vector2(200, 32)
+custom_minimum_size = Vector2(260, 32)
 layout_mode = 2
 size_flags_vertical = 1
 min_value = 1.0
