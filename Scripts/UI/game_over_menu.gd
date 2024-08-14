@@ -70,7 +70,7 @@ func update_back_to_lobby_count(player_id: int, is_toggled: bool) -> void:
 # Returning to Main Menu
 #-------------------------------------------------------------------------------
 func on_main_menu_button_pressed() -> void:
-	get_tree().quit()
+	multiplayer.multiplayer_peer.close()
 
 #-------------------------------------------------------------------------------
 # Removing Players

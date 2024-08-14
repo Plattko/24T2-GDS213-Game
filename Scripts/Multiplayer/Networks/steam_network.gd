@@ -17,6 +17,7 @@ func _ready() -> void:
 	multiplayer.peer_disconnected.connect(on_peer_disconnected)
 	multiplayer.connected_to_server.connect(on_connected_to_server)
 	multiplayer.connection_failed.connect(on_connection_failed)
+	multiplayer.server_disconnected.connect(on_server_disconnected)
 
 #-------------------------------------------------------------------------------
 # Hosting
@@ -148,3 +149,6 @@ func on_connected_to_server() -> void:
 
 func on_connection_failed() -> void: 
 	multiplayer_connection_menu.on_connection_failed()
+
+func on_server_disconnected() -> void:
+	multiplayer_connection_menu.on_server_disconnected()

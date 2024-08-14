@@ -22,6 +22,7 @@ func _ready() -> void:
 	handle_connected_signals()
 	use_steam_button.hide()
 	use_lan_button.hide()
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 func on_play_button_pressed() -> void:
 	use_steam_button.show() if !use_steam_button.is_visible_in_tree() else use_steam_button.hide()

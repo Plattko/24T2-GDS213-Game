@@ -1,8 +1,8 @@
 class_name MultiplayerConnectionMenu
 extends Control
 
-#var multiplayer_level := load("res://Scenes/Levels/Testing/steam_multiplayer_testing.tscn")
-var multiplayer_level := load("res://Scenes/Levels/playtest_level_wk10.tscn")
+var multiplayer_level := load("res://Scenes/Levels/Testing/steam_multiplayer_testing.tscn")
+#var multiplayer_level := load("res://Scenes/Levels/playtest_level_wk10.tscn")
 
 @export_group("Network Management")
 @export var network_manager : NetworkManager
@@ -163,3 +163,8 @@ func on_connected_to_server(username: String) -> void:
 
 func on_connection_failed() -> void: 
 	print("Connection failed.")
+
+func on_server_disconnected() -> void:
+	print("Disconnected from server.")
+	multiplayer.multiplayer_peer = OfflineMultiplayerPeer.new()
+	get_tree().change_scene_to_packed(GameManager.main_menu)
