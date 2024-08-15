@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://il6q27w1jqvw"]
+[gd_scene load_steps=57 format=3 uid="uid://il6q27w1jqvw"]
 
 [ext_resource type="Script" path="res://Scripts/Multiplayer/multiplayer_player.gd" id="1_mtm2n"]
 [ext_resource type="Script" path="res://Scripts/Player/player_input.gd" id="2_7s41b"]
@@ -56,6 +56,9 @@ properties/6/replication_mode = 1
 properties/7/path = NodePath(".:visible")
 properties/7/spawn = true
 properties/7/replication_mode = 1
+properties/8/path = NodePath("Nametag/SubViewport/Username:text")
+properties/8/spawn = true
+properties/8/replication_mode = 1
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l214m"]
 resource_local_to_scene = true
@@ -72,6 +75,9 @@ material = SubResource("StandardMaterial3D_fvek4")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jyr28"]
 size = Vector3(0.1, 0.2, 0.5)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ihvr8"]
+viewport_path = NodePath("Nametag/SubViewport")
 
 [sub_resource type="Animation" id="Animation_twumr"]
 resource_name = "Crouch"
@@ -893,7 +899,7 @@ content_margin_right = 10.0
 content_margin_bottom = 0.0
 bg_color = Color(0.180666, 0.00854189, 0.00851971, 1)
 
-[node name="MulitplayerPlayer" type="CharacterBody3D" node_paths=PackedStringArray("input", "mesh", "head", "camera", "anim_player", "ceiling_check", "player_audio", "hud", "weapon_holder", "death_timer", "respawn_timer", "interact_raycast", "revive_other_timer") groups=["players"]]
+[node name="MulitplayerPlayer" type="CharacterBody3D" node_paths=PackedStringArray("input", "mesh", "head", "camera", "anim_player", "ceiling_check", "player_audio", "hud", "weapon_holder", "death_timer", "respawn_timer", "interact_raycast", "revive_other_timer", "nametag", "username_label") groups=["players"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 collision_layer = 2
 collision_mask = 5
@@ -912,6 +918,8 @@ death_timer = NodePath("DeathTimer")
 respawn_timer = NodePath("RespawnTimer")
 interact_raycast = NodePath("Head/Camera3D/InteractRaycast")
 revive_other_timer = NodePath("ReviveOtherTimer")
+nametag = NodePath("Nametag")
+username_label = NodePath("Nametag/SubViewport/Username")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_vurwv")
@@ -1002,6 +1010,34 @@ collision_mask = 7
 
 [node name="ShakeableArea" parent="Head/Camera3D" instance=ExtResource("10_6qwol")]
 noise_speed = 150.0
+
+[node name="Nametag" type="Node3D" parent="."]
+
+[node name="SubViewport" type="SubViewport" parent="Nametag"]
+disable_3d = true
+transparent_bg = true
+size = Vector2i(1024, 512)
+
+[node name="Username" type="Label" parent="Nametag/SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.0588235, 0.870588, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.352941)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_outline_size = 10
+theme_override_font_sizes/font_size = 128
+text = "Username"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UsernameSprite" type="Sprite3D" parent="Nametag"]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 1.25, 0)
+billboard = 1
+texture = SubResource("ViewportTexture_ihvr8")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

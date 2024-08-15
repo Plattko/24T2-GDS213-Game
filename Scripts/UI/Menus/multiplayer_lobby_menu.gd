@@ -66,6 +66,7 @@ func add_player(player_id: int, username: String) -> void:
 	player_displays_vbox.add_child(player_display, true)
 	# Add the player to the dictionary
 	players[player_id] = { 
+			"username" : username,
 			"player_display" : player_display,
 			"ready_status" : false,
 			"primary_weapon" : "",

@@ -87,6 +87,10 @@ var is_vaporised : bool = false
 var revive_target : MultiplayerPlayer
 var revive_target_id : int
 
+@export_group("Username Display")
+@export var nametag : Node3D
+@export var username_label : Label
+
 var primary_weapon : String
 var secondary_weapon : String
 
@@ -121,6 +125,11 @@ func _ready() -> void:
 	#print(shotgun)
 	#if shotgun: shotgun.player = self
 	hud.init(death_timer, respawn_timer, revive_other_timer)
+	# Set the username label's text to the player's username
+	var lobby = get_tree().get_first_node_in_group("lobby") as MultiplayerLobbyMenu
+	username_label.text = lobby.players[multiplayer.get_unique_id()].username
+	# Hide the client's own nametag
+	nametag.hide()
 	
 	handle_connected_signals()
 	
