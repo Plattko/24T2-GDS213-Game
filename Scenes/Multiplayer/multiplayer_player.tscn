@@ -74,7 +74,7 @@ material = SubResource("StandardMaterial3D_fvek4")
 [sub_resource type="SphereShape3D" id="SphereShape3D_3r45p"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jyr28"]
-size = Vector3(0.1, 0.2, 0.5)
+size = Vector3(0.1, 0.4, 0.5)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_ihvr8"]
 viewport_path = NodePath("Nametag/SubViewport")
@@ -958,7 +958,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65, 0)
 target_position = Vector3(0, 0, -1)
 
 [node name="WallCheck" type="ShapeCast3D" parent="LedgeCheck"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, -0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, -0.5)
 shape = SubResource("BoxShape3D_jyr28")
 target_position = Vector3(0, 0, 0)
 

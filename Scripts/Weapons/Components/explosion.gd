@@ -4,7 +4,7 @@ extends Node3D
 var rocket_launcher : RocketLauncher
 
 @export var explosion_damage : float = 75.0
-var self_damage : float = explosion_damage * 0.45
+var self_damage : float = explosion_damage * 0.25
 var knockback_strength : float = 12.0
 var is_direct_hit : bool = false
 

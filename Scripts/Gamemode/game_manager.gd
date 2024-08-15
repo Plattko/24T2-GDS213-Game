@@ -4,7 +4,11 @@ var main_menu := load("res://Scenes/UI/Menus/main_menu.tscn")
 var is_using_steam : bool = false
 var is_exiting_to_desktop : bool = false
 
+var default_spray_image : Image = load("res://Assets/Textures/default_spray_texture.png")
 var spray_texture : ImageTexture
+
+func _ready() -> void:
+	spray_texture = ImageTexture.create_from_image(default_spray_image)
 
 func _input(event):
 	# Handle quit

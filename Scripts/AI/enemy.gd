@@ -93,6 +93,7 @@ func initialise(_players: Array[MultiplayerPlayer], nav_layer: int):
 
 func _physics_process(_delta):
 	if !multiplayer.is_server(): return
+	if !is_instance_valid(target_player): return
 	if target_player.is_downed or target_player.is_dead:
 		target_player = players.pick_random()
 	
