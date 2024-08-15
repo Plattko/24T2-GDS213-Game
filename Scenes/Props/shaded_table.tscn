@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://3gwmy22w3q6p"]
+[gd_scene load_steps=6 format=3 uid="uid://3gwmy22w3q6p"]
 
-[ext_resource type="Material" uid="uid://clau1arwwv1yw" path="res://Assets/Materials/Standard Materials/prototype_orange.tres" id="1_juwfs"]
+[ext_resource type="Material" uid="uid://d1251j4kqby6q" path="res://Assets/Materials/Standard Materials/MI_corrugated_metal_D_Inst.tres" id="2_17q7j"]
+[ext_resource type="Material" uid="uid://b634ek855ftyf" path="res://Assets/Materials/Standard Materials/MI_wooden_floor_WPO_Inst_SM_brick_building_13.tres" id="2_gt0w8"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_nweex"]
 height = 0.85
@@ -19,95 +20,95 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25, 0)
 radius = 0.1
 height = 4.5
 sides = 24
-material = ExtResource("1_juwfs")
+material = ExtResource("2_gt0w8")
 
 [node name="Table" type="CSGCylinder3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 radius = 2.0
 height = 0.15
 sides = 24
-material = ExtResource("1_juwfs")
+material = ExtResource("2_gt0w8")
 
 [node name="Seats" type="CSGCylinder3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
 radius = 2.75
 height = 0.15
 sides = 24
-material = ExtResource("1_juwfs")
+material = ExtResource("2_gt0w8")
 
 [node name="CSGCylinder3D4" type="CSGCylinder3D" parent="Seats"]
 operation = 2
 radius = 2.15
 height = 0.15
 sides = 24
-material = ExtResource("1_juwfs")
+material = ExtResource("2_gt0w8")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Seats"]
 operation = 2
 size = Vector3(0.75, 0.15, 6)
-material = ExtResource("1_juwfs")
+material = ExtResource("2_gt0w8")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="Seats"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 operation = 2
 size = Vector3(0.75, 0.15, 6)
-material = ExtResource("1_juwfs")
+material = ExtResource("2_gt0w8")
 
 [node name="Leg" type="CSGCylinder3D" parent="Seats"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.25, -0.4, 1)
 radius = 0.1
 height = 0.75
 sides = 16
-material = ExtResource("1_juwfs")
+material = ExtResource("2_gt0w8")
 
 [node name="Leg2" type="CSGCylinder3D" parent="Seats"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.25, -0.4, -0.999998)
 radius = 0.1
 height = 0.75
 sides = 16
-material = ExtResource("1_juwfs")
+material = ExtResource("2_gt0w8")
 
 [node name="Leg3" type="CSGCylinder3D" parent="Seats"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.25, -0.4, -1)
 radius = 0.1
 height = 0.75
 sides = 16
-material = ExtResource("1_juwfs")
+material = ExtResource("2_gt0w8")
 
 [node name="Leg4" type="CSGCylinder3D" parent="Seats"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.25, -0.4, 1)
 radius = 0.1
 height = 0.75
 sides = 16
-material = ExtResource("1_juwfs")
+material = ExtResource("2_gt0w8")
 
 [node name="Leg5" type="CSGCylinder3D" parent="Seats"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.999992, -0.4, -2.25)
 radius = 0.1
 height = 0.75
 sides = 16
-material = ExtResource("1_juwfs")
+material = ExtResource("2_gt0w8")
 
 [node name="Leg6" type="CSGCylinder3D" parent="Seats"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.4, -2.25)
 radius = 0.1
 height = 0.75
 sides = 16
-material = ExtResource("1_juwfs")
+material = ExtResource("2_gt0w8")
 
 [node name="Leg7" type="CSGCylinder3D" parent="Seats"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.4, 2.25)
 radius = 0.1
 height = 0.75
 sides = 16
-material = ExtResource("1_juwfs")
+material = ExtResource("2_gt0w8")
 
 [node name="Leg8" type="CSGCylinder3D" parent="Seats"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.4, 2.25)
 radius = 0.1
 height = 0.75
 sides = 16
-material = ExtResource("1_juwfs")
+material = ExtResource("2_gt0w8")
 
 [node name="Collision" type="StaticBody3D" parent="."]
 
@@ -120,7 +121,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.6, 0)
 shape = SubResource("CylinderShape3D_hsksp")
 
 [node name="PoleCylinder" type="CollisionShape3D" parent="Collision"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("CylinderShape3D_wu55y")
 
 [node name="Umbrella" type="CSGCylinder3D" parent="Collision"]
@@ -130,4 +130,4 @@ radius = 3.0
 height = 1.0
 sides = 24
 cone = true
-material = ExtResource("1_juwfs")
+material = ExtResource("2_17q7j")

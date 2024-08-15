@@ -1360,6 +1360,12 @@ operation = 2
 size = Vector3(5.99568, 0.901465, 6.19061)
 material = ExtResource("12_wl4ye")
 
+[node name="CSGBox3D20" type="CSGBox3D" parent="."]
+transform = Transform3D(0.865912, -0.500197, 0, 0.500197, 0.865912, 0, 0, 0, 1, -18.9158, 1.50549, -12.4265)
+use_collision = true
+size = Vector3(0.405564, 0.1, 1.95175)
+material = ExtResource("12_wl4ye")
+
 [node name="CSGBox3D11" type="CSGBox3D" parent="."]
 transform = Transform3D(0.974851, -0.222859, 0, 0.222859, 0.974851, 0, 0, 0, 1, -23.8524, 0.647659, 0.425659)
 use_collision = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://d2x6finf6hnf4"]
+[gd_scene load_steps=31 format=3 uid="uid://d2x6finf6hnf4"]
 
 [ext_resource type="Script" path="res://Scripts/Weapons/pistol.gd" id="1_c6rr1"]
 [ext_resource type="Material" uid="uid://4t0aqxchgkfa" path="res://Assets/Materials/Shader Materials/weapon_shader.tres" id="2_xp67d"]
@@ -380,6 +380,7 @@ _data = {
 }
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_g1tc0"]
+random_pitch = 1.1
 streams_count = 5
 stream_0/stream = ExtResource("5_6g1v5")
 stream_0/weight = 1.0
@@ -476,6 +477,5 @@ libraries = {
 
 [node name="GunshotsPlayer" type="AudioStreamPlayer3D" parent="Audio"]
 stream = SubResource("AudioStreamRandomizer_g1tc0")
-pitch_scale = 2.0
 max_distance = 65.0
 bus = &"Firearms"

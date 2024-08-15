@@ -1,7 +1,7 @@
 class_name MultiplayerManager
 extends Node
 
-var multiplayer_scene = load("res://Scenes/Levels/Testing/steam_multiplayer_testing.tscn")
+var multiplayer_scene = load("res://Scenes/Levels/playtest_level_wk10.tscn")
 
 @export var network_manager : NetworkManager
 @export var cur_player_count := 0

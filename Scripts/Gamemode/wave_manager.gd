@@ -39,6 +39,7 @@ var cur_change_chance : float = 0.0
 var change_chance_increase : float = 0.2
 var zone_change_duration : float = 30.0
 var do_zone_change : bool = false
+@export var zone_swap_music_player : AudioStreamPlayer
 
 @export_group("Player Variables")
 @export var alive_player_count : int = 1:
@@ -201,6 +202,7 @@ func start_zone_change() -> void:
 	emit_zone_change_entered.rpc()
 	# Play zone gate open animation
 	zone_gate.anim_player.play("Open")
+	zone_swap_music_player.play()
 
 func _on_zone_gate_anim_finished(anim_name: StringName) -> void:
 	if anim_name == "Open":
@@ -211,6 +213,9 @@ func _on_zone_gate_anim_finished(anim_name: StringName) -> void:
 		print("ZONE GATE CLOSED")
 		# Stop the endless wave
 		endless_wave_timer.stop()
+		
+		var tween = get_tree().create_tween()
+		tween.tween_property(zone_swap_music_player, "Volume dB", 0, 1)
 		
 		# TODO: Play screen shake
 		

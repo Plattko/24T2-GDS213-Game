@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://clrw4qlh8lf4i"]
+
+[ext_resource type="Texture2D" uid="uid://c6xrp08o11pgx" path="res://Assets/Imports/Stylized cars/Buses/Materials/textures/Bus-v2_BaseColor.png" id="1_ike56"]
+
+[resource]
+resource_name = "Bus"
+cull_mode = 2
+albedo_texture = ExtResource("1_ike56")
+roughness = 0.5

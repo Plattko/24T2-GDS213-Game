@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://darnihahuhvam"]
+
+[ext_resource type="Texture2D" uid="uid://cw2a5s1bg6fq" path="res://Assets/Imports/Stylized cars/Cars/Materials/textures/Car-5-v6_BaseColor.png" id="1_kdx5m"]
+
+[resource]
+resource_name = "Car-5"
+cull_mode = 2
+albedo_texture = ExtResource("1_kdx5m")
+roughness = 0.5

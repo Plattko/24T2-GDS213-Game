@@ -1,10 +1,13 @@
-[gd_scene load_steps=21 format=3 uid="uid://cj7xkscmie81y"]
+[gd_scene load_steps=25 format=3 uid="uid://cj7xkscmie81y"]
 
 [ext_resource type="Script" path="res://Scripts/Weapons/shotgun.gd" id="1_5vdia"]
 [ext_resource type="Material" uid="uid://4t0aqxchgkfa" path="res://Assets/Materials/Shader Materials/weapon_shader.tres" id="2_b3qqb"]
 [ext_resource type="Script" path="res://Scripts/Weapons/Components/muzzle_flash.gd" id="3_iw2pk"]
 [ext_resource type="Material" uid="uid://un70lvxarnb0" path="res://Assets/Materials/Shader Materials/muzzle_flash_shader.tres" id="4_gn0ue"]
-[ext_resource type="AudioStream" uid="uid://co3ltpkj4wdkb" path="res://Assets/Audio/Guns/Shotgun/Gunshots/shotgun_blast.wav" id="5_35bs7"]
+[ext_resource type="AudioStream" uid="uid://c53pev585cg6j" path="res://Assets/Audio/Guns/Shotgun/Gunshots/shotgun-old_school.wav" id="5_g4nl8"]
+[ext_resource type="AudioStream" uid="uid://4cc6lix0jvgq" path="res://Assets/Audio/Guns/Shotgun/Foley/12ga Pump Shotgun - Pump 001.wav" id="6_emrjc"]
+[ext_resource type="AudioStream" uid="uid://imoi1qweaqvd" path="res://Assets/Audio/Guns/Shotgun/Foley/12ga Pump Shotgun - Pump 002.wav" id="7_corvh"]
+[ext_resource type="AudioStream" uid="uid://8jhiqkwncxam" path="res://Assets/Audio/Guns/Shotgun/Foley/12ga Pump Shotgun - Pump 003.wav" id="8_oh36e"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_8cnap"]
 properties/0/path = NodePath("Model/Body:visible")
@@ -294,6 +297,20 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector3(0.633, 0, 0), Vector3(0.633, 0, 0), Vector3(0.462072, 0, 0), Vector3(0.462072, 0, 0), Vector3(0.633, 0, 0)]
 }
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.28),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"pump_sound"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vlmsi"]
 _data = {
@@ -303,10 +320,26 @@ _data = {
 "Shoot": SubResource("Animation_m1qid")
 }
 
-[node name="Shotgun" type="Node3D" node_paths=PackedStringArray("shotgun_gunshots_sfx", "mesh", "muzzle_flash", "anim_player")]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_86loa"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("5_g4nl8")
+stream_0/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_i5h1l"]
+streams_count = 3
+stream_0/stream = ExtResource("6_emrjc")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("7_corvh")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("8_oh36e")
+stream_2/weight = 1.0
+
+[node name="Shotgun" type="Node3D" node_paths=PackedStringArray("shotgun_gunshots_sfx", "shotgun_pump_sfx", "mesh", "muzzle_flash", "anim_player")]
 script = ExtResource("1_5vdia")
 bullet_count = 18
 shotgun_gunshots_sfx = NodePath("Audio/GunshotsPlayer")
+shotgun_pump_sfx = NodePath("Audio/PumpActionAudio")
 mesh = NodePath("Model/Body")
 muzzle_flash = NodePath("Barrel/MuzzleFlash")
 anim_player = NodePath("AnimationPlayer")
@@ -370,7 +403,10 @@ libraries = {
 [node name="Audio" type="Node3D" parent="."]
 
 [node name="GunshotsPlayer" type="AudioStreamPlayer3D" parent="Audio"]
-stream = ExtResource("5_35bs7")
-volume_db = -20.0
+stream = SubResource("AudioStreamRandomizer_86loa")
 max_distance = 50.0
 bus = &"Firearms"
+
+[node name="PumpActionAudio" type="AudioStreamPlayer3D" parent="Audio"]
+stream = SubResource("AudioStreamRandomizer_i5h1l")
+bus = &"Weapon foley"

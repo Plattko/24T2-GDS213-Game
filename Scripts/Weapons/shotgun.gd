@@ -6,6 +6,7 @@ extends Weapon
 @export var bullet_spread : int = 70
 
 @export var shotgun_gunshots_sfx : AudioStreamPlayer3D
+@export var shotgun_pump_sfx : AudioStreamPlayer3D
 
 var player : MultiplayerPlayer
 var knockback := 0.5
@@ -39,6 +40,9 @@ func shoot() -> void:
 		var result = space_state.intersect_ray(query)
 		if result: raycast_hit(result)
 		else: print("Hit nothing.")
+		
+func pump_sound():
+	shotgun_pump_sfx.play()
 		
 		## Apply knockback when in air
 		#var player_state : PlayerState = player.state_machine.current_state

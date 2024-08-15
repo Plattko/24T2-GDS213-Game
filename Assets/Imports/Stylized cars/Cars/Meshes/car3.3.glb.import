@@ -1,0 +1,71 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://ox3f0xypc6iy"
+path="res://.godot/imported/car3.3.glb-e999ad1c86b534205de096e97cc7ef2b.scn"
+
+[deps]
+
+source_file="res://Assets/Imports/Stylized cars/Cars/Meshes/car3.3.glb"
+dest_files=["res://.godot/imported/car3.3.glb-e999ad1c86b534205de096e97cc7ef2b.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+import_script/path=""
+_subresources={
+"materials": {
+"Car-3": {
+"use_external/enabled": true,
+"use_external/path": "res://Assets/Imports/Stylized cars/Cars/Materials/Car-3.3.tres"
+}
+},
+"nodes": {
+"PATH:Car-3": {
+"generate/physics": true,
+"physics/shape_type": 2,
+"primitive/size": Vector3(4, 2, 2)
+},
+"PATH:Car-3/Car-3-W-B": {
+"generate/physics": true,
+"physics/shape_type": 5,
+"primitive/height": 1.9,
+"primitive/radius": 0.35,
+"primitive/rotation": Vector3(0, 0, 90),
+"primitive/size": Vector3(1.9, 0.6, 0.6)
+},
+"PATH:Car-3/Car-3-W-F-L": {
+"generate/physics": true,
+"physics/shape_type": 5,
+"primitive/height": 0.3,
+"primitive/position": Vector3(-0.1, 0, 0),
+"primitive/radius": 0.4,
+"primitive/rotation": Vector3(0, 0, 90)
+},
+"PATH:Car-3/Car-3-W-F-R": {
+"generate/physics": true,
+"physics/shape_type": 5,
+"primitive/height": 0.3,
+"primitive/radius": 0.4,
+"primitive/rotation": Vector3(0, 0, 90)
+}
+}
+}
+gltf/naming_version=1
+gltf/embedded_image_handling=1
