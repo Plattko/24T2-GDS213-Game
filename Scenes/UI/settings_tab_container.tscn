@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://blnme4tmx8d71"]
+[gd_scene load_steps=10 format=3 uid="uid://blnme4tmx8d71"]
 
 [ext_resource type="PackedScene" uid="uid://pxpx3vsci2vw" path="res://Scenes/UI/sensitivity_slider_setting.tscn" id="1_6q1y2"]
 [ext_resource type="PackedScene" uid="uid://kyfjr3wg1jsl" path="res://Scenes/UI/auto_sprint_setting.tscn" id="2_4ap87"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://2pq1le51ovfi" path="res://Scenes/UI/do_side_tilt_setting.tscn" id="3_i0c25"]
 [ext_resource type="PackedScene" uid="uid://dvkkexoj26opl" path="res://Scenes/UI/input_rebind_button.tscn" id="4_cpn4g"]
 [ext_resource type="Script" path="res://Scripts/UI/input_interceptor.gd" id="5_xoub4"]
+[ext_resource type="PackedScene" uid="uid://b26ujfhc2qw7i" path="res://Scenes/UI/spray_texture_setting.tscn" id="6_j2ivw"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sr1v8"]
 
@@ -66,6 +67,9 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="ReloadTypeSetting" parent="TabContainer/Gameplay/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_cri75")]
+layout_mode = 2
+
+[node name="SprayTextureSetting" parent="TabContainer/Gameplay/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("6_j2ivw")]
 layout_mode = 2
 
 [node name="Video" type="TabBar" parent="TabContainer"]

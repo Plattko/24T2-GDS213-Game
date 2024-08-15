@@ -91,6 +91,13 @@ var revive_target_id : int
 @export var nametag : Node3D
 @export var username_label : Label
 
+@export_group("Spray")
+var spray_scene = load("res://Scenes/spray_decal.tscn")
+var spray : Decal
+var spray_cooldown : Timer
+var spray_range : int = 3
+const SPRAY_COLLISION_MASK : int = roundi(pow(2, 1-1))
+
 var primary_weapon : String
 var secondary_weapon : String
 
@@ -147,6 +154,9 @@ func _input(event) -> void:
 	
 	if input.is_interact_just_released and revive_target:
 		stop_revive()
+	
+	if input.is_spray_just_pressed:
+		do_spray()
 
 func _unhandled_input(event) -> void:
 	if not is_multiplayer_authority(): return
@@ -471,6 +481,58 @@ func _on_revive_other_timer_timeout() -> void:
 	print("Revived player: " + str(revive_target_id))
 	# Revive the target player
 	revive_target.revive_player.rpc_id(revive_target_id)
+
+func do_spray() -> void:
+	# Shoot a raycast in front of the player
+	var space_state = camera.get_world_3d().direct_space_state
+	var screen_centre = get_viewport().get_size() / 2
+	var ray_origin = camera.project_ray_origin(screen_centre)
+	var ray_end = ray_origin + camera.project_ray_normal(screen_centre) * spray_range
+	var query = PhysicsRayQueryParameters3D.create(ray_origin, ray_end, SPRAY_COLLISION_MASK)
+	# Get the raycast result
+	var result = space_state.intersect_ray(query)
+	
+	if result:
+		if !spray:
+			spray = spray_scene.instantiate()
+			# Make it a child of the level scene
+			var level = get_tree().get_first_node_in_group("level")
+			level.add_child(spray)
+			# Get a reference to the spray cooldown
+			spray_cooldown = spray.get_child(0)
+		
+		if spray_cooldown.is_stopped():
+			# Set the spray's texture to the Game Manager's set spray texture
+			spray.texture_albedo = GameManager.spray_texture
+			# Resize it to match the texture's aspect ratio
+			var aspect_ratio = float(spray.texture_albedo.get_height()) / float(spray.texture_albedo.get_width())
+			var spray_width = clampf(spray.texture_albedo.get_width() * 0.001, 1.0, 2.0)
+			var spray_height = spray_width * aspect_ratio
+			spray.size = Vector3(spray_width, spray.size.y, spray_height)
+			# Get the surface's position
+			var _position = result.get("position")
+			# Get the surface's normal
+			var _normal = result.get("normal")
+			# Set the spray's position
+			spray.global_position = _position
+			# Reset the spray's rotation
+			spray.rotation_degrees = Vector3.ZERO
+			# Reset the spray's scale
+			spray.scale = Vector3.ONE
+			
+			if abs(_normal.y) < 0.99:
+				# look in the direction of the normal
+				spray.look_at(_position + _normal, Vector3.UP)
+				# then look "up" from there so the decal projects "down"
+				spray.transform = spray.transform.rotated_local(Vector3.RIGHT, PI/2.0)
+				# Flip the spray so that it's the same as the ground
+				spray.scale.x *= -1
+			else:
+				# Rotate the spray in the direction the player is facing
+				spray.rotate(_normal, deg_to_rad(rotation_degrees.y))
+			
+			# Start the spray cooldown timer
+			spray_cooldown.start()
 
 #-------------------------------------------------------------------------------
 # Initialisation

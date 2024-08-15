@@ -97,11 +97,11 @@ func vaporise_enemies() -> void:
 		print("Enemy vaporised.")
 	# Update the active nav mesh
 	if cur_zone == 1:
-		zone_nav_regions[0].enabled = false
-		zone_nav_regions[1].enabled = true
-	elif cur_zone == 2:
 		zone_nav_regions[1].enabled = false
 		zone_nav_regions[0].enabled = true
+	elif cur_zone == 2:
+		zone_nav_regions[0].enabled = false
+		zone_nav_regions[1].enabled = true
 
 func update_zone() -> void:
 	if cur_zone == 1:

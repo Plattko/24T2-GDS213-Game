@@ -1,0 +1,14 @@
+[remap]
+
+importer="image"
+type="Image"
+uid="uid://rcosm2jtg1gq"
+path="res://.godot/imported/default_spray_texture.png-a2fca9d40bcff20d410c6cbfd0efbf69.image"
+
+[deps]
+
+source_file="res://Assets/Textures/default_spray_texture.png"
+dest_files=["res://.godot/imported/default_spray_texture.png-a2fca9d40bcff20d410c6cbfd0efbf69.image"]
+
+[params]
+

@@ -4,6 +4,8 @@ var main_menu := load("res://Scenes/UI/Menus/main_menu.tscn")
 var is_using_steam : bool = false
 var is_exiting_to_desktop : bool = false
 
+var spray_texture : ImageTexture
+
 func _input(event):
 	# Handle quit
 	if event.is_action_pressed("quit"):

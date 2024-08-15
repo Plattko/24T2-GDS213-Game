@@ -157,6 +157,12 @@ var is_interact_just_released : bool:
 			return Input.is_action_just_released("interact")
 		return false
 
+var is_spray_just_pressed : bool:
+	get:
+		if not is_server and can_shoot:
+			return Input.is_action_just_pressed("spray")
+		return false
+
 # --------------------------------TOGGLES------------------------------------ #
 func on_escape_menu_opened() -> void:
 	print("Disabled input.")
