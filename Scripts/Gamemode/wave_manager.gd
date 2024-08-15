@@ -214,8 +214,7 @@ func _on_zone_gate_anim_finished(anim_name: StringName) -> void:
 		# Stop the endless wave
 		endless_wave_timer.stop()
 		
-		var tween = get_tree().create_tween()
-		tween.tween_property(zone_swap_music_player, "Volume dB", 0, 1)
+		fade_out_zone_change_music.rpc()
 		
 		# TODO: Play screen shake
 		
@@ -258,6 +257,7 @@ func emit_intermission_entered() -> void:
 func emit_zone_change_entered() -> void:
 	zone_change_timer.start()
 	zone_change_entered.emit()
+	zone_swap_music_player.play()
 
 @rpc("any_peer", "call_local")
 func on_player_died() -> void:
@@ -266,6 +266,11 @@ func on_player_died() -> void:
 @rpc("any_peer", "call_local")
 func on_player_respawned() -> void:
 	alive_player_count += 1
+
+@rpc("any_peer", "call_local")
+func fade_out_zone_change_music() -> void:
+	var tween = get_tree().create_tween()
+	tween.tween_property(zone_swap_music_player, "Volume dB", 0, 1)
 
 func update_robots_killed() -> void:
 	robots_killed += 1
