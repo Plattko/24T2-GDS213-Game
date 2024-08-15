@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://u63y8f7vegjg"]
+
+[ext_resource type="Script" path="res://Scripts/UI/Menus/Components/weapon_select_button.gd" id="1_fapbf"]
+
+[node name="WeaponSelectButton" type="Button" node_paths=PackedStringArray("button")]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 1
+theme_override_font_sizes/font_size = 24
+text = "Weapon"
+script = ExtResource("1_fapbf")
+button = NodePath(".")

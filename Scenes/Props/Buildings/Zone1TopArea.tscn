@@ -51,7 +51,7 @@
 [ext_resource type="Material" uid="uid://b5y2c7coteo7i" path="res://Assets/Materials/Standard Materials/MI_coal_A_Inst.tres" id="49_mnrm7"]
 [ext_resource type="Material" uid="uid://bcvlthd7axaoh" path="res://Assets/Materials/Standard Materials/MI_sheet_metal_A_Inst.tres" id="50_8cexd"]
 [ext_resource type="PackedScene" uid="uid://eck8i1mdaecj" path="res://Scenes/Props/Vehicles/truck.tscn" id="51_hogfl"]
-[ext_resource type="PackedScene" uid="uid://b37bttipab74m" path="res://Scenes/Props/ShadedTable.tscn" id="52_vsqy2"]
+[ext_resource type="PackedScene" uid="uid://3gwmy22w3q6p" path="res://Scenes/Props/shaded_table.tscn" id="52_rmlo2"]
 [ext_resource type="Material" uid="uid://b634ek855ftyf" path="res://Assets/Materials/Standard Materials/MI_wooden_floor_WPO_Inst_SM_brick_building_13.tres" id="53_yvnd8"]
 [ext_resource type="Material" uid="uid://bjxarslk0yhes" path="res://Assets/Materials/Standard Materials/MI_grass_Inst.tres" id="55_clud8"]
 [ext_resource type="Material" uid="uid://xutx28obj88x" path="res://Assets/Materials/Standard Materials/MI_rock_wall.tres" id="56_uprkl"]
@@ -1463,11 +1463,11 @@ use_collision = true
 size = Vector3(5.548, 1.95613, 10.2483)
 material = ExtResource("50_8cexd")
 
-[node name="CSGMesh3D" parent="Node3D" instance=ExtResource("52_vsqy2")]
-transform = Transform3D(-1, 0, 0.000157132, 0, 1, 0, -0.000157132, 0, -1, -0.959214, 9.25105, -28.3853)
+[node name="ShadedTable" parent="Node3D" instance=ExtResource("52_rmlo2")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -0.959214, 9.25105, -28.3853)
 
-[node name="CSGMesh3D2" parent="Node3D" instance=ExtResource("52_vsqy2")]
-transform = Transform3D(-1, 0, 0.000157132, 0, 1, 0, -0.000157132, 0, -1, -7.02479, 9.25105, -23.9059)
+[node name="ShadedTable2" parent="Node3D" instance=ExtResource("52_rmlo2")]
+transform = Transform3D(0.104528, 0, -0.994522, 0, 1, 0, 0.994522, 0, 0.104528, -7.02479, 9.25105, -23.9059)
 
 [node name="CSGBox3D129" type="CSGBox3D" parent="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.9419, 7.06097, -55.2311)
@@ -1600,7 +1600,7 @@ use_collision = true
 size = Vector3(0.1, 10.3284, 2.5)
 material = ExtResource("50_8cexd")
 
-[node name="CSGBox3D118" type="CSGBox3D" parent="Node3D"]
+[node name="MetalFloor" type="CSGBox3D" parent="Node3D"]
 transform = Transform3D(-6.87034e-12, -0.000157176, 1, 1, -4.37114e-08, -1.18415e-16, 4.37114e-08, 1, 0.000157176, -53.6624, 10.198, -67.8196)
 use_collision = true
 size = Vector3(0.1, 4.45643, 4.58545)
@@ -1724,28 +1724,28 @@ transform = Transform3D(-4.3714e-08, 0, 1, 0, 1, 0, -1, 0, -4.3714e-08, 4.43842,
 size = Vector3(3.81961, 0.1, 0.1)
 material = ExtResource("45_536xn")
 
-[node name="CSGBox3D58" type="CSGBox3D" parent="Node3D"]
+[node name="GrassPatch" type="CSGBox3D" parent="Node3D"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.54182, 6.98895, -61.0959)
 use_collision = true
 size = Vector3(35.0981, 0.1, 25.0342)
 material = ExtResource("55_clud8")
 
-[node name="CSGBox3D65" type="CSGBox3D" parent="Node3D/CSGBox3D58"]
+[node name="CSGBox3D65" type="CSGBox3D" parent="Node3D/GrassPatch"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -5.22808, 0.0419154, 12.5123)
 size = Vector3(6.82611, 0.1, 0.1)
 material = ExtResource("45_536xn")
 
-[node name="CSGBox3D66" type="CSGBox3D" parent="Node3D/CSGBox3D58"]
+[node name="CSGBox3D66" type="CSGBox3D" parent="Node3D/GrassPatch"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 14.1842, 0.0419154, 12.5123)
 size = Vector3(6.74997, 0.1, 0.1)
 material = ExtResource("45_536xn")
 
-[node name="CSGBox3D67" type="CSGBox3D" parent="Node3D/CSGBox3D58"]
+[node name="CSGBox3D67" type="CSGBox3D" parent="Node3D/GrassPatch"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 17.5161, 0.0419154, 0.00116611)
 size = Vector3(25.1168, 0.1, 0.1)
 material = ExtResource("45_536xn")
 
-[node name="CSGBox3D68" type="CSGBox3D" parent="Node3D/CSGBox3D58"]
+[node name="CSGBox3D68" type="CSGBox3D" parent="Node3D/GrassPatch"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.3943, 0.0419154, -12.5095)
 size = Vector3(6.32967, 0.1, 0.1)
 material = ExtResource("45_536xn")
@@ -1772,8 +1772,8 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5.5214
 size = Vector3(19.0672, 0.1, 0.1)
 material = ExtResource("45_536xn")
 
-[node name="CSGBox3D67" type="CSGBox3D" parent="Node3D/CSGBox3D60"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.07426, 0.0273213, -9.49901)
+[node name="THE CULPRIT" type="CSGBox3D" parent="Node3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 38.4226, 7.7497, -45.6716)
 size = Vector3(4.98595, 0.1, 0.1)
 material = ExtResource("45_536xn")
 
@@ -1816,7 +1816,7 @@ use_collision = true
 size = Vector3(6.33636, 0.1, 19.8374)
 material = ExtResource("56_uprkl")
 
-[node name="CSGBox3D17" type="CSGBox3D" parent="Node3D"]
+[node name="MineFloor" type="CSGBox3D" parent="Node3D"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 13.2991, -0.609403, -32.6173)
 use_collision = true
 size = Vector3(13.8837, 0.1, 22.9026)
@@ -1852,7 +1852,7 @@ use_collision = true
 size = Vector3(0.2, 0.2, 4.50776)
 material = ExtResource("57_du0nl")
 
-[node name="CSGBox3D106" type="CSGBox3D" parent="Node3D"]
+[node name="Beam" type="CSGBox3D" parent="Node3D"]
 transform = Transform3D(1.31134e-07, -1, -4.37114e-08, -3.82137e-15, 4.37114e-08, -1, 1, 1.31134e-07, 1.91069e-15, 1.9989, 1.85369, -25.9966)
 use_collision = true
 size = Vector3(0.2, 0.2, 4.50776)

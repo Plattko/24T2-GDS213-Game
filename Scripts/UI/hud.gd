@@ -4,6 +4,8 @@ extends Control
 @export_group("Health and Weapons UI")
 @export var health_label : Label
 @export var cur_ammo_label : Label
+@export var equipped_weapon_label : Label
+@export var unequipped_weapon_label : Label
 @export var reticle : Reticle
 
 @export_group("Wave and Zone UI")
@@ -80,10 +82,32 @@ func _process(_delta) -> void:
 			interact_progress_bar.value = 0.0
 
 func on_update_health(health) -> void:
-	health_label.text = "Health: " + str(roundi(health[0])) + "/" + str(health[1])
+	health_label.text = "HP " + str(roundi(health[0])) + "/" + str(health[1])
 
 func on_update_ammo(ammo) -> void:
-	cur_ammo_label.set_text("Ammo: " + str(ammo[0]) + "/" + str(ammo[1]))
+	cur_ammo_label.set_text(str(ammo[0]) + "/" + str(ammo[1]))
+
+func on_update_weapon(cur_ammo: int, max_ammo: int, equipped_weapon: Weapon, unequipped_weapon: Weapon) -> void:
+	# Update the ammo text
+	on_update_ammo([cur_ammo, max_ammo])
+	# Update the equipped weapon text
+	equipped_weapon_label.text = get_weapon_text(equipped_weapon)
+	# Update the unequipped weapon text
+	unequipped_weapon_label.text = get_weapon_text(unequipped_weapon)
+
+func get_weapon_text(weapon: Weapon) -> String:
+	if weapon is Rifle:
+		return "Rifle"
+	elif weapon is Pistol:
+		return "Deagle"
+	elif weapon is Shotgun:
+		return "Shotgun"
+	elif weapon is RocketLauncher:
+		return "Rocket Launcher"
+	elif weapon is P90:
+		return "P90"
+	else:
+		return "Unassigned"
 
 func on_cur_wave_updated(wave: int) -> void:
 	cur_wave_label.text = "Wave " + str(wave)

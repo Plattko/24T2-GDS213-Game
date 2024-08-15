@@ -12,25 +12,42 @@ var max_weapon_index : int
 var weapon_index := 0
 
 var weapons : Array[Weapon]
+var primary_weapon : String
+var secondary_weapon : String
 
 enum Reload_Types { AUTO, ON_SHOOT, MANUAL, }
 @export var reload_type : Reload_Types
 
+signal update_weapon(cur_ammo: int, max_ammo: int, equipped_weapon: Weapon, unequipped_weapon: Weapon)
+
 func initialise(player_camera: Camera3D, player_input: PlayerInput, player_reticle: Reticle) -> void:
+	var lobby = get_tree().get_first_node_in_group("lobby") as MultiplayerLobbyMenu
+	primary_weapon = lobby.players[multiplayer.get_unique_id()].primary_weapon
+	secondary_weapon = lobby.players[multiplayer.get_unique_id()].secondary_weapon
+	
 	camera = player_camera
 	input = player_input
 	reticle = player_reticle
 	
 	for child in get_children():
 		if child is Weapon:
-			weapons.append(child)
-			child.mesh.visible = false
-			child.init(camera)
+			if child.name == primary_weapon:
+				move_child(child, 0)
+				weapons.push_front(child)
+				child.mesh.visible = false
+				child.init(camera)
+			elif child.name == secondary_weapon:
+				move_child(child, 1)
+				weapons.append(child)
+				child.mesh.visible = false
+				child.init(camera)
+			else:
+				child.mesh.visible = false
 	
 	max_weapon_index = weapons.size() - 1
 	current_weapon = weapons[0]
 	current_weapon.mesh.visible = true
-	current_weapon.update_ammo.emit([current_weapon.cur_ammo, current_weapon.MAX_AMMO])
+	update_weapon.emit(current_weapon.cur_ammo, current_weapon.MAX_AMMO, current_weapon, weapons[1])
 	reticle.update_reticle(current_weapon)
 
 func _physics_process(_delta):
@@ -64,10 +81,10 @@ func _physics_process(_delta):
 		if weapon_switch_cooldown.is_stopped():
 			change_weapon(1)
 	
-	if input.is_weapon_3_pressed:
-		#print("Pressed Weapon 3.")
-		if weapon_switch_cooldown.is_stopped():
-			change_weapon(2)
+	#if input.is_weapon_3_pressed:
+		##print("Pressed Weapon 3.")
+		#if weapon_switch_cooldown.is_stopped():
+			#change_weapon(2)
 	
 	if input.weapon_scroll_direction:
 		if weapon_switch_cooldown.is_stopped():
@@ -99,7 +116,7 @@ func change_weapon(index: int) -> void:
 		if reticle: call_update_reticle(next_weapon)
 		else: print("No reticle found.")
 		
-		next_weapon.update_ammo.emit([next_weapon.cur_ammo, next_weapon.MAX_AMMO])
+		update_weapon.emit(next_weapon.cur_ammo, next_weapon.MAX_AMMO, next_weapon, current_weapon)
 		#next_weapon.anim_player.play(next_weapon.EQUIP_ANIM)
 		next_weapon.play_anim.rpc(next_weapon.EQUIP_ANIM)
 		current_weapon = next_weapon
@@ -114,8 +131,8 @@ func reset_weapon() -> void:
 	# Reset all guns to max ammo
 	for weapon in weapons:
 		weapon.cur_ammo = weapon.MAX_AMMO
-	# Update the ammo UI
-	current_weapon.update_ammo.emit([current_weapon.cur_ammo, current_weapon.MAX_AMMO])
+	# Update the weapon UI
+	update_weapon.emit(current_weapon.cur_ammo, current_weapon.MAX_AMMO, current_weapon, weapons[1])
 	# Play the equip animation
 	current_weapon.play_anim.rpc(current_weapon.EQUIP_ANIM)
 

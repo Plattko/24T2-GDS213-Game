@@ -1,36 +1,38 @@
 extends Node
 
-var multiplayer_manager : MultiplayerManager
-
-var hosted_lobby_id : int = 0
-var lobby_name : String = "BWOB"
-
+#var multiplayer_manager : MultiplayerManager
+var multiplayer_connection_menu : MultiplayerConnectionMenu
 var multiplayer_peer : SteamMultiplayerPeer = SteamMultiplayerPeer.new()
+
+var hosted_lobby_id : int
+var name_filter : String = "BWOB"
+
+var lobby_name : String
+var is_private : bool
+var password : String
 
 func _ready() -> void:
 	# Connect lifecycle callbacks
-	Steam.lobby_created.connect(on_lobby_created)
 	multiplayer.peer_connected.connect(on_peer_connected)
 	multiplayer.peer_disconnected.connect(on_peer_disconnected)
 	multiplayer.connected_to_server.connect(on_connected_to_server)
 	multiplayer.connection_failed.connect(on_connection_failed)
+	multiplayer.server_disconnected.connect(on_server_disconnected)
 
 #-------------------------------------------------------------------------------
-# Buttons
+# Hosting
 #-------------------------------------------------------------------------------
-func become_host() -> void:
+func become_host(_lobby_name: String, _is_private: bool, _password: String) -> void:
 	print("Starting host.")
+	# Set variables
+	lobby_name = _lobby_name
+	is_private = _is_private
+	password = _password
 	# Handle connections
+	Steam.lobby_created.connect(on_lobby_created)
 	Steam.lobby_joined.connect(on_lobby_joined.bind())
 	# Create the lobby
-	Steam.createLobby(Steam.LOBBY_TYPE_PUBLIC, multiplayer_manager.max_players)
-
-func join_as_client(lobby_id: int) -> void:
-	print("Joining lobby " + str(lobby_id) + ".")
-	# Handle connections
-	Steam.lobby_joined.connect(on_lobby_joined.bind())
-	# Join the lobby
-	Steam.joinLobby(lobby_id)
+	Steam.createLobby(Steam.LOBBY_TYPE_PUBLIC, multiplayer_connection_menu.max_players)
 
 func on_lobby_created(_connect: int, lobby_id: int) -> void:
 	# Ignore the signal if connect is anything other than 1
@@ -38,11 +40,17 @@ func on_lobby_created(_connect: int, lobby_id: int) -> void:
 		hosted_lobby_id = lobby_id
 		print("Created lobby: " + str(hosted_lobby_id))
 		# Make the lobby joinable
-		Steam.setLobbyJoinable(hosted_lobby_id, true)
-		# Set the lobby name
-		# TODO: Make the player choose this
-		Steam.setLobbyData(hosted_lobby_id, "name", lobby_name)
-		# TODO: Add host name, player count, etc.
+		set_lobby_joinable(true)
+		# Set the lobby data
+		Steam.setLobbyData(hosted_lobby_id, "name", name_filter)
+		Steam.setLobbyData(hosted_lobby_id, "lobby_name", lobby_name)
+		Steam.setLobbyData(hosted_lobby_id, "player_count", "1")
+		Steam.setLobbyData(hosted_lobby_id, "host_name", SteamManager.steam_username)
+		if is_private: 
+			Steam.setLobbyData(hosted_lobby_id, "availability", "Private")
+			Steam.setLobbyData(hosted_lobby_id, "password", password)
+		else: 
+			Steam.setLobbyData(hosted_lobby_id, "availability", "Public")
 		
 		create_host()
 
@@ -50,13 +58,25 @@ func create_host() -> void:
 	print("Create host called.")
 	var error = multiplayer_peer.create_host(0, [])
 	if error == OK:
-			# Establish the host as a multiplayer peer
+		# Establish the host as a multiplayer peer
 		multiplayer.set_multiplayer_peer(multiplayer_peer)
 		# Pass in the host's player information
-		multiplayer_manager.add_player_to_lobby(multiplayer.get_unique_id(), SteamManager.steam_username)
-		print("Added player to lobby from Steam network")
+		multiplayer_connection_menu.add_player_to_lobby(multiplayer.get_unique_id(), SteamManager.steam_username)
+		print("Added player to lobby from Steam network.")
+		# Notify the multiplayer connection menu that the lobby has been created
+		multiplayer_connection_menu.on_lobby_created()
 	else:
 		print("Error creating host: " + str(error))
+
+#-------------------------------------------------------------------------------
+# Joining
+#-------------------------------------------------------------------------------
+func join_as_client(lobby_id: int) -> void:
+	print("Joining lobby %s." % lobby_id)
+	# Handle connections
+	Steam.lobby_joined.connect(on_lobby_joined.bind())
+	# Join the lobby
+	Steam.joinLobby(lobby_id)
 
 func on_lobby_joined(lobby_id: int, _permissions: int, _locked: bool, response: int) -> void:
 	print("On lobby joined called.")
@@ -90,14 +110,24 @@ func connect_socket(steam_id: int) -> void:
 	var error = multiplayer_peer.create_client(steam_id, 0, [])
 	if error == OK:
 		print("Connecting peer to host...")
+		# Establish the client as a multiplayer peer
 		multiplayer.set_multiplayer_peer(multiplayer_peer)
+		# Notify the multiplayer connection menu that the lobby has been joined
+		multiplayer_connection_menu.on_lobby_joined()
 	else:
 		print("Error creating client: " + str(error))
 
+func set_lobby_joinable(is_joinable: bool) -> void:
+	Steam.setLobbyJoinable(hosted_lobby_id, is_joinable)
+
+#-------------------------------------------------------------------------------
+# Listing Lobbies
+#-------------------------------------------------------------------------------
 func list_lobbies() -> void:
 	# Set the distance filter for the lobby list
 	Steam.addRequestLobbyListDistanceFilter(Steam.LOBBY_DISTANCE_FILTER_DEFAULT)
-	# TODO: Add name filter
+	# Add a filter on the lobby names
+	Steam.addRequestLobbyListStringFilter("name", name_filter, Steam.LOBBY_COMPARISON_EQUAL)
 	# Request the list of lobbies
 	Steam.requestLobbyList()
 
@@ -105,13 +135,20 @@ func list_lobbies() -> void:
 # Connections
 #-------------------------------------------------------------------------------
 func on_peer_connected(id: int) -> void:
-	multiplayer_manager.on_peer_connected(id)
+	multiplayer_connection_menu.on_peer_connected(id)
+	if !multiplayer.is_server(): return
+	Steam.setLobbyData(hosted_lobby_id, "player_count", str(Steam.getNumLobbyMembers(hosted_lobby_id)))
 
 func on_peer_disconnected(id: int) -> void:
-	multiplayer_manager.on_peer_disconnected(id)
+	multiplayer_connection_menu.on_peer_disconnected(id)
+	if !multiplayer.is_server(): return
+	Steam.setLobbyData(hosted_lobby_id, "player_count", str(Steam.getNumLobbyMembers(hosted_lobby_id)))
 
 func on_connected_to_server() -> void:
-	multiplayer_manager.on_connected_to_server(SteamManager.steam_username)
+	multiplayer_connection_menu.on_connected_to_server(SteamManager.steam_username)
 
 func on_connection_failed() -> void: 
-	multiplayer_manager.on_connection_failed()
+	multiplayer_connection_menu.on_connection_failed()
+
+func on_server_disconnected() -> void:
+	multiplayer_connection_menu.on_server_disconnected()

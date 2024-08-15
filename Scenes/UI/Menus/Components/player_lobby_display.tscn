@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://n4dlwi2t0u0i"]
+
+[ext_resource type="Script" path="res://Scripts/UI/Menus/Components/player_lobby_display.gd" id="1_64qrx"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_1vtgl"]
+properties/0/path = NodePath("PlayerHBox/ReadyStatus:text")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("PlayerHBox/Name:text")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
+[node name="PlayerLobbyDisplay" type="PanelContainer" node_paths=PackedStringArray("name_label", "ready_status_label")]
+script = ExtResource("1_64qrx")
+name_label = NodePath("PlayerHBox/Name")
+ready_status_label = NodePath("PlayerHBox/ReadyStatus")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_1vtgl")
+
+[node name="PlayerHBox" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="PlayerHBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+text = "Name"
+
+[node name="ReadyStatus" type="Label" parent="PlayerHBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Not Ready"

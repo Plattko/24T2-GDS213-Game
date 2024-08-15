@@ -1,23 +1,27 @@
 class_name MultiplayerManager
 extends Node
 
-@export var network_manager : NetworkManager
+var multiplayer_scene = load("res://Scenes/Levels/Testing/steam_multiplayer_testing.tscn")
 
-# UI variables
+@export var network_manager : NetworkManager
+@export var cur_player_count := 0
+var max_players : int = 4
+
+@export_group("Menus")
 @export var network_type_ui : Control
+
+@export_subgroup("LAN")
 @export var lan_ui : Control
-@export var steam_ui : Control
 @export var name_line : LineEdit
 @export var ip_line : LineEdit
+
+@export_subgroup("Steam")
+@export var steam_ui : Control
 @export var lobbies_vbox : VBoxContainer
 
-var max_players : int = 4
-@export var cur_player_count := 0
-
-var multiplayer_scene = load("res://Scenes/Levels/playtest_level_wk10.tscn")
-
 func _ready() -> void:
-	network_manager.multiplayer_manager = self
+	#network_manager.multiplayer_manager = self
+	pass
 
 #-------------------------------------------------------------------------------
 # UI
@@ -42,7 +46,7 @@ func use_lan() -> void:
 
 func become_host() -> void:
 	print("Host Game pressed.")
-	network_manager.become_host()
+	#network_manager.become_host()
 
 func join_as_client() -> void:
 	print("Join as Client pressed.")

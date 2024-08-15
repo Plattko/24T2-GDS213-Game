@@ -27,7 +27,7 @@ text = "Do Side Tilt"
 layout_mode = 2
 
 [node name="OptionButton" type="OptionButton" parent="HBoxContainer"]
-custom_minimum_size = Vector2(200, 0)
+custom_minimum_size = Vector2(260, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 item_count = 3

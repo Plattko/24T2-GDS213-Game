@@ -20,7 +20,7 @@ var max_z : float = 5.0
 
 func _ready() -> void:
 	camera = get_parent()
-	camera.rotation_degrees
+	initial_rotation = camera.rotation_degrees
 
 func _unhandled_input(event):
 	if event is InputEventKey:

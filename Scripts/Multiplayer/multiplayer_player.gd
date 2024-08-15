@@ -8,7 +8,6 @@ extends CharacterBody3D
 @export var anim_player : AnimationPlayer
 @export var ceiling_check : ShapeCast3D
 @export var player_audio : Node
-@export var ui : UIManager
 @export var hud : HUD
 
 @onready var state_machine : PlayerStateMachine = %PlayerStateMachine
@@ -87,6 +86,9 @@ var is_vaporised : bool = false
 @export var revive_other_timer : Timer
 var revive_target : MultiplayerPlayer
 var revive_target_id : int
+
+var primary_weapon : String
+var secondary_weapon : String
 
 signal update_health
 signal player_downed
@@ -389,7 +391,8 @@ func respawn_player() -> void:
 	set_collision_layer_value(2, true)
 	set_collision_mask_value(3, true)
 	# Set the player's position to the current respawn point
-	global_position = GameManager.cur_respawn_point
+	var scene_manager = get_tree().get_first_node_in_group("level")
+	global_position = scene_manager.cur_respawn_point
 	# Enable moving
 	input.can_move = true
 	# Reset to the player's first weapon
@@ -411,15 +414,6 @@ func on_intermission_entered() -> void:
 		revive_player()
 	elif is_dead and not is_vaporised:
 		respawn_player()
-
-func on_game_over() -> void:
-	# Set the player's camera to the map camera
-	var map_camera = get_tree().get_first_node_in_group("map_camera") as Camera3D
-	map_camera.current = true
-	# Blur the background
-	ui.show_blur()
-	# Prevent the players from respawning
-	respawn_timer.stop()
 
 #-------------------------------------------------------------------------------
 # Interaction
@@ -475,7 +469,6 @@ func _on_revive_other_timer_timeout() -> void:
 func handle_connected_signals() -> void:
 	var wave_manager = get_tree().get_first_node_in_group("wave_manager") as WaveManager
 	wave_manager.intermission_entered.connect(on_intermission_entered)
-	wave_manager.game_over_entered.connect(on_game_over)
 	
 	for child in get_children():
 		if child is Damageable:
@@ -501,12 +494,20 @@ func handle_connected_signals() -> void:
 	revive_started.connect(hud.on_revive_started)
 	revive_stopped.connect(hud.on_revive_stopped)
 	
-	var sensitivity_setting = find_child("SensitivitySliderSetting")
+	var escape_menu = find_child("EscapeMenu") as EscapeMenu
+	escape_menu.escape_menu_opened.connect(input.on_escape_menu_opened)
+	escape_menu.escape_menu_closed.connect(input.on_escape_menu_closed)
+	var sensitivity_setting = find_child("SensitivitySliderSetting") as SensitivitySetting
 	sensitivity_setting.sensitivity_updated.connect(set_sensitivity)
 	sensitivity_setting.slider.value = sensitivity * 100
-	var reload_type_setting = find_child("ReloadTypeSetting")
+	var auto_sprint_setting = find_child("AutoSprintSetting") as AutoSprintSetting
+	auto_sprint_setting.do_auto_sprint_updated.connect(input.set_auto_sprint)
+	var wall_jump_on_release_setting = find_child("WallJumpOnReleaseSetting") as WallJumpOnReleaseSetting
+	var wallrun_player_state = state_machine.states["WallrunPlayerState".to_lower()] as WallrunPlayerState
+	wall_jump_on_release_setting.wall_jump_on_release_updated.connect(wallrun_player_state.set_wall_jump_on_release)
+	var reload_type_setting = find_child("ReloadTypeSetting") as ReloadTypeSetting
 	reload_type_setting.reload_type_updated.connect(weapon_manager.set_reload_type)
-	var do_side_tilt_setting = find_child("DoSideTiltSetting")
+	var do_side_tilt_setting = find_child("DoSideTiltSetting") as DoSideTiltSetting
 	do_side_tilt_setting.side_tilt_mode_updated.connect(set_side_tilt_mode)
 
 #-------------------------------------------------------------------------------

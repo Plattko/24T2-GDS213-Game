@@ -19,6 +19,8 @@ const MAX_CAM_ANGLE : float = deg_to_rad(12)
 var min_move_delta : float = 0.1
 var last_pos : Vector3
 
+var wall_jump_on_release : bool = false
+
 func enter(_msg : Dictionary = {}):
 	player.velocity.y = 0.0
 
@@ -93,7 +95,7 @@ func physics_update(delta: float) -> void:
 		# Transition to Air state
 		if !player.is_on_wall() or input.is_crouch_pressed:
 			transition.emit("AirPlayerState", {"left_wallrun" = true})
-		if input.is_jump_just_released:
+		if (wall_jump_on_release and input.is_jump_just_released) or input.is_jump_just_pressed:
 			wall_jump()
 			transition.emit("AirPlayerState", {"left_wallrun" = true, "do_wall_leap" = true})
 
@@ -105,3 +107,6 @@ func wall_jump() -> void:
 	
 	player.velocity.y = lerpf(min_wall_jump, max_wall_jump, cam_angle_normalised)
 	#print("Wall jump velocity: " + str(player.velocity.y))
+
+func set_wall_jump_on_release(_wall_jump_on_release: bool) -> void:
+	wall_jump_on_release = _wall_jump_on_release
