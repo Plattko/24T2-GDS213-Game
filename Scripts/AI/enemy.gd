@@ -22,7 +22,7 @@ var turn_speed : float
 # var min_speed := 4.0
 # var max_speed := 7.0
 var min_speed := 5.0
-var max_speed := 8.5
+var max_speed := 8.0
 var speed : float
 
 @export_group("Navigation Variables")
