@@ -8,7 +8,6 @@ extends CharacterBody3D
 @export var anim_player : AnimationPlayer
 @export var ceiling_check : ShapeCast3D
 @export var player_audio : Node
-@export var ui : UIManager
 @export var hud : HUD
 
 @onready var state_machine : PlayerStateMachine = %PlayerStateMachine
@@ -495,6 +494,9 @@ func handle_connected_signals() -> void:
 	revive_started.connect(hud.on_revive_started)
 	revive_stopped.connect(hud.on_revive_stopped)
 	
+	var escape_menu = find_child("EscapeMenu") as EscapeMenu
+	escape_menu.escape_menu_opened.connect(input.on_escape_menu_opened)
+	escape_menu.escape_menu_closed.connect(input.on_escape_menu_closed)
 	var sensitivity_setting = find_child("SensitivitySliderSetting") as SensitivitySetting
 	sensitivity_setting.sensitivity_updated.connect(set_sensitivity)
 	sensitivity_setting.slider.value = sensitivity * 100

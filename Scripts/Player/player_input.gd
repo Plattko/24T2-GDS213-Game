@@ -158,13 +158,13 @@ var is_interact_just_released : bool:
 		return false
 
 # --------------------------------TOGGLES------------------------------------ #
-func on_opened_settings_menu() -> void:
+func on_escape_menu_opened() -> void:
 	print("Disabled input.")
 	can_move = false
 	can_shoot = false
 	can_look = false
 
-func on_closed_settings_menu() -> void:
+func on_escape_menu_closed() -> void:
 	print("Enabled input.")
 	can_move = true
 	can_shoot = true

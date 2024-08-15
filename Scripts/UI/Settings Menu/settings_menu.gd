@@ -1,26 +1,14 @@
 class_name SettingsMenu
 extends Control
 
-@export var exit_button : Button
+signal options_menu_closed
 
-@export var is_on_main_menu : bool = false
+func _input(event) -> void:
+	if event.is_action_pressed("escape"):
+		# If options menu is open, go back to main menu
+		if is_visible_in_tree():
+			options_menu_closed.emit()
 
-signal opened_settings_menu
-signal closed_settings_menu
-
-func _ready():
-	if !is_on_main_menu: 
-		exit_button.pressed.connect(close)
-		set_process(false)
-
-func open() -> void:
-	visible = true
-	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	opened_settings_menu.emit()
-
-func close() -> void:
-	visible = false
-	Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	closed_settings_menu.emit()
-	set_process(false)
+# Called by escape menu
+func disable_input_check() -> void:
+	set_process_input(false)

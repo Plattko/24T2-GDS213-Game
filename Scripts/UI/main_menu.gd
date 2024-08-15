@@ -47,7 +47,7 @@ func on_options_button_pressed() -> void:
 	menu_margin_container.hide()
 	options_menu.show()
 
-func on_exit_options_button_pressed() -> void:
+func on_options_menu_closed() -> void:
 	options_menu.hide()
 	menu_margin_container.show()
 
@@ -64,7 +64,8 @@ func handle_connected_signals() -> void:
 	use_lan_button.pressed.connect(on_use_lan_button_pressed)
 	tutorial_button.pressed.connect(on_tutorial_button_pressed)
 	options_button.pressed.connect(on_options_button_pressed)
-	var exit_options_button = options_menu.exit_button
-	exit_options_button.pressed.connect(on_exit_options_button_pressed)
+	#var exit_options_button = options_menu.exit_button
+	#exit_options_button.pressed.connect(on_exit_options_button_pressed)
+	options_menu.options_menu_closed.connect(on_options_menu_closed)
 	credits_button.pressed.connect(on_credits_button_pressed)
 	quit_button.pressed.connect(on_quit_button_pressed)

@@ -166,5 +166,6 @@ func on_connection_failed() -> void:
 
 func on_server_disconnected() -> void:
 	print("Disconnected from server.")
-	multiplayer.multiplayer_peer = OfflineMultiplayerPeer.new()
-	get_tree().change_scene_to_packed(GameManager.main_menu)
+	if !GameManager.is_exiting_to_desktop:
+		multiplayer.multiplayer_peer = OfflineMultiplayerPeer.new()
+		get_tree().change_scene_to_packed(GameManager.main_menu)

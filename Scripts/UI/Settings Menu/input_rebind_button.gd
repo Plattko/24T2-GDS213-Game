@@ -70,6 +70,6 @@ func set_input_label() -> void:
 			label.text = "Next Weapon"
 		"interact":
 			label.text = "Interact"
-		"settings_menu":
-			label.text = "Options Menu"
+		"escape":
+			label.text = "Escape Menu/Back"
 

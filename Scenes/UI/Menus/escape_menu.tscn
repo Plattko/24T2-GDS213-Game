@@ -1,0 +1,55 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmmqythdw0a6y"]
+
+[ext_resource type="Script" path="res://Scripts/UI/Menus/escape_menu.gd" id="1_yievb"]
+[ext_resource type="PackedScene" uid="uid://bu0mtrnvhonpt" path="res://Scenes/UI/settings_menu.tscn" id="2_ephr5"]
+
+[node name="EscapeMenu" type="Control" node_paths=PackedStringArray("options_button", "leave_game_button", "exit_to_desktop_button", "buttons_vbox", "options_menu")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yievb")
+options_button = NodePath("ButtonsVBox/OptionsButton")
+leave_game_button = NodePath("ButtonsVBox/LeaveGameButton")
+exit_to_desktop_button = NodePath("ButtonsVBox/ExitToDestkopButton")
+buttons_vbox = NodePath("ButtonsVBox")
+options_menu = NodePath("OptionsMenu")
+
+[node name="ButtonsVBox" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
+
+[node name="OptionsButton" type="Button" parent="ButtonsVBox"]
+custom_minimum_size = Vector2(330, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "OPTIONS"
+
+[node name="LeaveGameButton" type="Button" parent="ButtonsVBox"]
+custom_minimum_size = Vector2(330, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "LEAVE GAME"
+
+[node name="ExitToDestkopButton" type="Button" parent="ButtonsVBox"]
+custom_minimum_size = Vector2(330, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "EXIT TO DESKTOP"
+
+[node name="OptionsMenu" parent="." instance=ExtResource("2_ephr5")]
+visible = false
+layout_mode = 1

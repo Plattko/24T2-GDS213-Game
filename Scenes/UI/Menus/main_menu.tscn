@@ -121,4 +121,3 @@ alignment = 0
 [node name="OptionsMenu" parent="." instance=ExtResource("2_hmrco")]
 visible = false
 layout_mode = 1
-is_on_main_menu = true

@@ -314,6 +314,6 @@ action_name = "weapon_scroll_down"
 layout_mode = 2
 action_name = "interact"
 
-[node name="OptionsMenuButton" parent="Controls/MarginContainer/ScrollContainer/MarginContainer/HBoxContainer/InputButtonVBox" instance=ExtResource("4_cpn4g")]
+[node name="EscapeMenuButton" parent="Controls/MarginContainer/ScrollContainer/MarginContainer/HBoxContainer/InputButtonVBox" instance=ExtResource("4_cpn4g")]
 layout_mode = 2
-action_name = "settings_menu"
+action_name = "escape"
