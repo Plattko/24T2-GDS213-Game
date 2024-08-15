@@ -15,12 +15,14 @@ enum Animations { RUN, ATTACK, JUMP, STUNNED, }
 @export var cur_anim : Animations
 
 @export_group("Movement Variables")
-@export var speedy_speed := 10.0
+@export var speedy_speed := 10.5
 var regular_turn_speed : float = 0.25
 var speedy_turn_speed : float = 0.5
 var turn_speed : float
-var min_speed := 4.0
-var max_speed := 7.0
+# var min_speed := 4.0
+# var max_speed := 7.0
+var min_speed := 5.0
+var max_speed := 8.5
 var speed : float
 
 @export_group("Navigation Variables")
@@ -93,6 +95,11 @@ func _physics_process(_delta):
 	if !multiplayer.is_server(): return
 	if target_player.is_downed or target_player.is_dead:
 		target_player = players.pick_random()
+	
+	if (target_player.global_position - global_position).length() <= 5.0 and target_timer.wait_time != 0.11:
+		target_timer.wait_time = 0.07
+	elif (target_player.global_position - global_position).length() > 5.0 and target_timer.wait_time != 0.3:
+		target_timer.wait_time = 0.3
 	
 	if cur_health <= 0:
 		die()

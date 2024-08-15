@@ -16,7 +16,7 @@ var scene_manager : SceneManager
 @export_group("Wave Variables")
 @export var waves_enabled : bool = true
 
-var first_wave_delay := 10.0
+var first_wave_delay := 5.0
 var cur_wave := 1
 
 @export var initial_max_enemies : int = 5
