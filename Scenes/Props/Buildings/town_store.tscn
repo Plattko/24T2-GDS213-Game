@@ -245,7 +245,7 @@ size = Vector3(0.1, 11.754, 17.3953)
 material = ExtResource("7_m62rv")
 
 [node name="SM_building_door_02" parent="." instance=ExtResource("8_qcek0")]
-transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 1.38643, -0.206039, 0.128508)
+transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 1.38643, -0.206039, 0.215246)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.54346, 11.6965, -9.00965)

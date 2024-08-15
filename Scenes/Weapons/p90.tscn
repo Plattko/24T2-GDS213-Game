@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dd57urlaitec8"]
+[gd_scene load_steps=25 format=3 uid="uid://dd57urlaitec8"]
 
 [ext_resource type="Script" path="res://Scripts/Weapons/p90.gd" id="1_684iw"]
 [ext_resource type="Material" uid="uid://4t0aqxchgkfa" path="res://Assets/Materials/Shader Materials/weapon_shader.tres" id="2_i70j8"]
@@ -272,6 +272,7 @@ _data = {
 }
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_osmpo"]
+random_pitch = 1.1
 streams_count = 5
 stream_0/stream = ExtResource("5_05q88")
 stream_0/weight = 1.0

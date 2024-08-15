@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=3 uid="uid://bpoqfu15iy0mj"]
+[gd_scene load_steps=83 format=3 uid="uid://bpoqfu15iy0mj"]
 
 [ext_resource type="PackedScene" uid="uid://d3bykv8hmnskj" path="res://Assets/Imports/StylizedHouses/ModularBuildings/BuildingMeshes/SM_building_column_05.glb" id="1_fueff"]
 [ext_resource type="PackedScene" uid="uid://cf2bt4wjlntn4" path="res://Assets/Imports/StylizedHouses/ModularBuildings/BuildingMeshes/SM_building_foundation_03.glb" id="2_0ku6x"]
@@ -50,7 +50,6 @@
 [ext_resource type="PackedScene" uid="uid://btg61xoxl76mr" path="res://Assets/Imports/StylizedHouses/Props/Meshes/SM_menu_signage.glb" id="48_fyirg"]
 [ext_resource type="Material" uid="uid://b5y2c7coteo7i" path="res://Assets/Materials/Standard Materials/MI_coal_A_Inst.tres" id="49_mnrm7"]
 [ext_resource type="Material" uid="uid://bcvlthd7axaoh" path="res://Assets/Materials/Standard Materials/MI_sheet_metal_A_Inst.tres" id="50_8cexd"]
-[ext_resource type="PackedScene" uid="uid://eck8i1mdaecj" path="res://Scenes/Props/Vehicles/truck.tscn" id="51_hogfl"]
 [ext_resource type="PackedScene" uid="uid://3gwmy22w3q6p" path="res://Scenes/Props/shaded_table.tscn" id="52_rmlo2"]
 [ext_resource type="Material" uid="uid://b634ek855ftyf" path="res://Assets/Materials/Standard Materials/MI_wooden_floor_WPO_Inst_SM_brick_building_13.tres" id="53_yvnd8"]
 [ext_resource type="Material" uid="uid://bjxarslk0yhes" path="res://Assets/Materials/Standard Materials/MI_grass_Inst.tres" id="55_clud8"]
@@ -1403,9 +1402,6 @@ transform = Transform3D(-0.530037, 0, -0.847974, 0, 1, 0, 0.847974, 0, -0.530037
 use_collision = true
 size = Vector3(6, 2, 2)
 material = ExtResource("45_536xn")
-
-[node name="CSGBox3D3" parent="Node3D" instance=ExtResource("51_hogfl")]
-transform = Transform3D(-0.944301, 0, 0.329081, 0, 1, 0, -0.329081, 0, -0.944301, -7.48274, 8.57175, -39.8564)
 
 [node name="Crate5" type="CSGBox3D" parent="Node3D"]
 transform = Transform3D(-0.286508, 0, 0.958078, 0, 1, 0, -0.958078, 0, -0.286508, 32.2066, 8.87915, -38.772)

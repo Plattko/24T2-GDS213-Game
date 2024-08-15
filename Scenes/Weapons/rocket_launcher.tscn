@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://co38vlsgcng80"]
+[gd_scene load_steps=17 format=3 uid="uid://co38vlsgcng80"]
 
 [ext_resource type="Script" path="res://Scripts/Weapons/rocket_launcher.gd" id="1_j0ibu"]
 [ext_resource type="Material" uid="uid://4t0aqxchgkfa" path="res://Assets/Materials/Shader Materials/weapon_shader.tres" id="2_egseg"]
@@ -265,6 +265,7 @@ _data = {
 }
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_f6nbd"]
+random_pitch = 1.1
 streams_count = 3
 stream_0/stream = ExtResource("3_pjq0k")
 stream_0/weight = 1.0
