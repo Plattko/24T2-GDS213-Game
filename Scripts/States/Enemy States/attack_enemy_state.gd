@@ -14,6 +14,7 @@ func enter(_msg : Dictionary = {}) -> void:
 
 func physics_update(delta : float) -> void:
 	# Make enemy look at player
+	if !is_instance_valid(enemy.target_player): return
 	var player_dir = enemy.target_player.global_position - enemy.global_position
 	rotate_towards(player_dir, delta)
 

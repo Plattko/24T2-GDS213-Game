@@ -17,7 +17,7 @@ var is_using_steam : bool = false
 @export var level_node : Node
 
 # Player Variables
-var max_players : int = 4
+var max_players : int = 32
 var players : Dictionary = {}
 
 func _ready() -> void:

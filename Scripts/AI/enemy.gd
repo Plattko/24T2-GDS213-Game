@@ -93,14 +93,15 @@ func initialise(_players: Array[MultiplayerPlayer], nav_layer: int):
 
 func _physics_process(_delta):
 	if !multiplayer.is_server(): return
-	if !is_instance_valid(target_player): return
-	if target_player.is_downed or target_player.is_dead:
-		target_player = players.pick_random()
 	
-	if (target_player.global_position - global_position).length() <= 5.0 and target_timer.wait_time != 0.11:
-		target_timer.wait_time = 0.07
-	elif (target_player.global_position - global_position).length() > 5.0 and target_timer.wait_time != 0.3:
-		target_timer.wait_time = 0.3
+	if is_instance_valid(target_player):
+		if target_player.is_downed or target_player.is_dead:
+			target_player = players.pick_random()
+		
+		if (target_player.global_position - global_position).length() <= 5.0 and target_timer.wait_time != 0.11:
+			target_timer.wait_time = 0.07
+		elif (target_player.global_position - global_position).length() > 5.0 and target_timer.wait_time != 0.3:
+			target_timer.wait_time = 0.3
 	
 	if cur_health <= 0:
 		die()
@@ -111,8 +112,8 @@ func _physics_process(_delta):
 # Set the navigation agent's target position to the player position
 func set_target_position() -> void:
 	await get_tree().physics_frame
-	# Check there is a reference to the player
-	if !target_player: return
+	# Check there is a reference to the player and the player is valid
+	if !target_player or !is_instance_valid(target_player): return
 	# Check if player has moved from current target position
 	if (target_player.global_position - target_position).length() < dist_threshold and !is_initial_call: return
 	# Disable is_initial_call after the first call
@@ -165,7 +166,8 @@ func die() -> void:
 #-------------------------------------------------------------------------------
 # Attacking
 #-------------------------------------------------------------------------------
-func target_in_range():
+func target_in_range() -> bool:
+	if !is_instance_valid(target_player): return false
 	return global_position.distance_to(target_player.global_position) < ATTACK_RANGE
 
 func reset_has_attack_hit() -> void:

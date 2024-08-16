@@ -6,7 +6,11 @@ extends Node3D
 @export_group("Spawning Players")
 @export var players_node : Node
 @export var initial_spawn_points : Array[Node3D] = []
-var players_spawned : int = 0
+var players_spawned : int = 0:
+	set(value):
+		if value > 3:
+			value = 0
+		players_spawned = value
 
 @export_group("Zone Variables")
 @export var zones : Array[Zone] = []
