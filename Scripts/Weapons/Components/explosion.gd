@@ -2,17 +2,22 @@ extends Node3D
 
 @export var explosion_col : CollisionShape3D
 var rocket_launcher : RocketLauncher
+@export var owner_id : int
 
 @export var explosion_damage : float = 75.0
 var self_damage : float = explosion_damage * 0.25
 var knockback_strength : float = 12.0
 var is_direct_hit : bool = false
 
-@export var owner_id : int
+@export_group("VFX")
+@export var sparks : GPUParticles3D
+@export var flash : GPUParticles3D
+@export var fire : GPUParticles3D
+@export var smoke : GPUParticles3D
+@export var smoke_sharp : GPUParticles3D
 
+@export_group("SFX")
 @export var explosion_sfx : AudioStreamPlayer3D
-
-#var do_self_damage : bool = true
 
 const ENEMY_COLLISION_MASK : int = roundi(pow(2, 1-1)) + roundi(pow(2, 3-1))
 const PLAYER_COLLISION_MASK : int = roundi(pow(2, 1-1)) + roundi(pow(2, 2-1))
@@ -22,11 +27,18 @@ func _enter_tree() -> void:
 		set_physics_process(false)
 		return
 	
-	await get_tree().create_timer(0.9).timeout
-	await get_tree().physics_frame
+	await get_tree().create_timer(0.8).timeout
+	var tween = get_tree().create_tween()
+	tween.tween_property(explosion_sfx, "volume_db", -80, 2)
+	await tween.finished
 	queue_free()
 
 func _ready() -> void:
+	sparks.emitting = true
+	flash.emitting = true
+	fire.emitting = true
+	smoke.emitting = true
+	smoke_sharp.emitting = true
 	explosion_sfx.play()
 
 func _physics_process(_delta) -> void:

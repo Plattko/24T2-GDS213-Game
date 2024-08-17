@@ -22,6 +22,8 @@ func _physics_process(delta) -> void:
 	var collision : KinematicCollision3D = move_and_collide(direction * speed * delta)
 	if collision and !has_exploded:
 		has_exploded = true
+		if !(collision.get_collider() is Enemy):
+			rocket_launcher.spawn_decal(rocket_launcher.blast_decal, collision.get_position(), collision.get_normal())
 		spawn_explosion(collision)
 
 func spawn_explosion(collision: KinematicCollision3D) -> void:

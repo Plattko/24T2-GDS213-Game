@@ -12,6 +12,7 @@ var camera : Camera3D
 #var third_person_material = load("res://Assets/Materials/Shader Materials/weapon_third_person_shader.tres")
 var third_person_material = load("res://Assets/Materials/Standard Materials/weapon_third_person_material.tres")
 var bullet_decal = load("res://Scenes/Weapons/Components/bullet_decal.tscn")
+var blast_decal = load("res://Scenes/Weapons/Components/blast_decal.tscn")
 var sparks_particle = load("res://Scenes/VFX/sparks_particle.tscn")
 
 @export_group("Weapon Data")
@@ -103,11 +104,11 @@ func raycast_hit(result: Dictionary) -> void:
 		spawn_sparks(result.get("position"), result.get("normal"))
 	else:
 		# Spawn a bullet hole decal
-		spawn_decal(result.get("position"), result.get("normal"))
+		spawn_decal(bullet_decal, result.get("position"), result.get("normal"))
 
-func spawn_decal(position: Vector3, normal: Vector3) -> void:
+func spawn_decal(decal: PackedScene, position: Vector3, normal: Vector3) -> void:
 	# Instantiate bullet decal
-	var instance = bullet_decal.instantiate()
+	var instance = decal.instantiate()
 	# Give it a reference to the decal queue
 	instance.decal_queue = decal_queue
 	# Make it a child of the level scene
@@ -117,8 +118,15 @@ func spawn_decal(position: Vector3, normal: Vector3) -> void:
 	instance.global_position = position
 	# Rotate it in the direction of the surface's normal
 	if abs(normal.y) < 0.99:
-		instance.look_at(instance.global_transform.origin + normal, Vector3.UP)
-		instance.rotate_object_local(Vector3(1, 0, 0), 90)
+		#instance.look_at(instance.global_transform.origin + normal, Vector3.UP)
+		#instance.rotate_object_local(Vector3(1, 0, 0), 90)
+		
+		# look in the direction of the normal
+		instance.look_at(position + normal, Vector3.UP)
+		# then look "up" from there so the decal projects "down"
+		instance.transform = instance.transform.rotated_local(Vector3.RIGHT, PI/2.0)
+		# Flip the spray so that it's the same as the ground
+		instance.scale.x *= -1
 	# Add random rotation around the decal's local Y axis
 	instance.rotate_object_local(Vector3(0,1,0), randf_range(0.0,360.0))
 	# Update the decal queue

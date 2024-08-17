@@ -1,8 +1,8 @@
 class_name MultiplayerConnectionMenu
 extends Control
 
-#var multiplayer_level := load("res://Scenes/Levels/Testing/steam_multiplayer_testing.tscn")
-var multiplayer_level := load("res://Scenes/Levels/playtest_level_wk10.tscn")
+var multiplayer_level := load("res://Scenes/Levels/Testing/steam_multiplayer_testing.tscn")
+#var multiplayer_level := load("res://Scenes/Levels/playtest_level_wk10.tscn")
 
 @export_group("Network Management")
 @export var network_manager : NetworkManager
