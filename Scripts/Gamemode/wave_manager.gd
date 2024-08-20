@@ -1,6 +1,7 @@
 class_name WaveManager
 extends Node
 
+var enemy_spawn_beam_scene = load("res://Scenes/VFX/enemy_spawn_beam_particle.tscn")
 var ROBOT = load("res://Scenes/Enemies/robot_regular.tscn")
 var SPEEDY_ROBOT = load("res://Scenes/Enemies/robot_speedy.tscn")
 var players : Array[MultiplayerPlayer] = []
@@ -39,7 +40,7 @@ var cur_change_chance : float = 0.0
 var change_chance_increase : float = 0.2
 var zone_change_duration : float = 30.0
 var do_zone_change : bool = false
-@export var zone_swap_music_player : AudioStreamPlayer
+@export var music_audio_player : AudioStreamPlayer
 
 @export_group("Player Variables")
 @export var alive_player_count : int = 1:
@@ -125,6 +126,18 @@ func start_new_wave() -> void:
 # Enemies
 #-------------------------------------------------------------------------------
 func spawn_enemy(is_endless_wave: bool) -> void:
+	# Select a random spawn point
+	var spawn_point = pick_random_spawn_point()
+	# Instantiate the enemy spawn beam
+	var enemy_spawn_beam = enemy_spawn_beam_scene.instantiate() as EnemySpawnBeam
+	# Add it as a child of the enemies node
+	enemies_node.add_child(enemy_spawn_beam)
+	# Set its position to the selected spawn point
+	enemy_spawn_beam.global_position = Vector3(spawn_point.x, spawn_point.y + 200.0, spawn_point.z)
+	# Play its animation
+	enemy_spawn_beam.play.rpc()
+	# Wait for the beam to hit the ground
+	await get_tree().create_timer(1).timeout
 	# Instantiate enemy
 	var enemy
 	if !is_endless_wave:
@@ -145,8 +158,7 @@ func spawn_enemy(is_endless_wave: bool) -> void:
 	enemy.enemy_defeated.connect(update_robots_killed)
 	# Add enemy as child of nav region
 	enemies_node.add_child(enemy, true)
-	# Set enemy's spawn point to a random spawn point
-	var spawn_point = pick_random_spawn_point()
+	# Set enemy's spawn point to the selected spawn point
 	enemy.global_position = spawn_point
 
 func pick_random_spawn_point() -> Vector3:
@@ -202,7 +214,6 @@ func start_zone_change() -> void:
 	emit_zone_change_entered.rpc()
 	# Play zone gate open animation
 	zone_gate.anim_player.play("Open")
-	zone_swap_music_player.play()
 
 func _on_zone_gate_anim_finished(anim_name: StringName) -> void:
 	if anim_name == "Open":
@@ -257,7 +268,13 @@ func emit_intermission_entered() -> void:
 func emit_zone_change_entered() -> void:
 	zone_change_timer.start()
 	zone_change_entered.emit()
-	zone_swap_music_player.play()
+	# Set the music volume to 0
+	music_audio_player.volume_db = -40
+	# Start the music player
+	music_audio_player.play()
+	# Fade in the music
+	var tween = get_tree().create_tween()
+	tween.tween_property(music_audio_player, "volume_db", -2, 5)
 
 @rpc("any_peer", "call_local")
 func on_player_died() -> void:
@@ -270,7 +287,9 @@ func on_player_respawned() -> void:
 @rpc("any_peer", "call_local")
 func fade_out_zone_change_music() -> void:
 	var tween = get_tree().create_tween()
-	tween.tween_property(zone_swap_music_player, "Volume dB", 0, 1)
+	tween.tween_property(music_audio_player, "volume_db", -40, 1)
+	await tween.finished
+	music_audio_player.stop()
 
 func update_robots_killed() -> void:
 	robots_killed += 1

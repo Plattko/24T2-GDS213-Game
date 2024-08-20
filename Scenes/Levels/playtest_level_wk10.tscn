@@ -119,7 +119,7 @@
 [ext_resource type="PackedScene" uid="uid://dhbpno5emvhjv" path="res://Assets/Imports/Stylized cars/Cars/Meshes/car2.5.glb" id="119_pm6s3"]
 [ext_resource type="PackedScene" uid="uid://bnevoitichnhb" path="res://Assets/Imports/Stylized cars/Cars/Meshes/car2.3.glb" id="121_k0rtj"]
 [ext_resource type="PackedScene" uid="uid://dkmaavxl3nky" path="res://Assets/Imports/Stylized cars/Cars/Meshes/car1.5.glb" id="126_7w6i8"]
-[ext_resource type="AudioStream" uid="uid://04otrla4eisc" path="res://Assets/Audio/Music/Golden Gates/Electronic Vol5 Golden Gates Cut 30.wav" id="129_dh063"]
+[ext_resource type="AudioStream" uid="uid://d2kkv36i6vytj" path="res://Assets/Audio/Music/Infinity/Heavy Electronic Infinity Cut 60.wav" id="129_x7wfv"]
 [ext_resource type="PackedScene" uid="uid://c4vr0rjvatha1" path="res://Assets/Imports/Stylized cars/Cars/Meshes/car4.1.glb" id="131_8buau"]
 [ext_resource type="PackedScene" uid="uid://cxxp5v5jmcagg" path="res://Assets/Imports/Stylized cars/Cars/Meshes/car4.4.glb" id="134_1c8iy"]
 [ext_resource type="PackedScene" uid="uid://df66r7udvs7jj" path="res://Assets/Imports/Stylized cars/Cars/Meshes/car4.5.glb" id="135_0ygao"]
@@ -697,16 +697,17 @@ map_camera = NodePath("MapCamera")
 fade_to_black = NodePath("GameOverUI/FadeToBlackTransition")
 game_over_menu = NodePath("GameOverUI/GameOverMenu")
 
-[node name="GamemodeManager" type="Node" parent="." node_paths=PackedStringArray("intermission_timer", "zone_change_timer", "endless_wave_timer", "enemies_node", "zone_gate", "zone_swap_music_player") groups=["wave_manager"]]
+[node name="GamemodeManager" type="Node" parent="." node_paths=PackedStringArray("intermission_timer", "zone_change_timer", "endless_wave_timer", "enemies_node", "zone_gate", "music_audio_player") groups=["wave_manager"]]
 script = ExtResource("108_6pedp")
 intermission_timer = NodePath("IntermissionTimer")
 zone_change_timer = NodePath("ZoneChangeTimer")
 endless_wave_timer = NodePath("EndlessWaveTimer")
 enemies_node = NodePath("../Enemies")
 zone_gate = NodePath("../Level/ZoneGate")
+do_immediate_zone_change = true
 is_zone_change_guaranteed = true
 change_possible_index = 2
-zone_swap_music_player = NodePath("../Audio/AudioStreamPlayer")
+music_audio_player = NodePath("../Audio/MusicAudioPlayer")
 
 [node name="IntermissionTimer" type="Timer" parent="GamemodeManager"]
 wait_time = 10.0
@@ -9132,8 +9133,9 @@ layout_mode = 1
 
 [node name="Audio" type="Node3D" parent="."]
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Audio"]
-stream = ExtResource("129_dh063")
+[node name="MusicAudioPlayer" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("129_x7wfv")
+volume_db = -5.0
 bus = &"Music"
 
 [connection signal="timeout" from="GamemodeManager/EndlessWaveTimer" to="GamemodeManager" method="_on_endless_wave_timer_timeout"]

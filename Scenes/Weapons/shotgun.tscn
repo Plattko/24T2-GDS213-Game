@@ -4,7 +4,7 @@
 [ext_resource type="Material" uid="uid://4t0aqxchgkfa" path="res://Assets/Materials/Shader Materials/weapon_shader.tres" id="2_b3qqb"]
 [ext_resource type="Script" path="res://Scripts/Weapons/Components/muzzle_flash.gd" id="3_iw2pk"]
 [ext_resource type="Material" uid="uid://un70lvxarnb0" path="res://Assets/Materials/Shader Materials/muzzle_flash_shader.tres" id="4_gn0ue"]
-[ext_resource type="AudioStream" uid="uid://c53pev585cg6j" path="res://Assets/Audio/Guns/Shotgun/Gunshots/shotgun-old_school.wav" id="5_g4nl8"]
+[ext_resource type="AudioStream" uid="uid://bohmffdwlfd15" path="res://Assets/Audio/Guns/New/shotgun.wav" id="5_ovpom"]
 [ext_resource type="AudioStream" uid="uid://4cc6lix0jvgq" path="res://Assets/Audio/Guns/Shotgun/Foley/12ga Pump Shotgun - Pump 001.wav" id="6_emrjc"]
 [ext_resource type="AudioStream" uid="uid://imoi1qweaqvd" path="res://Assets/Audio/Guns/Shotgun/Foley/12ga Pump Shotgun - Pump 002.wav" id="7_corvh"]
 [ext_resource type="AudioStream" uid="uid://8jhiqkwncxam" path="res://Assets/Audio/Guns/Shotgun/Foley/12ga Pump Shotgun - Pump 003.wav" id="8_oh36e"]
@@ -323,7 +323,7 @@ _data = {
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_86loa"]
 random_pitch = 1.1
 streams_count = 1
-stream_0/stream = ExtResource("5_g4nl8")
+stream_0/stream = ExtResource("5_ovpom")
 stream_0/weight = 1.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_i5h1l"]

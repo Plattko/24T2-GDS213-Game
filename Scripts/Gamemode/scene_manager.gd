@@ -26,8 +26,6 @@ var cur_zone : int = 1
 @export var fade_to_black : FadeToBlackTransition
 @export var game_over_menu : GameOverMenu
 
-@export var zone_swap_music_player : AudioStreamPlayer
-
 func _ready() -> void:
 	print("CALLED READY IN SCENE MANAGER.")
 	if !multiplayer.is_server(): return
