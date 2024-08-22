@@ -8,7 +8,6 @@ var rocket_launcher : RocketLauncher
 var self_damage : float = explosion_damage * 0.25
 var knockback_strength : float = 12.0
 var is_direct_hit : bool = false
-var hit_body : Node3D
 
 @export_group("VFX")
 @export var sparks : GPUParticles3D
@@ -119,10 +118,7 @@ func _on_explosion_radius_body_entered(body: Node3D):
 		#print("Knockback strength: " + str(knockback.length()))
 		
 		# NOTE: Super jank setup, only workaround I could find
-		body.rocket_self_hit.rpc_id(owner_id, damage, knockback)
-		
-		hit_body = body
-		create_damage_indicator.rpc_id(body.get_parent().name.to_int())
+		body.rocket_self_hit.rpc_id(owner_id, damage, knockback, global_position)
 		
 		## Apply the self-damage
 		#if body.do_self_damage: body.on_damaged(damage, false)
@@ -138,8 +134,3 @@ func _on_explosion_radius_body_entered(body: Node3D):
 		#else:
 			## Otherwise, update the horizontal knockback
 			#body.horizontal_knockback = knockback * 1.3
-
-@rpc("any_peer", "call_local")
-func create_damage_indicator() -> void:
-	if hit_body: 
-		hit_body.hud.damage_indicator.create_damage_indicator(self)
