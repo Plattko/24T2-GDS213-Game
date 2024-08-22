@@ -9195,21 +9195,15 @@ mouse_filter = 2
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="GameOverUI"]
 replication_config = SubResource("SceneReplicationConfig_a6txt")
 
-[node name="FadeToBlackTransition" parent="GameOverUI" node_paths=PackedStringArray("anim_player") instance=ExtResource("33_bhi0h")]
+[node name="FadeToBlackTransition" parent="GameOverUI" instance=ExtResource("33_bhi0h")]
 visible = false
 z_index = 1
 layout_mode = 1
 mouse_filter = 2
-anim_player = NodePath("")
 
-[node name="GameOverMenu" parent="GameOverUI" node_paths=PackedStringArray("waves_survived_text", "robots_killed_text", "zone_swaps_text", "back_to_lobby_button", "main_menu_button") instance=ExtResource("34_e51mg")]
+[node name="GameOverMenu" parent="GameOverUI" instance=ExtResource("34_e51mg")]
 visible = false
 layout_mode = 1
-waves_survived_text = NodePath("")
-robots_killed_text = NodePath("")
-zone_swaps_text = NodePath("")
-back_to_lobby_button = NodePath("")
-main_menu_button = NodePath("")
 
 [connection signal="timeout" from="GamemodeManager/EndlessWaveTimer" to="GamemodeManager" method="_on_endless_wave_timer_timeout"]
 [connection signal="spawned" from="MultiplayerSpawner" to="." method="_on_multiplayer_spawner_spawned"]
