@@ -1,7 +1,7 @@
 [gd_scene load_steps=25 format=3 uid="uid://dd57urlaitec8"]
 
 [ext_resource type="Script" path="res://Scripts/Weapons/p90.gd" id="1_684iw"]
-[ext_resource type="Material" uid="uid://4t0aqxchgkfa" path="res://Assets/Materials/Shader Materials/weapon_shader.tres" id="2_i70j8"]
+[ext_resource type="Material" uid="uid://4t0aqxchgkfa" path="res://Assets/Materials/Shader Materials/Weapon/weapon_shader.tres" id="2_i70j8"]
 [ext_resource type="Script" path="res://Scripts/Weapons/Components/muzzle_flash.gd" id="3_1lsqo"]
 [ext_resource type="Material" uid="uid://un70lvxarnb0" path="res://Assets/Materials/Shader Materials/muzzle_flash_shader.tres" id="4_j1f7k"]
 [ext_resource type="AudioStream" uid="uid://dq6e2vfp2siry" path="res://Assets/Audio/Guns/P90/Gunshots/5.56 M4 Rifle - Gunshot B 001.wav" id="5_05q88"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=25 format=3 uid="uid://dqexibtsgatqp"]
 
 [ext_resource type="Script" path="res://Scripts/Weapons/rifle.gd" id="1_al0dg"]
-[ext_resource type="Material" uid="uid://4t0aqxchgkfa" path="res://Assets/Materials/Shader Materials/weapon_shader.tres" id="2_be4dv"]
+[ext_resource type="Material" uid="uid://4t0aqxchgkfa" path="res://Assets/Materials/Shader Materials/Weapon/weapon_shader.tres" id="2_be4dv"]
 [ext_resource type="Script" path="res://Scripts/Weapons/Components/muzzle_flash.gd" id="3_gtc4h"]
 [ext_resource type="Material" uid="uid://un70lvxarnb0" path="res://Assets/Materials/Shader Materials/muzzle_flash_shader.tres" id="4_6hgxo"]
 [ext_resource type="AudioStream" uid="uid://bx1lkdho8x6a5" path="res://Assets/Audio/Guns/Rifle/Gunshots/7Mag Bolt Action Rifle - Gunshot A 001.wav" id="5_hqryf"]

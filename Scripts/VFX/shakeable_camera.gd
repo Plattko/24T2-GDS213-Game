@@ -22,10 +22,10 @@ func _ready() -> void:
 	camera = get_parent()
 	initial_rotation = camera.rotation_degrees
 
-func _unhandled_input(event):
-	if event is InputEventKey:
-		if event.pressed and event.keycode == KEY_B:
-			add_trauma(10.0)
+#func _unhandled_input(event):
+	#if event is InputEventKey:
+		#if event.pressed and event.keycode == KEY_B:
+			#add_trauma(10.0)
 
 func _process(delta) -> void:
 	elapsed_time += delta

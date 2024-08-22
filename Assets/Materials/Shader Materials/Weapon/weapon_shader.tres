@@ -1,5 +1,7 @@
 [gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://4t0aqxchgkfa"]
 
+[ext_resource type="Texture2D" uid="uid://dvr344gbh6efb" path="res://Assets/Textures/weapon_shader_texture.tres" id="1_837lt"]
+
 [sub_resource type="Shader" id="Shader_o3quw"]
 code = "// NOTE: Shader automatically converted from Godot Engine 4.2.2.stable's StandardMaterial3D.
 
@@ -47,9 +49,6 @@ void fragment() {
 }
 "
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_tns7d"]
-load_path = "res://.godot/imported/SM_HeavyWeapon2_01_T_Texture_01.png-1db4f526cd11533f403a32a5edeb0e52.s3tc.ctex"
-
 [resource]
 resource_name = "M_LowPolyWeapons_MAIN"
 render_priority = 0
@@ -65,4 +64,4 @@ shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(1, 1, 1)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
 shader_parameter/fov = 77.0
-shader_parameter/texture_albedo = SubResource("CompressedTexture2D_tns7d")
+shader_parameter/texture_albedo = ExtResource("1_837lt")

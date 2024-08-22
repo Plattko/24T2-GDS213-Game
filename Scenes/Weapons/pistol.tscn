@@ -1,7 +1,7 @@
 [gd_scene load_steps=31 format=3 uid="uid://d2x6finf6hnf4"]
 
 [ext_resource type="Script" path="res://Scripts/Weapons/pistol.gd" id="1_c6rr1"]
-[ext_resource type="Material" uid="uid://4t0aqxchgkfa" path="res://Assets/Materials/Shader Materials/weapon_shader.tres" id="2_xp67d"]
+[ext_resource type="Material" uid="uid://4t0aqxchgkfa" path="res://Assets/Materials/Shader Materials/Weapon/weapon_shader.tres" id="2_xp67d"]
 [ext_resource type="Script" path="res://Scripts/Weapons/Components/muzzle_flash.gd" id="3_v10tm"]
 [ext_resource type="Material" uid="uid://un70lvxarnb0" path="res://Assets/Materials/Shader Materials/muzzle_flash_shader.tres" id="4_332v5"]
 [ext_resource type="AudioStream" uid="uid://cymomnjpje2u8" path="res://Assets/Audio/Guns/Deagle/Gunshots/Bazooka Blast Close 001.wav" id="5_6g1v5"]

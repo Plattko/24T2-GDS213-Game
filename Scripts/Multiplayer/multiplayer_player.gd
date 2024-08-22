@@ -164,16 +164,16 @@ func _unhandled_input(event) -> void:
 	
 	# Health debug
 	if event is InputEventKey:
-		if event.pressed and event.keycode == KEY_P:
-			on_damaged(20, false)
-		if event.pressed and event.keycode == KEY_O:
-			on_healed(20)
+		#if event.pressed and event.keycode == KEY_P:
+			#on_damaged(20, false)
+		#if event.pressed and event.keycode == KEY_O:
+			#on_healed(20)
 		if event.pressed and event.keycode == KEY_I:
 			do_self_damage = !do_self_damage
-		if event.pressed and event.keycode == KEY_L:
-			revive_player()
-		if event.pressed and event.keycode == KEY_K:
-			respawn_player()
+		#if event.pressed and event.keycode == KEY_L:
+			#revive_player()
+		#if event.pressed and event.keycode == KEY_K:
+			#respawn_player()
 
 func _physics_process(delta) -> void:
 	if not is_multiplayer_authority(): return

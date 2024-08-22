@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://co38vlsgcng80"]
 
 [ext_resource type="Script" path="res://Scripts/Weapons/rocket_launcher.gd" id="1_j0ibu"]
-[ext_resource type="Material" uid="uid://4t0aqxchgkfa" path="res://Assets/Materials/Shader Materials/weapon_shader.tres" id="2_egseg"]
+[ext_resource type="Material" uid="uid://4t0aqxchgkfa" path="res://Assets/Materials/Shader Materials/Weapon/weapon_shader.tres" id="2_egseg"]
 [ext_resource type="AudioStream" uid="uid://cs8x7t60hhsqw" path="res://Assets/Audio/Guns/Rocket Launcher/Firing/Missile Start 001.wav" id="3_pjq0k"]
 [ext_resource type="AudioStream" uid="uid://d1xil40t7b12k" path="res://Assets/Audio/Guns/Rocket Launcher/Firing/Missile Start 002.wav" id="4_8m648"]
 [ext_resource type="AudioStream" uid="uid://b3fam6uv5f847" path="res://Assets/Audio/Guns/Rocket Launcher/Firing/Missile Start 003.wav" id="5_ovxgu"]
