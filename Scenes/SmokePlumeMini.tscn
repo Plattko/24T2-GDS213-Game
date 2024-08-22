@@ -1,0 +1,71 @@
+[gd_scene load_steps=13 format=3 uid="uid://5je3t62q165o"]
+
+[ext_resource type="Texture2D" uid="uid://cl70k7pxky636" path="res://Assets/Materials/Shader Materials/smoke.png" id="1_nifcv"]
+
+[sub_resource type="Gradient" id="Gradient_e2tqs"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_w6xd1"]
+gradient = SubResource("Gradient_e2tqs")
+
+[sub_resource type="Curve" id="Curve_upufp"]
+_data = [Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="Curve" id="Curve_cghji"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="Curve" id="Curve_xfm5u"]
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_23dwu"]
+curve_x = SubResource("Curve_upufp")
+curve_y = SubResource("Curve_cghji")
+curve_z = SubResource("Curve_xfm5u")
+
+[sub_resource type="Curve" id="Curve_vcdid"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.564417, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_pigca"]
+curve = SubResource("Curve_vcdid")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7i5ul"]
+emission_shape = 1
+emission_sphere_radius = 2.0
+angle_max = 360.0
+angular_velocity_min = 1.0
+angular_velocity_max = 10.0
+directional_velocity_min = 3.0
+directional_velocity_max = 5.0
+directional_velocity_curve = SubResource("CurveXYZTexture_23dwu")
+gravity = Vector3(0, 0, 0)
+radial_accel_min = 0.5
+radial_accel_max = 1.0
+scale_max = 10.0
+scale_curve = SubResource("CurveTexture_pigca")
+color_ramp = SubResource("GradientTexture1D_w6xd1")
+hue_variation_max = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5o5jj"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_color = Color(0.862745, 0.862745, 0.862745, 0.176471)
+albedo_texture = ExtResource("1_nifcv")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_8okf8"]
+material = SubResource("StandardMaterial3D_5o5jj")
+size = Vector2(4, 4)
+
+[node name="SmokePlumeParticle" type="Node3D"]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+amount = 100
+lifetime = 5.0
+speed_scale = 1.5
+process_material = SubResource("ParticleProcessMaterial_7i5ul")
+draw_pass_1 = SubResource("QuadMesh_8okf8")
