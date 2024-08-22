@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://il6q27w1jqvw"]
+[gd_scene load_steps=66 format=3 uid="uid://il6q27w1jqvw"]
 
 [ext_resource type="Script" path="res://Scripts/Multiplayer/multiplayer_player.gd" id="1_mtm2n"]
 [ext_resource type="Script" path="res://Scripts/Player/player_input.gd" id="2_7s41b"]
@@ -29,8 +29,15 @@
 [ext_resource type="AudioStream" uid="uid://dq2rvcq5egpoi" path="res://Assets/Audio/Guns/New/hitmarker_reg.wav" id="21_tr8ov"]
 [ext_resource type="AudioStream" uid="uid://dxyx731a0jlfw" path="res://Assets/Audio/Guns/New/hitmarker_crit_2.wav" id="22_1q0bw"]
 [ext_resource type="Texture2D" uid="uid://dwe2gnlquqbvt" path="res://Assets/Textures/UI/ring_texture.png" id="26_xfog8"]
+[ext_resource type="Texture2D" uid="uid://cu2nr1fxk8a4x" path="res://Assets/UI_Assets/Weapons/Weapons/deagle_icon.png" id="27_jkeyc"]
+[ext_resource type="Texture2D" uid="uid://bvogjlibr3qxk" path="res://Assets/UI_Assets/Wave info/wave_info_box.png" id="27_tda3r"]
+[ext_resource type="FontFile" uid="uid://upmjjwvia6wx" path="res://Assets/Fonts/couture-bldit.otf" id="28_bilt5"]
+[ext_resource type="Texture2D" uid="uid://ckhjwnrouggrj" path="res://Assets/UI_Assets/Weapons/Weapons/rifle_icon.png" id="28_i3a7u"]
+[ext_resource type="FontFile" uid="uid://3fblnfnw83o2" path="res://Assets/Fonts/CreatoDisplay-BoldItalic.otf" id="29_t57sj"]
 [ext_resource type="Script" path="res://Scripts/UI/damage_indicator.gd" id="30_dgwuk"]
 [ext_resource type="PackedScene" uid="uid://bmmqythdw0a6y" path="res://Scenes/UI/Menus/escape_menu.tscn" id="31_on5gm"]
+[ext_resource type="Texture2D" uid="uid://ccjd3crse6ikl" path="res://Assets/UI_Assets/BWOB_health_symbol.png" id="32_2m3m6"]
+[ext_resource type="FontFile" uid="uid://cmpx5wxpfbejj" path="res://Assets/Fonts/CreatoDisplay-Bold.otf" id="34_a8ftc"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_vurwv"]
 properties/0/path = NodePath(".:position")
@@ -846,12 +853,6 @@ _data = {
 "RESET": SubResource("Animation_k5wue")
 }
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ig1xb"]
-content_margin_left = 10.0
-content_margin_top = 0.0
-content_margin_right = 10.0
-content_margin_bottom = 0.0
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pk7gd"]
 content_margin_left = 10.0
 content_margin_top = 0.0
@@ -869,6 +870,15 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 corner_detail = 20
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dw7oe"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sf1fm"]
+texture = ExtResource("27_tda3r")
+texture_margin_left = 15.0
+texture_margin_top = 15.0
+texture_margin_right = 15.0
+texture_margin_bottom = 15.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hqtb7"]
 content_margin_left = 20.0
@@ -1090,7 +1100,6 @@ script = ExtResource("15_enn73")
 script = ExtResource("18_wjjdp")
 
 [node name="DeathTimer" type="Timer" parent="."]
-wait_time = 30.0
 one_shot = true
 
 [node name="RespawnTimer" type="Timer" parent="."]
@@ -1129,7 +1138,7 @@ script = ExtResource("15_jmxyw")
 hud = NodePath("HUD")
 escape_menu = NodePath("EscapeMenu")
 
-[node name="HUD" type="Control" parent="UI" node_paths=PackedStringArray("health_label", "cur_ammo_label", "equipped_weapon_label", "unequipped_weapon_label", "reticle", "damage_indicator", "cur_wave_label", "enemies_left_label", "zone_change_warning", "zone_change_centre", "time_text", "downed_ui", "death_timer_text", "death_progress_bar", "dead_ui", "respawn_text", "respawn_timer_text", "respawn_progress_bar", "interact_ui", "interact_text", "interact_key_text", "interact_progress_bar")]
+[node name="HUD" type="Control" parent="UI" node_paths=PackedStringArray("health_label", "weapons_vbox", "cur_ammo_label", "equipped_weapon_label", "unequipped_weapon_label", "equipped_weapon_icon", "unequipped_weapon_icon", "reticle", "damage_indicator", "wave_panel", "cur_wave_label", "enemies_left_label", "zone_change_warning", "zone_change_centre", "time_text", "downed_ui", "death_timer_text", "death_progress_bar", "dead_ui", "respawn_text", "respawn_timer_text", "respawn_progress_bar", "interact_ui", "interact_text", "interact_key_text", "interact_progress_bar")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1138,14 +1147,18 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("16_e684x")
-health_label = NodePath("MarginContainer/HealthPanel/Health")
-cur_ammo_label = NodePath("MarginContainer/VBoxContainer/EquippedWeaponPanel/HBoxContainer/Ammo")
-equipped_weapon_label = NodePath("MarginContainer/VBoxContainer/EquippedWeaponPanel/HBoxContainer/EquippedWeapon")
-unequipped_weapon_label = NodePath("MarginContainer/VBoxContainer/UnequippedWeaponPanel/UnequippedWeapon")
+health_label = NodePath("MarginContainer/HealthPanel/HBoxContainer/Health")
+weapons_vbox = NodePath("MarginContainer/WeaponsVBox")
+cur_ammo_label = NodePath("MarginContainer/WeaponsVBox/EquippedWeaponPanel/HBoxContainer/Ammo")
+equipped_weapon_label = NodePath("MarginContainer/WeaponsVBox/EquippedWeaponPanel/HBoxContainer/EquippedWeapon")
+unequipped_weapon_label = NodePath("MarginContainer/WeaponsVBox/UnequippedWeaponPanel/UnequippedWeapon")
+equipped_weapon_icon = NodePath("MarginContainer/WeaponsVBox/EquippedWeaponPanel/HBoxContainer/MarginContainer/EquippedWeaponIcon")
+unequipped_weapon_icon = NodePath("MarginContainer/WeaponsVBox/UnequippedWeaponPanel/MarginContainer/UnequippedWeaponIcon")
 reticle = NodePath("Reticle")
 damage_indicator = NodePath("DamageIndicator")
-cur_wave_label = NodePath("MarginContainer/WaveVBox/CurrentWave")
-enemies_left_label = NodePath("MarginContainer/WaveVBox/EnemiesRemaining")
+wave_panel = NodePath("MarginContainer/WavePanel")
+cur_wave_label = NodePath("MarginContainer/WavePanel/WaveVBox/CurrentWave")
+enemies_left_label = NodePath("MarginContainer/WavePanel/WaveVBox/EnemiesRemaining")
 zone_change_warning = NodePath("ZoneChangeWarning")
 zone_change_centre = NodePath("ZoneChangeCentre")
 time_text = NodePath("ZoneChangeWarning/HBoxContainer/InfoVBox/HBoxContainer/TimePanel/TimeText")
@@ -1311,45 +1324,78 @@ theme_override_constants/margin_right = 30
 theme_override_constants/margin_bottom = 30
 
 [node name="HealthPanel" type="PanelContainer" parent="UI/HUD/MarginContainer"]
+custom_minimum_size = Vector2(359, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
-theme_override_styles/panel = SubResource("StyleBoxEmpty_ig1xb")
+theme_override_styles/panel = SubResource("StyleBoxFlat_pk7gd")
 
-[node name="Health" type="Label" parent="UI/HUD/MarginContainer/HealthPanel"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/HUD/MarginContainer/HealthPanel"]
+layout_mode = 2
+
+[node name="HP" type="Label" parent="UI/HUD/MarginContainer/HealthPanel/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
 theme_override_font_sizes/font_size = 64
-text = "HP 100/100"
+text = "HP"
 vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/HUD/MarginContainer"]
+[node name="Panel" type="Panel" parent="UI/HUD/MarginContainer/HealthPanel/HBoxContainer"]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_dw7oe")
+
+[node name="Health" type="Label" parent="UI/HUD/MarginContainer/HealthPanel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 64
+text = "100/100"
+vertical_alignment = 1
+
+[node name="WeaponsVBox" type="VBoxContainer" parent="UI/HUD/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 
-[node name="UnequippedWeaponPanel" type="PanelContainer" parent="UI/HUD/MarginContainer/VBoxContainer"]
+[node name="UnequippedWeaponPanel" type="PanelContainer" parent="UI/HUD/MarginContainer/WeaponsVBox"]
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_styles/panel = SubResource("StyleBoxFlat_pk7gd")
 
-[node name="UnequippedWeapon" type="Label" parent="UI/HUD/MarginContainer/VBoxContainer/UnequippedWeaponPanel"]
+[node name="UnequippedWeapon" type="Label" parent="UI/HUD/MarginContainer/WeaponsVBox/UnequippedWeaponPanel"]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Pistol"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="EquippedWeaponPanel" type="PanelContainer" parent="UI/HUD/MarginContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="UI/HUD/MarginContainer/WeaponsVBox/UnequippedWeaponPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="UnequippedWeaponIcon" type="TextureRect" parent="UI/HUD/MarginContainer/WeaponsVBox/UnequippedWeaponPanel/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("27_jkeyc")
+expand_mode = 3
+
+[node name="EquippedWeaponPanel" type="PanelContainer" parent="UI/HUD/MarginContainer/WeaponsVBox"]
+custom_minimum_size = Vector2(0, 77)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_pk7gd")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/HUD/MarginContainer/VBoxContainer/EquippedWeaponPanel"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/HUD/MarginContainer/WeaponsVBox/EquippedWeaponPanel"]
 layout_mode = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 10
 
-[node name="Ammo" type="Label" parent="UI/HUD/MarginContainer/VBoxContainer/EquippedWeaponPanel/HBoxContainer"]
+[node name="Ammo" type="Label" parent="UI/HUD/MarginContainer/WeaponsVBox/EquippedWeaponPanel/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
@@ -1358,28 +1404,51 @@ text = "24/24"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="EquippedWeapon" type="Label" parent="UI/HUD/MarginContainer/VBoxContainer/EquippedWeaponPanel/HBoxContainer"]
+[node name="EquippedWeapon" type="Label" parent="UI/HUD/MarginContainer/WeaponsVBox/EquippedWeaponPanel/HBoxContainer"]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "Rifle"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="WaveVBox" type="VBoxContainer" parent="UI/HUD/MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="UI/HUD/MarginContainer/WeaponsVBox/EquippedWeaponPanel/HBoxContainer"]
 layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="EquippedWeaponIcon" type="TextureRect" parent="UI/HUD/MarginContainer/WeaponsVBox/EquippedWeaponPanel/HBoxContainer/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("28_i3a7u")
+expand_mode = 3
+
+[node name="WavePanel" type="PanelContainer" parent="UI/HUD/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_sf1fm")
+
+[node name="WaveVBox" type="VBoxContainer" parent="UI/HUD/MarginContainer/WavePanel"]
+layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 0
 
-[node name="CurrentWave" type="Label" parent="UI/HUD/MarginContainer/WaveVBox"]
+[node name="CurrentWave" type="Label" parent="UI/HUD/MarginContainer/WavePanel/WaveVBox"]
+custom_minimum_size = Vector2(0, 55)
 layout_mode = 2
 size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("28_bilt5")
 theme_override_font_sizes/font_size = 48
 text = "Wave 123"
 horizontal_alignment = 1
-vertical_alignment = 1
+vertical_alignment = 2
 
-[node name="EnemiesRemaining" type="Label" parent="UI/HUD/MarginContainer/WaveVBox"]
+[node name="EnemiesRemaining" type="Label" parent="UI/HUD/MarginContainer/WavePanel/WaveVBox"]
 layout_mode = 2
 size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("29_t57sj")
 theme_override_font_sizes/font_size = 32
 text = "Enemies Remaining: 123"
 horizontal_alignment = 1
@@ -1413,6 +1482,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="DeadInText" type="Label" parent="UI/HUD/DownedUI"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -1473,6 +1543,24 @@ fill_mode = 5
 texture_progress = ExtResource("26_xfog8")
 tint_progress = Color(1, 1, 1, 0.627451)
 
+[node name="DownedIcon" type="TextureRect" parent="UI/HUD/DownedUI"]
+modulate = Color(1, 1, 1, 0.627451)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+pivot_offset = Vector2(20, 20)
+texture = ExtResource("32_2m3m6")
+
 [node name="DeadUI" type="Control" parent="UI/HUD"]
 layout_mode = 1
 anchors_preset = 15
@@ -1504,6 +1592,7 @@ theme_override_constants/margin_bottom = 30
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_colors/font_color = Color(1, 1, 1, 0.627451)
+theme_override_fonts/font = ExtResource("29_t57sj")
 theme_override_font_sizes/font_size = 64
 text = "DEAD"
 vertical_alignment = 1
@@ -1537,6 +1626,7 @@ offset_bottom = 33.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 0.627451)
+theme_override_fonts/font = ExtResource("34_a8ftc")
 theme_override_font_sizes/font_size = 64
 text = "20
 "
@@ -1546,6 +1636,7 @@ vertical_alignment = 1
 [node name="RespawnText" type="Label" parent="UI/HUD/DeadUI/Panel/MarginContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 0.627451)
+theme_override_fonts/font = ExtResource("34_a8ftc")
 theme_override_font_sizes/font_size = 40
 text = "Respawning in"
 horizontal_alignment = 1
@@ -1581,6 +1672,7 @@ value = 3.0
 fill_mode = 4
 nine_patch_stretch = true
 stretch_margin_left = 55
+stretch_margin_top = 55
 texture_under = ExtResource("26_xfog8")
 texture_progress = ExtResource("26_xfog8")
 tint_under = Color(0, 0, 0, 0.627451)
@@ -1616,7 +1708,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ZoneChangeWarning" type="PanelContainer" parent="UI/HUD"]
-custom_minimum_size = Vector2(500, 200)
+custom_minimum_size = Vector2(500, 253)
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -1646,6 +1738,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("34_a8ftc")
 theme_override_font_sizes/font_size = 128
 text = "!"
 horizontal_alignment = 1
@@ -1657,6 +1750,7 @@ size_flags_horizontal = 3
 
 [node name="Title" type="Label" parent="UI/HUD/ZoneChangeWarning/HBoxContainer/InfoVBox"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("28_bilt5")
 theme_override_font_sizes/font_size = 48
 text = "ZONE CHANGE"
 
@@ -1673,17 +1767,16 @@ theme_override_constants/separation = -1
 
 [node name="TimeRemainingPanel" type="PanelContainer" parent="UI/HUD/ZoneChangeWarning/HBoxContainer/InfoVBox/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 0
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_frr6w")
 
 [node name="TimeToEvacText" type="Label" parent="UI/HUD/ZoneChangeWarning/HBoxContainer/InfoVBox/HBoxContainer/TimeRemainingPanel"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "Time to evacuate:"
+text = "TIME TO EVACUATE:"
 
 [node name="TimePanel" type="PanelContainer" parent="UI/HUD/ZoneChangeWarning/HBoxContainer/InfoVBox/HBoxContainer"]
-custom_minimum_size = Vector2(54, 0)
+custom_minimum_size = Vector2(95, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_0a0dl")
 
@@ -1692,6 +1785,8 @@ layout_mode = 2
 size_flags_vertical = 1
 theme_override_font_sizes/font_size = 48
 text = "30"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ZoneChangeCentre" type="CenterContainer" parent="UI/HUD"]
 layout_mode = 1

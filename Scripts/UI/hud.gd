@@ -3,13 +3,23 @@ extends Control
 
 @export_group("Health and Weapons UI")
 @export var health_label : Label
+@export var weapons_vbox : VBoxContainer
 @export var cur_ammo_label : Label
 @export var equipped_weapon_label : Label
 @export var unequipped_weapon_label : Label
+@export var equipped_weapon_icon : TextureRect
+@export var unequipped_weapon_icon : TextureRect
 @export var reticle : Reticle
 @export var damage_indicator : DamageIndicator
 
+var rifle_icon := load("res://Assets/UI_Assets/Weapons/Weapons/rifle_icon.png")
+var deagle_icon := load("res://Assets/UI_Assets/Weapons/Weapons/deagle_icon.png")
+var shotgun_icon := load("res://Assets/UI_Assets/Weapons/Weapons/shotgun_icon.png")
+var rocket_launcher_icon := load("res://Assets/UI_Assets/Weapons/Weapons/rocket_launcher_icon.png")
+var p90_icon := load("res://Assets/UI_Assets/Weapons/Weapons/P90_icon.png")
+
 @export_group("Wave and Zone UI")
+@export var wave_panel : PanelContainer
 @export var cur_wave_label : Label
 @export var enemies_left_label : Label
 
@@ -43,8 +53,9 @@ var revive_other_timer : Timer
 var wave_manager : WaveManager
 
 func _ready():
-	cur_wave_label.visible = false
-	enemies_left_label.visible = false
+	wave_panel.hide()
+	#cur_wave_label.visible = false
+	#enemies_left_label.visible = false
 	zone_change_warning_def_pos = zone_change_warning.position
 	zone_change_warning.visible = false
 	downed_ui.hide()
@@ -72,7 +83,7 @@ func _process(_delta) -> void:
 		enemies_left_label.text = "Next Wave In: " + str(snapped(wave_manager.intermission_timer.time_left, 1))
 	
 	if downed_ui.visible:
-		death_timer_text.text = str(snapped(death_timer.time_left, 1))
+		#death_timer_text.text = str(snapped(death_timer.time_left, 1))
 		death_progress_bar.value = death_timer.time_left
 	
 	if dead_ui.visible:
@@ -86,7 +97,7 @@ func _process(_delta) -> void:
 			interact_progress_bar.value = 0.0
 
 func on_update_health(health) -> void:
-	health_label.text = "HP " + str(roundi(health[0])) + "/" + str(health[1])
+	health_label.text = str(roundi(health[0])) + "/" + str(health[1])
 
 func on_update_ammo(ammo) -> void:
 	cur_ammo_label.set_text(str(ammo[0]) + "/" + str(ammo[1]))
@@ -94,10 +105,15 @@ func on_update_ammo(ammo) -> void:
 func on_update_weapon(cur_ammo: int, max_ammo: int, equipped_weapon: Weapon, unequipped_weapon: Weapon) -> void:
 	# Update the ammo text
 	on_update_ammo([cur_ammo, max_ammo])
-	# Update the equipped weapon text
-	equipped_weapon_label.text = get_weapon_text(equipped_weapon)
-	# Update the unequipped weapon text
-	unequipped_weapon_label.text = get_weapon_text(unequipped_weapon)
+	# Update the equipped weapon icon
+	equipped_weapon_icon.texture = get_weapon_icon(equipped_weapon)
+	# Update the unequipped weapon icon
+	unequipped_weapon_icon.texture = get_weapon_icon(unequipped_weapon)
+	
+	## Update the equipped weapon text
+	#equipped_weapon_label.text = get_weapon_text(equipped_weapon)
+	## Update the unequipped weapon text
+	#unequipped_weapon_label.text = get_weapon_text(unequipped_weapon)
 
 func get_weapon_text(weapon: Weapon) -> String:
 	if weapon is Rifle:
@@ -113,12 +129,28 @@ func get_weapon_text(weapon: Weapon) -> String:
 	else:
 		return "Unassigned"
 
+func get_weapon_icon(weapon: Weapon) -> Resource:
+	if weapon is Rifle:
+		return rifle_icon
+	elif weapon is Pistol:
+		return deagle_icon
+	elif weapon is Shotgun:
+		return shotgun_icon
+	elif weapon is RocketLauncher:
+		return rocket_launcher_icon
+	elif weapon is P90:
+		return p90_icon
+	else:
+		return null
+
 func on_cur_wave_updated(wave: int) -> void:
 	cur_wave_label.text = "Wave " + str(wave)
-	if !cur_wave_label.visible:
-		cur_wave_label.visible = true
-	if !enemies_left_label.visible:
-		enemies_left_label.visible = true
+	if !wave_panel.visible:
+		wave_panel.show()
+	#if !cur_wave_label.visible:
+		#cur_wave_label.visible = true
+	#if !enemies_left_label.visible:
+		#enemies_left_label.visible = true
 
 func on_enemy_count_updated(enemy_count: int) -> void:
 	enemies_left_label.text = "Enemies Remaining: " + str(enemy_count)
@@ -138,7 +170,7 @@ func on_player_revived() -> void:
 func on_player_died(is_vaporised: bool) -> void:
 	# Hide health, ammo and reticle
 	health_label.hide()
-	cur_ammo_label.hide()
+	weapons_vbox.hide()
 	reticle.hide_reticle()
 	# Hide the downed UI
 	if downed_ui.visible: downed_ui.hide()
@@ -183,9 +215,10 @@ func on_revive_stopped() -> void:
 func on_zone_change_entered() -> void:
 	print("Zone change entered.")
 	print("Zone change warning position: " + str(zone_change_warning.position))
-	cur_wave_label.visible = false
-	if enemies_left_label.visible:
-		enemies_left_label.visible = false
+	#cur_wave_label.visible = false
+	#if enemies_left_label.visible:
+		#enemies_left_label.visible = false
+	wave_panel.hide()
 	zone_change_warning.reparent(zone_change_centre, false)
 	print("Zone change warning position: " + str(zone_change_warning.position))
 	zone_change_warning.visible = true

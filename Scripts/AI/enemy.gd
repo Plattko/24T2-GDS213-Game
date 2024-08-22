@@ -72,12 +72,14 @@ func _ready():
 			turn_speed = speedy_turn_speed
 		# Connect the target timer's timeout signal to the set_target_position function
 		target_timer.timeout.connect(set_target_position)
-		# Set the initial target location
-		target_player = players.pick_random()
-		target_position = target_player.global_position
-		set_target_position()
-		# Start the target timer
-		target_timer.start()
+		var wave_manager = get_tree().get_first_node_in_group("wave_manager") as WaveManager
+		if wave_manager.game_state == wave_manager.Game_States.IN_GAME:
+			# Set the initial target location
+			target_player = players.pick_random()
+			target_position = target_player.global_position
+			set_target_position()
+			# Start the target timer
+			target_timer.start()
 	
 	# Set the enemy to max health
 	cur_health = max_health
