@@ -10,7 +10,7 @@ func _ready() -> void:
 
 @rpc("call_local")
 func play() -> void:
-	print("Played enemy spawn beam strike animation")
+	#print("Played enemy spawn beam strike animation")
 	anim_player.play("Strike")
 
 func on_beam_inner_body_finished() -> void:

@@ -130,6 +130,7 @@ func get_enemy_spawn_points() -> Array[Node3D]:
 func play_anim(_cur_zone: int, anim: String) -> void:
 	var anim_player = zones[_cur_zone - 1].vaporisation_beam.get_child(0)
 	anim_player.play(anim)
+	zones[_cur_zone - 1].vaporisation_beam_particle.play.rpc()
 
 @rpc("any_peer", "call_local")
 func set_respawn_point(_cur_zone: int) -> void:

@@ -1,6 +1,6 @@
 extends Node
 
-var main_menu := load("res://Scenes/UI/Menus/main_menu.tscn")
+var main_menu := load("res://Scenes/Levels/Main_menu.tscn")
 var is_using_steam : bool = false
 var is_exiting_to_desktop : bool = false
 

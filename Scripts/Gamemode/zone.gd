@@ -7,3 +7,4 @@ extends Node
 
 @export var vaporisation_areas : Node
 @export var vaporisation_beam : MeshInstance3D
+@export var vaporisation_beam_particle : EnemySpawnBeam

@@ -1,4 +1,4 @@
-[gd_scene load_steps=144 format=3 uid="uid://c6qxbn3y8kkjl"]
+[gd_scene load_steps=145 format=3 uid="uid://c6qxbn3y8kkjl"]
 
 [ext_resource type="Material" uid="uid://b5y2c7coteo7i" path="res://Assets/Materials/Standard Materials/MI_coal_A_Inst.tres" id="1_e2drn"]
 [ext_resource type="Script" path="res://Scripts/Gamemode/scene_manager.gd" id="1_q5wbq"]
@@ -116,6 +116,7 @@
 [ext_resource type="PackedScene" uid="uid://brt77nh71imie" path="res://Assets/Imports/Stylized cars/Cars/Meshes/car2.6.glb" id="118_dokga"]
 [ext_resource type="PackedScene" uid="uid://bh354ptybdsvr" path="res://Assets/Imports/Stylized cars/Cars/Meshes/car4.6.glb" id="118_eg70d"]
 [ext_resource type="PackedScene" uid="uid://d0pu57u4yuwbg" path="res://Assets/Imports/FPS Bundle/AssortedProps/Meshes/SM_Props_Light_05.glb" id="119_70kga"]
+[ext_resource type="PackedScene" uid="uid://dckfrjujnkydo" path="res://Scenes/VFX/vaporisation_beam_particle.tscn" id="120_7smr3"]
 [ext_resource type="PackedScene" uid="uid://dkmaavxl3nky" path="res://Assets/Imports/Stylized cars/Cars/Meshes/car1.5.glb" id="126_7w6i8"]
 [ext_resource type="AudioStream" uid="uid://d2kkv36i6vytj" path="res://Assets/Audio/Music/Infinity/Heavy Electronic Infinity Cut 60.wav" id="129_x7wfv"]
 [ext_resource type="PackedScene" uid="uid://b55oya0sl1w47" path="res://Assets/Imports/Stylized cars/Buses/Meshes/bus2.glb" id="144_88oay"]
@@ -363,10 +364,10 @@ tracks/3/path = NodePath(".:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
 "update": 1,
-"values": [true]
+"values": []
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -525,7 +526,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -610,10 +611,10 @@ tracks/3/path = NodePath(".:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
 "update": 1,
-"values": [true]
+"values": []
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -9032,12 +9033,13 @@ spawn_path = NodePath("../Enemies")
 
 [node name="ZoneData" type="Node" parent="."]
 
-[node name="Zone1" type="Node" parent="ZoneData" node_paths=PackedStringArray("respawn_point", "enemy_spawn_points", "vaporisation_areas", "vaporisation_beam")]
+[node name="Zone1" type="Node" parent="ZoneData" node_paths=PackedStringArray("respawn_point", "enemy_spawn_points", "vaporisation_areas", "vaporisation_beam", "vaporisation_beam_particle")]
 script = ExtResource("109_y4awo")
 respawn_point = NodePath("RespawnPoint")
 enemy_spawn_points = NodePath("EnemySpawnPoints")
 vaporisation_areas = NodePath("VaporisationAreas")
 vaporisation_beam = NodePath("Zone1Beam")
+vaporisation_beam_particle = NodePath("VaporisationBeam")
 
 [node name="RespawnPoint" type="Node3D" parent="ZoneData/Zone1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37, 1, -13.5)
@@ -9105,12 +9107,16 @@ libraries = {
 "": SubResource("AnimationLibrary_fdm4a")
 }
 
-[node name="Zone2" type="Node" parent="ZoneData" node_paths=PackedStringArray("respawn_point", "enemy_spawn_points", "vaporisation_areas", "vaporisation_beam")]
+[node name="VaporisationBeam" parent="ZoneData/Zone1" instance=ExtResource("120_7smr3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 11, 200, 39)
+
+[node name="Zone2" type="Node" parent="ZoneData" node_paths=PackedStringArray("respawn_point", "enemy_spawn_points", "vaporisation_areas", "vaporisation_beam", "vaporisation_beam_particle")]
 script = ExtResource("109_y4awo")
 respawn_point = NodePath("RespawnPoint")
 enemy_spawn_points = NodePath("EnemySpawnPoints")
 vaporisation_areas = NodePath("VaporisationAreas")
 vaporisation_beam = NodePath("Zone2Beam")
+vaporisation_beam_particle = NodePath("VaporisationBeam")
 
 [node name="RespawnPoint" type="Node3D" parent="ZoneData/Zone2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54.2317, 1, 37.5712)
@@ -9160,6 +9166,7 @@ shape = SubResource("BoxShape3D_enetb")
 
 [node name="Zone2Beam" type="MeshInstance3D" parent="ZoneData/Zone2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -107, 198, 39)
+visible = false
 mesh = SubResource("CylinderMesh_l0vo3")
 skeleton = NodePath("../../Zone1")
 
@@ -9167,6 +9174,9 @@ skeleton = NodePath("../../Zone1")
 libraries = {
 "": SubResource("AnimationLibrary_8wxbm")
 }
+
+[node name="VaporisationBeam" parent="ZoneData/Zone2" instance=ExtResource("120_7smr3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -114.81, 200, 39)
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("res://Scenes/Weapons/Components/rocket.tscn", "res://Scenes/Weapons/Components/explosion.tscn", "res://Scenes/Pickups/health_orb.tscn")
