@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b37bttipab74m"]
 
-[ext_resource type="PackedScene" uid="uid://du3fx1imn2xyp" path="res://Assets/Imports/StylizedHouses/Props/Meshes/SM_umbrella.glb" id="2_8ngtw"]
+[ext_resource type="PackedScene" uid="uid://b36soqgh75b22" path="res://Assets/Imports/StylizedHouses/Props/Meshes/SM_umbrella.glb" id="2_8ngtw"]
 [ext_resource type="Material" uid="uid://b634ek855ftyf" path="res://Assets/Materials/Standard Materials/MI_wooden_floor_WPO_Inst_SM_brick_building_13.tres" id="2_b1rw3"]
 
 [node name="CSGMesh3D" type="CSGMesh3D"]
