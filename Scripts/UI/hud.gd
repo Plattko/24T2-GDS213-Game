@@ -14,7 +14,9 @@ extends Control
 @export var enemies_left_label : Label
 
 @export var zone_change_warning : PanelContainer
+@export var zone_change_centre : CenterContainer
 @export var time_text : Label
+var zone_change_warning_def_pos : Vector2
 
 @export_group("Downed UI")
 @export var downed_ui : Control
@@ -43,6 +45,7 @@ var wave_manager : WaveManager
 func _ready():
 	cur_wave_label.visible = false
 	enemies_left_label.visible = false
+	zone_change_warning_def_pos = zone_change_warning.position
 	zone_change_warning.visible = false
 	downed_ui.hide()
 	dead_ui.hide()
@@ -179,9 +182,15 @@ func on_revive_stopped() -> void:
 #-------------------------------------------------------------------------------
 func on_zone_change_entered() -> void:
 	cur_wave_label.visible = false
-	zone_change_warning.visible = true
 	if enemies_left_label.visible:
 		enemies_left_label.visible = false
+	zone_change_warning.reparent(zone_change_centre, false)
+	zone_change_warning.visible = true
+	await get_tree().process_frame
+	zone_change_warning.reparent(self)
+	await get_tree().create_timer(1).timeout
+	var tween = get_tree().create_tween()
+	tween.tween_property(zone_change_warning, "position", zone_change_warning_def_pos, 0.25)
 
 func _on_zone_change_timer_timeout() -> void:
 	zone_change_warning.visible = false

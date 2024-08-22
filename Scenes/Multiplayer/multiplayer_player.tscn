@@ -1129,7 +1129,7 @@ script = ExtResource("15_jmxyw")
 hud = NodePath("HUD")
 escape_menu = NodePath("EscapeMenu")
 
-[node name="HUD" type="Control" parent="UI" node_paths=PackedStringArray("health_label", "cur_ammo_label", "equipped_weapon_label", "unequipped_weapon_label", "reticle", "damage_indicator", "cur_wave_label", "enemies_left_label", "zone_change_warning", "time_text", "downed_ui", "death_timer_text", "death_progress_bar", "dead_ui", "respawn_text", "respawn_timer_text", "respawn_progress_bar", "interact_ui", "interact_text", "interact_key_text", "interact_progress_bar")]
+[node name="HUD" type="Control" parent="UI" node_paths=PackedStringArray("health_label", "cur_ammo_label", "equipped_weapon_label", "unequipped_weapon_label", "reticle", "damage_indicator", "cur_wave_label", "enemies_left_label", "zone_change_warning", "zone_change_centre", "time_text", "downed_ui", "death_timer_text", "death_progress_bar", "dead_ui", "respawn_text", "respawn_timer_text", "respawn_progress_bar", "interact_ui", "interact_text", "interact_key_text", "interact_progress_bar")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1147,6 +1147,7 @@ damage_indicator = NodePath("DamageIndicator")
 cur_wave_label = NodePath("MarginContainer/WaveVBox/CurrentWave")
 enemies_left_label = NodePath("MarginContainer/WaveVBox/EnemiesRemaining")
 zone_change_warning = NodePath("ZoneChangeWarning")
+zone_change_centre = NodePath("ZoneChangeCentre")
 time_text = NodePath("ZoneChangeWarning/HBoxContainer/InfoVBox/HBoxContainer/TimePanel/TimeText")
 downed_ui = NodePath("DownedUI")
 death_timer_text = NodePath("DownedUI/DeathTimerText")
@@ -1402,84 +1403,6 @@ layout_mode = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/HUD/DebugPanel/MarginContainer"]
 layout_mode = 2
 
-[node name="ZoneChangeWarning" type="PanelContainer" parent="UI/HUD"]
-custom_minimum_size = Vector2(500, 200)
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -250.0
-offset_top = 10.0
-offset_right = 250.0
-offset_bottom = 210.0
-grow_horizontal = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_hqtb7")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/HUD/ZoneChangeWarning"]
-layout_mode = 2
-theme_override_constants/separation = 20
-
-[node name="AlertSymbol" type="Panel" parent="UI/HUD/ZoneChangeWarning/HBoxContainer"]
-custom_minimum_size = Vector2(213, 0)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_61hn2")
-
-[node name="Label" type="Label" parent="UI/HUD/ZoneChangeWarning/HBoxContainer/AlertSymbol"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 128
-text = "!"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="InfoVBox" type="VBoxContainer" parent="UI/HUD/ZoneChangeWarning/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Title" type="Label" parent="UI/HUD/ZoneChangeWarning/HBoxContainer/InfoVBox"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 48
-text = "ZONE CHANGE"
-
-[node name="Alert" type="Label" parent="UI/HUD/ZoneChangeWarning/HBoxContainer/InfoVBox"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 24
-text = "DEPLOYING VAPORISATION RAY TO 
-ERADICATE ALL ROBOTS IN VICINITY"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/HUD/ZoneChangeWarning/HBoxContainer/InfoVBox"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/separation = -1
-
-[node name="TimeRemainingPanel" type="PanelContainer" parent="UI/HUD/ZoneChangeWarning/HBoxContainer/InfoVBox/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_frr6w")
-
-[node name="TimeToEvacText" type="Label" parent="UI/HUD/ZoneChangeWarning/HBoxContainer/InfoVBox/HBoxContainer/TimeRemainingPanel"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Time to evacuate:"
-
-[node name="TimePanel" type="PanelContainer" parent="UI/HUD/ZoneChangeWarning/HBoxContainer/InfoVBox/HBoxContainer"]
-custom_minimum_size = Vector2(54, 0)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_0a0dl")
-
-[node name="TimeText" type="Label" parent="UI/HUD/ZoneChangeWarning/HBoxContainer/InfoVBox/HBoxContainer/TimePanel"]
-layout_mode = 2
-size_flags_vertical = 1
-theme_override_font_sizes/font_size = 48
-text = "30"
-
 [node name="DownedUI" type="Control" parent="UI/HUD"]
 visible = false
 layout_mode = 1
@@ -1691,6 +1614,92 @@ theme_override_font_sizes/font_size = 40
 text = "Interact"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="ZoneChangeWarning" type="PanelContainer" parent="UI/HUD"]
+custom_minimum_size = Vector2(500, 200)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -343.0
+offset_top = 30.0
+offset_right = 343.0
+offset_bottom = 283.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_hqtb7")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/HUD/ZoneChangeWarning"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="AlertSymbol" type="Panel" parent="UI/HUD/ZoneChangeWarning/HBoxContainer"]
+custom_minimum_size = Vector2(213, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_61hn2")
+
+[node name="Label" type="Label" parent="UI/HUD/ZoneChangeWarning/HBoxContainer/AlertSymbol"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 128
+text = "!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InfoVBox" type="VBoxContainer" parent="UI/HUD/ZoneChangeWarning/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Title" type="Label" parent="UI/HUD/ZoneChangeWarning/HBoxContainer/InfoVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "ZONE CHANGE"
+
+[node name="Alert" type="Label" parent="UI/HUD/ZoneChangeWarning/HBoxContainer/InfoVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "DEPLOYING VAPORISATION RAY TO 
+ERADICATE ALL ROBOTS IN VICINITY"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/HUD/ZoneChangeWarning/HBoxContainer/InfoVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = -1
+
+[node name="TimeRemainingPanel" type="PanelContainer" parent="UI/HUD/ZoneChangeWarning/HBoxContainer/InfoVBox/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_frr6w")
+
+[node name="TimeToEvacText" type="Label" parent="UI/HUD/ZoneChangeWarning/HBoxContainer/InfoVBox/HBoxContainer/TimeRemainingPanel"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Time to evacuate:"
+
+[node name="TimePanel" type="PanelContainer" parent="UI/HUD/ZoneChangeWarning/HBoxContainer/InfoVBox/HBoxContainer"]
+custom_minimum_size = Vector2(54, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0a0dl")
+
+[node name="TimeText" type="Label" parent="UI/HUD/ZoneChangeWarning/HBoxContainer/InfoVBox/HBoxContainer/TimePanel"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 48
+text = "30"
+
+[node name="ZoneChangeCentre" type="CenterContainer" parent="UI/HUD"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="DamageIndicator" type="Control" parent="UI/HUD"]
 layout_mode = 1
