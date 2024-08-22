@@ -15,26 +15,33 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_kxbfs")
 script = ExtResource("1_ttu8k")
 button = NodePath("Button")
-lobby_name_label = NodePath("HBoxContainer/LobbyName")
-player_count_label = NodePath("HBoxContainer/PlayerCount")
-host_name_label = NodePath("HBoxContainer/HostName")
-availability_label = NodePath("HBoxContainer/Availability")
+lobby_name_label = NodePath("MarginContainer/HBoxContainer/LobbyName")
+player_count_label = NodePath("MarginContainer/HBoxContainer/PlayerCount")
+host_name_label = NodePath("MarginContainer/HBoxContainer/HostName")
+availability_label = NodePath("MarginContainer/HBoxContainer/Availability")
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Availability" type="Label" parent="HBoxContainer"]
+[node name="Availability" type="Label" parent="MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Private"
 horizontal_alignment = 2
 
-[node name="HostName" type="Label" parent="HBoxContainer"]
+[node name="HostName" type="Label" parent="MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(294, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
@@ -42,14 +49,14 @@ text = "Plattko"
 horizontal_alignment = 2
 clip_text = true
 
-[node name="PlayerCount" type="Label" parent="HBoxContainer"]
+[node name="PlayerCount" type="Label" parent="MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(294, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "1/4"
 horizontal_alignment = 2
 
-[node name="LobbyName" type="Label" parent="HBoxContainer"]
+[node name="LobbyName" type="Label" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 24

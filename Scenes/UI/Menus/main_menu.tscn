@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://d1epidal3of6t"]
+[gd_scene load_steps=6 format=3 uid="uid://d1epidal3of6t"]
 
 [ext_resource type="Script" path="res://Scripts/UI/main_menu.gd" id="1_8rmxx"]
 [ext_resource type="PackedScene" uid="uid://bu0mtrnvhonpt" path="res://Scenes/UI/settings_menu.tscn" id="2_hmrco"]
+[ext_resource type="FontFile" uid="uid://qa6l5fdbsx3l" path="res://Assets/Fonts/Velocista-Demo-FFP.ttf" id="2_q04pt"]
+[ext_resource type="FontFile" uid="uid://upmjjwvia6wx" path="res://Assets/Fonts/couture-bldit.otf" id="3_8kb22"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_si2ml"]
 
@@ -23,14 +25,6 @@ quit_button = NodePath("MenuMarginContainer/ButtonsVBox/QuitButton")
 use_steam_button = NodePath("MenuMarginContainer/ButtonsVBox/PlayButtonsHBox/UseSteam")
 use_lan_button = NodePath("MenuMarginContainer/ButtonsVBox/PlayButtonsHBox/UseLAN")
 
-[node name="Panel" type="Panel" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
 [node name="MenuMarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -44,11 +38,13 @@ theme_override_constants/margin_right = 30
 theme_override_constants/margin_bottom = 30
 
 [node name="Title" type="Label" parent="MenuMarginContainer"]
+custom_minimum_size = Vector2(0, 110)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("2_q04pt")
 theme_override_font_sizes/font_size = 80
-text = "Born Without Brakes"
+text = "BORN WITHOUT BRAKES"
 vertical_alignment = 1
 
 [node name="ButtonsVBox" type="VBoxContainer" parent="MenuMarginContainer"]
@@ -61,7 +57,9 @@ layout_mode = 2
 theme_override_constants/separation = 15
 
 [node name="PlayButton" type="Button" parent="MenuMarginContainer/ButtonsVBox/PlayButtonsHBox"]
+custom_minimum_size = Vector2(0, 63)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_8kb22")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/focus = SubResource("StyleBoxEmpty_si2ml")
 text = "Play"
@@ -69,7 +67,9 @@ flat = true
 alignment = 0
 
 [node name="UseSteam" type="Button" parent="MenuMarginContainer/ButtonsVBox/PlayButtonsHBox"]
+custom_minimum_size = Vector2(0, 63)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_8kb22")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/focus = SubResource("StyleBoxEmpty_si2ml")
 text = "Steam"
@@ -77,7 +77,9 @@ flat = true
 alignment = 0
 
 [node name="UseLAN" type="Button" parent="MenuMarginContainer/ButtonsVBox/PlayButtonsHBox"]
+custom_minimum_size = Vector2(0, 63)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_8kb22")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/focus = SubResource("StyleBoxEmpty_si2ml")
 text = "LAN"
@@ -85,7 +87,9 @@ flat = true
 alignment = 0
 
 [node name="TutorialButton" type="Button" parent="MenuMarginContainer/ButtonsVBox"]
+custom_minimum_size = Vector2(0, 63)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_8kb22")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/focus = SubResource("StyleBoxEmpty_si2ml")
 disabled = true
@@ -94,7 +98,9 @@ flat = true
 alignment = 0
 
 [node name="OptionsButton" type="Button" parent="MenuMarginContainer/ButtonsVBox"]
+custom_minimum_size = Vector2(0, 63)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_8kb22")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/focus = SubResource("StyleBoxEmpty_si2ml")
 text = "Options"
@@ -102,7 +108,9 @@ flat = true
 alignment = 0
 
 [node name="CreditsButton" type="Button" parent="MenuMarginContainer/ButtonsVBox"]
+custom_minimum_size = Vector2(0, 63)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_8kb22")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/focus = SubResource("StyleBoxEmpty_si2ml")
 disabled = true
@@ -111,7 +119,9 @@ flat = true
 alignment = 0
 
 [node name="QuitButton" type="Button" parent="MenuMarginContainer/ButtonsVBox"]
+custom_minimum_size = Vector2(0, 63)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_8kb22")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/focus = SubResource("StyleBoxEmpty_si2ml")
 text = "Quit"

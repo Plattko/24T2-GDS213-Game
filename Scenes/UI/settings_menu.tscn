@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://bu0mtrnvhonpt"]
+[gd_scene load_steps=6 format=3 uid="uid://bu0mtrnvhonpt"]
 
 [ext_resource type="Script" path="res://Scripts/UI/Settings Menu/settings_menu.gd" id="1_t46cf"]
 [ext_resource type="PackedScene" uid="uid://blnme4tmx8d71" path="res://Scenes/UI/settings_tab_container.tscn" id="2_7ow51"]
+[ext_resource type="Texture2D" uid="uid://m04366pia3w5" path="res://Assets/UI_Assets/Menus/BWOB_background_2K.png" id="2_vewgb"]
+[ext_resource type="FontFile" uid="uid://upmjjwvia6wx" path="res://Assets/Fonts/couture-bldit.otf" id="3_dcv0m"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ecp45"]
-bg_color = Color(0.176471, 0.176471, 0.176471, 1)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pc5jd"]
 
 [node name="SettingsMenu" type="Control"]
 layout_mode = 3
@@ -15,6 +16,15 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_t46cf")
 
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_vewgb")
+
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -22,22 +32,24 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_ecp45")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_pc5jd")
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 30
+theme_override_constants/margin_left = 250
 theme_override_constants/margin_top = 30
-theme_override_constants/margin_right = 30
-theme_override_constants/margin_bottom = 30
+theme_override_constants/margin_right = 250
+theme_override_constants/margin_bottom = 100
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 30
 
 [node name="Title" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("3_dcv0m")
 theme_override_font_sizes/font_size = 48
 text = "Options"
 

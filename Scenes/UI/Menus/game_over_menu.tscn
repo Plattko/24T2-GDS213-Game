@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://03p3s41yxbsb"]
+[gd_scene load_steps=7 format=3 uid="uid://03p3s41yxbsb"]
 
 [ext_resource type="Script" path="res://Scripts/UI/game_over_menu.gd" id="1_lore6"]
 [ext_resource type="Material" uid="uid://c472eyc5fiib0" path="res://Assets/Materials/Shader Materials/blur.tres" id="2_4yg5j"]
+[ext_resource type="FontFile" uid="uid://upmjjwvia6wx" path="res://Assets/Fonts/couture-bldit.otf" id="3_ibnit"]
+[ext_resource type="FontFile" uid="uid://3fblnfnw83o2" path="res://Assets/Fonts/CreatoDisplay-BoldItalic.otf" id="4_d068o"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_fvwxy"]
 properties/0/path = NodePath("MarginContainer/VBoxContainer/WavesSurvivedText:text")
@@ -73,6 +75,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 8
 
 [node name="BackToLobbyButton" type="Button" parent="MarginContainer/OptionsHBox"]
+custom_minimum_size = Vector2(217, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
@@ -81,6 +84,7 @@ toggle_mode = true
 text = "Back To Lobby 0/4"
 
 [node name="MainMenuButton" type="Button" parent="MarginContainer/OptionsHBox"]
+custom_minimum_size = Vector2(131, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
@@ -96,13 +100,16 @@ size_flags_vertical = 4
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
-theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
 theme_override_constants/outline_size = 3
-theme_override_font_sizes/font_size = 108
+theme_override_fonts/font = ExtResource("3_ibnit")
+theme_override_font_sizes/font_size = 128
 text = "GAME OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="WavesSurvivedText" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("4_d068o")
 theme_override_font_sizes/font_size = 40
 text = "Waves Survived: 123"
 horizontal_alignment = 1
@@ -110,6 +117,7 @@ vertical_alignment = 1
 
 [node name="RobotsKilledText" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("4_d068o")
 theme_override_font_sizes/font_size = 32
 text = "Robots Killed: 123"
 horizontal_alignment = 1
@@ -117,6 +125,7 @@ vertical_alignment = 1
 
 [node name="ZoneSwapsText" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("4_d068o")
 theme_override_font_sizes/font_size = 32
 text = "Zone Swaps: 123"
 horizontal_alignment = 1

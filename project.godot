@@ -46,6 +46,10 @@ folder_colors={
 
 import/fbx/enabled=false
 
+[gui]
+
+theme/custom_font="res://Assets/Fonts/CreatoDisplay-Medium.otf"
+
 [input]
 
 move_forwards={

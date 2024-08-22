@@ -15,14 +15,14 @@ num_label = NodePath("HBoxContainer/NumLabel")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
-offset_right = 40.0
+offset_right = 1036.0
 offset_bottom = 40.0
 theme_override_constants/separation = 42
 
 [node name="NameLabel" type="Label" parent="HBoxContainer"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 24
 text = "Sensitivity"
 
 [node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
@@ -41,7 +41,7 @@ layout_mode = 2
 [node name="NumLabel" type="Label" parent="HBoxContainer"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 24
 text = "25%"
 
 [connection signal="value_changed" from="HBoxContainer/HSlider" to="." method="_on_slider_value_changed"]

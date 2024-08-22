@@ -556,11 +556,12 @@ properties/1/path = NodePath("GameOverMenu:visible")
 properties/1/spawn = true
 properties/1/replication_mode = 1
 
-[node name="SteamMultiplayerTesting" type="Node3D" node_paths=PackedStringArray("players_node", "initial_spawn_points", "zones", "wave_manager", "map_camera", "fade_to_black", "game_over_menu") groups=["level"]]
+[node name="SteamMultiplayerTesting" type="Node3D" node_paths=PackedStringArray("players_node", "initial_spawn_points", "zones", "zone_nav_regions", "wave_manager", "map_camera", "fade_to_black", "game_over_menu") groups=["level"]]
 script = ExtResource("1_fh8v2")
 players_node = NodePath("Players")
 initial_spawn_points = [NodePath("PlayerSpawnPoints/Spawn1"), NodePath("PlayerSpawnPoints/Spawn2"), NodePath("PlayerSpawnPoints/Spawn3"), NodePath("PlayerSpawnPoints/Spawn4")]
 zones = [NodePath("ZoneData/Zone1"), NodePath("ZoneData/Zone2")]
+zone_nav_regions = [NodePath("Level/NavRegionZone1"), NodePath("Level/NavRegionZone1")]
 wave_manager = NodePath("GamemodeManager")
 map_camera = NodePath("MapCamera")
 fade_to_black = NodePath("GameOverUI/FadeToBlackTransition")
