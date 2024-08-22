@@ -9026,7 +9026,7 @@ spawn_limit = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
 
 [node name="EnemySpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://Scenes/Enemies/robot_regular.tscn", "res://Scenes/Enemies/robot_speedy.tscn")
+_spawnable_scenes = PackedStringArray("res://Scenes/Enemies/robot_regular.tscn", "res://Scenes/Enemies/robot_speedy.tscn", "res://Scenes/VFX/enemy_spawn_beam_particle.tscn")
 spawn_path = NodePath("../Enemies")
 
 [node name="ZoneData" type="Node" parent="."]
