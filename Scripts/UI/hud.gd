@@ -7,6 +7,7 @@ extends Control
 @export var equipped_weapon_label : Label
 @export var unequipped_weapon_label : Label
 @export var reticle : Reticle
+@export var damage_indicator : DamageIndicator
 
 @export_group("Wave and Zone UI")
 @export var cur_wave_label : Label

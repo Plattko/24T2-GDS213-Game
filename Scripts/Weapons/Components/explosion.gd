@@ -118,7 +118,7 @@ func _on_explosion_radius_body_entered(body: Node3D):
 		#print("Knockback strength: " + str(knockback.length()))
 		
 		# NOTE: Super jank setup, only workaround I could find
-		body.rocket_self_hit.rpc_id(owner_id, damage, knockback)
+		body.rocket_self_hit.rpc_id(owner_id, damage, knockback, global_position)
 		
 		## Apply the self-damage
 		#if body.do_self_damage: body.on_damaged(damage, false)

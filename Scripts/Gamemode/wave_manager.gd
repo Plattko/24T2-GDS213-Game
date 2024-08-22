@@ -131,7 +131,7 @@ func spawn_enemy(is_endless_wave: bool) -> void:
 	# Instantiate the enemy spawn beam
 	var enemy_spawn_beam = enemy_spawn_beam_scene.instantiate() as EnemySpawnBeam
 	# Add it as a child of the enemies node
-	enemies_node.add_child(enemy_spawn_beam)
+	enemies_node.add_child(enemy_spawn_beam, true)
 	# Set its position to the selected spawn point
 	enemy_spawn_beam.global_position = Vector3(spawn_point.x, spawn_point.y + 200.0, spawn_point.z)
 	# Play its animation

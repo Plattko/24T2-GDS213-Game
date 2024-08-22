@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://il6q27w1jqvw"]
+[gd_scene load_steps=58 format=3 uid="uid://il6q27w1jqvw"]
 
 [ext_resource type="Script" path="res://Scripts/Multiplayer/multiplayer_player.gd" id="1_mtm2n"]
 [ext_resource type="Script" path="res://Scripts/Player/player_input.gd" id="2_7s41b"]
@@ -29,6 +29,7 @@
 [ext_resource type="AudioStream" uid="uid://dq2rvcq5egpoi" path="res://Assets/Audio/Guns/New/hitmarker_reg.wav" id="21_tr8ov"]
 [ext_resource type="AudioStream" uid="uid://dxyx731a0jlfw" path="res://Assets/Audio/Guns/New/hitmarker_crit_2.wav" id="22_1q0bw"]
 [ext_resource type="Texture2D" uid="uid://dwe2gnlquqbvt" path="res://Assets/Textures/UI/ring_texture.png" id="26_xfog8"]
+[ext_resource type="Script" path="res://Scripts/UI/damage_indicator.gd" id="30_dgwuk"]
 [ext_resource type="PackedScene" uid="uid://bmmqythdw0a6y" path="res://Scenes/UI/Menus/escape_menu.tscn" id="31_on5gm"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_vurwv"]
@@ -1128,7 +1129,7 @@ script = ExtResource("15_jmxyw")
 hud = NodePath("HUD")
 escape_menu = NodePath("EscapeMenu")
 
-[node name="HUD" type="Control" parent="UI" node_paths=PackedStringArray("health_label", "cur_ammo_label", "equipped_weapon_label", "unequipped_weapon_label", "reticle", "cur_wave_label", "enemies_left_label", "zone_change_warning", "time_text", "downed_ui", "death_timer_text", "death_progress_bar", "dead_ui", "respawn_text", "respawn_timer_text", "respawn_progress_bar", "interact_ui", "interact_text", "interact_key_text", "interact_progress_bar")]
+[node name="HUD" type="Control" parent="UI" node_paths=PackedStringArray("health_label", "cur_ammo_label", "equipped_weapon_label", "unequipped_weapon_label", "reticle", "damage_indicator", "cur_wave_label", "enemies_left_label", "zone_change_warning", "time_text", "downed_ui", "death_timer_text", "death_progress_bar", "dead_ui", "respawn_text", "respawn_timer_text", "respawn_progress_bar", "interact_ui", "interact_text", "interact_key_text", "interact_progress_bar")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1142,6 +1143,7 @@ cur_ammo_label = NodePath("MarginContainer/VBoxContainer/EquippedWeaponPanel/HBo
 equipped_weapon_label = NodePath("MarginContainer/VBoxContainer/EquippedWeaponPanel/HBoxContainer/EquippedWeapon")
 unequipped_weapon_label = NodePath("MarginContainer/VBoxContainer/UnequippedWeaponPanel/UnequippedWeapon")
 reticle = NodePath("Reticle")
+damage_indicator = NodePath("DamageIndicator")
 cur_wave_label = NodePath("MarginContainer/WaveVBox/CurrentWave")
 enemies_left_label = NodePath("MarginContainer/WaveVBox/EnemiesRemaining")
 zone_change_warning = NodePath("ZoneChangeWarning")
@@ -1689,6 +1691,17 @@ theme_override_font_sizes/font_size = 40
 text = "Interact"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="DamageIndicator" type="Control" parent="UI/HUD"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("30_dgwuk")
 
 [node name="EscapeMenu" parent="UI" instance=ExtResource("31_on5gm")]
 visible = false

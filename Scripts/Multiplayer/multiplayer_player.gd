@@ -132,6 +132,7 @@ func _ready() -> void:
 	#print(shotgun)
 	#if shotgun: shotgun.player = self
 	hud.init(death_timer, respawn_timer, revive_other_timer)
+	hud.damage_indicator.player = self
 	# Set the username label's text to the player's username
 	var lobby = get_tree().get_first_node_in_group("lobby") as MultiplayerLobbyMenu
 	username_label.text = lobby.players[multiplayer.get_unique_id()].username
@@ -594,9 +595,23 @@ func seek_anim(anim: String, seconds: float) -> void:
 	anim_player.seek(seconds, true)
 
 @rpc("any_peer", "call_local")
-func rocket_self_hit(damage: float, knockback: Vector3) -> void:
+func rocket_self_hit(damage: float, knockback: Vector3, pos: Vector3) -> void:
 	# Apply the self-damage
-	if do_self_damage: on_damaged(damage, false)
+	if do_self_damage: 
+		on_damaged(damage, false)
+		# Get reference to level
+		var level = get_tree().get_first_node_in_group("level")
+		# Spawn explosion pos node
+		var explosion_pos_node = Node3D.new()
+		level.add_child(explosion_pos_node)
+		# Set its position to the input pos
+		explosion_pos_node.global_position = pos
+		# Create a delete timer
+		var delete_timer = get_tree().create_timer(0.8)
+		# Connect its timeout to deleting the explosion pos node
+		delete_timer.timeout.connect(explosion_pos_node.queue_free)
+		# Create the explosion damage indicator
+		hud.damage_indicator.create_damage_indicator(explosion_pos_node)
 	# Apply the vertical explosion knockback to the player
 	velocity.y += knockback.y
 	# Apply the horizontal explosion knockback to the player

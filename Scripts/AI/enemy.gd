@@ -178,6 +178,7 @@ func _on_attack_hitbox_area_entered(area) -> void:
 	if area is Damageable and !has_attack_hit:
 		#print("%s hit." % area)
 		area.take_damage(atk_damage, false)
+		area.get_parent().hud.damage_indicator.create_damage_indicator(self)
 
 func _on_attack_hitbox_area_exited(area) -> void:
 	if area is Damageable:

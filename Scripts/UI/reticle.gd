@@ -45,7 +45,7 @@ func update_reticle(weapon: Weapon) -> void:
 	cur_weapon = weapon
 	if weapon is Rifle or weapon is Pistol or weapon is RocketLauncher:
 		switch_to_line_crosshair()
-	elif weapon is Shotgun:
+	elif weapon is Shotgun or weapon is P90:
 		switch_to_circle_crosshair()
 
 func hide_reticle() -> void:

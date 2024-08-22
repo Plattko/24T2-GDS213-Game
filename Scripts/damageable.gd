@@ -1,5 +1,4 @@
 class_name Damageable
-
 extends Area3D
 
 @export var is_weak_point : bool = false
