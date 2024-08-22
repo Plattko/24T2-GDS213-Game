@@ -3,6 +3,12 @@ extends Control
 
 var player_lobby_display := load("res://Scenes/UI/Menus/Components/player_lobby_display.tscn")
 var weapon_select_button_scene := load("res://Scenes/UI/Menus/Components/weapon_select_button.tscn")
+# Weapon icons
+var rifle_icon := load("res://Assets/UI_Assets/Weapons/Weapons/rifle_icon.png")
+var deagle_icon := load("res://Assets/UI_Assets/Weapons/Weapons/deagle_icon.png")
+var shotgun_icon := load("res://Assets/UI_Assets/Weapons/Weapons/shotgun_icon.png")
+var rocket_launcher_icon := load("res://Assets/UI_Assets/Weapons/Weapons/rocket_launcher_icon.png")
+var p90_icon := load("res://Assets/UI_Assets/Weapons/Weapons/P90_icon.png")
 
 # Variables to be injected by/referenced from another script
 @export var players : Dictionary = {}
@@ -16,9 +22,9 @@ var readied_player_count : int
 @export var player_displays_vbox : VBoxContainer
 
 @export_group("Weapon Selection")
-@export var primary_weapon_button : Button
+@export var primary_weapon_button : SelectedWeaponButton
 @export var primary_weapon_panel : PanelContainer
-@export var secondary_weapon_button : Button
+@export var secondary_weapon_button : SelectedWeaponButton
 @export var secondary_weapon_panel : PanelContainer
 @export var weapon_grids : Array[GridContainer]
 var weapon_names : Array[String] = ["Rifle", "Deagle", "Shotgun", "Rocket Launcher", "P90"]
@@ -46,8 +52,12 @@ func _ready() -> void:
 	primary_weapon_button.show()
 	secondary_weapon_button.show()
 	
-	default_primary_weapon = primary_weapon_button.text
-	default_secondary_weapon = secondary_weapon_button.text
+	default_primary_weapon = primary_weapon_button.weapon_name
+	default_secondary_weapon = secondary_weapon_button.weapon_name
+	primary_weapon_button.text = ""
+	secondary_weapon_button.text = ""
+	set_weapon_icon(primary_weapon_button, true)
+	set_weapon_icon(secondary_weapon_button, true)
 
 # Set name at top to lobby name
 func set_lobby_name_text(lobby_name: String) -> void:
@@ -106,8 +116,10 @@ func spawn_weapon_select_buttons() -> void:
 		for weapon_name in weapon_names:
 			# Create the weapon select button
 			var weapon_select_button = weapon_select_button_scene.instantiate() as WeaponSelectButton
-			# Set its name to the weapon name
+			# Set its weapon name to the weapon name
 			weapon_select_button.weapon_name = weapon_name
+			# Set its icon
+			set_weapon_icon(weapon_select_button)
 			# Connect it to the correct weapon select button pressed function
 			if weapon_grid == weapon_grids[0]: 
 				weapon_select_button.weapon_select_button_pressed.connect(on_primary_weapon_select_button_pressed)
@@ -136,13 +148,16 @@ func on_primary_weapon_select_button_pressed(button: WeaponSelectButton) -> void
 	# Get the selected weapon
 	var selected_weapon = button.weapon_name
 	# If the selected weapon is the same as the secondary weapon, swap the primary and secondary weapons
-	if selected_weapon == secondary_weapon_button.text:
-		secondary_weapon_button.text = primary_weapon_button.text
+	if selected_weapon == secondary_weapon_button.weapon_name:
+		secondary_weapon_button.weapon_name = primary_weapon_button.weapon_name
 	# Set the primary weapon button to the selected weapon
-	primary_weapon_button.text = selected_weapon
+	primary_weapon_button.weapon_name = selected_weapon
 	# Update the player's weapons
 	var player_id = multiplayer.get_unique_id()
-	update_player_weapons.rpc_id(1, player_id, primary_weapon_button.text, secondary_weapon_button.text)
+	update_player_weapons.rpc_id(1, player_id, primary_weapon_button.weapon_name, secondary_weapon_button.weapon_name)
+	# Update the selected weapon button's icons
+	set_weapon_icon(primary_weapon_button, true)
+	set_weapon_icon(secondary_weapon_button, true)
 	# Hide the weapon selection panel
 	primary_weapon_panel.hide()
 	# Show the weapon button
@@ -152,17 +167,37 @@ func on_secondary_weapon_select_button_pressed(button: WeaponSelectButton) -> vo
 	# Get the selected weapon
 	var selected_weapon = button.weapon_name
 	# If the selected weapon is the same as the secondary weapon, swap the primary and secondary weapons
-	if selected_weapon == primary_weapon_button.text:
-		primary_weapon_button.text = secondary_weapon_button.text
+	if selected_weapon == primary_weapon_button.weapon_name:
+		primary_weapon_button.weapon_name = secondary_weapon_button.weapon_name
 	# Set the secondary weapon button to the selected weapon
-	secondary_weapon_button.text = selected_weapon
+	secondary_weapon_button.weapon_name = selected_weapon
 	# Update the player's weapons
 	var player_id = multiplayer.get_unique_id()
-	update_player_weapons.rpc_id(1, player_id, primary_weapon_button.text, secondary_weapon_button.text)
+	update_player_weapons.rpc_id(1, player_id, primary_weapon_button.weapon_name, secondary_weapon_button.weapon_name)
+	# Update the selected weapon button's icons
+	set_weapon_icon(primary_weapon_button, true)
+	set_weapon_icon(secondary_weapon_button, true)
 	# Hide the weapon selection panel
 	secondary_weapon_panel.hide()
 	# Show the weapon button
 	secondary_weapon_button.show()
+
+func set_weapon_icon(button: Button, is_selected_weapon_button: bool = false) -> void:
+	if button.weapon_name == weapon_names[0]:
+		button.icon = rifle_icon
+	elif button.weapon_name == weapon_names[1]:
+		button.icon = deagle_icon
+	elif button.weapon_name == weapon_names[2]:
+		button.icon = shotgun_icon
+	elif button.weapon_name == weapon_names[3]:
+		button.icon = rocket_launcher_icon
+	elif button.weapon_name == weapon_names[4]:
+		button.icon = p90_icon
+	# Scale the icon's size
+	if !is_selected_weapon_button:
+		button.add_theme_constant_override("icon_max_width", roundi(button.icon.get_image().get_width() * 0.2))
+	else:
+		button.add_theme_constant_override("icon_max_width", roundi(button.icon.get_image().get_width() * 0.4))
 
 # Store each player's selected weapons
 @rpc("any_peer", "call_local")

@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://doaxn0r31cu2k"]
+[gd_scene load_steps=10 format=3 uid="uid://doaxn0r31cu2k"]
 
 [ext_resource type="Script" path="res://Scripts/UI/Menus/multiplayer_lobby_menu.gd" id="1_luwsf"]
 [ext_resource type="Texture2D" uid="uid://m04366pia3w5" path="res://Assets/UI_Assets/Menus/BWOB_background_2K.png" id="2_txug3"]
 [ext_resource type="PackedScene" uid="uid://u63y8f7vegjg" path="res://Scenes/UI/Menus/Components/weapon_select_button.tscn" id="3_fhv75"]
 [ext_resource type="FontFile" uid="uid://upmjjwvia6wx" path="res://Assets/Fonts/couture-bldit.otf" id="3_il35v"]
 [ext_resource type="FontFile" uid="uid://cmpx5wxpfbejj" path="res://Assets/Fonts/CreatoDisplay-Bold.otf" id="4_5qkuc"]
+[ext_resource type="Script" path="res://Scripts/UI/Menus/Components/selected_weapon_button.gd" id="5_xu6ox"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_l7165"]
 properties/0/path = NodePath("Panel/MarginContainer/VBoxContainer/LobbyName:text")
@@ -167,6 +168,9 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 24
 text = "Rifle"
+icon_alignment = 1
+script = ExtResource("5_xu6ox")
+weapon_name = "Rifle"
 
 [node name="PrimaryWeaponPanel" type="PanelContainer" parent="Panel/MarginContainer/VBoxContainer/LobbyUI/MarginContainer/VBoxContainer/WeaponSelectVBox/HBoxContainer"]
 visible = false
@@ -230,6 +234,9 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 24
 text = "Deagle"
+icon_alignment = 1
+script = ExtResource("5_xu6ox")
+weapon_name = "Deagle"
 
 [node name="SecondaryWeaponPanel" type="PanelContainer" parent="Panel/MarginContainer/VBoxContainer/LobbyUI/MarginContainer/VBoxContainer/WeaponSelectVBox/HBoxContainer"]
 visible = false
