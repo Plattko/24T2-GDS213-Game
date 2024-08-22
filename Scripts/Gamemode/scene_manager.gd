@@ -144,7 +144,7 @@ func remove_player(player_id: int) -> void:
 		if is_instance_valid(player_node) and player_node.name.to_int() == player_id:
 			player_node.queue_free()
 	# Remove the player in the wave manager
-	wave_manager.remove_player()
+	wave_manager.remove_player(player_id)
 	# Remove the player in the game over menu
 	game_over_menu.remove_player(player_id)
 

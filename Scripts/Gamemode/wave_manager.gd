@@ -297,10 +297,14 @@ func update_robots_killed() -> void:
 #-------------------------------------------------------------------------------
 # Removing Players
 #-------------------------------------------------------------------------------
-func remove_player() -> void:
-	# If the players are in game, reduce the alive player count by 1
+func remove_player(player_id: int) -> void:
+	# If the players are in game, reduce the alive player count by 1 and remove them from the players array
 	if game_state == Game_States.IN_GAME:
 		alive_player_count -= 1
+		for player in players:
+			if player.name == str(player_id):
+				players.erase(player)
+				break
 
 #-------------------------------------------------------------------------------
 # Game Over
