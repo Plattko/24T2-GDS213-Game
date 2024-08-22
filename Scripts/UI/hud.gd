@@ -181,16 +181,20 @@ func on_revive_stopped() -> void:
 # Zone Change Sequence
 #-------------------------------------------------------------------------------
 func on_zone_change_entered() -> void:
+	print("Zone change entered.")
+	print("Zone change warning position: " + str(zone_change_warning.position))
 	cur_wave_label.visible = false
 	if enemies_left_label.visible:
 		enemies_left_label.visible = false
 	zone_change_warning.reparent(zone_change_centre, false)
+	print("Zone change warning position: " + str(zone_change_warning.position))
 	zone_change_warning.visible = true
-	await get_tree().process_frame
-	zone_change_warning.reparent(self)
 	await get_tree().create_timer(1).timeout
+	zone_change_warning.reparent(self)
+	print("Zone change warning position: " + str(zone_change_warning.position))
 	var tween = get_tree().create_tween()
 	tween.tween_property(zone_change_warning, "position", zone_change_warning_def_pos, 0.25)
+	print("Zone change entered function complete.")
 
 func _on_zone_change_timer_timeout() -> void:
 	zone_change_warning.visible = false
