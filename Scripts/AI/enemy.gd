@@ -44,6 +44,7 @@ var health_drop_chance : float = 0.2
 const ATTACK_RANGE := 1.75
 var atk_damage := 20
 var has_attack_hit := false
+var hit_area : Area3D
 
 @export_group("State Machine Variables")
 @export var state_machine : EnemyStateMachine
@@ -178,12 +179,20 @@ func _on_attack_hitbox_area_entered(area) -> void:
 	if area is Damageable and !has_attack_hit:
 		#print("%s hit." % area)
 		area.take_damage(atk_damage, false)
-		area.get_parent().hud.damage_indicator.create_damage_indicator(self)
+		#area.get_parent().hud.damage_indicator.create_damage_indicator(self)
+		hit_area = area
+		create_damage_indicator.rpc_id(area.get_parent().name.to_int())
+		hit_area = null
 
 func _on_attack_hitbox_area_exited(area) -> void:
 	if area is Damageable:
 		has_attack_hit = true
 		#print("Attack has hit.")
+
+@rpc("any_peer", "call_local")
+func create_damage_indicator() -> void:
+	if hit_area: 
+		hit_area.get_parent().hud.damage_indicator.create_damage_indicator(self)
 
 #-------------------------------------------------------------------------------
 # Debugging
