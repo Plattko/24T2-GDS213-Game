@@ -30,6 +30,9 @@ var enemy_spawn_delay := 1.0
 
 @export_range(0.0, 1.0, 0.01) var speedy_robot_chance : float = 0.33
 
+var health_bonus : int = 0
+var health_bonus_increase : int = 5
+
 @export_group("Zone Change Variables")
 @export var zone_changes_enabled : bool = true
 @export var do_immediate_zone_change : bool = false
@@ -115,6 +118,9 @@ func start_intermission() -> void:
 func start_new_wave() -> void:
 	# Increase the current wave number
 	cur_wave += 1
+	# Scale enemy health every 5 waves
+	if (cur_wave%5) == 0:
+		health_bonus += health_bonus_increase
 	# Set the max enemies to the current wave multiplied by the max enemy multiplier
 	max_enemies = cur_wave * max_enemy_multiplier
 	# Clamp the max enemies to the enemy count hard cap
@@ -144,11 +150,14 @@ func spawn_enemy(is_endless_wave: bool) -> void:
 		var roll := randf_range(0.0, 1.0)
 		# Roll for whether it is a regular or speedy enemy
 		if roll <= speedy_robot_chance:
-			enemy = SPEEDY_ROBOT.instantiate()
+			enemy = SPEEDY_ROBOT.instantiate() as Enemy
+			enemy.max_health += (roundi(health_bonus / 2.0))
 		else:
-			enemy = ROBOT.instantiate()
+			enemy = ROBOT.instantiate() as Enemy
+			enemy.max_health += health_bonus
 	else:
-		enemy = ROBOT.instantiate()
+		enemy = ROBOT.instantiate() as Enemy
+		enemy.max_health += health_bonus
 	# Initialise enemy
 	var nav_layer = scene_manager.cur_zone
 	enemy.initialise(players, nav_layer)

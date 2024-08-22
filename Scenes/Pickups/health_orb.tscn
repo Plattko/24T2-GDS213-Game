@@ -18,12 +18,12 @@ properties/3/replication_mode = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_npio4"]
 transparency = 1
-albedo_color = Color(0.0588235, 0.870588, 1, 0.745098)
+albedo_color = Color(0.059, 0.871, 1.75, 0.588)
 emission_enabled = true
 emission = Color(0.0588235, 0.870588, 1, 1)
 emission_energy_multiplier = 0.75
 
-[sub_resource type="SphereMesh" id="SphereMesh_gil3g"]
+[sub_resource type="SphereMesh" id="SphereMesh_yqotb"]
 material = SubResource("StandardMaterial3D_npio4")
 radius = 0.25
 height = 0.5
@@ -219,7 +219,7 @@ replication_config = SubResource("SceneReplicationConfig_qk0s4")
 
 [node name="Mesh" type="MeshInstance3D" parent="."]
 cast_shadow = 0
-mesh = SubResource("SphereMesh_gil3g")
+mesh = SubResource("SphereMesh_yqotb")
 
 [node name="InnerOrb" type="MeshInstance3D" parent="Mesh"]
 cast_shadow = 0

@@ -38,7 +38,7 @@ var is_initial_call := true
 var cur_health
 
 var health_orb_scene = load("res://Scenes/Pickups/health_orb.tscn")
-var health_drop_chance : float = 0.2
+var health_drop_chance : float = 0.15
 
 # Attack variables
 const ATTACK_RANGE := 1.75
