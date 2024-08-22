@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://dra3y4e8jl3ma"]
+[gd_scene load_steps=53 format=3 uid="uid://dra3y4e8jl3ma"]
 
 [ext_resource type="Script" path="res://Scripts/Gamemode/scene_manager.gd" id="1_xo1kt"]
 [ext_resource type="Script" path="res://Scripts/Gamemode/wave_manager.gd" id="2_1apvi"]
@@ -32,6 +32,8 @@
 [ext_resource type="PackedScene" uid="uid://3gwmy22w3q6p" path="res://Scenes/Props/shaded_table.tscn" id="30_gnhk1"]
 [ext_resource type="PackedScene" uid="uid://6saq0gdbyimu" path="res://Scenes/Props/zone_gate.tscn" id="31_xur4h"]
 [ext_resource type="Script" path="res://Scripts/Gamemode/zone.gd" id="32_x1vn3"]
+[ext_resource type="PackedScene" uid="uid://dyw64wskaoor7" path="res://Scenes/UI/fade_to_black_transition.tscn" id="33_bhi0h"]
+[ext_resource type="PackedScene" uid="uid://03p3s41yxbsb" path="res://Scenes/UI/Menus/game_over_menu.tscn" id="34_e51mg"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_b7t75"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -548,17 +550,25 @@ _data = {
 "Strike": SubResource("Animation_vt268")
 }
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_a6txt"]
+properties/0/path = NodePath("FadeToBlackTransition:visible")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("GameOverMenu:visible")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
 [node name="Level" type="Node3D" node_paths=PackedStringArray("initial_spawn_points", "zones", "wave_manager") groups=["level"]]
 script = ExtResource("1_xo1kt")
 initial_spawn_points = [NodePath("PlayerSpawnPoints/Spawn1"), NodePath("PlayerSpawnPoints/Spawn2"), NodePath("PlayerSpawnPoints/Spawn3"), NodePath("PlayerSpawnPoints/Spawn4")]
 zones = [NodePath("ZoneData/Zone1"), NodePath("ZoneData/Zone2")]
 wave_manager = NodePath("GamemodeManager")
 
-[node name="GamemodeManager" type="Node" parent="." node_paths=PackedStringArray("enemies_node", "zone_change_timer", "endless_wave_timer", "zone_gate") groups=["wave_manager"]]
+[node name="GamemodeManager" type="Node" parent="." node_paths=PackedStringArray("zone_change_timer", "endless_wave_timer", "enemies_node", "zone_gate") groups=["wave_manager"]]
 script = ExtResource("2_1apvi")
-enemies_node = NodePath("../Enemies")
 zone_change_timer = NodePath("ZoneChangeTimer")
 endless_wave_timer = NodePath("EndlessWaveTimer")
+enemies_node = NodePath("../Enemies")
 zone_gate = NodePath("../NavigationRegion3D/LevelGeometry/ZoneGate")
 change_possible_index = 2
 
@@ -9169,6 +9179,37 @@ skeleton = NodePath("../../Zone1")
 libraries = {
 "": SubResource("AnimationLibrary_8wxbm")
 }
+
+[node name="MapCamera" type="Camera3D" parent="." groups=["map_camera"]]
+transform = Transform3D(-0.813538, 0.303303, -0.496149, 3.72529e-09, 0.853205, 0.521576, 0.581512, 0.424322, -0.694114, -25.8565, 22.7952, 16.1106)
+
+[node name="GameOverUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="GameOverUI"]
+replication_config = SubResource("SceneReplicationConfig_a6txt")
+
+[node name="FadeToBlackTransition" parent="GameOverUI" node_paths=PackedStringArray("anim_player") instance=ExtResource("33_bhi0h")]
+visible = false
+z_index = 1
+layout_mode = 1
+mouse_filter = 2
+anim_player = NodePath("")
+
+[node name="GameOverMenu" parent="GameOverUI" node_paths=PackedStringArray("waves_survived_text", "robots_killed_text", "zone_swaps_text", "back_to_lobby_button", "main_menu_button") instance=ExtResource("34_e51mg")]
+visible = false
+layout_mode = 1
+waves_survived_text = NodePath("")
+robots_killed_text = NodePath("")
+zone_swaps_text = NodePath("")
+back_to_lobby_button = NodePath("")
+main_menu_button = NodePath("")
 
 [connection signal="timeout" from="GamemodeManager/EndlessWaveTimer" to="GamemodeManager" method="_on_endless_wave_timer_timeout"]
 [connection signal="spawned" from="MultiplayerSpawner" to="." method="_on_multiplayer_spawner_spawned"]
